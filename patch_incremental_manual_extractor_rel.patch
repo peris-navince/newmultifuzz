@@ -1,0 +1,279 @@
+--- a/pdf_register_extractor.py	2026-03-13 09:30:46.000000000 +0000
++++ b/pdf_register_extractor.py	2026-03-13 03:09:12.362053405 +0000
+@@ -46,20 +46,54 @@
+     return "\n".join(lines)
+ 
+ 
+-def _build_name_patterns(base_u: str, reg_u: str) -> List[re.Pattern]:
+-    pats = []
+-    toks = [reg_u]
+-    if base_u:
+-        toks += [f"{base_u}_{reg_u}", f"{base_u}{reg_u}", f"{base_u} {reg_u}"]
+-        toks += [f"{base_u}0_{reg_u}", f"{base_u}1_{reg_u}", f"{base_u}X_{reg_u}"]
+-    for tok in toks:
+-        pats.append(re.compile(rf"\b{re.escape(tok)}\b", re.IGNORECASE))
++def _derive_base_variants(peripheral_keyword: str, template_instance: Optional[str]) -> List[str]:
++    raw = [template_instance or "", peripheral_keyword or ""]
++    bases: List[str] = []
++    for x in raw:
++        x = str(x or "").strip()
++        if not x:
++            continue
++        bases.append(x.upper())
++        bases.append(re.sub(r"\d+$", "", x.upper()))
++
++    pkw = (peripheral_keyword or "").strip().upper()
++    if pkw == "UART":
++        bases.append("USART")
++    if pkw == "USART":
++        bases.append("UART")
++    if pkw == "I2C":
++        bases.append("TWI")
++    if pkw == "TWI":
++        bases.append("I2C")
++    if pkw == "GPIO":
++        bases.append("PIO")
++    if pkw == "PIO":
++        bases.append("GPIO")
++
++    out: List[str] = []
++    seen = set()
++    for b in bases:
++        b = b.strip().upper()
++        if not b or b in seen:
++            continue
++        seen.add(b)
++        out.append(b)
++    return out
++
++
++def _build_name_patterns(base_variants_u: List[str], reg_u: str) -> List[re.Pattern]:
++    pats = [re.compile(rf"\b{re.escape(reg_u)}\b", re.IGNORECASE)]
++    pats.append(re.compile(rf"(?<=_)\s*{re.escape(reg_u)}\b", re.IGNORECASE))
++    for base_u in base_variants_u or []:
++        toks = [f"{base_u}_{reg_u}", f"{base_u}{reg_u}", f"{base_u} {reg_u}", f"{base_u}0_{reg_u}", f"{base_u}1_{reg_u}", f"{base_u}X_{reg_u}"]
++        for tok in toks:
++            pats.append(re.compile(rf"\b{re.escape(tok)}\b", re.IGNORECASE))
+     return pats
+ 
+ 
+-def _title_score(line_u: str, base_u: str, reg_u: str) -> int:
++def _title_score(line_u: str, base_variants_u: List[str], reg_u: str) -> int:
+     score = 0
+-    if any(p.search(line_u) for p in _build_name_patterns(base_u, reg_u)):
++    if any(p.search(line_u) for p in _build_name_patterns(base_variants_u, reg_u)):
+         score += 5
+     if "REGISTER" in line_u:
+         score += 2
+@@ -126,7 +160,7 @@
+     anchors: List[Tuple[int, str, int]] = []
+     for idx, u in enumerate(line_texts_u):
+         for reg_u in reg_names:
+-            score = _title_score(u, base_u, reg_u)
++            score = _title_score(u, base_variants_u, reg_u)
+             if score >= 5:
+                 anchors.append((idx, reg_u, score))
+ 
+@@ -153,7 +187,7 @@
+             for j in range(idx + 1, min(len(lines), idx + 60)):
+                 u = line_texts_u[j]
+                 if any(
+-                    _title_score(u, base_u, other) >= 5
++                    _title_score(u, base_variants_u, other) >= 5
+                     for other in reg_names
+                     if other != reg_u
+                 ):
+--- a/pipeline_app.py	2026-03-13 09:30:54.000000000 +0000
++++ b/pipeline_app.py	2026-03-13 03:05:02.454307353 +0000
+@@ -32,6 +32,30 @@
+     "PDC", "DMAC", "DMA", "DMAMUX", "RSTC", "PM",
+ ]
+ 
++PERIPHERAL_ALIAS_MAP = {
++    "UART": ["USART"],
++    "USART": ["UART"],
++    "I2C": ["TWI"],
++    "TWI": ["I2C"],
++    "GPIO": ["PIO"],
++    "PIO": ["GPIO"],
++}
++
++
++def keyword_aliases(keyword: str) -> List[str]:
++    raw = str(keyword or "").strip().upper()
++    if not raw:
++        return []
++    out: List[str] = []
++    seen = set()
++    for cand in [raw, re.sub(r"\d+$", "", raw)] + PERIPHERAL_ALIAS_MAP.get(raw, []):
++        c = str(cand or "").strip().upper()
++        if not c or c in seen:
++            continue
++        seen.add(c)
++        out.append(c)
++    return out
++
+ 
+ def debug(msg: str):
+     print(f"[DEBUG] {msg}")
+@@ -63,17 +87,27 @@
+ 
+ 
+ def compile_keyword_pattern(keyword: str) -> re.Pattern:
+-    kw = (keyword or "").strip().upper()
+-    if not kw:
++    kws = keyword_aliases(keyword)
++    if not kws:
+         return re.compile(r"(?!)")
+-    if re.fullmatch(r"[A-Z]{1,3}", kw):
+-        return re.compile(rf"\b{re.escape(kw)}(?:\d+|_[A-Z0-9_]+)?\b")
+-    return re.compile(rf"\b{re.escape(kw)}[A-Z0-9_]*\b")
++
++    parts = []
++    for kw in kws:
++        if re.fullmatch(r"[A-Z]{1,4}", kw):
++            parts.append(rf"\b{re.escape(kw)}(?:\d+|_[A-Z0-9_]+)?\b")
++        else:
++            parts.append(rf"\b{re.escape(kw)}[A-Z0-9_]*\b")
++    return re.compile("(?:" + "|".join(parts) + ")", re.IGNORECASE)
+ 
+ 
+ def find_matching_peripherals(svd_data, target):
+-    target_up = target.upper()
+-    return [name for name in svd_data.get("peripherals", {}) if name.upper().startswith(target_up)]
++    aliases = keyword_aliases(target)
++    out = []
++    for name in svd_data.get("peripherals", {}):
++        nup = name.upper()
++        if any(nup.startswith(alias) for alias in aliases):
++            out.append(name)
++    return out
+ 
+ 
+ def parse_toc(pdf_path, max_pages=30):
+@@ -208,8 +242,8 @@
+     for g in ranges:
+         print(f"  Pages {g[0]}–{g[-1]} → Count = {sum(freq_dict[p] for p in g)}")
+ 
+-    kw_l = str(keyword or "").strip().lower()
+-    ctx_re = re.compile(re.escape(kw_l) + r".{0,80}register", re.I | re.S)
++    kw_aliases_l = [x.lower() for x in keyword_aliases(keyword)]
++    ctx_re = re.compile(r"(?:" + "|".join(re.escape(x) for x in kw_aliases_l) + r").{0,80}register", re.I | re.S)
+ 
+     merged = []
+     with pdfplumber.open(pdf_path) as pdf:
+@@ -221,10 +255,13 @@
+             window = 2
+             s = max(1, start - window)
+             e = min(n_pages, end + window)
+-            has_register = any(p in register_pages for p in range(s, e + 1))
++            direct_register_pages = [p for p in group if p in register_pages]
++            nearby_register_pages = [p for p in range(s, e + 1) if p in register_pages]
++            has_register_here = bool(direct_register_pages)
++            has_register_nearby = bool(nearby_register_pages)
+ 
+             has_context = False
+-            if not has_register:
++            if not has_register_here:
+                 for p in range(start, end + 1):
+                     txt = (pdf.pages[p - 1].extract_text() or "").lower()
+                     if ctx_re.search(txt):
+@@ -233,10 +270,17 @@
+ 
+             print(
+                 f"  ▶ Evaluating group {start}–{end} | count={total} | "
+-                f"has_register={has_register} | has_context={has_context}"
++                f"has_register_here={has_register_here} | has_register_nearby={has_register_nearby} | has_context={has_context}"
+             )
+ 
+-            if total >= min_total and (has_register or has_context):
++            should_accept = False
++            if total >= min_total:
++                if has_register_here or has_context:
++                    should_accept = True
++                elif has_register_nearby and len(group) >= 3:
++                    should_accept = True
++
++            if should_accept:
+                 merged.append({"start_page": start, "end_page": end, "count": total})
+             else:
+                 print("    ❌ Rejected this group")
+@@ -277,7 +321,7 @@
+     def _avg(r):
+         return r["count"] / max(1, _len(r))
+ 
+-    continuity = max(total_ranges, key=lambda r: (_avg(r), r["count"], _len(r)))
++    continuity = max(total_ranges, key=lambda r: (r["count"], _len(r), _avg(r)))
+ 
+     peak_page = max(freq_dict, key=lambda p: freq_dict[p]) if freq_dict else None
+     peak_range = None
+@@ -290,7 +334,7 @@
+     if top_k and top_k > 1:
+         ranked = sorted(
+             total_ranges,
+-            key=lambda r: (r["count"], _avg(r), -r["start_page"]),
++            key=lambda r: (r["count"], _len(r), _avg(r), -r["start_page"]),
+             reverse=True,
+         )
+         picked = ranked[: max(1, int(top_k))]
+@@ -303,7 +347,12 @@
+         return picked
+ 
+     if peak_range is not None and continuity != peak_range:
+-        if _len(peak_range) <= 2 and _avg(peak_range) > (_avg(continuity) * 1.8):
++        peak_is_tiny = _len(peak_range) <= 2
++        peak_is_compelling = (
++            _avg(peak_range) > (_avg(continuity) * 2.5)
++            and peak_range["count"] >= max(6, int(continuity["count"] * 0.45))
++        )
++        if peak_is_tiny and peak_is_compelling:
+             print(
+                 f"[⚖️] Choosing PEAK pages {peak_range['start_page']}–{peak_range['end_page']} "
+                 f"over continuity {continuity['start_page']}–{continuity['end_page']}"
+--- a/svd_parser.py	2026-03-13 09:31:08.000000000 +0000
++++ b/svd_parser.py	2026-03-13 03:05:02.455333273 +0000
+@@ -4,6 +4,30 @@
+ import xml.etree.ElementTree as ET
+ from typing import Any, Dict, List, Optional
+ 
++PERIPHERAL_ALIAS_MAP = {
++    "UART": ["USART"],
++    "USART": ["UART"],
++    "I2C": ["TWI"],
++    "TWI": ["I2C"],
++    "GPIO": ["PIO"],
++    "PIO": ["GPIO"],
++}
++
++
++def _keyword_aliases(keyword: str) -> List[str]:
++    raw = str(keyword or "").strip().upper()
++    if not raw:
++        return []
++    out: List[str] = []
++    seen = set()
++    for cand in [raw, re.sub(r"\d+$", "", raw)] + PERIPHERAL_ALIAS_MAP.get(raw, []):
++        c = str(cand or "").strip().upper()
++        if not c or c in seen:
++            continue
++        seen.add(c)
++        out.append(c)
++    return out
++
+ 
+ def _nsmap(root: ET.Element) -> Dict[str, str]:
+     if "}" in root.tag:
+@@ -135,11 +159,11 @@
+ 
+ 
+ def find_matching_peripherals(svd_data: Dict[str, Any], target: str) -> List[str]:
+-    target_up = str(target or "").strip().upper()
++    aliases = _keyword_aliases(target)
+     return [
+         name
+         for name in (svd_data.get("peripherals", {}) or {})
+-        if name.upper().startswith(target_up)
++        if any(name.upper().startswith(alias) for alias in aliases)
+     ]
+ 
+ 

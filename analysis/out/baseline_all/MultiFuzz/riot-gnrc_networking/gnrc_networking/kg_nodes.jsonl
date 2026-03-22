@@ -1,0 +1,1054 @@
+{"node_id": "func:GNRC_RPL_COUNTER_GREATER_THAN", "node_type": "function", "name": "GNRC_RPL_COUNTER_GREATER_THAN"}
+{"node_id": "func:GNRC_RPL_COUNTER_GREATER_THAN@0800662a", "node_type": "function", "name": "GNRC_RPL_COUNTER_GREATER_THAN", "entry": "0800662a", "is_isr": false, "signature": "_Bool __stdcall GNRC_RPL_COUNTER_GREATER_THAN(uint8_t A, uint8_t B)"}
+{"node_id": "func:__aeabi_idiv0", "node_type": "function", "name": "__aeabi_idiv0"}
+{"node_id": "func:__aeabi_idiv0@0800c270", "node_type": "function", "name": "__aeabi_idiv0", "entry": "0800c270", "is_isr": false, "signature": "undefined __aeabi_idiv0(void)"}
+{"node_id": "func:__aeabi_uldivmod", "node_type": "function", "name": "__aeabi_uldivmod"}
+{"node_id": "func:__aeabi_uldivmod@0800bf70", "node_type": "function", "name": "__aeabi_uldivmod", "entry": "0800bf70", "is_isr": false, "signature": "undefined __aeabi_uldivmod(void)"}
+{"node_id": "func:__errno", "node_type": "function", "name": "__errno"}
+{"node_id": "func:__errno@0800c27c", "node_type": "function", "name": "__errno", "entry": "0800c27c", "is_isr": false, "signature": "undefined __errno(void)"}
+{"node_id": "func:__libc_init_array", "node_type": "function", "name": "__libc_init_array"}
+{"node_id": "func:__libc_init_array@0800c670", "node_type": "function", "name": "__libc_init_array", "entry": "0800c670", "is_isr": false, "signature": "undefined __libc_init_array(void)"}
+{"node_id": "func:__malloc_lock", "node_type": "function", "name": "__malloc_lock"}
+{"node_id": "func:__malloc_lock@0800cfd8", "node_type": "function", "name": "__malloc_lock", "entry": "0800cfd8", "is_isr": false, "signature": "undefined __malloc_lock(void)"}
+{"node_id": "func:__malloc_unlock", "node_type": "function", "name": "__malloc_unlock"}
+{"node_id": "func:__malloc_unlock@0800cfe4", "node_type": "function", "name": "__malloc_unlock", "entry": "0800cfe4", "is_isr": false, "signature": "undefined __malloc_unlock(void)"}
+{"node_id": "func:__retarget_lock_acquire_recursive", "node_type": "function", "name": "__retarget_lock_acquire_recursive"}
+{"node_id": "func:__retarget_lock_acquire_recursive@0800c6ba", "node_type": "function", "name": "__retarget_lock_acquire_recursive", "entry": "0800c6ba", "is_isr": false, "signature": "undefined __retarget_lock_acquire_recursive(void)"}
+{"node_id": "func:__retarget_lock_init_recursive", "node_type": "function", "name": "__retarget_lock_init_recursive"}
+{"node_id": "func:__retarget_lock_init_recursive@0800c6b8", "node_type": "function", "name": "__retarget_lock_init_recursive", "entry": "0800c6b8", "is_isr": false, "signature": "undefined __retarget_lock_init_recursive(void)"}
+{"node_id": "func:__retarget_lock_release_recursive", "node_type": "function", "name": "__retarget_lock_release_recursive"}
+{"node_id": "func:__retarget_lock_release_recursive@0800c6bc", "node_type": "function", "name": "__retarget_lock_release_recursive", "entry": "0800c6bc", "is_isr": false, "signature": "undefined __retarget_lock_release_recursive(void)"}
+{"node_id": "func:__sclose@0800ca8a", "node_type": "function", "name": "__sclose", "entry": "0800ca8a", "is_isr": false, "signature": "undefined __sclose(void)"}
+{"node_id": "func:__sflush_r", "node_type": "function", "name": "__sflush_r"}
+{"node_id": "func:__sflush_r@0800c288", "node_type": "function", "name": "__sflush_r", "entry": "0800c288", "is_isr": false, "signature": "undefined __sflush_r(void)"}
+{"node_id": "func:__sfmoreglue", "node_type": "function", "name": "__sfmoreglue"}
+{"node_id": "func:__sfmoreglue@0800c47c", "node_type": "function", "name": "__sfmoreglue", "entry": "0800c47c", "is_isr": false, "signature": "undefined __sfmoreglue(void)"}
+{"node_id": "func:__sfp", "node_type": "function", "name": "__sfp"}
+{"node_id": "func:__sfp@0800c548", "node_type": "function", "name": "__sfp", "entry": "0800c548", "is_isr": false, "signature": "undefined __sfp(void)"}
+{"node_id": "func:__sfp_lock_acquire", "node_type": "function", "name": "__sfp_lock_acquire"}
+{"node_id": "func:__sfp_lock_acquire@0800c4a8", "node_type": "function", "name": "__sfp_lock_acquire", "entry": "0800c4a8", "is_isr": false, "signature": "undefined __sfp_lock_acquire(void)"}
+{"node_id": "func:__sfp_lock_release", "node_type": "function", "name": "__sfp_lock_release"}
+{"node_id": "func:__sfp_lock_release@0800c4b4", "node_type": "function", "name": "__sfp_lock_release", "entry": "0800c4b4", "is_isr": false, "signature": "undefined __sfp_lock_release(void)"}
+{"node_id": "func:__sfputc_r", "node_type": "function", "name": "__sfputc_r"}
+{"node_id": "func:__sfputc_r@0800cff0", "node_type": "function", "name": "__sfputc_r", "entry": "0800cff0", "is_isr": false, "signature": "undefined __sfputc_r(void)"}
+{"node_id": "func:__sfputs_r", "node_type": "function", "name": "__sfputs_r"}
+{"node_id": "func:__sfputs_r@0800d01a", "node_type": "function", "name": "__sfputs_r", "entry": "0800d01a", "is_isr": false, "signature": "undefined __sfputs_r(void)"}
+{"node_id": "func:__sinit", "node_type": "function", "name": "__sinit"}
+{"node_id": "func:__sinit@0800c4d8", "node_type": "function", "name": "__sinit", "entry": "0800c4d8", "is_isr": false, "signature": "undefined __sinit(void)"}
+{"node_id": "func:__sinit_lock_acquire", "node_type": "function", "name": "__sinit_lock_acquire"}
+{"node_id": "func:__sinit_lock_acquire@0800c4c0", "node_type": "function", "name": "__sinit_lock_acquire", "entry": "0800c4c0", "is_isr": false, "signature": "undefined __sinit_lock_acquire(void)"}
+{"node_id": "func:__sinit_lock_release", "node_type": "function", "name": "__sinit_lock_release"}
+{"node_id": "func:__sinit_lock_release@0800c4cc", "node_type": "function", "name": "__sinit_lock_release", "entry": "0800c4cc", "is_isr": false, "signature": "undefined __sinit_lock_release(void)"}
+{"node_id": "func:__smakebuf_r", "node_type": "function", "name": "__smakebuf_r"}
+{"node_id": "func:__smakebuf_r@0800cf58", "node_type": "function", "name": "__smakebuf_r", "entry": "0800cf58", "is_isr": false, "signature": "undefined __smakebuf_r(void)"}
+{"node_id": "func:__sread@0800ca0c", "node_type": "function", "name": "__sread", "entry": "0800ca0c", "is_isr": false, "signature": "undefined __sread(void)"}
+{"node_id": "func:__srefill_r", "node_type": "function", "name": "__srefill_r"}
+{"node_id": "func:__srefill_r@0800d764", "node_type": "function", "name": "__srefill_r", "entry": "0800d764", "is_isr": false, "signature": "undefined __srefill_r(void)"}
+{"node_id": "func:__srget_r", "node_type": "function", "name": "__srget_r"}
+{"node_id": "func:__srget_r@0800d658", "node_type": "function", "name": "__srget_r", "entry": "0800d658", "is_isr": false, "signature": "undefined __srget_r(void)"}
+{"node_id": "func:__sseek@0800ca66", "node_type": "function", "name": "__sseek", "entry": "0800ca66", "is_isr": false, "signature": "undefined __sseek(void)"}
+{"node_id": "func:__swbuf_r", "node_type": "function", "name": "__swbuf_r"}
+{"node_id": "func:__swbuf_r@0800cd0c", "node_type": "function", "name": "__swbuf_r", "entry": "0800cd0c", "is_isr": false, "signature": "undefined __swbuf_r(void)"}
+{"node_id": "func:__swhatbuf_r", "node_type": "function", "name": "__swhatbuf_r"}
+{"node_id": "func:__swhatbuf_r@0800cf0c", "node_type": "function", "name": "__swhatbuf_r", "entry": "0800cf0c", "is_isr": false, "signature": "undefined __swhatbuf_r(void)"}
+{"node_id": "func:__swrite@0800ca2e", "node_type": "function", "name": "__swrite", "entry": "0800ca2e", "is_isr": false, "signature": "undefined __swrite(void)"}
+{"node_id": "func:__swsetup_r", "node_type": "function", "name": "__swsetup_r"}
+{"node_id": "func:__swsetup_r@0800cdb0", "node_type": "function", "name": "__swsetup_r", "entry": "0800cdb0", "is_isr": false, "signature": "undefined __swsetup_r(void)"}
+{"node_id": "func:__udivmoddi4", "node_type": "function", "name": "__udivmoddi4"}
+{"node_id": "func:__udivmoddi4@0800bfa0", "node_type": "function", "name": "__udivmoddi4", "entry": "0800bfa0", "is_isr": false, "signature": "undefined __udivmoddi4(void)"}
+{"node_id": "func:_addr_equals", "node_type": "function", "name": "_addr_equals"}
+{"node_id": "func:_addr_equals@08002798", "node_type": "function", "name": "_addr_equals", "entry": "08002798", "is_isr": false, "signature": "_Bool __stdcall _addr_equals(ipv6_addr_t * addr, _nib_onl_entry_t * node)"}
+{"node_id": "func:_assert_panic", "node_type": "function", "name": "_assert_panic"}
+{"node_id": "func:_assert_panic@0800094c", "node_type": "function", "name": "_assert_panic", "entry": "0800094c", "is_isr": false, "signature": "noreturn void _assert_panic(void)"}
+{"node_id": "func:_auto_configure_addr", "node_type": "function", "name": "_auto_configure_addr"}
+{"node_id": "func:_auto_configure_addr@080032ee", "node_type": "function", "name": "_auto_configure_addr", "entry": "080032ee", "is_isr": false, "signature": "void __stdcall _auto_configure_addr(gnrc_netif_t * netif, ipv6_addr_t * pfx, uint8_t pfx_len)"}
+{"node_id": "func:_build_headers", "node_type": "function", "name": "_build_headers"}
+{"node_id": "func:_build_headers@08004a18", "node_type": "function", "name": "_build_headers", "entry": "08004a18", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _build_headers(gnrc_netif_t * netif, ipv6_addr_t * src, ipv6_addr_t * dst, gnrc_pktsnip_t * payload)"}
+{"node_id": "func:_calc_csum", "node_type": "function", "name": "_calc_csum"}
+{"node_id": "func:_calc_csum@08001386", "node_type": "function", "name": "_calc_csum", "entry": "08001386", "is_isr": false, "signature": "uint16_t __stdcall _calc_csum(gnrc_pktsnip_t * hdr, gnrc_pktsnip_t * pseudo_hdr, gnrc_pktsnip_t * payload)"}
+{"node_id": "func:_calc_csum@08007ad2", "node_type": "function", "name": "_calc_csum", "entry": "08007ad2", "is_isr": false, "signature": "uint16_t __stdcall _calc_csum(gnrc_pktsnip_t * hdr, gnrc_pktsnip_t * pseudo_hdr, gnrc_pktsnip_t * payload)"}
+{"node_id": "func:_callback_msg@0800bf0c", "node_type": "function", "name": "_callback_msg", "entry": "0800bf0c", "is_isr": false, "signature": "void __stdcall _callback_msg(void * arg)"}
+{"node_id": "func:_callback_unlock_mutex@0800bf08", "node_type": "function", "name": "_callback_unlock_mutex", "entry": "0800bf08", "is_isr": false, "signature": "void __stdcall _callback_unlock_mutex(void * arg)"}
+{"node_id": "func:_check_ipv6_hdr", "node_type": "function", "name": "_check_ipv6_hdr"}
+{"node_id": "func:_check_ipv6_hdr@080016e8", "node_type": "function", "name": "_check_ipv6_hdr", "entry": "080016e8", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _check_ipv6_hdr(gnrc_pktsnip_t * orig_pkt, uint8_t type, uint8_t code)"}
+{"node_id": "func:_cleanup_r@0800c470", "node_type": "function", "name": "_cleanup_r", "entry": "0800c470", "is_isr": false, "signature": "undefined _cleanup_r(void)"}
+{"node_id": "func:_close_r", "node_type": "function", "name": "_close_r"}
+{"node_id": "func:_close_r@080084d4", "node_type": "function", "name": "_close_r", "entry": "080084d4", "is_isr": false, "signature": "int __stdcall _close_r(_reent * r, int fd)"}
+{"node_id": "func:_copy_rcv_snip", "node_type": "function", "name": "_copy_rcv_snip"}
+{"node_id": "func:_copy_rcv_snip@08001734", "node_type": "function", "name": "_copy_rcv_snip", "entry": "08001734", "is_isr": false, "signature": "size_t __stdcall _copy_rcv_snip(gnrc_pktsnip_t * pkt, gnrc_pktsnip_t * orig_snip)"}
+{"node_id": "func:_create_snip", "node_type": "function", "name": "_create_snip"}
+{"node_id": "func:_create_snip@08005e0c", "node_type": "function", "name": "_create_snip", "entry": "08005e0c", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _create_snip(gnrc_pktsnip_t * next, void * data, size_t size, gnrc_nettype_t type)"}
+{"node_id": "func:_dao_target_build", "node_type": "function", "name": "_dao_target_build"}
+{"node_id": "func:_dao_target_build@08007034", "node_type": "function", "name": "_dao_target_build", "entry": "08007034", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _dao_target_build(gnrc_pktsnip_t * pkt, ipv6_addr_t * addr, uint8_t prefix_length)"}
+{"node_id": "func:_dao_transit_build", "node_type": "function", "name": "_dao_transit_build"}
+{"node_id": "func:_dao_transit_build@0800707a", "node_type": "function", "name": "_dao_transit_build", "entry": "0800707a", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _dao_transit_build(gnrc_pktsnip_t * pkt, uint8_t lifetime, _Bool external)"}
+{"node_id": "func:_dehex", "node_type": "function", "name": "_dehex"}
+{"node_id": "func:_dehex@080081ca", "node_type": "function", "name": "_dehex", "entry": "080081ca", "is_isr": false, "signature": "int __stdcall _dehex(char c, int default_)"}
+{"node_id": "func:_del_entry_from_list", "node_type": "function", "name": "_del_entry_from_list"}
+{"node_id": "func:_del_entry_from_list@0800bc04", "node_type": "function", "name": "_del_entry_from_list", "entry": "0800bc04", "is_isr": false, "signature": "_Bool __stdcall _del_entry_from_list(ztimer_clock_t * clock, ztimer_base_t * entry)"}
+{"node_id": "func:_dio_dodag_conf_build", "node_type": "function", "name": "_dio_dodag_conf_build"}
+{"node_id": "func:_dio_dodag_conf_build@080066e8", "node_type": "function", "name": "_dio_dodag_conf_build", "entry": "080066e8", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _dio_dodag_conf_build(gnrc_pktsnip_t * pkt, gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:_dio_prefix_info_build", "node_type": "function", "name": "_dio_prefix_info_build"}
+{"node_id": "func:_dio_prefix_info_build@08006794", "node_type": "function", "name": "_dio_prefix_info_build", "entry": "08006794", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _dio_prefix_info_build(gnrc_pktsnip_t * pkt, gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:_dis_solicited_opt_build", "node_type": "function", "name": "_dis_solicited_opt_build"}
+{"node_id": "func:_dis_solicited_opt_build@08006748", "node_type": "function", "name": "_dis_solicited_opt_build", "entry": "08006748", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _dis_solicited_opt_build(gnrc_pktsnip_t * pkt, gnrc_rpl_internal_opt_dis_solicited_t * opt)"}
+{"node_id": "func:_dump", "node_type": "function", "name": "_dump"}
+{"node_id": "func:_dump@08006054", "node_type": "function", "name": "_dump", "entry": "08006054", "is_isr": false, "signature": "void __stdcall _dump(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:_event_loop@08001dd8", "node_type": "function", "name": "_event_loop", "entry": "08001dd8", "is_isr": false, "signature": "void * __stdcall _event_loop(void * args)"}
+{"node_id": "func:_event_loop@08006318", "node_type": "function", "name": "_event_loop", "entry": "08006318", "is_isr": false, "signature": "void * __stdcall _event_loop(void * args)"}
+{"node_id": "func:_event_loop@08007b40", "node_type": "function", "name": "_event_loop", "entry": "08007b40", "is_isr": false, "signature": "void * __stdcall _event_loop(void * arg)"}
+{"node_id": "func:_eventloop@0800613c", "node_type": "function", "name": "_eventloop", "entry": "0800613c", "is_isr": false, "signature": "void * __stdcall _eventloop(void * arg)"}
+{"node_id": "func:_evtimer_add", "node_type": "function", "name": "_evtimer_add"}
+{"node_id": "func:_evtimer_add@080021a4", "node_type": "function", "name": "_evtimer_add", "entry": "080021a4", "is_isr": false, "signature": "void __stdcall _evtimer_add(void * ctx, int16_t type, evtimer_msg_event_t * event, uint32_t offset)"}
+{"node_id": "func:_evtimer_add@08003510", "node_type": "function", "name": "_evtimer_add", "entry": "08003510", "is_isr": false, "signature": "void __stdcall _evtimer_add(void * ctx, int16_t type, evtimer_msg_event_t * event, uint32_t offset)"}
+{"node_id": "func:_evtimer_handler@08001098", "node_type": "function", "name": "_evtimer_handler", "entry": "08001098", "is_isr": true, "signature": "void __stdcall _evtimer_handler(void * arg)"}
+{"node_id": "func:_evtimer_lookup", "node_type": "function", "name": "_evtimer_lookup"}
+{"node_id": "func:_evtimer_lookup@08003094", "node_type": "function", "name": "_evtimer_lookup", "entry": "08003094", "is_isr": false, "signature": "uint32_t __stdcall _evtimer_lookup(void * ctx, uint16_t type)"}
+{"node_id": "func:_evtimer_msg_handler@08002720", "node_type": "function", "name": "_evtimer_msg_handler", "entry": "08002720", "is_isr": true, "signature": "void __stdcall _evtimer_msg_handler(evtimer_event_t * event)"}
+{"node_id": "func:_evtimer_msg_handler@080061ec", "node_type": "function", "name": "_evtimer_msg_handler", "entry": "080061ec", "is_isr": true, "signature": "void __stdcall _evtimer_msg_handler(evtimer_event_t * event)"}
+{"node_id": "func:_fflush_r", "node_type": "function", "name": "_fflush_r"}
+{"node_id": "func:_fflush_r@0800c38c", "node_type": "function", "name": "_fflush_r", "entry": "0800c38c", "is_isr": false, "signature": "undefined _fflush_r(void)"}
+{"node_id": "func:_fill_ipv6_hdr", "node_type": "function", "name": "_fill_ipv6_hdr"}
+{"node_id": "func:_fill_ipv6_hdr@08001a0c", "node_type": "function", "name": "_fill_ipv6_hdr", "entry": "08001a0c", "is_isr": false, "signature": "int __stdcall _fill_ipv6_hdr(gnrc_netif_t * netif, gnrc_pktsnip_t * ipv6)"}
+{"node_id": "func:_find_interface_with_rpl_mcast", "node_type": "function", "name": "_find_interface_with_rpl_mcast"}
+{"node_id": "func:_find_interface_with_rpl_mcast@080065f0", "node_type": "function", "name": "_find_interface_with_rpl_mcast", "entry": "080065f0", "is_isr": false, "signature": "gnrc_netif_t * _find_interface_with_rpl_mcast(void)"}
+{"node_id": "func:_fini@08008482", "node_type": "function", "name": "_fini", "entry": "08008482", "is_isr": false, "signature": "void _fini(void)"}
+{"node_id": "func:_fit", "node_type": "function", "name": "_fit"}
+{"node_id": "func:_fit@0800176a", "node_type": "function", "name": "_fit", "entry": "0800176a", "is_isr": false, "signature": "size_t __stdcall _fit(gnrc_pktsnip_t * orig_pkt)"}
+{"node_id": "func:_flag_usage", "node_type": "function", "name": "_flag_usage"}
+{"node_id": "func:_flag_usage@08009a00", "node_type": "function", "name": "_flag_usage", "entry": "08009a00", "is_isr": false, "signature": "void __stdcall _flag_usage(char * cmd_name)"}
+{"node_id": "func:_free_r", "node_type": "function", "name": "_free_r"}
+{"node_id": "func:_free_r@0800c70c", "node_type": "function", "name": "_free_r", "entry": "0800c70c", "is_isr": false, "signature": "undefined _free_r(void)"}
+{"node_id": "func:_fstat_r", "node_type": "function", "name": "_fstat_r"}
+{"node_id": "func:_fstat_r@080084e8", "node_type": "function", "name": "_fstat_r", "entry": "080084e8", "is_isr": false, "signature": "int __stdcall _fstat_r(_reent * r, int fd, stat * st)"}
+{"node_id": "func:_fwalk", "node_type": "function", "name": "_fwalk"}
+{"node_id": "func:_fwalk@0800c5d4", "node_type": "function", "name": "_fwalk", "entry": "0800c5d4", "is_isr": false, "signature": "undefined _fwalk(void)"}
+{"node_id": "func:_fwalk_reent", "node_type": "function", "name": "_fwalk_reent"}
+{"node_id": "func:_fwalk_reent@0800c60e", "node_type": "function", "name": "_fwalk_reent", "entry": "0800c60e", "is_isr": false, "signature": "undefined _fwalk_reent(void)"}
+{"node_id": "func:_get_iface", "node_type": "function", "name": "_get_iface"}
+{"node_id": "func:_get_iface@08009528", "node_type": "function", "name": "_get_iface", "entry": "08009528", "is_isr": false, "signature": "gnrc_netif_t * __stdcall _get_iface(uint iface)"}
+{"node_id": "func:_get_netif_state", "node_type": "function", "name": "_get_netif_state"}
+{"node_id": "func:_get_netif_state@080032bc", "node_type": "function", "name": "_get_netif_state", "entry": "080032bc", "is_isr": false, "signature": "int __stdcall _get_netif_state(gnrc_netif_t * * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:_get_scope", "node_type": "function", "name": "_get_scope"}
+{"node_id": "func:_get_scope@0800519e", "node_type": "function", "name": "_get_scope", "entry": "0800519e", "is_isr": false, "signature": "uint8_t __stdcall _get_scope(ipv6_addr_t * addr)"}
+{"node_id": "func:_getc_r", "node_type": "function", "name": "_getc_r"}
+{"node_id": "func:_getc_r@0800ce8c", "node_type": "function", "name": "_getc_r", "entry": "0800ce8c", "is_isr": false, "signature": "undefined _getc_r(void)"}
+{"node_id": "func:_gnrc_icmpv6_ping@08009190", "node_type": "function", "name": "_gnrc_icmpv6_ping", "entry": "08009190", "is_isr": false, "signature": "int __stdcall _gnrc_icmpv6_ping(int argc, char * * argv)"}
+{"node_id": "func:_gnrc_ipv6_nib@08009538", "node_type": "function", "name": "_gnrc_ipv6_nib", "entry": "08009538", "is_isr": false, "signature": "int __stdcall _gnrc_ipv6_nib(int argc, char * * argv)"}
+{"node_id": "func:_gnrc_netapi_get_set", "node_type": "function", "name": "_gnrc_netapi_get_set"}
+{"node_id": "func:_gnrc_netapi_get_set@08004fbc", "node_type": "function", "name": "_gnrc_netapi_get_set", "entry": "08004fbc", "is_isr": false, "signature": "int __stdcall _gnrc_netapi_get_set(kernel_pid_t pid, netopt_t opt, uint16_t context, void * data, size_t data_len, uint16_t type)"}
+{"node_id": "func:_gnrc_netapi_send_recv", "node_type": "function", "name": "_gnrc_netapi_send_recv"}
+{"node_id": "func:_gnrc_netapi_send_recv@08004ffe", "node_type": "function", "name": "_gnrc_netapi_send_recv", "entry": "08004ffe", "is_isr": false, "signature": "int __stdcall _gnrc_netapi_send_recv(kernel_pid_t pid, gnrc_pktsnip_t * pkt, uint16_t type)"}
+{"node_id": "func:_gnrc_netif_config", "node_type": "function", "name": "_gnrc_netif_config"}
+{"node_id": "func:_gnrc_netif_config@0800a3fc", "node_type": "function", "name": "_gnrc_netif_config", "entry": "0800a3fc", "is_isr": false, "signature": "int __stdcall _gnrc_netif_config(int argc, char * * argv)"}
+{"node_id": "func:_gnrc_netreg_acquire_exclusive", "node_type": "function", "name": "_gnrc_netreg_acquire_exclusive"}
+{"node_id": "func:_gnrc_netreg_acquire_exclusive@08005984", "node_type": "function", "name": "_gnrc_netreg_acquire_exclusive", "entry": "08005984", "is_isr": false, "signature": "void _gnrc_netreg_acquire_exclusive(void)"}
+{"node_id": "func:_gnrc_rpl@0800b174", "node_type": "function", "name": "_gnrc_rpl", "entry": "0800b174", "is_isr": false, "signature": "int __stdcall _gnrc_rpl(int argc, char * * argv)"}
+{"node_id": "func:_gnrc_rpl_dodag_root", "node_type": "function", "name": "_gnrc_rpl_dodag_root"}
+{"node_id": "func:_gnrc_rpl_dodag_root@0800ad18", "node_type": "function", "name": "_gnrc_rpl_dodag_root", "entry": "0800ad18", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_dodag_root(char * arg1, char * arg2)"}
+{"node_id": "func:_gnrc_rpl_dodag_show", "node_type": "function", "name": "_gnrc_rpl_dodag_show"}
+{"node_id": "func:_gnrc_rpl_dodag_show@0800af7c", "node_type": "function", "name": "_gnrc_rpl_dodag_show", "entry": "0800af7c", "is_isr": false, "signature": "int _gnrc_rpl_dodag_show(void)"}
+{"node_id": "func:_gnrc_rpl_init", "node_type": "function", "name": "_gnrc_rpl_init"}
+{"node_id": "func:_gnrc_rpl_init@0800ace4", "node_type": "function", "name": "_gnrc_rpl_init", "entry": "0800ace4", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_init(char * arg)"}
+{"node_id": "func:_gnrc_rpl_instance_remove", "node_type": "function", "name": "_gnrc_rpl_instance_remove"}
+{"node_id": "func:_gnrc_rpl_instance_remove@0800ad74", "node_type": "function", "name": "_gnrc_rpl_instance_remove", "entry": "0800ad74", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_instance_remove(char * arg1)"}
+{"node_id": "func:_gnrc_rpl_operation", "node_type": "function", "name": "_gnrc_rpl_operation"}
+{"node_id": "func:_gnrc_rpl_operation@0800b0cc", "node_type": "function", "name": "_gnrc_rpl_operation", "entry": "0800b0cc", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_operation(_Bool leaf, char * arg1)"}
+{"node_id": "func:_gnrc_rpl_send_dis", "node_type": "function", "name": "_gnrc_rpl_send_dis"}
+{"node_id": "func:_gnrc_rpl_send_dis@0800af10", "node_type": "function", "name": "_gnrc_rpl_send_dis", "entry": "0800af10", "is_isr": false, "signature": "int _gnrc_rpl_send_dis(void)"}
+{"node_id": "func:_gnrc_rpl_send_dis_w_sol_opt", "node_type": "function", "name": "_gnrc_rpl_send_dis_w_sol_opt"}
+{"node_id": "func:_gnrc_rpl_send_dis_w_sol_opt@0800aeac", "node_type": "function", "name": "_gnrc_rpl_send_dis_w_sol_opt", "entry": "0800aeac", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_send_dis_w_sol_opt(char * VID, char * version, char * instance, char * dodag)"}
+{"node_id": "func:_gnrc_rpl_set_pio", "node_type": "function", "name": "_gnrc_rpl_set_pio"}
+{"node_id": "func:_gnrc_rpl_set_pio@0800b120", "node_type": "function", "name": "_gnrc_rpl_set_pio", "entry": "0800b120", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_set_pio(char * inst_id, _Bool status)"}
+{"node_id": "func:_gnrc_rpl_trickle_reset", "node_type": "function", "name": "_gnrc_rpl_trickle_reset"}
+{"node_id": "func:_gnrc_rpl_trickle_reset@0800adb4", "node_type": "function", "name": "_gnrc_rpl_trickle_reset", "entry": "0800adb4", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_trickle_reset(char * arg1)"}
+{"node_id": "func:_gnrc_rpl_trickle_start", "node_type": "function", "name": "_gnrc_rpl_trickle_start"}
+{"node_id": "func:_gnrc_rpl_trickle_start@0800ae44", "node_type": "function", "name": "_gnrc_rpl_trickle_start", "entry": "0800ae44", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_trickle_start(char * arg1)"}
+{"node_id": "func:_gnrc_rpl_trickle_stop", "node_type": "function", "name": "_gnrc_rpl_trickle_stop"}
+{"node_id": "func:_gnrc_rpl_trickle_stop@0800adfc", "node_type": "function", "name": "_gnrc_rpl_trickle_stop", "entry": "0800adfc", "is_isr": false, "signature": "int __stdcall _gnrc_rpl_trickle_stop(char * arg1)"}
+{"node_id": "func:_gnrc_udp_cmd@0800b3bc", "node_type": "function", "name": "_gnrc_udp_cmd", "entry": "0800b3bc", "is_isr": false, "signature": "int __stdcall _gnrc_udp_cmd(int argc, char * * argv)"}
+{"node_id": "func:_handle_adv_l2", "node_type": "function", "name": "_handle_adv_l2"}
+{"node_id": "func:_handle_adv_l2@08002590", "node_type": "function", "name": "_handle_adv_l2", "entry": "08002590", "is_isr": false, "signature": "void __stdcall _handle_adv_l2(gnrc_netif_t * netif, _nib_onl_entry_t * nce, icmpv6_hdr_t * icmpv6, ndp_opt_t * tl2ao)"}
+{"node_id": "func:_handle_dad", "node_type": "function", "name": "_handle_dad"}
+{"node_id": "func:_handle_dad@08003438", "node_type": "function", "name": "_handle_dad", "entry": "08003438", "is_isr": false, "signature": "void __stdcall _handle_dad(ipv6_addr_t * addr)"}
+{"node_id": "func:_handle_reply_rs", "node_type": "function", "name": "_handle_reply_rs"}
+{"node_id": "func:_handle_reply_rs@08003196", "node_type": "function", "name": "_handle_reply_rs", "entry": "08003196", "is_isr": false, "signature": "void __stdcall _handle_reply_rs(_nib_onl_entry_t * host)"}
+{"node_id": "func:_handle_rtr_timeout", "node_type": "function", "name": "_handle_rtr_timeout"}
+{"node_id": "func:_handle_rtr_timeout@08003728", "node_type": "function", "name": "_handle_rtr_timeout", "entry": "08003728", "is_isr": false, "signature": "void __stdcall _handle_rtr_timeout(_nib_dr_entry_t * router)"}
+{"node_id": "func:_handle_search_rtr", "node_type": "function", "name": "_handle_search_rtr"}
+{"node_id": "func:_handle_search_rtr@08004178", "node_type": "function", "name": "_handle_search_rtr", "entry": "08004178", "is_isr": false, "signature": "void __stdcall _handle_search_rtr(gnrc_netif_t * netif)"}
+{"node_id": "func:_handle_sl2ao", "node_type": "function", "name": "_handle_sl2ao"}
+{"node_id": "func:_handle_sl2ao@080023f8", "node_type": "function", "name": "_handle_sl2ao", "entry": "080023f8", "is_isr": false, "signature": "void __stdcall _handle_sl2ao(gnrc_netif_t * netif, ipv6_hdr_t * ipv6, icmpv6_hdr_t * icmpv6, ndp_opt_t * sl2ao)"}
+{"node_id": "func:_handle_snd_mc_ra", "node_type": "function", "name": "_handle_snd_mc_ra"}
+{"node_id": "func:_handle_snd_mc_ra@080031d0", "node_type": "function", "name": "_handle_snd_mc_ra", "entry": "080031d0", "is_isr": false, "signature": "void __stdcall _handle_snd_mc_ra(gnrc_netif_t * netif)"}
+{"node_id": "func:_handle_snd_ns", "node_type": "function", "name": "_handle_snd_ns"}
+{"node_id": "func:_handle_snd_ns@080024dc", "node_type": "function", "name": "_handle_snd_ns", "entry": "080024dc", "is_isr": false, "signature": "void __stdcall _handle_snd_ns(_nib_onl_entry_t * nbr)"}
+{"node_id": "func:_handle_state_timeout", "node_type": "function", "name": "_handle_state_timeout"}
+{"node_id": "func:_handle_state_timeout@08002530", "node_type": "function", "name": "_handle_state_timeout", "entry": "08002530", "is_isr": false, "signature": "void __stdcall _handle_state_timeout(_nib_onl_entry_t * nbr)"}
+{"node_id": "func:_handle_valid_addr", "node_type": "function", "name": "_handle_valid_addr"}
+{"node_id": "func:_handle_valid_addr@080034dc", "node_type": "function", "name": "_handle_valid_addr", "entry": "080034dc", "is_isr": false, "signature": "void __stdcall _handle_valid_addr(ipv6_addr_t * addr)"}
+{"node_id": "func:_hex_to_int", "node_type": "function", "name": "_hex_to_int"}
+{"node_id": "func:_hex_to_int@08009c1c", "node_type": "function", "name": "_hex_to_int", "entry": "08009c1c", "is_isr": false, "signature": "int __stdcall _hex_to_int(char c)"}
+{"node_id": "func:_icmpv6_error_build", "node_type": "function", "name": "_icmpv6_error_build"}
+{"node_id": "func:_icmpv6_error_build@080017ac", "node_type": "function", "name": "_icmpv6_error_build", "entry": "080017ac", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _icmpv6_error_build(uint8_t type, uint8_t code, gnrc_pktsnip_t * orig_pkt, uint32_t value)"}
+{"node_id": "func:_idx", "node_type": "function", "name": "_idx"}
+{"node_id": "func:_idx@0800511c", "node_type": "function", "name": "_idx", "entry": "0800511c", "is_isr": false, "signature": "int __stdcall _idx(gnrc_netif_t * netif, ipv6_addr_t * addr, _Bool mcast)"}
+{"node_id": "func:_init", "node_type": "function", "name": "_init"}
+{"node_id": "func:_init@08008480", "node_type": "function", "name": "_init", "entry": "08008480", "is_isr": false, "signature": "void _init(void)"}
+{"node_id": "func:_is_reachable", "node_type": "function", "name": "_is_reachable"}
+{"node_id": "func:_is_reachable@0800270c", "node_type": "function", "name": "_is_reachable", "entry": "0800270c", "is_isr": false, "signature": "_Bool __stdcall _is_reachable(_nib_onl_entry_t * entry)"}
+{"node_id": "func:_is_set", "node_type": "function", "name": "_is_set"}
+{"node_id": "func:_is_set@0800bbc4", "node_type": "function", "name": "_is_set", "entry": "0800bbc4", "is_isr": false, "signature": "uint __stdcall _is_set(ztimer_clock_t * clock, ztimer_t * t)"}
+{"node_id": "func:_isatty_r", "node_type": "function", "name": "_isatty_r"}
+{"node_id": "func:_isatty_r@080084f2", "node_type": "function", "name": "_isatty_r", "entry": "080084f2", "is_isr": false, "signature": "int __stdcall _isatty_r(_reent * r, int fd)"}
+{"node_id": "func:_isrpipe_write_one_wrapper@0800b80c", "node_type": "function", "name": "_isrpipe_write_one_wrapper", "entry": "0800b80c", "is_isr": true, "signature": "void __stdcall _isrpipe_write_one_wrapper(void * arg, uint8_t value)"}
+{"node_id": "func:_lock", "node_type": "function", "name": "_lock"}
+{"node_id": "func:_lock@08000a08", "node_type": "function", "name": "_lock", "entry": "08000a08", "is_isr": false, "signature": "int __stdcall _lock(rmutex_t * rmutex, int trylock)"}
+{"node_id": "func:_lseek_r", "node_type": "function", "name": "_lseek_r"}
+{"node_id": "func:_lseek_r@080084de", "node_type": "function", "name": "_lseek_r", "entry": "080084de", "is_isr": false, "signature": "_off_t __stdcall _lseek_r(_reent * r, int fd, _off_t pos, int dir)"}
+{"node_id": "func:_malloc_r", "node_type": "function", "name": "_malloc_r"}
+{"node_id": "func:_malloc_r@0800c7e0", "node_type": "function", "name": "_malloc_r", "entry": "0800c7e0", "is_isr": false, "signature": "undefined _malloc_r(void)"}
+{"node_id": "func:_match_to_idx", "node_type": "function", "name": "_match_to_idx"}
+{"node_id": "func:_match_to_idx@0800515a", "node_type": "function", "name": "_match_to_idx", "entry": "0800515a", "is_isr": false, "signature": "int __stdcall _match_to_idx(gnrc_netif_t * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:_msg_receive", "node_type": "function", "name": "_msg_receive"}
+{"node_id": "func:_msg_receive@080001e0", "node_type": "function", "name": "_msg_receive", "entry": "080001e0", "is_isr": false, "signature": "int __stdcall _msg_receive(msg_t * m, int block)"}
+{"node_id": "func:_msg_send", "node_type": "function", "name": "_msg_send"}
+{"node_id": "func:_msg_send@08000348", "node_type": "function", "name": "_msg_send", "entry": "08000348", "is_isr": false, "signature": "int __stdcall _msg_send(msg_t * m, kernel_pid_t target_pid, _Bool block, uint state)"}
+{"node_id": "func:_msg_send_oneway", "node_type": "function", "name": "_msg_send_oneway"}
+{"node_id": "func:_msg_send_oneway@08000304", "node_type": "function", "name": "_msg_send_oneway", "entry": "08000304", "is_isr": false, "signature": "int __stdcall _msg_send_oneway(msg_t * m, kernel_pid_t target_pid)"}
+{"node_id": "func:_netif_link", "node_type": "function", "name": "_netif_link"}
+{"node_id": "func:_netif_link@08009a90", "node_type": "function", "name": "_netif_link", "entry": "08009a90", "is_isr": false, "signature": "int __stdcall _netif_link(netif_t * iface, netopt_enable_t en)"}
+{"node_id": "func:_netif_list", "node_type": "function", "name": "_netif_list"}
+{"node_id": "func:_netif_list@08009e0c", "node_type": "function", "name": "_netif_list", "entry": "08009e0c", "is_isr": false, "signature": "void __stdcall _netif_list(netif_t * iface)"}
+{"node_id": "func:_netif_list_flag", "node_type": "function", "name": "_netif_list_flag"}
+{"node_id": "func:_netif_list_flag@08009c40", "node_type": "function", "name": "_netif_list_flag", "entry": "08009c40", "is_isr": false, "signature": "uint __stdcall _netif_list_flag(netif_t * iface, netopt_t opt, char * str, uint line_thresh)"}
+{"node_id": "func:_netif_ops_set_helper", "node_type": "function", "name": "_netif_ops_set_helper"}
+{"node_id": "func:_netif_ops_set_helper@080050b4", "node_type": "function", "name": "_netif_ops_set_helper", "entry": "080050b4", "is_isr": false, "signature": "int __stdcall _netif_ops_set_helper(gnrc_netif_t * netif, netopt_t opt, void * data, uint16_t data_len)"}
+{"node_id": "func:_netif_set_addr", "node_type": "function", "name": "_netif_set_addr"}
+{"node_id": "func:_netif_set_addr@08009ad8", "node_type": "function", "name": "_netif_set_addr", "entry": "08009ad8", "is_isr": false, "signature": "int __stdcall _netif_set_addr(netif_t * iface, netopt_t opt, char * addr_str)"}
+{"node_id": "func:_netif_set_u16", "node_type": "function", "name": "_netif_set_u16"}
+{"node_id": "func:_netif_set_u16@08009b54", "node_type": "function", "name": "_netif_set_u16", "entry": "08009b54", "is_isr": false, "signature": "int __stdcall _netif_set_u16(netif_t * iface, netopt_t opt, uint16_t context, char * u16_str)"}
+{"node_id": "func:_netif_set_u8", "node_type": "function", "name": "_netif_set_u8"}
+{"node_id": "func:_netif_set_u8@08009c8c", "node_type": "function", "name": "_netif_set_u8", "entry": "08009c8c", "is_isr": false, "signature": "int __stdcall _netif_set_u8(netif_t * iface, netopt_t opt, uint16_t context, char * u8_str)"}
+{"node_id": "func:_netif_stats", "node_type": "function", "name": "_netif_stats"}
+{"node_id": "func:_netif_stats@08009d6c", "node_type": "function", "name": "_netif_stats", "entry": "08009d6c", "is_isr": false, "signature": "int __stdcall _netif_stats(netif_t * iface, uint module, _Bool reset)"}
+{"node_id": "func:_netreg_lookup", "node_type": "function", "name": "_netreg_lookup"}
+{"node_id": "func:_netreg_lookup@080059c0", "node_type": "function", "name": "_netreg_lookup", "entry": "080059c0", "is_isr": false, "signature": "gnrc_netreg_entry_t * __stdcall _netreg_lookup(gnrc_netreg_entry_t * from, gnrc_nettype_t type, uint32_t demux_ctx)"}
+{"node_id": "func:_nib_acquire", "node_type": "function", "name": "_nib_acquire"}
+{"node_id": "func:_nib_acquire@080027d4", "node_type": "function", "name": "_nib_acquire", "entry": "080027d4", "is_isr": false, "signature": "void _nib_acquire(void)"}
+{"node_id": "func:_nib_drl_add", "node_type": "function", "name": "_nib_drl_add"}
+{"node_id": "func:_nib_drl_add@08002b0c", "node_type": "function", "name": "_nib_drl_add", "entry": "08002b0c", "is_isr": false, "signature": "_nib_dr_entry_t * __stdcall _nib_drl_add(ipv6_addr_t * router_addr, uint iface)"}
+{"node_id": "func:_nib_drl_ft_get", "node_type": "function", "name": "_nib_drl_ft_get"}
+{"node_id": "func:_nib_drl_ft_get@08002c64", "node_type": "function", "name": "_nib_drl_ft_get", "entry": "08002c64", "is_isr": false, "signature": "void __stdcall _nib_drl_ft_get(_nib_dr_entry_t * drl, gnrc_ipv6_nib_ft_t * fte)"}
+{"node_id": "func:_nib_drl_get", "node_type": "function", "name": "_nib_drl_get"}
+{"node_id": "func:_nib_drl_get@08002bcc", "node_type": "function", "name": "_nib_drl_get", "entry": "08002bcc", "is_isr": false, "signature": "_nib_dr_entry_t * __stdcall _nib_drl_get(ipv6_addr_t * router_addr, uint iface)"}
+{"node_id": "func:_nib_drl_get_dr", "node_type": "function", "name": "_nib_drl_get_dr"}
+{"node_id": "func:_nib_drl_get_dr@08002c10", "node_type": "function", "name": "_nib_drl_get_dr", "entry": "08002c10", "is_isr": false, "signature": "_nib_dr_entry_t * _nib_drl_get_dr(void)"}
+{"node_id": "func:_nib_drl_iter", "node_type": "function", "name": "_nib_drl_iter"}
+{"node_id": "func:_nib_drl_iter@08002ba0", "node_type": "function", "name": "_nib_drl_iter", "entry": "08002ba0", "is_isr": false, "signature": "_nib_dr_entry_t * __stdcall _nib_drl_iter(_nib_dr_entry_t * last)"}
+{"node_id": "func:_nib_drl_remove", "node_type": "function", "name": "_nib_drl_remove"}
+{"node_id": "func:_nib_drl_remove@08002b6c", "node_type": "function", "name": "_nib_drl_remove", "entry": "08002b6c", "is_isr": false, "signature": "void __stdcall _nib_drl_remove(_nib_dr_entry_t * nib_dr)"}
+{"node_id": "func:_nib_ft_get", "node_type": "function", "name": "_nib_ft_get"}
+{"node_id": "func:_nib_ft_get@08002e5c", "node_type": "function", "name": "_nib_ft_get", "entry": "08002e5c", "is_isr": false, "signature": "void __stdcall _nib_ft_get(_nib_offl_entry_t * dst, gnrc_ipv6_nib_ft_t * fte)"}
+{"node_id": "func:_nib_get_route", "node_type": "function", "name": "_nib_get_route"}
+{"node_id": "func:_nib_get_route@08002ec8", "node_type": "function", "name": "_nib_get_route", "entry": "08002ec8", "is_isr": false, "signature": "int __stdcall _nib_get_route(ipv6_addr_t * dst, gnrc_pktsnip_t * pkt, gnrc_ipv6_nib_ft_t * fte)"}
+{"node_id": "func:_nib_init", "node_type": "function", "name": "_nib_init"}
+{"node_id": "func:_nib_init@080027c4", "node_type": "function", "name": "_nib_init", "entry": "080027c4", "is_isr": false, "signature": "void _nib_init(void)"}
+{"node_id": "func:_nib_nc_add", "node_type": "function", "name": "_nib_nc_add"}
+{"node_id": "func:_nib_nc_add@080029d0", "node_type": "function", "name": "_nib_nc_add", "entry": "080029d0", "is_isr": false, "signature": "_nib_onl_entry_t * __stdcall _nib_nc_add(ipv6_addr_t * addr, uint iface, uint16_t cstate)"}
+{"node_id": "func:_nib_nc_get", "node_type": "function", "name": "_nib_nc_get"}
+{"node_id": "func:_nib_nc_get@08002ad0", "node_type": "function", "name": "_nib_nc_get", "entry": "08002ad0", "is_isr": false, "signature": "void __stdcall _nib_nc_get(_nib_onl_entry_t * node, gnrc_ipv6_nib_nc_t * nce)"}
+{"node_id": "func:_nib_nc_remove", "node_type": "function", "name": "_nib_nc_remove"}
+{"node_id": "func:_nib_nc_remove@08002924", "node_type": "function", "name": "_nib_nc_remove", "entry": "08002924", "is_isr": false, "signature": "void __stdcall _nib_nc_remove(_nib_onl_entry_t * node)"}
+{"node_id": "func:_nib_nc_set_reachable", "node_type": "function", "name": "_nib_nc_set_reachable"}
+{"node_id": "func:_nib_nc_set_reachable@080028c4", "node_type": "function", "name": "_nib_nc_set_reachable", "entry": "080028c4", "is_isr": false, "signature": "void __stdcall _nib_nc_set_reachable(_nib_onl_entry_t * node)"}
+{"node_id": "func:_nib_offl_alloc", "node_type": "function", "name": "_nib_offl_alloc"}
+{"node_id": "func:_nib_offl_alloc@08002cd0", "node_type": "function", "name": "_nib_offl_alloc", "entry": "08002cd0", "is_isr": false, "signature": "_nib_offl_entry_t * __stdcall _nib_offl_alloc(ipv6_addr_t * next_hop, uint iface, ipv6_addr_t * pfx, uint pfx_len)"}
+{"node_id": "func:_nib_offl_clear", "node_type": "function", "name": "_nib_offl_clear"}
+{"node_id": "func:_nib_offl_clear@08002dd4", "node_type": "function", "name": "_nib_offl_clear", "entry": "08002dd4", "is_isr": false, "signature": "void __stdcall _nib_offl_clear(_nib_offl_entry_t * dst)"}
+{"node_id": "func:_nib_offl_is_entry", "node_type": "function", "name": "_nib_offl_is_entry"}
+{"node_id": "func:_nib_offl_is_entry@08002e40", "node_type": "function", "name": "_nib_offl_is_entry", "entry": "08002e40", "is_isr": false, "signature": "_Bool __stdcall _nib_offl_is_entry(_nib_offl_entry_t * entry)"}
+{"node_id": "func:_nib_offl_iter", "node_type": "function", "name": "_nib_offl_iter"}
+{"node_id": "func:_nib_offl_iter@08002e18", "node_type": "function", "name": "_nib_offl_iter", "entry": "08002e18", "is_isr": false, "signature": "_nib_offl_entry_t * __stdcall _nib_offl_iter(_nib_offl_entry_t * last)"}
+{"node_id": "func:_nib_offl_remove_prefix", "node_type": "function", "name": "_nib_offl_remove_prefix"}
+{"node_id": "func:_nib_offl_remove_prefix@08002f6c", "node_type": "function", "name": "_nib_offl_remove_prefix", "entry": "08002f6c", "is_isr": false, "signature": "void __stdcall _nib_offl_remove_prefix(_nib_offl_entry_t * pfx)"}
+{"node_id": "func:_nib_onl_alloc", "node_type": "function", "name": "_nib_onl_alloc"}
+{"node_id": "func:_nib_onl_alloc@080027ec", "node_type": "function", "name": "_nib_onl_alloc", "entry": "080027ec", "is_isr": false, "signature": "_nib_onl_entry_t * __stdcall _nib_onl_alloc(ipv6_addr_t * addr, uint iface)"}
+{"node_id": "func:_nib_onl_clear", "node_type": "function", "name": "_nib_onl_clear"}
+{"node_id": "func:_nib_onl_clear@08002748", "node_type": "function", "name": "_nib_onl_clear", "entry": "08002748", "is_isr": false, "signature": "_Bool __stdcall _nib_onl_clear(_nib_onl_entry_t * node)"}
+{"node_id": "func:_nib_onl_get", "node_type": "function", "name": "_nib_onl_get"}
+{"node_id": "func:_nib_onl_get@08002868", "node_type": "function", "name": "_nib_onl_get", "entry": "08002868", "is_isr": false, "signature": "_nib_onl_entry_t * __stdcall _nib_onl_get(ipv6_addr_t * addr, uint iface)"}
+{"node_id": "func:_nib_onl_iter", "node_type": "function", "name": "_nib_onl_iter"}
+{"node_id": "func:_nib_onl_iter@08002840", "node_type": "function", "name": "_nib_onl_iter", "entry": "08002840", "is_isr": false, "signature": "_nib_onl_entry_t * __stdcall _nib_onl_iter(_nib_onl_entry_t * last)"}
+{"node_id": "func:_nib_onl_nc_get", "node_type": "function", "name": "_nib_onl_nc_get"}
+{"node_id": "func:_nib_onl_nc_get@0800359e", "node_type": "function", "name": "_nib_onl_nc_get", "entry": "0800359e", "is_isr": false, "signature": "_nib_onl_entry_t * __stdcall _nib_onl_nc_get(ipv6_addr_t * addr, uint iface)"}
+{"node_id": "func:_nib_pl_add", "node_type": "function", "name": "_nib_pl_add"}
+{"node_id": "func:_nib_pl_add@08002fd8", "node_type": "function", "name": "_nib_pl_add", "entry": "08002fd8", "is_isr": false, "signature": "_nib_offl_entry_t * __stdcall _nib_pl_add(uint iface, ipv6_addr_t * pfx, uint pfx_len, uint32_t valid_ltime, uint32_t pref_ltime)"}
+{"node_id": "func:_nib_pl_remove", "node_type": "function", "name": "_nib_pl_remove"}
+{"node_id": "func:_nib_pl_remove@08002f5c", "node_type": "function", "name": "_nib_pl_remove", "entry": "08002f5c", "is_isr": false, "signature": "void __stdcall _nib_pl_remove(_nib_offl_entry_t * nib_offl)"}
+{"node_id": "func:_nib_release", "node_type": "function", "name": "_nib_release"}
+{"node_id": "func:_nib_release@080027e0", "node_type": "function", "name": "_nib_release", "entry": "080027e0", "is_isr": false, "signature": "void _nib_release(void)"}
+{"node_id": "func:_now_next", "node_type": "function", "name": "_now_next"}
+{"node_id": "func:_now_next@0800bc5e", "node_type": "function", "name": "_now_next", "entry": "0800bc5e", "is_isr": false, "signature": "ztimer_t * __stdcall _now_next(ztimer_clock_t * clock)"}
+{"node_id": "func:_offl_to_pio", "node_type": "function", "name": "_offl_to_pio"}
+{"node_id": "func:_offl_to_pio@080030dc", "node_type": "function", "name": "_offl_to_pio", "entry": "080030dc", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _offl_to_pio(_nib_offl_entry_t * offl, gnrc_pktsnip_t * ext_opts)"}
+{"node_id": "func:_opt_l2a_build", "node_type": "function", "name": "_opt_l2a_build"}
+{"node_id": "func:_opt_l2a_build@08004b52", "node_type": "function", "name": "_opt_l2a_build", "entry": "08004b52", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall _opt_l2a_build(uint8_t * l2addr, uint8_t l2addr_len, gnrc_pktsnip_t * next, uint8_t type)"}
+{"node_id": "func:_override_node", "node_type": "function", "name": "_override_node"}
+{"node_id": "func:_override_node@08002756", "node_type": "function", "name": "_override_node", "entry": "08002756", "is_isr": false, "signature": "void __stdcall _override_node(ipv6_addr_t * addr, uint iface, _nib_onl_entry_t * node)"}
+{"node_id": "func:_parse_options", "node_type": "function", "name": "_parse_options"}
+{"node_id": "func:_parse_options@08006a70", "node_type": "function", "name": "_parse_options", "entry": "08006a70", "is_isr": false, "signature": "_Bool __stdcall _parse_options(int msg_type, gnrc_rpl_instance_t * inst, gnrc_rpl_opt_t * opt, uint16_t len, ipv6_addr_t * src, uint32_t * included_opts)"}
+{"node_id": "func:_pinger", "node_type": "function", "name": "_pinger"}
+{"node_id": "func:_pinger@080090c8", "node_type": "function", "name": "_pinger", "entry": "080090c8", "is_isr": false, "signature": "void __stdcall _pinger(_ping_data_t * data)"}
+{"node_id": "func:_pktbuf_alloc", "node_type": "function", "name": "_pktbuf_alloc"}
+{"node_id": "func:_pktbuf_alloc@08005ca8", "node_type": "function", "name": "_pktbuf_alloc", "entry": "08005ca8", "is_isr": false, "signature": "void * __stdcall _pktbuf_alloc(size_t size)"}
+{"node_id": "func:_pm_handler@0800b658", "node_type": "function", "name": "_pm_handler", "entry": "0800b658", "is_isr": true, "signature": "int __stdcall _pm_handler(int argc, char * * argv)"}
+{"node_id": "func:_pop", "node_type": "function", "name": "_pop"}
+{"node_id": "func:_pop@0800b9f4", "node_type": "function", "name": "_pop", "entry": "0800b9f4", "is_isr": false, "signature": "uint8_t __stdcall _pop(tsrb_t * rb)"}
+{"node_id": "func:_print_iface_name", "node_type": "function", "name": "_print_iface_name"}
+{"node_id": "func:_print_iface_name@08009a44", "node_type": "function", "name": "_print_iface_name", "entry": "08009a44", "is_isr": false, "signature": "void __stdcall _print_iface_name(netif_t * iface)"}
+{"node_id": "func:_print_netopt", "node_type": "function", "name": "_print_netopt"}
+{"node_id": "func:_print_netopt@08009938", "node_type": "function", "name": "_print_netopt", "entry": "08009938", "is_isr": false, "signature": "void __stdcall _print_netopt(netopt_t opt)"}
+{"node_id": "func:_print_reply@08008f20", "node_type": "function", "name": "_print_reply", "entry": "08008f20", "is_isr": false, "signature": "int __stdcall _print_reply(gnrc_pktsnip_t * pkt, int corrupted, uint32_t triptime, void * ctx)"}
+{"node_id": "func:_print_stats_block", "node_type": "function", "name": "_print_stats_block"}
+{"node_id": "func:_print_stats_block@0800ac98", "node_type": "function", "name": "_print_stats_block", "entry": "0800ac98", "is_isr": false, "signature": "void __stdcall _print_stats_block(netstats_rpl_block_t * block, char * name)"}
+{"node_id": "func:_print_usage", "node_type": "function", "name": "_print_usage"}
+{"node_id": "func:_print_usage@0800b5f4", "node_type": "function", "name": "_print_usage", "entry": "0800b5f4", "is_isr": false, "signature": "void _print_usage(void)"}
+{"node_id": "func:_printf_common", "node_type": "function", "name": "_printf_common"}
+{"node_id": "func:_printf_common@0800d2a0", "node_type": "function", "name": "_printf_common", "entry": "0800d2a0", "is_isr": false, "signature": "undefined _printf_common(void)"}
+{"node_id": "func:_printf_i", "node_type": "function", "name": "_printf_i"}
+{"node_id": "func:_printf_i@0800d37c", "node_type": "function", "name": "_printf_i", "entry": "0800d37c", "is_isr": false, "signature": "undefined _printf_i(void)"}
+{"node_id": "func:_probe_nbr", "node_type": "function", "name": "_probe_nbr"}
+{"node_id": "func:_probe_nbr@08002282", "node_type": "function", "name": "_probe_nbr", "entry": "08002282", "is_isr": false, "signature": "void __stdcall _probe_nbr(_nib_onl_entry_t * nbr, _Bool reset)"}
+{"node_id": "func:_ps_handler@0800b7e8", "node_type": "function", "name": "_ps_handler", "entry": "0800b7e8", "is_isr": true, "signature": "int __stdcall _ps_handler(int argc, char * * argv)"}
+{"node_id": "func:_putc_r", "node_type": "function", "name": "_putc_r"}
+{"node_id": "func:_putc_r@0800d5c8", "node_type": "function", "name": "_putc_r", "entry": "0800d5c8", "is_isr": false, "signature": "undefined _putc_r(void)"}
+{"node_id": "func:_puts_r", "node_type": "function", "name": "_puts_r"}
+{"node_id": "func:_puts_r@0800c920", "node_type": "function", "name": "_puts_r", "entry": "0800c920", "is_isr": false, "signature": "undefined _puts_r(void)"}
+{"node_id": "func:_read_r", "node_type": "function", "name": "_read_r"}
+{"node_id": "func:_read_r@080084c4", "node_type": "function", "name": "_read_r", "entry": "080084c4", "is_isr": false, "signature": "_ssize_t __stdcall _read_r(_reent * r, int fd, void * buffer, size_t count)"}
+{"node_id": "func:_reboot_handler@0800b7f2", "node_type": "function", "name": "_reboot_handler", "entry": "0800b7f2", "is_isr": true, "signature": "int __stdcall _reboot_handler(int argc, char * * argv)"}
+{"node_id": "func:_recalc_reach_time", "node_type": "function", "name": "_recalc_reach_time"}
+{"node_id": "func:_recalc_reach_time@08002390", "node_type": "function", "name": "_recalc_reach_time", "entry": "08002390", "is_isr": false, "signature": "void __stdcall _recalc_reach_time(gnrc_netif_ipv6_t * netif)"}
+{"node_id": "func:_remove_tentative_addr", "node_type": "function", "name": "_remove_tentative_addr"}
+{"node_id": "func:_remove_tentative_addr@08003344", "node_type": "function", "name": "_remove_tentative_addr", "entry": "08003344", "is_isr": false, "signature": "void __stdcall _remove_tentative_addr(gnrc_netif_t * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:_resolve_addr", "node_type": "function", "name": "_resolve_addr"}
+{"node_id": "func:_resolve_addr@080035b4", "node_type": "function", "name": "_resolve_addr", "entry": "080035b4", "is_isr": false, "signature": "_Bool __stdcall _resolve_addr(ipv6_addr_t * dst, gnrc_netif_t * netif, gnrc_pktsnip_t * pkt, gnrc_ipv6_nib_nc_t * nce, _nib_onl_entry_t * entry)"}
+{"node_id": "func:_rpl_trickle_send_dio@08007464", "node_type": "function", "name": "_rpl_trickle_send_dio", "entry": "08007464", "is_isr": false, "signature": "void __stdcall _rpl_trickle_send_dio(void * args)"}
+{"node_id": "func:_safe_fill_ipv6_hdr", "node_type": "function", "name": "_safe_fill_ipv6_hdr"}
+{"node_id": "func:_safe_fill_ipv6_hdr@08001b2c", "node_type": "function", "name": "_safe_fill_ipv6_hdr", "entry": "08001b2c", "is_isr": false, "signature": "_Bool __stdcall _safe_fill_ipv6_hdr(gnrc_netif_t * netif, gnrc_pktsnip_t * pkt, _Bool prep_hdr)"}
+{"node_id": "func:_sbrk_r", "node_type": "function", "name": "_sbrk_r"}
+{"node_id": "func:_sbrk_r@08008484", "node_type": "function", "name": "_sbrk_r", "entry": "08008484", "is_isr": false, "signature": "void * __stdcall _sbrk_r(_reent * r, ptrdiff_t incr)"}
+{"node_id": "func:_send", "node_type": "function", "name": "_send"}
+{"node_id": "func:_send@0800182c", "node_type": "function", "name": "_send", "entry": "0800182c", "is_isr": false, "signature": "void __stdcall _send(gnrc_pktsnip_t * pkt, gnrc_pktsnip_t * orig_pkt, gnrc_pktsnip_t * ipv6)"}
+{"node_id": "func:_send@08001c14", "node_type": "function", "name": "_send", "entry": "08001c14", "is_isr": false, "signature": "void __stdcall _send(gnrc_pktsnip_t * pkt, _Bool prep_hdr)"}
+{"node_id": "func:_send_multicast_over_iface", "node_type": "function", "name": "_send_multicast_over_iface"}
+{"node_id": "func:_send_multicast_over_iface@08001bcc", "node_type": "function", "name": "_send_multicast_over_iface", "entry": "08001bcc", "is_isr": false, "signature": "void __stdcall _send_multicast_over_iface(gnrc_pktsnip_t * pkt, _Bool prep_hdr, gnrc_netif_t * netif, uint8_t netif_hdr_flags)"}
+{"node_id": "func:_send_to_iface", "node_type": "function", "name": "_send_to_iface"}
+{"node_id": "func:_send_to_iface@08001b48", "node_type": "function", "name": "_send_to_iface", "entry": "08001b48", "is_isr": false, "signature": "void __stdcall _send_to_iface(gnrc_netif_t * netif, gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:_set_nud_state", "node_type": "function", "name": "_set_nud_state"}
+{"node_id": "func:_set_nud_state@080023c0", "node_type": "function", "name": "_set_nud_state", "entry": "080023c0", "is_isr": false, "signature": "void __stdcall _set_nud_state(gnrc_netif_t * netif, _nib_onl_entry_t * nce, uint16_t state)"}
+{"node_id": "func:_set_reachable", "node_type": "function", "name": "_set_reachable"}
+{"node_id": "func:_set_reachable@0800256c", "node_type": "function", "name": "_set_reachable", "entry": "0800256c", "is_isr": false, "signature": "void __stdcall _set_reachable(gnrc_netif_t * netif, _nib_onl_entry_t * nce)"}
+{"node_id": "func:_set_usage", "node_type": "function", "name": "_set_usage"}
+{"node_id": "func:_set_usage@0800991c", "node_type": "function", "name": "_set_usage", "entry": "0800991c", "is_isr": false, "signature": "void __stdcall _set_usage(char * cmd_name)"}
+{"node_id": "func:_snd_ns", "node_type": "function", "name": "_snd_ns"}
+{"node_id": "func:_snd_ns@0800221c", "node_type": "function", "name": "_snd_ns", "entry": "0800221c", "is_isr": false, "signature": "void __stdcall _snd_ns(ipv6_addr_t * tgt, gnrc_netif_t * netif, ipv6_addr_t * src, ipv6_addr_t * dst)"}
+{"node_id": "func:_snd_rtr_advs", "node_type": "function", "name": "_snd_rtr_advs"}
+{"node_id": "func:_snd_rtr_advs@0800313c", "node_type": "function", "name": "_snd_rtr_advs", "entry": "0800313c", "is_isr": false, "signature": "void __stdcall _snd_rtr_advs(gnrc_netif_t * netif, ipv6_addr_t * dst, _Bool final)"}
+{"node_id": "func:_snd_rtr_advs_drop_pfx", "node_type": "function", "name": "_snd_rtr_advs_drop_pfx"}
+{"node_id": "func:_snd_rtr_advs_drop_pfx@08003290", "node_type": "function", "name": "_snd_rtr_advs_drop_pfx", "entry": "08003290", "is_isr": false, "signature": "void __stdcall _snd_rtr_advs_drop_pfx(gnrc_netif_t * netif, ipv6_addr_t * dst, _nib_offl_entry_t * pfx)"}
+{"node_id": "func:_snd_uc_ns", "node_type": "function", "name": "_snd_uc_ns"}
+{"node_id": "func:_snd_uc_ns@0800222a", "node_type": "function", "name": "_snd_uc_ns", "entry": "0800222a", "is_isr": false, "signature": "void __stdcall _snd_uc_ns(_nib_onl_entry_t * nbr, _Bool reset)"}
+{"node_id": "func:_stats", "node_type": "function", "name": "_stats"}
+{"node_id": "func:_stats@0800af30", "node_type": "function", "name": "_stats", "entry": "0800af30", "is_isr": false, "signature": "int _stats(void)"}
+{"node_id": "func:_strtol_l.constprop.0", "node_type": "function", "name": "_strtol_l.constprop.0"}
+{"node_id": "func:_strtol_l.constprop.0@0800cb08", "node_type": "function", "name": "_strtol_l.constprop.0", "entry": "0800cb08", "is_isr": false, "signature": "undefined _strtol_l.constprop.0(void)"}
+{"node_id": "func:_strtoul_l.constprop.0", "node_type": "function", "name": "_strtoul_l.constprop.0"}
+{"node_id": "func:_strtoul_l.constprop.0@0800cc14", "node_type": "function", "name": "_strtoul_l.constprop.0", "entry": "0800cc14", "is_isr": false, "signature": "undefined _strtoul_l.constprop.0(void)"}
+{"node_id": "func:_tl2ao_changes_nce", "node_type": "function", "name": "_tl2ao_changes_nce"}
+{"node_id": "func:_tl2ao_changes_nce@080021e4", "node_type": "function", "name": "_tl2ao_changes_nce", "entry": "080021e4", "is_isr": false, "signature": "_Bool __stdcall _tl2ao_changes_nce(_nib_onl_entry_t * nce, ndp_opt_t * tl2ao, gnrc_netif_t * netif, uint tl2ao_addr_len)"}
+{"node_id": "func:_unschedule", "node_type": "function", "name": "_unschedule"}
+{"node_id": "func:_unschedule@08000624", "node_type": "function", "name": "_unschedule", "entry": "08000624", "is_isr": false, "signature": "void __stdcall _unschedule(thread_t * active_thread)"}
+{"node_id": "func:_update_head_offset", "node_type": "function", "name": "_update_head_offset"}
+{"node_id": "func:_update_head_offset@08001038", "node_type": "function", "name": "_update_head_offset", "entry": "08001038", "is_isr": false, "signature": "void __stdcall _update_head_offset(evtimer_t * evtimer)"}
+{"node_id": "func:_update_timer", "node_type": "function", "name": "_update_timer"}
+{"node_id": "func:_update_timer@08001070", "node_type": "function", "name": "_update_timer", "entry": "08001070", "is_isr": false, "signature": "void __stdcall _update_timer(evtimer_t * evtimer)"}
+{"node_id": "func:_usage", "node_type": "function", "name": "_usage"}
+{"node_id": "func:_usage@08009d04", "node_type": "function", "name": "_usage", "entry": "08009d04", "is_isr": false, "signature": "void __stdcall _usage(char * cmd)"}
+{"node_id": "func:_usage_nib_neigh", "node_type": "function", "name": "_usage_nib_neigh"}
+{"node_id": "func:_usage_nib_neigh@08009468", "node_type": "function", "name": "_usage_nib_neigh", "entry": "08009468", "is_isr": false, "signature": "void __stdcall _usage_nib_neigh(char * * argv)"}
+{"node_id": "func:_usage_nib_prefix", "node_type": "function", "name": "_usage_nib_prefix"}
+{"node_id": "func:_usage_nib_prefix@080094a8", "node_type": "function", "name": "_usage_nib_prefix", "entry": "080094a8", "is_isr": false, "signature": "void __stdcall _usage_nib_prefix(char * * argv)"}
+{"node_id": "func:_usage_nib_route", "node_type": "function", "name": "_usage_nib_route"}
+{"node_id": "func:_usage_nib_route@080094e8", "node_type": "function", "name": "_usage_nib_route", "entry": "080094e8", "is_isr": false, "signature": "void __stdcall _usage_nib_route(char * * argv)"}
+{"node_id": "func:_version_handler@0800b7fc", "node_type": "function", "name": "_version_handler", "entry": "0800b7fc", "is_isr": true, "signature": "int __stdcall _version_handler(int argc, char * * argv)"}
+{"node_id": "func:_vfprintf_r", "node_type": "function", "name": "_vfprintf_r"}
+{"node_id": "func:_vfprintf_r@0800d040", "node_type": "function", "name": "_vfprintf_r", "entry": "0800d040", "is_isr": false, "signature": "undefined _vfprintf_r(void)"}
+{"node_id": "func:_write_r", "node_type": "function", "name": "_write_r"}
+{"node_id": "func:_write_r@080084cc", "node_type": "function", "name": "_write_r", "entry": "080084cc", "is_isr": false, "signature": "_ssize_t __stdcall _write_r(_reent * r, int fd, void * data, size_t count)"}
+{"node_id": "func:_ztimer_now_extend", "node_type": "function", "name": "_ztimer_now_extend"}
+{"node_id": "func:_ztimer_now_extend@0800bc88", "node_type": "function", "name": "_ztimer_now_extend", "entry": "0800bc88", "is_isr": false, "signature": "ztimer_now_t __stdcall _ztimer_now_extend(ztimer_clock_t * clock)"}
+{"node_id": "func:_ztimer_periph_timer_callback@0800be9c", "node_type": "function", "name": "_ztimer_periph_timer_callback", "entry": "0800be9c", "is_isr": false, "signature": "void __stdcall _ztimer_periph_timer_callback(void * arg, int channel)"}
+{"node_id": "func:_ztimer_periph_timer_cancel@0800bea0", "node_type": "function", "name": "_ztimer_periph_timer_cancel", "entry": "0800bea0", "is_isr": false, "signature": "void __stdcall _ztimer_periph_timer_cancel(ztimer_clock_t * clock)"}
+{"node_id": "func:_ztimer_periph_timer_now@0800bea8", "node_type": "function", "name": "_ztimer_periph_timer_now", "entry": "0800bea8", "is_isr": false, "signature": "uint32_t __stdcall _ztimer_periph_timer_now(ztimer_clock_t * clock)"}
+{"node_id": "func:_ztimer_periph_timer_set@0800beae", "node_type": "function", "name": "_ztimer_periph_timer_set", "entry": "0800beae", "is_isr": false, "signature": "void __stdcall _ztimer_periph_timer_set(ztimer_clock_t * clock, uint32_t val)"}
+{"node_id": "func:_ztimer_update", "node_type": "function", "name": "_ztimer_update"}
+{"node_id": "func:_ztimer_update@0800bbdc", "node_type": "function", "name": "_ztimer_update", "entry": "0800bbdc", "is_isr": false, "signature": "void __stdcall _ztimer_update(ztimer_clock_t * clock)"}
+{"node_id": "func:_ztimer_update_head_offset", "node_type": "function", "name": "_ztimer_update_head_offset"}
+{"node_id": "func:_ztimer_update_head_offset@0800bcd0", "node_type": "function", "name": "_ztimer_update_head_offset", "entry": "0800bcd0", "is_isr": false, "signature": "uint32_t __stdcall _ztimer_update_head_offset(ztimer_clock_t * clock)"}
+{"node_id": "func:atoi", "node_type": "function", "name": "atoi"}
+{"node_id": "func:atoi@0800c274", "node_type": "function", "name": "atoi", "entry": "0800c274", "is_isr": false, "signature": "int __stdcall atoi(char * __nptr)"}
+{"node_id": "func:auto_init", "node_type": "function", "name": "auto_init"}
+{"node_id": "func:auto_init@080001b8", "node_type": "function", "name": "auto_init", "entry": "080001b8", "is_isr": false, "signature": "void auto_init(void)"}
+{"node_id": "func:auto_init_gnrc_rpl@080065c0", "node_type": "function", "name": "auto_init_gnrc_rpl", "entry": "080065c0", "is_isr": false, "signature": "void auto_init_gnrc_rpl(void)"}
+{"node_id": "func:auto_init_random@08008c00", "node_type": "function", "name": "auto_init_random", "entry": "08008c00", "is_isr": false, "signature": "void auto_init_random(void)"}
+{"node_id": "func:board_init", "node_type": "function", "name": "board_init"}
+{"node_id": "func:board_init@080001dc", "node_type": "function", "name": "board_init", "entry": "080001dc", "is_isr": false, "signature": "void board_init(void)"}
+{"node_id": "func:bus_fault_default@08000ca8", "node_type": "function", "name": "bus_fault_default", "entry": "08000ca8", "is_isr": false, "signature": "void bus_fault_default(void)"}
+{"node_id": "func:calc_rank@08007a82", "node_type": "function", "name": "calc_rank", "entry": "08007a82", "is_isr": false, "signature": "uint16_t __stdcall calc_rank(gnrc_rpl_dodag_t * dodag, uint16_t base_rank)"}
+{"node_id": "func:clist_lpop", "node_type": "function", "name": "clist_lpop"}
+{"node_id": "func:clist_lpop@08002728", "node_type": "function", "name": "clist_lpop", "entry": "08002728", "is_isr": false, "signature": "clist_node_t * __stdcall clist_lpop(clist_node_t * list)"}
+{"node_id": "func:core_panic", "node_type": "function", "name": "core_panic"}
+{"node_id": "func:core_panic@080009c4", "node_type": "function", "name": "core_panic", "entry": "080009c4", "is_isr": false, "signature": "noreturn void __stdcall core_panic(core_panic_t crash_code, char * message)"}
+{"node_id": "func:cortexm_init", "node_type": "function", "name": "cortexm_init"}
+{"node_id": "func:cortexm_init@08000a9c", "node_type": "function", "name": "cortexm_init", "entry": "08000a9c", "is_isr": false, "signature": "void cortexm_init(void)"}
+{"node_id": "func:cpu_init", "node_type": "function", "name": "cpu_init"}
+{"node_id": "func:cpu_init@08000fcc", "node_type": "function", "name": "cpu_init", "entry": "08000fcc", "is_isr": false, "signature": "void cpu_init(void)"}
+{"node_id": "func:cpu_switch_context_exit", "node_type": "function", "name": "cpu_switch_context_exit"}
+{"node_id": "func:cpu_switch_context_exit@08000bd4", "node_type": "function", "name": "cpu_switch_context_exit", "entry": "08000bd4", "is_isr": false, "signature": "noreturn void cpu_switch_context_exit(void)"}
+{"node_id": "func:cpuid_get", "node_type": "function", "name": "cpuid_get"}
+{"node_id": "func:cpuid_get@08008984", "node_type": "function", "name": "cpuid_get", "entry": "08008984", "is_isr": false, "signature": "void __stdcall cpuid_get(void * id)"}
+{"node_id": "func:debug_mon_default@08000cc8", "node_type": "function", "name": "debug_mon_default", "entry": "08000cc8", "is_isr": false, "signature": "void debug_mon_default(void)"}
+{"node_id": "func:dummy_handler@0800b8f8", "node_type": "function", "name": "dummy_handler", "entry": "0800b8f8", "is_isr": true, "signature": "void dummy_handler(void)"}
+{"node_id": "func:dummy_handler_default@08000cd8", "node_type": "function", "name": "dummy_handler_default", "entry": "08000cd8", "is_isr": false, "signature": "void dummy_handler_default(void)"}
+{"node_id": "func:early_init", "node_type": "function", "name": "early_init"}
+{"node_id": "func:early_init@080009b4", "node_type": "function", "name": "early_init", "entry": "080009b4", "is_isr": false, "signature": "void early_init(void)"}
+{"node_id": "func:evtimer_add", "node_type": "function", "name": "evtimer_add"}
+{"node_id": "func:evtimer_add@080010c0", "node_type": "function", "name": "evtimer_add", "entry": "080010c0", "is_isr": false, "signature": "void __stdcall evtimer_add(evtimer_t * evtimer, evtimer_event_t * event)"}
+{"node_id": "func:evtimer_del", "node_type": "function", "name": "evtimer_del"}
+{"node_id": "func:evtimer_del@08001130", "node_type": "function", "name": "evtimer_del", "entry": "08001130", "is_isr": false, "signature": "void __stdcall evtimer_del(evtimer_t * evtimer, evtimer_event_t * event)"}
+{"node_id": "func:evtimer_init", "node_type": "function", "name": "evtimer_init"}
+{"node_id": "func:evtimer_init@08001170", "node_type": "function", "name": "evtimer_init", "entry": "08001170", "is_isr": false, "signature": "void __stdcall evtimer_init(evtimer_t * evtimer, evtimer_callback_t handler)"}
+{"node_id": "func:evtimer_now_msec", "node_type": "function", "name": "evtimer_now_msec"}
+{"node_id": "func:evtimer_now_msec@080030c4", "node_type": "function", "name": "evtimer_now_msec", "entry": "080030c4", "is_isr": false, "signature": "uint32_t evtimer_now_msec(void)"}
+{"node_id": "func:fflush", "node_type": "function", "name": "fflush"}
+{"node_id": "func:fflush@0800c404", "node_type": "function", "name": "fflush", "entry": "0800c404", "is_isr": false, "signature": "int __stdcall fflush(FILE * __stream)"}
+{"node_id": "func:fmt_byte_hex", "node_type": "function", "name": "fmt_byte_hex"}
+{"node_id": "func:fmt_byte_hex@080011a0", "node_type": "function", "name": "fmt_byte_hex", "entry": "080011a0", "is_isr": false, "signature": "size_t __stdcall fmt_byte_hex(char * out, uint8_t byte)"}
+{"node_id": "func:fmt_bytes_hex_reverse", "node_type": "function", "name": "fmt_bytes_hex_reverse"}
+{"node_id": "func:fmt_bytes_hex_reverse@080011cc", "node_type": "function", "name": "fmt_bytes_hex_reverse", "entry": "080011cc", "is_isr": false, "signature": "size_t __stdcall fmt_bytes_hex_reverse(char * out, uint8_t * ptr, size_t n)"}
+{"node_id": "func:fmt_is_number", "node_type": "function", "name": "fmt_is_number"}
+{"node_id": "func:fmt_is_number@08001184", "node_type": "function", "name": "fmt_is_number", "entry": "08001184", "is_isr": false, "signature": "int __stdcall fmt_is_number(char * str)"}
+{"node_id": "func:fmt_strlen", "node_type": "function", "name": "fmt_strlen"}
+{"node_id": "func:fmt_strlen@080011bc", "node_type": "function", "name": "fmt_strlen", "entry": "080011bc", "is_isr": false, "signature": "size_t __stdcall fmt_strlen(char * str)"}
+{"node_id": "func:fmt_u16_dec", "node_type": "function", "name": "fmt_u16_dec"}
+{"node_id": "func:fmt_u16_dec@08001240", "node_type": "function", "name": "fmt_u16_dec", "entry": "08001240", "is_isr": false, "signature": "size_t __stdcall fmt_u16_dec(char * out, uint16_t val)"}
+{"node_id": "func:fmt_u32_dec@08001200", "node_type": "function", "name": "fmt_u32_dec", "entry": "08001200", "is_isr": false, "signature": "size_t __stdcall fmt_u32_dec(char * out, uint32_t val)"}
+{"node_id": "func:fmt_u32_hex", "node_type": "function", "name": "fmt_u32_hex"}
+{"node_id": "func:fmt_u32_hex@080011ec", "node_type": "function", "name": "fmt_u32_hex", "entry": "080011ec", "is_isr": false, "signature": "size_t __stdcall fmt_u32_hex(char * out, uint32_t val)"}
+{"node_id": "func:frac_init", "node_type": "function", "name": "frac_init"}
+{"node_id": "func:frac_init@080012e8", "node_type": "function", "name": "frac_init", "entry": "080012e8", "is_isr": false, "signature": "void __stdcall frac_init(frac_t * frac, uint32_t num, uint32_t den)"}
+{"node_id": "func:gcd32", "node_type": "function", "name": "gcd32"}
+{"node_id": "func:gcd32@080012a8", "node_type": "function", "name": "gcd32", "entry": "080012a8", "is_isr": false, "signature": "uint32_t __stdcall gcd32(uint32_t u, uint32_t v)"}
+{"node_id": "func:getchar", "node_type": "function", "name": "getchar"}
+{"node_id": "func:getchar@0800c64c", "node_type": "function", "name": "getchar", "entry": "0800c64c", "is_isr": false, "signature": "int getchar(void)"}
+{"node_id": "func:gnrc_icmpv6_build", "node_type": "function", "name": "gnrc_icmpv6_build"}
+{"node_id": "func:gnrc_icmpv6_build@08001472", "node_type": "function", "name": "gnrc_icmpv6_build", "entry": "08001472", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_icmpv6_build(gnrc_pktsnip_t * next, uint8_t type, uint8_t code, size_t size)"}
+{"node_id": "func:gnrc_icmpv6_calc_csum", "node_type": "function", "name": "gnrc_icmpv6_calc_csum"}
+{"node_id": "func:gnrc_icmpv6_calc_csum@08001492", "node_type": "function", "name": "gnrc_icmpv6_calc_csum", "entry": "08001492", "is_isr": false, "signature": "int __stdcall gnrc_icmpv6_calc_csum(gnrc_pktsnip_t * hdr, gnrc_pktsnip_t * pseudo_hdr)"}
+{"node_id": "func:gnrc_icmpv6_demux", "node_type": "function", "name": "gnrc_icmpv6_demux"}
+{"node_id": "func:gnrc_icmpv6_demux@080013de", "node_type": "function", "name": "gnrc_icmpv6_demux", "entry": "080013de", "is_isr": false, "signature": "void __stdcall gnrc_icmpv6_demux(gnrc_netif_t * netif, gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_icmpv6_echo_build", "node_type": "function", "name": "gnrc_icmpv6_echo_build"}
+{"node_id": "func:gnrc_icmpv6_echo_build@080014d4", "node_type": "function", "name": "gnrc_icmpv6_echo_build", "entry": "080014d4", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_icmpv6_echo_build(uint8_t type, uint16_t id, uint16_t seq, uint8_t * data, size_t data_len)"}
+{"node_id": "func:gnrc_icmpv6_echo_req_handle", "node_type": "function", "name": "gnrc_icmpv6_echo_req_handle"}
+{"node_id": "func:gnrc_icmpv6_echo_req_handle@08001510", "node_type": "function", "name": "gnrc_icmpv6_echo_req_handle", "entry": "08001510", "is_isr": false, "signature": "void __stdcall gnrc_icmpv6_echo_req_handle(gnrc_netif_t * netif, ipv6_hdr_t * ipv6_hdr, icmpv6_echo_t * echo, uint16_t len)"}
+{"node_id": "func:gnrc_icmpv6_echo_rsp_handle", "node_type": "function", "name": "gnrc_icmpv6_echo_rsp_handle"}
+{"node_id": "func:gnrc_icmpv6_echo_rsp_handle@08001654", "node_type": "function", "name": "gnrc_icmpv6_echo_rsp_handle", "entry": "08001654", "is_isr": false, "signature": "int __stdcall gnrc_icmpv6_echo_rsp_handle(gnrc_pktsnip_t * pkt, size_t len, gnrc_icmpv6_echo_rsp_handle_cb_t cb, void * ctx)"}
+{"node_id": "func:gnrc_icmpv6_echo_send", "node_type": "function", "name": "gnrc_icmpv6_echo_send"}
+{"node_id": "func:gnrc_icmpv6_echo_send@080015a0", "node_type": "function", "name": "gnrc_icmpv6_echo_send", "entry": "080015a0", "is_isr": false, "signature": "int __stdcall gnrc_icmpv6_echo_send(gnrc_netif_t * netif, ipv6_addr_t * addr, uint16_t id, uint16_t seq, uint8_t ttl, size_t len)"}
+{"node_id": "func:gnrc_icmpv6_error_dst_unr_send", "node_type": "function", "name": "gnrc_icmpv6_error_dst_unr_send"}
+{"node_id": "func:gnrc_icmpv6_error_dst_unr_send@080018b4", "node_type": "function", "name": "gnrc_icmpv6_error_dst_unr_send", "entry": "080018b4", "is_isr": false, "signature": "void __stdcall gnrc_icmpv6_error_dst_unr_send(uint8_t code, gnrc_pktsnip_t * orig_pkt)"}
+{"node_id": "func:gnrc_icmpv6_error_param_prob_send", "node_type": "function", "name": "gnrc_icmpv6_error_param_prob_send"}
+{"node_id": "func:gnrc_icmpv6_error_param_prob_send@0800193e", "node_type": "function", "name": "gnrc_icmpv6_error_param_prob_send", "entry": "0800193e", "is_isr": false, "signature": "void __stdcall gnrc_icmpv6_error_param_prob_send(uint8_t code, void * ptr, gnrc_pktsnip_t * orig_pkt)"}
+{"node_id": "func:gnrc_icmpv6_error_pkt_too_big_send", "node_type": "function", "name": "gnrc_icmpv6_error_pkt_too_big_send"}
+{"node_id": "func:gnrc_icmpv6_error_pkt_too_big_send@080018e2", "node_type": "function", "name": "gnrc_icmpv6_error_pkt_too_big_send", "entry": "080018e2", "is_isr": false, "signature": "void __stdcall gnrc_icmpv6_error_pkt_too_big_send(uint32_t mtu, gnrc_pktsnip_t * orig_pkt)"}
+{"node_id": "func:gnrc_icmpv6_error_time_exc_send", "node_type": "function", "name": "gnrc_icmpv6_error_time_exc_send"}
+{"node_id": "func:gnrc_icmpv6_error_time_exc_send@08001910", "node_type": "function", "name": "gnrc_icmpv6_error_time_exc_send", "entry": "08001910", "is_isr": false, "signature": "void __stdcall gnrc_icmpv6_error_time_exc_send(uint8_t code, gnrc_pktsnip_t * orig_pkt)"}
+{"node_id": "func:gnrc_ipv6_hdr_build", "node_type": "function", "name": "gnrc_ipv6_hdr_build"}
+{"node_id": "func:gnrc_ipv6_hdr_build@0800212c", "node_type": "function", "name": "gnrc_ipv6_hdr_build", "entry": "0800212c", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ipv6_hdr_build(gnrc_pktsnip_t * payload, ipv6_addr_t * src, ipv6_addr_t * dst)"}
+{"node_id": "func:gnrc_ipv6_init@080020f0", "node_type": "function", "name": "gnrc_ipv6_init", "entry": "080020f0", "is_isr": false, "signature": "kernel_pid_t gnrc_ipv6_init(void)"}
+{"node_id": "func:gnrc_ipv6_nib_ft_add", "node_type": "function", "name": "gnrc_ipv6_nib_ft_add"}
+{"node_id": "func:gnrc_ipv6_nib_ft_add@08004338", "node_type": "function", "name": "gnrc_ipv6_nib_ft_add", "entry": "08004338", "is_isr": false, "signature": "int __stdcall gnrc_ipv6_nib_ft_add(ipv6_addr_t * dst, uint dst_len, ipv6_addr_t * next_hop, uint iface, uint16_t ltime)"}
+{"node_id": "func:gnrc_ipv6_nib_ft_del", "node_type": "function", "name": "gnrc_ipv6_nib_ft_del"}
+{"node_id": "func:gnrc_ipv6_nib_ft_del@0800442c", "node_type": "function", "name": "gnrc_ipv6_nib_ft_del", "entry": "0800442c", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_ft_del(ipv6_addr_t * dst, uint dst_len)"}
+{"node_id": "func:gnrc_ipv6_nib_ft_iter", "node_type": "function", "name": "gnrc_ipv6_nib_ft_iter"}
+{"node_id": "func:gnrc_ipv6_nib_ft_iter@0800448a", "node_type": "function", "name": "gnrc_ipv6_nib_ft_iter", "entry": "0800448a", "is_isr": false, "signature": "_Bool __stdcall gnrc_ipv6_nib_ft_iter(ipv6_addr_t * next_hop, uint iface, void * * state, gnrc_ipv6_nib_ft_t * fte)"}
+{"node_id": "func:gnrc_ipv6_nib_ft_print", "node_type": "function", "name": "gnrc_ipv6_nib_ft_print"}
+{"node_id": "func:gnrc_ipv6_nib_ft_print@08004538", "node_type": "function", "name": "gnrc_ipv6_nib_ft_print", "entry": "08004538", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_ft_print(gnrc_ipv6_nib_ft_t * fte)"}
+{"node_id": "func:gnrc_ipv6_nib_get_next_hop_l2addr", "node_type": "function", "name": "gnrc_ipv6_nib_get_next_hop_l2addr"}
+{"node_id": "func:gnrc_ipv6_nib_get_next_hop_l2addr@080038ac", "node_type": "function", "name": "gnrc_ipv6_nib_get_next_hop_l2addr", "entry": "080038ac", "is_isr": false, "signature": "int __stdcall gnrc_ipv6_nib_get_next_hop_l2addr(ipv6_addr_t * dst, gnrc_netif_t * netif, gnrc_pktsnip_t * pkt, gnrc_ipv6_nib_nc_t * nce)"}
+{"node_id": "func:gnrc_ipv6_nib_handle_pkt", "node_type": "function", "name": "gnrc_ipv6_nib_handle_pkt"}
+{"node_id": "func:gnrc_ipv6_nib_handle_pkt@08003a98", "node_type": "function", "name": "gnrc_ipv6_nib_handle_pkt", "entry": "08003a98", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_handle_pkt(gnrc_netif_t * netif, ipv6_hdr_t * ipv6, icmpv6_hdr_t * icmpv6, size_t icmpv6_len)"}
+{"node_id": "func:gnrc_ipv6_nib_handle_timer_event", "node_type": "function", "name": "gnrc_ipv6_nib_handle_timer_event"}
+{"node_id": "func:gnrc_ipv6_nib_handle_timer_event@080041d8", "node_type": "function", "name": "gnrc_ipv6_nib_handle_timer_event", "entry": "080041d8", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_handle_timer_event(void * ctx, uint16_t type)"}
+{"node_id": "func:gnrc_ipv6_nib_iface_down", "node_type": "function", "name": "gnrc_ipv6_nib_iface_down"}
+{"node_id": "func:gnrc_ipv6_nib_iface_down@0800382c", "node_type": "function", "name": "gnrc_ipv6_nib_iface_down", "entry": "0800382c", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_iface_down(gnrc_netif_t * netif, _Bool send_final_ra)"}
+{"node_id": "func:gnrc_ipv6_nib_iface_up", "node_type": "function", "name": "gnrc_ipv6_nib_iface_up"}
+{"node_id": "func:gnrc_ipv6_nib_iface_up@080037c4", "node_type": "function", "name": "gnrc_ipv6_nib_iface_up", "entry": "080037c4", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_iface_up(gnrc_netif_t * netif)"}
+{"node_id": "func:gnrc_ipv6_nib_init@0800379c", "node_type": "function", "name": "gnrc_ipv6_nib_init", "entry": "0800379c", "is_isr": false, "signature": "void gnrc_ipv6_nib_init(void)"}
+{"node_id": "func:gnrc_ipv6_nib_nc_del", "node_type": "function", "name": "gnrc_ipv6_nib_nc_del"}
+{"node_id": "func:gnrc_ipv6_nib_nc_del@08004620", "node_type": "function", "name": "gnrc_ipv6_nib_nc_del", "entry": "08004620", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_nc_del(ipv6_addr_t * ipv6, uint iface)"}
+{"node_id": "func:gnrc_ipv6_nib_nc_iter", "node_type": "function", "name": "gnrc_ipv6_nib_nc_iter"}
+{"node_id": "func:gnrc_ipv6_nib_nc_iter@0800469e", "node_type": "function", "name": "gnrc_ipv6_nib_nc_iter", "entry": "0800469e", "is_isr": false, "signature": "_Bool __stdcall gnrc_ipv6_nib_nc_iter(uint iface, void * * state, gnrc_ipv6_nib_nc_t * entry)"}
+{"node_id": "func:gnrc_ipv6_nib_nc_mark_reachable", "node_type": "function", "name": "gnrc_ipv6_nib_nc_mark_reachable"}
+{"node_id": "func:gnrc_ipv6_nib_nc_mark_reachable@0800465e", "node_type": "function", "name": "gnrc_ipv6_nib_nc_mark_reachable", "entry": "0800465e", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_nc_mark_reachable(ipv6_addr_t * ipv6)"}
+{"node_id": "func:gnrc_ipv6_nib_nc_print", "node_type": "function", "name": "gnrc_ipv6_nib_nc_print"}
+{"node_id": "func:gnrc_ipv6_nib_nc_print@080046e8", "node_type": "function", "name": "gnrc_ipv6_nib_nc_print", "entry": "080046e8", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_nc_print(gnrc_ipv6_nib_nc_t * entry)"}
+{"node_id": "func:gnrc_ipv6_nib_nc_set", "node_type": "function", "name": "gnrc_ipv6_nib_nc_set"}
+{"node_id": "func:gnrc_ipv6_nib_nc_set@080045bc", "node_type": "function", "name": "gnrc_ipv6_nib_nc_set", "entry": "080045bc", "is_isr": false, "signature": "int __stdcall gnrc_ipv6_nib_nc_set(ipv6_addr_t * ipv6, uint iface, uint8_t * l2addr, size_t l2addr_len)"}
+{"node_id": "func:gnrc_ipv6_nib_pl_del", "node_type": "function", "name": "gnrc_ipv6_nib_pl_del"}
+{"node_id": "func:gnrc_ipv6_nib_pl_del@08004860", "node_type": "function", "name": "gnrc_ipv6_nib_pl_del", "entry": "08004860", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_pl_del(uint iface, ipv6_addr_t * pfx, uint pfx_len)"}
+{"node_id": "func:gnrc_ipv6_nib_pl_iter", "node_type": "function", "name": "gnrc_ipv6_nib_pl_iter"}
+{"node_id": "func:gnrc_ipv6_nib_pl_iter@080048d0", "node_type": "function", "name": "gnrc_ipv6_nib_pl_iter", "entry": "080048d0", "is_isr": false, "signature": "_Bool __stdcall gnrc_ipv6_nib_pl_iter(uint iface, void * * state, gnrc_ipv6_nib_pl_t * entry)"}
+{"node_id": "func:gnrc_ipv6_nib_pl_print", "node_type": "function", "name": "gnrc_ipv6_nib_pl_print"}
+{"node_id": "func:gnrc_ipv6_nib_pl_print@0800494c", "node_type": "function", "name": "gnrc_ipv6_nib_pl_print", "entry": "0800494c", "is_isr": false, "signature": "void __stdcall gnrc_ipv6_nib_pl_print(gnrc_ipv6_nib_pl_t * entry)"}
+{"node_id": "func:gnrc_ipv6_nib_pl_set", "node_type": "function", "name": "gnrc_ipv6_nib_pl_set"}
+{"node_id": "func:gnrc_ipv6_nib_pl_set@0800476c", "node_type": "function", "name": "gnrc_ipv6_nib_pl_set", "entry": "0800476c", "is_isr": false, "signature": "int __stdcall gnrc_ipv6_nib_pl_set(uint iface, ipv6_addr_t * pfx, uint pfx_len, uint32_t valid_ltime, uint32_t pref_ltime)"}
+{"node_id": "func:gnrc_ndp_nbr_adv_build", "node_type": "function", "name": "gnrc_ndp_nbr_adv_build"}
+{"node_id": "func:gnrc_ndp_nbr_adv_build@08004a98", "node_type": "function", "name": "gnrc_ndp_nbr_adv_build", "entry": "08004a98", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_nbr_adv_build(ipv6_addr_t * tgt, uint8_t flags, gnrc_pktsnip_t * options)"}
+{"node_id": "func:gnrc_ndp_nbr_adv_send", "node_type": "function", "name": "gnrc_ndp_nbr_adv_send"}
+{"node_id": "func:gnrc_ndp_nbr_adv_send@08004cf8", "node_type": "function", "name": "gnrc_ndp_nbr_adv_send", "entry": "08004cf8", "is_isr": false, "signature": "void __stdcall gnrc_ndp_nbr_adv_send(ipv6_addr_t * tgt, gnrc_netif_t * netif, ipv6_addr_t * dst, _Bool supply_tl2a, gnrc_pktsnip_t * ext_opts)"}
+{"node_id": "func:gnrc_ndp_nbr_sol_build", "node_type": "function", "name": "gnrc_ndp_nbr_sol_build"}
+{"node_id": "func:gnrc_ndp_nbr_sol_build@08004a5a", "node_type": "function", "name": "gnrc_ndp_nbr_sol_build", "entry": "08004a5a", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_nbr_sol_build(ipv6_addr_t * tgt, gnrc_pktsnip_t * options)"}
+{"node_id": "func:gnrc_ndp_nbr_sol_send", "node_type": "function", "name": "gnrc_ndp_nbr_sol_send"}
+{"node_id": "func:gnrc_ndp_nbr_sol_send@08004c40", "node_type": "function", "name": "gnrc_ndp_nbr_sol_send", "entry": "08004c40", "is_isr": false, "signature": "void __stdcall gnrc_ndp_nbr_sol_send(ipv6_addr_t * tgt, gnrc_netif_t * netif, ipv6_addr_t * src, ipv6_addr_t * dst, gnrc_pktsnip_t * ext_opts)"}
+{"node_id": "func:gnrc_ndp_opt_build", "node_type": "function", "name": "gnrc_ndp_opt_build"}
+{"node_id": "func:gnrc_ndp_opt_build@08004b30", "node_type": "function", "name": "gnrc_ndp_opt_build", "entry": "08004b30", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_opt_build(uint8_t type, size_t size, gnrc_pktsnip_t * next)"}
+{"node_id": "func:gnrc_ndp_opt_mtu_build", "node_type": "function", "name": "gnrc_ndp_opt_mtu_build"}
+{"node_id": "func:gnrc_ndp_opt_mtu_build@08004c22", "node_type": "function", "name": "gnrc_ndp_opt_mtu_build", "entry": "08004c22", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_opt_mtu_build(uint32_t mtu, gnrc_pktsnip_t * next)"}
+{"node_id": "func:gnrc_ndp_opt_pi_build", "node_type": "function", "name": "gnrc_ndp_opt_pi_build"}
+{"node_id": "func:gnrc_ndp_opt_pi_build@08004ba8", "node_type": "function", "name": "gnrc_ndp_opt_pi_build", "entry": "08004ba8", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_opt_pi_build(ipv6_addr_t * prefix, uint8_t prefix_len, uint32_t valid_ltime, uint32_t pref_ltime, uint8_t flags, gnrc_pktsnip_t * next)"}
+{"node_id": "func:gnrc_ndp_opt_sl2a_build", "node_type": "function", "name": "gnrc_ndp_opt_sl2a_build"}
+{"node_id": "func:gnrc_ndp_opt_sl2a_build@08004b80", "node_type": "function", "name": "gnrc_ndp_opt_sl2a_build", "entry": "08004b80", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_opt_sl2a_build(uint8_t * l2addr, uint8_t l2addr_len, gnrc_pktsnip_t * next)"}
+{"node_id": "func:gnrc_ndp_opt_tl2a_build", "node_type": "function", "name": "gnrc_ndp_opt_tl2a_build"}
+{"node_id": "func:gnrc_ndp_opt_tl2a_build@08004b94", "node_type": "function", "name": "gnrc_ndp_opt_tl2a_build", "entry": "08004b94", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_opt_tl2a_build(uint8_t * l2addr, uint8_t l2addr_len, gnrc_pktsnip_t * next)"}
+{"node_id": "func:gnrc_ndp_rtr_adv_build", "node_type": "function", "name": "gnrc_ndp_rtr_adv_build"}
+{"node_id": "func:gnrc_ndp_rtr_adv_build@08004af8", "node_type": "function", "name": "gnrc_ndp_rtr_adv_build", "entry": "08004af8", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_rtr_adv_build(uint8_t cur_hl, uint8_t flags, uint16_t ltime, uint32_t reach_time, uint32_t retrans_timer, gnrc_pktsnip_t * options)"}
+{"node_id": "func:gnrc_ndp_rtr_adv_send", "node_type": "function", "name": "gnrc_ndp_rtr_adv_send"}
+{"node_id": "func:gnrc_ndp_rtr_adv_send@08004eb4", "node_type": "function", "name": "gnrc_ndp_rtr_adv_send", "entry": "08004eb4", "is_isr": false, "signature": "void __stdcall gnrc_ndp_rtr_adv_send(gnrc_netif_t * netif, ipv6_addr_t * src, ipv6_addr_t * dst, _Bool fin, gnrc_pktsnip_t * ext_opts)"}
+{"node_id": "func:gnrc_ndp_rtr_sol_build", "node_type": "function", "name": "gnrc_ndp_rtr_sol_build"}
+{"node_id": "func:gnrc_ndp_rtr_sol_build@08004adc", "node_type": "function", "name": "gnrc_ndp_rtr_sol_build", "entry": "08004adc", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_ndp_rtr_sol_build(gnrc_pktsnip_t * options)"}
+{"node_id": "func:gnrc_ndp_rtr_sol_send", "node_type": "function", "name": "gnrc_ndp_rtr_sol_send"}
+{"node_id": "func:gnrc_ndp_rtr_sol_send@08004e18", "node_type": "function", "name": "gnrc_ndp_rtr_sol_send", "entry": "08004e18", "is_isr": false, "signature": "void __stdcall gnrc_ndp_rtr_sol_send(gnrc_netif_t * netif, ipv6_addr_t * dst)"}
+{"node_id": "func:gnrc_netapi_dispatch", "node_type": "function", "name": "gnrc_netapi_dispatch"}
+{"node_id": "func:gnrc_netapi_dispatch@08005014", "node_type": "function", "name": "gnrc_netapi_dispatch", "entry": "08005014", "is_isr": false, "signature": "int __stdcall gnrc_netapi_dispatch(gnrc_nettype_t type, uint32_t demux_ctx, uint16_t cmd, gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_netif_acquire", "node_type": "function", "name": "gnrc_netif_acquire"}
+{"node_id": "func:gnrc_netif_acquire@08005208", "node_type": "function", "name": "gnrc_netif_acquire", "entry": "08005208", "is_isr": false, "signature": "void __stdcall gnrc_netif_acquire(gnrc_netif_t * netif)"}
+{"node_id": "func:gnrc_netif_get_by_ipv6_addr", "node_type": "function", "name": "gnrc_netif_get_by_ipv6_addr"}
+{"node_id": "func:gnrc_netif_get_by_ipv6_addr@0800543e", "node_type": "function", "name": "gnrc_netif_get_by_ipv6_addr", "entry": "0800543e", "is_isr": false, "signature": "gnrc_netif_t * __stdcall gnrc_netif_get_by_ipv6_addr(ipv6_addr_t * addr)"}
+{"node_id": "func:gnrc_netif_get_by_pid", "node_type": "function", "name": "gnrc_netif_get_by_pid"}
+{"node_id": "func:gnrc_netif_get_by_pid@080051f2", "node_type": "function", "name": "gnrc_netif_get_by_pid", "entry": "080051f2", "is_isr": false, "signature": "gnrc_netif_t * __stdcall gnrc_netif_get_by_pid(kernel_pid_t pid)"}
+{"node_id": "func:gnrc_netif_get_by_prefix", "node_type": "function", "name": "gnrc_netif_get_by_prefix"}
+{"node_id": "func:gnrc_netif_get_by_prefix@0800546c", "node_type": "function", "name": "gnrc_netif_get_by_prefix", "entry": "0800546c", "is_isr": false, "signature": "gnrc_netif_t * __stdcall gnrc_netif_get_by_prefix(ipv6_addr_t * prefix)"}
+{"node_id": "func:gnrc_netif_hdr_build", "node_type": "function", "name": "gnrc_netif_hdr_build"}
+{"node_id": "func:gnrc_netif_hdr_build@08005856", "node_type": "function", "name": "gnrc_netif_hdr_build", "entry": "08005856", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_netif_hdr_build(uint8_t * src, uint8_t src_len, uint8_t * dst, uint8_t dst_len)"}
+{"node_id": "func:gnrc_netif_hdr_print", "node_type": "function", "name": "gnrc_netif_hdr_print"}
+{"node_id": "func:gnrc_netif_hdr_print@080058bc", "node_type": "function", "name": "gnrc_netif_hdr_print", "entry": "080058bc", "is_isr": false, "signature": "void __stdcall gnrc_netif_hdr_print(gnrc_netif_hdr_t * hdr)"}
+{"node_id": "func:gnrc_netif_init_devs@0800597c", "node_type": "function", "name": "gnrc_netif_init_devs", "entry": "0800597c", "is_isr": false, "signature": "void gnrc_netif_init_devs(void)"}
+{"node_id": "func:gnrc_netif_ipv6_addr_add_internal", "node_type": "function", "name": "gnrc_netif_ipv6_addr_add_internal"}
+{"node_id": "func:gnrc_netif_ipv6_addr_add_internal@08005558", "node_type": "function", "name": "gnrc_netif_ipv6_addr_add_internal", "entry": "08005558", "is_isr": false, "signature": "int __stdcall gnrc_netif_ipv6_addr_add_internal(gnrc_netif_t * netif, ipv6_addr_t * addr, uint pfx_len, uint8_t flags)"}
+{"node_id": "func:gnrc_netif_ipv6_addr_best_src", "node_type": "function", "name": "gnrc_netif_ipv6_addr_best_src"}
+{"node_id": "func:gnrc_netif_ipv6_addr_best_src@08005272", "node_type": "function", "name": "gnrc_netif_ipv6_addr_best_src", "entry": "08005272", "is_isr": false, "signature": "ipv6_addr_t * __stdcall gnrc_netif_ipv6_addr_best_src(gnrc_netif_t * netif, ipv6_addr_t * dst, _Bool ll_only)"}
+{"node_id": "func:gnrc_netif_ipv6_addr_idx", "node_type": "function", "name": "gnrc_netif_ipv6_addr_idx"}
+{"node_id": "func:gnrc_netif_ipv6_addr_idx@08005224", "node_type": "function", "name": "gnrc_netif_ipv6_addr_idx", "entry": "08005224", "is_isr": false, "signature": "int __stdcall gnrc_netif_ipv6_addr_idx(gnrc_netif_t * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:gnrc_netif_ipv6_addr_match", "node_type": "function", "name": "gnrc_netif_ipv6_addr_match"}
+{"node_id": "func:gnrc_netif_ipv6_addr_match@0800524c", "node_type": "function", "name": "gnrc_netif_ipv6_addr_match", "entry": "0800524c", "is_isr": false, "signature": "int __stdcall gnrc_netif_ipv6_addr_match(gnrc_netif_t * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:gnrc_netif_ipv6_addr_remove_internal", "node_type": "function", "name": "gnrc_netif_ipv6_addr_remove_internal"}
+{"node_id": "func:gnrc_netif_ipv6_addr_remove_internal@08005786", "node_type": "function", "name": "gnrc_netif_ipv6_addr_remove_internal", "entry": "08005786", "is_isr": false, "signature": "void __stdcall gnrc_netif_ipv6_addr_remove_internal(gnrc_netif_t * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:gnrc_netif_ipv6_group_join_internal", "node_type": "function", "name": "gnrc_netif_ipv6_group_join_internal"}
+{"node_id": "func:gnrc_netif_ipv6_group_join_internal@080054ac", "node_type": "function", "name": "gnrc_netif_ipv6_group_join_internal", "entry": "080054ac", "is_isr": false, "signature": "int __stdcall gnrc_netif_ipv6_group_join_internal(gnrc_netif_t * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:gnrc_netif_ipv6_group_leave_internal", "node_type": "function", "name": "gnrc_netif_ipv6_group_leave_internal"}
+{"node_id": "func:gnrc_netif_ipv6_group_leave_internal@080056c8", "node_type": "function", "name": "gnrc_netif_ipv6_group_leave_internal", "entry": "080056c8", "is_isr": false, "signature": "void __stdcall gnrc_netif_ipv6_group_leave_internal(gnrc_netif_t * netif, ipv6_addr_t * addr)"}
+{"node_id": "func:gnrc_netif_ipv6_iid_from_addr", "node_type": "function", "name": "gnrc_netif_ipv6_iid_from_addr"}
+{"node_id": "func:gnrc_netif_ipv6_iid_from_addr@0800583a", "node_type": "function", "name": "gnrc_netif_ipv6_iid_from_addr", "entry": "0800583a", "is_isr": false, "signature": "int __stdcall gnrc_netif_ipv6_iid_from_addr(gnrc_netif_t * netif, uint8_t * addr, size_t addr_len, eui64_t * iid)"}
+{"node_id": "func:gnrc_netif_iter", "node_type": "function", "name": "gnrc_netif_iter"}
+{"node_id": "func:gnrc_netif_iter@080051d4", "node_type": "function", "name": "gnrc_netif_iter", "entry": "080051d4", "is_isr": false, "signature": "gnrc_netif_t * __stdcall gnrc_netif_iter(gnrc_netif_t * prev)"}
+{"node_id": "func:gnrc_netif_numof", "node_type": "function", "name": "gnrc_netif_numof"}
+{"node_id": "func:gnrc_netif_numof@080051d8", "node_type": "function", "name": "gnrc_netif_numof", "entry": "080051d8", "is_isr": false, "signature": "uint gnrc_netif_numof(void)"}
+{"node_id": "func:gnrc_netif_release", "node_type": "function", "name": "gnrc_netif_release"}
+{"node_id": "func:gnrc_netif_release@08005216", "node_type": "function", "name": "gnrc_netif_release", "entry": "08005216", "is_isr": false, "signature": "void __stdcall gnrc_netif_release(gnrc_netif_t * netif)"}
+{"node_id": "func:gnrc_netreg_acquire_shared", "node_type": "function", "name": "gnrc_netreg_acquire_shared"}
+{"node_id": "func:gnrc_netreg_acquire_shared@08005a0c", "node_type": "function", "name": "gnrc_netreg_acquire_shared", "entry": "08005a0c", "is_isr": false, "signature": "void gnrc_netreg_acquire_shared(void)"}
+{"node_id": "func:gnrc_netreg_calc_csum", "node_type": "function", "name": "gnrc_netreg_calc_csum"}
+{"node_id": "func:gnrc_netreg_calc_csum@08005b76", "node_type": "function", "name": "gnrc_netreg_calc_csum", "entry": "08005b76", "is_isr": false, "signature": "int __stdcall gnrc_netreg_calc_csum(gnrc_pktsnip_t * hdr, gnrc_pktsnip_t * pseudo_hdr)"}
+{"node_id": "func:gnrc_netreg_getnext", "node_type": "function", "name": "gnrc_netreg_getnext"}
+{"node_id": "func:gnrc_netreg_getnext@08005b6a", "node_type": "function", "name": "gnrc_netreg_getnext", "entry": "08005b6a", "is_isr": false, "signature": "gnrc_netreg_entry_t * __stdcall gnrc_netreg_getnext(gnrc_netreg_entry_t * entry)"}
+{"node_id": "func:gnrc_netreg_lookup", "node_type": "function", "name": "gnrc_netreg_lookup"}
+{"node_id": "func:gnrc_netreg_lookup@08005b3c", "node_type": "function", "name": "gnrc_netreg_lookup", "entry": "08005b3c", "is_isr": false, "signature": "gnrc_netreg_entry_t * __stdcall gnrc_netreg_lookup(gnrc_nettype_t type, uint32_t demux_ctx)"}
+{"node_id": "func:gnrc_netreg_num", "node_type": "function", "name": "gnrc_netreg_num"}
+{"node_id": "func:gnrc_netreg_num@08005b46", "node_type": "function", "name": "gnrc_netreg_num", "entry": "08005b46", "is_isr": false, "signature": "int __stdcall gnrc_netreg_num(gnrc_nettype_t type, uint32_t demux_ctx)"}
+{"node_id": "func:gnrc_netreg_register", "node_type": "function", "name": "gnrc_netreg_register"}
+{"node_id": "func:gnrc_netreg_register@08005a78", "node_type": "function", "name": "gnrc_netreg_register", "entry": "08005a78", "is_isr": false, "signature": "int __stdcall gnrc_netreg_register(gnrc_nettype_t type, gnrc_netreg_entry_t * entry)"}
+{"node_id": "func:gnrc_netreg_release_shared", "node_type": "function", "name": "gnrc_netreg_release_shared"}
+{"node_id": "func:gnrc_netreg_release_shared@08005a40", "node_type": "function", "name": "gnrc_netreg_release_shared", "entry": "08005a40", "is_isr": false, "signature": "void gnrc_netreg_release_shared(void)"}
+{"node_id": "func:gnrc_netreg_unregister", "node_type": "function", "name": "gnrc_netreg_unregister"}
+{"node_id": "func:gnrc_netreg_unregister@08005aec", "node_type": "function", "name": "gnrc_netreg_unregister", "entry": "08005aec", "is_isr": false, "signature": "void __stdcall gnrc_netreg_unregister(gnrc_nettype_t type, gnrc_netreg_entry_t * entry)"}
+{"node_id": "func:gnrc_pktbuf_add", "node_type": "function", "name": "gnrc_pktbuf_add"}
+{"node_id": "func:gnrc_pktbuf_add@08005e5c", "node_type": "function", "name": "gnrc_pktbuf_add", "entry": "08005e5c", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_pktbuf_add(gnrc_pktsnip_t * next, void * data, size_t size, gnrc_nettype_t type)"}
+{"node_id": "func:gnrc_pktbuf_contains", "node_type": "function", "name": "gnrc_pktbuf_contains"}
+{"node_id": "func:gnrc_pktbuf_contains@08005d74", "node_type": "function", "name": "gnrc_pktbuf_contains", "entry": "08005d74", "is_isr": false, "signature": "_Bool __stdcall gnrc_pktbuf_contains(void * ptr)"}
+{"node_id": "func:gnrc_pktbuf_free_internal", "node_type": "function", "name": "gnrc_pktbuf_free_internal"}
+{"node_id": "func:gnrc_pktbuf_free_internal@08005d90", "node_type": "function", "name": "gnrc_pktbuf_free_internal", "entry": "08005d90", "is_isr": false, "signature": "void __stdcall gnrc_pktbuf_free_internal(void * data, size_t size)"}
+{"node_id": "func:gnrc_pktbuf_hold", "node_type": "function", "name": "gnrc_pktbuf_hold"}
+{"node_id": "func:gnrc_pktbuf_hold@08005d4c", "node_type": "function", "name": "gnrc_pktbuf_hold", "entry": "08005d4c", "is_isr": false, "signature": "void __stdcall gnrc_pktbuf_hold(gnrc_pktsnip_t * pkt, uint num)"}
+{"node_id": "func:gnrc_pktbuf_init@08005d18", "node_type": "function", "name": "gnrc_pktbuf_init", "entry": "08005d18", "is_isr": false, "signature": "void gnrc_pktbuf_init(void)"}
+{"node_id": "func:gnrc_pktbuf_mark", "node_type": "function", "name": "gnrc_pktbuf_mark"}
+{"node_id": "func:gnrc_pktbuf_mark@08005ed8", "node_type": "function", "name": "gnrc_pktbuf_mark", "entry": "08005ed8", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_pktbuf_mark(gnrc_pktsnip_t * pkt, size_t size, gnrc_nettype_t type)"}
+{"node_id": "func:gnrc_pktbuf_merge", "node_type": "function", "name": "gnrc_pktbuf_merge"}
+{"node_id": "func:gnrc_pktbuf_merge@08005c2e", "node_type": "function", "name": "gnrc_pktbuf_merge", "entry": "08005c2e", "is_isr": false, "signature": "int __stdcall gnrc_pktbuf_merge(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_pktbuf_realloc_data", "node_type": "function", "name": "gnrc_pktbuf_realloc_data"}
+{"node_id": "func:gnrc_pktbuf_realloc_data@08005fb4", "node_type": "function", "name": "gnrc_pktbuf_realloc_data", "entry": "08005fb4", "is_isr": false, "signature": "int __stdcall gnrc_pktbuf_realloc_data(gnrc_pktsnip_t * pkt, size_t size)"}
+{"node_id": "func:gnrc_pktbuf_release", "node_type": "function", "name": "gnrc_pktbuf_release"}
+{"node_id": "func:gnrc_pktbuf_release@080019bc", "node_type": "function", "name": "gnrc_pktbuf_release", "entry": "080019bc", "is_isr": false, "signature": "void __stdcall gnrc_pktbuf_release(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_pktbuf_release@08003598", "node_type": "function", "name": "gnrc_pktbuf_release", "entry": "08003598", "is_isr": false, "signature": "void __stdcall gnrc_pktbuf_release(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_pktbuf_release@08006624", "node_type": "function", "name": "gnrc_pktbuf_release", "entry": "08006624", "is_isr": false, "signature": "void __stdcall gnrc_pktbuf_release(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_pktbuf_release@08007acc", "node_type": "function", "name": "gnrc_pktbuf_release", "entry": "08007acc", "is_isr": false, "signature": "void __stdcall gnrc_pktbuf_release(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_pktbuf_release_error", "node_type": "function", "name": "gnrc_pktbuf_release_error"}
+{"node_id": "func:gnrc_pktbuf_release_error@08005ba8", "node_type": "function", "name": "gnrc_pktbuf_release_error", "entry": "08005ba8", "is_isr": false, "signature": "void __stdcall gnrc_pktbuf_release_error(gnrc_pktsnip_t * pkt, uint32_t err)"}
+{"node_id": "func:gnrc_pktbuf_remove_snip", "node_type": "function", "name": "gnrc_pktbuf_remove_snip"}
+{"node_id": "func:gnrc_pktbuf_remove_snip@08005bfc", "node_type": "function", "name": "gnrc_pktbuf_remove_snip", "entry": "08005bfc", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_pktbuf_remove_snip(gnrc_pktsnip_t * pkt, gnrc_pktsnip_t * snip)"}
+{"node_id": "func:gnrc_pktbuf_reverse_snips", "node_type": "function", "name": "gnrc_pktbuf_reverse_snips"}
+{"node_id": "func:gnrc_pktbuf_reverse_snips@08005c76", "node_type": "function", "name": "gnrc_pktbuf_reverse_snips", "entry": "08005c76", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_pktbuf_reverse_snips(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_pktbuf_start_write", "node_type": "function", "name": "gnrc_pktbuf_start_write"}
+{"node_id": "func:gnrc_pktbuf_start_write@08005e94", "node_type": "function", "name": "gnrc_pktbuf_start_write", "entry": "08005e94", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_pktbuf_start_write(gnrc_pktsnip_t * pkt)"}
+{"node_id": "func:gnrc_pktdump_init@080061b0", "node_type": "function", "name": "gnrc_pktdump_init", "entry": "080061b0", "is_isr": false, "signature": "kernel_pid_t gnrc_pktdump_init(void)"}
+{"node_id": "func:gnrc_pktsnip_search_type", "node_type": "function", "name": "gnrc_pktsnip_search_type"}
+{"node_id": "func:gnrc_pktsnip_search_type@08005b98", "node_type": "function", "name": "gnrc_pktsnip_search_type", "entry": "08005b98", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_pktsnip_search_type(gnrc_pktsnip_t * pkt, gnrc_nettype_t type)"}
+{"node_id": "func:gnrc_rpl_cleanup_start", "node_type": "function", "name": "gnrc_rpl_cleanup_start"}
+{"node_id": "func:gnrc_rpl_cleanup_start@08007654", "node_type": "function", "name": "gnrc_rpl_cleanup_start", "entry": "08007654", "is_isr": false, "signature": "void __stdcall gnrc_rpl_cleanup_start(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:gnrc_rpl_delay_dao", "node_type": "function", "name": "gnrc_rpl_delay_dao"}
+{"node_id": "func:gnrc_rpl_delay_dao@080062a0", "node_type": "function", "name": "gnrc_rpl_delay_dao", "entry": "080062a0", "is_isr": false, "signature": "void __stdcall gnrc_rpl_delay_dao(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:gnrc_rpl_dodag_init", "node_type": "function", "name": "gnrc_rpl_dodag_init"}
+{"node_id": "func:gnrc_rpl_dodag_init@08007898", "node_type": "function", "name": "gnrc_rpl_dodag_init", "entry": "08007898", "is_isr": false, "signature": "_Bool __stdcall gnrc_rpl_dodag_init(gnrc_rpl_instance_t * instance, ipv6_addr_t * dodag_id, kernel_pid_t iface)"}
+{"node_id": "func:gnrc_rpl_dodag_remove_all_parents", "node_type": "function", "name": "gnrc_rpl_dodag_remove_all_parents"}
+{"node_id": "func:gnrc_rpl_dodag_remove_all_parents@080075fc", "node_type": "function", "name": "gnrc_rpl_dodag_remove_all_parents", "entry": "080075fc", "is_isr": false, "signature": "void __stdcall gnrc_rpl_dodag_remove_all_parents(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:gnrc_rpl_gen_instance_id", "node_type": "function", "name": "gnrc_rpl_gen_instance_id"}
+{"node_id": "func:gnrc_rpl_gen_instance_id@0800651c", "node_type": "function", "name": "gnrc_rpl_gen_instance_id", "entry": "0800651c", "is_isr": false, "signature": "uint8_t __stdcall gnrc_rpl_gen_instance_id(_Bool local)"}
+{"node_id": "func:gnrc_rpl_get_of0", "node_type": "function", "name": "gnrc_rpl_get_of0"}
+{"node_id": "func:gnrc_rpl_get_of0@08007ac4", "node_type": "function", "name": "gnrc_rpl_get_of0", "entry": "08007ac4", "is_isr": false, "signature": "gnrc_rpl_of_t * gnrc_rpl_get_of0(void)"}
+{"node_id": "func:gnrc_rpl_get_of_for_ocp", "node_type": "function", "name": "gnrc_rpl_get_of_for_ocp"}
+{"node_id": "func:gnrc_rpl_get_of_for_ocp@080079e4", "node_type": "function", "name": "gnrc_rpl_get_of_for_ocp", "entry": "080079e4", "is_isr": false, "signature": "gnrc_rpl_of_t * __stdcall gnrc_rpl_get_of_for_ocp(uint16_t ocp)"}
+{"node_id": "func:gnrc_rpl_init", "node_type": "function", "name": "gnrc_rpl_init"}
+{"node_id": "func:gnrc_rpl_init@080061f4", "node_type": "function", "name": "gnrc_rpl_init", "entry": "080061f4", "is_isr": false, "signature": "kernel_pid_t __stdcall gnrc_rpl_init(kernel_pid_t if_pid)"}
+{"node_id": "func:gnrc_rpl_instance_add", "node_type": "function", "name": "gnrc_rpl_instance_add"}
+{"node_id": "func:gnrc_rpl_instance_add@0800747c", "node_type": "function", "name": "gnrc_rpl_instance_add", "entry": "0800747c", "is_isr": false, "signature": "_Bool __stdcall gnrc_rpl_instance_add(uint8_t instance_id, gnrc_rpl_instance_t * * inst)"}
+{"node_id": "func:gnrc_rpl_instance_get", "node_type": "function", "name": "gnrc_rpl_instance_get"}
+{"node_id": "func:gnrc_rpl_instance_get@080074b4", "node_type": "function", "name": "gnrc_rpl_instance_get", "entry": "080074b4", "is_isr": false, "signature": "gnrc_rpl_instance_t * __stdcall gnrc_rpl_instance_get(uint8_t instance_id)"}
+{"node_id": "func:gnrc_rpl_instance_remove", "node_type": "function", "name": "gnrc_rpl_instance_remove"}
+{"node_id": "func:gnrc_rpl_instance_remove@08007618", "node_type": "function", "name": "gnrc_rpl_instance_remove", "entry": "08007618", "is_isr": false, "signature": "_Bool __stdcall gnrc_rpl_instance_remove(gnrc_rpl_instance_t * inst)"}
+{"node_id": "func:gnrc_rpl_leaf_operation", "node_type": "function", "name": "gnrc_rpl_leaf_operation"}
+{"node_id": "func:gnrc_rpl_leaf_operation@08007888", "node_type": "function", "name": "gnrc_rpl_leaf_operation", "entry": "08007888", "is_isr": false, "signature": "void __stdcall gnrc_rpl_leaf_operation(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:gnrc_rpl_local_repair", "node_type": "function", "name": "gnrc_rpl_local_repair"}
+{"node_id": "func:gnrc_rpl_local_repair@08007694", "node_type": "function", "name": "gnrc_rpl_local_repair", "entry": "08007694", "is_isr": false, "signature": "void __stdcall gnrc_rpl_local_repair(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:gnrc_rpl_long_delay_dao", "node_type": "function", "name": "gnrc_rpl_long_delay_dao"}
+{"node_id": "func:gnrc_rpl_long_delay_dao@080062dc", "node_type": "function", "name": "gnrc_rpl_long_delay_dao", "entry": "080062dc", "is_isr": false, "signature": "void __stdcall gnrc_rpl_long_delay_dao(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:gnrc_rpl_of_manager_init", "node_type": "function", "name": "gnrc_rpl_of_manager_init"}
+{"node_id": "func:gnrc_rpl_of_manager_init@080079d4", "node_type": "function", "name": "gnrc_rpl_of_manager_init", "entry": "080079d4", "is_isr": false, "signature": "void gnrc_rpl_of_manager_init(void)"}
+{"node_id": "func:gnrc_rpl_parent_add_by_addr", "node_type": "function", "name": "gnrc_rpl_parent_add_by_addr"}
+{"node_id": "func:gnrc_rpl_parent_add_by_addr@080074cc", "node_type": "function", "name": "gnrc_rpl_parent_add_by_addr", "entry": "080074cc", "is_isr": false, "signature": "_Bool __stdcall gnrc_rpl_parent_add_by_addr(gnrc_rpl_dodag_t * dodag, ipv6_addr_t * addr, gnrc_rpl_parent_t * * parent)"}
+{"node_id": "func:gnrc_rpl_parent_remove", "node_type": "function", "name": "gnrc_rpl_parent_remove"}
+{"node_id": "func:gnrc_rpl_parent_remove@08007588", "node_type": "function", "name": "gnrc_rpl_parent_remove", "entry": "08007588", "is_isr": false, "signature": "_Bool __stdcall gnrc_rpl_parent_remove(gnrc_rpl_parent_t * parent)"}
+{"node_id": "func:gnrc_rpl_parent_update", "node_type": "function", "name": "gnrc_rpl_parent_update"}
+{"node_id": "func:gnrc_rpl_parent_update@080076d0", "node_type": "function", "name": "gnrc_rpl_parent_update", "entry": "080076d0", "is_isr": false, "signature": "void __stdcall gnrc_rpl_parent_update(gnrc_rpl_dodag_t * dodag, gnrc_rpl_parent_t * parent)"}
+{"node_id": "func:gnrc_rpl_recv_DAO", "node_type": "function", "name": "gnrc_rpl_recv_DAO"}
+{"node_id": "func:gnrc_rpl_recv_DAO@080072fc", "node_type": "function", "name": "gnrc_rpl_recv_DAO", "entry": "080072fc", "is_isr": false, "signature": "void __stdcall gnrc_rpl_recv_DAO(gnrc_rpl_dao_t * dao, kernel_pid_t iface, ipv6_addr_t * src, ipv6_addr_t * dst, uint16_t len)"}
+{"node_id": "func:gnrc_rpl_recv_DAO_ACK", "node_type": "function", "name": "gnrc_rpl_recv_DAO_ACK"}
+{"node_id": "func:gnrc_rpl_recv_DAO_ACK@080073c0", "node_type": "function", "name": "gnrc_rpl_recv_DAO_ACK", "entry": "080073c0", "is_isr": false, "signature": "void __stdcall gnrc_rpl_recv_DAO_ACK(gnrc_rpl_dao_ack_t * dao_ack, kernel_pid_t iface, ipv6_addr_t * src, ipv6_addr_t * dst, uint16_t len)"}
+{"node_id": "func:gnrc_rpl_recv_DIO", "node_type": "function", "name": "gnrc_rpl_recv_DIO"}
+{"node_id": "func:gnrc_rpl_recv_DIO@08006d84", "node_type": "function", "name": "gnrc_rpl_recv_DIO", "entry": "08006d84", "is_isr": false, "signature": "void __stdcall gnrc_rpl_recv_DIO(gnrc_rpl_dio_t * dio, kernel_pid_t iface, ipv6_addr_t * src, ipv6_addr_t * dst, uint16_t len)"}
+{"node_id": "func:gnrc_rpl_recv_DIS", "node_type": "function", "name": "gnrc_rpl_recv_DIS"}
+{"node_id": "func:gnrc_rpl_recv_DIS@08006ce0", "node_type": "function", "name": "gnrc_rpl_recv_DIS", "entry": "08006ce0", "is_isr": false, "signature": "void __stdcall gnrc_rpl_recv_DIS(gnrc_rpl_dis_t * dis, kernel_pid_t iface, ipv6_addr_t * src, ipv6_addr_t * dst, uint16_t len)"}
+{"node_id": "func:gnrc_rpl_root_init", "node_type": "function", "name": "gnrc_rpl_root_init"}
+{"node_id": "func:gnrc_rpl_root_init@08006554", "node_type": "function", "name": "gnrc_rpl_root_init", "entry": "08006554", "is_isr": false, "signature": "gnrc_rpl_instance_t * __stdcall gnrc_rpl_root_init(uint8_t instance_id, ipv6_addr_t * dodag_id, _Bool gen_inst_id, _Bool param_4)"}
+{"node_id": "func:gnrc_rpl_root_instance_init", "node_type": "function", "name": "gnrc_rpl_root_instance_init"}
+{"node_id": "func:gnrc_rpl_root_instance_init@08007914", "node_type": "function", "name": "gnrc_rpl_root_instance_init", "entry": "08007914", "is_isr": false, "signature": "gnrc_rpl_instance_t * __stdcall gnrc_rpl_root_instance_init(uint8_t instance_id, ipv6_addr_t * dodag_id, uint8_t mop)"}
+{"node_id": "func:gnrc_rpl_router_operation", "node_type": "function", "name": "gnrc_rpl_router_operation"}
+{"node_id": "func:gnrc_rpl_router_operation@080079c8", "node_type": "function", "name": "gnrc_rpl_router_operation", "entry": "080079c8", "is_isr": false, "signature": "void __stdcall gnrc_rpl_router_operation(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:gnrc_rpl_send", "node_type": "function", "name": "gnrc_rpl_send"}
+{"node_id": "func:gnrc_rpl_send@0800665c", "node_type": "function", "name": "gnrc_rpl_send", "entry": "0800665c", "is_isr": false, "signature": "void __stdcall gnrc_rpl_send(gnrc_pktsnip_t * pkt, kernel_pid_t iface, ipv6_addr_t * src, ipv6_addr_t * dst, ipv6_addr_t * dodag_id)"}
+{"node_id": "func:gnrc_rpl_send_DAO", "node_type": "function", "name": "gnrc_rpl_send_DAO"}
+{"node_id": "func:gnrc_rpl_send_DAO@080070b4", "node_type": "function", "name": "gnrc_rpl_send_DAO", "entry": "080070b4", "is_isr": false, "signature": "void __stdcall gnrc_rpl_send_DAO(gnrc_rpl_instance_t * inst, ipv6_addr_t * destination, uint8_t lifetime)"}
+{"node_id": "func:gnrc_rpl_send_DAO_ACK", "node_type": "function", "name": "gnrc_rpl_send_DAO_ACK"}
+{"node_id": "func:gnrc_rpl_send_DAO_ACK@08007250", "node_type": "function", "name": "gnrc_rpl_send_DAO_ACK", "entry": "08007250", "is_isr": false, "signature": "void __stdcall gnrc_rpl_send_DAO_ACK(gnrc_rpl_instance_t * inst, ipv6_addr_t * destination, uint8_t seq)"}
+{"node_id": "func:gnrc_rpl_send_DIO", "node_type": "function", "name": "gnrc_rpl_send_DIO"}
+{"node_id": "func:gnrc_rpl_send_DIO@08006858", "node_type": "function", "name": "gnrc_rpl_send_DIO", "entry": "08006858", "is_isr": false, "signature": "void __stdcall gnrc_rpl_send_DIO(gnrc_rpl_instance_t * inst, ipv6_addr_t * destination)"}
+{"node_id": "func:gnrc_rpl_send_DIS", "node_type": "function", "name": "gnrc_rpl_send_DIS"}
+{"node_id": "func:gnrc_rpl_send_DIS@0800698c", "node_type": "function", "name": "gnrc_rpl_send_DIS", "entry": "0800698c", "is_isr": false, "signature": "void __stdcall gnrc_rpl_send_DIS(gnrc_rpl_instance_t * inst, ipv6_addr_t * destination, gnrc_rpl_internal_opt_t * * options, size_t num_opts)"}
+{"node_id": "func:gnrc_rpl_validation_options", "node_type": "function", "name": "gnrc_rpl_validation_options"}
+{"node_id": "func:gnrc_rpl_validation_options@08007a00", "node_type": "function", "name": "gnrc_rpl_validation_options", "entry": "08007a00", "is_isr": false, "signature": "_Bool __stdcall gnrc_rpl_validation_options(int msg_type, gnrc_rpl_instance_t * inst, gnrc_rpl_opt_t * opt, uint16_t len)"}
+{"node_id": "func:gnrc_udp_calc_csum", "node_type": "function", "name": "gnrc_udp_calc_csum"}
+{"node_id": "func:gnrc_udp_calc_csum@08007ca8", "node_type": "function", "name": "gnrc_udp_calc_csum", "entry": "08007ca8", "is_isr": false, "signature": "int __stdcall gnrc_udp_calc_csum(gnrc_pktsnip_t * hdr, gnrc_pktsnip_t * pseudo_hdr)"}
+{"node_id": "func:gnrc_udp_hdr_build", "node_type": "function", "name": "gnrc_udp_hdr_build"}
+{"node_id": "func:gnrc_udp_hdr_build@08007cdc", "node_type": "function", "name": "gnrc_udp_hdr_build", "entry": "08007cdc", "is_isr": false, "signature": "gnrc_pktsnip_t * __stdcall gnrc_udp_hdr_build(gnrc_pktsnip_t * payload, uint16_t src, uint16_t dst)"}
+{"node_id": "func:gnrc_udp_init@08007d08", "node_type": "function", "name": "gnrc_udp_init", "entry": "08007d08", "is_isr": false, "signature": "int gnrc_udp_init(void)"}
+{"node_id": "func:gpio_init", "node_type": "function", "name": "gpio_init"}
+{"node_id": "func:gpio_init@08008568", "node_type": "function", "name": "gpio_init", "entry": "08008568", "is_isr": false, "signature": "int __stdcall gpio_init(gpio_t pin, gpio_mode_t mode)"}
+{"node_id": "func:gpio_init_af", "node_type": "function", "name": "gpio_init_af"}
+{"node_id": "func:gpio_init_af@080085d0", "node_type": "function", "name": "gpio_init_af", "entry": "080085d0", "is_isr": false, "signature": "void __stdcall gpio_init_af(gpio_t pin, gpio_af_t af)"}
+{"node_id": "func:hard_fault_default@08000c44", "node_type": "function", "name": "hard_fault_default", "entry": "08000c44", "is_isr": false, "signature": "void hard_fault_default(void)"}
+{"node_id": "func:hard_fault_handler", "node_type": "function", "name": "hard_fault_handler"}
+{"node_id": "func:hard_fault_handler@08000d88", "node_type": "function", "name": "hard_fault_handler", "entry": "08000d88", "is_isr": true, "signature": "noreturn void __stdcall hard_fault_handler(uint32_t * sp, uint32_t corrupted, uint32_t exc_return, uint32_t * r4_to_r11_stack)"}
+{"node_id": "func:icmpv6_hdr_print", "node_type": "function", "name": "icmpv6_hdr_print"}
+{"node_id": "func:icmpv6_hdr_print@08007d44", "node_type": "function", "name": "icmpv6_hdr_print", "entry": "08007d44", "is_isr": false, "signature": "void __stdcall icmpv6_hdr_print(icmpv6_hdr_t * hdr)"}
+{"node_id": "func:inet_csum_slice", "node_type": "function", "name": "inet_csum_slice"}
+{"node_id": "func:inet_csum_slice@08007d6c", "node_type": "function", "name": "inet_csum_slice", "entry": "08007d6c", "is_isr": false, "signature": "uint16_t __stdcall inet_csum_slice(uint16_t sum, uint8_t * buf, uint16_t len, size_t accum_len)"}
+{"node_id": "func:iprintf", "node_type": "function", "name": "iprintf"}
+{"node_id": "func:iprintf@0800c8c8", "node_type": "function", "name": "iprintf", "entry": "0800c8c8", "is_isr": false, "signature": "int __stdcall iprintf(char * __format, ...)"}
+{"node_id": "func:ipv6_addr_equal", "node_type": "function", "name": "ipv6_addr_equal"}
+{"node_id": "func:ipv6_addr_equal@08007db8", "node_type": "function", "name": "ipv6_addr_equal", "entry": "08007db8", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_equal(ipv6_addr_t * a, ipv6_addr_t * b)"}
+{"node_id": "func:ipv6_addr_from_buf", "node_type": "function", "name": "ipv6_addr_from_buf"}
+{"node_id": "func:ipv6_addr_from_buf@08007e9c", "node_type": "function", "name": "ipv6_addr_from_buf", "entry": "08007e9c", "is_isr": false, "signature": "ipv6_addr_t * __stdcall ipv6_addr_from_buf(ipv6_addr_t * result, char * addr, size_t addr_len)"}
+{"node_id": "func:ipv6_addr_from_str", "node_type": "function", "name": "ipv6_addr_from_str"}
+{"node_id": "func:ipv6_addr_from_str@08007fa0", "node_type": "function", "name": "ipv6_addr_from_str", "entry": "08007fa0", "is_isr": false, "signature": "ipv6_addr_t * __stdcall ipv6_addr_from_str(ipv6_addr_t * result, char * addr)"}
+{"node_id": "func:ipv6_addr_init_prefix", "node_type": "function", "name": "ipv6_addr_init_prefix"}
+{"node_id": "func:ipv6_addr_init_prefix@08007e2c", "node_type": "function", "name": "ipv6_addr_init_prefix", "entry": "08007e2c", "is_isr": false, "signature": "void __stdcall ipv6_addr_init_prefix(ipv6_addr_t * out, ipv6_addr_t * prefix, uint8_t bits)"}
+{"node_id": "func:ipv6_addr_is_link_local", "node_type": "function", "name": "ipv6_addr_is_link_local"}
+{"node_id": "func:ipv6_addr_is_link_local@080019dc", "node_type": "function", "name": "ipv6_addr_is_link_local", "entry": "080019dc", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_link_local(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_link_local@08003550", "node_type": "function", "name": "ipv6_addr_is_link_local", "entry": "08003550", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_link_local(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_link_local@080049e8", "node_type": "function", "name": "ipv6_addr_is_link_local", "entry": "080049e8", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_link_local(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_link_local@080050ec", "node_type": "function", "name": "ipv6_addr_is_link_local", "entry": "080050ec", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_link_local(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_link_local@08009a60", "node_type": "function", "name": "ipv6_addr_is_link_local", "entry": "08009a60", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_link_local(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_loopback", "node_type": "function", "name": "ipv6_addr_is_loopback"}
+{"node_id": "func:ipv6_addr_is_loopback@080019c4", "node_type": "function", "name": "ipv6_addr_is_loopback", "entry": "080019c4", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_loopback(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_unspecified", "node_type": "function", "name": "ipv6_addr_is_unspecified"}
+{"node_id": "func:ipv6_addr_is_unspecified@08003580", "node_type": "function", "name": "ipv6_addr_is_unspecified", "entry": "08003580", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_unspecified(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_unspecified@08004320", "node_type": "function", "name": "ipv6_addr_is_unspecified", "entry": "08004320", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_unspecified(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_is_unspecified@080050d4", "node_type": "function", "name": "ipv6_addr_is_unspecified", "entry": "080050d4", "is_isr": false, "signature": "_Bool __stdcall ipv6_addr_is_unspecified(ipv6_addr_t * addr)"}
+{"node_id": "func:ipv6_addr_match_prefix", "node_type": "function", "name": "ipv6_addr_match_prefix"}
+{"node_id": "func:ipv6_addr_match_prefix@08007de4", "node_type": "function", "name": "ipv6_addr_match_prefix", "entry": "08007de4", "is_isr": false, "signature": "uint8_t __stdcall ipv6_addr_match_prefix(ipv6_addr_t * a, ipv6_addr_t * b)"}
+{"node_id": "func:ipv6_addr_split_int", "node_type": "function", "name": "ipv6_addr_split_int"}
+{"node_id": "func:ipv6_addr_split_int@08007e84", "node_type": "function", "name": "ipv6_addr_split_int", "entry": "08007e84", "is_isr": false, "signature": "int __stdcall ipv6_addr_split_int(char * addr_str, char separator, int _default)"}
+{"node_id": "func:ipv6_addr_split_str", "node_type": "function", "name": "ipv6_addr_split_str"}
+{"node_id": "func:ipv6_addr_split_str@08007e66", "node_type": "function", "name": "ipv6_addr_split_str", "entry": "08007e66", "is_isr": false, "signature": "char * __stdcall ipv6_addr_split_str(char * addr_str, char separator)"}
+{"node_id": "func:ipv6_addr_to_str", "node_type": "function", "name": "ipv6_addr_to_str"}
+{"node_id": "func:ipv6_addr_to_str@08007fc4", "node_type": "function", "name": "ipv6_addr_to_str", "entry": "08007fc4", "is_isr": false, "signature": "char * __stdcall ipv6_addr_to_str(char * result, ipv6_addr_t * addr, uint8_t result_len)"}
+{"node_id": "func:ipv6_hdr_print", "node_type": "function", "name": "ipv6_hdr_print"}
+{"node_id": "func:ipv6_hdr_print@080080f4", "node_type": "function", "name": "ipv6_hdr_print", "entry": "080080f4", "is_isr": false, "signature": "void __stdcall ipv6_hdr_print(ipv6_hdr_t * hdr)"}
+{"node_id": "func:irq_handler", "node_type": "function", "name": "irq_handler"}
+{"node_id": "func:irq_handler@0800881c", "node_type": "function", "name": "irq_handler", "entry": "0800881c", "is_isr": true, "signature": "void __stdcall irq_handler(uart_t uart)"}
+{"node_id": "func:isr_pendsv@08000bec", "node_type": "function", "name": "isr_pendsv", "entry": "08000bec", "is_isr": true, "signature": "void isr_pendsv(void)"}
+{"node_id": "func:isr_svc@08000c24", "node_type": "function", "name": "isr_svc", "entry": "08000c24", "is_isr": true, "signature": "void isr_svc(void)"}
+{"node_id": "func:isr_tim2@080087ac", "node_type": "function", "name": "isr_tim2", "entry": "080087ac", "is_isr": true, "signature": "void isr_tim2(void)"}
+{"node_id": "func:isr_usart1@08008970", "node_type": "function", "name": "isr_usart1", "entry": "08008970", "is_isr": true, "signature": "void isr_usart1(void)"}
+{"node_id": "func:isr_usart2@08008976", "node_type": "function", "name": "isr_usart2", "entry": "08008976", "is_isr": true, "signature": "void isr_usart2(void)"}
+{"node_id": "func:isr_usart3@0800897c", "node_type": "function", "name": "isr_usart3", "entry": "0800897c", "is_isr": true, "signature": "void isr_usart3(void)"}
+{"node_id": "func:isrpipe_read", "node_type": "function", "name": "isrpipe_read"}
+{"node_id": "func:isrpipe_read@080081a6", "node_type": "function", "name": "isrpipe_read", "entry": "080081a6", "is_isr": true, "signature": "int __stdcall isrpipe_read(isrpipe_t * isrpipe, uint8_t * buffer, size_t count)"}
+{"node_id": "func:isrpipe_write_one@08008190", "node_type": "function", "name": "isrpipe_write_one", "entry": "08008190", "is_isr": true, "signature": "int __stdcall isrpipe_write_one(isrpipe_t * isrpipe, uint8_t c)"}
+{"node_id": "func:kernel_init", "node_type": "function", "name": "kernel_init"}
+{"node_id": "func:kernel_init@08000980", "node_type": "function", "name": "kernel_init", "entry": "08000980", "is_isr": false, "signature": "void kernel_init(void)"}
+{"node_id": "func:l2util_addr_from_str", "node_type": "function", "name": "l2util_addr_from_str"}
+{"node_id": "func:l2util_addr_from_str@0800826a", "node_type": "function", "name": "l2util_addr_from_str", "entry": "0800826a", "is_isr": false, "signature": "size_t __stdcall l2util_addr_from_str(char * str, uint8_t * out)"}
+{"node_id": "func:l2util_addr_to_str", "node_type": "function", "name": "l2util_addr_to_str"}
+{"node_id": "func:l2util_addr_to_str@08008226", "node_type": "function", "name": "l2util_addr_to_str", "entry": "08008226", "is_isr": false, "signature": "char * __stdcall l2util_addr_to_str(uint8_t * addr, size_t addr_len, char * out)"}
+{"node_id": "func:l2util_ipv6_group_to_l2_group", "node_type": "function", "name": "l2util_ipv6_group_to_l2_group"}
+{"node_id": "func:l2util_ipv6_group_to_l2_group@08008220", "node_type": "function", "name": "l2util_ipv6_group_to_l2_group", "entry": "08008220", "is_isr": false, "signature": "int __stdcall l2util_ipv6_group_to_l2_group(int dev_type, ipv6_addr_t * ipv6_group, uint8_t * l2_group)"}
+{"node_id": "func:l2util_ipv6_iid_from_addr", "node_type": "function", "name": "l2util_ipv6_iid_from_addr"}
+{"node_id": "func:l2util_ipv6_iid_from_addr@080081f8", "node_type": "function", "name": "l2util_ipv6_iid_from_addr", "entry": "080081f8", "is_isr": false, "signature": "undefined l2util_ipv6_iid_from_addr(void)"}
+{"node_id": "func:l2util_ndp_addr_len_from_l2ao", "node_type": "function", "name": "l2util_ndp_addr_len_from_l2ao"}
+{"node_id": "func:l2util_ndp_addr_len_from_l2ao@0800820c", "node_type": "function", "name": "l2util_ndp_addr_len_from_l2ao", "entry": "0800820c", "is_isr": false, "signature": "int __stdcall l2util_ndp_addr_len_from_l2ao(int dev_type, ndp_opt_t * opt)"}
+{"node_id": "func:led_init", "node_type": "function", "name": "led_init"}
+{"node_id": "func:led_init@0800899c", "node_type": "function", "name": "led_init", "entry": "0800899c", "is_isr": false, "signature": "void led_init(void)"}
+{"node_id": "func:lflush@0800d750", "node_type": "function", "name": "lflush", "entry": "0800d750", "is_isr": false, "signature": "undefined lflush(void)"}
+{"node_id": "func:luid_base", "node_type": "function", "name": "luid_base"}
+{"node_id": "func:luid_base@08008306", "node_type": "function", "name": "luid_base", "entry": "08008306", "is_isr": false, "signature": "void __stdcall luid_base(void * buf, size_t len)"}
+{"node_id": "func:luid_custom", "node_type": "function", "name": "luid_custom"}
+{"node_id": "func:luid_custom@08008388", "node_type": "function", "name": "luid_custom", "entry": "08008388", "is_isr": false, "signature": "void __stdcall luid_custom(void * buf, size_t len, int gen)"}
+{"node_id": "func:luid_get", "node_type": "function", "name": "luid_get"}
+{"node_id": "func:luid_get@0800836c", "node_type": "function", "name": "luid_get", "entry": "0800836c", "is_isr": false, "signature": "void __stdcall luid_get(void * buf, size_t len)"}
+{"node_id": "func:main", "node_type": "function", "name": "main"}
+{"node_id": "func:main@08000188", "node_type": "function", "name": "main", "entry": "08000188", "is_isr": false, "signature": "int main(void)"}
+{"node_id": "func:main_trampoline@08000968", "node_type": "function", "name": "main_trampoline", "entry": "08000968", "is_isr": false, "signature": "void * __stdcall main_trampoline(void * arg)"}
+{"node_id": "func:mem_manage_default@08000c98", "node_type": "function", "name": "mem_manage_default", "entry": "08000c98", "is_isr": false, "signature": "void mem_manage_default(void)"}
+{"node_id": "func:memchr", "node_type": "function", "name": "memchr"}
+{"node_id": "func:memchr@0800d6b0", "node_type": "function", "name": "memchr", "entry": "0800d6b0", "is_isr": false, "signature": "void * __stdcall memchr(void * __s, int __c, size_t __n)"}
+{"node_id": "func:memcmp", "node_type": "function", "name": "memcmp"}
+{"node_id": "func:memcmp@0800c6be", "node_type": "function", "name": "memcmp", "entry": "0800c6be", "is_isr": false, "signature": "int __stdcall memcmp(void * __s1, void * __s2, size_t __n)"}
+{"node_id": "func:memcpy", "node_type": "function", "name": "memcpy"}
+{"node_id": "func:memcpy@0800c6de", "node_type": "function", "name": "memcpy", "entry": "0800c6de", "is_isr": false, "signature": "void * __stdcall memcpy(void * __dest, void * __src, size_t __n)"}
+{"node_id": "func:memset", "node_type": "function", "name": "memset"}
+{"node_id": "func:memset@0800c6fa", "node_type": "function", "name": "memset", "entry": "0800c6fa", "is_isr": false, "signature": "void * __stdcall memset(void * __s, int __c, size_t __n)"}
+{"node_id": "func:mpu_configure", "node_type": "function", "name": "mpu_configure"}
+{"node_id": "func:mpu_configure@08000afc", "node_type": "function", "name": "mpu_configure", "entry": "08000afc", "is_isr": false, "signature": "int __stdcall mpu_configure(uint_fast8_t region, uintptr_t base, uint_fast32_t attr)"}
+{"node_id": "func:mpu_enable", "node_type": "function", "name": "mpu_enable"}
+{"node_id": "func:mpu_enable@08000adc", "node_type": "function", "name": "mpu_enable", "entry": "08000adc", "is_isr": false, "signature": "int mpu_enable(void)"}
+{"node_id": "func:msg_avail", "node_type": "function", "name": "msg_avail"}
+{"node_id": "func:msg_avail@0800053c", "node_type": "function", "name": "msg_avail", "entry": "0800053c", "is_isr": false, "signature": "uint msg_avail(void)"}
+{"node_id": "func:msg_init_queue", "node_type": "function", "name": "msg_init_queue"}
+{"node_id": "func:msg_init_queue@08000550", "node_type": "function", "name": "msg_init_queue", "entry": "08000550", "is_isr": false, "signature": "void __stdcall msg_init_queue(msg_t * array, int num)"}
+{"node_id": "func:msg_receive", "node_type": "function", "name": "msg_receive"}
+{"node_id": "func:msg_receive@08000536", "node_type": "function", "name": "msg_receive", "entry": "08000536", "is_isr": false, "signature": "int __stdcall msg_receive(msg_t * m)"}
+{"node_id": "func:msg_reply", "node_type": "function", "name": "msg_reply"}
+{"node_id": "func:msg_reply@080004e4", "node_type": "function", "name": "msg_reply", "entry": "080004e4", "is_isr": false, "signature": "int __stdcall msg_reply(msg_t * m, msg_t * reply)"}
+{"node_id": "func:msg_send", "node_type": "function", "name": "msg_send"}
+{"node_id": "func:msg_send@08000438", "node_type": "function", "name": "msg_send", "entry": "08000438", "is_isr": false, "signature": "int __stdcall msg_send(msg_t * m, kernel_pid_t target_pid)"}
+{"node_id": "func:msg_send_int", "node_type": "function", "name": "msg_send_int"}
+{"node_id": "func:msg_send_int@08000430", "node_type": "function", "name": "msg_send_int", "entry": "08000430", "is_isr": false, "signature": "int __stdcall msg_send_int(msg_t * m, kernel_pid_t target_pid)"}
+{"node_id": "func:msg_send_receive", "node_type": "function", "name": "msg_send_receive"}
+{"node_id": "func:msg_send_receive@08000498", "node_type": "function", "name": "msg_send_receive", "entry": "08000498", "is_isr": false, "signature": "int __stdcall msg_send_receive(msg_t * m, msg_t * reply, kernel_pid_t target_pid)"}
+{"node_id": "func:msg_send_to_self", "node_type": "function", "name": "msg_send_to_self"}
+{"node_id": "func:msg_send_to_self@08000408", "node_type": "function", "name": "msg_send_to_self", "entry": "08000408", "is_isr": false, "signature": "int __stdcall msg_send_to_self(msg_t * m)"}
+{"node_id": "func:msg_try_receive", "node_type": "function", "name": "msg_try_receive"}
+{"node_id": "func:msg_try_receive@08000530", "node_type": "function", "name": "msg_try_receive", "entry": "08000530", "is_isr": false, "signature": "int __stdcall msg_try_receive(msg_t * m)"}
+{"node_id": "func:msg_try_send", "node_type": "function", "name": "msg_try_send"}
+{"node_id": "func:msg_try_send@08000464", "node_type": "function", "name": "msg_try_send", "entry": "08000464", "is_isr": false, "signature": "int __stdcall msg_try_send(msg_t * m, kernel_pid_t target_pid)"}
+{"node_id": "func:mutex_lock", "node_type": "function", "name": "mutex_lock"}
+{"node_id": "func:mutex_lock@0800597e", "node_type": "function", "name": "mutex_lock", "entry": "0800597e", "is_isr": false, "signature": "void __stdcall mutex_lock(mutex_t * mutex)"}
+{"node_id": "func:mutex_lock_internal", "node_type": "function", "name": "mutex_lock_internal"}
+{"node_id": "func:mutex_lock_internal@08000570", "node_type": "function", "name": "mutex_lock_internal", "entry": "08000570", "is_isr": false, "signature": "_Bool __stdcall mutex_lock_internal(mutex_t * mutex, _Bool block)"}
+{"node_id": "func:mutex_unlock", "node_type": "function", "name": "mutex_unlock"}
+{"node_id": "func:mutex_unlock@080005e0", "node_type": "function", "name": "mutex_unlock", "entry": "080005e0", "is_isr": false, "signature": "void __stdcall mutex_unlock(mutex_t * mutex)"}
+{"node_id": "func:netif_get_by_name_buffer", "node_type": "function", "name": "netif_get_by_name_buffer"}
+{"node_id": "func:netif_get_by_name_buffer@080083c8", "node_type": "function", "name": "netif_get_by_name_buffer", "entry": "080083c8", "is_isr": false, "signature": "netif_t * __stdcall netif_get_by_name_buffer(char * name, size_t name_len)"}
+{"node_id": "func:netif_get_name", "node_type": "function", "name": "netif_get_name"}
+{"node_id": "func:netif_get_name@08005070", "node_type": "function", "name": "netif_get_name", "entry": "08005070", "is_isr": false, "signature": "int __stdcall netif_get_name(netif_t * iface, char * name)"}
+{"node_id": "func:netif_get_opt", "node_type": "function", "name": "netif_get_opt"}
+{"node_id": "func:netif_get_opt@08005084", "node_type": "function", "name": "netif_get_opt", "entry": "08005084", "is_isr": false, "signature": "int __stdcall netif_get_opt(netif_t * iface, netopt_t opt, uint16_t context, void * value, size_t max_len)"}
+{"node_id": "func:netif_iter", "node_type": "function", "name": "netif_iter"}
+{"node_id": "func:netif_iter@080083b8", "node_type": "function", "name": "netif_iter", "entry": "080083b8", "is_isr": false, "signature": "netif_t * __stdcall netif_iter(netif_t * last)"}
+{"node_id": "func:netif_set_opt", "node_type": "function", "name": "netif_set_opt"}
+{"node_id": "func:netif_set_opt@0800509c", "node_type": "function", "name": "netif_set_opt", "entry": "0800509c", "is_isr": false, "signature": "int __stdcall netif_set_opt(netif_t * iface, netopt_t opt, uint16_t context, void * value, size_t value_len)"}
+{"node_id": "func:netutils_get_ipv6", "node_type": "function", "name": "netutils_get_ipv6"}
+{"node_id": "func:netutils_get_ipv6@08008410", "node_type": "function", "name": "netutils_get_ipv6", "entry": "08008410", "is_isr": false, "signature": "int __stdcall netutils_get_ipv6(ipv6_addr_t * addr, netif_t * * netif, char * hostname)"}
+{"node_id": "func:nmi_handler@08000c88", "node_type": "function", "name": "nmi_handler", "entry": "08000c88", "is_isr": true, "signature": "void nmi_handler(void)"}
+{"node_id": "func:od_hex_dump_ext", "node_type": "function", "name": "od_hex_dump_ext"}
+{"node_id": "func:od_hex_dump_ext@08008504", "node_type": "function", "name": "od_hex_dump_ext", "entry": "08008504", "is_isr": false, "signature": "void __stdcall od_hex_dump_ext(void * data, size_t data_len, uint8_t width, uint32_t offset)"}
+{"node_id": "func:panic_app", "node_type": "function", "name": "panic_app"}
+{"node_id": "func:panic_app@080009c2", "node_type": "function", "name": "panic_app", "entry": "080009c2", "is_isr": false, "signature": "void __stdcall panic_app(core_panic_t crash_code, char * message)"}
+{"node_id": "func:panic_arch", "node_type": "function", "name": "panic_arch"}
+{"node_id": "func:panic_arch@08000b1c", "node_type": "function", "name": "panic_arch", "entry": "08000b1c", "is_isr": false, "signature": "void panic_arch(void)"}
+{"node_id": "func:parent_cmp@08007aaa", "node_type": "function", "name": "parent_cmp", "entry": "08007aaa", "is_isr": false, "signature": "int __stdcall parent_cmp(gnrc_rpl_parent_t * parent1, gnrc_rpl_parent_t * parent2)"}
+{"node_id": "func:parse_mode", "node_type": "function", "name": "parse_mode"}
+{"node_id": "func:parse_mode@0800b638", "node_type": "function", "name": "parse_mode", "entry": "0800b638", "is_isr": false, "signature": "int __stdcall parse_mode(char * argv)"}
+{"node_id": "func:periph_apb_clk", "node_type": "function", "name": "periph_apb_clk"}
+{"node_id": "func:periph_apb_clk@08000f64", "node_type": "function", "name": "periph_apb_clk", "entry": "08000f64", "is_isr": false, "signature": "uint32_t __stdcall periph_apb_clk(uint8_t bus)"}
+{"node_id": "func:periph_clk_en", "node_type": "function", "name": "periph_clk_en"}
+{"node_id": "func:periph_clk_en@08000f9c", "node_type": "function", "name": "periph_clk_en", "entry": "08000f9c", "is_isr": false, "signature": "void __stdcall periph_clk_en(bus_t bus, uint32_t mask)"}
+{"node_id": "func:periph_init", "node_type": "function", "name": "periph_init"}
+{"node_id": "func:periph_init@08008998", "node_type": "function", "name": "periph_init", "entry": "08008998", "is_isr": false, "signature": "void periph_init(void)"}
+{"node_id": "func:periph_timer_clk", "node_type": "function", "name": "periph_timer_clk"}
+{"node_id": "func:periph_timer_clk@08000f7c", "node_type": "function", "name": "periph_timer_clk", "entry": "08000f7c", "is_isr": false, "signature": "uint32_t __stdcall periph_timer_clk(uint8_t bus)"}
+{"node_id": "func:pm_block", "node_type": "function", "name": "pm_block"}
+{"node_id": "func:pm_block@08008a64", "node_type": "function", "name": "pm_block", "entry": "08008a64", "is_isr": false, "signature": "void __stdcall pm_block(uint mode)"}
+{"node_id": "func:pm_get_blocker", "node_type": "function", "name": "pm_get_blocker"}
+{"node_id": "func:pm_get_blocker@08008aa8", "node_type": "function", "name": "pm_get_blocker", "entry": "08008aa8", "is_isr": false, "signature": "pm_blocker_t pm_get_blocker(void)"}
+{"node_id": "func:pm_off", "node_type": "function", "name": "pm_off"}
+{"node_id": "func:pm_off@08008ac4", "node_type": "function", "name": "pm_off", "entry": "08008ac4", "is_isr": false, "signature": "void pm_off(void)"}
+{"node_id": "func:pm_reboot", "node_type": "function", "name": "pm_reboot"}
+{"node_id": "func:pm_reboot@08000f40", "node_type": "function", "name": "pm_reboot", "entry": "08000f40", "is_isr": false, "signature": "void pm_reboot(void)"}
+{"node_id": "func:pm_set", "node_type": "function", "name": "pm_set"}
+{"node_id": "func:pm_set@0800862c", "node_type": "function", "name": "pm_set", "entry": "0800862c", "is_isr": false, "signature": "void __stdcall pm_set(uint mode)"}
+{"node_id": "func:pm_set_lowest", "node_type": "function", "name": "pm_set_lowest"}
+{"node_id": "func:pm_set_lowest@08008a38", "node_type": "function", "name": "pm_set_lowest", "entry": "08008a38", "is_isr": false, "signature": "void pm_set_lowest(void)"}
+{"node_id": "func:pm_unblock", "node_type": "function", "name": "pm_unblock"}
+{"node_id": "func:pm_unblock@08008a88", "node_type": "function", "name": "pm_unblock", "entry": "08008a88", "is_isr": false, "signature": "void __stdcall pm_unblock(uint mode)"}
+{"node_id": "func:post_startup", "node_type": "function", "name": "post_startup"}
+{"node_id": "func:post_startup@08000cea", "node_type": "function", "name": "post_startup", "entry": "08000cea", "is_isr": false, "signature": "undefined post_startup(void)"}
+{"node_id": "func:pre_startup", "node_type": "function", "name": "pre_startup"}
+{"node_id": "func:pre_startup@08000ce8", "node_type": "function", "name": "pre_startup", "entry": "08000ce8", "is_isr": false, "signature": "void pre_startup(void)"}
+{"node_id": "func:print", "node_type": "function", "name": "print"}
+{"node_id": "func:print@08001244", "node_type": "function", "name": "print", "entry": "08001244", "is_isr": false, "signature": "void __stdcall print(char * s, size_t n)"}
+{"node_id": "func:print_byte_hex", "node_type": "function", "name": "print_byte_hex"}
+{"node_id": "func:print_byte_hex@08001264", "node_type": "function", "name": "print_byte_hex", "entry": "08001264", "is_isr": false, "signature": "void __stdcall print_byte_hex(uint8_t byte)"}
+{"node_id": "func:print_prompt", "node_type": "function", "name": "print_prompt"}
+{"node_id": "func:print_prompt@08008c58", "node_type": "function", "name": "print_prompt", "entry": "08008c58", "is_isr": false, "signature": "void print_prompt(void)"}
+{"node_id": "func:print_str", "node_type": "function", "name": "print_str"}
+{"node_id": "func:print_str@08001294", "node_type": "function", "name": "print_str", "entry": "08001294", "is_isr": false, "signature": "void __stdcall print_str(char * str)"}
+{"node_id": "func:print_u32_hex", "node_type": "function", "name": "print_u32_hex"}
+{"node_id": "func:print_u32_hex@0800127c", "node_type": "function", "name": "print_u32_hex", "entry": "0800127c", "is_isr": false, "signature": "void __stdcall print_u32_hex(uint32_t val)"}
+{"node_id": "func:ps", "node_type": "function", "name": "ps"}
+{"node_id": "func:ps@08008ad4", "node_type": "function", "name": "ps", "entry": "08008ad4", "is_isr": false, "signature": "void ps(void)"}
+{"node_id": "func:putchar", "node_type": "function", "name": "putchar"}
+{"node_id": "func:putchar@0800c8f8", "node_type": "function", "name": "putchar", "entry": "0800c8f8", "is_isr": false, "signature": "int __stdcall putchar(int __c)"}
+{"node_id": "func:puts", "node_type": "function", "name": "puts"}
+{"node_id": "func:puts@0800c9fc", "node_type": "function", "name": "puts", "entry": "0800c9fc", "is_isr": false, "signature": "int __stdcall puts(char * __s)"}
+{"node_id": "func:queue_msg", "node_type": "function", "name": "queue_msg"}
+{"node_id": "func:queue_msg@080002c4", "node_type": "function", "name": "queue_msg", "entry": "080002c4", "is_isr": false, "signature": "int __stdcall queue_msg(thread_t * target, msg_t * m)"}
+{"node_id": "func:random_init", "node_type": "function", "name": "random_init"}
+{"node_id": "func:random_init@08008bc0", "node_type": "function", "name": "random_init", "entry": "08008bc0", "is_isr": false, "signature": "void __stdcall random_init(uint32_t s)"}
+{"node_id": "func:random_uint32", "node_type": "function", "name": "random_uint32"}
+{"node_id": "func:random_uint32@08008bd0", "node_type": "function", "name": "random_uint32", "entry": "08008bd0", "is_isr": false, "signature": "uint32_t random_uint32(void)"}
+{"node_id": "func:random_uint32_range", "node_type": "function", "name": "random_uint32_range"}
+{"node_id": "func:random_uint32_range@08008c18", "node_type": "function", "name": "random_uint32_range", "entry": "08008c18", "is_isr": false, "signature": "uint32_t __stdcall random_uint32_range(uint32_t a, uint32_t b)"}
+{"node_id": "func:readline", "node_type": "function", "name": "readline"}
+{"node_id": "func:readline@08008c78", "node_type": "function", "name": "readline", "entry": "08008c78", "is_isr": false, "signature": "int __stdcall readline(char * buf, size_t size)"}
+{"node_id": "func:reset@08007a80", "node_type": "function", "name": "reset", "entry": "08007a80", "is_isr": false, "signature": "void __stdcall reset(gnrc_rpl_dodag_t * dodag)"}
+{"node_id": "func:reset_handler_default@08000cec", "node_type": "function", "name": "reset_handler_default", "entry": "08000cec", "is_isr": false, "signature": "void reset_handler_default(void)"}
+{"node_id": "func:restore_context@08000c12", "node_type": "function", "name": "restore_context", "entry": "08000c12", "is_isr": false, "signature": "undefined restore_context(void)"}
+{"node_id": "func:rmutex_lock", "node_type": "function", "name": "rmutex_lock"}
+{"node_id": "func:rmutex_lock@08000a50", "node_type": "function", "name": "rmutex_lock", "entry": "08000a50", "is_isr": false, "signature": "void __stdcall rmutex_lock(rmutex_t * rmutex)"}
+{"node_id": "func:rmutex_unlock", "node_type": "function", "name": "rmutex_unlock"}
+{"node_id": "func:rmutex_unlock@08000a58", "node_type": "function", "name": "rmutex_unlock", "entry": "08000a58", "is_isr": false, "signature": "void __stdcall rmutex_unlock(rmutex_t * rmutex)"}
+{"node_id": "func:sbrk_aligned", "node_type": "function", "name": "sbrk_aligned"}
+{"node_id": "func:sbrk_aligned@0800c7a0", "node_type": "function", "name": "sbrk_aligned", "entry": "0800c7a0", "is_isr": false, "signature": "undefined sbrk_aligned(void)"}
+{"node_id": "func:sched_arch_idle", "node_type": "function", "name": "sched_arch_idle"}
+{"node_id": "func:sched_arch_idle@08000c34", "node_type": "function", "name": "sched_arch_idle", "entry": "08000c34", "is_isr": false, "signature": "void sched_arch_idle(void)"}
+{"node_id": "func:sched_run", "node_type": "function", "name": "sched_run"}
+{"node_id": "func:sched_run@08000654", "node_type": "function", "name": "sched_run", "entry": "08000654", "is_isr": false, "signature": "thread_t * sched_run(void)"}
+{"node_id": "func:sched_set_status", "node_type": "function", "name": "sched_set_status"}
+{"node_id": "func:sched_set_status@080006d0", "node_type": "function", "name": "sched_set_status", "entry": "080006d0", "is_isr": false, "signature": "void __stdcall sched_set_status(thread_t * process, thread_status_t status)"}
+{"node_id": "func:sched_switch", "node_type": "function", "name": "sched_switch"}
+{"node_id": "func:sched_switch@08000750", "node_type": "function", "name": "sched_switch", "entry": "08000750", "is_isr": false, "signature": "void __stdcall sched_switch(uint16_t other_prio)"}
+{"node_id": "func:sched_task_exit@0800078c", "node_type": "function", "name": "sched_task_exit", "entry": "0800078c", "is_isr": false, "signature": "noreturn void sched_task_exit(void)"}
+{"node_id": "func:shell_run_once", "node_type": "function", "name": "shell_run_once"}
+{"node_id": "func:shell_run_once@08008d30", "node_type": "function", "name": "shell_run_once", "entry": "08008d30", "is_isr": false, "signature": "void __stdcall shell_run_once(shell_command_t * shell_commands, char * line_buf, int len)"}
+{"node_id": "func:std", "node_type": "function", "name": "std"}
+{"node_id": "func:std@0800c428", "node_type": "function", "name": "std", "entry": "0800c428", "is_isr": false, "signature": "undefined std(void)"}
+{"node_id": "func:stdio_init", "node_type": "function", "name": "stdio_init"}
+{"node_id": "func:stdio_init@0800b810", "node_type": "function", "name": "stdio_init", "entry": "0800b810", "is_isr": false, "signature": "void stdio_init(void)"}
+{"node_id": "func:stdio_read", "node_type": "function", "name": "stdio_read"}
+{"node_id": "func:stdio_read@0800b828", "node_type": "function", "name": "stdio_read", "entry": "0800b828", "is_isr": false, "signature": "ssize_t __stdcall stdio_read(void * buffer, size_t count)"}
+{"node_id": "func:stdio_write", "node_type": "function", "name": "stdio_write"}
+{"node_id": "func:stdio_write@0800b838", "node_type": "function", "name": "stdio_write", "entry": "0800b838", "is_isr": false, "signature": "ssize_t __stdcall stdio_write(void * buffer, size_t len)"}
+{"node_id": "func:stmclk_disable_hsi", "node_type": "function", "name": "stmclk_disable_hsi"}
+{"node_id": "func:stmclk_disable_hsi@0800b864", "node_type": "function", "name": "stmclk_disable_hsi", "entry": "0800b864", "is_isr": false, "signature": "void stmclk_disable_hsi(void)"}
+{"node_id": "func:stmclk_enable_hsi", "node_type": "function", "name": "stmclk_enable_hsi"}
+{"node_id": "func:stmclk_enable_hsi@0800b84c", "node_type": "function", "name": "stmclk_enable_hsi", "entry": "0800b84c", "is_isr": false, "signature": "void stmclk_enable_hsi(void)"}
+{"node_id": "func:stmclk_init_sysclk", "node_type": "function", "name": "stmclk_init_sysclk"}
+{"node_id": "func:stmclk_init_sysclk@0800b874", "node_type": "function", "name": "stmclk_init_sysclk", "entry": "0800b874", "is_isr": false, "signature": "void stmclk_init_sysclk(void)"}
+{"node_id": "func:strchr", "node_type": "function", "name": "strchr"}
+{"node_id": "func:strchr@0800ca92", "node_type": "function", "name": "strchr", "entry": "0800ca92", "is_isr": false, "signature": "char * __stdcall strchr(char * __s, int __c)"}
+{"node_id": "func:strcmp", "node_type": "function", "name": "strcmp"}
+{"node_id": "func:strcmp@0800caac", "node_type": "function", "name": "strcmp", "entry": "0800caac", "is_isr": false, "signature": "int __stdcall strcmp(char * __s1, char * __s2)"}
+{"node_id": "func:strcpy", "node_type": "function", "name": "strcpy"}
+{"node_id": "func:strcpy@0800cac0", "node_type": "function", "name": "strcpy", "entry": "0800cac0", "is_isr": false, "signature": "char * __stdcall strcpy(char * __dest, char * __src)"}
+{"node_id": "func:strlen", "node_type": "function", "name": "strlen"}
+{"node_id": "func:strlen@0800cad0", "node_type": "function", "name": "strlen", "entry": "0800cad0", "is_isr": false, "signature": "size_t __stdcall strlen(char * __s)"}
+{"node_id": "func:strncmp", "node_type": "function", "name": "strncmp"}
+{"node_id": "func:strncmp@0800cae0", "node_type": "function", "name": "strncmp", "entry": "0800cae0", "is_isr": false, "signature": "int __stdcall strncmp(char * __s1, char * __s2, size_t __n)"}
+{"node_id": "func:strtol", "node_type": "function", "name": "strtol"}
+{"node_id": "func:strtol@0800cc00", "node_type": "function", "name": "strtol", "entry": "0800cc00", "is_isr": false, "signature": "long __stdcall strtol(char * __nptr, char * * __endptr, int __base)"}
+{"node_id": "func:strtoul", "node_type": "function", "name": "strtoul"}
+{"node_id": "func:strtoul@0800ccf8", "node_type": "function", "name": "strtoul", "entry": "0800ccf8", "is_isr": false, "signature": "ulong __stdcall strtoul(char * __nptr, char * * __endptr, int __base)"}
+{"node_id": "func:thread_add_to_list", "node_type": "function", "name": "thread_add_to_list"}
+{"node_id": "func:thread_add_to_list@080007e4", "node_type": "function", "name": "thread_add_to_list", "entry": "080007e4", "is_isr": false, "signature": "void __stdcall thread_add_to_list(list_node_t * list, thread_t * thread)"}
+{"node_id": "func:thread_create", "node_type": "function", "name": "thread_create"}
+{"node_id": "func:thread_create@08000818", "node_type": "function", "name": "thread_create", "entry": "08000818", "is_isr": false, "signature": "kernel_pid_t __stdcall thread_create(char * stack, int stacksize, uint8_t priority, int flags, thread_task_func_t function, void * arg, char * name)"}
+{"node_id": "func:thread_flags_wake", "node_type": "function", "name": "thread_flags_wake"}
+{"node_id": "func:thread_flags_wake@08000914", "node_type": "function", "name": "thread_flags_wake", "entry": "08000914", "is_isr": false, "signature": "int __stdcall thread_flags_wake(thread_t * thread)"}
+{"node_id": "func:thread_getname", "node_type": "function", "name": "thread_getname"}
+{"node_id": "func:thread_getname@080007c8", "node_type": "function", "name": "thread_getname", "entry": "080007c8", "is_isr": false, "signature": "char * __stdcall thread_getname(kernel_pid_t pid)"}
+{"node_id": "func:thread_isr_stack_pointer", "node_type": "function", "name": "thread_isr_stack_pointer"}
+{"node_id": "func:thread_isr_stack_pointer@08000bc4", "node_type": "function", "name": "thread_isr_stack_pointer", "entry": "08000bc4", "is_isr": true, "signature": "void * thread_isr_stack_pointer(void)"}
+{"node_id": "func:thread_isr_stack_start", "node_type": "function", "name": "thread_isr_stack_start"}
+{"node_id": "func:thread_isr_stack_start@08000bcc", "node_type": "function", "name": "thread_isr_stack_start", "entry": "08000bcc", "is_isr": true, "signature": "void * thread_isr_stack_start(void)"}
+{"node_id": "func:thread_isr_stack_usage", "node_type": "function", "name": "thread_isr_stack_usage"}
+{"node_id": "func:thread_isr_stack_usage@08000ba0", "node_type": "function", "name": "thread_isr_stack_usage", "entry": "08000ba0", "is_isr": true, "signature": "int thread_isr_stack_usage(void)"}
+{"node_id": "func:thread_measure_stack_free", "node_type": "function", "name": "thread_measure_stack_free"}
+{"node_id": "func:thread_measure_stack_free@0800080a", "node_type": "function", "name": "thread_measure_stack_free", "entry": "0800080a", "is_isr": false, "signature": "uintptr_t __stdcall thread_measure_stack_free(char * stack)"}
+{"node_id": "func:thread_stack_init", "node_type": "function", "name": "thread_stack_init"}
+{"node_id": "func:thread_stack_init@08000b38", "node_type": "function", "name": "thread_stack_init", "entry": "08000b38", "is_isr": false, "signature": "char * __stdcall thread_stack_init(thread_task_func_t task_func, void * arg, void * stack_start, int stack_size)"}
+{"node_id": "func:thread_state_to_string", "node_type": "function", "name": "thread_state_to_string"}
+{"node_id": "func:thread_state_to_string@08000900", "node_type": "function", "name": "thread_state_to_string", "entry": "08000900", "is_isr": false, "signature": "char * __stdcall thread_state_to_string(thread_status_t state)"}
+{"node_id": "func:timer_clear", "node_type": "function", "name": "timer_clear"}
+{"node_id": "func:timer_clear@080086f4", "node_type": "function", "name": "timer_clear", "entry": "080086f4", "is_isr": false, "signature": "int __stdcall timer_clear(tim_t tim, int channel)"}
+{"node_id": "func:timer_init", "node_type": "function", "name": "timer_init"}
+{"node_id": "func:timer_init@08008758", "node_type": "function", "name": "timer_init", "entry": "08008758", "is_isr": false, "signature": "int __stdcall timer_init(tim_t tim, uint32_t freq, timer_cb_t cb, void * arg)"}
+{"node_id": "func:timer_read", "node_type": "function", "name": "timer_read"}
+{"node_id": "func:timer_read@08008728", "node_type": "function", "name": "timer_read", "entry": "08008728", "is_isr": false, "signature": "uint __stdcall timer_read(tim_t tim)"}
+{"node_id": "func:timer_set", "node_type": "function", "name": "timer_set"}
+{"node_id": "func:timer_set@08008698", "node_type": "function", "name": "timer_set", "entry": "08008698", "is_isr": false, "signature": "int __stdcall timer_set(tim_t tim, int channel, uint timeout)"}
+{"node_id": "func:timer_start", "node_type": "function", "name": "timer_start"}
+{"node_id": "func:timer_start@08008738", "node_type": "function", "name": "timer_start", "entry": "08008738", "is_isr": false, "signature": "void __stdcall timer_start(tim_t tim)"}
+{"node_id": "func:trickle_callback", "node_type": "function", "name": "trickle_callback"}
+{"node_id": "func:trickle_callback@0800b950", "node_type": "function", "name": "trickle_callback", "entry": "0800b950", "is_isr": false, "signature": "void __stdcall trickle_callback(trickle_t * trickle)"}
+{"node_id": "func:trickle_increment_counter", "node_type": "function", "name": "trickle_increment_counter"}
+{"node_id": "func:trickle_increment_counter@0800b9ec", "node_type": "function", "name": "trickle_increment_counter", "entry": "0800b9ec", "is_isr": false, "signature": "void __stdcall trickle_increment_counter(trickle_t * trickle)"}
+{"node_id": "func:trickle_interval", "node_type": "function", "name": "trickle_interval"}
+{"node_id": "func:trickle_interval@0800b8fc", "node_type": "function", "name": "trickle_interval", "entry": "0800b8fc", "is_isr": false, "signature": "void __stdcall trickle_interval(trickle_t * trickle)"}
+{"node_id": "func:trickle_reset_timer", "node_type": "function", "name": "trickle_reset_timer"}
+{"node_id": "func:trickle_reset_timer@0800b9c8", "node_type": "function", "name": "trickle_reset_timer", "entry": "0800b9c8", "is_isr": false, "signature": "void __stdcall trickle_reset_timer(trickle_t * trickle)"}
+{"node_id": "func:trickle_start", "node_type": "function", "name": "trickle_start"}
+{"node_id": "func:trickle_start@0800b96e", "node_type": "function", "name": "trickle_start", "entry": "0800b96e", "is_isr": false, "signature": "void __stdcall trickle_start(kernel_pid_t pid, trickle_t * trickle, uint16_t msg_type, uint32_t Imin, uint8_t Imax, uint8_t k)"}
+{"node_id": "func:trickle_stop", "node_type": "function", "name": "trickle_stop"}
+{"node_id": "func:trickle_stop@0800b9b8", "node_type": "function", "name": "trickle_stop", "entry": "0800b9b8", "is_isr": false, "signature": "void __stdcall trickle_stop(trickle_t * trickle)"}
+{"node_id": "func:tsrb_add_one", "node_type": "function", "name": "tsrb_add_one"}
+{"node_id": "func:tsrb_add_one@0800ba44", "node_type": "function", "name": "tsrb_add_one", "entry": "0800ba44", "is_isr": false, "signature": "int __stdcall tsrb_add_one(tsrb_t * rb, uint8_t c)"}
+{"node_id": "func:tsrb_get", "node_type": "function", "name": "tsrb_get"}
+{"node_id": "func:tsrb_get@0800ba06", "node_type": "function", "name": "tsrb_get", "entry": "0800ba06", "is_isr": false, "signature": "int __stdcall tsrb_get(tsrb_t * rb, uint8_t * dst, size_t n)"}
+{"node_id": "func:uart_enable_clock", "node_type": "function", "name": "uart_enable_clock"}
+{"node_id": "func:uart_enable_clock@08008870", "node_type": "function", "name": "uart_enable_clock", "entry": "08008870", "is_isr": false, "signature": "void __stdcall uart_enable_clock(uart_t uart)"}
+{"node_id": "func:uart_init", "node_type": "function", "name": "uart_init"}
+{"node_id": "func:uart_init@080088a0", "node_type": "function", "name": "uart_init", "entry": "080088a0", "is_isr": false, "signature": "int __stdcall uart_init(uart_t uart, uint32_t baudrate, uart_rx_cb_t rx_cb, void * arg)"}
+{"node_id": "func:uart_write", "node_type": "function", "name": "uart_write"}
+{"node_id": "func:uart_write@08008934", "node_type": "function", "name": "uart_write", "entry": "08008934", "is_isr": false, "signature": "void __stdcall uart_write(uart_t uart, uint8_t * data, size_t len)"}
+{"node_id": "func:udp_hdr_print", "node_type": "function", "name": "udp_hdr_print"}
+{"node_id": "func:udp_hdr_print@0800ba80", "node_type": "function", "name": "udp_hdr_print", "entry": "0800ba80", "is_isr": false, "signature": "void __stdcall udp_hdr_print(udp_hdr_t * hdr)"}
+{"node_id": "func:usage_fault_default@08000cb8", "node_type": "function", "name": "usage_fault_default", "entry": "08000cb8", "is_isr": false, "signature": "void usage_fault_default(void)"}
+{"node_id": "func:which_dodag@08007ac0", "node_type": "function", "name": "which_dodag", "entry": "08007ac0", "is_isr": false, "signature": "gnrc_rpl_dodag_t * __stdcall which_dodag(gnrc_rpl_dodag_t * d1, gnrc_rpl_dodag_t * d2)"}
+{"node_id": "func:ztimer_convert_cancel@0800bab4", "node_type": "function", "name": "ztimer_convert_cancel", "entry": "0800bab4", "is_isr": false, "signature": "void __stdcall ztimer_convert_cancel(ztimer_clock_t * clock)"}
+{"node_id": "func:ztimer_convert_frac_init", "node_type": "function", "name": "ztimer_convert_frac_init"}
+{"node_id": "func:ztimer_convert_frac_init@0800bb30", "node_type": "function", "name": "ztimer_convert_frac_init", "entry": "0800bb30", "is_isr": false, "signature": "void __stdcall ztimer_convert_frac_init(ztimer_convert_frac_t * self, ztimer_clock_t * lower, uint32_t freq_self, uint32_t freq_lower)"}
+{"node_id": "func:ztimer_convert_frac_op_now@0800babe", "node_type": "function", "name": "ztimer_convert_frac_op_now", "entry": "0800babe", "is_isr": false, "signature": "uint32_t __stdcall ztimer_convert_frac_op_now(ztimer_clock_t * z)"}
+{"node_id": "func:ztimer_convert_frac_op_set", "node_type": "function", "name": "ztimer_convert_frac_op_set"}
+{"node_id": "func:ztimer_convert_frac_op_set@0800bafa", "node_type": "function", "name": "ztimer_convert_frac_op_set", "entry": "0800bafa", "is_isr": false, "signature": "void __stdcall ztimer_convert_frac_op_set(ztimer_clock_t * z, uint32_t val)"}
+{"node_id": "func:ztimer_handler@0800bdd0", "node_type": "function", "name": "ztimer_handler", "entry": "0800bdd0", "is_isr": true, "signature": "void __stdcall ztimer_handler(ztimer_clock_t * clock)"}
+{"node_id": "func:ztimer_init", "node_type": "function", "name": "ztimer_init"}
+{"node_id": "func:ztimer_init@0800be64", "node_type": "function", "name": "ztimer_init", "entry": "0800be64", "is_isr": false, "signature": "void ztimer_init(void)"}
+{"node_id": "func:ztimer_now", "node_type": "function", "name": "ztimer_now"}
+{"node_id": "func:ztimer_now@080014c4", "node_type": "function", "name": "ztimer_now", "entry": "080014c4", "is_isr": false, "signature": "ztimer_now_t __stdcall ztimer_now(ztimer_clock_t * clock)"}
+{"node_id": "func:ztimer_now@08003718", "node_type": "function", "name": "ztimer_now", "entry": "08003718", "is_isr": false, "signature": "ztimer_now_t __stdcall ztimer_now(ztimer_clock_t * clock)"}
+{"node_id": "func:ztimer_now@0800bcc0", "node_type": "function", "name": "ztimer_now", "entry": "0800bcc0", "is_isr": false, "signature": "ztimer_now_t __stdcall ztimer_now(ztimer_clock_t * clock)"}
+{"node_id": "func:ztimer_periph_timer_init", "node_type": "function", "name": "ztimer_periph_timer_init"}
+{"node_id": "func:ztimer_periph_timer_init@0800becc", "node_type": "function", "name": "ztimer_periph_timer_init", "entry": "0800becc", "is_isr": false, "signature": "void __stdcall ztimer_periph_timer_init(ztimer_periph_timer_t * clock, tim_t dev, uint32_t freq, uint32_t max_val)"}
+{"node_id": "func:ztimer_remove", "node_type": "function", "name": "ztimer_remove"}
+{"node_id": "func:ztimer_remove@0800bd02", "node_type": "function", "name": "ztimer_remove", "entry": "0800bd02", "is_isr": false, "signature": "_Bool __stdcall ztimer_remove(ztimer_clock_t * clock, ztimer_t * timer)"}
+{"node_id": "func:ztimer_set", "node_type": "function", "name": "ztimer_set"}
+{"node_id": "func:ztimer_set@0800bd34", "node_type": "function", "name": "ztimer_set", "entry": "0800bd34", "is_isr": false, "signature": "uint32_t __stdcall ztimer_set(ztimer_clock_t * clock, ztimer_t * timer, uint32_t val)"}
+{"node_id": "func:ztimer_set_msg", "node_type": "function", "name": "ztimer_set_msg"}
+{"node_id": "func:ztimer_set_msg@0800bf58", "node_type": "function", "name": "ztimer_set_msg", "entry": "0800bf58", "is_isr": false, "signature": "void __stdcall ztimer_set_msg(ztimer_clock_t * clock, ztimer_t * timer, uint32_t offset, msg_t * msg, kernel_pid_t target_pid)"}
+{"node_id": "func:ztimer_sleep", "node_type": "function", "name": "ztimer_sleep"}
+{"node_id": "func:ztimer_sleep@0800bf14", "node_type": "function", "name": "ztimer_sleep", "entry": "0800bf14", "is_isr": false, "signature": "void __stdcall ztimer_sleep(ztimer_clock_t * clock, uint32_t duration)"}
+{"node_id": "mmio:0X40000000", "node_type": "mmio", "address_hex": "0x40000000", "address": 1073741824}
+{"node_id": "mmio:0X40000004", "node_type": "mmio", "address_hex": "0x40000004", "address": 1073741828}
+{"node_id": "mmio:0X4000000C", "node_type": "mmio", "address_hex": "0x4000000C", "address": 1073741836}
+{"node_id": "mmio:0X40000010", "node_type": "mmio", "address_hex": "0x40000010", "address": 1073741840}
+{"node_id": "mmio:0X40000014", "node_type": "mmio", "address_hex": "0x40000014", "address": 1073741844}
+{"node_id": "mmio:0X40000028", "node_type": "mmio", "address_hex": "0x40000028", "address": 1073741864}
+{"node_id": "mmio:0X4000002C", "node_type": "mmio", "address_hex": "0x4000002C", "address": 1073741868}
+{"node_id": "mmio:0X40007000", "node_type": "mmio", "address_hex": "0x40007000", "address": 1073770496}
+{"node_id": "mmio:0X40007004", "node_type": "mmio", "address_hex": "0x40007004", "address": 1073770500}
+{"node_id": "mmio:0X40021000", "node_type": "mmio", "address_hex": "0x40021000", "address": 1073876992}
+{"node_id": "mmio:0X40021004", "node_type": "mmio", "address_hex": "0x40021004", "address": 1073876996}
+{"node_id": "mmio:0X40021008", "node_type": "mmio", "address_hex": "0x40021008", "address": 1073877000}
+{"node_id": "mmio:0X40021014", "node_type": "mmio", "address_hex": "0x40021014", "address": 1073877012}
+{"node_id": "mmio:0X40021018", "node_type": "mmio", "address_hex": "0x40021018", "address": 1073877016}
+{"node_id": "mmio:0X4002101C", "node_type": "mmio", "address_hex": "0x4002101C", "address": 1073877020}
+{"node_id": "mmio:0X40022000", "node_type": "mmio", "address_hex": "0x40022000", "address": 1073881088}
+{"node_id": "mmio:0X48000000", "node_type": "mmio", "address_hex": "0x48000000", "address": 1207959552}
+{"node_id": "mmio:0X48000400", "node_type": "mmio", "address_hex": "0x48000400", "address": 1207960576}
+{"node_id": "mmio:0X48000800", "node_type": "mmio", "address_hex": "0x48000800", "address": 1207961600}
+{"node_id": "mmio:0X48000C00", "node_type": "mmio", "address_hex": "0x48000C00", "address": 1207962624}
+{"node_id": "mmio:0X48001000", "node_type": "mmio", "address_hex": "0x48001000", "address": 1207963648}
+{"node_id": "mmio:0X48001018", "node_type": "mmio", "address_hex": "0x48001018", "address": 1207963672}
+{"node_id": "mmio:0X48001400", "node_type": "mmio", "address_hex": "0x48001400", "address": 1207964672}
+{"node_id": "mmio:0XE000E100", "node_type": "mmio", "address_hex": "0xE000E100", "address": 3758153984}
+{"node_id": "mmio:0XE000ED04", "node_type": "mmio", "address_hex": "0xE000ED04", "address": 3758157060}
+{"node_id": "mmio:0XE000ED08", "node_type": "mmio", "address_hex": "0xE000ED08", "address": 3758157064}
+{"node_id": "mmio:0XE000ED0C", "node_type": "mmio", "address_hex": "0xE000ED0C", "address": 3758157068}
+{"node_id": "mmio:0XE000ED10", "node_type": "mmio", "address_hex": "0xE000ED10", "address": 3758157072}
+{"node_id": "mmio:0XE000ED14", "node_type": "mmio", "address_hex": "0xE000ED14", "address": 3758157076}
+{"node_id": "mmio:0XE000ED1F", "node_type": "mmio", "address_hex": "0xE000ED1F", "address": 3758157087}
+{"node_id": "mmio:0XE000ED22", "node_type": "mmio", "address_hex": "0xE000ED22", "address": 3758157090}
+{"node_id": "mmio:0XE000ED24", "node_type": "mmio", "address_hex": "0xE000ED24", "address": 3758157092}
+{"node_id": "mmio:0XE000ED28", "node_type": "mmio", "address_hex": "0xE000ED28", "address": 3758157096}
+{"node_id": "mmio:0XE000ED2C", "node_type": "mmio", "address_hex": "0xE000ED2C", "address": 3758157100}
+{"node_id": "mmio:0XE000ED30", "node_type": "mmio", "address_hex": "0xE000ED30", "address": 3758157104}
+{"node_id": "mmio:0XE000ED34", "node_type": "mmio", "address_hex": "0xE000ED34", "address": 3758157108}
+{"node_id": "mmio:0XE000ED38", "node_type": "mmio", "address_hex": "0xE000ED38", "address": 3758157112}
+{"node_id": "mmio:0XE000ED3C", "node_type": "mmio", "address_hex": "0xE000ED3C", "address": 3758157116}
+{"node_id": "mmio:0XE000ED94", "node_type": "mmio", "address_hex": "0xE000ED94", "address": 3758157204}
+{"node_id": "mmio:0XE000ED98", "node_type": "mmio", "address_hex": "0xE000ED98", "address": 3758157208}
+{"node_id": "mmio:0XE000ED9C", "node_type": "mmio", "address_hex": "0xE000ED9C", "address": 3758157212}
+{"node_id": "mmio:0XE000EDA0", "node_type": "mmio", "address_hex": "0xE000EDA0", "address": 3758157216}

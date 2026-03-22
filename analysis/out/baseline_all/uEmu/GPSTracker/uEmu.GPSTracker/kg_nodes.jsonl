@@ -1,0 +1,705 @@
+{"node_id": "func:CDC_GetInterface", "node_type": "function", "name": "CDC_GetInterface"}
+{"node_id": "func:CDC_GetInterface@00084014", "node_type": "function", "name": "CDC_GetInterface", "entry": "00084014", "is_isr": false, "signature": "int __stdcall CDC_GetInterface(uint8_t * interfaceNum)"}
+{"node_id": "func:CDC_GetOtherInterface", "node_type": "function", "name": "CDC_GetOtherInterface"}
+{"node_id": "func:CDC_GetOtherInterface@00084028", "node_type": "function", "name": "CDC_GetOtherInterface", "entry": "00084028", "is_isr": false, "signature": "int __stdcall CDC_GetOtherInterface(uint8_t * interfaceNum)"}
+{"node_id": "func:CDC_Setup", "node_type": "function", "name": "CDC_Setup"}
+{"node_id": "func:CDC_Setup@0008403c", "node_type": "function", "name": "CDC_Setup", "entry": "0008403c", "is_isr": false, "signature": "bool __stdcall CDC_Setup(USBSetup * setup)"}
+{"node_id": "func:DueFlashStorage", "node_type": "function", "name": "DueFlashStorage"}
+{"node_id": "func:DueFlashStorage@00082a00", "node_type": "function", "name": "DueFlashStorage", "entry": "00082a00", "is_isr": false, "signature": "DueFlashStorage * __thiscall DueFlashStorage(DueFlashStorage * this)"}
+{"node_id": "func:FUN_00084e90", "node_type": "function", "name": "FUN_00084e90"}
+{"node_id": "func:FUN_00084e90@00084e90", "node_type": "function", "name": "FUN_00084e90", "entry": "00084e90", "is_isr": false, "signature": "undefined FUN_00084e90(void)"}
+{"node_id": "func:FUN_00085076", "node_type": "function", "name": "FUN_00085076"}
+{"node_id": "func:FUN_00085076@00085076", "node_type": "function", "name": "FUN_00085076", "entry": "00085076", "is_isr": false, "signature": "undefined FUN_00085076(void)"}
+{"node_id": "func:GetTickCount", "node_type": "function", "name": "GetTickCount"}
+{"node_id": "func:GetTickCount@000848e8", "node_type": "function", "name": "GetTickCount", "entry": "000848e8", "is_isr": false, "signature": "undefined GetTickCount(void)"}
+{"node_id": "func:IrqHandler", "node_type": "function", "name": "IrqHandler"}
+{"node_id": "func:IrqHandler@00083df0", "node_type": "function", "name": "IrqHandler", "entry": "00083df0", "is_isr": true, "signature": "void __thiscall IrqHandler(UARTClass * this)"}
+{"node_id": "func:PIOA_Handler@00083828", "node_type": "function", "name": "PIOA_Handler", "entry": "00083828", "is_isr": true, "signature": "void PIOA_Handler(void)"}
+{"node_id": "func:PIOB_Handler@00083860", "node_type": "function", "name": "PIOB_Handler", "entry": "00083860", "is_isr": true, "signature": "void PIOB_Handler(void)"}
+{"node_id": "func:PIO_Configure", "node_type": "function", "name": "PIO_Configure"}
+{"node_id": "func:PIO_Configure@0008321c", "node_type": "function", "name": "PIO_Configure", "entry": "0008321c", "is_isr": false, "signature": "undefined PIO_Configure(void)"}
+{"node_id": "func:PIO_Get", "node_type": "function", "name": "PIO_Get"}
+{"node_id": "func:PIO_Get@00083196", "node_type": "function", "name": "PIO_Get", "entry": "00083196", "is_isr": false, "signature": "undefined PIO_Get(void)"}
+{"node_id": "func:PIO_GetOutputDataStatus", "node_type": "function", "name": "PIO_GetOutputDataStatus"}
+{"node_id": "func:PIO_GetOutputDataStatus@00083280", "node_type": "function", "name": "PIO_GetOutputDataStatus", "entry": "00083280", "is_isr": false, "signature": "undefined PIO_GetOutputDataStatus(void)"}
+{"node_id": "func:PIO_PullUp", "node_type": "function", "name": "PIO_PullUp"}
+{"node_id": "func:PIO_PullUp@0008318c", "node_type": "function", "name": "PIO_PullUp", "entry": "0008318c", "is_isr": false, "signature": "undefined PIO_PullUp(void)"}
+{"node_id": "func:PIO_SetInput", "node_type": "function", "name": "PIO_SetInput"}
+{"node_id": "func:PIO_SetInput@000831d0", "node_type": "function", "name": "PIO_SetInput", "entry": "000831d0", "is_isr": false, "signature": "undefined PIO_SetInput(void)"}
+{"node_id": "func:PIO_SetOutput", "node_type": "function", "name": "PIO_SetOutput"}
+{"node_id": "func:PIO_SetOutput@000831f6", "node_type": "function", "name": "PIO_SetOutput", "entry": "000831f6", "is_isr": false, "signature": "undefined PIO_SetOutput(void)"}
+{"node_id": "func:PIO_SetPeripheral", "node_type": "function", "name": "PIO_SetPeripheral"}
+{"node_id": "func:PIO_SetPeripheral@000831aa", "node_type": "function", "name": "PIO_SetPeripheral", "entry": "000831aa", "is_isr": false, "signature": "undefined PIO_SetPeripheral(void)"}
+{"node_id": "func:PendSV_Handler@0008389e", "node_type": "function", "name": "PendSV_Handler", "entry": "0008389e", "is_isr": true, "signature": "void PendSV_Handler(void)"}
+{"node_id": "func:PluggableUSB", "node_type": "function", "name": "PluggableUSB"}
+{"node_id": "func:PluggableUSB@000848b0", "node_type": "function", "name": "PluggableUSB", "entry": "000848b0", "is_isr": false, "signature": "PluggableUSB_ * PluggableUSB(void)"}
+{"node_id": "func:Reset_Handler@000837a0", "node_type": "function", "name": "Reset_Handler", "entry": "000837a0", "is_isr": true, "signature": "undefined Reset_Handler(void)"}
+{"node_id": "func:RingBuffer", "node_type": "function", "name": "RingBuffer"}
+{"node_id": "func:RingBuffer@00083c1c", "node_type": "function", "name": "RingBuffer", "entry": "00083c1c", "is_isr": false, "signature": "RingBuffer * __thiscall RingBuffer(RingBuffer * this)"}
+{"node_id": "func:SVC_Handler@0008389a", "node_type": "function", "name": "SVC_Handler", "entry": "0008389a", "is_isr": true, "signature": "void SVC_Handler(void)"}
+{"node_id": "func:SysTick_Config", "node_type": "function", "name": "SysTick_Config"}
+{"node_id": "func:SysTick_Config@00080148", "node_type": "function", "name": "SysTick_Config", "entry": "00080148", "is_isr": false, "signature": "uint32_t __stdcall SysTick_Config(uint32_t ticks)"}
+{"node_id": "func:SysTick_Handler@000838a2", "node_type": "function", "name": "SysTick_Handler", "entry": "000838a2", "is_isr": true, "signature": "void SysTick_Handler(void)"}
+{"node_id": "func:SystemCoreClockUpdate", "node_type": "function", "name": "SystemCoreClockUpdate"}
+{"node_id": "func:SystemCoreClockUpdate@000836d0", "node_type": "function", "name": "SystemCoreClockUpdate", "entry": "000836d0", "is_isr": false, "signature": "undefined SystemCoreClockUpdate(void)"}
+{"node_id": "func:SystemInit", "node_type": "function", "name": "SystemInit"}
+{"node_id": "func:SystemInit@00083648", "node_type": "function", "name": "SystemInit", "entry": "00083648", "is_isr": false, "signature": "undefined SystemInit(void)"}
+{"node_id": "func:TimeTick_Increment", "node_type": "function", "name": "TimeTick_Increment"}
+{"node_id": "func:TimeTick_Increment@000848d8", "node_type": "function", "name": "TimeTick_Increment", "entry": "000848d8", "is_isr": false, "signature": "undefined TimeTick_Increment(void)"}
+{"node_id": "func:TinyGPS", "node_type": "function", "name": "TinyGPS"}
+{"node_id": "func:TinyGPS@00082494", "node_type": "function", "name": "TinyGPS", "entry": "00082494", "is_isr": false, "signature": "TinyGPS * __thiscall TinyGPS(TinyGPS * this)"}
+{"node_id": "func:UARTClass", "node_type": "function", "name": "UARTClass"}
+{"node_id": "func:UARTClass@00083d54", "node_type": "function", "name": "UARTClass", "entry": "00083d54", "is_isr": false, "signature": "UARTClass * __thiscall UARTClass(UARTClass * this, Uart.conflict * pUart, IRQn_Type dwIrq, uint32_t dwId, RingBuffer * pRx_buffer, RingBuffer * pTx_buffer)"}
+{"node_id": "func:UART_Handler@00082bf0", "node_type": "function", "name": "UART_Handler", "entry": "00082bf0", "is_isr": true, "signature": "void UART_Handler(void)"}
+{"node_id": "func:UDD_Attach", "node_type": "function", "name": "UDD_Attach"}
+{"node_id": "func:UDD_Attach@00083370", "node_type": "function", "name": "UDD_Attach", "entry": "00083370", "is_isr": false, "signature": "undefined UDD_Attach(void)"}
+{"node_id": "func:UDD_ClearIN", "node_type": "function", "name": "UDD_ClearIN"}
+{"node_id": "func:UDD_ClearIN@00083458", "node_type": "function", "name": "UDD_ClearIN", "entry": "00083458", "is_isr": false, "signature": "undefined UDD_ClearIN(void)"}
+{"node_id": "func:UDD_ClearOUT", "node_type": "function", "name": "UDD_ClearOUT"}
+{"node_id": "func:UDD_ClearOUT@00083470", "node_type": "function", "name": "UDD_ClearOUT", "entry": "00083470", "is_isr": false, "signature": "undefined UDD_ClearOUT(void)"}
+{"node_id": "func:UDD_ClearSetupInt", "node_type": "function", "name": "UDD_ClearSetupInt"}
+{"node_id": "func:UDD_ClearSetupInt@00083498", "node_type": "function", "name": "UDD_ClearSetupInt", "entry": "00083498", "is_isr": false, "signature": "undefined UDD_ClearSetupInt(void)"}
+{"node_id": "func:UDD_Detach", "node_type": "function", "name": "UDD_Detach"}
+{"node_id": "func:UDD_Detach@000833c0", "node_type": "function", "name": "UDD_Detach", "entry": "000833c0", "is_isr": false, "signature": "undefined UDD_Detach(void)"}
+{"node_id": "func:UDD_FifoByteCount", "node_type": "function", "name": "UDD_FifoByteCount"}
+{"node_id": "func:UDD_FifoByteCount@000835c4", "node_type": "function", "name": "UDD_FifoByteCount", "entry": "000835c4", "is_isr": false, "signature": "undefined UDD_FifoByteCount(void)"}
+{"node_id": "func:UDD_Init", "node_type": "function", "name": "UDD_Init"}
+{"node_id": "func:UDD_Init@000832a0", "node_type": "function", "name": "UDD_Init", "entry": "000832a0", "is_isr": false, "signature": "undefined UDD_Init(void)"}
+{"node_id": "func:UDD_InitEP", "node_type": "function", "name": "UDD_InitEP"}
+{"node_id": "func:UDD_InitEP@000833d0", "node_type": "function", "name": "UDD_InitEP", "entry": "000833d0", "is_isr": false, "signature": "undefined UDD_InitEP(void)"}
+{"node_id": "func:UDD_InitEndpoints", "node_type": "function", "name": "UDD_InitEndpoints"}
+{"node_id": "func:UDD_InitEndpoints@000833fc", "node_type": "function", "name": "UDD_InitEndpoints", "entry": "000833fc", "is_isr": false, "signature": "undefined UDD_InitEndpoints(void)"}
+{"node_id": "func:UDD_ReceivedSetupInt", "node_type": "function", "name": "UDD_ReceivedSetupInt"}
+{"node_id": "func:UDD_ReceivedSetupInt@00083488", "node_type": "function", "name": "UDD_ReceivedSetupInt", "entry": "00083488", "is_isr": false, "signature": "undefined UDD_ReceivedSetupInt(void)"}
+{"node_id": "func:UDD_Recv", "node_type": "function", "name": "UDD_Recv"}
+{"node_id": "func:UDD_Recv8", "node_type": "function", "name": "UDD_Recv8"}
+{"node_id": "func:UDD_Recv8@00083554", "node_type": "function", "name": "UDD_Recv8", "entry": "00083554", "is_isr": false, "signature": "undefined UDD_Recv8(void)"}
+{"node_id": "func:UDD_Recv@0008357c", "node_type": "function", "name": "UDD_Recv", "entry": "0008357c", "is_isr": false, "signature": "undefined UDD_Recv(void)"}
+{"node_id": "func:UDD_ReleaseRX", "node_type": "function", "name": "UDD_ReleaseRX"}
+{"node_id": "func:UDD_ReleaseRX@000835d8", "node_type": "function", "name": "UDD_ReleaseRX", "entry": "000835d8", "is_isr": false, "signature": "undefined UDD_ReleaseRX(void)"}
+{"node_id": "func:UDD_ReleaseTX", "node_type": "function", "name": "UDD_ReleaseTX"}
+{"node_id": "func:UDD_ReleaseTX@00083600", "node_type": "function", "name": "UDD_ReleaseTX", "entry": "00083600", "is_isr": false, "signature": "undefined UDD_ReleaseTX(void)"}
+{"node_id": "func:UDD_Send", "node_type": "function", "name": "UDD_Send"}
+{"node_id": "func:UDD_Send8", "node_type": "function", "name": "UDD_Send8"}
+{"node_id": "func:UDD_Send8@00083530", "node_type": "function", "name": "UDD_Send8", "entry": "00083530", "is_isr": false, "signature": "undefined UDD_Send8(void)"}
+{"node_id": "func:UDD_Send@000834a8", "node_type": "function", "name": "UDD_Send", "entry": "000834a8", "is_isr": false, "signature": "undefined UDD_Send(void)"}
+{"node_id": "func:UDD_SetAddress", "node_type": "function", "name": "UDD_SetAddress"}
+{"node_id": "func:UDD_SetAddress@00083628", "node_type": "function", "name": "UDD_SetAddress", "entry": "00083628", "is_isr": false, "signature": "undefined UDD_SetAddress(void)"}
+{"node_id": "func:UDD_SetStack", "node_type": "function", "name": "UDD_SetStack"}
+{"node_id": "func:UDD_SetStack@00083294", "node_type": "function", "name": "UDD_SetStack", "entry": "00083294", "is_isr": false, "signature": "undefined UDD_SetStack(void)"}
+{"node_id": "func:UDD_Stall", "node_type": "function", "name": "UDD_Stall"}
+{"node_id": "func:UDD_Stall@000835b0", "node_type": "function", "name": "UDD_Stall", "entry": "000835b0", "is_isr": false, "signature": "undefined UDD_Stall(void)"}
+{"node_id": "func:UDD_WaitIN", "node_type": "function", "name": "UDD_WaitIN"}
+{"node_id": "func:UDD_WaitIN@00083438", "node_type": "function", "name": "UDD_WaitIN", "entry": "00083438", "is_isr": false, "signature": "undefined UDD_WaitIN(void)"}
+{"node_id": "func:UDD_WaitOUT", "node_type": "function", "name": "UDD_WaitOUT"}
+{"node_id": "func:UDD_WaitOUT@00083448", "node_type": "function", "name": "UDD_WaitOUT", "entry": "00083448", "is_isr": false, "signature": "undefined UDD_WaitOUT(void)"}
+{"node_id": "func:UOTGHS_Handler@00083818", "node_type": "function", "name": "UOTGHS_Handler", "entry": "00083818", "is_isr": true, "signature": "undefined UOTGHS_Handler(void)"}
+{"node_id": "func:USART0_Handler@00082c04", "node_type": "function", "name": "USART0_Handler", "entry": "00082c04", "is_isr": true, "signature": "void USART0_Handler(void)"}
+{"node_id": "func:USART1_Handler@00082c10", "node_type": "function", "name": "USART1_Handler", "entry": "00082c10", "is_isr": true, "signature": "void USART1_Handler(void)"}
+{"node_id": "func:USART2_Handler@00082c1c", "node_type": "function", "name": "USART2_Handler", "entry": "00082c1c", "is_isr": true, "signature": "void USART2_Handler(void)"}
+{"node_id": "func:USARTClass", "node_type": "function", "name": "USARTClass"}
+{"node_id": "func:USARTClass@00083e50", "node_type": "function", "name": "USARTClass", "entry": "00083e50", "is_isr": false, "signature": "USARTClass * __thiscall USARTClass(USARTClass * this, Usart * pUsart, IRQn_Type dwIrq, uint32_t dwId, RingBuffer * pRx_buffer, RingBuffer * pTx_buffer)"}
+{"node_id": "func:USBD_Available", "node_type": "function", "name": "USBD_Available"}
+{"node_id": "func:USBD_Available@000840f4", "node_type": "function", "name": "USBD_Available", "entry": "000840f4", "is_isr": false, "signature": "uint32_t __stdcall USBD_Available(uint32_t ep)"}
+{"node_id": "func:USBD_ClassInterfaceRequest", "node_type": "function", "name": "USBD_ClassInterfaceRequest"}
+{"node_id": "func:USBD_ClassInterfaceRequest@000842cc", "node_type": "function", "name": "USBD_ClassInterfaceRequest", "entry": "000842cc", "is_isr": false, "signature": "bool __stdcall USBD_ClassInterfaceRequest(USBSetup * setup)"}
+{"node_id": "func:USBD_Flush", "node_type": "function", "name": "USBD_Flush"}
+{"node_id": "func:USBD_Flush@0008432e", "node_type": "function", "name": "USBD_Flush", "entry": "0008432e", "is_isr": false, "signature": "void __stdcall USBD_Flush(uint32_t ep)"}
+{"node_id": "func:USBD_Recv", "node_type": "function", "name": "USBD_Recv"}
+{"node_id": "func:USBD_Recv@00084120", "node_type": "function", "name": "USBD_Recv", "entry": "00084120", "is_isr": false, "signature": "uint32_t __stdcall USBD_Recv(uint32_t ep, void * d, uint32_t len)"}
+{"node_id": "func:USBD_Recv@0008419c", "node_type": "function", "name": "USBD_Recv", "entry": "0008419c", "is_isr": false, "signature": "uint32_t __stdcall USBD_Recv(uint32_t ep)"}
+{"node_id": "func:USBD_RecvControl", "node_type": "function", "name": "USBD_RecvControl"}
+{"node_id": "func:USBD_RecvControl@000842b0", "node_type": "function", "name": "USBD_RecvControl", "entry": "000842b0", "is_isr": false, "signature": "int __stdcall USBD_RecvControl(void * d, uint32_t len)"}
+{"node_id": "func:USBD_Send", "node_type": "function", "name": "USBD_Send"}
+{"node_id": "func:USBD_Send@000841c0", "node_type": "function", "name": "USBD_Send", "entry": "000841c0", "is_isr": false, "signature": "uint32_t __stdcall USBD_Send(uint32_t ep, void * d, uint32_t len)"}
+{"node_id": "func:USBD_SendControl", "node_type": "function", "name": "USBD_SendControl"}
+{"node_id": "func:USBD_SendControl@0008420c", "node_type": "function", "name": "USBD_SendControl", "entry": "0008420c", "is_isr": false, "signature": "int __stdcall USBD_SendControl(uint8_t flags, void * d, uint32_t len)"}
+{"node_id": "func:USBD_SendInterfaces", "node_type": "function", "name": "USBD_SendInterfaces"}
+{"node_id": "func:USBD_SendInterfaces@000842ea", "node_type": "function", "name": "USBD_SendInterfaces", "entry": "000842ea", "is_isr": false, "signature": "uint8_t USBD_SendInterfaces(void)"}
+{"node_id": "func:USBD_SendOtherInterfaces", "node_type": "function", "name": "USBD_SendOtherInterfaces"}
+{"node_id": "func:USBD_SendOtherInterfaces@0008430c", "node_type": "function", "name": "USBD_SendOtherInterfaces", "entry": "0008430c", "is_isr": false, "signature": "uint8_t USBD_SendOtherInterfaces(void)"}
+{"node_id": "func:USBDevice_", "node_type": "function", "name": "USBDevice_"}
+{"node_id": "func:USBDevice_@00084344", "node_type": "function", "name": "USBDevice_", "entry": "00084344", "is_isr": false, "signature": "USBDevice_ * __thiscall USBDevice_(USBDevice_ * this)"}
+{"node_id": "func:USB_ISR@00084394", "node_type": "function", "name": "USB_ISR", "entry": "00084394", "is_isr": true, "signature": "void USB_ISR(void)"}
+{"node_id": "func:USB_SendStringDescriptor", "node_type": "function", "name": "USB_SendStringDescriptor"}
+{"node_id": "func:USB_SendStringDescriptor@0008424c", "node_type": "function", "name": "USB_SendStringDescriptor", "entry": "0008424c", "is_isr": false, "signature": "bool __stdcall USB_SendStringDescriptor(uint8_t * string, int wLength)"}
+{"node_id": "func:USB_SendZlp", "node_type": "function", "name": "USB_SendZlp"}
+{"node_id": "func:USB_SendZlp@000840d4", "node_type": "function", "name": "USB_SendZlp", "entry": "000840d4", "is_isr": false, "signature": "void USB_SendZlp(void)"}
+{"node_id": "func:WDT_Disable", "node_type": "function", "name": "WDT_Disable"}
+{"node_id": "func:WDT_Disable@00082f4a", "node_type": "function", "name": "WDT_Disable", "entry": "00082f4a", "is_isr": false, "signature": "undefined WDT_Disable(void)"}
+{"node_id": "func:WDT_Restart", "node_type": "function", "name": "WDT_Restart"}
+{"node_id": "func:WDT_Restart@00082f54", "node_type": "function", "name": "WDT_Restart", "entry": "00082f54", "is_isr": false, "signature": "undefined WDT_Restart(void)"}
+{"node_id": "func:_Balloc", "node_type": "function", "name": "_Balloc"}
+{"node_id": "func:_Balloc@00088f64", "node_type": "function", "name": "_Balloc", "entry": "00088f64", "is_isr": false, "signature": "undefined _Balloc(void)"}
+{"node_id": "func:_Bfree", "node_type": "function", "name": "_Bfree"}
+{"node_id": "func:_Bfree@00088fb0", "node_type": "function", "name": "_Bfree", "entry": "00088fb0", "is_isr": false, "signature": "undefined _Bfree(void)"}
+{"node_id": "func:_GLOBAL__sub_I_EndPoints@00084388", "node_type": "function", "name": "_GLOBAL__sub_I_EndPoints", "entry": "00084388", "is_isr": false, "signature": "void _GLOBAL__sub_I_EndPoints(void)"}
+{"node_id": "func:_GLOBAL__sub_I__Z11addon_delayl@0008094c", "node_type": "function", "name": "_GLOBAL__sub_I__Z11addon_delayl", "entry": "0008094c", "is_isr": false, "signature": "void _GLOBAL__sub_I__Z11addon_delayl(void)"}
+{"node_id": "func:_GLOBAL__sub_I_cdc_rx_buffer@000840b8", "node_type": "function", "name": "_GLOBAL__sub_I_cdc_rx_buffer", "entry": "000840b8", "is_isr": false, "signature": "void _GLOBAL__sub_I_cdc_rx_buffer(void)"}
+{"node_id": "func:_GLOBAL__sub_I_g_APinDescription@00082d40", "node_type": "function", "name": "_GLOBAL__sub_I_g_APinDescription", "entry": "00082d40", "is_isr": false, "signature": "void _GLOBAL__sub_I_g_APinDescription(void)"}
+{"node_id": "func:__aeabi_cdcmpeq", "node_type": "function", "name": "__aeabi_cdcmpeq"}
+{"node_id": "func:__aeabi_cdcmpeq@00085174", "node_type": "function", "name": "__aeabi_cdcmpeq", "entry": "00085174", "is_isr": false, "signature": "undefined __aeabi_cdcmpeq(void)"}
+{"node_id": "func:__aeabi_cdrcmple", "node_type": "function", "name": "__aeabi_cdrcmple"}
+{"node_id": "func:__aeabi_cdrcmple@00085164", "node_type": "function", "name": "__aeabi_cdrcmple", "entry": "00085164", "is_isr": false, "signature": "undefined __aeabi_cdrcmple(void)"}
+{"node_id": "func:__aeabi_cfcmpeq", "node_type": "function", "name": "__aeabi_cfcmpeq"}
+{"node_id": "func:__aeabi_cfcmpeq@00085350", "node_type": "function", "name": "__aeabi_cfcmpeq", "entry": "00085350", "is_isr": false, "signature": "undefined __aeabi_cfcmpeq(void)"}
+{"node_id": "func:__aeabi_cfrcmple", "node_type": "function", "name": "__aeabi_cfrcmple"}
+{"node_id": "func:__aeabi_cfrcmple@00085348", "node_type": "function", "name": "__aeabi_cfrcmple", "entry": "00085348", "is_isr": false, "signature": "undefined __aeabi_cfrcmple(void)"}
+{"node_id": "func:__aeabi_d2iz", "node_type": "function", "name": "__aeabi_d2iz"}
+{"node_id": "func:__aeabi_d2iz@000851e8", "node_type": "function", "name": "__aeabi_d2iz", "entry": "000851e8", "is_isr": false, "signature": "undefined __aeabi_d2iz(void)"}
+{"node_id": "func:__aeabi_dadd", "node_type": "function", "name": "__aeabi_dadd"}
+{"node_id": "func:__aeabi_dadd@00084950", "node_type": "function", "name": "__aeabi_dadd", "entry": "00084950", "is_isr": false, "signature": "undefined __aeabi_dadd(void)"}
+{"node_id": "func:__aeabi_dcmpeq", "node_type": "function", "name": "__aeabi_dcmpeq"}
+{"node_id": "func:__aeabi_dcmpeq@00085184", "node_type": "function", "name": "__aeabi_dcmpeq", "entry": "00085184", "is_isr": false, "signature": "undefined __aeabi_dcmpeq(void)"}
+{"node_id": "func:__aeabi_dcmpge", "node_type": "function", "name": "__aeabi_dcmpge"}
+{"node_id": "func:__aeabi_dcmpge@000851c0", "node_type": "function", "name": "__aeabi_dcmpge", "entry": "000851c0", "is_isr": false, "signature": "undefined __aeabi_dcmpge(void)"}
+{"node_id": "func:__aeabi_dcmpgt", "node_type": "function", "name": "__aeabi_dcmpgt"}
+{"node_id": "func:__aeabi_dcmpgt@000851d4", "node_type": "function", "name": "__aeabi_dcmpgt", "entry": "000851d4", "is_isr": false, "signature": "undefined __aeabi_dcmpgt(void)"}
+{"node_id": "func:__aeabi_dcmple@000851ac", "node_type": "function", "name": "__aeabi_dcmple", "entry": "000851ac", "is_isr": false, "signature": "undefined __aeabi_dcmple(void)"}
+{"node_id": "func:__aeabi_dcmplt", "node_type": "function", "name": "__aeabi_dcmplt"}
+{"node_id": "func:__aeabi_dcmplt@00085198", "node_type": "function", "name": "__aeabi_dcmplt", "entry": "00085198", "is_isr": false, "signature": "undefined __aeabi_dcmplt(void)"}
+{"node_id": "func:__aeabi_drsub@00084944", "node_type": "function", "name": "__aeabi_drsub", "entry": "00084944", "is_isr": false, "signature": "undefined __aeabi_drsub(void)"}
+{"node_id": "func:__aeabi_f2d", "node_type": "function", "name": "__aeabi_f2d"}
+{"node_id": "func:__aeabi_f2d@00084c0c", "node_type": "function", "name": "__aeabi_f2d", "entry": "00084c0c", "is_isr": false, "signature": "undefined __aeabi_f2d(void)"}
+{"node_id": "func:__aeabi_fcmpeq", "node_type": "function", "name": "__aeabi_fcmpeq"}
+{"node_id": "func:__aeabi_fcmpeq@00085360", "node_type": "function", "name": "__aeabi_fcmpeq", "entry": "00085360", "is_isr": false, "signature": "undefined __aeabi_fcmpeq(void)"}
+{"node_id": "func:__aeabi_fcmpge@0008539c", "node_type": "function", "name": "__aeabi_fcmpge", "entry": "0008539c", "is_isr": false, "signature": "undefined __aeabi_fcmpge(void)"}
+{"node_id": "func:__aeabi_fcmpgt@000853b0", "node_type": "function", "name": "__aeabi_fcmpgt", "entry": "000853b0", "is_isr": false, "signature": "undefined __aeabi_fcmpgt(void)"}
+{"node_id": "func:__aeabi_fcmple@00085388", "node_type": "function", "name": "__aeabi_fcmple", "entry": "00085388", "is_isr": false, "signature": "undefined __aeabi_fcmple(void)"}
+{"node_id": "func:__aeabi_fcmplt@00085374", "node_type": "function", "name": "__aeabi_fcmplt", "entry": "00085374", "is_isr": false, "signature": "undefined __aeabi_fcmplt(void)"}
+{"node_id": "func:__aeabi_i2d", "node_type": "function", "name": "__aeabi_i2d"}
+{"node_id": "func:__aeabi_i2d@00084be8", "node_type": "function", "name": "__aeabi_i2d", "entry": "00084be8", "is_isr": false, "signature": "undefined __aeabi_i2d(void)"}
+{"node_id": "func:__aeabi_idiv0", "node_type": "function", "name": "__aeabi_idiv0"}
+{"node_id": "func:__aeabi_idiv0@00089bf0", "node_type": "function", "name": "__aeabi_idiv0", "entry": "00089bf0", "is_isr": false, "signature": "undefined __aeabi_idiv0(void)"}
+{"node_id": "func:__aeabi_l2d@00084c58", "node_type": "function", "name": "__aeabi_l2d", "entry": "00084c58", "is_isr": false, "signature": "undefined __aeabi_l2d(void)"}
+{"node_id": "func:__aeabi_uldivmod", "node_type": "function", "name": "__aeabi_uldivmod"}
+{"node_id": "func:__aeabi_uldivmod@00089b64", "node_type": "function", "name": "__aeabi_uldivmod", "entry": "00089b64", "is_isr": false, "signature": "undefined __aeabi_uldivmod(void)"}
+{"node_id": "func:__cmpsf2", "node_type": "function", "name": "__cmpsf2"}
+{"node_id": "func:__cmpsf2@000852e8", "node_type": "function", "name": "__cmpsf2", "entry": "000852e8", "is_isr": false, "signature": "undefined __cmpsf2(void)"}
+{"node_id": "func:__d2b", "node_type": "function", "name": "__d2b"}
+{"node_id": "func:__d2b@000894bc", "node_type": "function", "name": "__d2b", "entry": "000894bc", "is_isr": false, "signature": "undefined __d2b(void)"}
+{"node_id": "func:__divdf3", "node_type": "function", "name": "__divdf3"}
+{"node_id": "func:__divdf3@00084f08", "node_type": "function", "name": "__divdf3", "entry": "00084f08", "is_isr": false, "signature": "undefined __divdf3(void)"}
+{"node_id": "func:__divdi3", "node_type": "function", "name": "__divdi3"}
+{"node_id": "func:__divdi3@00089bf4", "node_type": "function", "name": "__divdi3", "entry": "00089bf4", "is_isr": false, "signature": "undefined __divdi3(void)"}
+{"node_id": "func:__do_global_dtors_aux", "node_type": "function", "name": "__do_global_dtors_aux"}
+{"node_id": "func:__do_global_dtors_aux@000800f4", "node_type": "function", "name": "__do_global_dtors_aux", "entry": "000800f4", "is_isr": false, "signature": "undefined __do_global_dtors_aux(void)"}
+{"node_id": "func:__false", "node_type": "function", "name": "__false"}
+{"node_id": "func:__false@000838b8", "node_type": "function", "name": "__false", "entry": "000838b8", "is_isr": false, "signature": "int __false(void)"}
+{"node_id": "func:__floatundidf@00084c48", "node_type": "function", "name": "__floatundidf", "entry": "00084c48", "is_isr": false, "signature": "undefined __floatundidf(void)"}
+{"node_id": "func:__floatunsidf", "node_type": "function", "name": "__floatunsidf"}
+{"node_id": "func:__floatunsidf@00084bc8", "node_type": "function", "name": "__floatunsidf", "entry": "00084bc8", "is_isr": false, "signature": "undefined __floatunsidf(void)"}
+{"node_id": "func:__fpclassifyd", "node_type": "function", "name": "__fpclassifyd"}
+{"node_id": "func:__fpclassifyd@000848f4", "node_type": "function", "name": "__fpclassifyd", "entry": "000848f4", "is_isr": false, "signature": "undefined __fpclassifyd(void)"}
+{"node_id": "func:__gedf2@000850d8", "node_type": "function", "name": "__gedf2", "entry": "000850d8", "is_isr": false, "signature": "undefined __gedf2(void)"}
+{"node_id": "func:__gesf2@000852d8", "node_type": "function", "name": "__gesf2", "entry": "000852d8", "is_isr": false, "signature": "undefined __gesf2(void)"}
+{"node_id": "func:__gnu_ldivmod_helper@00089b90", "node_type": "function", "name": "__gnu_ldivmod_helper", "entry": "00089b90", "is_isr": false, "signature": "undefined __gnu_ldivmod_helper(void)"}
+{"node_id": "func:__gnu_uldivmod_helper", "node_type": "function", "name": "__gnu_uldivmod_helper"}
+{"node_id": "func:__gnu_uldivmod_helper@00089bc0", "node_type": "function", "name": "__gnu_uldivmod_helper", "entry": "00089bc0", "is_isr": false, "signature": "undefined __gnu_uldivmod_helper(void)"}
+{"node_id": "func:__halt@00083898", "node_type": "function", "name": "__halt", "entry": "00083898", "is_isr": false, "signature": "void __halt(void)"}
+{"node_id": "func:__halt@000838bc", "node_type": "function", "name": "__halt", "entry": "000838bc", "is_isr": false, "signature": "void __halt(void)"}
+{"node_id": "func:__hi0bits", "node_type": "function", "name": "__hi0bits"}
+{"node_id": "func:__hi0bits@00089058", "node_type": "function", "name": "__hi0bits", "entry": "00089058", "is_isr": false, "signature": "undefined __hi0bits(void)"}
+{"node_id": "func:__i2b", "node_type": "function", "name": "__i2b"}
+{"node_id": "func:__i2b@000890f4", "node_type": "function", "name": "__i2b", "entry": "000890f4", "is_isr": false, "signature": "undefined __i2b(void)"}
+{"node_id": "func:__ledf2@000850e0", "node_type": "function", "name": "__ledf2", "entry": "000850e0", "is_isr": false, "signature": "undefined __ledf2(void)"}
+{"node_id": "func:__libc_fini_array@000885f0", "node_type": "function", "name": "__libc_fini_array", "entry": "000885f0", "is_isr": false, "signature": "undefined __libc_fini_array(void)"}
+{"node_id": "func:__libc_init_array", "node_type": "function", "name": "__libc_init_array"}
+{"node_id": "func:__libc_init_array@000853d4", "node_type": "function", "name": "__libc_init_array", "entry": "000853d4", "is_isr": false, "signature": "undefined __libc_init_array(void)"}
+{"node_id": "func:__lo0bits", "node_type": "function", "name": "__lo0bits"}
+{"node_id": "func:__lo0bits@00089098", "node_type": "function", "name": "__lo0bits", "entry": "00089098", "is_isr": false, "signature": "undefined __lo0bits(void)"}
+{"node_id": "func:__lshift", "node_type": "function", "name": "__lshift"}
+{"node_id": "func:__lshift@000892e0", "node_type": "function", "name": "__lshift", "entry": "000892e0", "is_isr": false, "signature": "undefined __lshift(void)"}
+{"node_id": "func:__ltsf2@000852e0", "node_type": "function", "name": "__ltsf2", "entry": "000852e0", "is_isr": false, "signature": "undefined __ltsf2(void)"}
+{"node_id": "func:__malloc_lock", "node_type": "function", "name": "__malloc_lock"}
+{"node_id": "func:__malloc_lock@00088f5c", "node_type": "function", "name": "__malloc_lock", "entry": "00088f5c", "is_isr": false, "signature": "undefined __malloc_lock(void)"}
+{"node_id": "func:__malloc_unlock", "node_type": "function", "name": "__malloc_unlock"}
+{"node_id": "func:__malloc_unlock@00088f60", "node_type": "function", "name": "__malloc_unlock", "entry": "00088f60", "is_isr": false, "signature": "undefined __malloc_unlock(void)"}
+{"node_id": "func:__mcmp", "node_type": "function", "name": "__mcmp"}
+{"node_id": "func:__mcmp@0008939c", "node_type": "function", "name": "__mcmp", "entry": "0008939c", "is_isr": false, "signature": "undefined __mcmp(void)"}
+{"node_id": "func:__mdiff", "node_type": "function", "name": "__mdiff"}
+{"node_id": "func:__mdiff@000893e4", "node_type": "function", "name": "__mdiff", "entry": "000893e4", "is_isr": false, "signature": "undefined __mdiff(void)"}
+{"node_id": "func:__muldf3", "node_type": "function", "name": "__muldf3"}
+{"node_id": "func:__muldf3@00084cb4", "node_type": "function", "name": "__muldf3", "entry": "00084cb4", "is_isr": false, "signature": "undefined __muldf3(void)"}
+{"node_id": "func:__multadd", "node_type": "function", "name": "__multadd"}
+{"node_id": "func:__multadd@00088fc4", "node_type": "function", "name": "__multadd", "entry": "00088fc4", "is_isr": false, "signature": "undefined __multadd(void)"}
+{"node_id": "func:__multiply", "node_type": "function", "name": "__multiply"}
+{"node_id": "func:__multiply@00089108", "node_type": "function", "name": "__multiply", "entry": "00089108", "is_isr": false, "signature": "undefined __multiply(void)"}
+{"node_id": "func:__nedf2", "node_type": "function", "name": "__nedf2"}
+{"node_id": "func:__nedf2@000850e8", "node_type": "function", "name": "__nedf2", "entry": "000850e8", "is_isr": false, "signature": "undefined __nedf2(void)"}
+{"node_id": "func:__pow5mult", "node_type": "function", "name": "__pow5mult"}
+{"node_id": "func:__pow5mult@00089244", "node_type": "function", "name": "__pow5mult", "entry": "00089244", "is_isr": false, "signature": "undefined __pow5mult(void)"}
+{"node_id": "func:__register_exitproc", "node_type": "function", "name": "__register_exitproc"}
+{"node_id": "func:__register_exitproc@00089a5c", "node_type": "function", "name": "__register_exitproc", "entry": "00089a5c", "is_isr": false, "signature": "undefined __register_exitproc(void)"}
+{"node_id": "func:__ssprint_r", "node_type": "function", "name": "__ssprint_r"}
+{"node_id": "func:__ssprint_r@0008995c", "node_type": "function", "name": "__ssprint_r", "entry": "0008995c", "is_isr": false, "signature": "undefined __ssprint_r(void)"}
+{"node_id": "func:__strtok_r", "node_type": "function", "name": "__strtok_r"}
+{"node_id": "func:__strtok_r@00085fec", "node_type": "function", "name": "__strtok_r", "entry": "00085fec", "is_isr": false, "signature": "char * __stdcall __strtok_r(char * __s, char * __delim, char * * __save_ptr)"}
+{"node_id": "func:__subdf3", "node_type": "function", "name": "__subdf3"}
+{"node_id": "func:__subdf3@0008494c", "node_type": "function", "name": "__subdf3", "entry": "0008494c", "is_isr": false, "signature": "undefined __subdf3(void)"}
+{"node_id": "func:__truncdfsf2", "node_type": "function", "name": "__truncdfsf2"}
+{"node_id": "func:__truncdfsf2@00085238", "node_type": "function", "name": "__truncdfsf2", "entry": "00085238", "is_isr": false, "signature": "undefined __truncdfsf2(void)"}
+{"node_id": "func:__udivdi3", "node_type": "function", "name": "__udivdi3"}
+{"node_id": "func:__udivdi3@00089e94", "node_type": "function", "name": "__udivdi3", "entry": "00089e94", "is_isr": false, "signature": "undefined __udivdi3(void)"}
+{"node_id": "func:_calloc_r", "node_type": "function", "name": "_calloc_r"}
+{"node_id": "func:_calloc_r@00089b04", "node_type": "function", "name": "_calloc_r", "entry": "00089b04", "is_isr": false, "signature": "undefined _calloc_r(void)"}
+{"node_id": "func:_dtoa_r", "node_type": "function", "name": "_dtoa_r"}
+{"node_id": "func:_dtoa_r@000877b8", "node_type": "function", "name": "_dtoa_r", "entry": "000877b8", "is_isr": false, "signature": "undefined _dtoa_r(void)"}
+{"node_id": "func:_fini", "node_type": "function", "name": "_fini"}
+{"node_id": "func:_fini@0008b298", "node_type": "function", "name": "_fini", "entry": "0008b298", "is_isr": false, "signature": "undefined _fini(void)"}
+{"node_id": "func:_free_r", "node_type": "function", "name": "_free_r"}
+{"node_id": "func:_free_r@000886bc", "node_type": "function", "name": "_free_r", "entry": "000886bc", "is_isr": false, "signature": "undefined _free_r(void)"}
+{"node_id": "func:_init", "node_type": "function", "name": "_init"}
+{"node_id": "func:_init@0008b274", "node_type": "function", "name": "_init", "entry": "0008b274", "is_isr": false, "signature": "undefined _init(void)"}
+{"node_id": "func:_localeconv_r", "node_type": "function", "name": "_localeconv_r"}
+{"node_id": "func:_localeconv_r@00088854", "node_type": "function", "name": "_localeconv_r", "entry": "00088854", "is_isr": false, "signature": "undefined _localeconv_r(void)"}
+{"node_id": "func:_malloc_r", "node_type": "function", "name": "_malloc_r"}
+{"node_id": "func:_malloc_r@0008885c", "node_type": "function", "name": "_malloc_r", "entry": "0008885c", "is_isr": false, "signature": "undefined _malloc_r(void)"}
+{"node_id": "func:_malloc_trim_r", "node_type": "function", "name": "_malloc_trim_r"}
+{"node_id": "func:_malloc_trim_r@00088620", "node_type": "function", "name": "_malloc_trim_r", "entry": "00088620", "is_isr": false, "signature": "undefined _malloc_trim_r(void)"}
+{"node_id": "func:_realloc_r", "node_type": "function", "name": "_realloc_r"}
+{"node_id": "func:_realloc_r@00089578", "node_type": "function", "name": "_realloc_r", "entry": "00089578", "is_isr": false, "signature": "undefined _realloc_r(void)"}
+{"node_id": "func:_sbrk", "node_type": "function", "name": "_sbrk"}
+{"node_id": "func:_sbrk@00082bd0", "node_type": "function", "name": "_sbrk", "entry": "00082bd0", "is_isr": false, "signature": "caddr_t __stdcall _sbrk(int incr)"}
+{"node_id": "func:_sbrk_r", "node_type": "function", "name": "_sbrk_r"}
+{"node_id": "func:_sbrk_r@00089938", "node_type": "function", "name": "_sbrk_r", "entry": "00089938", "is_isr": false, "signature": "undefined _sbrk_r(void)"}
+{"node_id": "func:_strtol_r", "node_type": "function", "name": "_strtol_r"}
+{"node_id": "func:_strtol_r@00086058", "node_type": "function", "name": "_strtol_r", "entry": "00086058", "is_isr": false, "signature": "undefined _strtol_r(void)"}
+{"node_id": "func:_svfprintf_r", "node_type": "function", "name": "_svfprintf_r"}
+{"node_id": "func:_svfprintf_r@00086184", "node_type": "function", "name": "_svfprintf_r", "entry": "00086184", "is_isr": false, "signature": "undefined _svfprintf_r(void)"}
+{"node_id": "func:_watchdogDefaultSetup", "node_type": "function", "name": "_watchdogDefaultSetup"}
+{"node_id": "func:_watchdogDefaultSetup@00084824", "node_type": "function", "name": "_watchdogDefaultSetup", "entry": "00084824", "is_isr": false, "signature": "void _watchdogDefaultSetup(void)"}
+{"node_id": "func:accept", "node_type": "function", "name": "accept"}
+{"node_id": "func:accept@00083f58", "node_type": "function", "name": "accept", "entry": "00083f58", "is_isr": false, "signature": "void __thiscall accept(Serial_ * this)"}
+{"node_id": "func:adc_configure_timing", "node_type": "function", "name": "adc_configure_timing"}
+{"node_id": "func:adc_configure_timing@00082f1a", "node_type": "function", "name": "adc_configure_timing", "entry": "00082f1a", "is_isr": false, "signature": "undefined adc_configure_timing(void)"}
+{"node_id": "func:adc_configure_trigger", "node_type": "function", "name": "adc_configure_trigger"}
+{"node_id": "func:adc_configure_trigger@00082ef0", "node_type": "function", "name": "adc_configure_trigger", "entry": "00082ef0", "is_isr": false, "signature": "undefined adc_configure_trigger(void)"}
+{"node_id": "func:adc_disable_all_channel", "node_type": "function", "name": "adc_disable_all_channel"}
+{"node_id": "func:adc_disable_all_channel@00082f3e", "node_type": "function", "name": "adc_disable_all_channel", "entry": "00082f3e", "is_isr": false, "signature": "undefined adc_disable_all_channel(void)"}
+{"node_id": "func:adc_disable_channel", "node_type": "function", "name": "adc_disable_channel"}
+{"node_id": "func:adc_disable_channel@00082f34", "node_type": "function", "name": "adc_disable_channel", "entry": "00082f34", "is_isr": false, "signature": "undefined adc_disable_channel(void)"}
+{"node_id": "func:adc_disable_interrupt", "node_type": "function", "name": "adc_disable_interrupt"}
+{"node_id": "func:adc_disable_interrupt@00082f46", "node_type": "function", "name": "adc_disable_interrupt", "entry": "00082f46", "is_isr": false, "signature": "undefined adc_disable_interrupt(void)"}
+{"node_id": "func:adc_init", "node_type": "function", "name": "adc_init"}
+{"node_id": "func:adc_init@00082e58", "node_type": "function", "name": "adc_init", "entry": "00082e58", "is_isr": false, "signature": "undefined adc_init(void)"}
+{"node_id": "func:analogOutputInit", "node_type": "function", "name": "analogOutputInit"}
+{"node_id": "func:analogOutputInit@00083950", "node_type": "function", "name": "analogOutputInit", "entry": "00083950", "is_isr": false, "signature": "void analogOutputInit(void)"}
+{"node_id": "func:atexit", "node_type": "function", "name": "atexit"}
+{"node_id": "func:atexit@00087678", "node_type": "function", "name": "atexit", "entry": "00087678", "is_isr": false, "signature": "int __stdcall atexit(__func * __func)"}
+{"node_id": "func:atoi", "node_type": "function", "name": "atoi"}
+{"node_id": "func:atoi@000853c4", "node_type": "function", "name": "atoi", "entry": "000853c4", "is_isr": false, "signature": "int __stdcall atoi(char * __nptr)"}
+{"node_id": "func:atol", "node_type": "function", "name": "atol"}
+{"node_id": "func:atol@000853cc", "node_type": "function", "name": "atol", "entry": "000853cc", "is_isr": false, "signature": "long __stdcall atol(char * __nptr)"}
+{"node_id": "func:attach", "node_type": "function", "name": "attach"}
+{"node_id": "func:attach@00084368", "node_type": "function", "name": "attach", "entry": "00084368", "is_isr": false, "signature": "bool __thiscall attach(USBDevice_ * this)"}
+{"node_id": "func:available", "node_type": "function", "name": "available"}
+{"node_id": "func:available@00083c58", "node_type": "function", "name": "available", "entry": "00083c58", "is_isr": false, "signature": "int __thiscall available(UARTClass * this)"}
+{"node_id": "func:available@00083f30", "node_type": "function", "name": "available", "entry": "00083f30", "is_isr": false, "signature": "int __thiscall available(Serial_ * this)"}
+{"node_id": "func:availableForWrite@00083e74", "node_type": "function", "name": "availableForWrite", "entry": "00083e74", "is_isr": false, "signature": "int __thiscall availableForWrite(Serial_ * this)"}
+{"node_id": "func:banzai", "node_type": "function", "name": "banzai"}
+{"node_id": "func:banzai@20078000", "node_type": "function", "name": "banzai", "entry": "20078000", "is_isr": false, "signature": "void banzai(void)"}
+{"node_id": "func:begin", "node_type": "function", "name": "begin"}
+{"node_id": "func:begin@00083de8", "node_type": "function", "name": "begin", "entry": "00083de8", "is_isr": false, "signature": "void __thiscall begin(UARTClass * this, uint32_t dwBaudRate)"}
+{"node_id": "func:begin@00083e48", "node_type": "function", "name": "begin", "entry": "00083e48", "is_isr": false, "signature": "void __thiscall begin(USARTClass * this, uint32_t dwBaudRate)"}
+{"node_id": "func:begin@000840b4", "node_type": "function", "name": "begin", "entry": "000840b4", "is_isr": false, "signature": "void __thiscall begin(Serial_ * this, uint32_t baud_count)"}
+{"node_id": "func:blink_got_gps", "node_type": "function", "name": "blink_got_gps"}
+{"node_id": "func:blink_got_gps@000805d0", "node_type": "function", "name": "blink_got_gps", "entry": "000805d0", "is_isr": false, "signature": "void blink_got_gps(void)"}
+{"node_id": "func:blink_start", "node_type": "function", "name": "blink_start"}
+{"node_id": "func:blink_start@000805ac", "node_type": "function", "name": "blink_start", "entry": "000805ac", "is_isr": false, "signature": "void blink_start(void)"}
+{"node_id": "func:cancelReset", "node_type": "function", "name": "cancelReset"}
+{"node_id": "func:cancelReset@00083bec", "node_type": "function", "name": "cancelReset", "entry": "00083bec", "is_isr": false, "signature": "void cancelReset(void)"}
+{"node_id": "func:collect_all_data", "node_type": "function", "name": "collect_all_data"}
+{"node_id": "func:collect_all_data@00082110", "node_type": "function", "name": "collect_all_data", "entry": "00082110", "is_isr": false, "signature": "void __stdcall collect_all_data(int ignitionState)"}
+{"node_id": "func:collect_gps_data", "node_type": "function", "name": "collect_gps_data"}
+{"node_id": "func:collect_gps_data@00081df0", "node_type": "function", "name": "collect_gps_data", "entry": "00081df0", "is_isr": false, "signature": "void collect_gps_data(void)"}
+{"node_id": "func:cpu_full_speed", "node_type": "function", "name": "cpu_full_speed"}
+{"node_id": "func:cpu_full_speed@000806bc", "node_type": "function", "name": "cpu_full_speed", "entry": "000806bc", "is_isr": false, "signature": "void cpu_full_speed(void)"}
+{"node_id": "func:cpu_slow_down", "node_type": "function", "name": "cpu_slow_down"}
+{"node_id": "func:cpu_slow_down@00080688", "node_type": "function", "name": "cpu_slow_down", "entry": "00080688", "is_isr": false, "signature": "void cpu_slow_down(void)"}
+{"node_id": "func:critical_factorization", "node_type": "function", "name": "critical_factorization"}
+{"node_id": "func:critical_factorization@00085b34", "node_type": "function", "name": "critical_factorization", "entry": "00085b34", "is_isr": false, "signature": "undefined critical_factorization(void)"}
+{"node_id": "func:data_append_char", "node_type": "function", "name": "data_append_char"}
+{"node_id": "func:data_append_char@000801b4", "node_type": "function", "name": "data_append_char", "entry": "000801b4", "is_isr": false, "signature": "void __stdcall data_append_char(char c)"}
+{"node_id": "func:data_append_string", "node_type": "function", "name": "data_append_string"}
+{"node_id": "func:data_append_string@000801d8", "node_type": "function", "name": "data_append_string", "entry": "000801d8", "is_isr": false, "signature": "void __stdcall data_append_string(char * str)"}
+{"node_id": "func:data_field_separator", "node_type": "function", "name": "data_field_separator"}
+{"node_id": "func:data_field_separator@0008022c", "node_type": "function", "name": "data_field_separator", "entry": "0008022c", "is_isr": false, "signature": "void __stdcall data_field_separator(char c)"}
+{"node_id": "func:data_reset", "node_type": "function", "name": "data_reset"}
+{"node_id": "func:data_reset@0008020c", "node_type": "function", "name": "data_reset", "entry": "0008020c", "is_isr": false, "signature": "void data_reset(void)"}
+{"node_id": "func:delay", "node_type": "function", "name": "delay"}
+{"node_id": "func:delay@00083934", "node_type": "function", "name": "delay", "entry": "00083934", "is_isr": false, "signature": "void __stdcall delay(uint32_t ms)"}
+{"node_id": "func:device_init", "node_type": "function", "name": "device_init"}
+{"node_id": "func:device_init@00080174", "node_type": "function", "name": "device_init", "entry": "00080174", "is_isr": false, "signature": "void device_init(void)"}
+{"node_id": "func:digitalRead", "node_type": "function", "name": "digitalRead"}
+{"node_id": "func:digitalRead@00083acc", "node_type": "function", "name": "digitalRead", "entry": "00083acc", "is_isr": false, "signature": "int __stdcall digitalRead(uint32_t ulPin)"}
+{"node_id": "func:digitalWrite", "node_type": "function", "name": "digitalWrite"}
+{"node_id": "func:digitalWrite@00083a5c", "node_type": "function", "name": "digitalWrite", "entry": "00083a5c", "is_isr": false, "signature": "void __stdcall digitalWrite(uint32_t ulPin, uint32_t ulVal)"}
+{"node_id": "func:efc_get_wait_state", "node_type": "function", "name": "efc_get_wait_state"}
+{"node_id": "func:efc_get_wait_state@00083184", "node_type": "function", "name": "efc_get_wait_state", "entry": "00083184", "is_isr": false, "signature": "undefined efc_get_wait_state(void)"}
+{"node_id": "func:efc_init", "node_type": "function", "name": "efc_init"}
+{"node_id": "func:efc_init@00083164", "node_type": "function", "name": "efc_init", "entry": "00083164", "is_isr": false, "signature": "undefined efc_init(void)"}
+{"node_id": "func:efc_set_wait_state", "node_type": "function", "name": "efc_set_wait_state"}
+{"node_id": "func:efc_set_wait_state@00083172", "node_type": "function", "name": "efc_set_wait_state", "entry": "00083172", "is_isr": false, "signature": "undefined efc_set_wait_state(void)"}
+{"node_id": "func:encode", "node_type": "function", "name": "encode"}
+{"node_id": "func:encode@000827d4", "node_type": "function", "name": "encode", "entry": "000827d4", "is_isr": false, "signature": "bool __thiscall encode(TinyGPS * this, char c)"}
+{"node_id": "func:end", "node_type": "function", "name": "end"}
+{"node_id": "func:end@00083d18", "node_type": "function", "name": "end", "entry": "00083d18", "is_isr": false, "signature": "void __thiscall end(UARTClass * this)"}
+{"node_id": "func:f_altitude", "node_type": "function", "name": "f_altitude"}
+{"node_id": "func:f_altitude@00082938", "node_type": "function", "name": "f_altitude", "entry": "00082938", "is_isr": false, "signature": "float __thiscall f_altitude(TinyGPS * this)"}
+{"node_id": "func:f_course", "node_type": "function", "name": "f_course"}
+{"node_id": "func:f_course@00082964", "node_type": "function", "name": "f_course", "entry": "00082964", "is_isr": false, "signature": "float __thiscall f_course(TinyGPS * this)"}
+{"node_id": "func:f_get_position", "node_type": "function", "name": "f_get_position"}
+{"node_id": "func:f_get_position@000828d0", "node_type": "function", "name": "f_get_position", "entry": "000828d0", "is_isr": false, "signature": "void __thiscall f_get_position(TinyGPS * this, float * latitude, float * longitude, ulong * fix_age)"}
+{"node_id": "func:f_speed_kmph", "node_type": "function", "name": "f_speed_kmph"}
+{"node_id": "func:f_speed_kmph@000829c0", "node_type": "function", "name": "f_speed_kmph", "entry": "000829c0", "is_isr": false, "signature": "float __thiscall f_speed_kmph(TinyGPS * this)"}
+{"node_id": "func:f_speed_knots", "node_type": "function", "name": "f_speed_knots"}
+{"node_id": "func:f_speed_knots@00082990", "node_type": "function", "name": "f_speed_knots", "entry": "00082990", "is_isr": false, "signature": "float __thiscall f_speed_knots(TinyGPS * this)"}
+{"node_id": "func:flash_init", "node_type": "function", "name": "flash_init"}
+{"node_id": "func:flash_init@00082aec", "node_type": "function", "name": "flash_init", "entry": "00082aec", "is_isr": false, "signature": "uint32_t __stdcall flash_init(uint32_t ul_mode, uint32_t ul_fws)"}
+{"node_id": "func:flash_write", "node_type": "function", "name": "flash_write"}
+{"node_id": "func:flash_write@00082b14", "node_type": "function", "name": "flash_write", "entry": "00082b14", "is_isr": false, "signature": "uint32_t __stdcall flash_write(uint32_t ul_address, void * p_buffer, uint32_t ul_size, uint32_t ul_erase_flag)"}
+{"node_id": "func:flush@00083cac", "node_type": "function", "name": "flush", "entry": "00083cac", "is_isr": false, "signature": "void __thiscall flush(UARTClass * this)"}
+{"node_id": "func:flush@00083f18", "node_type": "function", "name": "flush", "entry": "00083f18", "is_isr": false, "signature": "void __thiscall flush(Serial_ * this)"}
+{"node_id": "func:frame_dummy", "node_type": "function", "name": "frame_dummy"}
+{"node_id": "func:frame_dummy@00080118", "node_type": "function", "name": "frame_dummy", "entry": "00080118", "is_isr": false, "signature": "undefined frame_dummy(void)"}
+{"node_id": "func:from_hex", "node_type": "function", "name": "from_hex"}
+{"node_id": "func:from_hex@00082502", "node_type": "function", "name": "from_hex", "entry": "00082502", "is_isr": false, "signature": "int __thiscall from_hex(TinyGPS * this, char a)"}
+{"node_id": "func:getDescriptor", "node_type": "function", "name": "getDescriptor"}
+{"node_id": "func:getDescriptor@00084858", "node_type": "function", "name": "getDescriptor", "entry": "00084858", "is_isr": false, "signature": "int __thiscall getDescriptor(PluggableUSB_ * this, USBSetup * setup)"}
+{"node_id": "func:getInterface", "node_type": "function", "name": "getInterface"}
+{"node_id": "func:getInterface@00084830", "node_type": "function", "name": "getInterface", "entry": "00084830", "is_isr": false, "signature": "int __thiscall getInterface(PluggableUSB_ * this, uint8_t * interfaceCount)"}
+{"node_id": "func:getShortName", "node_type": "function", "name": "getShortName"}
+{"node_id": "func:getShortName@00084874", "node_type": "function", "name": "getShortName", "entry": "00084874", "is_isr": false, "signature": "void __thiscall getShortName(PluggableUSB_ * this, char * iSerialNum)"}
+{"node_id": "func:get_datetime", "node_type": "function", "name": "get_datetime"}
+{"node_id": "func:get_datetime@000828a6", "node_type": "function", "name": "get_datetime", "entry": "000828a6", "is_isr": false, "signature": "void __thiscall get_datetime(TinyGPS * this, ulong * date, ulong * time, ulong * age)"}
+{"node_id": "func:get_position", "node_type": "function", "name": "get_position"}
+{"node_id": "func:get_position@00082880", "node_type": "function", "name": "get_position", "entry": "00082880", "is_isr": false, "signature": "void __thiscall get_position(TinyGPS * this, long * latitude, long * longitude, ulong * fix_age)"}
+{"node_id": "func:gps_close", "node_type": "function", "name": "gps_close"}
+{"node_id": "func:gps_close@000809f0", "node_type": "function", "name": "gps_close", "entry": "000809f0", "is_isr": false, "signature": "void gps_close(void)"}
+{"node_id": "func:gps_init", "node_type": "function", "name": "gps_init"}
+{"node_id": "func:gps_init@00080968", "node_type": "function", "name": "gps_init", "entry": "00080968", "is_isr": false, "signature": "void gps_init(void)"}
+{"node_id": "func:gps_off", "node_type": "function", "name": "gps_off"}
+{"node_id": "func:gps_off@00080326", "node_type": "function", "name": "gps_off", "entry": "00080326", "is_isr": false, "signature": "void gps_off(void)"}
+{"node_id": "func:gps_on", "node_type": "function", "name": "gps_on"}
+{"node_id": "func:gps_on@00080310", "node_type": "function", "name": "gps_on", "entry": "00080310", "is_isr": false, "signature": "void gps_on(void)"}
+{"node_id": "func:gps_open", "node_type": "function", "name": "gps_open"}
+{"node_id": "func:gps_open@00080958", "node_type": "function", "name": "gps_open", "entry": "00080958", "is_isr": false, "signature": "void gps_open(void)"}
+{"node_id": "func:gps_setup", "node_type": "function", "name": "gps_setup"}
+{"node_id": "func:gps_setup@00080a08", "node_type": "function", "name": "gps_setup", "entry": "00080a08", "is_isr": false, "signature": "void gps_setup(void)"}
+{"node_id": "func:gpsatol", "node_type": "function", "name": "gpsatol"}
+{"node_id": "func:gpsatol@00082522", "node_type": "function", "name": "gpsatol", "entry": "00082522", "is_isr": false, "signature": "long __thiscall gpsatol(TinyGPS * this, char * str)"}
+{"node_id": "func:gpsstrcmp", "node_type": "function", "name": "gpsstrcmp"}
+{"node_id": "func:gpsstrcmp@00082600", "node_type": "function", "name": "gpsstrcmp", "entry": "00082600", "is_isr": false, "signature": "int __thiscall gpsstrcmp(TinyGPS * this, char * str1, char * str2)"}
+{"node_id": "func:gsm_close", "node_type": "function", "name": "gsm_close"}
+{"node_id": "func:gsm_close@000809fc", "node_type": "function", "name": "gsm_close", "entry": "000809fc", "is_isr": false, "signature": "void gsm_close(void)"}
+{"node_id": "func:gsm_config", "node_type": "function", "name": "gsm_config"}
+{"node_id": "func:gsm_config@00081130", "node_type": "function", "name": "gsm_config", "entry": "00081130", "is_isr": false, "signature": "void gsm_config(void)"}
+{"node_id": "func:gsm_connect", "node_type": "function", "name": "gsm_connect"}
+{"node_id": "func:gsm_connect@00081240", "node_type": "function", "name": "gsm_connect", "entry": "00081240", "is_isr": false, "signature": "int gsm_connect(void)"}
+{"node_id": "func:gsm_deactivate", "node_type": "function", "name": "gsm_deactivate"}
+{"node_id": "func:gsm_deactivate@0008100c", "node_type": "function", "name": "gsm_deactivate", "entry": "0008100c", "is_isr": false, "signature": "int gsm_deactivate(void)"}
+{"node_id": "func:gsm_disconnect", "node_type": "function", "name": "gsm_disconnect"}
+{"node_id": "func:gsm_disconnect@00080fec", "node_type": "function", "name": "gsm_disconnect", "entry": "00080fec", "is_isr": false, "signature": "int gsm_disconnect(void)"}
+{"node_id": "func:gsm_get_connection_status", "node_type": "function", "name": "gsm_get_connection_status"}
+{"node_id": "func:gsm_get_connection_status@00081168", "node_type": "function", "name": "gsm_get_connection_status", "entry": "00081168", "is_isr": false, "signature": "int gsm_get_connection_status(void)"}
+{"node_id": "func:gsm_get_imei", "node_type": "function", "name": "gsm_get_imei"}
+{"node_id": "func:gsm_get_imei@00080ab4", "node_type": "function", "name": "gsm_get_imei", "entry": "00080ab4", "is_isr": false, "signature": "void gsm_get_imei(void)"}
+{"node_id": "func:gsm_get_modem_status", "node_type": "function", "name": "gsm_get_modem_status"}
+{"node_id": "func:gsm_get_modem_status@00080f64", "node_type": "function", "name": "gsm_get_modem_status", "entry": "00080f64", "is_isr": false, "signature": "int gsm_get_modem_status(void)"}
+{"node_id": "func:gsm_get_queclocator", "node_type": "function", "name": "gsm_get_queclocator"}
+{"node_id": "func:gsm_get_queclocator@00081d7c", "node_type": "function", "name": "gsm_get_queclocator", "entry": "00081d7c", "is_isr": false, "signature": "int gsm_get_queclocator(void)"}
+{"node_id": "func:gsm_get_reply", "node_type": "function", "name": "gsm_get_reply"}
+{"node_id": "func:gsm_get_reply@00080a98", "node_type": "function", "name": "gsm_get_reply", "entry": "00080a98", "is_isr": false, "signature": "void __stdcall gsm_get_reply(int fullBuffer)"}
+{"node_id": "func:gsm_get_time", "node_type": "function", "name": "gsm_get_time"}
+{"node_id": "func:gsm_get_time@00080e8c", "node_type": "function", "name": "gsm_get_time", "entry": "00080e8c", "is_isr": false, "signature": "void gsm_get_time(void)"}
+{"node_id": "func:gsm_init", "node_type": "function", "name": "gsm_init"}
+{"node_id": "func:gsm_init@000809a4", "node_type": "function", "name": "gsm_init", "entry": "000809a4", "is_isr": false, "signature": "void gsm_init(void)"}
+{"node_id": "func:gsm_is_final_result", "node_type": "function", "name": "gsm_is_final_result"}
+{"node_id": "func:gsm_is_final_result@00080350", "node_type": "function", "name": "gsm_is_final_result", "entry": "00080350", "is_isr": false, "signature": "int __stdcall gsm_is_final_result(char * reply, int allowOK)"}
+{"node_id": "func:gsm_ntp_update", "node_type": "function", "name": "gsm_ntp_update"}
+{"node_id": "func:gsm_ntp_update@00082394", "node_type": "function", "name": "gsm_ntp_update", "entry": "00082394", "is_isr": false, "signature": "void gsm_ntp_update(void)"}
+{"node_id": "func:gsm_off", "node_type": "function", "name": "gsm_off"}
+{"node_id": "func:gsm_off@00080be4", "node_type": "function", "name": "gsm_off", "entry": "00080be4", "is_isr": false, "signature": "void __stdcall gsm_off(int emergency)"}
+{"node_id": "func:gsm_on", "node_type": "function", "name": "gsm_on"}
+{"node_id": "func:gsm_on@00080d00", "node_type": "function", "name": "gsm_on", "entry": "00080d00", "is_isr": false, "signature": "void gsm_on(void)"}
+{"node_id": "func:gsm_open", "node_type": "function", "name": "gsm_open"}
+{"node_id": "func:gsm_open@00080994", "node_type": "function", "name": "gsm_open", "entry": "00080994", "is_isr": false, "signature": "void gsm_open(void)"}
+{"node_id": "func:gsm_power_status", "node_type": "function", "name": "gsm_power_status"}
+{"node_id": "func:gsm_power_status@0008033c", "node_type": "function", "name": "gsm_power_status", "entry": "0008033c", "is_isr": false, "signature": "bool gsm_power_status(void)"}
+{"node_id": "func:gsm_read_line", "node_type": "function", "name": "gsm_read_line"}
+{"node_id": "func:gsm_read_line@00080a48", "node_type": "function", "name": "gsm_read_line", "entry": "00080a48", "is_isr": false, "signature": "int __stdcall gsm_read_line(int index)"}
+{"node_id": "func:gsm_send_at", "node_type": "function", "name": "gsm_send_at"}
+{"node_id": "func:gsm_send_at@00080b10", "node_type": "function", "name": "gsm_send_at", "entry": "00080b10", "is_isr": false, "signature": "int gsm_send_at(void)"}
+{"node_id": "func:gsm_send_begin", "node_type": "function", "name": "gsm_send_begin"}
+{"node_id": "func:gsm_send_begin@000813dc", "node_type": "function", "name": "gsm_send_begin", "entry": "000813dc", "is_isr": false, "signature": "int __stdcall gsm_send_begin(int data_len)"}
+{"node_id": "func:gsm_send_data", "node_type": "function", "name": "gsm_send_data"}
+{"node_id": "func:gsm_send_data@00081708", "node_type": "function", "name": "gsm_send_data", "entry": "00081708", "is_isr": false, "signature": "int gsm_send_data(void)"}
+{"node_id": "func:gsm_send_data_current", "node_type": "function", "name": "gsm_send_data_current"}
+{"node_id": "func:gsm_send_data_current@00081454", "node_type": "function", "name": "gsm_send_data_current", "entry": "00081454", "is_isr": false, "signature": "int gsm_send_data_current(void)"}
+{"node_id": "func:gsm_send_done", "node_type": "function", "name": "gsm_send_done"}
+{"node_id": "func:gsm_send_done@0008142c", "node_type": "function", "name": "gsm_send_done", "entry": "0008142c", "is_isr": false, "signature": "int gsm_send_done(void)"}
+{"node_id": "func:gsm_send_http_current", "node_type": "function", "name": "gsm_send_http_current"}
+{"node_id": "func:gsm_send_http_current@000814b8", "node_type": "function", "name": "gsm_send_http_current", "entry": "000814b8", "is_isr": false, "signature": "int gsm_send_http_current(void)"}
+{"node_id": "func:gsm_set_apn", "node_type": "function", "name": "gsm_set_apn"}
+{"node_id": "func:gsm_set_apn@00081040", "node_type": "function", "name": "gsm_set_apn", "entry": "00081040", "is_isr": false, "signature": "int gsm_set_apn(void)"}
+{"node_id": "func:gsm_set_pin", "node_type": "function", "name": "gsm_set_pin"}
+{"node_id": "func:gsm_set_pin@00080df0", "node_type": "function", "name": "gsm_set_pin", "entry": "00080df0", "is_isr": false, "signature": "void gsm_set_pin(void)"}
+{"node_id": "func:gsm_set_time", "node_type": "function", "name": "gsm_set_time"}
+{"node_id": "func:gsm_set_time@00080d50", "node_type": "function", "name": "gsm_set_time", "entry": "00080d50", "is_isr": false, "signature": "void gsm_set_time(void)"}
+{"node_id": "func:gsm_setup", "node_type": "function", "name": "gsm_setup"}
+{"node_id": "func:gsm_setup@0008114e", "node_type": "function", "name": "gsm_setup", "entry": "0008114e", "is_isr": false, "signature": "void gsm_setup(void)"}
+{"node_id": "func:gsm_startup_cmd", "node_type": "function", "name": "gsm_startup_cmd"}
+{"node_id": "func:gsm_startup_cmd@00080ef4", "node_type": "function", "name": "gsm_startup_cmd", "entry": "00080ef4", "is_isr": false, "signature": "void gsm_startup_cmd(void)"}
+{"node_id": "func:gsm_validate_tcp", "node_type": "function", "name": "gsm_validate_tcp"}
+{"node_id": "func:gsm_validate_tcp@0008137c", "node_type": "function", "name": "gsm_validate_tcp", "entry": "0008137c", "is_isr": false, "signature": "int gsm_validate_tcp(void)"}
+{"node_id": "func:gsm_wait_for_reply", "node_type": "function", "name": "gsm_wait_for_reply"}
+{"node_id": "func:gsm_wait_for_reply@00080b64", "node_type": "function", "name": "gsm_wait_for_reply", "entry": "00080b64", "is_isr": false, "signature": "void __stdcall gsm_wait_for_reply(int allowOK, int fullBuffer, int maxseconds)"}
+{"node_id": "func:gsm_wait_for_reply@00080bdc", "node_type": "function", "name": "gsm_wait_for_reply", "entry": "00080bdc", "is_isr": false, "signature": "void __stdcall gsm_wait_for_reply(int allowOK, int fullBuffer)"}
+{"node_id": "func:gsm_wait_modem_ready", "node_type": "function", "name": "gsm_wait_modem_ready"}
+{"node_id": "func:gsm_wait_modem_ready@00080fc0", "node_type": "function", "name": "gsm_wait_modem_ready", "entry": "00080fc0", "is_isr": false, "signature": "void __stdcall gsm_wait_modem_ready(int timeout)"}
+{"node_id": "func:gsm_wakeup", "node_type": "function", "name": "gsm_wakeup"}
+{"node_id": "func:gsm_wakeup@00080cc4", "node_type": "function", "name": "gsm_wakeup", "entry": "00080cc4", "is_isr": false, "signature": "void gsm_wakeup(void)"}
+{"node_id": "func:init", "node_type": "function", "name": "init"}
+{"node_id": "func:init@00082c28", "node_type": "function", "name": "init", "entry": "00082c28", "is_isr": false, "signature": "void init(void)"}
+{"node_id": "func:init@00083d78", "node_type": "function", "name": "init", "entry": "00083d78", "is_isr": false, "signature": "void __thiscall init(UARTClass * this, uint32_t dwBaudRate, uint32_t modeReg)"}
+{"node_id": "func:initVariant", "node_type": "function", "name": "initVariant"}
+{"node_id": "func:initVariant@000847e8", "node_type": "function", "name": "initVariant", "entry": "000847e8", "is_isr": false, "signature": "void initVariant(void)"}
+{"node_id": "func:initiateReset", "node_type": "function", "name": "initiateReset"}
+{"node_id": "func:initiateReset@00083be0", "node_type": "function", "name": "initiateReset", "entry": "00083be0", "is_isr": false, "signature": "void __stdcall initiateReset(int _ticks)"}
+{"node_id": "func:is_url_safe", "node_type": "function", "name": "is_url_safe"}
+{"node_id": "func:is_url_safe@00080244", "node_type": "function", "name": "is_url_safe", "entry": "00080244", "is_isr": false, "signature": "bool __stdcall is_url_safe(char c)"}
+{"node_id": "func:itoa", "node_type": "function", "name": "itoa"}
+{"node_id": "func:itoa@0008392c", "node_type": "function", "name": "itoa", "entry": "0008392c", "is_isr": false, "signature": "char * __stdcall itoa(int value, char * string, int radix)"}
+{"node_id": "func:kill_power", "node_type": "function", "name": "kill_power"}
+{"node_id": "func:kill_power@00080c68", "node_type": "function", "name": "kill_power", "entry": "00080c68", "is_isr": false, "signature": "void kill_power(void)"}
+{"node_id": "func:loop", "node_type": "function", "name": "loop"}
+{"node_id": "func:loop@00082218", "node_type": "function", "name": "loop", "entry": "00082218", "is_isr": false, "signature": "void loop(void)"}
+{"node_id": "func:ltoa", "node_type": "function", "name": "ltoa"}
+{"node_id": "func:ltoa@000838be", "node_type": "function", "name": "ltoa", "entry": "000838be", "is_isr": false, "signature": "char * __stdcall ltoa(long value, char * string, int radix)"}
+{"node_id": "func:main", "node_type": "function", "name": "main"}
+{"node_id": "func:main@000847ec", "node_type": "function", "name": "main", "entry": "000847ec", "is_isr": false, "signature": "int main(void)"}
+{"node_id": "func:memchr", "node_type": "function", "name": "memchr"}
+{"node_id": "func:memchr@00088d94", "node_type": "function", "name": "memchr", "entry": "00088d94", "is_isr": false, "signature": "void * __stdcall memchr(void * __s, int __c, size_t __n)"}
+{"node_id": "func:memcmp", "node_type": "function", "name": "memcmp"}
+{"node_id": "func:memcmp@00088e28", "node_type": "function", "name": "memcmp", "entry": "00088e28", "is_isr": false, "signature": "int __stdcall memcmp(void * __s1, void * __s2, size_t __n)"}
+{"node_id": "func:memcpy", "node_type": "function", "name": "memcpy"}
+{"node_id": "func:memcpy@00085424", "node_type": "function", "name": "memcpy", "entry": "00085424", "is_isr": false, "signature": "void * __stdcall memcpy(void * __dest, void * __src, size_t __n)"}
+{"node_id": "func:memmove", "node_type": "function", "name": "memmove"}
+{"node_id": "func:memmove@00088e90", "node_type": "function", "name": "memmove", "entry": "00088e90", "is_isr": false, "signature": "void * __stdcall memmove(void * __dest, void * __src, size_t __n)"}
+{"node_id": "func:memset", "node_type": "function", "name": "memset"}
+{"node_id": "func:memset@00085510", "node_type": "function", "name": "memset", "entry": "00085510", "is_isr": false, "signature": "void * __stdcall memset(void * __s, int __c, size_t __n)"}
+{"node_id": "func:millis", "node_type": "function", "name": "millis"}
+{"node_id": "func:millis@00083930", "node_type": "function", "name": "millis", "entry": "00083930", "is_isr": false, "signature": "uint32_t millis(void)"}
+{"node_id": "func:operator_bool@00083c54", "node_type": "function", "name": "operator_bool", "entry": "00083c54", "is_isr": false, "signature": "bool __thiscall operator_bool(UARTClass * this)"}
+{"node_id": "func:parse_cmd", "node_type": "function", "name": "parse_cmd"}
+{"node_id": "func:parse_cmd@00080d90", "node_type": "function", "name": "parse_cmd", "entry": "00080d90", "is_isr": false, "signature": "void __stdcall parse_cmd(char * cmd)"}
+{"node_id": "func:parse_decimal", "node_type": "function", "name": "parse_decimal"}
+{"node_id": "func:parse_decimal@0008253e", "node_type": "function", "name": "parse_decimal", "entry": "0008253e", "is_isr": false, "signature": "ulong __thiscall parse_decimal(TinyGPS * this)"}
+{"node_id": "func:parse_degrees", "node_type": "function", "name": "parse_degrees"}
+{"node_id": "func:parse_degrees@00082598", "node_type": "function", "name": "parse_degrees", "entry": "00082598", "is_isr": false, "signature": "ulong __thiscall parse_degrees(TinyGPS * this)"}
+{"node_id": "func:parse_receive_reply", "node_type": "function", "name": "parse_receive_reply"}
+{"node_id": "func:parse_receive_reply@000815a4", "node_type": "function", "name": "parse_receive_reply", "entry": "000815a4", "is_isr": false, "signature": "int parse_receive_reply(void)"}
+{"node_id": "func:peek@00083c68", "node_type": "function", "name": "peek", "entry": "00083c68", "is_isr": false, "signature": "int __thiscall peek(UARTClass * this)"}
+{"node_id": "func:peek@00083e7c", "node_type": "function", "name": "peek", "entry": "00083e7c", "is_isr": false, "signature": "int __thiscall peek(Serial_ * this)"}
+{"node_id": "func:pinMode", "node_type": "function", "name": "pinMode"}
+{"node_id": "func:pinMode@00083954", "node_type": "function", "name": "pinMode", "entry": "00083954", "is_isr": false, "signature": "void __stdcall pinMode(uint32_t ulPin, uint32_t ulMode)"}
+{"node_id": "func:pmc_disable_all_periph_clk", "node_type": "function", "name": "pmc_disable_all_periph_clk"}
+{"node_id": "func:pmc_disable_all_periph_clk@00083098", "node_type": "function", "name": "pmc_disable_all_periph_clk", "entry": "00083098", "is_isr": false, "signature": "undefined pmc_disable_all_periph_clk(void)"}
+{"node_id": "func:pmc_disable_periph_clk", "node_type": "function", "name": "pmc_disable_periph_clk"}
+{"node_id": "func:pmc_disable_periph_clk@00083058", "node_type": "function", "name": "pmc_disable_periph_clk", "entry": "00083058", "is_isr": false, "signature": "undefined pmc_disable_periph_clk(void)"}
+{"node_id": "func:pmc_disable_udpck", "node_type": "function", "name": "pmc_disable_udpck"}
+{"node_id": "func:pmc_disable_udpck@000830e0", "node_type": "function", "name": "pmc_disable_udpck", "entry": "000830e0", "is_isr": false, "signature": "undefined pmc_disable_udpck(void)"}
+{"node_id": "func:pmc_disable_upll_clock", "node_type": "function", "name": "pmc_disable_upll_clock"}
+{"node_id": "func:pmc_disable_upll_clock@00083004", "node_type": "function", "name": "pmc_disable_upll_clock", "entry": "00083004", "is_isr": false, "signature": "undefined pmc_disable_upll_clock(void)"}
+{"node_id": "func:pmc_enable_periph_clk", "node_type": "function", "name": "pmc_enable_periph_clk"}
+{"node_id": "func:pmc_enable_periph_clk@00083014", "node_type": "function", "name": "pmc_enable_periph_clk", "entry": "00083014", "is_isr": false, "signature": "undefined pmc_enable_periph_clk(void)"}
+{"node_id": "func:pmc_enable_sleepmode", "node_type": "function", "name": "pmc_enable_sleepmode"}
+{"node_id": "func:pmc_enable_sleepmode@000830ec", "node_type": "function", "name": "pmc_enable_sleepmode", "entry": "000830ec", "is_isr": false, "signature": "undefined pmc_enable_sleepmode(void)"}
+{"node_id": "func:pmc_enable_udpck", "node_type": "function", "name": "pmc_enable_udpck"}
+{"node_id": "func:pmc_enable_udpck@000830d4", "node_type": "function", "name": "pmc_enable_udpck", "entry": "000830d4", "is_isr": false, "signature": "undefined pmc_enable_udpck(void)"}
+{"node_id": "func:pmc_enable_upll_clock", "node_type": "function", "name": "pmc_enable_upll_clock"}
+{"node_id": "func:pmc_enable_upll_clock@00082ff0", "node_type": "function", "name": "pmc_enable_upll_clock", "entry": "00082ff0", "is_isr": false, "signature": "undefined pmc_enable_upll_clock(void)"}
+{"node_id": "func:pmc_enable_waitmode", "node_type": "function", "name": "pmc_enable_waitmode"}
+{"node_id": "func:pmc_enable_waitmode@00083114", "node_type": "function", "name": "pmc_enable_waitmode", "entry": "00083114", "is_isr": false, "signature": "undefined pmc_enable_waitmode(void)"}
+{"node_id": "func:pmc_mck_set_prescaler", "node_type": "function", "name": "pmc_mck_set_prescaler"}
+{"node_id": "func:pmc_mck_set_prescaler@00082f6c", "node_type": "function", "name": "pmc_mck_set_prescaler", "entry": "00082f6c", "is_isr": false, "signature": "undefined pmc_mck_set_prescaler(void)"}
+{"node_id": "func:pmc_set_writeprotect", "node_type": "function", "name": "pmc_set_writeprotect"}
+{"node_id": "func:pmc_set_writeprotect@00083148", "node_type": "function", "name": "pmc_set_writeprotect", "entry": "00083148", "is_isr": false, "signature": "undefined pmc_set_writeprotect(void)"}
+{"node_id": "func:pmc_switch_mainck_to_fastrc", "node_type": "function", "name": "pmc_switch_mainck_to_fastrc"}
+{"node_id": "func:pmc_switch_mainck_to_fastrc@00082f84", "node_type": "function", "name": "pmc_switch_mainck_to_fastrc", "entry": "00082f84", "is_isr": false, "signature": "undefined pmc_switch_mainck_to_fastrc(void)"}
+{"node_id": "func:pmc_switch_udpck_to_upllck", "node_type": "function", "name": "pmc_switch_udpck_to_upllck"}
+{"node_id": "func:pmc_switch_udpck_to_upllck@000830c0", "node_type": "function", "name": "pmc_switch_udpck_to_upllck", "entry": "000830c0", "is_isr": false, "signature": "undefined pmc_switch_udpck_to_upllck(void)"}
+{"node_id": "func:print", "node_type": "function", "name": "print"}
+{"node_id": "func:print@00083b50", "node_type": "function", "name": "print", "entry": "00083b50", "is_isr": false, "signature": "size_t __thiscall print(Print * this, char * str)"}
+{"node_id": "func:print@00083b58", "node_type": "function", "name": "print", "entry": "00083b58", "is_isr": false, "signature": "size_t __thiscall print(Print * this, char c)"}
+{"node_id": "func:print@00083ba0", "node_type": "function", "name": "print", "entry": "00083ba0", "is_isr": false, "signature": "size_t __thiscall print(Print * this, long n, int base)"}
+{"node_id": "func:print@00083bdc", "node_type": "function", "name": "print", "entry": "00083bdc", "is_isr": false, "signature": "size_t __thiscall print(Print * this, int n, int base)"}
+{"node_id": "func:printNumber", "node_type": "function", "name": "printNumber"}
+{"node_id": "func:printNumber@00083b62", "node_type": "function", "name": "printNumber", "entry": "00083b62", "is_isr": false, "signature": "size_t __thiscall printNumber(Print * this, ulong n, uint8_t base)"}
+{"node_id": "func:quorem", "node_type": "function", "name": "quorem"}
+{"node_id": "func:quorem@00087684", "node_type": "function", "name": "quorem", "entry": "00087684", "is_isr": false, "signature": "undefined quorem(void)"}
+{"node_id": "func:read", "node_type": "function", "name": "read"}
+{"node_id": "func:read@00082a24", "node_type": "function", "name": "read", "entry": "00082a24", "is_isr": false, "signature": "byte __thiscall read(DueFlashStorage * this, uint32_t address)"}
+{"node_id": "func:read@00083c84", "node_type": "function", "name": "read", "entry": "00083c84", "is_isr": false, "signature": "int __thiscall read(UARTClass * this)"}
+{"node_id": "func:read@00083ec4", "node_type": "function", "name": "read", "entry": "00083ec4", "is_isr": false, "signature": "int __thiscall read(Serial_ * this)"}
+{"node_id": "func:readAddress", "node_type": "function", "name": "readAddress"}
+{"node_id": "func:readAddress@00082a2c", "node_type": "function", "name": "readAddress", "entry": "00082a2c", "is_isr": false, "signature": "byte * __thiscall readAddress(DueFlashStorage * this, uint32_t address)"}
+{"node_id": "func:reboot", "node_type": "function", "name": "reboot"}
+{"node_id": "func:reboot@00080c30", "node_type": "function", "name": "reboot", "entry": "00080c30", "is_isr": false, "signature": "void reboot(void)"}
+{"node_id": "func:register_fini", "node_type": "function", "name": "register_fini"}
+{"node_id": "func:register_fini@00087664", "node_type": "function", "name": "register_fini", "entry": "00087664", "is_isr": false, "signature": "undefined register_fini(void)"}
+{"node_id": "func:rstc_start_software_reset", "node_type": "function", "name": "rstc_start_software_reset"}
+{"node_id": "func:rstc_start_software_reset@00082f60", "node_type": "function", "name": "rstc_start_software_reset", "entry": "00082f60", "is_isr": false, "signature": "undefined rstc_start_software_reset(void)"}
+{"node_id": "func:send_data", "node_type": "function", "name": "send_data"}
+{"node_id": "func:send_data@00081830", "node_type": "function", "name": "send_data", "entry": "00081830", "is_isr": false, "signature": "void send_data(void)"}
+{"node_id": "func:serialEvent", "node_type": "function", "name": "serialEvent"}
+{"node_id": "func:serialEvent1", "node_type": "function", "name": "serialEvent1"}
+{"node_id": "func:serialEvent1@00082bfc", "node_type": "function", "name": "serialEvent1", "entry": "00082bfc", "is_isr": false, "signature": "void serialEvent1(void)"}
+{"node_id": "func:serialEvent2", "node_type": "function", "name": "serialEvent2"}
+{"node_id": "func:serialEvent2@00082bfe", "node_type": "function", "name": "serialEvent2", "entry": "00082bfe", "is_isr": false, "signature": "void serialEvent2(void)"}
+{"node_id": "func:serialEvent3", "node_type": "function", "name": "serialEvent3"}
+{"node_id": "func:serialEvent3@00082c00", "node_type": "function", "name": "serialEvent3", "entry": "00082c00", "is_isr": false, "signature": "void serialEvent3(void)"}
+{"node_id": "func:serialEvent@00082bec", "node_type": "function", "name": "serialEvent", "entry": "00082bec", "is_isr": false, "signature": "void serialEvent(void)"}
+{"node_id": "func:serialEventRun", "node_type": "function", "name": "serialEventRun"}
+{"node_id": "func:serialEventRun@00082e14", "node_type": "function", "name": "serialEventRun", "entry": "00082e14", "is_isr": false, "signature": "void serialEventRun(void)"}
+{"node_id": "func:settings_load", "node_type": "function", "name": "settings_load"}
+{"node_id": "func:settings_load@00080704", "node_type": "function", "name": "settings_load", "entry": "00080704", "is_isr": false, "signature": "void settings_load(void)"}
+{"node_id": "func:settings_save", "node_type": "function", "name": "settings_save"}
+{"node_id": "func:settings_save@000806dc", "node_type": "function", "name": "settings_save", "entry": "000806dc", "is_isr": false, "signature": "void settings_save(void)"}
+{"node_id": "func:setup", "node_type": "function", "name": "setup"}
+{"node_id": "func:setup@00082424", "node_type": "function", "name": "setup", "entry": "00082424", "is_isr": false, "signature": "void setup(void)"}
+{"node_id": "func:setup@00084890", "node_type": "function", "name": "setup", "entry": "00084890", "is_isr": false, "signature": "bool __thiscall setup(PluggableUSB_ * this, USBSetup * setup)"}
+{"node_id": "func:sms_check", "node_type": "function", "name": "sms_check"}
+{"node_id": "func:sms_check@00081c2c", "node_type": "function", "name": "sms_check", "entry": "00081c2c", "is_isr": false, "signature": "void sms_check(void)"}
+{"node_id": "func:sms_cmd", "node_type": "function", "name": "sms_cmd"}
+{"node_id": "func:sms_cmd@00081bec", "node_type": "function", "name": "sms_cmd", "entry": "00081bec", "is_isr": false, "signature": "void __stdcall sms_cmd(char * msg, char * phone)"}
+{"node_id": "func:sms_cmd_run", "node_type": "function", "name": "sms_cmd_run"}
+{"node_id": "func:sms_cmd_run@000818e0", "node_type": "function", "name": "sms_cmd_run", "entry": "000818e0", "is_isr": false, "signature": "void __stdcall sms_cmd_run(char * cmd, char * phone)"}
+{"node_id": "func:sms_send_msg", "node_type": "function", "name": "sms_send_msg"}
+{"node_id": "func:sms_send_msg@00081878", "node_type": "function", "name": "sms_send_msg", "entry": "00081878", "is_isr": false, "signature": "void __stdcall sms_send_msg(char * cmd, char * phone)"}
+{"node_id": "func:snprintf", "node_type": "function", "name": "snprintf"}
+{"node_id": "func:snprintf@000855a4", "node_type": "function", "name": "snprintf", "entry": "000855a4", "is_isr": false, "signature": "int __stdcall snprintf(char * __s, size_t __maxlen, char * __format, ...)"}
+{"node_id": "func:sprintf", "node_type": "function", "name": "sprintf"}
+{"node_id": "func:sprintf@0008560c", "node_type": "function", "name": "sprintf", "entry": "0008560c", "is_isr": false, "signature": "int __stdcall sprintf(char * __s, char * __format, ...)"}
+{"node_id": "func:stats", "node_type": "function", "name": "stats"}
+{"node_id": "func:stats@000824e8", "node_type": "function", "name": "stats", "entry": "000824e8", "is_isr": false, "signature": "void __thiscall stats(TinyGPS * this, ulong * chars, ushort * sentences, ushort * failed_cs)"}
+{"node_id": "func:status_delay", "node_type": "function", "name": "status_delay"}
+{"node_id": "func:status_delay@00080590", "node_type": "function", "name": "status_delay", "entry": "00080590", "is_isr": false, "signature": "void __stdcall status_delay(long ms)"}
+{"node_id": "func:status_led", "node_type": "function", "name": "status_led"}
+{"node_id": "func:status_led@00080550", "node_type": "function", "name": "status_led", "entry": "00080550", "is_isr": false, "signature": "void status_led(void)"}
+{"node_id": "func:storage_get_index", "node_type": "function", "name": "storage_get_index"}
+{"node_id": "func:storage_get_index@000808f0", "node_type": "function", "name": "storage_get_index", "entry": "000808f0", "is_isr": false, "signature": "void storage_get_index(void)"}
+{"node_id": "func:storage_save_current", "node_type": "function", "name": "storage_save_current"}
+{"node_id": "func:storage_save_current@000808a8", "node_type": "function", "name": "storage_save_current", "entry": "000808a8", "is_isr": false, "signature": "void storage_save_current(void)"}
+{"node_id": "func:storage_send_logs", "node_type": "function", "name": "storage_send_logs"}
+{"node_id": "func:storage_send_logs@00081758", "node_type": "function", "name": "storage_send_logs", "entry": "00081758", "is_isr": false, "signature": "void __stdcall storage_send_logs(int really_send)"}
+{"node_id": "func:store_char", "node_type": "function", "name": "store_char"}
+{"node_id": "func:store_char@00083c38", "node_type": "function", "name": "store_char", "entry": "00083c38", "is_isr": false, "signature": "void __thiscall store_char(RingBuffer * this, uint8_t c)"}
+{"node_id": "func:strchr", "node_type": "function", "name": "strchr"}
+{"node_id": "func:strchr@00085658", "node_type": "function", "name": "strchr", "entry": "00085658", "is_isr": false, "signature": "char * __stdcall strchr(char * __s, int __c)"}
+{"node_id": "func:strcmp", "node_type": "function", "name": "strcmp"}
+{"node_id": "func:strcmp@0008574c", "node_type": "function", "name": "strcmp", "entry": "0008574c", "is_isr": false, "signature": "int __stdcall strcmp(char * __s1, char * __s2)"}
+{"node_id": "func:strlcat", "node_type": "function", "name": "strlcat"}
+{"node_id": "func:strlcat@00085988", "node_type": "function", "name": "strlcat", "entry": "00085988", "is_isr": false, "signature": "undefined strlcat(void)"}
+{"node_id": "func:strlcpy", "node_type": "function", "name": "strlcpy"}
+{"node_id": "func:strlcpy@000859e4", "node_type": "function", "name": "strlcpy", "entry": "000859e4", "is_isr": false, "signature": "undefined strlcpy(void)"}
+{"node_id": "func:strlen", "node_type": "function", "name": "strlen"}
+{"node_id": "func:strlen@00085a20", "node_type": "function", "name": "strlen", "entry": "00085a20", "is_isr": false, "signature": "size_t __stdcall strlen(char * __s)"}
+{"node_id": "func:strncmp", "node_type": "function", "name": "strncmp"}
+{"node_id": "func:strncmp@00085a80", "node_type": "function", "name": "strncmp", "entry": "00085a80", "is_isr": false, "signature": "int __stdcall strncmp(char * __s1, char * __s2, size_t __n)"}
+{"node_id": "func:strstr", "node_type": "function", "name": "strstr"}
+{"node_id": "func:strstr@00085ddc", "node_type": "function", "name": "strstr", "entry": "00085ddc", "is_isr": false, "signature": "char * __stdcall strstr(char * __haystack, char * __needle)"}
+{"node_id": "func:strtok", "node_type": "function", "name": "strtok"}
+{"node_id": "func:strtok@00085fdc", "node_type": "function", "name": "strtok", "entry": "00085fdc", "is_isr": false, "signature": "char * __stdcall strtok(char * __s, char * __delim)"}
+{"node_id": "func:strtok_r", "node_type": "function", "name": "strtok_r"}
+{"node_id": "func:strtok_r@00086050", "node_type": "function", "name": "strtok_r", "entry": "00086050", "is_isr": false, "signature": "char * __stdcall strtok_r(char * __s, char * __delim, char * * __save_ptr)"}
+{"node_id": "func:strtol", "node_type": "function", "name": "strtol"}
+{"node_id": "func:strtol@0008616c", "node_type": "function", "name": "strtol", "entry": "0008616c", "is_isr": false, "signature": "long __stdcall strtol(char * __nptr, char * * __endptr, int __base)"}
+{"node_id": "func:term_complete", "node_type": "function", "name": "term_complete"}
+{"node_id": "func:term_complete@00082618", "node_type": "function", "name": "term_complete", "entry": "00082618", "is_isr": false, "signature": "bool __thiscall term_complete(TinyGPS * this)"}
+{"node_id": "func:tickReset", "node_type": "function", "name": "tickReset"}
+{"node_id": "func:tickReset@00083bfc", "node_type": "function", "name": "tickReset", "entry": "00083bfc", "is_isr": false, "signature": "void tickReset(void)"}
+{"node_id": "func:translate_address", "node_type": "function", "name": "translate_address"}
+{"node_id": "func:translate_address@00082ab0", "node_type": "function", "name": "translate_address", "entry": "00082ab0", "is_isr": false, "signature": "void __stdcall translate_address(Efc * * pp_efc, uint32_t ul_addr, uint16_t * pus_page, uint16_t * pus_offset)"}
+{"node_id": "func:two_way_long_needle", "node_type": "function", "name": "two_way_long_needle"}
+{"node_id": "func:two_way_long_needle@00085bf0", "node_type": "function", "name": "two_way_long_needle", "entry": "00085bf0", "is_isr": false, "signature": "undefined two_way_long_needle(void)"}
+{"node_id": "func:url_encoded_strlcpy", "node_type": "function", "name": "url_encoded_strlcpy"}
+{"node_id": "func:url_encoded_strlcpy@000802b0", "node_type": "function", "name": "url_encoded_strlcpy", "entry": "000802b0", "is_isr": false, "signature": "int __stdcall url_encoded_strlcpy(char * dst, int maxlen, char * src)"}
+{"node_id": "func:url_encoded_strlen", "node_type": "function", "name": "url_encoded_strlen"}
+{"node_id": "func:url_encoded_strlen@00080284", "node_type": "function", "name": "url_encoded_strlen", "entry": "00080284", "is_isr": false, "signature": "int __stdcall url_encoded_strlen(char * s)"}
+{"node_id": "func:usb_console_disable", "node_type": "function", "name": "usb_console_disable"}
+{"node_id": "func:usb_console_disable@000805f4", "node_type": "function", "name": "usb_console_disable", "entry": "000805f4", "is_isr": false, "signature": "void usb_console_disable(void)"}
+{"node_id": "func:usb_console_restore", "node_type": "function", "name": "usb_console_restore"}
+{"node_id": "func:usb_console_restore@00080660", "node_type": "function", "name": "usb_console_restore", "entry": "00080660", "is_isr": false, "signature": "void usb_console_restore(void)"}
+{"node_id": "func:write", "node_type": "function", "name": "write"}
+{"node_id": "func:write@00082a34", "node_type": "function", "name": "write", "entry": "00082a34", "is_isr": false, "signature": "boolean __thiscall write(DueFlashStorage * this, uint32_t address, byte value)"}
+{"node_id": "func:write@00082a68", "node_type": "function", "name": "write", "entry": "00082a68", "is_isr": false, "signature": "boolean __thiscall write(DueFlashStorage * this, uint32_t address, byte * data, uint32_t dataLength)"}
+{"node_id": "func:write@00083b10", "node_type": "function", "name": "write", "entry": "00083b10", "is_isr": false, "signature": "size_t __thiscall write(Print * this, uint8_t * buffer, size_t size)"}
+{"node_id": "func:write@00083b32", "node_type": "function", "name": "write", "entry": "00083b32", "is_isr": false, "signature": "size_t __thiscall write(Print * this, char * str)"}
+{"node_id": "func:write@00083cc4", "node_type": "function", "name": "write", "entry": "00083cc4", "is_isr": false, "signature": "size_t __thiscall write(UARTClass * this, uint8_t uc_data)"}
+{"node_id": "func:write@00083eac", "node_type": "function", "name": "write", "entry": "00083eac", "is_isr": false, "signature": "size_t __thiscall write(Serial_ * this, uint8_t c)"}
+{"node_id": "func:write@00083fd8", "node_type": "function", "name": "write", "entry": "00083fd8", "is_isr": false, "signature": "size_t __thiscall write(Serial_ * this, uint8_t * buffer, size_t size)"}
+{"node_id": "func:yield", "node_type": "function", "name": "yield"}
+{"node_id": "func:yield@00080680", "node_type": "function", "name": "yield", "entry": "00080680", "is_isr": false, "signature": "void yield(void)"}
+{"node_id": "mmio:0X400AC000", "node_type": "mmio", "address_hex": "0x400AC000", "address": 1074446336}
+{"node_id": "mmio:0X400AC004", "node_type": "mmio", "address_hex": "0x400AC004", "address": 1074446340}
+{"node_id": "mmio:0X400AC008", "node_type": "mmio", "address_hex": "0x400AC008", "address": 1074446344}
+{"node_id": "mmio:0X400AC014", "node_type": "mmio", "address_hex": "0x400AC014", "address": 1074446356}
+{"node_id": "mmio:0X400AC018", "node_type": "mmio", "address_hex": "0x400AC018", "address": 1074446360}
+{"node_id": "mmio:0X400AC01C", "node_type": "mmio", "address_hex": "0x400AC01C", "address": 1074446364}
+{"node_id": "mmio:0X400AC104", "node_type": "mmio", "address_hex": "0x400AC104", "address": 1074446596}
+{"node_id": "mmio:0X400AC108", "node_type": "mmio", "address_hex": "0x400AC108", "address": 1074446600}
+{"node_id": "mmio:0X400AC130", "node_type": "mmio", "address_hex": "0x400AC130", "address": 1074446640}
+{"node_id": "mmio:0X400AC134", "node_type": "mmio", "address_hex": "0x400AC134", "address": 1074446644}
+{"node_id": "mmio:0X400AC138", "node_type": "mmio", "address_hex": "0x400AC138", "address": 1074446648}
+{"node_id": "mmio:0X400AC160", "node_type": "mmio", "address_hex": "0x400AC160", "address": 1074446688}
+{"node_id": "mmio:0X400AC168", "node_type": "mmio", "address_hex": "0x400AC168", "address": 1074446696}
+{"node_id": "mmio:0X400AC1F0", "node_type": "mmio", "address_hex": "0x400AC1F0", "address": 1074446832}
+{"node_id": "mmio:0X400AC1F8", "node_type": "mmio", "address_hex": "0x400AC1F8", "address": 1074446840}
+{"node_id": "mmio:0X400AC228", "node_type": "mmio", "address_hex": "0x400AC228", "address": 1074446888}
+{"node_id": "mmio:0X400AC318", "node_type": "mmio", "address_hex": "0x400AC318", "address": 1074447128}
+{"node_id": "mmio:0X400AC328", "node_type": "mmio", "address_hex": "0x400AC328", "address": 1074447144}
+{"node_id": "mmio:0X400AC800", "node_type": "mmio", "address_hex": "0x400AC800", "address": 1074448384}
+{"node_id": "mmio:0X400AC804", "node_type": "mmio", "address_hex": "0x400AC804", "address": 1074448388}
+{"node_id": "mmio:0X400E0600", "node_type": "mmio", "address_hex": "0x400E0600", "address": 1074660864}
+{"node_id": "mmio:0X400E0604", "node_type": "mmio", "address_hex": "0x400E0604", "address": 1074660868}
+{"node_id": "mmio:0X400E0610", "node_type": "mmio", "address_hex": "0x400E0610", "address": 1074660880}
+{"node_id": "mmio:0X400E0614", "node_type": "mmio", "address_hex": "0x400E0614", "address": 1074660884}
+{"node_id": "mmio:0X400E0618", "node_type": "mmio", "address_hex": "0x400E0618", "address": 1074660888}
+{"node_id": "mmio:0X400E061C", "node_type": "mmio", "address_hex": "0x400E061C", "address": 1074660892}
+{"node_id": "mmio:0X400E0620", "node_type": "mmio", "address_hex": "0x400E0620", "address": 1074660896}
+{"node_id": "mmio:0X400E0628", "node_type": "mmio", "address_hex": "0x400E0628", "address": 1074660904}
+{"node_id": "mmio:0X400E0630", "node_type": "mmio", "address_hex": "0x400E0630", "address": 1074660912}
+{"node_id": "mmio:0X400E0638", "node_type": "mmio", "address_hex": "0x400E0638", "address": 1074660920}
+{"node_id": "mmio:0X400E0668", "node_type": "mmio", "address_hex": "0x400E0668", "address": 1074660968}
+{"node_id": "mmio:0X400E0670", "node_type": "mmio", "address_hex": "0x400E0670", "address": 1074660976}
+{"node_id": "mmio:0X400E06E4", "node_type": "mmio", "address_hex": "0x400E06E4", "address": 1074661092}
+{"node_id": "mmio:0X400E0700", "node_type": "mmio", "address_hex": "0x400E0700", "address": 1074661120}
+{"node_id": "mmio:0X400E0704", "node_type": "mmio", "address_hex": "0x400E0704", "address": 1074661124}
+{"node_id": "mmio:0X400E0708", "node_type": "mmio", "address_hex": "0x400E0708", "address": 1074661128}
+{"node_id": "mmio:0X400E0A00", "node_type": "mmio", "address_hex": "0x400E0A00", "address": 1074661888}
+{"node_id": "mmio:0X400E0A04", "node_type": "mmio", "address_hex": "0x400E0A04", "address": 1074661892}
+{"node_id": "mmio:0X400E0A08", "node_type": "mmio", "address_hex": "0x400E0A08", "address": 1074661896}
+{"node_id": "mmio:0X400E0C00", "node_type": "mmio", "address_hex": "0x400E0C00", "address": 1074662400}
+{"node_id": "mmio:0X400E0E00", "node_type": "mmio", "address_hex": "0x400E0E00", "address": 1074662912}
+{"node_id": "mmio:0X400E0E4C", "node_type": "mmio", "address_hex": "0x400E0E4C", "address": 1074662988}
+{"node_id": "mmio:0X400E0EA0", "node_type": "mmio", "address_hex": "0x400E0EA0", "address": 1074663072}
+{"node_id": "mmio:0X400E1000", "node_type": "mmio", "address_hex": "0x400E1000", "address": 1074663424}
+{"node_id": "mmio:0X400E104C", "node_type": "mmio", "address_hex": "0x400E104C", "address": 1074663500}
+{"node_id": "mmio:0X400E10A0", "node_type": "mmio", "address_hex": "0x400E10A0", "address": 1074663584}
+{"node_id": "mmio:0X400E1A00", "node_type": "mmio", "address_hex": "0x400E1A00", "address": 1074665984}
+{"node_id": "mmio:0X400E1A24", "node_type": "mmio", "address_hex": "0x400E1A24", "address": 1074666020}
+{"node_id": "mmio:0X400F09D8", "node_type": "mmio", "address_hex": "0x400F09D8", "address": 1074727384}
+{"node_id": "mmio:0X400F09DC", "node_type": "mmio", "address_hex": "0x400F09DC", "address": 1074727388}
+{"node_id": "mmio:0X4770469E", "node_type": "mmio", "address_hex": "0x4770469E", "address": 1198540446}
+{"node_id": "mmio:0XE000E010", "node_type": "mmio", "address_hex": "0xE000E010", "address": 3758153744}
+{"node_id": "mmio:0XE000E014", "node_type": "mmio", "address_hex": "0xE000E014", "address": 3758153748}
+{"node_id": "mmio:0XE000E018", "node_type": "mmio", "address_hex": "0xE000E018", "address": 3758153752}
+{"node_id": "mmio:0XE000E104", "node_type": "mmio", "address_hex": "0xE000E104", "address": 3758153988}
+{"node_id": "mmio:0XE000E184", "node_type": "mmio", "address_hex": "0xE000E184", "address": 3758154116}
+{"node_id": "mmio:0XE000E284", "node_type": "mmio", "address_hex": "0xE000E284", "address": 3758154372}
+{"node_id": "mmio:0XE000E428", "node_type": "mmio", "address_hex": "0xE000E428", "address": 3758154792}
+{"node_id": "mmio:0XE000ED08", "node_type": "mmio", "address_hex": "0xE000ED08", "address": 3758157064}
+{"node_id": "mmio:0XE000ED10", "node_type": "mmio", "address_hex": "0xE000ED10", "address": 3758157072}
+{"node_id": "mmio:0XE000ED23", "node_type": "mmio", "address_hex": "0xE000ED23", "address": 3758157091}

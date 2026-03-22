@@ -1,0 +1,455 @@
+{"src": "func:__aeabi_uldivmod@080030b4", "edge_type": "calls", "dst": "func:__aeabi_idiv0", "source": "ghidra"}
+{"src": "func:__aeabi_uldivmod@080030b4", "edge_type": "calls", "dst": "func:__udivmoddi4", "source": "ghidra"}
+{"src": "func:__libc_init_array@08003ca0", "edge_type": "calls", "dst": "func:_init", "source": "ghidra"}
+{"src": "func:__malloc_lock@080046dc", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:__malloc_unlock@080046e8", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:__sclose@080042f6", "edge_type": "calls", "dst": "func:_close_r", "source": "ghidra"}
+{"src": "func:__sflush_r@080034b4", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:__sfmoreglue@080036a8", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:__sfmoreglue@080036a8", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:__sfp@08003774", "edge_type": "calls", "dst": "func:__retarget_lock_init_recursive", "source": "ghidra"}
+{"src": "func:__sfp@08003774", "edge_type": "calls", "dst": "func:__sfmoreglue", "source": "ghidra"}
+{"src": "func:__sfp@08003774", "edge_type": "calls", "dst": "func:__sfp_lock_acquire", "source": "ghidra"}
+{"src": "func:__sfp@08003774", "edge_type": "calls", "dst": "func:__sfp_lock_release", "source": "ghidra"}
+{"src": "func:__sfp@08003774", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:__sfp@08003774", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:__sfp_lock_acquire@080036d4", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:__sfp_lock_release@080036e0", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:__sfputc_r@08004a08", "edge_type": "calls", "dst": "func:__swbuf_r", "source": "ghidra"}
+{"src": "func:__sfputs_r@08004a32", "edge_type": "calls", "dst": "func:__sfputc_r", "source": "ghidra"}
+{"src": "func:__sinit@08003704", "edge_type": "calls", "dst": "func:__sfp", "source": "ghidra"}
+{"src": "func:__sinit@08003704", "edge_type": "calls", "dst": "func:__sinit_lock_acquire", "source": "ghidra"}
+{"src": "func:__sinit@08003704", "edge_type": "calls", "dst": "func:__sinit_lock_release", "source": "ghidra"}
+{"src": "func:__sinit@08003704", "edge_type": "calls", "dst": "func:std", "source": "ghidra"}
+{"src": "func:__sinit_lock_acquire@080036ec", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:__sinit_lock_release@080036f8", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:__smakebuf_r@08003d3c", "edge_type": "calls", "dst": "func:__swhatbuf_r", "source": "ghidra"}
+{"src": "func:__smakebuf_r@08003d3c", "edge_type": "calls", "dst": "func:_isatty_r", "source": "ghidra"}
+{"src": "func:__smakebuf_r@08003d3c", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:__sread@08004278", "edge_type": "calls", "dst": "func:_read_r", "source": "ghidra"}
+{"src": "func:__srefill_r@080040fc", "edge_type": "calls", "dst": "func:__sflush_r", "source": "ghidra"}
+{"src": "func:__srefill_r@080040fc", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:__srefill_r@080040fc", "edge_type": "calls", "dst": "func:__smakebuf_r", "source": "ghidra"}
+{"src": "func:__srefill_r@080040fc", "edge_type": "calls", "dst": "func:_fflush_r", "source": "ghidra"}
+{"src": "func:__srefill_r@080040fc", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:__srefill_r@080040fc", "edge_type": "calls", "dst": "func:_fwalk", "source": "ghidra"}
+{"src": "func:__srget_r@08005070", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:__srget_r@08005070", "edge_type": "calls", "dst": "func:__srefill_r", "source": "ghidra"}
+{"src": "func:__sseek@080042d2", "edge_type": "calls", "dst": "func:_lseek_r", "source": "ghidra"}
+{"src": "func:__ssputs_r@08004752", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:__ssputs_r@08004752", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:__ssputs_r@08004752", "edge_type": "calls", "dst": "func:_realloc_r", "source": "ghidra"}
+{"src": "func:__ssputs_r@08004752", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:__ssputs_r@08004752", "edge_type": "calls", "dst": "func:memmove", "source": "ghidra"}
+{"src": "func:__swbuf_r@08004470", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:__swbuf_r@08004470", "edge_type": "calls", "dst": "func:__swsetup_r", "source": "ghidra"}
+{"src": "func:__swbuf_r@08004470", "edge_type": "calls", "dst": "func:_fflush_r", "source": "ghidra"}
+{"src": "func:__swhatbuf_r@08003cf0", "edge_type": "calls", "dst": "func:_fstat_r", "source": "ghidra"}
+{"src": "func:__swrite@0800429a", "edge_type": "calls", "dst": "func:_lseek_r", "source": "ghidra"}
+{"src": "func:__swrite@0800429a", "edge_type": "calls", "dst": "func:_write_r", "source": "ghidra"}
+{"src": "func:__swsetup_r@08004514", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:__swsetup_r@08004514", "edge_type": "calls", "dst": "func:__smakebuf_r", "source": "ghidra"}
+{"src": "func:__swsetup_r@08004514", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:_assert_panic@08000844", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:_assert_panic@08000844", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_cat@08000188", "edge_type": "calls", "dst": "func:fclose", "source": "ghidra"}
+{"src": "func:_cat@08000188", "edge_type": "calls", "dst": "func:fflush", "source": "ghidra"}
+{"src": "func:_cat@08000188", "edge_type": "calls", "dst": "func:fopen", "source": "ghidra"}
+{"src": "func:_cat@08000188", "edge_type": "calls", "dst": "func:fread", "source": "ghidra"}
+{"src": "func:_cat@08000188", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_cat@08000188", "edge_type": "calls", "dst": "func:putchar", "source": "ghidra"}
+{"src": "func:_cleanup_r@0800369c", "edge_type": "calls", "dst": "func:_fwalk_reent", "source": "ghidra"}
+{"src": "func:_close_r@08000f54", "edge_type": "calls", "dst": "func:vfs_close", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:__retarget_lock_close_recursive", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:__sflush_r", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:__sfp_lock_acquire", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:__sfp_lock_release", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_fclose_r@080033cc", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:_fflush_r@080035b8", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_fflush_r@080035b8", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_fflush_r@080035b8", "edge_type": "calls", "dst": "func:__sflush_r", "source": "ghidra"}
+{"src": "func:_fflush_r@080035b8", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_find_mount@0800267c", "edge_type": "calls", "dst": "func:mutex_lock_internal", "source": "ghidra"}
+{"src": "func:_find_mount@0800267c", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:_find_mount@0800267c", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:_find_mount@0800267c", "edge_type": "calls", "dst": "func:strncmp", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:__retarget_lock_close_recursive", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:__sflags", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:__sfp", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:__sfp_lock_acquire", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:__sfp_lock_release", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:_fseek_r", "source": "ghidra"}
+{"src": "func:_fopen_r@08003800", "edge_type": "calls", "dst": "func:_open_r", "source": "ghidra"}
+{"src": "func:_fread_r@080038b8", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_fread_r@080038b8", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_fread_r@080038b8", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_fread_r@080038b8", "edge_type": "calls", "dst": "func:__srefill_r", "source": "ghidra"}
+{"src": "func:_fread_r@080038b8", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:_free_r@08003de8", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_free_r@08003de8", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_fseeko_r@080039c0", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_fseeko_r@080039c0", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_fseeko_r@080039c0", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_fseeko_r@080039c0", "edge_type": "calls", "dst": "func:__smakebuf_r", "source": "ghidra"}
+{"src": "func:_fseeko_r@080039c0", "edge_type": "calls", "dst": "func:_fflush_r", "source": "ghidra"}
+{"src": "func:_fseeko_r@080039c0", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:_fseeko_r@080039c0", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:_fstat_r@08000f88", "edge_type": "calls", "dst": "func:vfs_fstat", "source": "ghidra"}
+{"src": "func:_fwrite_r@08003ba0", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_fwrite_r@08003ba0", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_fwrite_r@08003ba0", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_fwrite_r@08003ba0", "edge_type": "calls", "dst": "func:__swbuf_r", "source": "ghidra"}
+{"src": "func:_fwrite_r@08003ba0", "edge_type": "calls", "dst": "func:__swsetup_r", "source": "ghidra"}
+{"src": "func:_getc_r@0800465c", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_getc_r@0800465c", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_getc_r@0800465c", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_getc_r@0800465c", "edge_type": "calls", "dst": "func:__srget_r", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:sniprintf", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:tiny_strerror", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:vfs_closedir", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:vfs_normalize_path", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:vfs_opendir", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:vfs_readdir", "source": "ghidra"}
+{"src": "func:_ls_handler@08001b74", "edge_type": "calls", "dst": "func:vfs_stat", "source": "ghidra"}
+{"src": "func:_lseek_r@08000f6c", "edge_type": "calls", "dst": "func:vfs_lseek", "source": "ghidra"}
+{"src": "func:_malloc_r@08003ebc", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_malloc_r@08003ebc", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_malloc_r@08003ebc", "edge_type": "calls", "dst": "func:_sbrk_r", "source": "ghidra"}
+{"src": "func:_malloc_r@08003ebc", "edge_type": "calls", "dst": "func:sbrk_aligned", "source": "ghidra"}
+{"src": "func:_open_r@08000f00", "edge_type": "calls", "dst": "func:vfs_open", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:_print_usage", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:fflush", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:parse_mode", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:pm_block", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:pm_get_blocker", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:pm_off", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:pm_set", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:pm_unblock", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:_pm_handler@0800179c", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:_print_df@08001aa8", "edge_type": "calls", "dst": "func:__aeabi_uldivmod", "source": "ghidra"}
+{"src": "func:_print_df@08001aa8", "edge_type": "calls", "dst": "func:_print_size", "source": "ghidra"}
+{"src": "func:_print_df@08001aa8", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_print_df@08001aa8", "edge_type": "calls", "dst": "func:tiny_strerror", "source": "ghidra"}
+{"src": "func:_print_df@08001aa8", "edge_type": "calls", "dst": "func:vfs_dstatvfs", "source": "ghidra"}
+{"src": "func:_print_size@08001950", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_print_usage@08001738", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:_printf_i@08004d94", "edge_type": "calls", "dst": "func:_printf_common", "source": "ghidra"}
+{"src": "func:_printf_i@08004d94", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:_ps_handler@0800192c", "edge_type": "calls", "dst": "func:ps", "source": "ghidra"}
+{"src": "func:_putc_r@08004fe0", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_putc_r@08004fe0", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_putc_r@08004fe0", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_putc_r@08004fe0", "edge_type": "calls", "dst": "func:__swbuf_r", "source": "ghidra"}
+{"src": "func:_puts_r@08003ffc", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_puts_r@08003ffc", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_puts_r@08003ffc", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_puts_r@08003ffc", "edge_type": "calls", "dst": "func:__swbuf_r", "source": "ghidra"}
+{"src": "func:_puts_r@08003ffc", "edge_type": "calls", "dst": "func:__swsetup_r", "source": "ghidra"}
+{"src": "func:_read_r@08000f1c", "edge_type": "calls", "dst": "func:vfs_read", "source": "ghidra"}
+{"src": "func:_realloc_r@080046f4", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:_realloc_r@080046f4", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:_realloc_r@080046f4", "edge_type": "calls", "dst": "func:_malloc_usable_size_r", "source": "ghidra"}
+{"src": "func:_realloc_r@080046f4", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:_reboot_handler@08001936", "edge_type": "calls", "dst": "func:pm_reboot", "source": "ghidra"}
+{"src": "func:_stdio_read@08003064", "edge_type": "calls", "dst": "func:stdio_read", "source": "ghidra"}
+{"src": "func:_stdio_write@08003050", "edge_type": "calls", "dst": "func:stdio_write", "source": "ghidra"}
+{"src": "func:_strtol_l.constprop.0@08004364", "edge_type": "calls", "dst": "func:__errno", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@08004808", "edge_type": "calls", "dst": "func:__ssputs_r", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@08004808", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@08004808", "edge_type": "calls", "dst": "func:_printf_i", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@08004808", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:_tee@080001f0", "edge_type": "calls", "dst": "func:fclose", "source": "ghidra"}
+{"src": "func:_tee@080001f0", "edge_type": "calls", "dst": "func:fopen", "source": "ghidra"}
+{"src": "func:_tee@080001f0", "edge_type": "calls", "dst": "func:fwrite", "source": "ghidra"}
+{"src": "func:_tee@080001f0", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_tee@080001f0", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:_tee@080001f0", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:_unschedule@08000554", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:_unschedule@08000554", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_version_handler@08001940", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:_vfprintf_r@08004a58", "edge_type": "calls", "dst": "func:__retarget_lock_acquire_recursive", "source": "ghidra"}
+{"src": "func:_vfprintf_r@08004a58", "edge_type": "calls", "dst": "func:__retarget_lock_release_recursive", "source": "ghidra"}
+{"src": "func:_vfprintf_r@08004a58", "edge_type": "calls", "dst": "func:__sfputs_r", "source": "ghidra"}
+{"src": "func:_vfprintf_r@08004a58", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:_vfprintf_r@08004a58", "edge_type": "calls", "dst": "func:__swsetup_r", "source": "ghidra"}
+{"src": "func:_vfprintf_r@08004a58", "edge_type": "calls", "dst": "func:_printf_i", "source": "ghidra"}
+{"src": "func:_vfprintf_r@08004a58", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:_dehex", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:_ls_handler", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:_print_df", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:_vfs_usage", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:putchar", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:tiny_strerror", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_close", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_closedir", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_format_by_path", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_iterate_mount_dirs", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_lseek", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_mkdir", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_mount_by_path", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_normalize_path", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_open", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_opendir", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_read", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_rename", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_unlink", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_unmount_by_path", "source": "ghidra"}
+{"src": "func:_vfs_handler@08001c94", "edge_type": "calls", "dst": "func:vfs_write", "source": "ghidra"}
+{"src": "func:_vfs_usage@080019ac", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:_vfs_usage@080019ac", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:_write_r@08000f38", "edge_type": "calls", "dst": "func:vfs_write", "source": "ghidra"}
+{"src": "func:atoi@080033b8", "edge_type": "calls", "dst": "func:strtol", "source": "ghidra"}
+{"src": "func:auto_init@08000290", "edge_type": "calls", "dst": "func:auto_init_vfs", "source": "ghidra"}
+{"src": "func:auto_init_vfs@08002f48", "edge_type": "calls", "dst": "func:vfs_mount", "source": "ghidra"}
+{"src": "func:bus_fault_default@08000b10", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:check_mount@08002730", "edge_type": "calls", "dst": "func:mutex_lock_internal", "source": "ghidra"}
+{"src": "func:check_mount@08002730", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:check_mount@08002730", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:constfs_open@080003a8", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:constfs_opendir@08000484", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:constfs_read@08000452", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:constfs_readdir@080003f2", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:constfs_readdir@080003f2", "edge_type": "calls", "dst": "func:strnlen", "source": "ghidra"}
+{"src": "func:constfs_stat@08000350", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:core_panic@080008c0", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:core_panic@080008c0", "edge_type": "calls", "dst": "func:panic_app", "source": "ghidra"}
+{"src": "func:core_panic@080008c0", "edge_type": "calls", "dst": "func:panic_arch", "source": "ghidra"}
+{"src": "func:core_panic@080008c0", "edge_type": "calls", "dst": "func:pm_off", "source": "ghidra"}
+{"src": "func:core_panic@080008c0", "edge_type": "calls", "dst": "func:ps", "source": "ghidra"}
+{"src": "func:core_panic@080008c0", "edge_type": "calls", "dst": "func:putchar", "source": "ghidra"}
+{"src": "func:core_panic@080008c0", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:cortexm_init@08000904", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED10", "instruction": "ldr r2,[r3,#0x10]", "source": "ghidra"}
+{"src": "func:cortexm_init@08000904", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED14", "instruction": "ldr r2,[r3,#0x14]", "source": "ghidra"}
+{"src": "func:cortexm_init@08000904", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED08", "instruction": "str r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:cortexm_init@08000904", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED10", "instruction": "str r2,[r3,#0x10]", "source": "ghidra"}
+{"src": "func:cortexm_init@08000904", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED14", "instruction": "str r2,[r3,#0x14]", "source": "ghidra"}
+{"src": "func:cortexm_init@08000904", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED1F", "instruction": "strb r1,[r3,#0x1f]", "source": "ghidra"}
+{"src": "func:cortexm_init@08000904", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED22", "instruction": "strb.w r2,[r3,#0x22]", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "calls", "dst": "func:cortexm_init", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "calls", "dst": "func:early_init", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "calls", "dst": "func:periph_clk_en", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "calls", "dst": "func:periph_init", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "calls", "dst": "func:stmclk_init_sysclk", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "reads_mmio", "dst": "mmio:0X40021014", "instruction": "ldr r5,[r3,#0x14]", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "writes_mmio", "dst": "mmio:0X48000000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "writes_mmio", "dst": "mmio:0X48000400", "instruction": "str.w r2,[r3,#0x400]", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "writes_mmio", "dst": "mmio:0X48000800", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "writes_mmio", "dst": "mmio:0X48000C00", "instruction": "str.w r3,[r2,#0x400]", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "writes_mmio", "dst": "mmio:0X48001000", "instruction": "str.w r3,[r2,#0x800]", "source": "ghidra"}
+{"src": "func:cpu_init@08000e14", "edge_type": "writes_mmio", "dst": "mmio:0X48001400", "instruction": "str.w r3,[r2,#0xc00]", "source": "ghidra"}
+{"src": "func:cpu_switch_context_exit@08000a3c", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED04", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:debug_mon_default@08000b30", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:dummy_handler_default@08000b40", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:early_init@080008ac", "edge_type": "calls", "dst": "func:led_init", "source": "ghidra"}
+{"src": "func:early_init@080008ac", "edge_type": "calls", "dst": "func:stdio_init", "source": "ghidra"}
+{"src": "func:early_init@080008ac", "edge_type": "calls", "dst": "func:vfs_bind_stdio", "source": "ghidra"}
+{"src": "func:fclose@080034a4", "edge_type": "calls", "dst": "func:_fclose_r", "source": "ghidra"}
+{"src": "func:fflush@08003630", "edge_type": "calls", "dst": "func:_fflush_r", "source": "ghidra"}
+{"src": "func:fflush@08003630", "edge_type": "calls", "dst": "func:_fwalk_reent", "source": "ghidra"}
+{"src": "func:fopen@080038a8", "edge_type": "calls", "dst": "func:_fopen_r", "source": "ghidra"}
+{"src": "func:fread@080039a0", "edge_type": "calls", "dst": "func:_fread_r", "source": "ghidra"}
+{"src": "func:fwrite@08003c60", "edge_type": "calls", "dst": "func:_fwrite_r", "source": "ghidra"}
+{"src": "func:getchar@08003c7c", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:getchar@08003c7c", "edge_type": "calls", "dst": "func:_getc_r", "source": "ghidra"}
+{"src": "func:gpio_init@08000fb4", "edge_type": "calls", "dst": "func:periph_clk_en", "source": "ghidra"}
+{"src": "func:gpio_init_af@0800101c", "edge_type": "calls", "dst": "func:periph_clk_en", "source": "ghidra"}
+{"src": "func:hard_fault_default@08000aac", "edge_type": "calls", "dst": "func:hard_fault_handler", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "calls", "dst": "func:thread_getname", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED28", "instruction": "ldr r7,[r3,#0x28]", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED2C", "instruction": "ldr r2,[r3,#0x2c]", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED30", "instruction": "ldr r2,[r3,#0x30]", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED34", "instruction": "ldr r2,[r3,#0x34]", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED38", "instruction": "ldr r2,[r3,#0x38]", "source": "ghidra"}
+{"src": "func:hard_fault_handler@08000bf0", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED3C", "instruction": "ldr r3,[r3,#0x3c]", "source": "ghidra"}
+{"src": "func:iprintf@08003fa4", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:iprintf@08003fa4", "edge_type": "calls", "dst": "func:_vfprintf_r", "source": "ghidra"}
+{"src": "func:irq_handler@080010e4", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED04", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:isr_pendsv@08000a54", "edge_type": "calls", "dst": "func:sched_run", "source": "ghidra"}
+{"src": "func:isr_svc@08000a8c", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED04", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:isr_usart1@08001238", "edge_type": "calls", "dst": "func:irq_handler", "source": "ghidra"}
+{"src": "func:isr_usart2@0800123e", "edge_type": "calls", "dst": "func:irq_handler", "source": "ghidra"}
+{"src": "func:isr_usart3@08001244", "edge_type": "calls", "dst": "func:irq_handler", "source": "ghidra"}
+{"src": "func:isrpipe_read@08000e96", "edge_type": "calls", "dst": "func:mutex_lock_internal", "source": "ghidra"}
+{"src": "func:isrpipe_read@08000e96", "edge_type": "calls", "dst": "func:tsrb_get", "source": "ghidra"}
+{"src": "func:isrpipe_write_one@08000e80", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:isrpipe_write_one@08000e80", "edge_type": "calls", "dst": "func:tsrb_add_one", "source": "ghidra"}
+{"src": "func:kernel_init@08000878", "edge_type": "calls", "dst": "func:cpu_switch_context_exit", "source": "ghidra"}
+{"src": "func:kernel_init@08000878", "edge_type": "calls", "dst": "func:thread_create", "source": "ghidra"}
+{"src": "func:led_init@0800124c", "edge_type": "calls", "dst": "func:gpio_init", "source": "ghidra"}
+{"src": "func:led_init@0800124c", "edge_type": "writes_mmio", "dst": "mmio:0X48001018", "instruction": "str r3,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:lflush@080040e8", "edge_type": "calls", "dst": "func:fflush", "source": "ghidra"}
+{"src": "func:main@08000258", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:main@08000258", "edge_type": "calls", "dst": "func:shell_run_once", "source": "ghidra"}
+{"src": "func:main@08000258", "edge_type": "calls", "dst": "func:vfs_mount", "source": "ghidra"}
+{"src": "func:main_trampoline@08000860", "edge_type": "calls", "dst": "func:auto_init", "source": "ghidra"}
+{"src": "func:main_trampoline@08000860", "edge_type": "calls", "dst": "func:main", "source": "ghidra"}
+{"src": "func:main_trampoline@08000860", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:mem_manage_default@08000b00", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:mpu_configure@08000964", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED98", "instruction": "str.w r0,[r3,#0x98]", "source": "ghidra"}
+{"src": "func:mpu_configure@08000964", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED9C", "instruction": "str.w r1,[r3,#0x9c]", "source": "ghidra"}
+{"src": "func:mpu_configure@08000964", "edge_type": "writes_mmio", "dst": "mmio:0XE000EDA0", "instruction": "str.w r2,[r3,#0xa0]", "source": "ghidra"}
+{"src": "func:mpu_enable@08000944", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED24", "instruction": "ldr r2,[r3,#0x24]", "source": "ghidra"}
+{"src": "func:mpu_enable@08000944", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED94", "instruction": "ldr.w r2,[r3,#0x94]", "source": "ghidra"}
+{"src": "func:mpu_enable@08000944", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED24", "instruction": "str r2,[r3,#0x24]", "source": "ghidra"}
+{"src": "func:mpu_enable@08000944", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED94", "instruction": "str.w r2,[r3,#0x94]", "source": "ghidra"}
+{"src": "func:mutex_lock_internal@080004a0", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:mutex_lock_internal@080004a0", "edge_type": "calls", "dst": "func:sched_set_status", "source": "ghidra"}
+{"src": "func:mutex_lock_internal@080004a0", "edge_type": "calls", "dst": "func:thread_add_to_list", "source": "ghidra"}
+{"src": "func:mutex_lock_internal@080004a0", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED04", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:mutex_unlock@08000510", "edge_type": "calls", "dst": "func:sched_set_status", "source": "ghidra"}
+{"src": "func:mutex_unlock@08000510", "edge_type": "calls", "dst": "func:sched_switch", "source": "ghidra"}
+{"src": "func:nmi_handler@08000af0", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:panic_arch@08000984", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:parse_mode@0800177c", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:parse_mode@0800177c", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:periph_clk_en@08000de4", "edge_type": "reads_mmio", "dst": "mmio:0X40021014", "instruction": "ldr r3,[r2,#0x14]", "source": "ghidra"}
+{"src": "func:periph_clk_en@08000de4", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r3,[r2,#0x18]", "source": "ghidra"}
+{"src": "func:periph_clk_en@08000de4", "edge_type": "reads_mmio", "dst": "mmio:0X4002101C", "instruction": "ldr r3,[r2,#0x1c]", "source": "ghidra"}
+{"src": "func:periph_clk_en@08000de4", "edge_type": "writes_mmio", "dst": "mmio:0X40021014", "instruction": "str r1,[r2,#0x14]", "source": "ghidra"}
+{"src": "func:periph_clk_en@08000de4", "edge_type": "writes_mmio", "dst": "mmio:0X40021018", "instruction": "str r1,[r2,#0x18]", "source": "ghidra"}
+{"src": "func:periph_clk_en@08000de4", "edge_type": "writes_mmio", "dst": "mmio:0X4002101C", "instruction": "str r1,[r2,#0x1c]", "source": "ghidra"}
+{"src": "func:pm_block@08001314", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:pm_off@08001374", "edge_type": "calls", "dst": "func:pm_set", "source": "ghidra"}
+{"src": "func:pm_reboot@08000da8", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED0C", "instruction": "ldr r2,[r1,#0xc]", "source": "ghidra"}
+{"src": "func:pm_reboot@08000da8", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED0C", "instruction": "str r3,[r1,#0xc]", "source": "ghidra"}
+{"src": "func:pm_set@08001078", "edge_type": "calls", "dst": "func:stmclk_init_sysclk", "source": "ghidra"}
+{"src": "func:pm_set@08001078", "edge_type": "reads_mmio", "dst": "mmio:0X40007000", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:pm_set@08001078", "edge_type": "reads_mmio", "dst": "mmio:0X40007004", "instruction": "ldr r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:pm_set@08001078", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED10", "instruction": "ldr r3,[r2,#0x10]", "source": "ghidra"}
+{"src": "func:pm_set@08001078", "edge_type": "writes_mmio", "dst": "mmio:0X40007000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:pm_set@08001078", "edge_type": "writes_mmio", "dst": "mmio:0X40007004", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:pm_set@08001078", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED10", "instruction": "str r3,[r2,#0x10]", "source": "ghidra"}
+{"src": "func:pm_set_lowest@080012e8", "edge_type": "calls", "dst": "func:pm_set", "source": "ghidra"}
+{"src": "func:pm_unblock@08001338", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:print_prompt@08001470", "edge_type": "calls", "dst": "func:fflush", "source": "ghidra"}
+{"src": "func:print_prompt@08001470", "edge_type": "calls", "dst": "func:putchar", "source": "ghidra"}
+{"src": "func:ps@08001384", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:ps@08001384", "edge_type": "calls", "dst": "func:thread_isr_stack_pointer", "source": "ghidra"}
+{"src": "func:ps@08001384", "edge_type": "calls", "dst": "func:thread_isr_stack_start", "source": "ghidra"}
+{"src": "func:ps@08001384", "edge_type": "calls", "dst": "func:thread_isr_stack_usage", "source": "ghidra"}
+{"src": "func:ps@08001384", "edge_type": "calls", "dst": "func:thread_measure_stack_free", "source": "ghidra"}
+{"src": "func:ps@08001384", "edge_type": "calls", "dst": "func:thread_state_to_string", "source": "ghidra"}
+{"src": "func:putchar@08003fd4", "edge_type": "calls", "dst": "func:__sinit", "source": "ghidra"}
+{"src": "func:putchar@08003fd4", "edge_type": "calls", "dst": "func:_putc_r", "source": "ghidra"}
+{"src": "func:puts@080040d8", "edge_type": "calls", "dst": "func:_puts_r", "source": "ghidra"}
+{"src": "func:readline@08001490", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:readline@08001490", "edge_type": "calls", "dst": "func:fflush", "source": "ghidra"}
+{"src": "func:readline@08001490", "edge_type": "calls", "dst": "func:getchar", "source": "ghidra"}
+{"src": "func:readline@08001490", "edge_type": "calls", "dst": "func:putchar", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:__libc_init_array", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:board_init", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:cpu_init", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:kernel_init", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:mpu_configure", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:mpu_enable", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:post_startup", "source": "ghidra"}
+{"src": "func:reset_handler_default@08000b54", "edge_type": "calls", "dst": "func:pre_startup", "source": "ghidra"}
+{"src": "func:sbrk_aligned@08003e7c", "edge_type": "calls", "dst": "func:_sbrk_r", "source": "ghidra"}
+{"src": "func:sched_arch_idle@08000a9c", "edge_type": "calls", "dst": "func:pm_set_lowest", "source": "ghidra"}
+{"src": "func:sched_run@08000584", "edge_type": "calls", "dst": "func:_unschedule", "source": "ghidra"}
+{"src": "func:sched_run@08000584", "edge_type": "calls", "dst": "func:mpu_configure", "source": "ghidra"}
+{"src": "func:sched_run@08000584", "edge_type": "calls", "dst": "func:sched_arch_idle", "source": "ghidra"}
+{"src": "func:sched_switch@08000680", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED04", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:sched_task_exit@080006bc", "edge_type": "calls", "dst": "func:cpu_switch_context_exit", "source": "ghidra"}
+{"src": "func:sched_task_exit@080006bc", "edge_type": "calls", "dst": "func:sched_set_status", "source": "ghidra"}
+{"src": "func:shell_run_once@08001548", "edge_type": "calls", "dst": "func:_ls_handler", "source": "ghidra"}
+{"src": "func:shell_run_once@08001548", "edge_type": "calls", "dst": "func:iprintf", "source": "ghidra"}
+{"src": "func:shell_run_once@08001548", "edge_type": "calls", "dst": "func:print_prompt", "source": "ghidra"}
+{"src": "func:shell_run_once@08001548", "edge_type": "calls", "dst": "func:puts", "source": "ghidra"}
+{"src": "func:shell_run_once@08001548", "edge_type": "calls", "dst": "func:readline", "source": "ghidra"}
+{"src": "func:shell_run_once@08001548", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:shell_run_once@08001548", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:sniprintf@08004210", "edge_type": "calls", "dst": "func:_svfiprintf_r", "source": "ghidra"}
+{"src": "func:std@08003654", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:stdio_init@08002400", "edge_type": "calls", "dst": "func:uart_init", "source": "ghidra"}
+{"src": "func:stdio_read@08002418", "edge_type": "calls", "dst": "func:isrpipe_read", "source": "ghidra"}
+{"src": "func:stdio_write@08002428", "edge_type": "calls", "dst": "func:uart_write", "source": "ghidra"}
+{"src": "func:stmclk_disable_hsi@08002454", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:stmclk_disable_hsi@08002454", "edge_type": "writes_mmio", "dst": "mmio:0X40021000", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:stmclk_enable_hsi@0800243c", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:stmclk_enable_hsi@0800243c", "edge_type": "writes_mmio", "dst": "mmio:0X40021000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "calls", "dst": "func:stmclk_disable_hsi", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "calls", "dst": "func:stmclk_enable_hsi", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "writes_mmio", "dst": "mmio:0X40021000", "instruction": "str r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "writes_mmio", "dst": "mmio:0X40021004", "instruction": "str r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "writes_mmio", "dst": "mmio:0X40021008", "instruction": "str r3,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:stmclk_init_sysclk@08002464", "edge_type": "writes_mmio", "dst": "mmio:0X40022000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:strtol@0800445c", "edge_type": "calls", "dst": "func:_strtol_l.constprop.0", "source": "ghidra"}
+{"src": "func:thread_add_to_list@08000714", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:thread_create@08000748", "edge_type": "calls", "dst": "func:sched_set_status", "source": "ghidra"}
+{"src": "func:thread_create@08000748", "edge_type": "calls", "dst": "func:sched_switch", "source": "ghidra"}
+{"src": "func:thread_create@08000748", "edge_type": "calls", "dst": "func:thread_stack_init", "source": "ghidra"}
+{"src": "func:thread_state_to_string@08000830", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:tsrb_get@0800252a", "edge_type": "calls", "dst": "func:_pop", "source": "ghidra"}
+{"src": "func:uart_enable_clock@08001138", "edge_type": "calls", "dst": "func:periph_clk_en", "source": "ghidra"}
+{"src": "func:uart_enable_clock@08001138", "edge_type": "calls", "dst": "func:pm_block", "source": "ghidra"}
+{"src": "func:uart_init@08001168", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:uart_init@08001168", "edge_type": "calls", "dst": "func:gpio_init", "source": "ghidra"}
+{"src": "func:uart_init@08001168", "edge_type": "calls", "dst": "func:gpio_init_af", "source": "ghidra"}
+{"src": "func:uart_init@08001168", "edge_type": "calls", "dst": "func:periph_apb_clk", "source": "ghidra"}
+{"src": "func:uart_init@08001168", "edge_type": "calls", "dst": "func:uart_enable_clock", "source": "ghidra"}
+{"src": "func:uart_write@080011fc", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:usage_fault_default@08000b20", "edge_type": "calls", "dst": "func:core_panic", "source": "ghidra"}
+{"src": "func:vfs_bind@08002de0", "edge_type": "calls", "dst": "func:_init_fd", "source": "ghidra"}
+{"src": "func:vfs_bind@08002de0", "edge_type": "calls", "dst": "func:mutex_lock_internal", "source": "ghidra"}
+{"src": "func:vfs_bind@08002de0", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:vfs_bind_stdio@08003078", "edge_type": "calls", "dst": "func:_assert_panic", "source": "ghidra"}
+{"src": "func:vfs_bind_stdio@08003078", "edge_type": "calls", "dst": "func:vfs_bind", "source": "ghidra"}
+{"src": "func:vfs_close@08002788", "edge_type": "calls", "dst": "func:_fd_is_valid", "source": "ghidra"}
+{"src": "func:vfs_close@08002788", "edge_type": "calls", "dst": "func:_free_fd", "source": "ghidra"}
+{"src": "func:vfs_dstatvfs@08002800", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:vfs_format@08002a80", "edge_type": "calls", "dst": "func:check_mount", "source": "ghidra"}
+{"src": "func:vfs_format@08002a80", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:vfs_format_by_path@08003008", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:vfs_format_by_path@08003008", "edge_type": "calls", "dst": "func:vfs_format", "source": "ghidra"}
+{"src": "func:vfs_fstat@080027b4", "edge_type": "calls", "dst": "func:_fd_is_valid", "source": "ghidra"}
+{"src": "func:vfs_fstat@080027b4", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:vfs_iterate_mount_dirs@08002ee8", "edge_type": "calls", "dst": "func:vfs_closedir", "source": "ghidra"}
+{"src": "func:vfs_iterate_mount_dirs@08002ee8", "edge_type": "calls", "dst": "func:vfs_iterate_mounts", "source": "ghidra"}
+{"src": "func:vfs_iterate_mount_dirs@08002ee8", "edge_type": "calls", "dst": "func:vfs_opendir", "source": "ghidra"}
+{"src": "func:vfs_lseek@0800283c", "edge_type": "calls", "dst": "func:_fd_is_valid", "source": "ghidra"}
+{"src": "func:vfs_mkdir@08002cf8", "edge_type": "calls", "dst": "func:_find_mount", "source": "ghidra"}
+{"src": "func:vfs_mount@08002ab0", "edge_type": "calls", "dst": "func:check_mount", "source": "ghidra"}
+{"src": "func:vfs_mount@08002ab0", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:vfs_mount_by_path@08002f74", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:vfs_mount_by_path@08002f74", "edge_type": "calls", "dst": "func:vfs_mount", "source": "ghidra"}
+{"src": "func:vfs_normalize_path@08002e1c", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:vfs_open@0800288c", "edge_type": "calls", "dst": "func:_find_mount", "source": "ghidra"}
+{"src": "func:vfs_open@0800288c", "edge_type": "calls", "dst": "func:_free_fd", "source": "ghidra"}
+{"src": "func:vfs_open@0800288c", "edge_type": "calls", "dst": "func:_init_fd", "source": "ghidra"}
+{"src": "func:vfs_open@0800288c", "edge_type": "calls", "dst": "func:mutex_lock_internal", "source": "ghidra"}
+{"src": "func:vfs_open@0800288c", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:vfs_opendir@080029b0", "edge_type": "calls", "dst": "func:_find_mount", "source": "ghidra"}
+{"src": "func:vfs_read@08002924", "edge_type": "calls", "dst": "func:_fd_is_valid", "source": "ghidra"}
+{"src": "func:vfs_rename@08002ba0", "edge_type": "calls", "dst": "func:_find_mount", "source": "ghidra"}
+{"src": "func:vfs_stat@08002d60", "edge_type": "calls", "dst": "func:_find_mount", "source": "ghidra"}
+{"src": "func:vfs_stat@08002d60", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:vfs_umount@08002b00", "edge_type": "calls", "dst": "func:check_mount", "source": "ghidra"}
+{"src": "func:vfs_umount@08002b00", "edge_type": "calls", "dst": "func:mutex_unlock", "source": "ghidra"}
+{"src": "func:vfs_unlink@08002c92", "edge_type": "calls", "dst": "func:_find_mount", "source": "ghidra"}
+{"src": "func:vfs_unmount_by_path@08002fbc", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:vfs_unmount_by_path@08002fbc", "edge_type": "calls", "dst": "func:vfs_umount", "source": "ghidra"}
+{"src": "func:vfs_write@08002968", "edge_type": "calls", "dst": "func:_fd_is_valid", "source": "ghidra"}

@@ -1,0 +1,392 @@
+{"node_id": "func:BusFault_Handler@080055a4", "node_type": "function", "name": "BusFault_Handler", "entry": "080055a4", "is_isr": true, "signature": "void BusFault_Handler(void)"}
+{"node_id": "func:DebugMon_Handler@080055bc", "node_type": "function", "name": "DebugMon_Handler", "entry": "080055bc", "is_isr": true, "signature": "void DebugMon_Handler(void)"}
+{"node_id": "func:FUN_080006a4", "node_type": "function", "name": "FUN_080006a4"}
+{"node_id": "func:FUN_080006a4@080006a4", "node_type": "function", "name": "FUN_080006a4", "entry": "080006a4", "is_isr": false, "signature": "undefined FUN_080006a4(void)"}
+{"node_id": "func:FUN_0800088a", "node_type": "function", "name": "FUN_0800088a"}
+{"node_id": "func:FUN_0800088a@0800088a", "node_type": "function", "name": "FUN_0800088a", "entry": "0800088a", "is_isr": false, "signature": "undefined FUN_0800088a(void)"}
+{"node_id": "func:HAL_GPIO_Init", "node_type": "function", "name": "HAL_GPIO_Init"}
+{"node_id": "func:HAL_GPIO_Init@080017c4", "node_type": "function", "name": "HAL_GPIO_Init", "entry": "080017c4", "is_isr": false, "signature": "void __stdcall HAL_GPIO_Init(GPIO_TypeDef * GPIOx, GPIO_InitTypeDef * GPIO_Init)"}
+{"node_id": "func:HAL_GPIO_WritePin", "node_type": "function", "name": "HAL_GPIO_WritePin"}
+{"node_id": "func:HAL_GPIO_WritePin@08001a80", "node_type": "function", "name": "HAL_GPIO_WritePin", "entry": "08001a80", "is_isr": false, "signature": "void __stdcall HAL_GPIO_WritePin(GPIO_TypeDef * GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)"}
+{"node_id": "func:HAL_GetTick", "node_type": "function", "name": "HAL_GetTick"}
+{"node_id": "func:HAL_GetTick@080015a0", "node_type": "function", "name": "HAL_GetTick", "entry": "080015a0", "is_isr": false, "signature": "uint32_t HAL_GetTick(void)"}
+{"node_id": "func:HAL_I2C_Init", "node_type": "function", "name": "HAL_I2C_Init"}
+{"node_id": "func:HAL_I2C_Init@08001ab0", "node_type": "function", "name": "HAL_I2C_Init", "entry": "08001ab0", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_I2C_Init(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_Mem_Read", "node_type": "function", "name": "HAL_I2C_Mem_Read"}
+{"node_id": "func:HAL_I2C_Mem_Read@08001f6c", "node_type": "function", "name": "HAL_I2C_Mem_Read", "entry": "08001f6c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_I2C_Mem_Read(I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout)"}
+{"node_id": "func:HAL_I2C_Mem_Write", "node_type": "function", "name": "HAL_I2C_Mem_Write"}
+{"node_id": "func:HAL_I2C_Mem_Write@08001ccc", "node_type": "function", "name": "HAL_I2C_Mem_Write", "entry": "08001ccc", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_I2C_Mem_Write(I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout)"}
+{"node_id": "func:HAL_I2C_MspInit", "node_type": "function", "name": "HAL_I2C_MspInit"}
+{"node_id": "func:HAL_I2C_MspInit@08001cb8", "node_type": "function", "name": "HAL_I2C_MspInit", "entry": "08001cb8", "is_isr": false, "signature": "void __stdcall HAL_I2C_MspInit(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_IncTick", "node_type": "function", "name": "HAL_IncTick"}
+{"node_id": "func:HAL_IncTick@0800157c", "node_type": "function", "name": "HAL_IncTick", "entry": "0800157c", "is_isr": false, "signature": "void HAL_IncTick(void)"}
+{"node_id": "func:HAL_Init", "node_type": "function", "name": "HAL_Init"}
+{"node_id": "func:HAL_Init@080014f0", "node_type": "function", "name": "HAL_Init", "entry": "080014f0", "is_isr": false, "signature": "HAL_StatusTypeDef HAL_Init(void)"}
+{"node_id": "func:HAL_InitTick", "node_type": "function", "name": "HAL_InitTick"}
+{"node_id": "func:HAL_InitTick@0800151c", "node_type": "function", "name": "HAL_InitTick", "entry": "0800151c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_InitTick(uint32_t TickPriority)"}
+{"node_id": "func:HAL_MspInit", "node_type": "function", "name": "HAL_MspInit"}
+{"node_id": "func:HAL_MspInit@08002d8a", "node_type": "function", "name": "HAL_MspInit", "entry": "08002d8a", "is_isr": false, "signature": "void HAL_MspInit(void)"}
+{"node_id": "func:HAL_NVIC_SetPriority", "node_type": "function", "name": "HAL_NVIC_SetPriority"}
+{"node_id": "func:HAL_NVIC_SetPriority@0800172a", "node_type": "function", "name": "HAL_NVIC_SetPriority", "entry": "0800172a", "is_isr": false, "signature": "void __stdcall HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority)"}
+{"node_id": "func:HAL_NVIC_SetPriorityGrouping", "node_type": "function", "name": "HAL_NVIC_SetPriorityGrouping"}
+{"node_id": "func:HAL_NVIC_SetPriorityGrouping@08001714", "node_type": "function", "name": "HAL_NVIC_SetPriorityGrouping", "entry": "08001714", "is_isr": false, "signature": "void __stdcall HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup)"}
+{"node_id": "func:HAL_RCC_ClockConfig", "node_type": "function", "name": "HAL_RCC_ClockConfig"}
+{"node_id": "func:HAL_RCC_ClockConfig@08003260", "node_type": "function", "name": "HAL_RCC_ClockConfig", "entry": "08003260", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_RCC_ClockConfig(RCC_ClkInitTypeDef * RCC_ClkInitStruct, uint32_t FLatency)"}
+{"node_id": "func:HAL_RCC_GetHCLKFreq", "node_type": "function", "name": "HAL_RCC_GetHCLKFreq"}
+{"node_id": "func:HAL_RCC_GetHCLKFreq@08003504", "node_type": "function", "name": "HAL_RCC_GetHCLKFreq", "entry": "08003504", "is_isr": false, "signature": "uint32_t HAL_RCC_GetHCLKFreq(void)"}
+{"node_id": "func:HAL_RCC_GetPCLK1Freq", "node_type": "function", "name": "HAL_RCC_GetPCLK1Freq"}
+{"node_id": "func:HAL_RCC_GetPCLK1Freq@08003518", "node_type": "function", "name": "HAL_RCC_GetPCLK1Freq", "entry": "08003518", "is_isr": false, "signature": "uint32_t HAL_RCC_GetPCLK1Freq(void)"}
+{"node_id": "func:HAL_RCC_GetPCLK2Freq", "node_type": "function", "name": "HAL_RCC_GetPCLK2Freq"}
+{"node_id": "func:HAL_RCC_GetPCLK2Freq@08003540", "node_type": "function", "name": "HAL_RCC_GetPCLK2Freq", "entry": "08003540", "is_isr": false, "signature": "uint32_t HAL_RCC_GetPCLK2Freq(void)"}
+{"node_id": "func:HAL_RCC_GetSysClockFreq", "node_type": "function", "name": "HAL_RCC_GetSysClockFreq"}
+{"node_id": "func:HAL_RCC_GetSysClockFreq@08003440", "node_type": "function", "name": "HAL_RCC_GetSysClockFreq", "entry": "08003440", "is_isr": false, "signature": "uint32_t HAL_RCC_GetSysClockFreq(void)"}
+{"node_id": "func:HAL_RCC_OscConfig", "node_type": "function", "name": "HAL_RCC_OscConfig"}
+{"node_id": "func:HAL_RCC_OscConfig@08002d98", "node_type": "function", "name": "HAL_RCC_OscConfig", "entry": "08002d98", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_RCC_OscConfig(RCC_OscInitTypeDef * RCC_OscInitStruct)"}
+{"node_id": "func:HAL_SYSTICK_CLKSourceConfig", "node_type": "function", "name": "HAL_SYSTICK_CLKSourceConfig"}
+{"node_id": "func:HAL_SYSTICK_CLKSourceConfig@0800177c", "node_type": "function", "name": "HAL_SYSTICK_CLKSourceConfig", "entry": "0800177c", "is_isr": false, "signature": "void __stdcall HAL_SYSTICK_CLKSourceConfig(uint32_t CLKSource)"}
+{"node_id": "func:HAL_SYSTICK_Config", "node_type": "function", "name": "HAL_SYSTICK_Config"}
+{"node_id": "func:HAL_SYSTICK_Config@08001762", "node_type": "function", "name": "HAL_SYSTICK_Config", "entry": "08001762", "is_isr": false, "signature": "uint32_t __stdcall HAL_SYSTICK_Config(uint32_t TicksNumb)"}
+{"node_id": "func:HAL_SYSTICK_IRQHandler", "node_type": "function", "name": "HAL_SYSTICK_IRQHandler"}
+{"node_id": "func:HAL_SYSTICK_IRQHandler@080017b4", "node_type": "function", "name": "HAL_SYSTICK_IRQHandler", "entry": "080017b4", "is_isr": true, "signature": "void HAL_SYSTICK_IRQHandler(void)"}
+{"node_id": "func:HAL_TIMEx_BreakCallback", "node_type": "function", "name": "HAL_TIMEx_BreakCallback"}
+{"node_id": "func:HAL_TIMEx_BreakCallback@08004378", "node_type": "function", "name": "HAL_TIMEx_BreakCallback", "entry": "08004378", "is_isr": false, "signature": "void __stdcall HAL_TIMEx_BreakCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIMEx_CommutationCallback", "node_type": "function", "name": "HAL_TIMEx_CommutationCallback"}
+{"node_id": "func:HAL_TIMEx_CommutationCallback@08004366", "node_type": "function", "name": "HAL_TIMEx_CommutationCallback", "entry": "08004366", "is_isr": false, "signature": "void __stdcall HAL_TIMEx_CommutationCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIMEx_ConfigBreakDeadTime", "node_type": "function", "name": "HAL_TIMEx_ConfigBreakDeadTime"}
+{"node_id": "func:HAL_TIMEx_ConfigBreakDeadTime@0800422e", "node_type": "function", "name": "HAL_TIMEx_ConfigBreakDeadTime", "entry": "0800422e", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIMEx_ConfigBreakDeadTime(TIM_HandleTypeDef * htim, TIM_BreakDeadTimeConfigTypeDef * sBreakDeadTimeConfig)"}
+{"node_id": "func:HAL_TIMEx_MasterConfigSynchronization", "node_type": "function", "name": "HAL_TIMEx_MasterConfigSynchronization"}
+{"node_id": "func:HAL_TIMEx_MasterConfigSynchronization@080042de", "node_type": "function", "name": "HAL_TIMEx_MasterConfigSynchronization", "entry": "080042de", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIMEx_MasterConfigSynchronization(TIM_HandleTypeDef * htim, TIM_MasterConfigTypeDef * sMasterConfig)"}
+{"node_id": "func:HAL_TIM_Base_Init", "node_type": "function", "name": "HAL_TIM_Base_Init"}
+{"node_id": "func:HAL_TIM_Base_Init@080035a4", "node_type": "function", "name": "HAL_TIM_Base_Init", "entry": "080035a4", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_Base_Init(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_Base_MspInit", "node_type": "function", "name": "HAL_TIM_Base_MspInit"}
+{"node_id": "func:HAL_TIM_Base_MspInit@080035fa", "node_type": "function", "name": "HAL_TIM_Base_MspInit", "entry": "080035fa", "is_isr": false, "signature": "void __stdcall HAL_TIM_Base_MspInit(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_Base_Start_IT", "node_type": "function", "name": "HAL_TIM_Base_Start_IT"}
+{"node_id": "func:HAL_TIM_Base_Start_IT@0800360c", "node_type": "function", "name": "HAL_TIM_Base_Start_IT", "entry": "0800360c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_Base_Start_IT(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_ConfigClockSource", "node_type": "function", "name": "HAL_TIM_ConfigClockSource"}
+{"node_id": "func:HAL_TIM_ConfigClockSource@08003a94", "node_type": "function", "name": "HAL_TIM_ConfigClockSource", "entry": "08003a94", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_ConfigClockSource(TIM_HandleTypeDef * htim, TIM_ClockConfigTypeDef * sClockSourceConfig)"}
+{"node_id": "func:HAL_TIM_IC_CaptureCallback", "node_type": "function", "name": "HAL_TIM_IC_CaptureCallback"}
+{"node_id": "func:HAL_TIM_IC_CaptureCallback@08003c5c", "node_type": "function", "name": "HAL_TIM_IC_CaptureCallback", "entry": "08003c5c", "is_isr": false, "signature": "void __stdcall HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_IRQHandler", "node_type": "function", "name": "HAL_TIM_IRQHandler"}
+{"node_id": "func:HAL_TIM_IRQHandler@080036f8", "node_type": "function", "name": "HAL_TIM_IRQHandler", "entry": "080036f8", "is_isr": true, "signature": "void __stdcall HAL_TIM_IRQHandler(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_MspPostInit", "node_type": "function", "name": "HAL_TIM_MspPostInit"}
+{"node_id": "func:HAL_TIM_MspPostInit@08005550", "node_type": "function", "name": "HAL_TIM_MspPostInit", "entry": "08005550", "is_isr": false, "signature": "void __stdcall HAL_TIM_MspPostInit(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_OC_DelayElapsedCallback", "node_type": "function", "name": "HAL_TIM_OC_DelayElapsedCallback"}
+{"node_id": "func:HAL_TIM_OC_DelayElapsedCallback@08003c4a", "node_type": "function", "name": "HAL_TIM_OC_DelayElapsedCallback", "entry": "08003c4a", "is_isr": false, "signature": "void __stdcall HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_ConfigChannel", "node_type": "function", "name": "HAL_TIM_PWM_ConfigChannel"}
+{"node_id": "func:HAL_TIM_PWM_ConfigChannel@08003908", "node_type": "function", "name": "HAL_TIM_PWM_ConfigChannel", "entry": "08003908", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_PWM_ConfigChannel(TIM_HandleTypeDef * htim, TIM_OC_InitTypeDef * sConfig, uint32_t Channel)"}
+{"node_id": "func:HAL_TIM_PWM_Init", "node_type": "function", "name": "HAL_TIM_PWM_Init"}
+{"node_id": "func:HAL_TIM_PWM_Init@08003640", "node_type": "function", "name": "HAL_TIM_PWM_Init", "entry": "08003640", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_PWM_Init(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_MspInit", "node_type": "function", "name": "HAL_TIM_PWM_MspInit"}
+{"node_id": "func:HAL_TIM_PWM_MspInit@08003696", "node_type": "function", "name": "HAL_TIM_PWM_MspInit", "entry": "08003696", "is_isr": false, "signature": "void __stdcall HAL_TIM_PWM_MspInit(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_PulseFinishedCallback", "node_type": "function", "name": "HAL_TIM_PWM_PulseFinishedCallback"}
+{"node_id": "func:HAL_TIM_PWM_PulseFinishedCallback@08003c6e", "node_type": "function", "name": "HAL_TIM_PWM_PulseFinishedCallback", "entry": "08003c6e", "is_isr": false, "signature": "void __stdcall HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_Start", "node_type": "function", "name": "HAL_TIM_PWM_Start"}
+{"node_id": "func:HAL_TIM_PWM_Start@080036a8", "node_type": "function", "name": "HAL_TIM_PWM_Start", "entry": "080036a8", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_PWM_Start(TIM_HandleTypeDef * htim, uint32_t Channel)"}
+{"node_id": "func:HAL_TIM_PeriodElapsedCallback", "node_type": "function", "name": "HAL_TIM_PeriodElapsedCallback"}
+{"node_id": "func:HAL_TIM_PeriodElapsedCallback@08004e50", "node_type": "function", "name": "HAL_TIM_PeriodElapsedCallback", "entry": "08004e50", "is_isr": false, "signature": "void __stdcall HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_TriggerCallback", "node_type": "function", "name": "HAL_TIM_TriggerCallback"}
+{"node_id": "func:HAL_TIM_TriggerCallback@08003c80", "node_type": "function", "name": "HAL_TIM_TriggerCallback", "entry": "08003c80", "is_isr": false, "signature": "void __stdcall HAL_TIM_TriggerCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_UART_Init", "node_type": "function", "name": "HAL_UART_Init"}
+{"node_id": "func:HAL_UART_Init@0800438a", "node_type": "function", "name": "HAL_UART_Init", "entry": "0800438a", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_UART_Init(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_MspInit", "node_type": "function", "name": "HAL_UART_MspInit"}
+{"node_id": "func:HAL_UART_MspInit@08004424", "node_type": "function", "name": "HAL_UART_MspInit", "entry": "08004424", "is_isr": false, "signature": "void __stdcall HAL_UART_MspInit(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_Transmit", "node_type": "function", "name": "HAL_UART_Transmit"}
+{"node_id": "func:HAL_UART_Transmit@08004436", "node_type": "function", "name": "HAL_UART_Transmit", "entry": "08004436", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_UART_Transmit(UART_HandleTypeDef * huart, uint8_t * pData, uint16_t Size, uint32_t Timeout)"}
+{"node_id": "func:HardFault_Handler@08005598", "node_type": "function", "name": "HardFault_Handler", "entry": "08005598", "is_isr": true, "signature": "void HardFault_Handler(void)"}
+{"node_id": "func:I2C_IsAcknowledgeFailed", "node_type": "function", "name": "I2C_IsAcknowledgeFailed"}
+{"node_id": "func:I2C_IsAcknowledgeFailed@08002d3c", "node_type": "function", "name": "I2C_IsAcknowledgeFailed", "entry": "08002d3c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_IsAcknowledgeFailed(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_RequestMemoryRead", "node_type": "function", "name": "I2C_RequestMemoryRead"}
+{"node_id": "func:I2C_RequestMemoryRead@080027f4", "node_type": "function", "name": "I2C_RequestMemoryRead", "entry": "080027f4", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_RequestMemoryRead(I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint32_t Timeout, uint32_t Tickstart)"}
+{"node_id": "func:I2C_RequestMemoryWrite", "node_type": "function", "name": "I2C_RequestMemoryWrite"}
+{"node_id": "func:I2C_RequestMemoryWrite@08002640", "node_type": "function", "name": "I2C_RequestMemoryWrite", "entry": "08002640", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_RequestMemoryWrite(I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint32_t Timeout, uint32_t Tickstart)"}
+{"node_id": "func:I2C_WaitOnBTFFlagUntilTimeout", "node_type": "function", "name": "I2C_WaitOnBTFFlagUntilTimeout"}
+{"node_id": "func:I2C_WaitOnBTFFlagUntilTimeout@08002c2e", "node_type": "function", "name": "I2C_WaitOnBTFFlagUntilTimeout", "entry": "08002c2e", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_WaitOnBTFFlagUntilTimeout(I2C_HandleTypeDef * hi2c, uint32_t Timeout, uint32_t Tickstart)"}
+{"node_id": "func:I2C_WaitOnMasterAddressFlagUntilTimeout", "node_type": "function", "name": "I2C_WaitOnMasterAddressFlagUntilTimeout"}
+{"node_id": "func:I2C_WaitOnMasterAddressFlagUntilTimeout@08002ad8", "node_type": "function", "name": "I2C_WaitOnMasterAddressFlagUntilTimeout", "entry": "08002ad8", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_WaitOnMasterAddressFlagUntilTimeout(I2C_HandleTypeDef * hi2c, uint32_t Flag, uint32_t Timeout, uint32_t Tickstart)"}
+{"node_id": "func:I2C_WaitOnRXNEFlagUntilTimeout", "node_type": "function", "name": "I2C_WaitOnRXNEFlagUntilTimeout"}
+{"node_id": "func:I2C_WaitOnRXNEFlagUntilTimeout@08002ca8", "node_type": "function", "name": "I2C_WaitOnRXNEFlagUntilTimeout", "entry": "08002ca8", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_WaitOnRXNEFlagUntilTimeout(I2C_HandleTypeDef * hi2c, uint32_t Timeout, uint32_t Tickstart)"}
+{"node_id": "func:I2C_WaitOnTXEFlagUntilTimeout", "node_type": "function", "name": "I2C_WaitOnTXEFlagUntilTimeout"}
+{"node_id": "func:I2C_WaitOnTXEFlagUntilTimeout@08002bb4", "node_type": "function", "name": "I2C_WaitOnTXEFlagUntilTimeout", "entry": "08002bb4", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_WaitOnTXEFlagUntilTimeout(I2C_HandleTypeDef * hi2c, uint32_t Timeout, uint32_t Tickstart)"}
+{"node_id": "func:MX_GPIO_Init", "node_type": "function", "name": "MX_GPIO_Init"}
+{"node_id": "func:MX_GPIO_Init@080054c4", "node_type": "function", "name": "MX_GPIO_Init", "entry": "080054c4", "is_isr": false, "signature": "void MX_GPIO_Init(void)"}
+{"node_id": "func:MX_I2C1_Init", "node_type": "function", "name": "MX_I2C1_Init"}
+{"node_id": "func:MX_I2C1_Init@08005218", "node_type": "function", "name": "MX_I2C1_Init", "entry": "08005218", "is_isr": false, "signature": "void MX_I2C1_Init(void)"}
+{"node_id": "func:MX_TIM1_Init", "node_type": "function", "name": "MX_TIM1_Init"}
+{"node_id": "func:MX_TIM1_Init@08005280", "node_type": "function", "name": "MX_TIM1_Init", "entry": "08005280", "is_isr": false, "signature": "void MX_TIM1_Init(void)"}
+{"node_id": "func:MX_TIM2_Init", "node_type": "function", "name": "MX_TIM2_Init"}
+{"node_id": "func:MX_TIM2_Init@080053d0", "node_type": "function", "name": "MX_TIM2_Init", "entry": "080053d0", "is_isr": false, "signature": "void MX_TIM2_Init(void)"}
+{"node_id": "func:MX_USART1_UART_Init", "node_type": "function", "name": "MX_USART1_UART_Init"}
+{"node_id": "func:MX_USART1_UART_Init@08005468", "node_type": "function", "name": "MX_USART1_UART_Init", "entry": "08005468", "is_isr": false, "signature": "void MX_USART1_UART_Init(void)"}
+{"node_id": "func:MemManage_Handler@0800559e", "node_type": "function", "name": "MemManage_Handler", "entry": "0800559e", "is_isr": true, "signature": "void MemManage_Handler(void)"}
+{"node_id": "func:NMI_Handler@0800558c", "node_type": "function", "name": "NMI_Handler", "entry": "0800558c", "is_isr": true, "signature": "void NMI_Handler(void)"}
+{"node_id": "func:NVIC_EncodePriority", "node_type": "function", "name": "NVIC_EncodePriority"}
+{"node_id": "func:NVIC_EncodePriority@0800166c", "node_type": "function", "name": "NVIC_EncodePriority", "entry": "0800166c", "is_isr": false, "signature": "uint32_t __stdcall NVIC_EncodePriority(uint32_t PriorityGroup, uint32_t PreemptPriority, uint32_t SubPriority)"}
+{"node_id": "func:NVIC_GetPriorityGrouping", "node_type": "function", "name": "NVIC_GetPriorityGrouping"}
+{"node_id": "func:NVIC_GetPriorityGrouping@080015fc", "node_type": "function", "name": "NVIC_GetPriorityGrouping", "entry": "080015fc", "is_isr": false, "signature": "uint32_t NVIC_GetPriorityGrouping(void)"}
+{"node_id": "func:NVIC_SetPriority", "node_type": "function", "name": "NVIC_SetPriority"}
+{"node_id": "func:NVIC_SetPriority@08001618", "node_type": "function", "name": "NVIC_SetPriority", "entry": "08001618", "is_isr": false, "signature": "void __stdcall NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)"}
+{"node_id": "func:NVIC_SetPriorityGrouping", "node_type": "function", "name": "NVIC_SetPriorityGrouping"}
+{"node_id": "func:NVIC_SetPriorityGrouping@080015b4", "node_type": "function", "name": "NVIC_SetPriorityGrouping", "entry": "080015b4", "is_isr": false, "signature": "void __stdcall NVIC_SetPriorityGrouping(uint32_t PriorityGroup)"}
+{"node_id": "func:PendSV_Handler@080055c8", "node_type": "function", "name": "PendSV_Handler", "entry": "080055c8", "is_isr": true, "signature": "void PendSV_Handler(void)"}
+{"node_id": "func:RCC_Delay", "node_type": "function", "name": "RCC_Delay"}
+{"node_id": "func:RCC_Delay@08003568", "node_type": "function", "name": "RCC_Delay", "entry": "08003568", "is_isr": false, "signature": "void __stdcall RCC_Delay(uint32_t mdelay)"}
+{"node_id": "func:Reset_Handler@080056b8", "node_type": "function", "name": "Reset_Handler", "entry": "080056b8", "is_isr": true, "signature": "undefined Reset_Handler(void)"}
+{"node_id": "func:SVC_Handler@080055b0", "node_type": "function", "name": "SVC_Handler", "entry": "080055b0", "is_isr": true, "signature": "void SVC_Handler(void)"}
+{"node_id": "func:SysTick_Config", "node_type": "function", "name": "SysTick_Config"}
+{"node_id": "func:SysTick_Config@080016d0", "node_type": "function", "name": "SysTick_Config", "entry": "080016d0", "is_isr": false, "signature": "uint32_t __stdcall SysTick_Config(uint32_t ticks)"}
+{"node_id": "func:SysTick_Handler@080055d4", "node_type": "function", "name": "SysTick_Handler", "entry": "080055d4", "is_isr": true, "signature": "void SysTick_Handler(void)"}
+{"node_id": "func:SystemClock_Config", "node_type": "function", "name": "SystemClock_Config"}
+{"node_id": "func:SystemClock_Config@08005170", "node_type": "function", "name": "SystemClock_Config", "entry": "08005170", "is_isr": false, "signature": "void SystemClock_Config(void)"}
+{"node_id": "func:SystemInit", "node_type": "function", "name": "SystemInit"}
+{"node_id": "func:SystemInit@08005650", "node_type": "function", "name": "SystemInit", "entry": "08005650", "is_isr": false, "signature": "void SystemInit(void)"}
+{"node_id": "func:TIM2_IRQHandler@080055e4", "node_type": "function", "name": "TIM2_IRQHandler", "entry": "080055e4", "is_isr": true, "signature": "void TIM2_IRQHandler(void)"}
+{"node_id": "func:TIM_Base_SetConfig", "node_type": "function", "name": "TIM_Base_SetConfig"}
+{"node_id": "func:TIM_Base_SetConfig@08003c94", "node_type": "function", "name": "TIM_Base_SetConfig", "entry": "08003c94", "is_isr": false, "signature": "void __stdcall TIM_Base_SetConfig(TIM_TypeDef * TIMx, TIM_Base_InitTypeDef * Structure)"}
+{"node_id": "func:TIM_CCxChannelCmd", "node_type": "function", "name": "TIM_CCxChannelCmd"}
+{"node_id": "func:TIM_CCxChannelCmd@080041ea", "node_type": "function", "name": "TIM_CCxChannelCmd", "entry": "080041ea", "is_isr": false, "signature": "void __stdcall TIM_CCxChannelCmd(TIM_TypeDef * TIMx, uint32_t Channel, uint32_t ChannelState)"}
+{"node_id": "func:TIM_ETR_SetConfig", "node_type": "function", "name": "TIM_ETR_SetConfig"}
+{"node_id": "func:TIM_ETR_SetConfig@080041a8", "node_type": "function", "name": "TIM_ETR_SetConfig", "entry": "080041a8", "is_isr": false, "signature": "void __stdcall TIM_ETR_SetConfig(TIM_TypeDef * TIMx, uint32_t TIM_ExtTRGPrescaler, uint32_t TIM_ExtTRGPolarity, uint32_t ExtTRGFilter)"}
+{"node_id": "func:TIM_ITRx_SetConfig", "node_type": "function", "name": "TIM_ITRx_SetConfig"}
+{"node_id": "func:TIM_ITRx_SetConfig@0800416a", "node_type": "function", "name": "TIM_ITRx_SetConfig", "entry": "0800416a", "is_isr": false, "signature": "void __stdcall TIM_ITRx_SetConfig(TIM_TypeDef * TIMx, uint16_t InputTriggerSource)"}
+{"node_id": "func:TIM_OC1_SetConfig", "node_type": "function", "name": "TIM_OC1_SetConfig"}
+{"node_id": "func:TIM_OC1_SetConfig@08003d60", "node_type": "function", "name": "TIM_OC1_SetConfig", "entry": "08003d60", "is_isr": false, "signature": "void __stdcall TIM_OC1_SetConfig(TIM_TypeDef * TIMx, TIM_OC_InitTypeDef * OC_Config)"}
+{"node_id": "func:TIM_OC2_SetConfig", "node_type": "function", "name": "TIM_OC2_SetConfig"}
+{"node_id": "func:TIM_OC2_SetConfig@08003e38", "node_type": "function", "name": "TIM_OC2_SetConfig", "entry": "08003e38", "is_isr": false, "signature": "void __stdcall TIM_OC2_SetConfig(TIM_TypeDef * TIMx, TIM_OC_InitTypeDef * OC_Config)"}
+{"node_id": "func:TIM_OC3_SetConfig", "node_type": "function", "name": "TIM_OC3_SetConfig"}
+{"node_id": "func:TIM_OC3_SetConfig@08003f18", "node_type": "function", "name": "TIM_OC3_SetConfig", "entry": "08003f18", "is_isr": false, "signature": "void __stdcall TIM_OC3_SetConfig(TIM_TypeDef * TIMx, TIM_OC_InitTypeDef * OC_Config)"}
+{"node_id": "func:TIM_OC4_SetConfig", "node_type": "function", "name": "TIM_OC4_SetConfig"}
+{"node_id": "func:TIM_OC4_SetConfig@08003ff8", "node_type": "function", "name": "TIM_OC4_SetConfig", "entry": "08003ff8", "is_isr": false, "signature": "void __stdcall TIM_OC4_SetConfig(TIM_TypeDef * TIMx, TIM_OC_InitTypeDef * OC_Config)"}
+{"node_id": "func:TIM_TI1_ConfigInputStage", "node_type": "function", "name": "TIM_TI1_ConfigInputStage"}
+{"node_id": "func:TIM_TI1_ConfigInputStage@080040a0", "node_type": "function", "name": "TIM_TI1_ConfigInputStage", "entry": "080040a0", "is_isr": false, "signature": "void __stdcall TIM_TI1_ConfigInputStage(TIM_TypeDef * TIMx, uint32_t TIM_ICPolarity, uint32_t TIM_ICFilter)"}
+{"node_id": "func:TIM_TI2_ConfigInputStage", "node_type": "function", "name": "TIM_TI2_ConfigInputStage"}
+{"node_id": "func:TIM_TI2_ConfigInputStage@08004104", "node_type": "function", "name": "TIM_TI2_ConfigInputStage", "entry": "08004104", "is_isr": false, "signature": "void __stdcall TIM_TI2_ConfigInputStage(TIM_TypeDef * TIMx, uint32_t TIM_ICPolarity, uint32_t TIM_ICFilter)"}
+{"node_id": "func:UART_SetConfig", "node_type": "function", "name": "UART_SetConfig"}
+{"node_id": "func:UART_SetConfig@080045fc", "node_type": "function", "name": "UART_SetConfig", "entry": "080045fc", "is_isr": false, "signature": "void __stdcall UART_SetConfig(UART_HandleTypeDef * huart)"}
+{"node_id": "func:UART_WaitOnFlagUntilTimeout", "node_type": "function", "name": "UART_WaitOnFlagUntilTimeout"}
+{"node_id": "func:UART_WaitOnFlagUntilTimeout@08004568", "node_type": "function", "name": "UART_WaitOnFlagUntilTimeout", "entry": "08004568", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef * huart, uint32_t Flag, FlagStatus Status, uint32_t Tickstart, uint32_t Timeout)"}
+{"node_id": "func:USBWakeUp_IRQHandler@08005700", "node_type": "function", "name": "USBWakeUp_IRQHandler", "entry": "08005700", "is_isr": true, "signature": "undefined USBWakeUp_IRQHandler(void)"}
+{"node_id": "func:UsageFault_Handler@080055aa", "node_type": "function", "name": "UsageFault_Handler", "entry": "080055aa", "is_isr": true, "signature": "void UsageFault_Handler(void)"}
+{"node_id": "func:_Balloc", "node_type": "function", "name": "_Balloc"}
+{"node_id": "func:_Balloc@080087f0", "node_type": "function", "name": "_Balloc", "entry": "080087f0", "is_isr": false, "signature": "undefined _Balloc(void)"}
+{"node_id": "func:_Bfree", "node_type": "function", "name": "_Bfree"}
+{"node_id": "func:_Bfree@0800883c", "node_type": "function", "name": "_Bfree", "entry": "0800883c", "is_isr": false, "signature": "undefined _Bfree(void)"}
+{"node_id": "func:_Error_Handler", "node_type": "function", "name": "_Error_Handler"}
+{"node_id": "func:_Error_Handler@08005544", "node_type": "function", "name": "_Error_Handler", "entry": "08005544", "is_isr": true, "signature": "void __stdcall _Error_Handler(char * file, int line)"}
+{"node_id": "func:__addsf3", "node_type": "function", "name": "__addsf3"}
+{"node_id": "func:__addsf3@08000aa8", "node_type": "function", "name": "__addsf3", "entry": "08000aa8", "is_isr": false, "signature": "undefined __addsf3(void)"}
+{"node_id": "func:__aeabi_cdcmpeq", "node_type": "function", "name": "__aeabi_cdcmpeq"}
+{"node_id": "func:__aeabi_cdcmpeq@08000988", "node_type": "function", "name": "__aeabi_cdcmpeq", "entry": "08000988", "is_isr": false, "signature": "undefined __aeabi_cdcmpeq(void)"}
+{"node_id": "func:__aeabi_cdrcmple", "node_type": "function", "name": "__aeabi_cdrcmple"}
+{"node_id": "func:__aeabi_cdrcmple@08000978", "node_type": "function", "name": "__aeabi_cdrcmple", "entry": "08000978", "is_isr": false, "signature": "undefined __aeabi_cdrcmple(void)"}
+{"node_id": "func:__aeabi_cfcmpeq", "node_type": "function", "name": "__aeabi_cfcmpeq"}
+{"node_id": "func:__aeabi_cfcmpeq@08000fd0", "node_type": "function", "name": "__aeabi_cfcmpeq", "entry": "08000fd0", "is_isr": false, "signature": "undefined __aeabi_cfcmpeq(void)"}
+{"node_id": "func:__aeabi_cfrcmple", "node_type": "function", "name": "__aeabi_cfrcmple"}
+{"node_id": "func:__aeabi_cfrcmple@08000fc8", "node_type": "function", "name": "__aeabi_cfrcmple", "entry": "08000fc8", "is_isr": false, "signature": "undefined __aeabi_cfrcmple(void)"}
+{"node_id": "func:__aeabi_d2iz", "node_type": "function", "name": "__aeabi_d2iz"}
+{"node_id": "func:__aeabi_d2iz@0800119c", "node_type": "function", "name": "__aeabi_d2iz", "entry": "0800119c", "is_isr": false, "signature": "undefined __aeabi_d2iz(void)"}
+{"node_id": "func:__aeabi_dadd", "node_type": "function", "name": "__aeabi_dadd"}
+{"node_id": "func:__aeabi_dadd@0800015c", "node_type": "function", "name": "__aeabi_dadd", "entry": "0800015c", "is_isr": false, "signature": "undefined __aeabi_dadd(void)"}
+{"node_id": "func:__aeabi_dcmpeq", "node_type": "function", "name": "__aeabi_dcmpeq"}
+{"node_id": "func:__aeabi_dcmpeq@08000998", "node_type": "function", "name": "__aeabi_dcmpeq", "entry": "08000998", "is_isr": false, "signature": "undefined __aeabi_dcmpeq(void)"}
+{"node_id": "func:__aeabi_dcmpge", "node_type": "function", "name": "__aeabi_dcmpge"}
+{"node_id": "func:__aeabi_dcmpge@080009d4", "node_type": "function", "name": "__aeabi_dcmpge", "entry": "080009d4", "is_isr": false, "signature": "undefined __aeabi_dcmpge(void)"}
+{"node_id": "func:__aeabi_dcmpgt", "node_type": "function", "name": "__aeabi_dcmpgt"}
+{"node_id": "func:__aeabi_dcmpgt@080009e8", "node_type": "function", "name": "__aeabi_dcmpgt", "entry": "080009e8", "is_isr": false, "signature": "undefined __aeabi_dcmpgt(void)"}
+{"node_id": "func:__aeabi_dcmple", "node_type": "function", "name": "__aeabi_dcmple"}
+{"node_id": "func:__aeabi_dcmple@080009c0", "node_type": "function", "name": "__aeabi_dcmple", "entry": "080009c0", "is_isr": false, "signature": "undefined __aeabi_dcmple(void)"}
+{"node_id": "func:__aeabi_dcmplt", "node_type": "function", "name": "__aeabi_dcmplt"}
+{"node_id": "func:__aeabi_dcmplt@080009ac", "node_type": "function", "name": "__aeabi_dcmplt", "entry": "080009ac", "is_isr": false, "signature": "undefined __aeabi_dcmplt(void)"}
+{"node_id": "func:__aeabi_drsub@08000150", "node_type": "function", "name": "__aeabi_drsub", "entry": "08000150", "is_isr": false, "signature": "undefined __aeabi_drsub(void)"}
+{"node_id": "func:__aeabi_f2d", "node_type": "function", "name": "__aeabi_f2d"}
+{"node_id": "func:__aeabi_f2d@08000418", "node_type": "function", "name": "__aeabi_f2d", "entry": "08000418", "is_isr": false, "signature": "undefined __aeabi_f2d(void)"}
+{"node_id": "func:__aeabi_fcmpeq@08000fe0", "node_type": "function", "name": "__aeabi_fcmpeq", "entry": "08000fe0", "is_isr": false, "signature": "undefined __aeabi_fcmpeq(void)"}
+{"node_id": "func:__aeabi_fcmpge@0800101c", "node_type": "function", "name": "__aeabi_fcmpge", "entry": "0800101c", "is_isr": false, "signature": "undefined __aeabi_fcmpge(void)"}
+{"node_id": "func:__aeabi_fcmpgt", "node_type": "function", "name": "__aeabi_fcmpgt"}
+{"node_id": "func:__aeabi_fcmpgt@08001030", "node_type": "function", "name": "__aeabi_fcmpgt", "entry": "08001030", "is_isr": false, "signature": "undefined __aeabi_fcmpgt(void)"}
+{"node_id": "func:__aeabi_fcmple@08001008", "node_type": "function", "name": "__aeabi_fcmple", "entry": "08001008", "is_isr": false, "signature": "undefined __aeabi_fcmple(void)"}
+{"node_id": "func:__aeabi_fcmplt", "node_type": "function", "name": "__aeabi_fcmplt"}
+{"node_id": "func:__aeabi_fcmplt@08000ff4", "node_type": "function", "name": "__aeabi_fcmplt", "entry": "08000ff4", "is_isr": false, "signature": "undefined __aeabi_fcmplt(void)"}
+{"node_id": "func:__aeabi_fdiv", "node_type": "function", "name": "__aeabi_fdiv"}
+{"node_id": "func:__aeabi_fdiv@08000e20", "node_type": "function", "name": "__aeabi_fdiv", "entry": "08000e20", "is_isr": false, "signature": "undefined __aeabi_fdiv(void)"}
+{"node_id": "func:__aeabi_fmul", "node_type": "function", "name": "__aeabi_fmul"}
+{"node_id": "func:__aeabi_fmul@08000cb8", "node_type": "function", "name": "__aeabi_fmul", "entry": "08000cb8", "is_isr": false, "signature": "undefined __aeabi_fmul(void)"}
+{"node_id": "func:__aeabi_frsub@08000a9c", "node_type": "function", "name": "__aeabi_frsub", "entry": "08000a9c", "is_isr": false, "signature": "undefined __aeabi_frsub(void)"}
+{"node_id": "func:__aeabi_fsub", "node_type": "function", "name": "__aeabi_fsub"}
+{"node_id": "func:__aeabi_fsub@08000aa4", "node_type": "function", "name": "__aeabi_fsub", "entry": "08000aa4", "is_isr": false, "signature": "undefined __aeabi_fsub(void)"}
+{"node_id": "func:__aeabi_i2d", "node_type": "function", "name": "__aeabi_i2d"}
+{"node_id": "func:__aeabi_i2d@080003f4", "node_type": "function", "name": "__aeabi_i2d", "entry": "080003f4", "is_isr": false, "signature": "undefined __aeabi_i2d(void)"}
+{"node_id": "func:__aeabi_idiv0", "node_type": "function", "name": "__aeabi_idiv0"}
+{"node_id": "func:__aeabi_idiv0@080014ec", "node_type": "function", "name": "__aeabi_idiv0", "entry": "080014ec", "is_isr": false, "signature": "undefined __aeabi_idiv0(void)"}
+{"node_id": "func:__aeabi_l2d@0800046c", "node_type": "function", "name": "__aeabi_l2d", "entry": "0800046c", "is_isr": false, "signature": "undefined __aeabi_l2d(void)"}
+{"node_id": "func:__aeabi_l2f@08000c3c", "node_type": "function", "name": "__aeabi_l2f", "entry": "08000c3c", "is_isr": false, "signature": "undefined __aeabi_l2f(void)"}
+{"node_id": "func:__aeabi_ul2f@08000c2c", "node_type": "function", "name": "__aeabi_ul2f", "entry": "08000c2c", "is_isr": false, "signature": "undefined __aeabi_ul2f(void)"}
+{"node_id": "func:__aeabi_uldivmod", "node_type": "function", "name": "__aeabi_uldivmod"}
+{"node_id": "func:__aeabi_uldivmod@080011ec", "node_type": "function", "name": "__aeabi_uldivmod", "entry": "080011ec", "is_isr": false, "signature": "undefined __aeabi_uldivmod(void)"}
+{"node_id": "func:__ascii_mbtowc@080092dc", "node_type": "function", "name": "__ascii_mbtowc", "entry": "080092dc", "is_isr": false, "signature": "undefined __ascii_mbtowc(void)"}
+{"node_id": "func:__ascii_wctomb@08009740", "node_type": "function", "name": "__ascii_wctomb", "entry": "08009740", "is_isr": false, "signature": "undefined __ascii_wctomb(void)"}
+{"node_id": "func:__cmpsf2", "node_type": "function", "name": "__cmpsf2"}
+{"node_id": "func:__cmpsf2@08000f68", "node_type": "function", "name": "__cmpsf2", "entry": "08000f68", "is_isr": false, "signature": "undefined __cmpsf2(void)"}
+{"node_id": "func:__d2b", "node_type": "function", "name": "__d2b"}
+{"node_id": "func:__d2b@08008d60", "node_type": "function", "name": "__d2b", "entry": "08008d60", "is_isr": false, "signature": "undefined __d2b(void)"}
+{"node_id": "func:__divdf3", "node_type": "function", "name": "__divdf3"}
+{"node_id": "func:__divdf3@0800071c", "node_type": "function", "name": "__divdf3", "entry": "0800071c", "is_isr": false, "signature": "undefined __divdf3(void)"}
+{"node_id": "func:__do_global_dtors_aux", "node_type": "function", "name": "__do_global_dtors_aux"}
+{"node_id": "func:__do_global_dtors_aux@08000110", "node_type": "function", "name": "__do_global_dtors_aux", "entry": "08000110", "is_isr": false, "signature": "undefined __do_global_dtors_aux(void)"}
+{"node_id": "func:__errno", "node_type": "function", "name": "__errno"}
+{"node_id": "func:__errno@08005be4", "node_type": "function", "name": "__errno", "entry": "08005be4", "is_isr": false, "signature": "undefined __errno(void)"}
+{"node_id": "func:__fixunssfsi", "node_type": "function", "name": "__fixunssfsi"}
+{"node_id": "func:__fixunssfsi@08001044", "node_type": "function", "name": "__fixunssfsi", "entry": "08001044", "is_isr": false, "signature": "undefined __fixunssfsi(void)"}
+{"node_id": "func:__floatsisf", "node_type": "function", "name": "__floatsisf"}
+{"node_id": "func:__floatsisf@08000c10", "node_type": "function", "name": "__floatsisf", "entry": "08000c10", "is_isr": false, "signature": "undefined __floatsisf(void)"}
+{"node_id": "func:__floatundidf@0800045c", "node_type": "function", "name": "__floatundidf", "entry": "0800045c", "is_isr": false, "signature": "undefined __floatundidf(void)"}
+{"node_id": "func:__floatunsidf", "node_type": "function", "name": "__floatunsidf"}
+{"node_id": "func:__floatunsidf@080003d4", "node_type": "function", "name": "__floatunsidf", "entry": "080003d4", "is_isr": false, "signature": "undefined __floatunsidf(void)"}
+{"node_id": "func:__floatunsisf", "node_type": "function", "name": "__floatunsisf"}
+{"node_id": "func:__floatunsisf@08000c08", "node_type": "function", "name": "__floatunsisf", "entry": "08000c08", "is_isr": false, "signature": "undefined __floatunsisf(void)"}
+{"node_id": "func:__gedf2@080008ec", "node_type": "function", "name": "__gedf2", "entry": "080008ec", "is_isr": false, "signature": "undefined __gedf2(void)"}
+{"node_id": "func:__gesf2@08000f58", "node_type": "function", "name": "__gesf2", "entry": "08000f58", "is_isr": false, "signature": "undefined __gesf2(void)"}
+{"node_id": "func:__hi0bits", "node_type": "function", "name": "__hi0bits"}
+{"node_id": "func:__hi0bits@080088d4", "node_type": "function", "name": "__hi0bits", "entry": "080088d4", "is_isr": false, "signature": "undefined __hi0bits(void)"}
+{"node_id": "func:__i2b", "node_type": "function", "name": "__i2b"}
+{"node_id": "func:__i2b@08008974", "node_type": "function", "name": "__i2b", "entry": "08008974", "is_isr": false, "signature": "undefined __i2b(void)"}
+{"node_id": "func:__ieee754_atan2@08005708", "node_type": "function", "name": "__ieee754_atan2", "entry": "08005708", "is_isr": false, "signature": "undefined __ieee754_atan2(void)"}
+{"node_id": "func:__ledf2@080008f4", "node_type": "function", "name": "__ledf2", "entry": "080008f4", "is_isr": false, "signature": "undefined __ledf2(void)"}
+{"node_id": "func:__libc_fini_array@080081d0", "node_type": "function", "name": "__libc_fini_array", "entry": "080081d0", "is_isr": false, "signature": "undefined __libc_fini_array(void)"}
+{"node_id": "func:__libc_init_array", "node_type": "function", "name": "__libc_init_array"}
+{"node_id": "func:__libc_init_array@08005bf0", "node_type": "function", "name": "__libc_init_array", "entry": "08005bf0", "is_isr": false, "signature": "undefined __libc_init_array(void)"}
+{"node_id": "func:__lo0bits", "node_type": "function", "name": "__lo0bits"}
+{"node_id": "func:__lo0bits@08008914", "node_type": "function", "name": "__lo0bits", "entry": "08008914", "is_isr": false, "signature": "undefined __lo0bits(void)"}
+{"node_id": "func:__lshift", "node_type": "function", "name": "__lshift"}
+{"node_id": "func:__lshift@08008b74", "node_type": "function", "name": "__lshift", "entry": "08008b74", "is_isr": false, "signature": "undefined __lshift(void)"}
+{"node_id": "func:__ltsf2@08000f60", "node_type": "function", "name": "__ltsf2", "entry": "08000f60", "is_isr": false, "signature": "undefined __ltsf2(void)"}
+{"node_id": "func:__malloc_lock", "node_type": "function", "name": "__malloc_lock"}
+{"node_id": "func:__malloc_lock@080087d8", "node_type": "function", "name": "__malloc_lock", "entry": "080087d8", "is_isr": false, "signature": "undefined __malloc_lock(void)"}
+{"node_id": "func:__malloc_unlock", "node_type": "function", "name": "__malloc_unlock"}
+{"node_id": "func:__malloc_unlock@080087e4", "node_type": "function", "name": "__malloc_unlock", "entry": "080087e4", "is_isr": false, "signature": "undefined __malloc_unlock(void)"}
+{"node_id": "func:__mcmp", "node_type": "function", "name": "__mcmp"}
+{"node_id": "func:__mcmp@08008c28", "node_type": "function", "name": "__mcmp", "entry": "08008c28", "is_isr": false, "signature": "undefined __mcmp(void)"}
+{"node_id": "func:__mdiff", "node_type": "function", "name": "__mdiff"}
+{"node_id": "func:__mdiff@08008c60", "node_type": "function", "name": "__mdiff", "entry": "08008c60", "is_isr": false, "signature": "undefined __mdiff(void)"}
+{"node_id": "func:__muldf3", "node_type": "function", "name": "__muldf3"}
+{"node_id": "func:__muldf3@080004c8", "node_type": "function", "name": "__muldf3", "entry": "080004c8", "is_isr": false, "signature": "undefined __muldf3(void)"}
+{"node_id": "func:__multadd", "node_type": "function", "name": "__multadd"}
+{"node_id": "func:__multadd@08008850", "node_type": "function", "name": "__multadd", "entry": "08008850", "is_isr": false, "signature": "undefined __multadd(void)"}
+{"node_id": "func:__multiply", "node_type": "function", "name": "__multiply"}
+{"node_id": "func:__multiply@08008988", "node_type": "function", "name": "__multiply", "entry": "08008988", "is_isr": false, "signature": "undefined __multiply(void)"}
+{"node_id": "func:__nedf2", "node_type": "function", "name": "__nedf2"}
+{"node_id": "func:__nedf2@080008fc", "node_type": "function", "name": "__nedf2", "entry": "080008fc", "is_isr": false, "signature": "undefined __nedf2(void)"}
+{"node_id": "func:__pow5mult", "node_type": "function", "name": "__pow5mult"}
+{"node_id": "func:__pow5mult@08008ad4", "node_type": "function", "name": "__pow5mult", "entry": "08008ad4", "is_isr": false, "signature": "undefined __pow5mult(void)"}
+{"node_id": "func:__register_exitproc", "node_type": "function", "name": "__register_exitproc"}
+{"node_id": "func:__register_exitproc@08008f28", "node_type": "function", "name": "__register_exitproc", "entry": "08008f28", "is_isr": false, "signature": "undefined __register_exitproc(void)"}
+{"node_id": "func:__retarget_lock_acquire_recursive", "node_type": "function", "name": "__retarget_lock_acquire_recursive"}
+{"node_id": "func:__retarget_lock_acquire_recursive@08008220", "node_type": "function", "name": "__retarget_lock_acquire_recursive", "entry": "08008220", "is_isr": false, "signature": "undefined __retarget_lock_acquire_recursive(void)"}
+{"node_id": "func:__retarget_lock_release_recursive", "node_type": "function", "name": "__retarget_lock_release_recursive"}
+{"node_id": "func:__retarget_lock_release_recursive@08008224", "node_type": "function", "name": "__retarget_lock_release_recursive", "entry": "08008224", "is_isr": false, "signature": "undefined __retarget_lock_release_recursive(void)"}
+{"node_id": "func:__ssprint_r", "node_type": "function", "name": "__ssprint_r"}
+{"node_id": "func:__ssprint_r@08008e34", "node_type": "function", "name": "__ssprint_r", "entry": "08008e34", "is_isr": false, "signature": "undefined __ssprint_r(void)"}
+{"node_id": "func:__subdf3", "node_type": "function", "name": "__subdf3"}
+{"node_id": "func:__subdf3@08000158", "node_type": "function", "name": "__subdf3", "entry": "08000158", "is_isr": false, "signature": "undefined __subdf3(void)"}
+{"node_id": "func:__truncdfsf2", "node_type": "function", "name": "__truncdfsf2"}
+{"node_id": "func:__truncdfsf2@080009fc", "node_type": "function", "name": "__truncdfsf2", "entry": "080009fc", "is_isr": false, "signature": "undefined __truncdfsf2(void)"}
+{"node_id": "func:__udivmoddi4", "node_type": "function", "name": "__udivmoddi4"}
+{"node_id": "func:__udivmoddi4@0800121c", "node_type": "function", "name": "__udivmoddi4", "entry": "0800121c", "is_isr": false, "signature": "undefined __udivmoddi4(void)"}
+{"node_id": "func:__unorddf2", "node_type": "function", "name": "__unorddf2"}
+{"node_id": "func:__unorddf2@08001170", "node_type": "function", "name": "__unorddf2", "entry": "08001170", "is_isr": false, "signature": "undefined __unorddf2(void)"}
+{"node_id": "func:_calloc_r", "node_type": "function", "name": "_calloc_r"}
+{"node_id": "func:_calloc_r@08008fe8", "node_type": "function", "name": "_calloc_r", "entry": "08008fe8", "is_isr": false, "signature": "undefined _calloc_r(void)"}
+{"node_id": "func:_dtoa_r", "node_type": "function", "name": "_dtoa_r"}
+{"node_id": "func:_dtoa_r@080073a0", "node_type": "function", "name": "_dtoa_r", "entry": "080073a0", "is_isr": false, "signature": "undefined _dtoa_r(void)"}
+{"node_id": "func:_fini", "node_type": "function", "name": "_fini"}
+{"node_id": "func:_fini@08009764", "node_type": "function", "name": "_fini", "entry": "08009764", "is_isr": false, "signature": "undefined _fini(void)"}
+{"node_id": "func:_free_r", "node_type": "function", "name": "_free_r"}
+{"node_id": "func:_free_r@080090f4", "node_type": "function", "name": "_free_r", "entry": "080090f4", "is_isr": false, "signature": "undefined _free_r(void)"}
+{"node_id": "func:_get_ms_tick@08004e04", "node_type": "function", "name": "_get_ms_tick", "entry": "08004e04", "is_isr": false, "signature": "uint32_t _get_ms_tick(void)"}
+{"node_id": "func:_i2c_read_reg@08004dc0", "node_type": "function", "name": "_i2c_read_reg", "entry": "08004dc0", "is_isr": false, "signature": "void __stdcall _i2c_read_reg(uint8_t addr, uint8_t reg, uint8_t * data, uint16_t len)"}
+{"node_id": "func:_i2c_write_reg@08004d7c", "node_type": "function", "name": "_i2c_write_reg", "entry": "08004d7c", "is_isr": false, "signature": "void __stdcall _i2c_write_reg(uint8_t addr, uint8_t reg, uint8_t * data, uint16_t len)"}
+{"node_id": "func:_init", "node_type": "function", "name": "_init"}
+{"node_id": "func:_init@08009758", "node_type": "function", "name": "_init", "entry": "08009758", "is_isr": false, "signature": "int __stdcall _init(EVP_PKEY_CTX * ctx)"}
+{"node_id": "func:_localeconv_r", "node_type": "function", "name": "_localeconv_r"}
+{"node_id": "func:_localeconv_r@08008204", "node_type": "function", "name": "_localeconv_r", "entry": "08008204", "is_isr": false, "signature": "undefined _localeconv_r(void)"}
+{"node_id": "func:_malloc_r", "node_type": "function", "name": "_malloc_r"}
+{"node_id": "func:_malloc_r@08008228", "node_type": "function", "name": "_malloc_r", "entry": "08008228", "is_isr": false, "signature": "undefined _malloc_r(void)"}
+{"node_id": "func:_malloc_trim_r", "node_type": "function", "name": "_malloc_trim_r"}
+{"node_id": "func:_malloc_trim_r@08009054", "node_type": "function", "name": "_malloc_trim_r", "entry": "08009054", "is_isr": false, "signature": "undefined _malloc_trim_r(void)"}
+{"node_id": "func:_realloc_r", "node_type": "function", "name": "_realloc_r"}
+{"node_id": "func:_realloc_r@080093cc", "node_type": "function", "name": "_realloc_r", "entry": "080093cc", "is_isr": false, "signature": "undefined _realloc_r(void)"}
+{"node_id": "func:_sbrk", "node_type": "function", "name": "_sbrk"}
+{"node_id": "func:_sbrk@080055f8", "node_type": "function", "name": "_sbrk", "entry": "080055f8", "is_isr": false, "signature": "caddr_t __stdcall _sbrk(int incr)"}
+{"node_id": "func:_sbrk_r", "node_type": "function", "name": "_sbrk_r"}
+{"node_id": "func:_sbrk_r@08008e10", "node_type": "function", "name": "_sbrk_r", "entry": "08008e10", "is_isr": false, "signature": "undefined _sbrk_r(void)"}
+{"node_id": "func:_svfprintf_r", "node_type": "function", "name": "_svfprintf_r"}
+{"node_id": "func:_svfprintf_r@08005d6c", "node_type": "function", "name": "_svfprintf_r", "entry": "08005d6c", "is_isr": false, "signature": "undefined _svfprintf_r(void)"}
+{"node_id": "func:atan", "node_type": "function", "name": "atan"}
+{"node_id": "func:atan2", "node_type": "function", "name": "atan2"}
+{"node_id": "func:atan2@08005704", "node_type": "function", "name": "atan2", "entry": "08005704", "is_isr": false, "signature": "undefined atan2(void)"}
+{"node_id": "func:atan@080058c0", "node_type": "function", "name": "atan", "entry": "080058c0", "is_isr": false, "signature": "double __stdcall atan(double __x)"}
+{"node_id": "func:atexit", "node_type": "function", "name": "atexit"}
+{"node_id": "func:atexit@0800726c", "node_type": "function", "name": "atexit", "entry": "0800726c", "is_isr": false, "signature": "int __stdcall atexit(__func * __func)"}
+{"node_id": "func:fabs", "node_type": "function", "name": "fabs"}
+{"node_id": "func:fabs@08005bdc", "node_type": "function", "name": "fabs", "entry": "08005bdc", "is_isr": false, "signature": "double __stdcall fabs(double __x)"}
+{"node_id": "func:flush_strbuf", "node_type": "function", "name": "flush_strbuf"}
+{"node_id": "func:flush_strbuf@08004e38", "node_type": "function", "name": "flush_strbuf", "entry": "08004e38", "is_isr": false, "signature": "void flush_strbuf(void)"}
+{"node_id": "func:frame_dummy", "node_type": "function", "name": "frame_dummy"}
+{"node_id": "func:frame_dummy@08000134", "node_type": "function", "name": "frame_dummy", "entry": "08000134", "is_isr": false, "signature": "undefined frame_dummy(void)"}
+{"node_id": "func:main", "node_type": "function", "name": "main"}
+{"node_id": "func:main@080050fc", "node_type": "function", "name": "main", "entry": "080050fc", "is_isr": false, "signature": "int main(void)"}
+{"node_id": "func:memchr", "node_type": "function", "name": "memchr"}
+{"node_id": "func:memchr@0800874c", "node_type": "function", "name": "memchr", "entry": "0800874c", "is_isr": false, "signature": "void * __stdcall memchr(void * __s, int __c, size_t __n)"}
+{"node_id": "func:memcpy", "node_type": "function", "name": "memcpy"}
+{"node_id": "func:memcpy@08001084", "node_type": "function", "name": "memcpy", "entry": "08001084", "is_isr": false, "signature": "void * __stdcall memcpy(void * __dest, void * __src, size_t __n)"}
+{"node_id": "func:memmove", "node_type": "function", "name": "memmove"}
+{"node_id": "func:memmove@08009308", "node_type": "function", "name": "memmove", "entry": "08009308", "is_isr": false, "signature": "void * __stdcall memmove(void * __dest, void * __src, size_t __n)"}
+{"node_id": "func:memset", "node_type": "function", "name": "memset"}
+{"node_id": "func:memset@08005c38", "node_type": "function", "name": "memset", "entry": "08005c38", "is_isr": false, "signature": "void * __stdcall memset(void * __s, int __c, size_t __n)"}
+{"node_id": "func:mpu6050_calc_acc_pitch_roll", "node_type": "function", "name": "mpu6050_calc_acc_pitch_roll"}
+{"node_id": "func:mpu6050_calc_acc_pitch_roll@08004c88", "node_type": "function", "name": "mpu6050_calc_acc_pitch_roll", "entry": "08004c88", "is_isr": false, "signature": "void __stdcall mpu6050_calc_acc_pitch_roll(Mpu6050 * mpu6050, float * pitch, float * roll)"}
+{"node_id": "func:mpu6050_calc_pitch", "node_type": "function", "name": "mpu6050_calc_pitch"}
+{"node_id": "func:mpu6050_calc_pitch@08004ae8", "node_type": "function", "name": "mpu6050_calc_pitch", "entry": "08004ae8", "is_isr": false, "signature": "void __stdcall mpu6050_calc_pitch(Mpu6050 * mpu6050, float * pitch)"}
+{"node_id": "func:mpu6050_calibrate", "node_type": "function", "name": "mpu6050_calibrate"}
+{"node_id": "func:mpu6050_calibrate@080048dc", "node_type": "function", "name": "mpu6050_calibrate", "entry": "080048dc", "is_isr": false, "signature": "void __stdcall mpu6050_calibrate(Mpu6050 * mpu6050)"}
+{"node_id": "func:mpu6050_init", "node_type": "function", "name": "mpu6050_init"}
+{"node_id": "func:mpu6050_init@0800482c", "node_type": "function", "name": "mpu6050_init", "entry": "0800482c", "is_isr": false, "signature": "void __stdcall mpu6050_init(Mpu6050 * mpu6050)"}
+{"node_id": "func:mpu6050_update", "node_type": "function", "name": "mpu6050_update"}
+{"node_id": "func:mpu6050_update@080049f0", "node_type": "function", "name": "mpu6050_update", "entry": "080049f0", "is_isr": false, "signature": "void __stdcall mpu6050_update(Mpu6050 * mpu6050)"}
+{"node_id": "func:quorem", "node_type": "function", "name": "quorem"}
+{"node_id": "func:quorem@08007278", "node_type": "function", "name": "quorem", "entry": "08007278", "is_isr": false, "signature": "undefined quorem(void)"}
+{"node_id": "func:register_fini", "node_type": "function", "name": "register_fini"}
+{"node_id": "func:register_fini@08007258", "node_type": "function", "name": "register_fini", "entry": "08007258", "is_isr": false, "signature": "undefined register_fini(void)"}
+{"node_id": "func:sprintf", "node_type": "function", "name": "sprintf"}
+{"node_id": "func:sprintf@08005ccc", "node_type": "function", "name": "sprintf", "entry": "08005ccc", "is_isr": false, "signature": "int __stdcall sprintf(char * __s, char * __format, ...)"}
+{"node_id": "func:strlen", "node_type": "function", "name": "strlen"}
+{"node_id": "func:strlen@08005d10", "node_type": "function", "name": "strlen", "entry": "08005d10", "is_isr": false, "signature": "size_t __stdcall strlen(char * __s)"}
+{"node_id": "func:uart_print", "node_type": "function", "name": "uart_print"}
+{"node_id": "func:uart_print@08004e14", "node_type": "function", "name": "uart_print", "entry": "08004e14", "is_isr": false, "signature": "void __stdcall uart_print(char * str, uint32_t len)"}
+{"node_id": "mmio:0X4000089C", "node_type": "mmio", "address_hex": "0x4000089C", "address": 1073744028}
+{"node_id": "mmio:0X400008A0", "node_type": "mmio", "address_hex": "0x400008A0", "address": 1073744032}
+{"node_id": "mmio:0X400008A4", "node_type": "mmio", "address_hex": "0x400008A4", "address": 1073744036}
+{"node_id": "mmio:0X400008B4", "node_type": "mmio", "address_hex": "0x400008B4", "address": 1073744052}
+{"node_id": "mmio:0X400008C4", "node_type": "mmio", "address_hex": "0x400008C4", "address": 1073744068}
+{"node_id": "mmio:0X40000920", "node_type": "mmio", "address_hex": "0x40000920", "address": 1073744160}
+{"node_id": "mmio:0X40000924", "node_type": "mmio", "address_hex": "0x40000924", "address": 1073744164}
+{"node_id": "mmio:0X40007000", "node_type": "mmio", "address_hex": "0x40007000", "address": 1073770496}
+{"node_id": "mmio:0X40010400", "node_type": "mmio", "address_hex": "0x40010400", "address": 1073808384}
+{"node_id": "mmio:0X40010404", "node_type": "mmio", "address_hex": "0x40010404", "address": 1073808388}
+{"node_id": "mmio:0X40010408", "node_type": "mmio", "address_hex": "0x40010408", "address": 1073808392}
+{"node_id": "mmio:0X4001040C", "node_type": "mmio", "address_hex": "0x4001040C", "address": 1073808396}
+{"node_id": "mmio:0X40021000", "node_type": "mmio", "address_hex": "0x40021000", "address": 1073876992}
+{"node_id": "mmio:0X40021004", "node_type": "mmio", "address_hex": "0x40021004", "address": 1073876996}
+{"node_id": "mmio:0X40021008", "node_type": "mmio", "address_hex": "0x40021008", "address": 1073877000}
+{"node_id": "mmio:0X40021018", "node_type": "mmio", "address_hex": "0x40021018", "address": 1073877016}
+{"node_id": "mmio:0X4002101C", "node_type": "mmio", "address_hex": "0x4002101C", "address": 1073877020}
+{"node_id": "mmio:0X40021020", "node_type": "mmio", "address_hex": "0x40021020", "address": 1073877024}
+{"node_id": "mmio:0X40021024", "node_type": "mmio", "address_hex": "0x40021024", "address": 1073877028}
+{"node_id": "mmio:0X40022000", "node_type": "mmio", "address_hex": "0x40022000", "address": 1073881088}
+{"node_id": "mmio:0X42420000", "node_type": "mmio", "address_hex": "0x42420000", "address": 1111621632}
+{"node_id": "mmio:0X42420060", "node_type": "mmio", "address_hex": "0x42420060", "address": 1111621728}
+{"node_id": "mmio:0X42420480", "node_type": "mmio", "address_hex": "0x42420480", "address": 1111622784}
+{"node_id": "mmio:0XE000E010", "node_type": "mmio", "address_hex": "0xE000E010", "address": 3758153744}
+{"node_id": "mmio:0XE000E014", "node_type": "mmio", "address_hex": "0xE000E014", "address": 3758153748}
+{"node_id": "mmio:0XE000E018", "node_type": "mmio", "address_hex": "0xE000E018", "address": 3758153752}
+{"node_id": "mmio:0XE000ED08", "node_type": "mmio", "address_hex": "0xE000ED08", "address": 3758157064}
+{"node_id": "mmio:0XE000ED0C", "node_type": "mmio", "address_hex": "0xE000ED0C", "address": 3758157068}

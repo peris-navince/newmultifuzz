@@ -1,0 +1,33 @@
+{
+  "binary": "/home/MultiFuzz-benchmarks/benchmarks/MultiFuzz/riot-filesystem/filesystem.elf",
+  "ghidra_export_json": "/home/MultiFuzz/analysis/out/baseline_all/MultiFuzz/riot-filesystem/filesystem/ghidra_export.json",
+  "outdir": "/home/MultiFuzz/analysis/out/baseline_all/MultiFuzz/riot-filesystem/filesystem",
+  "relation_mode": "off",
+  "llm_model": "gpt-5.4",
+  "batch_relative_path": "MultiFuzz/riot-filesystem/filesystem.elf",
+  "ghidra_runtime": "pyghidra",
+  "ghidra_cmd": [
+    "/home/MultiFuzz/tools/ghidra/support/pyghidraRun",
+    "-H",
+    "/tmp/ghidra_kg_proj_zj3pond0",
+    "kgproj",
+    "-import",
+    "/home/MultiFuzz-benchmarks/benchmarks/MultiFuzz/riot-filesystem/filesystem.elf",
+    "-scriptPath",
+    "/home/MultiFuzz/analysis/ghidra_kg/ghidra_scripts",
+    "-postScript",
+    "export_binary_kg.py",
+    "/home/MultiFuzz/analysis/out/baseline_all/MultiFuzz/riot-filesystem/filesystem/ghidra_export.json",
+    "0"
+  ],
+  "function_count": 227,
+  "ghidra_mmio_edge_count": 87,
+  "ghidra_call_edge_count": 398,
+  "resolved_mmio_count": 0,
+  "candidate_function_count": 0,
+  "llm_edge_count": 0,
+  "llm_finding_count": 0,
+  "node_count": 444,
+  "edge_count": 455,
+  "finding_count": 0
+}

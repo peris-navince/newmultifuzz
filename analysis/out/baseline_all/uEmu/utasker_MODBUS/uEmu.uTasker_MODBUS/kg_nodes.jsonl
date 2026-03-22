@@ -1,0 +1,751 @@
+{"node_id": "func:.text_10", "node_type": "function", "name": ".text_10"}
+{"node_id": "func:.text_10@0800e514", "node_type": "function", "name": ".text_10", "entry": "0800e514", "is_isr": false, "signature": "undefined .text_10(void)"}
+{"node_id": "func:.text_10@0801466c", "node_type": "function", "name": ".text_10", "entry": "0801466c", "is_isr": false, "signature": "undefined .text_10(void)"}
+{"node_id": "func:.text_116", "node_type": "function", "name": ".text_116"}
+{"node_id": "func:.text_116@0800cdf0", "node_type": "function", "name": ".text_116", "entry": "0800cdf0", "is_isr": false, "signature": "undefined .text_116(void)"}
+{"node_id": "func:.text_117", "node_type": "function", "name": ".text_117"}
+{"node_id": "func:.text_117@0800cdfe", "node_type": "function", "name": ".text_117", "entry": "0800cdfe", "is_isr": false, "signature": "undefined .text_117(void)"}
+{"node_id": "func:.text_118", "node_type": "function", "name": ".text_118"}
+{"node_id": "func:.text_118@0800ce0a", "node_type": "function", "name": ".text_118", "entry": "0800ce0a", "is_isr": false, "signature": "undefined .text_118(void)"}
+{"node_id": "func:.text_12", "node_type": "function", "name": ".text_12"}
+{"node_id": "func:.text_12@08013476", "node_type": "function", "name": ".text_12", "entry": "08013476", "is_isr": false, "signature": "undefined .text_12(void)"}
+{"node_id": "func:.text_13", "node_type": "function", "name": ".text_13"}
+{"node_id": "func:.text_13@0801347e", "node_type": "function", "name": ".text_13", "entry": "0801347e", "is_isr": false, "signature": "undefined .text_13(void)"}
+{"node_id": "func:.text_143", "node_type": "function", "name": ".text_143"}
+{"node_id": "func:.text_143@0800d0bc", "node_type": "function", "name": ".text_143", "entry": "0800d0bc", "is_isr": false, "signature": "undefined .text_143(void)"}
+{"node_id": "func:.text_145", "node_type": "function", "name": ".text_145"}
+{"node_id": "func:.text_145@0800d116", "node_type": "function", "name": ".text_145", "entry": "0800d116", "is_isr": false, "signature": "undefined .text_145(void)"}
+{"node_id": "func:.text_15", "node_type": "function", "name": ".text_15"}
+{"node_id": "func:.text_15@0800ea8a", "node_type": "function", "name": ".text_15", "entry": "0800ea8a", "is_isr": false, "signature": "undefined .text_15(void)"}
+{"node_id": "func:.text_15@08011992", "node_type": "function", "name": ".text_15", "entry": "08011992", "is_isr": false, "signature": "undefined .text_15(void)"}
+{"node_id": "func:.text_16", "node_type": "function", "name": ".text_16"}
+{"node_id": "func:.text_162", "node_type": "function", "name": ".text_162"}
+{"node_id": "func:.text_162@0800f6b8", "node_type": "function", "name": ".text_162", "entry": "0800f6b8", "is_isr": false, "signature": "undefined .text_162(void)"}
+{"node_id": "func:.text_16@0800ea90", "node_type": "function", "name": ".text_16", "entry": "0800ea90", "is_isr": false, "signature": "undefined .text_16(void)"}
+{"node_id": "func:.text_16@0801199e", "node_type": "function", "name": ".text_16", "entry": "0801199e", "is_isr": false, "signature": "undefined .text_16(void)"}
+{"node_id": "func:.text_16@08012d40", "node_type": "function", "name": ".text_16", "entry": "08012d40", "is_isr": false, "signature": "undefined .text_16(void)"}
+{"node_id": "func:.text_16@0801359e", "node_type": "function", "name": ".text_16", "entry": "0801359e", "is_isr": false, "signature": "undefined .text_16(void)"}
+{"node_id": "func:.text_16@08013cde", "node_type": "function", "name": ".text_16", "entry": "08013cde", "is_isr": false, "signature": "undefined .text_16(void)"}
+{"node_id": "func:.text_17", "node_type": "function", "name": ".text_17"}
+{"node_id": "func:.text_173", "node_type": "function", "name": ".text_173"}
+{"node_id": "func:.text_173@0800d5ac", "node_type": "function", "name": ".text_173", "entry": "0800d5ac", "is_isr": false, "signature": "undefined .text_173(void)"}
+{"node_id": "func:.text_175", "node_type": "function", "name": ".text_175"}
+{"node_id": "func:.text_175@0800f988", "node_type": "function", "name": ".text_175", "entry": "0800f988", "is_isr": false, "signature": "undefined .text_175(void)"}
+{"node_id": "func:.text_178", "node_type": "function", "name": ".text_178"}
+{"node_id": "func:.text_178@0800f9a2", "node_type": "function", "name": ".text_178", "entry": "0800f9a2", "is_isr": false, "signature": "undefined .text_178(void)"}
+{"node_id": "func:.text_179", "node_type": "function", "name": ".text_179"}
+{"node_id": "func:.text_179@0800d614", "node_type": "function", "name": ".text_179", "entry": "0800d614", "is_isr": false, "signature": "undefined .text_179(void)"}
+{"node_id": "func:.text_17@080119aa", "node_type": "function", "name": ".text_17", "entry": "080119aa", "is_isr": false, "signature": "undefined .text_17(void)"}
+{"node_id": "func:.text_18", "node_type": "function", "name": ".text_18"}
+{"node_id": "func:.text_184", "node_type": "function", "name": ".text_184"}
+{"node_id": "func:.text_184@0800fa3a", "node_type": "function", "name": ".text_184", "entry": "0800fa3a", "is_isr": false, "signature": "undefined .text_184(void)"}
+{"node_id": "func:.text_186", "node_type": "function", "name": ".text_186"}
+{"node_id": "func:.text_186@0800d67c", "node_type": "function", "name": ".text_186", "entry": "0800d67c", "is_isr": false, "signature": "undefined .text_186(void)"}
+{"node_id": "func:.text_188", "node_type": "function", "name": ".text_188"}
+{"node_id": "func:.text_188@0800d6ae", "node_type": "function", "name": ".text_188", "entry": "0800d6ae", "is_isr": false, "signature": "undefined .text_188(void)"}
+{"node_id": "func:.text_18@0800eab6", "node_type": "function", "name": ".text_18", "entry": "0800eab6", "is_isr": false, "signature": "undefined .text_18(void)"}
+{"node_id": "func:.text_18@080119b6", "node_type": "function", "name": ".text_18", "entry": "080119b6", "is_isr": false, "signature": "undefined .text_18(void)"}
+{"node_id": "func:.text_19", "node_type": "function", "name": ".text_19"}
+{"node_id": "func:.text_192", "node_type": "function", "name": ".text_192"}
+{"node_id": "func:.text_192@0800fad6", "node_type": "function", "name": ".text_192", "entry": "0800fad6", "is_isr": false, "signature": "undefined .text_192(void)"}
+{"node_id": "func:.text_19@08013da2", "node_type": "function", "name": ".text_19", "entry": "08013da2", "is_isr": false, "signature": "undefined .text_19(void)"}
+{"node_id": "func:.text_21", "node_type": "function", "name": ".text_21"}
+{"node_id": "func:.text_214", "node_type": "function", "name": ".text_214"}
+{"node_id": "func:.text_214@0800da3c", "node_type": "function", "name": ".text_214", "entry": "0800da3c", "is_isr": false, "signature": "undefined .text_214(void)"}
+{"node_id": "func:.text_21@08013db2", "node_type": "function", "name": ".text_21", "entry": "08013db2", "is_isr": false, "signature": "undefined .text_21(void)"}
+{"node_id": "func:.text_23", "node_type": "function", "name": ".text_23"}
+{"node_id": "func:.text_23@08011a6c", "node_type": "function", "name": ".text_23", "entry": "08011a6c", "is_isr": false, "signature": "undefined .text_23(void)"}
+{"node_id": "func:.text_240", "node_type": "function", "name": ".text_240"}
+{"node_id": "func:.text_240@0800e2bc", "node_type": "function", "name": ".text_240", "entry": "0800e2bc", "is_isr": false, "signature": "undefined .text_240(void)"}
+{"node_id": "func:.text_241", "node_type": "function", "name": ".text_241"}
+{"node_id": "func:.text_241@0800e2e2", "node_type": "function", "name": ".text_241", "entry": "0800e2e2", "is_isr": false, "signature": "undefined .text_241(void)"}
+{"node_id": "func:.text_242", "node_type": "function", "name": ".text_242"}
+{"node_id": "func:.text_242@0800e2ea", "node_type": "function", "name": ".text_242", "entry": "0800e2ea", "is_isr": false, "signature": "undefined .text_242(void)"}
+{"node_id": "func:.text_243", "node_type": "function", "name": ".text_243"}
+{"node_id": "func:.text_243@0800e316", "node_type": "function", "name": ".text_243", "entry": "0800e316", "is_isr": false, "signature": "undefined .text_243(void)"}
+{"node_id": "func:.text_244", "node_type": "function", "name": ".text_244"}
+{"node_id": "func:.text_244@0800e342", "node_type": "function", "name": ".text_244", "entry": "0800e342", "is_isr": false, "signature": "undefined .text_244(void)"}
+{"node_id": "func:.text_245", "node_type": "function", "name": ".text_245"}
+{"node_id": "func:.text_245@0800e36e", "node_type": "function", "name": ".text_245", "entry": "0800e36e", "is_isr": false, "signature": "undefined .text_245(void)"}
+{"node_id": "func:.text_246", "node_type": "function", "name": ".text_246"}
+{"node_id": "func:.text_246@0800e39a", "node_type": "function", "name": ".text_246", "entry": "0800e39a", "is_isr": false, "signature": "undefined .text_246(void)"}
+{"node_id": "func:.text_273", "node_type": "function", "name": ".text_273"}
+{"node_id": "func:.text_273@08010a20", "node_type": "function", "name": ".text_273", "entry": "08010a20", "is_isr": false, "signature": "undefined .text_273(void)"}
+{"node_id": "func:.text_274", "node_type": "function", "name": ".text_274"}
+{"node_id": "func:.text_274@08010a28", "node_type": "function", "name": ".text_274", "entry": "08010a28", "is_isr": false, "signature": "undefined .text_274(void)"}
+{"node_id": "func:.text_275", "node_type": "function", "name": ".text_275"}
+{"node_id": "func:.text_275@08010a2e", "node_type": "function", "name": ".text_275", "entry": "08010a2e", "is_isr": false, "signature": "undefined .text_275(void)"}
+{"node_id": "func:.text_278", "node_type": "function", "name": ".text_278"}
+{"node_id": "func:.text_278@08010c36", "node_type": "function", "name": ".text_278", "entry": "08010c36", "is_isr": false, "signature": "undefined .text_278(void)"}
+{"node_id": "func:.text_28", "node_type": "function", "name": ".text_28"}
+{"node_id": "func:.text_28@0800ecd6", "node_type": "function", "name": ".text_28", "entry": "0800ecd6", "is_isr": false, "signature": "undefined .text_28(void)"}
+{"node_id": "func:.text_306", "node_type": "function", "name": ".text_306"}
+{"node_id": "func:.text_306@08011170", "node_type": "function", "name": ".text_306", "entry": "08011170", "is_isr": false, "signature": "undefined .text_306(void)"}
+{"node_id": "func:.text_307", "node_type": "function", "name": ".text_307"}
+{"node_id": "func:.text_307@0801117c", "node_type": "function", "name": ".text_307", "entry": "0801117c", "is_isr": false, "signature": "undefined .text_307(void)"}
+{"node_id": "func:.text_308", "node_type": "function", "name": ".text_308"}
+{"node_id": "func:.text_308@0801118a", "node_type": "function", "name": ".text_308", "entry": "0801118a", "is_isr": false, "signature": "undefined .text_308(void)"}
+{"node_id": "func:.text_31", "node_type": "function", "name": ".text_31"}
+{"node_id": "func:.text_312", "node_type": "function", "name": ".text_312"}
+{"node_id": "func:.text_312@080111f6", "node_type": "function", "name": ".text_312", "entry": "080111f6", "is_isr": false, "signature": "undefined .text_312(void)"}
+{"node_id": "func:.text_31@08011b08", "node_type": "function", "name": ".text_31", "entry": "08011b08", "is_isr": false, "signature": "undefined .text_31(void)"}
+{"node_id": "func:.text_31@08014404", "node_type": "function", "name": ".text_31", "entry": "08014404", "is_isr": false, "signature": "undefined .text_31(void)"}
+{"node_id": "func:.text_32", "node_type": "function", "name": ".text_32"}
+{"node_id": "func:.text_32@0801440c", "node_type": "function", "name": ".text_32", "entry": "0801440c", "is_isr": false, "signature": "undefined .text_32(void)"}
+{"node_id": "func:.text_33", "node_type": "function", "name": ".text_33"}
+{"node_id": "func:.text_33@08014416", "node_type": "function", "name": ".text_33", "entry": "08014416", "is_isr": false, "signature": "undefined .text_33(void)"}
+{"node_id": "func:.text_34", "node_type": "function", "name": ".text_34"}
+{"node_id": "func:.text_34@08014422", "node_type": "function", "name": ".text_34", "entry": "08014422", "is_isr": false, "signature": "undefined .text_34(void)"}
+{"node_id": "func:.text_37", "node_type": "function", "name": ".text_37"}
+{"node_id": "func:.text_37@08014478", "node_type": "function", "name": ".text_37", "entry": "08014478", "is_isr": false, "signature": "undefined .text_37(void)"}
+{"node_id": "func:.text_39@08014480", "node_type": "function", "name": ".text_39", "entry": "08014480", "is_isr": false, "signature": "undefined .text_39(void)"}
+{"node_id": "func:.text_4", "node_type": "function", "name": ".text_4"}
+{"node_id": "func:.text_42", "node_type": "function", "name": ".text_42"}
+{"node_id": "func:.text_42@0801243e", "node_type": "function", "name": ".text_42", "entry": "0801243e", "is_isr": false, "signature": "undefined .text_42(void)"}
+{"node_id": "func:.text_43", "node_type": "function", "name": ".text_43"}
+{"node_id": "func:.text_43@0800eeb0", "node_type": "function", "name": ".text_43", "entry": "0800eeb0", "is_isr": false, "signature": "undefined .text_43(void)"}
+{"node_id": "func:.text_43@08012444", "node_type": "function", "name": ".text_43", "entry": "08012444", "is_isr": false, "signature": "undefined .text_43(void)"}
+{"node_id": "func:.text_43@080144ba", "node_type": "function", "name": ".text_43", "entry": "080144ba", "is_isr": false, "signature": "undefined .text_43(void)"}
+{"node_id": "func:.text_44", "node_type": "function", "name": ".text_44"}
+{"node_id": "func:.text_44@0801244e", "node_type": "function", "name": ".text_44", "entry": "0801244e", "is_isr": false, "signature": "undefined .text_44(void)"}
+{"node_id": "func:.text_45", "node_type": "function", "name": ".text_45"}
+{"node_id": "func:.text_45@0801245c", "node_type": "function", "name": ".text_45", "entry": "0801245c", "is_isr": false, "signature": "undefined .text_45(void)"}
+{"node_id": "func:.text_46", "node_type": "function", "name": ".text_46"}
+{"node_id": "func:.text_46@08012468", "node_type": "function", "name": ".text_46", "entry": "08012468", "is_isr": false, "signature": "undefined .text_46(void)"}
+{"node_id": "func:.text_48", "node_type": "function", "name": ".text_48"}
+{"node_id": "func:.text_48@08012600", "node_type": "function", "name": ".text_48", "entry": "08012600", "is_isr": false, "signature": "undefined .text_48(void)"}
+{"node_id": "func:.text_4@0800e686", "node_type": "function", "name": ".text_4", "entry": "0800e686", "is_isr": false, "signature": "undefined .text_4(void)"}
+{"node_id": "func:.text_4@0800f208", "node_type": "function", "name": ".text_4", "entry": "0800f208", "is_isr": false, "signature": "undefined .text_4(void)"}
+{"node_id": "func:.text_5", "node_type": "function", "name": ".text_5"}
+{"node_id": "func:.text_51", "node_type": "function", "name": ".text_51"}
+{"node_id": "func:.text_51@08012610", "node_type": "function", "name": ".text_51", "entry": "08012610", "is_isr": false, "signature": "undefined .text_51(void)"}
+{"node_id": "func:.text_52", "node_type": "function", "name": ".text_52"}
+{"node_id": "func:.text_52@0801261e", "node_type": "function", "name": ".text_52", "entry": "0801261e", "is_isr": false, "signature": "undefined .text_52(void)"}
+{"node_id": "func:.text_5@0800f212", "node_type": "function", "name": ".text_5", "entry": "0800f212", "is_isr": false, "signature": "undefined .text_5(void)"}
+{"node_id": "func:.text_5@08013044", "node_type": "function", "name": ".text_5", "entry": "08013044", "is_isr": false, "signature": "undefined .text_5(void)"}
+{"node_id": "func:.text_5@08013a3a", "node_type": "function", "name": ".text_5", "entry": "08013a3a", "is_isr": false, "signature": "undefined .text_5(void)"}
+{"node_id": "func:.text_6", "node_type": "function", "name": ".text_6"}
+{"node_id": "func:.text_6@0800e4e4", "node_type": "function", "name": ".text_6", "entry": "0800e4e4", "is_isr": false, "signature": "undefined .text_6(void)"}
+{"node_id": "func:.text_6@08012b12", "node_type": "function", "name": ".text_6", "entry": "08012b12", "is_isr": false, "signature": "undefined .text_6(void)"}
+{"node_id": "func:.text_6@08013a4c", "node_type": "function", "name": ".text_6", "entry": "08013a4c", "is_isr": false, "signature": "undefined .text_6(void)"}
+{"node_id": "func:.text_70", "node_type": "function", "name": ".text_70"}
+{"node_id": "func:.text_70@0800c946", "node_type": "function", "name": ".text_70", "entry": "0800c946", "is_isr": false, "signature": "undefined .text_70(void)"}
+{"node_id": "func:.text_8", "node_type": "function", "name": ".text_8"}
+{"node_id": "func:.text_8@0800f2e4", "node_type": "function", "name": ".text_8", "entry": "0800f2e4", "is_isr": false, "signature": "undefined .text_8(void)"}
+{"node_id": "func:?main", "node_type": "function", "name": "?main"}
+{"node_id": "func:?main@08015804", "node_type": "function", "name": "?main", "entry": "08015804", "is_isr": false, "signature": "noreturn undefined ?main(void)"}
+{"node_id": "func:EMAC_Interrupt@0800c400", "node_type": "function", "name": "EMAC_Interrupt", "entry": "0800c400", "is_isr": false, "signature": "void EMAC_Interrupt(void)"}
+{"node_id": "func:FUN_0800f20c", "node_type": "function", "name": "FUN_0800f20c"}
+{"node_id": "func:FUN_0800f20c@0800f20c", "node_type": "function", "name": "FUN_0800f20c", "entry": "0800f20c", "is_isr": false, "signature": "undefined FUN_0800f20c(void)"}
+{"node_id": "func:FUN_0800f214", "node_type": "function", "name": "FUN_0800f214"}
+{"node_id": "func:FUN_0800f214@0800f214", "node_type": "function", "name": "FUN_0800f214", "entry": "0800f214", "is_isr": false, "signature": "undefined FUN_0800f214(void)"}
+{"node_id": "func:FUN_0800f98a", "node_type": "function", "name": "FUN_0800f98a"}
+{"node_id": "func:FUN_0800f98a@0800f98a", "node_type": "function", "name": "FUN_0800f98a", "entry": "0800f98a", "is_isr": false, "signature": "undefined FUN_0800f98a(void)"}
+{"node_id": "func:FUN_0801118e", "node_type": "function", "name": "FUN_0801118e"}
+{"node_id": "func:FUN_0801118e@0801118e", "node_type": "function", "name": "FUN_0801118e", "entry": "0801118e", "is_isr": false, "signature": "undefined FUN_0801118e(void)"}
+{"node_id": "func:FUN_08012440", "node_type": "function", "name": "FUN_08012440"}
+{"node_id": "func:FUN_08012440@08012440", "node_type": "function", "name": "FUN_08012440", "entry": "08012440", "is_isr": false, "signature": "undefined FUN_08012440(void)"}
+{"node_id": "func:FUN_08013046", "node_type": "function", "name": "FUN_08013046"}
+{"node_id": "func:FUN_08013046@08013046", "node_type": "function", "name": "FUN_08013046", "entry": "08013046", "is_isr": false, "signature": "undefined FUN_08013046(void)"}
+{"node_id": "func:FUN_0801440e", "node_type": "function", "name": "FUN_0801440e"}
+{"node_id": "func:FUN_0801440e@0801440e", "node_type": "function", "name": "FUN_0801440e", "entry": "0801440e", "is_isr": false, "signature": "undefined FUN_0801440e(void)"}
+{"node_id": "func:FUN_08014482", "node_type": "function", "name": "FUN_08014482"}
+{"node_id": "func:FUN_08014482@08014482", "node_type": "function", "name": "FUN_08014482", "entry": "08014482", "is_isr": false, "signature": "undefined FUN_08014482(void)"}
+{"node_id": "func:SCI1_Interrupt@0800c84c", "node_type": "function", "name": "SCI1_Interrupt", "entry": "0800c84c", "is_isr": false, "signature": "void SCI1_Interrupt(void)"}
+{"node_id": "func:SCI2_Interrupt@0800c87e", "node_type": "function", "name": "SCI2_Interrupt", "entry": "0800c87e", "is_isr": false, "signature": "void SCI2_Interrupt(void)"}
+{"node_id": "func:SCI3_Interrupt@0800c8b0", "node_type": "function", "name": "SCI3_Interrupt", "entry": "0800c8b0", "is_isr": false, "signature": "void SCI3_Interrupt(void)"}
+{"node_id": "func:SCI4_Interrupt@0800c8e2", "node_type": "function", "name": "SCI4_Interrupt", "entry": "0800c8e2", "is_isr": false, "signature": "void SCI4_Interrupt(void)"}
+{"node_id": "func:SCI5_Interrupt@0800c914", "node_type": "function", "name": "SCI5_Interrupt", "entry": "0800c914", "is_isr": false, "signature": "void SCI5_Interrupt(void)"}
+{"node_id": "func:SCI6_Interrupt@0800c94c", "node_type": "function", "name": "SCI6_Interrupt", "entry": "0800c94c", "is_isr": false, "signature": "void SCI6_Interrupt(void)"}
+{"node_id": "func:SCI7_Interrupt@0800c97e", "node_type": "function", "name": "SCI7_Interrupt", "entry": "0800c97e", "is_isr": false, "signature": "void SCI7_Interrupt(void)"}
+{"node_id": "func:SCI8_Interrupt@0800c9b0", "node_type": "function", "name": "SCI8_Interrupt", "entry": "0800c9b0", "is_isr": false, "signature": "void SCI8_Interrupt(void)"}
+{"node_id": "func:_RealTimeInterrupt@0800c2ac", "node_type": "function", "name": "_RealTimeInterrupt", "entry": "0800c2ac", "is_isr": false, "signature": "void _RealTimeInterrupt(void)"}
+{"node_id": "func:__exit", "node_type": "function", "name": "__exit"}
+{"node_id": "func:__exit@08015834", "node_type": "function", "name": "__exit", "entry": "08015834", "is_isr": false, "signature": "noreturn undefined __exit(void)"}
+{"node_id": "func:__iar_data_init3", "node_type": "function", "name": "__iar_data_init3"}
+{"node_id": "func:__iar_data_init3@08015628", "node_type": "function", "name": "__iar_data_init3", "entry": "08015628", "is_isr": false, "signature": "undefined __iar_data_init3(void)"}
+{"node_id": "func:__iar_packbits_init_single3@080154dc", "node_type": "function", "name": "__iar_packbits_init_single3", "entry": "080154dc", "is_isr": false, "signature": "undefined __iar_packbits_init_single3(void)"}
+{"node_id": "func:__iar_program_start@08015ecc", "node_type": "function", "name": "__iar_program_start", "entry": "08015ecc", "is_isr": false, "signature": "undefined __iar_program_start(void)"}
+{"node_id": "func:__iar_small_memset", "node_type": "function", "name": "__iar_small_memset"}
+{"node_id": "func:__iar_small_memset@08011394", "node_type": "function", "name": "__iar_small_memset", "entry": "08011394", "is_isr": false, "signature": "undefined __iar_small_memset(void)"}
+{"node_id": "func:__iar_zero_init3", "node_type": "function", "name": "__iar_zero_init3"}
+{"node_id": "func:__iar_zero_init3@0800efc2", "node_type": "function", "name": "__iar_zero_init3", "entry": "0800efc2", "is_isr": false, "signature": "undefined __iar_zero_init3(void)"}
+{"node_id": "func:_call_main@08015810", "node_type": "function", "name": "_call_main", "entry": "08015810", "is_isr": false, "signature": "undefined _call_main(void)"}
+{"node_id": "func:_exit@08015828", "node_type": "function", "name": "_exit", "entry": "08015828", "is_isr": false, "signature": "noreturn void __stdcall _exit(int __status)"}
+{"node_id": "func:_fnMIIread", "node_type": "function", "name": "_fnMIIread"}
+{"node_id": "func:_fnMIIread@0800c356", "node_type": "function", "name": "_fnMIIread", "entry": "0800c356", "is_isr": false, "signature": "unsigned short __stdcall _fnMIIread(uchar _mradr)"}
+{"node_id": "func:_fnMIIwrite", "node_type": "function", "name": "_fnMIIwrite"}
+{"node_id": "func:_fnMIIwrite@0800c35a", "node_type": "function", "name": "_fnMIIwrite", "entry": "0800c35a", "is_isr": false, "signature": "void __stdcall _fnMIIwrite(uchar _mradr, unsigned short _mwdata)"}
+{"node_id": "func:_main@0801581e", "node_type": "function", "name": "_main", "entry": "0801581e", "is_isr": false, "signature": "noreturn void __stdcall _main(int __status)"}
+{"node_id": "func:entry_eth@0800f478", "node_type": "function", "name": "entry_eth", "entry": "0800f478", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall entry_eth(QUEUE_LIMIT channel, uchar * ptBuffer, QUEUE_TRANSFER Counter, uchar ucCallType, QUEUE_LIMIT DriverID)"}
+{"node_id": "func:entry_que@0800ec24", "node_type": "function", "name": "entry_que", "entry": "0800ec24", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall entry_que(QUEUE_LIMIT channel, uchar * ptBuffer, QUEUE_TRANSFER Counter, uchar ucCallType, QUEUE_LIMIT DriverID)"}
+{"node_id": "func:entry_tty@0800effc", "node_type": "function", "name": "entry_tty", "entry": "0800effc", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall entry_tty(QUEUE_LIMIT channel, uchar * ptBuffer, QUEUE_TRANSFER Counter, uchar ucCallType, QUEUE_LIMIT DriverID)"}
+{"node_id": "func:exit", "node_type": "function", "name": "exit"}
+{"node_id": "func:exit@08015822", "node_type": "function", "name": "exit", "entry": "08015822", "is_isr": false, "signature": "noreturn void __stdcall exit(int __status)"}
+{"node_id": "func:fnACSIIDecode2", "node_type": "function", "name": "fnACSIIDecode2"}
+{"node_id": "func:fnACSIIDecode2@080119c0", "node_type": "function", "name": "fnACSIIDecode2", "entry": "080119c0", "is_isr": false, "signature": "uchar __stdcall fnACSIIDecode2(uchar * ptrInput)"}
+{"node_id": "func:fnAbortTCPSession", "node_type": "function", "name": "fnAbortTCPSession"}
+{"node_id": "func:fnAbortTCPSession@08014454", "node_type": "function", "name": "fnAbortTCPSession", "entry": "08014454", "is_isr": false, "signature": "void __stdcall fnAbortTCPSession(TCP_CONTROL * ptr_TCP)"}
+{"node_id": "func:fnAddARP", "node_type": "function", "name": "fnAddARP"}
+{"node_id": "func:fnAddARP@080131ea", "node_type": "function", "name": "fnAddARP", "entry": "080131ea", "is_isr": false, "signature": "void __stdcall fnAddARP(uchar * new_ip, uchar * rem_hwadr, ARP_DETAILS * ptrARP_details)"}
+{"node_id": "func:fnAddNewARP", "node_type": "function", "name": "fnAddNewARP"}
+{"node_id": "func:fnAddNewARP@08013192", "node_type": "function", "name": "fnAddNewARP", "entry": "08013192", "is_isr": false, "signature": "ARP_TAB * __stdcall fnAddNewARP(uchar ucType)"}
+{"node_id": "func:fnAddResetCause", "node_type": "function", "name": "fnAddResetCause"}
+{"node_id": "func:fnAddResetCause@08011202", "node_type": "function", "name": "fnAddResetCause", "entry": "08011202", "is_isr": false, "signature": "uchar __stdcall fnAddResetCause(CHAR * ptrBuffer)"}
+{"node_id": "func:fnAllocateBuffer", "node_type": "function", "name": "fnAllocateBuffer"}
+{"node_id": "func:fnAllocateBuffer@0800e8e2", "node_type": "function", "name": "fnAllocateBuffer", "entry": "0800e8e2", "is_isr": false, "signature": "uchar * __stdcall fnAllocateBuffer(QUEQUE * ptQUEQue, unsigned short usLength)"}
+{"node_id": "func:fnAllocateQueue", "node_type": "function", "name": "fnAllocateQueue"}
+{"node_id": "func:fnAllocateQueue@0800e908", "node_type": "function", "name": "fnAllocateQueue", "entry": "0800e908", "is_isr": false, "signature": "QUEUE_LIMIT __stdcall fnAllocateQueue(QUEUE_DIMENSIONS * ptrQueueDimensions, QUEUE_LIMIT channel_handle, _func_QUEUE_TRANSFER_QUEUE_LIMIT_uchar_ptr_QUEUE_TRANSFER_uchar_QUEUE_LIMIT * entry_add, QUEUE_TRANSFER FullCntLength)"}
+{"node_id": "func:fnApplication@08012958", "node_type": "function", "name": "fnApplication", "entry": "08012958", "is_isr": false, "signature": "void __stdcall fnApplication(TTASKTABLE * ptrTaskTable)"}
+{"node_id": "func:fnArpMessage", "node_type": "function", "name": "fnArpMessage"}
+{"node_id": "func:fnArpMessage@08013354", "node_type": "function", "name": "fnArpMessage", "entry": "08013354", "is_isr": false, "signature": "void __stdcall fnArpMessage(ARP_TAB * ptrArpEntry, uchar ucIntEvent)"}
+{"node_id": "func:fnBufferDec", "node_type": "function", "name": "fnBufferDec"}
+{"node_id": "func:fnBufferDec@0800ed0e", "node_type": "function", "name": "fnBufferDec", "entry": "0800ed0e", "is_isr": false, "signature": "CHAR * __stdcall fnBufferDec(long slNumberToConvert, uchar ucStyle, CHAR * ptrBuf)"}
+{"node_id": "func:fnBufferHex", "node_type": "function", "name": "fnBufferHex"}
+{"node_id": "func:fnBufferHex@0800ee28", "node_type": "function", "name": "fnBufferHex", "entry": "0800ee28", "is_isr": false, "signature": "CHAR * __stdcall fnBufferHex(unsigned long ulValue, uchar ucLen, CHAR * pBuf)"}
+{"node_id": "func:fnBuildSendARP", "node_type": "function", "name": "fnBuildSendARP"}
+{"node_id": "func:fnBuildSendARP@080132a4", "node_type": "function", "name": "fnBuildSendARP", "entry": "080132a4", "is_isr": false, "signature": "void __stdcall fnBuildSendARP(ETHERNET_ARP_FRAME * arp, ARP_OUTPUT * ptrArpOutput)"}
+{"node_id": "func:fnCRCRTUFrame", "node_type": "function", "name": "fnCRCRTUFrame"}
+{"node_id": "func:fnCRCRTUFrame@08011a06", "node_type": "function", "name": "fnCRCRTUFrame", "entry": "08011a06", "is_isr": false, "signature": "unsigned short __stdcall fnCRCRTUFrame(uchar * ptrFrame, QUEUE_TRANSFER rxFrameLength)"}
+{"node_id": "func:fnCheckEthLinkState", "node_type": "function", "name": "fnCheckEthLinkState"}
+{"node_id": "func:fnCheckEthLinkState@0800c35e", "node_type": "function", "name": "fnCheckEthLinkState", "entry": "0800c35e", "is_isr": false, "signature": "void fnCheckEthLinkState(void)"}
+{"node_id": "func:fnCheckFIN", "node_type": "function", "name": "fnCheckFIN"}
+{"node_id": "func:fnCheckFIN@08013e1c", "node_type": "function", "name": "fnCheckFIN", "entry": "08013e1c", "is_isr": false, "signature": "int __stdcall fnCheckFIN(TCP_PACKET * rx_tcp_packet, TCP_CONTROL * ptr_TCP, unsigned short usLength, uchar ucFlags)"}
+{"node_id": "func:fnCheckInput", "node_type": "function", "name": "fnCheckInput"}
+{"node_id": "func:fnCheckInput@0800f6c0", "node_type": "function", "name": "fnCheckInput", "entry": "0800f6c0", "is_isr": false, "signature": "CHAR * __stdcall fnCheckInput(CHAR * str1, CHAR * str2)"}
+{"node_id": "func:fnClearTxInt", "node_type": "function", "name": "fnClearTxInt"}
+{"node_id": "func:fnClearTxInt@0800d124", "node_type": "function", "name": "fnClearTxInt", "entry": "0800d124", "is_isr": false, "signature": "void __stdcall fnClearTxInt(QUEUE_LIMIT channel)"}
+{"node_id": "func:fnCommandInput", "node_type": "function", "name": "fnCommandInput"}
+{"node_id": "func:fnCommandInput@08010a46", "node_type": "function", "name": "fnCommandInput", "entry": "08010a46", "is_isr": false, "signature": "int __stdcall fnCommandInput(uchar * ptrData, unsigned short usLen, int iSource)"}
+{"node_id": "func:fnConfigEthernet", "node_type": "function", "name": "fnConfigEthernet"}
+{"node_id": "func:fnConfigEthernet@0800c42c", "node_type": "function", "name": "fnConfigEthernet", "entry": "0800c42c", "is_isr": false, "signature": "int __stdcall fnConfigEthernet(ETHTABLE * pars)"}
+{"node_id": "func:fnConfigPort", "node_type": "function", "name": "fnConfigPort"}
+{"node_id": "func:fnConfigPort@08011074", "node_type": "function", "name": "fnConfigPort", "entry": "08011074", "is_isr": false, "signature": "int __stdcall fnConfigPort(CHAR cPortBit, CHAR cType)"}
+{"node_id": "func:fnConfigSCI", "node_type": "function", "name": "fnConfigSCI"}
+{"node_id": "func:fnConfigSCI@0800ca50", "node_type": "function", "name": "fnConfigSCI", "entry": "0800ca50", "is_isr": false, "signature": "void __stdcall fnConfigSCI(QUEUE_LIMIT Channel, TTYTABLE * pars)"}
+{"node_id": "func:fnConfigureInterrupt", "node_type": "function", "name": "fnConfigureInterrupt"}
+{"node_id": "func:fnConfigureInterrupt@0800dbd4", "node_type": "function", "name": "fnConfigureInterrupt", "entry": "0800dbd4", "is_isr": false, "signature": "void __stdcall fnConfigureInterrupt(void * ptrSettings)"}
+{"node_id": "func:fnControlLine", "node_type": "function", "name": "fnControlLine"}
+{"node_id": "func:fnControlLine@0800d264", "node_type": "function", "name": "fnControlLine", "entry": "0800d264", "is_isr": false, "signature": "void __stdcall fnControlLine(QUEUE_LIMIT channel, unsigned short usModifications, UART_MODE_CONFIG OperatingMode)"}
+{"node_id": "func:fnConvertToASCII", "node_type": "function", "name": "fnConvertToASCII"}
+{"node_id": "func:fnConvertToASCII@080119ea", "node_type": "function", "name": "fnConvertToASCII", "entry": "080119ea", "is_isr": false, "signature": "void __stdcall fnConvertToASCII(uchar ucValue, uchar * ptrBuf)"}
+{"node_id": "func:fnDebug@0800f608", "node_type": "function", "name": "fnDebug", "entry": "0800f608", "is_isr": false, "signature": "void __stdcall fnDebug(TTASKTABLE * ptrTaskTable)"}
+{"node_id": "func:fnDebugDec", "node_type": "function", "name": "fnDebugDec"}
+{"node_id": "func:fnDebugDec@0800ee0e", "node_type": "function", "name": "fnDebugDec", "entry": "0800ee0e", "is_isr": false, "signature": "void __stdcall fnDebugDec(long slNumberToConvert, uchar ucStyle)"}
+{"node_id": "func:fnDebugHex", "node_type": "function", "name": "fnDebugHex"}
+{"node_id": "func:fnDebugHex@0800eea8", "node_type": "function", "name": "fnDebugHex", "entry": "0800eea8", "is_isr": false, "signature": "void __stdcall fnDebugHex(unsigned long ulValue, uchar uLen)"}
+{"node_id": "func:fnDebugMsg", "node_type": "function", "name": "fnDebugMsg"}
+{"node_id": "func:fnDebugMsg@0800ed08", "node_type": "function", "name": "fnDebugMsg", "entry": "0800ed08", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnDebugMsg(CHAR * cToSend)"}
+{"node_id": "func:fnDecStrHex", "node_type": "function", "name": "fnDecStrHex"}
+{"node_id": "func:fnDecStrHex@0800eeec", "node_type": "function", "name": "fnDecStrHex", "entry": "0800eeec", "is_isr": false, "signature": "unsigned long __stdcall fnDecStrHex(CHAR * cNewAdd)"}
+{"node_id": "func:fnDelPar", "node_type": "function", "name": "fnDelPar"}
+{"node_id": "func:fnDelPar@0801290e", "node_type": "function", "name": "fnDelPar", "entry": "0801290e", "is_isr": false, "signature": "int __stdcall fnDelPar(uchar ucDeleteType)"}
+{"node_id": "func:fnDeleteArp", "node_type": "function", "name": "fnDeleteArp"}
+{"node_id": "func:fnDeleteArp@080135d2", "node_type": "function", "name": "fnDeleteArp", "entry": "080135d2", "is_isr": false, "signature": "void fnDeleteArp(void)"}
+{"node_id": "func:fnDeleteEthernetStats", "node_type": "function", "name": "fnDeleteEthernetStats"}
+{"node_id": "func:fnDeleteEthernetStats@080137c2", "node_type": "function", "name": "fnDeleteEthernetStats", "entry": "080137c2", "is_isr": false, "signature": "void __stdcall fnDeleteEthernetStats(int iNetworkReference)"}
+{"node_id": "func:fnDeleteParBlock", "node_type": "function", "name": "fnDeleteParBlock"}
+{"node_id": "func:fnDeleteParBlock@0800dabc", "node_type": "function", "name": "fnDeleteParBlock", "entry": "0800dabc", "is_isr": false, "signature": "int __stdcall fnDeleteParBlock(uchar * ptrAddInPar)"}
+{"node_id": "func:fnDisplayHelp", "node_type": "function", "name": "fnDisplayHelp"}
+{"node_id": "func:fnDisplayHelp@0800f6e8", "node_type": "function", "name": "fnDisplayHelp", "entry": "0800f6e8", "is_isr": false, "signature": "int __stdcall fnDisplayHelp(int iStart)"}
+{"node_id": "func:fnDisplayIP", "node_type": "function", "name": "fnDisplayIP"}
+{"node_id": "func:fnDisplayIP@0800f99a", "node_type": "function", "name": "fnDisplayIP", "entry": "0800f99a", "is_isr": false, "signature": "void __stdcall fnDisplayIP(uchar * ptrIP)"}
+{"node_id": "func:fnDisplayMAC", "node_type": "function", "name": "fnDisplayMAC"}
+{"node_id": "func:fnDisplayMAC@0800f98e", "node_type": "function", "name": "fnDisplayMAC", "entry": "0800f98e", "is_isr": false, "signature": "void __stdcall fnDisplayMAC(uchar * ucMac)"}
+{"node_id": "func:fnDisplayMemoryUsage", "node_type": "function", "name": "fnDisplayMemoryUsage"}
+{"node_id": "func:fnDisplayMemoryUsage@08010ef0", "node_type": "function", "name": "fnDisplayMemoryUsage", "entry": "08010ef0", "is_isr": false, "signature": "void fnDisplayMemoryUsage(void)"}
+{"node_id": "func:fnDoAdmin", "node_type": "function", "name": "fnDoAdmin"}
+{"node_id": "func:fnDoAdmin@0800fb68", "node_type": "function", "name": "fnDoAdmin", "entry": "0800fb68", "is_isr": false, "signature": "void __stdcall fnDoAdmin(uchar ucType, CHAR * ptrInput)"}
+{"node_id": "func:fnDoCommand", "node_type": "function", "name": "fnDoCommand"}
+{"node_id": "func:fnDoCommand@0800fc54", "node_type": "function", "name": "fnDoCommand", "entry": "0800fc54", "is_isr": false, "signature": "int __stdcall fnDoCommand(uchar ucFunction, uchar ucType, CHAR * ptrInput)"}
+{"node_id": "func:fnDoCountDown", "node_type": "function", "name": "fnDoCountDown"}
+{"node_id": "func:fnDoCountDown@0801442c", "node_type": "function", "name": "fnDoCountDown", "entry": "0801442c", "is_isr": false, "signature": "int __stdcall fnDoCountDown(TCP_CONTROL * ptr_TCP)"}
+{"node_id": "func:fnDoFlash", "node_type": "function", "name": "fnDoFlash"}
+{"node_id": "func:fnDoFlash@0800f7fc", "node_type": "function", "name": "fnDoFlash", "entry": "0800f7fc", "is_isr": false, "signature": "void __stdcall fnDoFlash(uchar ucType, CHAR * ptrInput)"}
+{"node_id": "func:fnDriver", "node_type": "function", "name": "fnDriver"}
+{"node_id": "func:fnDriver@0800e9b2", "node_type": "function", "name": "fnDriver", "entry": "0800e9b2", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnDriver(QUEUE_LIMIT driver_id, unsigned short state, unsigned short rx_or_tx)"}
+{"node_id": "func:fnEchoInput", "node_type": "function", "name": "fnEchoInput"}
+{"node_id": "func:fnEchoInput@08010c8c", "node_type": "function", "name": "fnEchoInput", "entry": "08010c8c", "is_isr": false, "signature": "void __stdcall fnEchoInput(uchar * ucInputMessage, QUEUE_TRANSFER Length)"}
+{"node_id": "func:fnEnableDisableServers", "node_type": "function", "name": "fnEnableDisableServers"}
+{"node_id": "func:fnEnableDisableServers@0800f9ac", "node_type": "function", "name": "fnEnableDisableServers", "entry": "0800f9ac", "is_isr": false, "signature": "int __stdcall fnEnableDisableServers(CHAR * ptr_input, unsigned short usOption)"}
+{"node_id": "func:fnEnterInterrupt", "node_type": "function", "name": "fnEnterInterrupt"}
+{"node_id": "func:fnEnterInterrupt@0800c280", "node_type": "function", "name": "fnEnterInterrupt", "entry": "0800c280", "is_isr": false, "signature": "void __stdcall fnEnterInterrupt(int iInterruptID, uchar ucPriority, _func_void * InterruptFunc)"}
+{"node_id": "func:fnEraseFlashSector", "node_type": "function", "name": "fnEraseFlashSector"}
+{"node_id": "func:fnEraseFlashSector@0800d858", "node_type": "function", "name": "fnEraseFlashSector", "entry": "0800d858", "is_isr": false, "signature": "int __stdcall fnEraseFlashSector(uchar * ptrSector, MAX_FILE_LENGTH Length)"}
+{"node_id": "func:fnEthernetEvent", "node_type": "function", "name": "fnEthernetEvent"}
+{"node_id": "func:fnEthernetEvent@0800c2ee", "node_type": "function", "name": "fnEthernetEvent", "entry": "0800c2ee", "is_isr": false, "signature": "char __stdcall fnEthernetEvent(uchar * ucEvent, ETHERNET_FRAME.conflict * rx_frame)"}
+{"node_id": "func:fnEthernetStateChange", "node_type": "function", "name": "fnEthernetStateChange"}
+{"node_id": "func:fnEthernetStateChange@080136c4", "node_type": "function", "name": "fnEthernetStateChange", "entry": "080136c4", "is_isr": false, "signature": "void __stdcall fnEthernetStateChange(int iInterface, uchar ucEvent)"}
+{"node_id": "func:fnExecuteCommand@0800d77c", "node_type": "function", "name": "fnExecuteCommand", "entry": "0800d77c", "is_isr": false, "signature": "void __stdcall fnExecuteCommand(_STM32_FMI * ptrFMI, _STM32_IWDG * ptrIWDG, unsigned long ulOption)"}
+{"node_id": "func:fnExtractMSS", "node_type": "function", "name": "fnExtractMSS"}
+{"node_id": "func:fnExtractMSS@08013e70", "node_type": "function", "name": "fnExtractMSS", "entry": "08013e70", "is_isr": false, "signature": "unsigned short __stdcall fnExtractMSS(uchar * tcp_options, uchar ucOptsLength)"}
+{"node_id": "func:fnFillBuf", "node_type": "function", "name": "fnFillBuf"}
+{"node_id": "func:fnFillBuf@0800eb8e", "node_type": "function", "name": "fnFillBuf", "entry": "0800eb8e", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnFillBuf(QUEQUE * ptQUEQue, uchar * input_buffer, QUEUE_TRANSFER nr_of_bytes)"}
+{"node_id": "func:fnFlush", "node_type": "function", "name": "fnFlush"}
+{"node_id": "func:fnFlush@0800ea7e", "node_type": "function", "name": "fnFlush", "entry": "0800ea7e", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnFlush(QUEUE_LIMIT driver_id, uchar ucTxRx)"}
+{"node_id": "func:fnFreeBuffer", "node_type": "function", "name": "fnFreeBuffer"}
+{"node_id": "func:fnFreeBuffer@0800eaa6", "node_type": "function", "name": "fnFreeBuffer", "entry": "0800eaa6", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnFreeBuffer(QUEUE_LIMIT driver_id, char cChannel)"}
+{"node_id": "func:fnFreeEthernetBuffer", "node_type": "function", "name": "fnFreeEthernetBuffer"}
+{"node_id": "func:fnFreeEthernetBuffer@0800c76a", "node_type": "function", "name": "fnFreeEthernetBuffer", "entry": "0800c76a", "is_isr": false, "signature": "void __stdcall fnFreeEthernetBuffer(int iBufNr)"}
+{"node_id": "func:fnGateway@08014806", "node_type": "function", "name": "fnGateway", "entry": "08014806", "is_isr": false, "signature": "int __stdcall fnGateway(int iType, MODBUS_RX_FUNCTION.conflict * modbus_rx_function)"}
+{"node_id": "func:fnGetARPentry", "node_type": "function", "name": "fnGetARPentry"}
+{"node_id": "func:fnGetARPentry@080135aa", "node_type": "function", "name": "fnGetARPentry", "entry": "080135aa", "is_isr": false, "signature": "ARP_TAB * __stdcall fnGetARPentry(uchar ucEntry)"}
+{"node_id": "func:fnGetBuf", "node_type": "function", "name": "fnGetBuf"}
+{"node_id": "func:fnGetBuf@0800eaca", "node_type": "function", "name": "fnGetBuf", "entry": "0800eaca", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnGetBuf(QUEQUE * ptQUEQue, uchar * output_buffer, QUEUE_TRANSFER nr_of_bytes)"}
+{"node_id": "func:fnGetBufPeek", "node_type": "function", "name": "fnGetBufPeek"}
+{"node_id": "func:fnGetBufPeek@0800eb38", "node_type": "function", "name": "fnGetBufPeek", "entry": "0800eb38", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnGetBufPeek(QUEQUE * ptQUEQue, uchar * output_buffer, QUEUE_TRANSFER nr_of_bytes, int iNewest)"}
+{"node_id": "func:fnGetControlBlock", "node_type": "function", "name": "fnGetControlBlock"}
+{"node_id": "func:fnGetControlBlock@0800f218", "node_type": "function", "name": "fnGetControlBlock", "entry": "0800f218", "is_isr": false, "signature": "TTYQUE * __stdcall fnGetControlBlock(QUEUE_TRANSFER queue_size)"}
+{"node_id": "func:fnGetEthernetPars", "node_type": "function", "name": "fnGetEthernetPars"}
+{"node_id": "func:fnGetEthernetPars@08012bac", "node_type": "function", "name": "fnGetEthernetPars", "entry": "08012bac", "is_isr": false, "signature": "void fnGetEthernetPars(void)"}
+{"node_id": "func:fnGetEthernetStats", "node_type": "function", "name": "fnGetEthernetStats"}
+{"node_id": "func:fnGetEthernetStats@0801374a", "node_type": "function", "name": "fnGetEthernetStats", "entry": "0801374a", "is_isr": false, "signature": "unsigned long __stdcall fnGetEthernetStats(uchar ucStat, int iNetworkReference)"}
+{"node_id": "func:fnGetFreeTCP_Port", "node_type": "function", "name": "fnGetFreeTCP_Port"}
+{"node_id": "func:fnGetFreeTCP_Port@08013b24", "node_type": "function", "name": "fnGetFreeTCP_Port", "entry": "08013b24", "is_isr": false, "signature": "unsigned short fnGetFreeTCP_Port(void)"}
+{"node_id": "func:fnGetIP_ARP", "node_type": "function", "name": "fnGetIP_ARP"}
+{"node_id": "func:fnGetIP_ARP@080134da", "node_type": "function", "name": "fnGetIP_ARP", "entry": "080134da", "is_isr": false, "signature": "ARP_TAB * __stdcall fnGetIP_ARP(uchar * Search_IP, UTASK_TASK OwnerTask, USOCKET Socket)"}
+{"node_id": "func:fnGetNotTimer", "node_type": "function", "name": "fnGetNotTimer"}
+{"node_id": "func:fnGetNotTimer@08014586", "node_type": "function", "name": "fnGetNotTimer", "entry": "08014586", "is_isr": false, "signature": "TIMER_BLOCK * __stdcall fnGetNotTimer(TIMER_BLOCK * ptrNewTimer)"}
+{"node_id": "func:fnGetOurParameters", "node_type": "function", "name": "fnGetOurParameters"}
+{"node_id": "func:fnGetOurParameters@08012c54", "node_type": "function", "name": "fnGetOurParameters", "entry": "08012c54", "is_isr": false, "signature": "unsigned short __stdcall fnGetOurParameters(int iCase)"}
+{"node_id": "func:fnGetOurParameters_1", "node_type": "function", "name": "fnGetOurParameters_1"}
+{"node_id": "func:fnGetOurParameters_1@08012be4", "node_type": "function", "name": "fnGetOurParameters_1", "entry": "08012be4", "is_isr": false, "signature": "unsigned short fnGetOurParameters_1(void)"}
+{"node_id": "func:fnGetOwnerTimer", "node_type": "function", "name": "fnGetOwnerTimer"}
+{"node_id": "func:fnGetOwnerTimer@080145aa", "node_type": "function", "name": "fnGetOwnerTimer", "entry": "080145aa", "is_isr": false, "signature": "TIMER_BLOCK * __stdcall fnGetOwnerTimer(UTASK_TASK Owner, uchar ucEvent)"}
+{"node_id": "func:fnGetPar", "node_type": "function", "name": "fnGetPar"}
+{"node_id": "func:fnGetPar@080128de", "node_type": "function", "name": "fnGetPar", "entry": "080128de", "is_isr": false, "signature": "int __stdcall fnGetPar(unsigned short usParameterReference, uchar * ucValue, unsigned short usLength)"}
+{"node_id": "func:fnGetParameters", "node_type": "function", "name": "fnGetParameters"}
+{"node_id": "func:fnGetParameters@0800dac2", "node_type": "function", "name": "fnGetParameters", "entry": "0800dac2", "is_isr": false, "signature": "int __stdcall fnGetParameters(uchar ucValidBlock, unsigned short usParameterReference, uchar * ucValue, unsigned short usLength)"}
+{"node_id": "func:fnGetParsFile", "node_type": "function", "name": "fnGetParsFile"}
+{"node_id": "func:fnGetParsFile@0800da62", "node_type": "function", "name": "fnGetParsFile", "entry": "0800da62", "is_isr": false, "signature": "void __stdcall fnGetParsFile(uchar * ParLocation, uchar * ptrValue, MAX_FILE_LENGTH Size)"}
+{"node_id": "func:fnGetSWFired", "node_type": "function", "name": "fnGetSWFired"}
+{"node_id": "func:fnGetSWFired@080145d2", "node_type": "function", "name": "fnGetSWFired", "entry": "080145d2", "is_isr": false, "signature": "TIMER_BLOCK * __stdcall fnGetSWFired(DELAY_LIMIT Time)"}
+{"node_id": "func:fnGetSocketControl", "node_type": "function", "name": "fnGetSocketControl"}
+{"node_id": "func:fnGetSocketControl@08013b8a", "node_type": "function", "name": "fnGetSocketControl", "entry": "08013b8a", "is_isr": false, "signature": "TCP_CONTROL * __stdcall fnGetSocketControl(USOCKET TCP_socket)"}
+{"node_id": "func:fnGetTCP_Option", "node_type": "function", "name": "fnGetTCP_Option"}
+{"node_id": "func:fnGetTCP_Option@08013e3e", "node_type": "function", "name": "fnGetTCP_Option", "entry": "08013e3e", "is_isr": false, "signature": "unsigned short __stdcall fnGetTCP_Option(uchar * * ptr_tcp_options, uchar * ucOptsLength)"}
+{"node_id": "func:fnGetTCP_Socket", "node_type": "function", "name": "fnGetTCP_Socket"}
+{"node_id": "func:fnGetTCP_Socket@08013a54", "node_type": "function", "name": "fnGetTCP_Socket", "entry": "08013a54", "is_isr": false, "signature": "USOCKET __stdcall fnGetTCP_Socket(uchar ucTos, unsigned short usIdleTimeout, _func_int_USOCKET_uchar_uchar_ptr_unsigned_short * listener)"}
+{"node_id": "func:fnGetTCP_init_seq", "node_type": "function", "name": "fnGetTCP_init_seq"}
+{"node_id": "func:fnGetTCP_init_seq@08013ce8", "node_type": "function", "name": "fnGetTCP_init_seq", "entry": "08013ce8", "is_isr": false, "signature": "unsigned long fnGetTCP_init_seq(void)"}
+{"node_id": "func:fnGetTCP_session_count", "node_type": "function", "name": "fnGetTCP_session_count"}
+{"node_id": "func:fnGetTCP_session_count@080114be", "node_type": "function", "name": "fnGetTCP_session_count", "entry": "080114be", "is_isr": false, "signature": "uchar __stdcall fnGetTCP_session_count(uchar ucMODBUSport, uchar * ptrOffset)"}
+{"node_id": "func:fnGetTxBufferAdd", "node_type": "function", "name": "fnGetTxBufferAdd"}
+{"node_id": "func:fnGetTxBufferAdd@0800c760", "node_type": "function", "name": "fnGetTxBufferAdd", "entry": "0800c760", "is_isr": false, "signature": "uchar * __stdcall fnGetTxBufferAdd(int iBufNr)"}
+{"node_id": "func:fnGetValidPars", "node_type": "function", "name": "fnGetValidPars"}
+{"node_id": "func:fnGetValidPars@0800da6c", "node_type": "function", "name": "fnGetValidPars", "entry": "0800da6c", "is_isr": false, "signature": "uchar __stdcall fnGetValidPars(uchar ucValid)"}
+{"node_id": "func:fnGetWordShift", "node_type": "function", "name": "fnGetWordShift"}
+{"node_id": "func:fnGetWordShift@0800f7bc", "node_type": "function", "name": "fnGetWordShift", "entry": "0800f7bc", "is_isr": false, "signature": "unsigned short __stdcall fnGetWordShift(CHAR * * ptrIn)"}
+{"node_id": "func:fnGotoNextState", "node_type": "function", "name": "fnGotoNextState"}
+{"node_id": "func:fnGotoNextState@08012b56", "node_type": "function", "name": "fnGotoNextState", "entry": "08012b56", "is_isr": false, "signature": "void __stdcall fnGotoNextState(unsigned short usNextState)"}
+{"node_id": "func:fnHandleASCIIInputs", "node_type": "function", "name": "fnHandleASCIIInputs"}
+{"node_id": "func:fnHandleASCIIInputs@0801180c", "node_type": "function", "name": "fnHandleASCIIInputs", "entry": "0801180c", "is_isr": false, "signature": "void __stdcall fnHandleASCIIInputs(uchar ucMODBUSport, uchar * ucModbusSerialInputBuffer)"}
+{"node_id": "func:fnHandleEthernetFrame", "node_type": "function", "name": "fnHandleEthernetFrame"}
+{"node_id": "func:fnHandleEthernetFrame@0801368c", "node_type": "function", "name": "fnHandleEthernetFrame", "entry": "0801368c", "is_isr": false, "signature": "int __stdcall fnHandleEthernetFrame(ETHERNET_FRAME * ptr_rx_frame, QUEUE_LIMIT interface_handle)"}
+{"node_id": "func:fnHandleIPv4", "node_type": "function", "name": "fnHandleIPv4"}
+{"node_id": "func:fnHandleIPv4@080148fe", "node_type": "function", "name": "fnHandleIPv4", "entry": "080148fe", "is_isr": false, "signature": "int __stdcall fnHandleIPv4(ETHERNET_FRAME * frame)"}
+{"node_id": "func:fnHandleMODBUS_input", "node_type": "function", "name": "fnHandleMODBUS_input"}
+{"node_id": "func:fnHandleMODBUS_input@08011b60", "node_type": "function", "name": "fnHandleMODBUS_input", "entry": "08011b60", "is_isr": false, "signature": "int __stdcall fnHandleMODBUS_input(MODBUS_RX_FUNCTION * modbus_rx_function)"}
+{"node_id": "func:fnHandleTCP", "node_type": "function", "name": "fnHandleTCP"}
+{"node_id": "func:fnHandleTCP@08013eb8", "node_type": "function", "name": "fnHandleTCP", "entry": "08013eb8", "is_isr": false, "signature": "void __stdcall fnHandleTCP(ETHERNET_FRAME * ptrRx_frame)"}
+{"node_id": "func:fnHeapAvailable", "node_type": "function", "name": "fnHeapAvailable"}
+{"node_id": "func:fnHeapAvailable@0800e502", "node_type": "function", "name": "fnHeapAvailable", "entry": "0800e502", "is_isr": false, "signature": "HEAP_REQUIREMENTS fnHeapAvailable(void)"}
+{"node_id": "func:fnHeapFree", "node_type": "function", "name": "fnHeapFree"}
+{"node_id": "func:fnHeapFree@0800e50a", "node_type": "function", "name": "fnHeapFree", "entry": "0800e50a", "is_isr": false, "signature": "HEAP_REQUIREMENTS fnHeapFree(void)"}
+{"node_id": "func:fnHexStrHex", "node_type": "function", "name": "fnHexStrHex"}
+{"node_id": "func:fnHexStrHex@0800eeba", "node_type": "function", "name": "fnHexStrHex", "entry": "0800eeba", "is_isr": false, "signature": "unsigned long __stdcall fnHexStrHex(CHAR * cNewAdd)"}
+{"node_id": "func:fnIPStr", "node_type": "function", "name": "fnIPStr"}
+{"node_id": "func:fnIPStr@08012f88", "node_type": "function", "name": "fnIPStr", "entry": "08012f88", "is_isr": false, "signature": "CHAR * __stdcall fnIPStr(uchar * ptrIP, CHAR * cStr)"}
+{"node_id": "func:fnIncrementEthernetStats", "node_type": "function", "name": "fnIncrementEthernetStats"}
+{"node_id": "func:fnIncrementEthernetStats@0801371e", "node_type": "function", "name": "fnIncrementEthernetStats", "entry": "0801371e", "is_isr": false, "signature": "void __stdcall fnIncrementEthernetStats(uchar ucStat, int iNetworkReference)"}
+{"node_id": "func:fnInitModbus", "node_type": "function", "name": "fnInitModbus"}
+{"node_id": "func:fnInitModbus@0801480c", "node_type": "function", "name": "fnInitModbus", "entry": "0801480c", "is_isr": false, "signature": "void fnInitModbus(void)"}
+{"node_id": "func:fnInitialiseHeap", "node_type": "function", "name": "fnInitialiseHeap"}
+{"node_id": "func:fnInitialiseHeap@0800e46c", "node_type": "function", "name": "fnInitialiseHeap", "entry": "0800e46c", "is_isr": false, "signature": "void __stdcall fnInitialiseHeap(HEAP_NEEDS * ctOurHeap, void * HeapStart)"}
+{"node_id": "func:fnInitialiseMODBUS_port", "node_type": "function", "name": "fnInitialiseMODBUS_port"}
+{"node_id": "func:fnInitialiseMODBUS_port@080114d4", "node_type": "function", "name": "fnInitialiseMODBUS_port", "entry": "080114d4", "is_isr": false, "signature": "int __stdcall fnInitialiseMODBUS_port(uchar ucMODBUSport, MODBUS_CONFIG * ptrMODBUS_config, MODBUS_CALLBACKS * ptrModbus_callbacks, _func_int_int_MODBUS_RX_FUNCTION_ptr * master_callback)"}
+{"node_id": "func:fnInitialisePorts", "node_type": "function", "name": "fnInitialisePorts"}
+{"node_id": "func:fnInitialisePorts@08010d7a", "node_type": "function", "name": "fnInitialisePorts", "entry": "08010d7a", "is_isr": false, "signature": "void fnInitialisePorts(void)"}
+{"node_id": "func:fnInitialiseRND", "node_type": "function", "name": "fnInitialiseRND"}
+{"node_id": "func:fnInitialiseRND@0800c22c", "node_type": "function", "name": "fnInitialiseRND", "entry": "0800c22c", "is_isr": false, "signature": "void __stdcall fnInitialiseRND(unsigned short * usSeedValue)"}
+{"node_id": "func:fnInitiateLogin", "node_type": "function", "name": "fnInitiateLogin"}
+{"node_id": "func:fnInitiateLogin@08010c42", "node_type": "function", "name": "fnInitiateLogin", "entry": "08010c42", "is_isr": false, "signature": "int __stdcall fnInitiateLogin(unsigned short usNextState)"}
+{"node_id": "func:fnInterruptMessage", "node_type": "function", "name": "fnInterruptMessage"}
+{"node_id": "func:fnInterruptMessage@0800ecb4", "node_type": "function", "name": "fnInterruptMessage", "entry": "0800ecb4", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnInterruptMessage(UTASK_TASK Task, uchar ucIntEvent)"}
+{"node_id": "func:fnIpConfig", "node_type": "function", "name": "fnIpConfig"}
+{"node_id": "func:fnIpConfig@0800fa98", "node_type": "function", "name": "fnIpConfig", "entry": "0800fa98", "is_isr": false, "signature": "void __stdcall fnIpConfig(NETWORK_PARAMETERS * ptrNetwork)"}
+{"node_id": "func:fnJumpWhiteSpace", "node_type": "function", "name": "fnJumpWhiteSpace"}
+{"node_id": "func:fnJumpWhiteSpace@0800fb34", "node_type": "function", "name": "fnJumpWhiteSpace", "entry": "0800fb34", "is_isr": false, "signature": "int __stdcall fnJumpWhiteSpace(CHAR * * ptrptrInput)"}
+{"node_id": "func:fnMACStr", "node_type": "function", "name": "fnMACStr"}
+{"node_id": "func:fnMACStr@08012f18", "node_type": "function", "name": "fnMACStr", "entry": "08012f18", "is_isr": false, "signature": "CHAR * __stdcall fnMACStr(uchar * ptrMAC, CHAR * cStr)"}
+{"node_id": "func:fnMODBUS@080113a8", "node_type": "function", "name": "fnMODBUS", "entry": "080113a8", "is_isr": false, "signature": "void __stdcall fnMODBUS(TTASKTABLE * ptrTaskTable)"}
+{"node_id": "func:fnMODBUSListener@08012738", "node_type": "function", "name": "fnMODBUSListener", "entry": "08012738", "is_isr": false, "signature": "int __stdcall fnMODBUSListener(USOCKET Socket, uchar ucEvent, uchar * ucIp_Data, unsigned short usPortLen)"}
+{"node_id": "func:fnMODBUSPostFunction@080147b4", "node_type": "function", "name": "fnMODBUSPostFunction", "entry": "080147b4", "is_isr": false, "signature": "int __stdcall fnMODBUSPostFunction(int iType, MODBUS_RX_FUNCTION.conflict * modbus_rx_function)"}
+{"node_id": "func:fnMODBUSPreFunction@08014718", "node_type": "function", "name": "fnMODBUSPreFunction", "entry": "08014718", "is_isr": false, "signature": "int __stdcall fnMODBUSPreFunction(int iType, MODBUS_RX_FUNCTION.conflict * modbus_rx_function)"}
+{"node_id": "func:fnMODBUS_transmit", "node_type": "function", "name": "fnMODBUS_transmit"}
+{"node_id": "func:fnMODBUS_transmit@0801247a", "node_type": "function", "name": "fnMODBUS_transmit", "entry": "0801247a", "is_isr": false, "signature": "int __stdcall fnMODBUS_transmit(MODBUS_RX_FUNCTION * modbus_rx_function, uchar * ptrData, unsigned short usDataLength)"}
+{"node_id": "func:fnMODBUSuserFunction@080147c6", "node_type": "function", "name": "fnMODBUSuserFunction", "entry": "080147c6", "is_isr": false, "signature": "int __stdcall fnMODBUSuserFunction(int iType, MODBUS_RX_FUNCTION.conflict * modbus_rx_function)"}
+{"node_id": "func:fnMsgs", "node_type": "function", "name": "fnMsgs"}
+{"node_id": "func:fnMsgs@0800ea70", "node_type": "function", "name": "fnMsgs", "entry": "0800ea70", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnMsgs(QUEUE_LIMIT driver_id)"}
+{"node_id": "func:fnNeedQueues", "node_type": "function", "name": "fnNeedQueues"}
+{"node_id": "func:fnNeedQueues@0800e8d0", "node_type": "function", "name": "fnNeedQueues", "entry": "0800e8d0", "is_isr": false, "signature": "void __stdcall fnNeedQueues(QUEUE_LIMIT queues_needed)"}
+{"node_id": "func:fnNetworkIndicator@08015388", "node_type": "function", "name": "fnNetworkIndicator", "entry": "08015388", "is_isr": false, "signature": "void __stdcall fnNetworkIndicator(TTASKTABLE * ptrTaskTable)"}
+{"node_id": "func:fnNetworkTx", "node_type": "function", "name": "fnNetworkTx"}
+{"node_id": "func:fnNetworkTx@08011004", "node_type": "function", "name": "fnNetworkTx", "entry": "08011004", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnNetworkTx(uchar * output_buffer, QUEUE_TRANSFER nr_of_bytes)"}
+{"node_id": "func:fnNewTCPState", "node_type": "function", "name": "fnNewTCPState"}
+{"node_id": "func:fnNewTCPState@08013c7a", "node_type": "function", "name": "fnNewTCPState", "entry": "08013c7a", "is_isr": false, "signature": "void __stdcall fnNewTCPState(TCP_CONTROL * ptr_TCP, uchar ucNextState)"}
+{"node_id": "func:fnOpen", "node_type": "function", "name": "fnOpen"}
+{"node_id": "func:fnOpen@0800e970", "node_type": "function", "name": "fnOpen", "entry": "0800e970", "is_isr": false, "signature": "QUEUE_LIMIT __stdcall fnOpen(uchar type_of_driver, uchar driver_mode, void * pars)"}
+{"node_id": "func:fnOpenETHERNET", "node_type": "function", "name": "fnOpenETHERNET"}
+{"node_id": "func:fnOpenETHERNET@0800f542", "node_type": "function", "name": "fnOpenETHERNET", "entry": "0800f542", "is_isr": false, "signature": "QUEUE_LIMIT __stdcall fnOpenETHERNET(ETHTABLE * pars, unsigned short driver_mode)"}
+{"node_id": "func:fnOpenTTY", "node_type": "function", "name": "fnOpenTTY"}
+{"node_id": "func:fnOpenTTY@0800f246", "node_type": "function", "name": "fnOpenTTY", "entry": "0800f246", "is_isr": false, "signature": "QUEUE_LIMIT __stdcall fnOpenTTY(TTYTABLE * pars, uchar driver_mode)"}
+{"node_id": "func:fnPortInputConfig", "node_type": "function", "name": "fnPortInputConfig"}
+{"node_id": "func:fnPortInputConfig@08011034", "node_type": "function", "name": "fnPortInputConfig", "entry": "08011034", "is_isr": false, "signature": "int __stdcall fnPortInputConfig(CHAR cPortBit)"}
+{"node_id": "func:fnPortState", "node_type": "function", "name": "fnPortState"}
+{"node_id": "func:fnPortState@08011008", "node_type": "function", "name": "fnPortState", "entry": "08011008", "is_isr": false, "signature": "int __stdcall fnPortState(CHAR cPortBit)"}
+{"node_id": "func:fnPrint", "node_type": "function", "name": "fnPrint"}
+{"node_id": "func:fnPrint@0800ece0", "node_type": "function", "name": "fnPrint", "entry": "0800ece0", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnPrint(uchar * ucToSend, QUEUE_LIMIT portID)"}
+{"node_id": "func:fnProcessARP", "node_type": "function", "name": "fnProcessARP"}
+{"node_id": "func:fnProcessARP@0801338a", "node_type": "function", "name": "fnProcessARP", "entry": "0801338a", "is_isr": false, "signature": "int __stdcall fnProcessARP(ETHERNET_FRAME * frame)"}
+{"node_id": "func:fnRTS_change", "node_type": "function", "name": "fnRTS_change"}
+{"node_id": "func:fnRTS_change@0800f432", "node_type": "function", "name": "fnRTS_change", "entry": "0800f432", "is_isr": false, "signature": "void __stdcall fnRTS_change(QUEUE_LIMIT Channel, int iState)"}
+{"node_id": "func:fnRandom", "node_type": "function", "name": "fnRandom"}
+{"node_id": "func:fnRandom@0800e8b0", "node_type": "function", "name": "fnRandom", "entry": "0800e8b0", "is_isr": false, "signature": "unsigned short fnRandom(void)"}
+{"node_id": "func:fnRead", "node_type": "function", "name": "fnRead"}
+{"node_id": "func:fnRead@0800ea60", "node_type": "function", "name": "fnRead", "entry": "0800ea60", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnRead(QUEUE_LIMIT driver_id, uchar * input_buffer, QUEUE_TRANSFER nr_of_bytes)"}
+{"node_id": "func:fnReadMII_PHY", "node_type": "function", "name": "fnReadMII_PHY"}
+{"node_id": "func:fnReadMII_PHY@0800c32c", "node_type": "function", "name": "fnReadMII_PHY", "entry": "0800c32c", "is_isr": false, "signature": "unsigned short __stdcall fnReadMII_PHY(unsigned long ulRegAdr)"}
+{"node_id": "func:fnReduceSWTimers", "node_type": "function", "name": "fnReduceSWTimers"}
+{"node_id": "func:fnReduceSWTimers@080145fa", "node_type": "function", "name": "fnReduceSWTimers", "entry": "080145fa", "is_isr": false, "signature": "void __stdcall fnReduceSWTimers(TIMER_BLOCK * ptrNewTimer, DELAY_LIMIT TimerDelay)"}
+{"node_id": "func:fnReportTCPWindow", "node_type": "function", "name": "fnReportTCPWindow"}
+{"node_id": "func:fnReportTCPWindow@080144c0", "node_type": "function", "name": "fnReportTCPWindow", "entry": "080144c0", "is_isr": false, "signature": "short __stdcall fnReportTCPWindow(USOCKET TCPSocket, unsigned short usBufferSpace)"}
+{"node_id": "func:fnResetBoard", "node_type": "function", "name": "fnResetBoard"}
+{"node_id": "func:fnResetBoard@0800e3a6", "node_type": "function", "name": "fnResetBoard", "entry": "0800e3a6", "is_isr": false, "signature": "void fnResetBoard(void)"}
+{"node_id": "func:fnResetChanges", "node_type": "function", "name": "fnResetChanges"}
+{"node_id": "func:fnResetChanges@08010c9a", "node_type": "function", "name": "fnResetChanges", "entry": "08010c9a", "is_isr": false, "signature": "void fnResetChanges(void)"}
+{"node_id": "func:fnResolveAddress", "node_type": "function", "name": "fnResolveAddress"}
+{"node_id": "func:fnResolveAddress@0801348a", "node_type": "function", "name": "fnResolveAddress", "entry": "0801348a", "is_isr": false, "signature": "void __stdcall fnResolveAddress(uchar ucType, uchar * Search_IP, UTASK_TASK OwnerTask, USOCKET Socket)"}
+{"node_id": "func:fnRestoreDebugHandle", "node_type": "function", "name": "fnRestoreDebugHandle"}
+{"node_id": "func:fnRestoreDebugHandle@08012d60", "node_type": "function", "name": "fnRestoreDebugHandle", "entry": "08012d60", "is_isr": false, "signature": "void fnRestoreDebugHandle(void)"}
+{"node_id": "func:fnRestoreFactory", "node_type": "function", "name": "fnRestoreFactory"}
+{"node_id": "func:fnRestoreFactory@08012b28", "node_type": "function", "name": "fnRestoreFactory", "entry": "08012b28", "is_isr": false, "signature": "void fnRestoreFactory(void)"}
+{"node_id": "func:fnRetriggerWatchdog@0800c24a", "node_type": "function", "name": "fnRetriggerWatchdog", "entry": "0800c24a", "is_isr": false, "signature": "void fnRetriggerWatchdog(void)"}
+{"node_id": "func:fnRetrigger_T1_5_monitor", "node_type": "function", "name": "fnRetrigger_T1_5_monitor"}
+{"node_id": "func:fnRetrigger_T1_5_monitor@08011a98", "node_type": "function", "name": "fnRetrigger_T1_5_monitor", "entry": "08011a98", "is_isr": false, "signature": "void __stdcall fnRetrigger_T1_5_monitor(QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnRtmkSystemTick", "node_type": "function", "name": "fnRtmkSystemTick"}
+{"node_id": "func:fnRtmkSystemTick@0800e86a", "node_type": "function", "name": "fnRtmkSystemTick", "entry": "0800e86a", "is_isr": false, "signature": "void fnRtmkSystemTick(void)"}
+{"node_id": "func:fnRxOff", "node_type": "function", "name": "fnRxOff"}
+{"node_id": "func:fnRxOff@0800ce14", "node_type": "function", "name": "fnRxOff", "entry": "0800ce14", "is_isr": false, "signature": "void __stdcall fnRxOff(QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnRxOn", "node_type": "function", "name": "fnRxOn"}
+{"node_id": "func:fnRxOn@0800cc54", "node_type": "function", "name": "fnRxOn", "entry": "0800cc54", "is_isr": false, "signature": "void __stdcall fnRxOn(QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnRxStats", "node_type": "function", "name": "fnRxStats"}
+{"node_id": "func:fnRxStats@08013788", "node_type": "function", "name": "fnRxStats", "entry": "08013788", "is_isr": false, "signature": "void __stdcall fnRxStats(uchar ucProtType, int iNetworkReference)"}
+{"node_id": "func:fnSaveDebugHandle", "node_type": "function", "name": "fnSaveDebugHandle"}
+{"node_id": "func:fnSaveDebugHandle@08012d4c", "node_type": "function", "name": "fnSaveDebugHandle", "entry": "08012d4c", "is_isr": false, "signature": "void __stdcall fnSaveDebugHandle(int iState)"}
+{"node_id": "func:fnSaveNewPars", "node_type": "function", "name": "fnSaveNewPars"}
+{"node_id": "func:fnSaveNewPars@08010f50", "node_type": "function", "name": "fnSaveNewPars", "entry": "08010f50", "is_isr": false, "signature": "int __stdcall fnSaveNewPars(int iTemp)"}
+{"node_id": "func:fnSavePorts", "node_type": "function", "name": "fnSavePorts"}
+{"node_id": "func:fnSavePorts@08010d22", "node_type": "function", "name": "fnSavePorts", "entry": "08010d22", "is_isr": false, "signature": "void fnSavePorts(void)"}
+{"node_id": "func:fnSciRxByte", "node_type": "function", "name": "fnSciRxByte"}
+{"node_id": "func:fnSciRxByte@0800f388", "node_type": "function", "name": "fnSciRxByte", "entry": "0800f388", "is_isr": false, "signature": "void __stdcall fnSciRxByte(uchar ch, QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnSciTxByte", "node_type": "function", "name": "fnSciTxByte"}
+{"node_id": "func:fnSciTxByte@0800f460", "node_type": "function", "name": "fnSciTxByte", "entry": "0800f460", "is_isr": false, "signature": "void __stdcall fnSciTxByte(QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnSearchID", "node_type": "function", "name": "fnSearchID"}
+{"node_id": "func:fnSearchID@0800ec88", "node_type": "function", "name": "fnSearchID", "entry": "0800ec88", "is_isr": false, "signature": "QUEUE_LIMIT __stdcall fnSearchID(_func_QUEUE_TRANSFER_QUEUE_LIMIT_uchar_ptr_QUEUE_TRANSFER_uchar_QUEUE_LIMIT * SearchAddress, QUEUE_LIMIT channel_mask)"}
+{"node_id": "func:fnSendARP_request", "node_type": "function", "name": "fnSendARP_request"}
+{"node_id": "func:fnSendARP_request@0801332c", "node_type": "function", "name": "fnSendARP_request", "entry": "0801332c", "is_isr": false, "signature": "void __stdcall fnSendARP_request(ARP_TAB * ptrARPTab)"}
+{"node_id": "func:fnSendIPv4", "node_type": "function", "name": "fnSendIPv4"}
+{"node_id": "func:fnSendIPv4@080149e0", "node_type": "function", "name": "fnSendIPv4", "entry": "080149e0", "is_isr": false, "signature": "short __stdcall fnSendIPv4(uchar * prIP_to, uchar ucProtType, uchar ucTypeOfService, uchar ucTTL, uchar * dat, unsigned short usLen, UTASK_TASK Owner, USOCKET cSocket)"}
+{"node_id": "func:fnSendMODBUS_exception", "node_type": "function", "name": "fnSendMODBUS_exception"}
+{"node_id": "func:fnSendMODBUS_exception@08012708", "node_type": "function", "name": "fnSendMODBUS_exception", "entry": "08012708", "is_isr": false, "signature": "int __stdcall fnSendMODBUS_exception(MODBUS_RX_FUNCTION * modbus_rx_function, uchar ucExceptionCode)"}
+{"node_id": "func:fnSendMODBUS_response", "node_type": "function", "name": "fnSendMODBUS_response"}
+{"node_id": "func:fnSendMODBUS_response@0801262a", "node_type": "function", "name": "fnSendMODBUS_response", "entry": "0801262a", "is_isr": false, "signature": "int __stdcall fnSendMODBUS_response(MODBUS_RX_FUNCTION * modbus_rx_function, void * ptrData, unsigned short usLength, uchar ucShift)"}
+{"node_id": "func:fnSendMODBUS_transparent_response", "node_type": "function", "name": "fnSendMODBUS_transparent_response"}
+{"node_id": "func:fnSendMODBUS_transparent_response@080126f8", "node_type": "function", "name": "fnSendMODBUS_transparent_response", "entry": "080126f8", "is_isr": false, "signature": "int __stdcall fnSendMODBUS_transparent_response(MODBUS_RX_FUNCTION * modbus_rx_function, uchar * ptrData, unsigned short usLength)"}
+{"node_id": "func:fnSendSyn", "node_type": "function", "name": "fnSendSyn"}
+{"node_id": "func:fnSendSyn@08014488", "node_type": "function", "name": "fnSendSyn", "entry": "08014488", "is_isr": false, "signature": "void __stdcall fnSendSyn(TCP_CONTROL * ptr_TCP, uchar ucFlags)"}
+{"node_id": "func:fnSendTCP", "node_type": "function", "name": "fnSendTCP"}
+{"node_id": "func:fnSendTCP@08013ba4", "node_type": "function", "name": "fnSendTCP", "entry": "08013ba4", "is_isr": false, "signature": "short __stdcall fnSendTCP(USOCKET TCP_socket, uchar * ptrBuf, unsigned short usDataLen, uchar ucTempFlags)"}
+{"node_id": "func:fnSendTCPControl", "node_type": "function", "name": "fnSendTCPControl"}
+{"node_id": "func:fnSendTCPControl@08013c64", "node_type": "function", "name": "fnSendTCPControl", "entry": "08013c64", "is_isr": false, "signature": "short __stdcall fnSendTCPControl(TCP_CONTROL * ptr_TCP)"}
+{"node_id": "func:fnSetDefaultNetwork", "node_type": "function", "name": "fnSetDefaultNetwork"}
+{"node_id": "func:fnSetDefaultNetwork@08012b1c", "node_type": "function", "name": "fnSetDefaultNetwork", "entry": "08012b1c", "is_isr": false, "signature": "void fnSetDefaultNetwork(void)"}
+{"node_id": "func:fnSetFlashOption", "node_type": "function", "name": "fnSetFlashOption"}
+{"node_id": "func:fnSetFlashOption@0800d78e", "node_type": "function", "name": "fnSetFlashOption", "entry": "0800d78e", "is_isr": false, "signature": "void __stdcall fnSetFlashOption(unsigned long ulOption, unsigned long ulOption1, unsigned long ulMask)"}
+{"node_id": "func:fnSetMAC", "node_type": "function", "name": "fnSetMAC"}
+{"node_id": "func:fnSetMAC@08012ecc", "node_type": "function", "name": "fnSetMAC", "entry": "08012ecc", "is_isr": false, "signature": "CHAR * __stdcall fnSetMAC(CHAR * ptr_input, uchar * ptrMac)"}
+{"node_id": "func:fnSetNewSerialMode", "node_type": "function", "name": "fnSetNewSerialMode"}
+{"node_id": "func:fnSetNewSerialMode@08012d6a", "node_type": "function", "name": "fnSetNewSerialMode", "entry": "08012d6a", "is_isr": false, "signature": "QUEUE_LIMIT __stdcall fnSetNewSerialMode(TTYTABLE * ptrInterfaceParameters, uchar ucDriverMode)"}
+{"node_id": "func:fnSetPar", "node_type": "function", "name": "fnSetPar"}
+{"node_id": "func:fnSetPar@080128a0", "node_type": "function", "name": "fnSetPar", "entry": "080128a0", "is_isr": false, "signature": "int __stdcall fnSetPar(unsigned short usParameterReference, uchar * ucValue, unsigned short usLength)"}
+{"node_id": "func:fnSetParameters", "node_type": "function", "name": "fnSetParameters"}
+{"node_id": "func:fnSetParameters@0800daf4", "node_type": "function", "name": "fnSetParameters", "entry": "0800daf4", "is_isr": false, "signature": "int __stdcall fnSetParameters(uchar ucValidBlock, unsigned short usParameterReference, uchar * ucValue, unsigned short usLength)"}
+{"node_id": "func:fnSetPortOut", "node_type": "function", "name": "fnSetPortOut"}
+{"node_id": "func:fnSetPortOut@08011196", "node_type": "function", "name": "fnSetPortOut", "entry": "08011196", "is_isr": false, "signature": "void __stdcall fnSetPortOut(uchar ucPortOutputs, int iInitialisation)"}
+{"node_id": "func:fnSetRTS", "node_type": "function", "name": "fnSetRTS"}
+{"node_id": "func:fnSetRTS@0800d1c8", "node_type": "function", "name": "fnSetRTS", "entry": "0800d1c8", "is_isr": false, "signature": "void __stdcall fnSetRTS(QUEUE_LIMIT channel, int iState)"}
+{"node_id": "func:fnSetUserPortOut", "node_type": "function", "name": "fnSetUserPortOut"}
+{"node_id": "func:fnSetUserPortOut@08010d6e", "node_type": "function", "name": "fnSetUserPortOut", "entry": "08010d6e", "is_isr": false, "signature": "void __stdcall fnSetUserPortOut(unsigned short usPortOutputs)"}
+{"node_id": "func:fnShowLAN", "node_type": "function", "name": "fnShowLAN"}
+{"node_id": "func:fnShowLAN@0800fa60", "node_type": "function", "name": "fnShowLAN", "entry": "0800fa60", "is_isr": false, "signature": "void __stdcall fnShowLAN(NETWORK_PARAMETERS * ptrNetwork)"}
+{"node_id": "func:fnShowSN", "node_type": "function", "name": "fnShowSN"}
+{"node_id": "func:fnShowSN@08010fc4", "node_type": "function", "name": "fnShowSN", "entry": "08010fc4", "is_isr": false, "signature": "CHAR * __stdcall fnShowSN(CHAR * cValue)"}
+{"node_id": "func:fnShowServerEnabled", "node_type": "function", "name": "fnShowServerEnabled"}
+{"node_id": "func:fnShowServerEnabled@0800fa10", "node_type": "function", "name": "fnShowServerEnabled", "entry": "0800fa10", "is_isr": false, "signature": "int __stdcall fnShowServerEnabled(CHAR * cText, uchar ucOption)"}
+{"node_id": "func:fnSimulateEthernetIn", "node_type": "function", "name": "fnSimulateEthernetIn"}
+{"node_id": "func:fnSimulateEthernetIn@0800c77c", "node_type": "function", "name": "fnSimulateEthernetIn", "entry": "0800c77c", "is_isr": false, "signature": "int __stdcall fnSimulateEthernetIn(uchar * ucData, unsigned short usLen, int iForce)"}
+{"node_id": "func:fnSkipWhiteSpace", "node_type": "function", "name": "fnSkipWhiteSpace"}
+{"node_id": "func:fnSkipWhiteSpace@08010a34", "node_type": "function", "name": "fnSkipWhiteSpace", "entry": "08010a34", "is_isr": false, "signature": "CHAR * __stdcall fnSkipWhiteSpace(CHAR * ptr_input)"}
+{"node_id": "func:fnStackFree", "node_type": "function", "name": "fnStackFree"}
+{"node_id": "func:fnStackFree@0800e4fa", "node_type": "function", "name": "fnStackFree", "entry": "0800e4fa", "is_isr": false, "signature": "STACK_REQUIREMENTS __stdcall fnStackFree(STACK_REQUIREMENTS * stackUsed)"}
+{"node_id": "func:fnStartEthTx", "node_type": "function", "name": "fnStartEthTx"}
+{"node_id": "func:fnStartEthTx@0800c816", "node_type": "function", "name": "fnStartEthTx", "entry": "0800c816", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnStartEthTx(QUEUE_TRANSFER DataLen, uchar * ptr_put)"}
+{"node_id": "func:fnStartNewTimer", "node_type": "function", "name": "fnStartNewTimer"}
+{"node_id": "func:fnStartNewTimer@08014622", "node_type": "function", "name": "fnStartNewTimer", "entry": "08014622", "is_isr": false, "signature": "void __stdcall fnStartNewTimer(TIMER_BLOCK * ptrNewTimer)"}
+{"node_id": "func:fnStartTick", "node_type": "function", "name": "fnStartTick"}
+{"node_id": "func:fnStartTick@0800c2c6", "node_type": "function", "name": "fnStartTick", "entry": "0800c2c6", "is_isr": false, "signature": "void fnStartTick(void)"}
+{"node_id": "func:fnStrIP", "node_type": "function", "name": "fnStrIP"}
+{"node_id": "func:fnStrIP@08012f44", "node_type": "function", "name": "fnStrIP", "entry": "08012f44", "is_isr": false, "signature": "CHAR * __stdcall fnStrIP(CHAR * ptr_input, uchar * ucIP_address)"}
+{"node_id": "func:fnSubnetBroadcast", "node_type": "function", "name": "fnSubnetBroadcast"}
+{"node_id": "func:fnSubnetBroadcast@080148d0", "node_type": "function", "name": "fnSubnetBroadcast", "entry": "080148d0", "is_isr": false, "signature": "int __stdcall fnSubnetBroadcast(uchar * ip_address, uchar * our_ip_address, uchar * subnet_mask, uchar ucLength)"}
+{"node_id": "func:fnTCP_Connect", "node_type": "function", "name": "fnTCP_Connect"}
+{"node_id": "func:fnTCP_Connect@08013d02", "node_type": "function", "name": "fnTCP_Connect", "entry": "08013d02", "is_isr": false, "signature": "USOCKET __stdcall fnTCP_Connect(USOCKET TCP_socket, uchar * RemoteIP, unsigned short usRemotePort, unsigned short usOurPort, unsigned short usMaxWindow)"}
+{"node_id": "func:fnTCP_Listen", "node_type": "function", "name": "fnTCP_Listen"}
+{"node_id": "func:fnTCP_Listen@08013aba", "node_type": "function", "name": "fnTCP_Listen", "entry": "08013aba", "is_isr": false, "signature": "USOCKET __stdcall fnTCP_Listen(USOCKET TCP_socket, unsigned short usPort, unsigned short usMaxWindow)"}
+{"node_id": "func:fnTCP_send_reset", "node_type": "function", "name": "fnTCP_send_reset"}
+{"node_id": "func:fnTCP_send_reset@08013db6", "node_type": "function", "name": "fnTCP_send_reset", "entry": "08013db6", "is_isr": false, "signature": "void __stdcall fnTCP_send_reset(TCP_PACKET * rx_tcp_packet, ETHERNET_FRAME * ptrRx_frame)"}
+{"node_id": "func:fnTaskArp@0801304c", "node_type": "function", "name": "fnTaskArp", "entry": "0801304c", "is_isr": false, "signature": "void __stdcall fnTaskArp(TTASKTABLE * ptrTaskTable)"}
+{"node_id": "func:fnTaskEthernet@08013604", "node_type": "function", "name": "fnTaskEthernet", "entry": "08013604", "is_isr": false, "signature": "void __stdcall fnTaskEthernet(TTASKTABLE.conflict * ptrTaskTable)"}
+{"node_id": "func:fnTaskTCP@08013828", "node_type": "function", "name": "fnTaskTCP", "entry": "08013828", "is_isr": false, "signature": "void __stdcall fnTaskTCP(TTASKTABLE * ptrTaskTable)"}
+{"node_id": "func:fnTaskWatchdog@08016000", "node_type": "function", "name": "fnTaskWatchdog", "entry": "08016000", "is_isr": false, "signature": "void __stdcall fnTaskWatchdog(TTASKTABLE.conflict * ptrTaskTable)"}
+{"node_id": "func:fnTestListener@08010ddc", "node_type": "function", "name": "fnTestListener", "entry": "08010ddc", "is_isr": false, "signature": "int __stdcall fnTestListener(USOCKET Socket, uchar ucEvent, uchar * ucIp_Data, unsigned short usPortLen)"}
+{"node_id": "func:fnTestTCPServer", "node_type": "function", "name": "fnTestTCPServer"}
+{"node_id": "func:fnTestTCPServer@08010e30", "node_type": "function", "name": "fnTestTCPServer", "entry": "08010e30", "is_isr": false, "signature": "int __stdcall fnTestTCPServer(int iAction)"}
+{"node_id": "func:fnTimeoutValue", "node_type": "function", "name": "fnTimeoutValue"}
+{"node_id": "func:fnTimeoutValue@080131d6", "node_type": "function", "name": "fnTimeoutValue", "entry": "080131d6", "is_isr": false, "signature": "uchar __stdcall fnTimeoutValue(uchar ucType)"}
+{"node_id": "func:fnTimer@080144f8", "node_type": "function", "name": "fnTimer", "entry": "080144f8", "is_isr": false, "signature": "void __stdcall fnTimer(TTASKTABLE * ptrTaskTable)"}
+{"node_id": "func:fnTimerT3_5_fired", "node_type": "function", "name": "fnTimerT3_5_fired"}
+{"node_id": "func:fnTimerT3_5_fired@08011a32", "node_type": "function", "name": "fnTimerT3_5_fired", "entry": "08011a32", "is_isr": false, "signature": "void __stdcall fnTimerT3_5_fired(uchar ucMODBUSport)"}
+{"node_id": "func:fnTimer_RTS_0@08011af4", "node_type": "function", "name": "fnTimer_RTS_0", "entry": "08011af4", "is_isr": false, "signature": "void fnTimer_RTS_0(void)"}
+{"node_id": "func:fnTimer_RTS_1@08011b00", "node_type": "function", "name": "fnTimer_RTS_1", "entry": "08011b00", "is_isr": false, "signature": "void fnTimer_RTS_1(void)"}
+{"node_id": "func:fnTimer_T_1_5_fired_0@08011a7c", "node_type": "function", "name": "fnTimer_T_1_5_fired_0", "entry": "08011a7c", "is_isr": false, "signature": "void fnTimer_T_1_5_fired_0(void)"}
+{"node_id": "func:fnTimer_T_1_5_fired_1@08011a88", "node_type": "function", "name": "fnTimer_T_1_5_fired_1", "entry": "08011a88", "is_isr": false, "signature": "void fnTimer_T_1_5_fired_1(void)"}
+{"node_id": "func:fnTimer_T_3_5_fired_0@08011a74", "node_type": "function", "name": "fnTimer_T_3_5_fired_0", "entry": "08011a74", "is_isr": false, "signature": "void fnTimer_T_3_5_fired_0(void)"}
+{"node_id": "func:fnTimer_T_3_5_fired_1@08011a78", "node_type": "function", "name": "fnTimer_T_3_5_fired_1", "entry": "08011a78", "is_isr": false, "signature": "void fnTimer_T_3_5_fired_1(void)"}
+{"node_id": "func:fnTxByte", "node_type": "function", "name": "fnTxByte"}
+{"node_id": "func:fnTxByte@0800d174", "node_type": "function", "name": "fnTxByte", "entry": "0800d174", "is_isr": false, "signature": "int __stdcall fnTxByte(QUEUE_LIMIT channel, uchar ucTxByte)"}
+{"node_id": "func:fnTxOff", "node_type": "function", "name": "fnTxOff"}
+{"node_id": "func:fnTxOff@0800d0c8", "node_type": "function", "name": "fnTxOff", "entry": "0800d0c8", "is_isr": false, "signature": "void __stdcall fnTxOff(QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnTxOn", "node_type": "function", "name": "fnTxOn"}
+{"node_id": "func:fnTxOn@0800ce9c", "node_type": "function", "name": "fnTxOn", "entry": "0800ce9c", "is_isr": false, "signature": "void __stdcall fnTxOn(QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnTxStats", "node_type": "function", "name": "fnTxStats"}
+{"node_id": "func:fnTxStats@08013760", "node_type": "function", "name": "fnTxStats", "entry": "08013760", "is_isr": false, "signature": "void __stdcall fnTxStats(uchar ucProtType, int iNetworkReference)"}
+{"node_id": "func:fnUARTFrameTermination", "node_type": "function", "name": "fnUARTFrameTermination"}
+{"node_id": "func:fnUARTFrameTermination@08011b10", "node_type": "function", "name": "fnUARTFrameTermination", "entry": "08011b10", "is_isr": false, "signature": "void __stdcall fnUARTFrameTermination(QUEUE_LIMIT Channel)"}
+{"node_id": "func:fnUpTime", "node_type": "function", "name": "fnUpTime"}
+{"node_id": "func:fnUpTime@08012fb4", "node_type": "function", "name": "fnUpTime", "entry": "08012fb4", "is_isr": false, "signature": "CHAR * __stdcall fnUpTime(CHAR * cValue)"}
+{"node_id": "func:fnWrite", "node_type": "function", "name": "fnWrite"}
+{"node_id": "func:fnWrite@0800e9de", "node_type": "function", "name": "fnWrite", "entry": "0800e9de", "is_isr": false, "signature": "QUEUE_TRANSFER __stdcall fnWrite(QUEUE_LIMIT driver_id, uchar * output_buffer, QUEUE_TRANSFER nr_of_bytes)"}
+{"node_id": "func:fnWriteBytesFlash", "node_type": "function", "name": "fnWriteBytesFlash"}
+{"node_id": "func:fnWriteBytesFlash@0800d918", "node_type": "function", "name": "fnWriteBytesFlash", "entry": "0800d918", "is_isr": false, "signature": "int __stdcall fnWriteBytesFlash(uchar * ucDestination, uchar * ucData, MAX_FILE_LENGTH Length)"}
+{"node_id": "func:fnWriteMII_PHY", "node_type": "function", "name": "fnWriteMII_PHY"}
+{"node_id": "func:fnWriteMII_PHY@0800c342", "node_type": "function", "name": "fnWriteMII_PHY", "entry": "0800c342", "is_isr": false, "signature": "void __stdcall fnWriteMII_PHY(unsigned long ulRegAdr, unsigned short usData)"}
+{"node_id": "func:irq_NMI@0800e3ca", "node_type": "function", "name": "irq_NMI", "entry": "0800e3ca", "is_isr": true, "signature": "void irq_NMI(void)"}
+{"node_id": "func:irq_SVCall@0800e3ce", "node_type": "function", "name": "irq_SVCall", "entry": "0800e3ce", "is_isr": true, "signature": "void irq_SVCall(void)"}
+{"node_id": "func:irq_bus_fault@0800e3c4", "node_type": "function", "name": "irq_bus_fault", "entry": "0800e3c4", "is_isr": true, "signature": "void irq_bus_fault(void)"}
+{"node_id": "func:irq_debug_monitor@0800e3c8", "node_type": "function", "name": "irq_debug_monitor", "entry": "0800e3c8", "is_isr": true, "signature": "void irq_debug_monitor(void)"}
+{"node_id": "func:irq_default@0800e3d0", "node_type": "function", "name": "irq_default", "entry": "0800e3d0", "is_isr": true, "signature": "void irq_default(void)"}
+{"node_id": "func:irq_hard_fault@0800e3c0", "node_type": "function", "name": "irq_hard_fault", "entry": "0800e3c0", "is_isr": true, "signature": "void irq_hard_fault(void)"}
+{"node_id": "func:irq_memory_man@0800e3c2", "node_type": "function", "name": "irq_memory_man", "entry": "0800e3c2", "is_isr": true, "signature": "void irq_memory_man(void)"}
+{"node_id": "func:irq_pend_sv@0800e3cc", "node_type": "function", "name": "irq_pend_sv", "entry": "0800e3cc", "is_isr": true, "signature": "void irq_pend_sv(void)"}
+{"node_id": "func:irq_usage_fault@0800e3c6", "node_type": "function", "name": "irq_usage_fault", "entry": "0800e3c6", "is_isr": true, "signature": "void irq_usage_fault(void)"}
+{"node_id": "func:is_subnet", "node_type": "function", "name": "is_subnet"}
+{"node_id": "func:is_subnet@0801315e", "node_type": "function", "name": "is_subnet", "entry": "0801315e", "is_isr": false, "signature": "int __stdcall is_subnet(uchar * new_ip)"}
+{"node_id": "func:main", "node_type": "function", "name": "main"}
+{"node_id": "func:main@0800c088", "node_type": "function", "name": "main", "entry": "0800c088", "is_isr": false, "signature": "int main(void)"}
+{"node_id": "func:send_next_byte", "node_type": "function", "name": "send_next_byte"}
+{"node_id": "func:send_next_byte@0800f2f0", "node_type": "function", "name": "send_next_byte", "entry": "0800f2f0", "is_isr": false, "signature": "void __stdcall send_next_byte(QUEUE_LIMIT channel, TTYQUE * ptTTYQue)"}
+{"node_id": "func:timer_10_irq@0800d686", "node_type": "function", "name": "timer_10_irq", "entry": "0800d686", "is_isr": true, "signature": "void timer_10_irq(void)"}
+{"node_id": "func:timer_11_irq@0800d6bc", "node_type": "function", "name": "timer_11_irq", "entry": "0800d6bc", "is_isr": true, "signature": "void timer_11_irq(void)"}
+{"node_id": "func:timer_12_irq@0800d6e8", "node_type": "function", "name": "timer_12_irq", "entry": "0800d6e8", "is_isr": true, "signature": "void timer_12_irq(void)"}
+{"node_id": "func:timer_13_irq@0800d710", "node_type": "function", "name": "timer_13_irq", "entry": "0800d710", "is_isr": true, "signature": "void timer_13_irq(void)"}
+{"node_id": "func:timer_14_irq@0800d738", "node_type": "function", "name": "timer_14_irq", "entry": "0800d738", "is_isr": true, "signature": "void timer_14_irq(void)"}
+{"node_id": "func:timer_2_irq@0800d540", "node_type": "function", "name": "timer_2_irq", "entry": "0800d540", "is_isr": true, "signature": "void timer_2_irq(void)"}
+{"node_id": "func:timer_3_irq@0800d574", "node_type": "function", "name": "timer_3_irq", "entry": "0800d574", "is_isr": true, "signature": "void timer_3_irq(void)"}
+{"node_id": "func:timer_4_irq@0800d5b6", "node_type": "function", "name": "timer_4_irq", "entry": "0800d5b6", "is_isr": true, "signature": "void timer_4_irq(void)"}
+{"node_id": "func:timer_5_irq@0800d5ec", "node_type": "function", "name": "timer_5_irq", "entry": "0800d5ec", "is_isr": true, "signature": "void timer_5_irq(void)"}
+{"node_id": "func:timer_8_irq@0800d624", "node_type": "function", "name": "timer_8_irq", "entry": "0800d624", "is_isr": true, "signature": "void timer_8_irq(void)"}
+{"node_id": "func:timer_9_irq@0800d650", "node_type": "function", "name": "timer_9_irq", "entry": "0800d650", "is_isr": true, "signature": "void timer_9_irq(void)"}
+{"node_id": "func:timer_int@08012e00", "node_type": "function", "name": "timer_int", "entry": "08012e00", "is_isr": false, "signature": "void timer_int(void)"}
+{"node_id": "func:uDisable_Interrupt", "node_type": "function", "name": "uDisable_Interrupt"}
+{"node_id": "func:uDisable_Interrupt@0800c262", "node_type": "function", "name": "uDisable_Interrupt", "entry": "0800c262", "is_isr": false, "signature": "void uDisable_Interrupt(void)"}
+{"node_id": "func:uEnable_Interrupt", "node_type": "function", "name": "uEnable_Interrupt"}
+{"node_id": "func:uEnable_Interrupt@0800c270", "node_type": "function", "name": "uEnable_Interrupt", "entry": "0800c270", "is_isr": false, "signature": "void uEnable_Interrupt(void)"}
+{"node_id": "func:uMalloc", "node_type": "function", "name": "uMalloc"}
+{"node_id": "func:uMalloc@0800e49c", "node_type": "function", "name": "uMalloc", "entry": "0800e49c", "is_isr": false, "signature": "void * __stdcall uMalloc(MAX_MALLOC __size)"}
+{"node_id": "func:uMallocAlign", "node_type": "function", "name": "uMallocAlign"}
+{"node_id": "func:uMallocAlign@0800e4c2", "node_type": "function", "name": "uMallocAlign", "entry": "0800e4c2", "is_isr": false, "signature": "void * __stdcall uMallocAlign(MAX_MALLOC __size, unsigned short usAlign)"}
+{"node_id": "func:uMemcmp", "node_type": "function", "name": "uMemcmp"}
+{"node_id": "func:uMemcmp@0800ef5c", "node_type": "function", "name": "uMemcmp", "entry": "0800ef5c", "is_isr": false, "signature": "int __stdcall uMemcmp(void * ptrTo, void * ptrFrom, size_t Size)"}
+{"node_id": "func:uMemcpy", "node_type": "function", "name": "uMemcpy"}
+{"node_id": "func:uMemcpy@0800ef44", "node_type": "function", "name": "uMemcpy", "entry": "0800ef44", "is_isr": false, "signature": "void * __stdcall uMemcpy(void * ptrTo, void * ptrFrom, size_t Size)"}
+{"node_id": "func:uMemset", "node_type": "function", "name": "uMemset"}
+{"node_id": "func:uMemset@0800ef2e", "node_type": "function", "name": "uMemset", "entry": "0800ef2e", "is_isr": false, "signature": "void * __stdcall uMemset(void * ptrTo, int iValue, size_t Size)"}
+{"node_id": "func:uStrcmp", "node_type": "function", "name": "uStrcmp"}
+{"node_id": "func:uStrcmp@0800ef78", "node_type": "function", "name": "uStrcmp", "entry": "0800ef78", "is_isr": false, "signature": "int __stdcall uStrcmp(CHAR * ptrStr1, CHAR * ptrStr2)"}
+{"node_id": "func:uStrcpy", "node_type": "function", "name": "uStrcpy"}
+{"node_id": "func:uStrcpy@0800ef9e", "node_type": "function", "name": "uStrcpy", "entry": "0800ef9e", "is_isr": false, "signature": "CHAR * __stdcall uStrcpy(CHAR * ptrTo, CHAR * ptrFrom)"}
+{"node_id": "func:uStrlen", "node_type": "function", "name": "uStrlen"}
+{"node_id": "func:uStrlen@0800efb0", "node_type": "function", "name": "uStrlen", "entry": "0800efb0", "is_isr": false, "signature": "size_t __stdcall uStrlen(CHAR * ptrStr)"}
+{"node_id": "func:uTaskerGlobalMonoTimer", "node_type": "function", "name": "uTaskerGlobalMonoTimer"}
+{"node_id": "func:uTaskerGlobalMonoTimer@08014676", "node_type": "function", "name": "uTaskerGlobalMonoTimer", "entry": "08014676", "is_isr": false, "signature": "int __stdcall uTaskerGlobalMonoTimer(UTASK_TASK OwnerTask, DELAY_LIMIT delay, uchar time_out_event)"}
+{"node_id": "func:uTaskerGlobalStopTimer", "node_type": "function", "name": "uTaskerGlobalStopTimer"}
+{"node_id": "func:uTaskerGlobalStopTimer@080146bc", "node_type": "function", "name": "uTaskerGlobalStopTimer", "entry": "080146bc", "is_isr": false, "signature": "DELAY_LIMIT __stdcall uTaskerGlobalStopTimer(UTASK_TASK OwnerTask, uchar time_out_event)"}
+{"node_id": "func:uTaskerMonoTimer", "node_type": "function", "name": "uTaskerMonoTimer"}
+{"node_id": "func:uTaskerMonoTimer@0800e750", "node_type": "function", "name": "uTaskerMonoTimer", "entry": "0800e750", "is_isr": false, "signature": "int __stdcall uTaskerMonoTimer(UTASK_TASK pcTaskName, DELAY_LIMIT delay, uchar time_out_nr)"}
+{"node_id": "func:uTaskerRemainingTime", "node_type": "function", "name": "uTaskerRemainingTime"}
+{"node_id": "func:uTaskerRemainingTime@0800e7d0", "node_type": "function", "name": "uTaskerRemainingTime", "entry": "0800e7d0", "is_isr": false, "signature": "UTASK_TICK __stdcall uTaskerRemainingTime(UTASK_TASK pcTaskName)"}
+{"node_id": "func:uTaskerSchedule", "node_type": "function", "name": "uTaskerSchedule"}
+{"node_id": "func:uTaskerSchedule@0800e690", "node_type": "function", "name": "uTaskerSchedule", "entry": "0800e690", "is_isr": false, "signature": "void uTaskerSchedule(void)"}
+{"node_id": "func:uTaskerStart", "node_type": "function", "name": "uTaskerStart"}
+{"node_id": "func:uTaskerStart@0800e528", "node_type": "function", "name": "uTaskerStart", "entry": "0800e528", "is_isr": false, "signature": "TASK_LIMIT __stdcall uTaskerStart(UTASKTABLEINIT.conflict * ptATaskTable, UTASK_TASK * a_node_descriptions, PHYSICAL_Q_LIMIT nr_physicalQueues)"}
+{"node_id": "func:uTaskerStateChange", "node_type": "function", "name": "uTaskerStateChange"}
+{"node_id": "func:uTaskerStateChange@0800e6f8", "node_type": "function", "name": "uTaskerStateChange", "entry": "0800e6f8", "is_isr": false, "signature": "void __stdcall uTaskerStateChange(UTASK_TASK pcTaskName, uchar ucSetState)"}
+{"node_id": "func:uTaskerStopTimer", "node_type": "function", "name": "uTaskerStopTimer"}
+{"node_id": "func:uTaskerStopTimer@0800e816", "node_type": "function", "name": "uTaskerStopTimer", "entry": "0800e816", "is_isr": false, "signature": "int __stdcall uTaskerStopTimer(UTASK_TASK pcTaskName)"}
+{"node_id": "mmio:0X40002000", "node_type": "mmio", "address_hex": "0x40002000", "address": 1073750016}
+{"node_id": "mmio:0X4000200C", "node_type": "mmio", "address_hex": "0x4000200C", "address": 1073750028}
+{"node_id": "mmio:0X40002014", "node_type": "mmio", "address_hex": "0x40002014", "address": 1073750036}
+{"node_id": "mmio:0X40002018", "node_type": "mmio", "address_hex": "0x40002018", "address": 1073750040}
+{"node_id": "mmio:0X4000201C", "node_type": "mmio", "address_hex": "0x4000201C", "address": 1073750044}
+{"node_id": "mmio:0X40002020", "node_type": "mmio", "address_hex": "0x40002020", "address": 1073750048}
+{"node_id": "mmio:0X40002024", "node_type": "mmio", "address_hex": "0x40002024", "address": 1073750052}
+{"node_id": "mmio:0X40002028", "node_type": "mmio", "address_hex": "0x40002028", "address": 1073750056}
+{"node_id": "mmio:0X4000202C", "node_type": "mmio", "address_hex": "0x4000202C", "address": 1073750060}
+{"node_id": "mmio:0X40002034", "node_type": "mmio", "address_hex": "0x40002034", "address": 1073750068}
+{"node_id": "mmio:0X40002038", "node_type": "mmio", "address_hex": "0x40002038", "address": 1073750072}
+{"node_id": "mmio:0X4000203C", "node_type": "mmio", "address_hex": "0x4000203C", "address": 1073750076}
+{"node_id": "mmio:0X40002040", "node_type": "mmio", "address_hex": "0x40002040", "address": 1073750080}
+{"node_id": "mmio:0X40002044", "node_type": "mmio", "address_hex": "0x40002044", "address": 1073750084}
+{"node_id": "mmio:0X40003000", "node_type": "mmio", "address_hex": "0x40003000", "address": 1073754112}
+{"node_id": "mmio:0X40003004", "node_type": "mmio", "address_hex": "0x40003004", "address": 1073754116}
+{"node_id": "mmio:0X40003008", "node_type": "mmio", "address_hex": "0x40003008", "address": 1073754120}
+{"node_id": "mmio:0X4000300C", "node_type": "mmio", "address_hex": "0x4000300C", "address": 1073754124}
+{"node_id": "mmio:0X40004400", "node_type": "mmio", "address_hex": "0x40004400", "address": 1073759232}
+{"node_id": "mmio:0X40004404", "node_type": "mmio", "address_hex": "0x40004404", "address": 1073759236}
+{"node_id": "mmio:0X4000440C", "node_type": "mmio", "address_hex": "0x4000440C", "address": 1073759244}
+{"node_id": "mmio:0X40004800", "node_type": "mmio", "address_hex": "0x40004800", "address": 1073760256}
+{"node_id": "mmio:0X40004804", "node_type": "mmio", "address_hex": "0x40004804", "address": 1073760260}
+{"node_id": "mmio:0X4000480C", "node_type": "mmio", "address_hex": "0x4000480C", "address": 1073760268}
+{"node_id": "mmio:0X40004C00", "node_type": "mmio", "address_hex": "0x40004C00", "address": 1073761280}
+{"node_id": "mmio:0X40004C04", "node_type": "mmio", "address_hex": "0x40004C04", "address": 1073761284}
+{"node_id": "mmio:0X40004C0C", "node_type": "mmio", "address_hex": "0x40004C0C", "address": 1073761292}
+{"node_id": "mmio:0X40005000", "node_type": "mmio", "address_hex": "0x40005000", "address": 1073762304}
+{"node_id": "mmio:0X40005004", "node_type": "mmio", "address_hex": "0x40005004", "address": 1073762308}
+{"node_id": "mmio:0X4000500C", "node_type": "mmio", "address_hex": "0x4000500C", "address": 1073762316}
+{"node_id": "mmio:0X40007000", "node_type": "mmio", "address_hex": "0x40007000", "address": 1073770496}
+{"node_id": "mmio:0X40007800", "node_type": "mmio", "address_hex": "0x40007800", "address": 1073772544}
+{"node_id": "mmio:0X40007804", "node_type": "mmio", "address_hex": "0x40007804", "address": 1073772548}
+{"node_id": "mmio:0X4000780C", "node_type": "mmio", "address_hex": "0x4000780C", "address": 1073772556}
+{"node_id": "mmio:0X40007C00", "node_type": "mmio", "address_hex": "0x40007C00", "address": 1073773568}
+{"node_id": "mmio:0X40007C04", "node_type": "mmio", "address_hex": "0x40007C04", "address": 1073773572}
+{"node_id": "mmio:0X40007C08", "node_type": "mmio", "address_hex": "0x40007C08", "address": 1073773576}
+{"node_id": "mmio:0X40007C0C", "node_type": "mmio", "address_hex": "0x40007C0C", "address": 1073773580}
+{"node_id": "mmio:0X40007C10", "node_type": "mmio", "address_hex": "0x40007C10", "address": 1073773584}
+{"node_id": "mmio:0X40011000", "node_type": "mmio", "address_hex": "0x40011000", "address": 1073811456}
+{"node_id": "mmio:0X40011004", "node_type": "mmio", "address_hex": "0x40011004", "address": 1073811460}
+{"node_id": "mmio:0X4001100C", "node_type": "mmio", "address_hex": "0x4001100C", "address": 1073811468}
+{"node_id": "mmio:0X40011400", "node_type": "mmio", "address_hex": "0x40011400", "address": 1073812480}
+{"node_id": "mmio:0X40011404", "node_type": "mmio", "address_hex": "0x40011404", "address": 1073812484}
+{"node_id": "mmio:0X4001140C", "node_type": "mmio", "address_hex": "0x4001140C", "address": 1073812492}
+{"node_id": "mmio:0X40013804", "node_type": "mmio", "address_hex": "0x40013804", "address": 1073821700}
+{"node_id": "mmio:0X40020000", "node_type": "mmio", "address_hex": "0x40020000", "address": 1073872896}
+{"node_id": "mmio:0X40020004", "node_type": "mmio", "address_hex": "0x40020004", "address": 1073872900}
+{"node_id": "mmio:0X40020008", "node_type": "mmio", "address_hex": "0x40020008", "address": 1073872904}
+{"node_id": "mmio:0X4002000C", "node_type": "mmio", "address_hex": "0x4002000C", "address": 1073872908}
+{"node_id": "mmio:0X40020018", "node_type": "mmio", "address_hex": "0x40020018", "address": 1073872920}
+{"node_id": "mmio:0X40020020", "node_type": "mmio", "address_hex": "0x40020020", "address": 1073872928}
+{"node_id": "mmio:0X40020024", "node_type": "mmio", "address_hex": "0x40020024", "address": 1073872932}
+{"node_id": "mmio:0X40020400", "node_type": "mmio", "address_hex": "0x40020400", "address": 1073873920}
+{"node_id": "mmio:0X40020404", "node_type": "mmio", "address_hex": "0x40020404", "address": 1073873924}
+{"node_id": "mmio:0X40020408", "node_type": "mmio", "address_hex": "0x40020408", "address": 1073873928}
+{"node_id": "mmio:0X4002040C", "node_type": "mmio", "address_hex": "0x4002040C", "address": 1073873932}
+{"node_id": "mmio:0X40020410", "node_type": "mmio", "address_hex": "0x40020410", "address": 1073873936}
+{"node_id": "mmio:0X40020414", "node_type": "mmio", "address_hex": "0x40020414", "address": 1073873940}
+{"node_id": "mmio:0X40020420", "node_type": "mmio", "address_hex": "0x40020420", "address": 1073873952}
+{"node_id": "mmio:0X40020424", "node_type": "mmio", "address_hex": "0x40020424", "address": 1073873956}
+{"node_id": "mmio:0X40020800", "node_type": "mmio", "address_hex": "0x40020800", "address": 1073874944}
+{"node_id": "mmio:0X40020804", "node_type": "mmio", "address_hex": "0x40020804", "address": 1073874948}
+{"node_id": "mmio:0X40020808", "node_type": "mmio", "address_hex": "0x40020808", "address": 1073874952}
+{"node_id": "mmio:0X4002080C", "node_type": "mmio", "address_hex": "0x4002080C", "address": 1073874956}
+{"node_id": "mmio:0X40020810", "node_type": "mmio", "address_hex": "0x40020810", "address": 1073874960}
+{"node_id": "mmio:0X40020820", "node_type": "mmio", "address_hex": "0x40020820", "address": 1073874976}
+{"node_id": "mmio:0X40020824", "node_type": "mmio", "address_hex": "0x40020824", "address": 1073874980}
+{"node_id": "mmio:0X40020C00", "node_type": "mmio", "address_hex": "0x40020C00", "address": 1073875968}
+{"node_id": "mmio:0X40020C04", "node_type": "mmio", "address_hex": "0x40020C04", "address": 1073875972}
+{"node_id": "mmio:0X40020C08", "node_type": "mmio", "address_hex": "0x40020C08", "address": 1073875976}
+{"node_id": "mmio:0X40020C0C", "node_type": "mmio", "address_hex": "0x40020C0C", "address": 1073875980}
+{"node_id": "mmio:0X40020C18", "node_type": "mmio", "address_hex": "0x40020C18", "address": 1073875992}
+{"node_id": "mmio:0X40020C20", "node_type": "mmio", "address_hex": "0x40020C20", "address": 1073876000}
+{"node_id": "mmio:0X40020C24", "node_type": "mmio", "address_hex": "0x40020C24", "address": 1073876004}
+{"node_id": "mmio:0X40021000", "node_type": "mmio", "address_hex": "0x40021000", "address": 1073876992}
+{"node_id": "mmio:0X40021004", "node_type": "mmio", "address_hex": "0x40021004", "address": 1073876996}
+{"node_id": "mmio:0X40021008", "node_type": "mmio", "address_hex": "0x40021008", "address": 1073877000}
+{"node_id": "mmio:0X4002100C", "node_type": "mmio", "address_hex": "0x4002100C", "address": 1073877004}
+{"node_id": "mmio:0X40021020", "node_type": "mmio", "address_hex": "0x40021020", "address": 1073877024}
+{"node_id": "mmio:0X40021024", "node_type": "mmio", "address_hex": "0x40021024", "address": 1073877028}
+{"node_id": "mmio:0X40021800", "node_type": "mmio", "address_hex": "0x40021800", "address": 1073879040}
+{"node_id": "mmio:0X40021804", "node_type": "mmio", "address_hex": "0x40021804", "address": 1073879044}
+{"node_id": "mmio:0X40021808", "node_type": "mmio", "address_hex": "0x40021808", "address": 1073879048}
+{"node_id": "mmio:0X4002180C", "node_type": "mmio", "address_hex": "0x4002180C", "address": 1073879052}
+{"node_id": "mmio:0X40021818", "node_type": "mmio", "address_hex": "0x40021818", "address": 1073879064}
+{"node_id": "mmio:0X40021820", "node_type": "mmio", "address_hex": "0x40021820", "address": 1073879072}
+{"node_id": "mmio:0X40021824", "node_type": "mmio", "address_hex": "0x40021824", "address": 1073879076}
+{"node_id": "mmio:0X40021C00", "node_type": "mmio", "address_hex": "0x40021C00", "address": 1073880064}
+{"node_id": "mmio:0X40023800", "node_type": "mmio", "address_hex": "0x40023800", "address": 1073887232}
+{"node_id": "mmio:0X40023804", "node_type": "mmio", "address_hex": "0x40023804", "address": 1073887236}
+{"node_id": "mmio:0X40023808", "node_type": "mmio", "address_hex": "0x40023808", "address": 1073887240}
+{"node_id": "mmio:0X40023830", "node_type": "mmio", "address_hex": "0x40023830", "address": 1073887280}
+{"node_id": "mmio:0X40023840", "node_type": "mmio", "address_hex": "0x40023840", "address": 1073887296}
+{"node_id": "mmio:0X40023844", "node_type": "mmio", "address_hex": "0x40023844", "address": 1073887300}
+{"node_id": "mmio:0X40023874", "node_type": "mmio", "address_hex": "0x40023874", "address": 1073887348}
+{"node_id": "mmio:0X40023C00", "node_type": "mmio", "address_hex": "0x40023C00", "address": 1073888256}
+{"node_id": "mmio:0X40023C04", "node_type": "mmio", "address_hex": "0x40023C04", "address": 1073888260}
+{"node_id": "mmio:0X40023C08", "node_type": "mmio", "address_hex": "0x40023C08", "address": 1073888264}
+{"node_id": "mmio:0X40023C0C", "node_type": "mmio", "address_hex": "0x40023C0C", "address": 1073888268}
+{"node_id": "mmio:0X40023C10", "node_type": "mmio", "address_hex": "0x40023C10", "address": 1073888272}
+{"node_id": "mmio:0X40023C14", "node_type": "mmio", "address_hex": "0x40023C14", "address": 1073888276}
+{"node_id": "mmio:0X40023C18", "node_type": "mmio", "address_hex": "0x40023C18", "address": 1073888280}
+{"node_id": "mmio:0X40028000", "node_type": "mmio", "address_hex": "0x40028000", "address": 1073905664}
+{"node_id": "mmio:0X40028004", "node_type": "mmio", "address_hex": "0x40028004", "address": 1073905668}
+{"node_id": "mmio:0X40028010", "node_type": "mmio", "address_hex": "0x40028010", "address": 1073905680}
+{"node_id": "mmio:0X40028014", "node_type": "mmio", "address_hex": "0x40028014", "address": 1073905684}
+{"node_id": "mmio:0X40028018", "node_type": "mmio", "address_hex": "0x40028018", "address": 1073905688}
+{"node_id": "mmio:0X4002801C", "node_type": "mmio", "address_hex": "0x4002801C", "address": 1073905692}
+{"node_id": "mmio:0X40028040", "node_type": "mmio", "address_hex": "0x40028040", "address": 1073905728}
+{"node_id": "mmio:0X40028044", "node_type": "mmio", "address_hex": "0x40028044", "address": 1073905732}
+{"node_id": "mmio:0X40029000", "node_type": "mmio", "address_hex": "0x40029000", "address": 1073909760}
+{"node_id": "mmio:0X40029004", "node_type": "mmio", "address_hex": "0x40029004", "address": 1073909764}
+{"node_id": "mmio:0X40029008", "node_type": "mmio", "address_hex": "0x40029008", "address": 1073909768}
+{"node_id": "mmio:0X4002900C", "node_type": "mmio", "address_hex": "0x4002900C", "address": 1073909772}
+{"node_id": "mmio:0X40029010", "node_type": "mmio", "address_hex": "0x40029010", "address": 1073909776}
+{"node_id": "mmio:0X40029014", "node_type": "mmio", "address_hex": "0x40029014", "address": 1073909780}
+{"node_id": "mmio:0X40029018", "node_type": "mmio", "address_hex": "0x40029018", "address": 1073909784}
+{"node_id": "mmio:0X4002901C", "node_type": "mmio", "address_hex": "0x4002901C", "address": 1073909788}
+{"node_id": "mmio:0X4002904C", "node_type": "mmio", "address_hex": "0x4002904C", "address": 1073909836}
+{"node_id": "mmio:0XE0001000", "node_type": "mmio", "address_hex": "0xE0001000", "address": 3758100480}
+{"node_id": "mmio:0XE0001004", "node_type": "mmio", "address_hex": "0xE0001004", "address": 3758100484}
+{"node_id": "mmio:0XE000E010", "node_type": "mmio", "address_hex": "0xE000E010", "address": 3758153744}
+{"node_id": "mmio:0XE000E014", "node_type": "mmio", "address_hex": "0xE000E014", "address": 3758153748}
+{"node_id": "mmio:0XE000E018", "node_type": "mmio", "address_hex": "0xE000E018", "address": 3758153752}
+{"node_id": "mmio:0XE000E104", "node_type": "mmio", "address_hex": "0xE000E104", "address": 3758153988}
+{"node_id": "mmio:0XE000E204", "node_type": "mmio", "address_hex": "0xE000E204", "address": 3758154244}
+{"node_id": "mmio:0XE000E284", "node_type": "mmio", "address_hex": "0xE000E284", "address": 3758154372}
+{"node_id": "mmio:0XE000ED04", "node_type": "mmio", "address_hex": "0xE000ED04", "address": 3758157060}
+{"node_id": "mmio:0XE000ED08", "node_type": "mmio", "address_hex": "0xE000ED08", "address": 3758157064}
+{"node_id": "mmio:0XE000ED0C", "node_type": "mmio", "address_hex": "0xE000ED0C", "address": 3758157068}
+{"node_id": "mmio:0XE000ED20", "node_type": "mmio", "address_hex": "0xE000ED20", "address": 3758157088}
+{"node_id": "mmio:0XE000ED88", "node_type": "mmio", "address_hex": "0xE000ED88", "address": 3758157192}
+{"node_id": "mmio:0XE000EDFC", "node_type": "mmio", "address_hex": "0xE000EDFC", "address": 3758157308}
+{"node_id": "mmio:0XE0042004", "node_type": "mmio", "address_hex": "0xE0042004", "address": 3758366724}

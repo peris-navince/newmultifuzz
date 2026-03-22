@@ -1,0 +1,784 @@
+{"src": "func:CDC_GetInterface@00084014", "edge_type": "calls", "dst": "func:USBD_SendControl", "source": "ghidra"}
+{"src": "func:CDC_GetOtherInterface@00084028", "edge_type": "calls", "dst": "func:USBD_SendControl", "source": "ghidra"}
+{"src": "func:CDC_Setup@0008403c", "edge_type": "calls", "dst": "func:USBD_RecvControl", "source": "ghidra"}
+{"src": "func:CDC_Setup@0008403c", "edge_type": "calls", "dst": "func:USBD_SendControl", "source": "ghidra"}
+{"src": "func:CDC_Setup@0008403c", "edge_type": "calls", "dst": "func:cancelReset", "source": "ghidra"}
+{"src": "func:CDC_Setup@0008403c", "edge_type": "calls", "dst": "func:initiateReset", "source": "ghidra"}
+{"src": "func:DueFlashStorage@00082a00", "edge_type": "calls", "dst": "func:flash_init", "source": "ghidra"}
+{"src": "func:DueFlashStorage@00082a00", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:IrqHandler@00083df0", "edge_type": "calls", "dst": "func:store_char", "source": "ghidra"}
+{"src": "func:PIOA_Handler@00083828", "edge_type": "reads_mmio", "dst": "mmio:0X400E0E4C", "instruction": "ldr r4,[r3,#0x4c]", "source": "ghidra"}
+{"src": "func:PIOB_Handler@00083860", "edge_type": "reads_mmio", "dst": "mmio:0X400E104C", "instruction": "ldr r4,[r3,#0x4c]", "source": "ghidra"}
+{"src": "func:PIO_Configure@0008321c", "edge_type": "calls", "dst": "func:PIO_SetInput", "source": "ghidra"}
+{"src": "func:PIO_Configure@0008321c", "edge_type": "calls", "dst": "func:PIO_SetOutput", "source": "ghidra"}
+{"src": "func:PIO_Configure@0008321c", "edge_type": "calls", "dst": "func:PIO_SetPeripheral", "source": "ghidra"}
+{"src": "func:Reset_Handler@000837a0", "edge_type": "calls", "dst": "func:main", "source": "ghidra"}
+{"src": "func:Reset_Handler@000837a0", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED08", "instruction": "ldr r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:Reset_Handler@000837a0", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED08", "instruction": "str r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:RingBuffer@00083c1c", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:SysTick_Config@00080148", "edge_type": "writes_mmio", "dst": "mmio:0XE000E010", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:SysTick_Config@00080148", "edge_type": "writes_mmio", "dst": "mmio:0XE000E014", "instruction": "str r0,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:SysTick_Config@00080148", "edge_type": "writes_mmio", "dst": "mmio:0XE000E018", "instruction": "str r0,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:SysTick_Config@00080148", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED23", "instruction": "strb.w r1,[r2,#0x23]", "source": "ghidra"}
+{"src": "func:SysTick_Handler@000838a2", "edge_type": "calls", "dst": "func:TimeTick_Increment", "source": "ghidra"}
+{"src": "func:SysTick_Handler@000838a2", "edge_type": "calls", "dst": "func:__false", "source": "ghidra"}
+{"src": "func:SysTick_Handler@000838a2", "edge_type": "calls", "dst": "func:tickReset", "source": "ghidra"}
+{"src": "func:SystemCoreClockUpdate@000836d0", "edge_type": "reads_mmio", "dst": "mmio:0X400E0620", "instruction": "ldr r1,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:SystemCoreClockUpdate@000836d0", "edge_type": "reads_mmio", "dst": "mmio:0X400E0628", "instruction": "ldr r0,[r0,#0x28]", "source": "ghidra"}
+{"src": "func:SystemCoreClockUpdate@000836d0", "edge_type": "reads_mmio", "dst": "mmio:0X400E0628", "instruction": "ldr r4,[r0,#0x28]", "source": "ghidra"}
+{"src": "func:SystemCoreClockUpdate@000836d0", "edge_type": "reads_mmio", "dst": "mmio:0X400E0630", "instruction": "ldr r1,[r2,#0x30]", "source": "ghidra"}
+{"src": "func:SystemCoreClockUpdate@000836d0", "edge_type": "reads_mmio", "dst": "mmio:0X400E0630", "instruction": "ldr r2,[r2,#0x30]", "source": "ghidra"}
+{"src": "func:SystemCoreClockUpdate@000836d0", "edge_type": "reads_mmio", "dst": "mmio:0X400E0630", "instruction": "ldr r3,[r2,#0x30]", "source": "ghidra"}
+{"src": "func:SystemCoreClockUpdate@000836d0", "edge_type": "reads_mmio", "dst": "mmio:0X400E1A24", "instruction": "ldr r1,[r1,#0x14]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "reads_mmio", "dst": "mmio:0X400E0620", "instruction": "ldr r2,[r3,#0x20]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "reads_mmio", "dst": "mmio:0X400E0630", "instruction": "ldr r1,[r2,#0x30]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "reads_mmio", "dst": "mmio:0X400E0668", "instruction": "ldr r1,[r3,#0x68]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "reads_mmio", "dst": "mmio:0X400E0668", "instruction": "ldr r2,[r3,#0x68]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "writes_mmio", "dst": "mmio:0X400E0620", "instruction": "str r2,[r3,#0x20]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "writes_mmio", "dst": "mmio:0X400E0628", "instruction": "str r1,[r2,#0x28]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "writes_mmio", "dst": "mmio:0X400E0630", "instruction": "str r1,[r2,#0x30]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "writes_mmio", "dst": "mmio:0X400E0A00", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:SystemInit@00083648", "edge_type": "writes_mmio", "dst": "mmio:0X400E0C00", "instruction": "str.w r3,[r2,#0x200]", "source": "ghidra"}
+{"src": "func:UART_Handler@00082bf0", "edge_type": "calls", "dst": "func:IrqHandler", "source": "ghidra"}
+{"src": "func:UDD_Attach@00083370", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r0,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_Attach@00083370", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r0,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:UDD_Attach@00083370", "edge_type": "reads_mmio", "dst": "mmio:0X400AC804", "instruction": "ldr.w r0,[r4,#0x804]", "source": "ghidra"}
+{"src": "func:UDD_Attach@00083370", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str r0,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_Attach@00083370", "edge_type": "writes_mmio", "dst": "mmio:0X400AC018", "instruction": "str r0,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:UDD_Attach@00083370", "edge_type": "writes_mmio", "dst": "mmio:0X400AC800", "instruction": "str.w r0,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:UDD_ClearIN@00083458", "edge_type": "writes_mmio", "dst": "mmio:0X400AC160", "instruction": "str.w r2,[r3,#0x160]", "source": "ghidra"}
+{"src": "func:UDD_ClearOUT@00083470", "edge_type": "writes_mmio", "dst": "mmio:0X400AC160", "instruction": "str.w r2,[r3,#0x160]", "source": "ghidra"}
+{"src": "func:UDD_ClearSetupInt@00083498", "edge_type": "writes_mmio", "dst": "mmio:0X400AC160", "instruction": "str.w r2,[r3,#0x160]", "source": "ghidra"}
+{"src": "func:UDD_Detach@000833c0", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_Detach@000833c0", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_FifoByteCount@000835c4", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr.w r0,[r3,r0,lsl #0x2]", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "calls", "dst": "func:pmc_enable_periph_clk", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "calls", "dst": "func:pmc_enable_udpck", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "calls", "dst": "func:pmc_enable_upll_clock", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "calls", "dst": "func:pmc_switch_udpck_to_upllck", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r2,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "writes_mmio", "dst": "mmio:0X400AC800", "instruction": "str.w r2,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "writes_mmio", "dst": "mmio:0XE000E104", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:UDD_Init@000832a0", "edge_type": "writes_mmio", "dst": "mmio:0XE000E428", "instruction": "strb.w r4,[r3,#0x328]", "source": "ghidra"}
+{"src": "func:UDD_InitEP@000833d0", "edge_type": "reads_mmio", "dst": "mmio:0X400AC01C", "instruction": "ldr r1,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:UDD_InitEP@000833d0", "edge_type": "reads_mmio", "dst": "mmio:0X400AC130", "instruction": "ldr.w r3,[r3,r0,lsl #0x2]", "source": "ghidra"}
+{"src": "func:UDD_InitEP@000833d0", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str.w r1,[r3,r2,lsl #0x2]", "source": "ghidra"}
+{"src": "func:UDD_InitEP@000833d0", "edge_type": "writes_mmio", "dst": "mmio:0X400AC01C", "instruction": "str r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:UDD_InitEndpoints@000833fc", "edge_type": "reads_mmio", "dst": "mmio:0X400AC01C", "instruction": "ldr r5,[r2,#0x1c]", "source": "ghidra"}
+{"src": "func:UDD_InitEndpoints@000833fc", "edge_type": "reads_mmio", "dst": "mmio:0X400AC134", "instruction": "ldr r2,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_InitEndpoints@000833fc", "edge_type": "reads_mmio", "dst": "mmio:0X400AC138", "instruction": "ldr r2,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_InitEndpoints@000833fc", "edge_type": "writes_mmio", "dst": "mmio:0X400AC01C", "instruction": "str r4,[r2,#0x1c]", "source": "ghidra"}
+{"src": "func:UDD_InitEndpoints@000833fc", "edge_type": "writes_mmio", "dst": "mmio:0X400AC104", "instruction": "str.w r5,[r2,r4,lsl #0x2]", "source": "ghidra"}
+{"src": "func:UDD_InitEndpoints@000833fc", "edge_type": "writes_mmio", "dst": "mmio:0X400AC108", "instruction": "str.w r5,[r2,r4,lsl #0x2]", "source": "ghidra"}
+{"src": "func:UDD_ReceivedSetupInt@00083488", "edge_type": "reads_mmio", "dst": "mmio:0X400AC130", "instruction": "ldr.w r0,[r3,#0x130]", "source": "ghidra"}
+{"src": "func:UDD_ReleaseRX@000835d8", "edge_type": "writes_mmio", "dst": "mmio:0X400AC160", "instruction": "str.w r2,[r3,#0x160]", "source": "ghidra"}
+{"src": "func:UDD_Send@000834a8", "edge_type": "calls", "dst": "func:UDD_ClearIN", "source": "ghidra"}
+{"src": "func:UDD_Send@000834a8", "edge_type": "reads_mmio", "dst": "mmio:0X400AC130", "instruction": "ldr.w r4,[r4,#0x130]", "source": "ghidra"}
+{"src": "func:UDD_Send@000834a8", "edge_type": "writes_mmio", "dst": "mmio:0X400AC160", "instruction": "str.w r2,[r3,#0x160]", "source": "ghidra"}
+{"src": "func:UDD_SetAddress@00083628", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_SetAddress@00083628", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:UDD_Stall@000835b0", "edge_type": "writes_mmio", "dst": "mmio:0X400AC01C", "instruction": "str r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:UDD_Stall@000835b0", "edge_type": "writes_mmio", "dst": "mmio:0X400AC1F0", "instruction": "str.w r2,[r3,#0x1f0]", "source": "ghidra"}
+{"src": "func:UDD_WaitIN@00083438", "edge_type": "reads_mmio", "dst": "mmio:0X400AC130", "instruction": "ldr.w r3,[r3,#0x130]", "source": "ghidra"}
+{"src": "func:UDD_WaitOUT@00083448", "edge_type": "reads_mmio", "dst": "mmio:0X400AC130", "instruction": "ldr.w r3,[r3,#0x130]", "source": "ghidra"}
+{"src": "func:USART0_Handler@00082c04", "edge_type": "calls", "dst": "func:IrqHandler", "source": "ghidra"}
+{"src": "func:USART1_Handler@00082c10", "edge_type": "calls", "dst": "func:IrqHandler", "source": "ghidra"}
+{"src": "func:USART2_Handler@00082c1c", "edge_type": "calls", "dst": "func:IrqHandler", "source": "ghidra"}
+{"src": "func:USARTClass@00083e50", "edge_type": "calls", "dst": "func:UARTClass", "source": "ghidra"}
+{"src": "func:USBD_Available@000840f4", "edge_type": "calls", "dst": "func:UDD_FifoByteCount", "source": "ghidra"}
+{"src": "func:USBD_ClassInterfaceRequest@000842cc", "edge_type": "calls", "dst": "func:CDC_Setup", "source": "ghidra"}
+{"src": "func:USBD_ClassInterfaceRequest@000842cc", "edge_type": "calls", "dst": "func:PluggableUSB", "source": "ghidra"}
+{"src": "func:USBD_ClassInterfaceRequest@000842cc", "edge_type": "calls", "dst": "func:setup", "source": "ghidra"}
+{"src": "func:USBD_Flush@0008432e", "edge_type": "calls", "dst": "func:UDD_FifoByteCount", "source": "ghidra"}
+{"src": "func:USBD_Flush@0008432e", "edge_type": "calls", "dst": "func:UDD_ReleaseTX", "source": "ghidra"}
+{"src": "func:USBD_Recv@00084120", "edge_type": "calls", "dst": "func:UDD_FifoByteCount", "source": "ghidra"}
+{"src": "func:USBD_Recv@00084120", "edge_type": "calls", "dst": "func:UDD_Recv8", "source": "ghidra"}
+{"src": "func:USBD_Recv@00084120", "edge_type": "calls", "dst": "func:UDD_ReleaseRX", "source": "ghidra"}
+{"src": "func:USBD_Recv@0008419c", "edge_type": "calls", "dst": "func:USBD_Recv", "source": "ghidra"}
+{"src": "func:USBD_RecvControl@000842b0", "edge_type": "calls", "dst": "func:UDD_ClearOUT", "source": "ghidra"}
+{"src": "func:USBD_RecvControl@000842b0", "edge_type": "calls", "dst": "func:UDD_Recv", "source": "ghidra"}
+{"src": "func:USBD_RecvControl@000842b0", "edge_type": "calls", "dst": "func:UDD_WaitOUT", "source": "ghidra"}
+{"src": "func:USBD_Send@000841c0", "edge_type": "calls", "dst": "func:UDD_Send", "source": "ghidra"}
+{"src": "func:USBD_SendControl@0008420c", "edge_type": "calls", "dst": "func:UDD_Send", "source": "ghidra"}
+{"src": "func:USBD_SendInterfaces@000842ea", "edge_type": "calls", "dst": "func:CDC_GetInterface", "source": "ghidra"}
+{"src": "func:USBD_SendInterfaces@000842ea", "edge_type": "calls", "dst": "func:PluggableUSB", "source": "ghidra"}
+{"src": "func:USBD_SendInterfaces@000842ea", "edge_type": "calls", "dst": "func:getInterface", "source": "ghidra"}
+{"src": "func:USBD_SendOtherInterfaces@0008430c", "edge_type": "calls", "dst": "func:CDC_GetOtherInterface", "source": "ghidra"}
+{"src": "func:USBD_SendOtherInterfaces@0008430c", "edge_type": "calls", "dst": "func:PluggableUSB", "source": "ghidra"}
+{"src": "func:USBD_SendOtherInterfaces@0008430c", "edge_type": "calls", "dst": "func:getInterface", "source": "ghidra"}
+{"src": "func:USBDevice_@00084344", "edge_type": "calls", "dst": "func:UDD_Init", "source": "ghidra"}
+{"src": "func:USBDevice_@00084344", "edge_type": "calls", "dst": "func:UDD_SetStack", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "accesses_mmio", "dst": "mmio:0X400AC000", "instruction": "sub.w r3,r3,#0x1f8", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:PluggableUSB", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_ClearIN", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_ClearSetupInt", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_InitEP", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_InitEndpoints", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_ReceivedSetupInt", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_Recv", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_Send8", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_SetAddress", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_Stall", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:UDD_WaitIN", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:USBD_Available", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:USBD_ClassInterfaceRequest", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:USBD_SendControl", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:USBD_SendInterfaces", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:USBD_SendOtherInterfaces", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:USB_SendStringDescriptor", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:USB_SendZlp", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:accept", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:getDescriptor", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:getShortName", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r2,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC004", "instruction": "ldr r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC004", "instruction": "ldr r3,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC004", "instruction": "ldr r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC014", "instruction": "ldr r2,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC01C", "instruction": "ldr r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC108", "instruction": "ldr.w r3,[r4,#0x108]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "reads_mmio", "dst": "mmio:0X400AC138", "instruction": "ldr.w r2,[r3,#0x138]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str r2,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC000", "instruction": "str r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC008", "instruction": "str r3,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC008", "instruction": "str.mi r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC014", "instruction": "str r2,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC014", "instruction": "str r3,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC018", "instruction": "str r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC018", "instruction": "str r3,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC01C", "instruction": "str r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC108", "instruction": "str.w r3,[r4,#0x108]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC168", "instruction": "str r0,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC168", "instruction": "str.w r2,[r3,#0x168]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC1F0", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC1F8", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC228", "instruction": "str.w r2,[r3,#0x228]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC318", "instruction": "str.w r3,[r4,#0x318]", "source": "ghidra"}
+{"src": "func:USB_ISR@00084394", "edge_type": "writes_mmio", "dst": "mmio:0X400AC328", "instruction": "str.w r3,[r4,#0x328]", "source": "ghidra"}
+{"src": "func:USB_SendStringDescriptor@0008424c", "edge_type": "calls", "dst": "func:USBD_SendControl", "source": "ghidra"}
+{"src": "func:USB_SendStringDescriptor@0008424c", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:USB_SendZlp@000840d4", "edge_type": "reads_mmio", "dst": "mmio:0X400AC004", "instruction": "ldr r3,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:USB_SendZlp@000840d4", "edge_type": "reads_mmio", "dst": "mmio:0X400AC130", "instruction": "ldr.w r2,[r3,#0x130]", "source": "ghidra"}
+{"src": "func:USB_SendZlp@000840d4", "edge_type": "writes_mmio", "dst": "mmio:0X400AC160", "instruction": "str.w r2,[r3,#0x160]", "source": "ghidra"}
+{"src": "func:_Balloc@00088f64", "edge_type": "calls", "dst": "func:_calloc_r", "source": "ghidra"}
+{"src": "func:_GLOBAL__sub_I_EndPoints@00084388", "edge_type": "calls", "dst": "func:USBDevice_", "source": "ghidra"}
+{"src": "func:_GLOBAL__sub_I__Z11addon_delayl@0008094c", "edge_type": "calls", "dst": "func:DueFlashStorage", "source": "ghidra"}
+{"src": "func:_GLOBAL__sub_I_g_APinDescription@00082d40", "edge_type": "calls", "dst": "func:RingBuffer", "source": "ghidra"}
+{"src": "func:_GLOBAL__sub_I_g_APinDescription@00082d40", "edge_type": "calls", "dst": "func:UARTClass", "source": "ghidra"}
+{"src": "func:_GLOBAL__sub_I_g_APinDescription@00082d40", "edge_type": "calls", "dst": "func:USARTClass", "source": "ghidra"}
+{"src": "func:__aeabi_cdcmpeq@00085174", "edge_type": "calls", "dst": "func:__nedf2", "source": "ghidra"}
+{"src": "func:__aeabi_cdrcmple@00085164", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_cfcmpeq@00085350", "edge_type": "calls", "dst": "func:__cmpsf2", "source": "ghidra"}
+{"src": "func:__aeabi_cfrcmple@00085348", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_dcmpeq@00085184", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_dcmpge@000851c0", "edge_type": "calls", "dst": "func:__aeabi_cdrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_dcmpgt@000851d4", "edge_type": "calls", "dst": "func:__aeabi_cdrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_dcmple@000851ac", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_dcmplt@00085198", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_drsub@00084944", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:__aeabi_fcmpeq@00085360", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_fcmpge@0008539c", "edge_type": "calls", "dst": "func:__aeabi_cfrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_fcmpgt@000853b0", "edge_type": "calls", "dst": "func:__aeabi_cfrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_fcmple@00085388", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_fcmplt@00085374", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_uldivmod@00089b64", "edge_type": "calls", "dst": "func:__aeabi_idiv0", "source": "ghidra"}
+{"src": "func:__aeabi_uldivmod@00089b64", "edge_type": "calls", "dst": "func:__gnu_uldivmod_helper", "source": "ghidra"}
+{"src": "func:__d2b@000894bc", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:__d2b@000894bc", "edge_type": "calls", "dst": "func:__hi0bits", "source": "ghidra"}
+{"src": "func:__d2b@000894bc", "edge_type": "calls", "dst": "func:__lo0bits", "source": "ghidra"}
+{"src": "func:__divdf3@00084f08", "edge_type": "calls", "dst": "func:FUN_00085076", "source": "ghidra"}
+{"src": "func:__gnu_ldivmod_helper@00089b90", "edge_type": "calls", "dst": "func:__divdi3", "source": "ghidra"}
+{"src": "func:__gnu_uldivmod_helper@00089bc0", "edge_type": "calls", "dst": "func:__udivdi3", "source": "ghidra"}
+{"src": "func:__i2b@000890f4", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:__libc_fini_array@000885f0", "edge_type": "accesses_mmio", "dst": "mmio:0X4770469E", "instruction": "blx r3", "source": "ghidra"}
+{"src": "func:__libc_fini_array@000885f0", "edge_type": "calls", "dst": "func:__do_global_dtors_aux", "source": "ghidra"}
+{"src": "func:__libc_fini_array@000885f0", "edge_type": "calls", "dst": "func:_fini", "source": "ghidra"}
+{"src": "func:__libc_init_array@000853d4", "edge_type": "calls", "dst": "func:_init", "source": "ghidra"}
+{"src": "func:__libc_init_array@000853d4", "edge_type": "calls", "dst": "func:frame_dummy", "source": "ghidra"}
+{"src": "func:__libc_init_array@000853d4", "edge_type": "calls", "dst": "func:register_fini", "source": "ghidra"}
+{"src": "func:__lshift@000892e0", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:__mdiff@000893e4", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:__mdiff@000893e4", "edge_type": "calls", "dst": "func:__mcmp", "source": "ghidra"}
+{"src": "func:__muldf3@00084cb4", "edge_type": "calls", "dst": "func:FUN_00084e90", "source": "ghidra"}
+{"src": "func:__multadd@00088fc4", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:__multadd@00088fc4", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:__multiply@00089108", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:__pow5mult@00089244", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:__pow5mult@00089244", "edge_type": "calls", "dst": "func:__multadd", "source": "ghidra"}
+{"src": "func:__pow5mult@00089244", "edge_type": "calls", "dst": "func:__multiply", "source": "ghidra"}
+{"src": "func:__ssprint_r@0008995c", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:__ssprint_r@0008995c", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:__ssprint_r@0008995c", "edge_type": "calls", "dst": "func:_realloc_r", "source": "ghidra"}
+{"src": "func:__ssprint_r@0008995c", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:__ssprint_r@0008995c", "edge_type": "calls", "dst": "func:memmove", "source": "ghidra"}
+{"src": "func:_calloc_r@00089b04", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:_calloc_r@00089b04", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:_Balloc", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:_Bfree", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__aeabi_d2iz", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__aeabi_dcmpeq", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__aeabi_dcmpge", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__aeabi_dcmpgt", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__aeabi_dcmplt", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__aeabi_i2d", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__d2b", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__floatunsidf", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__hi0bits", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__i2b", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__lshift", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__mcmp", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__mdiff", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__multadd", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__multiply", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__pow5mult", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:_dtoa_r@000877b8", "edge_type": "calls", "dst": "func:quorem", "source": "ghidra"}
+{"src": "func:_free_r@000886bc", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_free_r@000886bc", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_free_r@000886bc", "edge_type": "calls", "dst": "func:_malloc_trim_r", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "accesses_mmio", "dst": "mmio:0X400F09D8", "instruction": "add r1,r4", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "calls", "dst": "func:_sbrk_r", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "reads_mmio", "dst": "mmio:0X400F09D8", "instruction": "ldr r0,[r1,#0x8]", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "reads_mmio", "dst": "mmio:0X400F09DC", "instruction": "ldr r3,[r1,#0x4]", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "writes_mmio", "dst": "mmio:0X400F09D8", "instruction": "str r4,[r1,#0x8]", "source": "ghidra"}
+{"src": "func:_malloc_r@0008885c", "edge_type": "writes_mmio", "dst": "mmio:0X400F09DC", "instruction": "str r3,[r1,#0x4]", "source": "ghidra"}
+{"src": "func:_malloc_trim_r@00088620", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_malloc_trim_r@00088620", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_malloc_trim_r@00088620", "edge_type": "calls", "dst": "func:_sbrk_r", "source": "ghidra"}
+{"src": "func:_realloc_r@00089578", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_realloc_r@00089578", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_realloc_r@00089578", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:_realloc_r@00089578", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:_realloc_r@00089578", "edge_type": "calls", "dst": "func:memmove", "source": "ghidra"}
+{"src": "func:_sbrk_r@00089938", "edge_type": "calls", "dst": "func:_sbrk", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:__aeabi_dcmpeq", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:__aeabi_dcmplt", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:__aeabi_uldivmod", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:__fpclassifyd", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:__ssprint_r", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:_dtoa_r", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:_localeconv_r", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:_svfprintf_r@00086184", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:_watchdogDefaultSetup@00084824", "edge_type": "calls", "dst": "func:WDT_Disable", "source": "ghidra"}
+{"src": "func:accept@00083f58", "edge_type": "calls", "dst": "func:USBD_Available", "source": "ghidra"}
+{"src": "func:accept@00083f58", "edge_type": "calls", "dst": "func:USBD_Recv", "source": "ghidra"}
+{"src": "func:accept@00083f58", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r3,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:accept@00083f58", "edge_type": "writes_mmio", "dst": "mmio:0X400AC228", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:atexit@00087678", "edge_type": "calls", "dst": "func:__register_exitproc", "source": "ghidra"}
+{"src": "func:atoi@000853c4", "edge_type": "calls", "dst": "func:strtol", "source": "ghidra"}
+{"src": "func:atol@000853cc", "edge_type": "calls", "dst": "func:strtol", "source": "ghidra"}
+{"src": "func:attach@00084368", "edge_type": "calls", "dst": "func:UDD_Attach", "source": "ghidra"}
+{"src": "func:available@00083f30", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r0,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:banzai@20078000", "edge_type": "reads_mmio", "dst": "mmio:0X400E0A08", "instruction": "ldr r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:banzai@20078000", "edge_type": "writes_mmio", "dst": "mmio:0X400E0A04", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:banzai@20078000", "edge_type": "writes_mmio", "dst": "mmio:0X400E1A00", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:begin@00083de8", "edge_type": "calls", "dst": "func:init", "source": "ghidra"}
+{"src": "func:begin@00083e48", "edge_type": "calls", "dst": "func:init", "source": "ghidra"}
+{"src": "func:blink_got_gps@000805d0", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:blink_start@000805ac", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:collect_all_data@00082110", "edge_type": "calls", "dst": "func:collect_gps_data", "source": "ghidra"}
+{"src": "func:collect_all_data@00082110", "edge_type": "calls", "dst": "func:data_append_char", "source": "ghidra"}
+{"src": "func:collect_all_data@00082110", "edge_type": "calls", "dst": "func:data_append_string", "source": "ghidra"}
+{"src": "func:collect_all_data@00082110", "edge_type": "calls", "dst": "func:data_field_separator", "source": "ghidra"}
+{"src": "func:collect_all_data@00082110", "edge_type": "calls", "dst": "func:gsm_get_queclocator", "source": "ghidra"}
+{"src": "func:collect_all_data@00082110", "edge_type": "calls", "dst": "func:gsm_get_time", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:TinyGPS", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:__aeabi_f2d", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:__aeabi_fcmpeq", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:available", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:blink_got_gps", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:data_append_string", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:data_field_separator", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:encode", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:f_altitude", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:f_course", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:f_get_position", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:f_speed_kmph", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:get_datetime", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:gsm_set_time", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:ltoa", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:read", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:sprintf", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:stats", "source": "ghidra"}
+{"src": "func:collect_gps_data@00081df0", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:cpu_full_speed@000806bc", "edge_type": "calls", "dst": "func:SysTick_Config", "source": "ghidra"}
+{"src": "func:cpu_full_speed@000806bc", "edge_type": "calls", "dst": "func:SystemInit", "source": "ghidra"}
+{"src": "func:cpu_slow_down@00080688", "edge_type": "calls", "dst": "func:SysTick_Config", "source": "ghidra"}
+{"src": "func:cpu_slow_down@00080688", "edge_type": "calls", "dst": "func:SystemCoreClockUpdate", "source": "ghidra"}
+{"src": "func:cpu_slow_down@00080688", "edge_type": "calls", "dst": "func:pmc_mck_set_prescaler", "source": "ghidra"}
+{"src": "func:cpu_slow_down@00080688", "edge_type": "reads_mmio", "dst": "mmio:0XE000E010", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:cpu_slow_down@00080688", "edge_type": "reads_mmio", "dst": "mmio:0XE000E010", "instruction": "ldr r3,[0x000806b4]", "source": "ghidra"}
+{"src": "func:cpu_slow_down@00080688", "edge_type": "writes_mmio", "dst": "mmio:0XE000E010", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:data_field_separator@0008022c", "edge_type": "calls", "dst": "func:data_append_char", "source": "ghidra"}
+{"src": "func:data_reset@0008020c", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:delay@00083934", "edge_type": "calls", "dst": "func:GetTickCount", "source": "ghidra"}
+{"src": "func:delay@00083934", "edge_type": "calls", "dst": "func:yield", "source": "ghidra"}
+{"src": "func:device_init@00080174", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:device_init@00080174", "edge_type": "calls", "dst": "func:pinMode", "source": "ghidra"}
+{"src": "func:digitalRead@00083acc", "edge_type": "calls", "dst": "func:PIO_Get", "source": "ghidra"}
+{"src": "func:digitalRead@00083acc", "edge_type": "calls", "dst": "func:pinMode", "source": "ghidra"}
+{"src": "func:digitalWrite@00083a5c", "edge_type": "calls", "dst": "func:PIO_GetOutputDataStatus", "source": "ghidra"}
+{"src": "func:digitalWrite@00083a5c", "edge_type": "calls", "dst": "func:PIO_PullUp", "source": "ghidra"}
+{"src": "func:digitalWrite@00083a5c", "edge_type": "calls", "dst": "func:PIO_SetOutput", "source": "ghidra"}
+{"src": "func:digitalWrite@00083a5c", "edge_type": "calls", "dst": "func:pinMode", "source": "ghidra"}
+{"src": "func:encode@000827d4", "edge_type": "calls", "dst": "func:term_complete", "source": "ghidra"}
+{"src": "func:end@00083d18", "edge_type": "calls", "dst": "func:pmc_disable_periph_clk", "source": "ghidra"}
+{"src": "func:f_altitude@00082938", "edge_type": "calls", "dst": "func:__aeabi_i2d", "source": "ghidra"}
+{"src": "func:f_altitude@00082938", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:f_altitude@00082938", "edge_type": "calls", "dst": "func:__truncdfsf2", "source": "ghidra"}
+{"src": "func:f_course@00082964", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:f_course@00082964", "edge_type": "calls", "dst": "func:__floatunsidf", "source": "ghidra"}
+{"src": "func:f_course@00082964", "edge_type": "calls", "dst": "func:__truncdfsf2", "source": "ghidra"}
+{"src": "func:f_get_position@000828d0", "edge_type": "calls", "dst": "func:__aeabi_i2d", "source": "ghidra"}
+{"src": "func:f_get_position@000828d0", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:f_get_position@000828d0", "edge_type": "calls", "dst": "func:__truncdfsf2", "source": "ghidra"}
+{"src": "func:f_get_position@000828d0", "edge_type": "calls", "dst": "func:get_position", "source": "ghidra"}
+{"src": "func:f_speed_kmph@000829c0", "edge_type": "calls", "dst": "func:__aeabi_f2d", "source": "ghidra"}
+{"src": "func:f_speed_kmph@000829c0", "edge_type": "calls", "dst": "func:__aeabi_fcmpeq", "source": "ghidra"}
+{"src": "func:f_speed_kmph@000829c0", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:f_speed_kmph@000829c0", "edge_type": "calls", "dst": "func:__truncdfsf2", "source": "ghidra"}
+{"src": "func:f_speed_kmph@000829c0", "edge_type": "calls", "dst": "func:f_speed_knots", "source": "ghidra"}
+{"src": "func:f_speed_knots@00082990", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:f_speed_knots@00082990", "edge_type": "calls", "dst": "func:__floatunsidf", "source": "ghidra"}
+{"src": "func:f_speed_knots@00082990", "edge_type": "calls", "dst": "func:__truncdfsf2", "source": "ghidra"}
+{"src": "func:flash_init@00082aec", "edge_type": "calls", "dst": "func:efc_init", "source": "ghidra"}
+{"src": "func:flash_init@00082aec", "edge_type": "reads_mmio", "dst": "mmio:0X400E0A00", "instruction": "ldr r0,[0x00082b0c]", "source": "ghidra"}
+{"src": "func:flash_init@00082aec", "edge_type": "reads_mmio", "dst": "mmio:0X400E0C00", "instruction": "ldr r0,[0x00082b10]", "source": "ghidra"}
+{"src": "func:flash_write@00082b14", "edge_type": "calls", "dst": "func:efc_get_wait_state", "source": "ghidra"}
+{"src": "func:flash_write@00082b14", "edge_type": "calls", "dst": "func:efc_set_wait_state", "source": "ghidra"}
+{"src": "func:flash_write@00082b14", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:flash_write@00082b14", "edge_type": "calls", "dst": "func:translate_address", "source": "ghidra"}
+{"src": "func:flush@00083f18", "edge_type": "calls", "dst": "func:USBD_Flush", "source": "ghidra"}
+{"src": "func:flush@00083f18", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r3,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:get_datetime@000828a6", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:get_position@00082880", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gps_close@000809f0", "edge_type": "calls", "dst": "func:end", "source": "ghidra"}
+{"src": "func:gps_init@00080968", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:gps_init@00080968", "edge_type": "calls", "dst": "func:gps_open", "source": "ghidra"}
+{"src": "func:gps_init@00080968", "edge_type": "calls", "dst": "func:pinMode", "source": "ghidra"}
+{"src": "func:gps_off@00080326", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:gps_on@00080310", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:gps_open@00080958", "edge_type": "calls", "dst": "func:begin", "source": "ghidra"}
+{"src": "func:gps_setup@00080a08", "edge_type": "calls", "dst": "func:available", "source": "ghidra"}
+{"src": "func:gps_setup@00080a08", "edge_type": "calls", "dst": "func:gps_on", "source": "ghidra"}
+{"src": "func:gps_setup@00080a08", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gps_setup@00080a08", "edge_type": "calls", "dst": "func:read", "source": "ghidra"}
+{"src": "func:gsm_close@000809fc", "edge_type": "calls", "dst": "func:end", "source": "ghidra"}
+{"src": "func:gsm_config@00081130", "edge_type": "calls", "dst": "func:gsm_get_imei", "source": "ghidra"}
+{"src": "func:gsm_config@00081130", "edge_type": "calls", "dst": "func:gsm_set_apn", "source": "ghidra"}
+{"src": "func:gsm_config@00081130", "edge_type": "calls", "dst": "func:gsm_set_pin", "source": "ghidra"}
+{"src": "func:gsm_config@00081130", "edge_type": "calls", "dst": "func:gsm_startup_cmd", "source": "ghidra"}
+{"src": "func:gsm_config@00081130", "edge_type": "calls", "dst": "func:gsm_wait_modem_ready", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:gsm_get_connection_status", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:gsm_get_modem_status", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_connect@00081240", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_deactivate@0008100c", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_deactivate@0008100c", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_deactivate@0008100c", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_disconnect@00080fec", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_disconnect@00080fec", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_get_connection_status@00081168", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:gsm_get_connection_status@00081168", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_get_connection_status@00081168", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_get_connection_status@00081168", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_get_connection_status@00081168", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_get_connection_status@00081168", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:gsm_get_imei@00080ab4", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_get_imei@00080ab4", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_get_imei@00080ab4", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_get_imei@00080ab4", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:gsm_get_imei@00080ab4", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_get_imei@00080ab4", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:gsm_get_modem_status@00080f64", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:gsm_get_modem_status@00080f64", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_get_modem_status@00080f64", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_get_modem_status@00080f64", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_get_modem_status@00080f64", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_get_modem_status@00080f64", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_get_queclocator@00081d7c", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_get_queclocator@00081d7c", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_get_queclocator@00081d7c", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:gsm_get_queclocator@00081d7c", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_get_queclocator@00081d7c", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:gsm_get_reply@00080a98", "edge_type": "calls", "dst": "func:gsm_read_line", "source": "ghidra"}
+{"src": "func:gsm_get_time@00080e8c", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_get_time@00080e8c", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_get_time@00080e8c", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_get_time@00080e8c", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:gsm_get_time@00080e8c", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_get_time@00080e8c", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:gsm_init@000809a4", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:gsm_init@000809a4", "edge_type": "calls", "dst": "func:gsm_open", "source": "ghidra"}
+{"src": "func:gsm_init@000809a4", "edge_type": "calls", "dst": "func:pinMode", "source": "ghidra"}
+{"src": "func:gsm_is_final_result@00080350", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:gsm_is_final_result@00080350", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:gsm_is_final_result@00080350", "edge_type": "calls", "dst": "func:strncmp", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:available", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:status_led", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_ntp_update@00082394", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:gsm_off@00080be4", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:gsm_off@00080be4", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_off@00080be4", "edge_type": "calls", "dst": "func:gsm_power_status", "source": "ghidra"}
+{"src": "func:gsm_off@00080be4", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_off@00080be4", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_off@00080be4", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_off@00080be4", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_on@00080d00", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:gsm_on@00080d00", "edge_type": "calls", "dst": "func:gsm_off", "source": "ghidra"}
+{"src": "func:gsm_on@00080d00", "edge_type": "calls", "dst": "func:gsm_power_status", "source": "ghidra"}
+{"src": "func:gsm_on@00080d00", "edge_type": "calls", "dst": "func:gsm_send_at", "source": "ghidra"}
+{"src": "func:gsm_on@00080d00", "edge_type": "calls", "dst": "func:gsm_wakeup", "source": "ghidra"}
+{"src": "func:gsm_on@00080d00", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_on@00080d00", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_open@00080994", "edge_type": "calls", "dst": "func:begin", "source": "ghidra"}
+{"src": "func:gsm_power_status@0008033c", "edge_type": "calls", "dst": "func:digitalRead", "source": "ghidra"}
+{"src": "func:gsm_read_line@00080a48", "edge_type": "calls", "dst": "func:available", "source": "ghidra"}
+{"src": "func:gsm_read_line@00080a48", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_read_line@00080a48", "edge_type": "calls", "dst": "func:read", "source": "ghidra"}
+{"src": "func:gsm_send_at@00080b10", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_send_at@00080b10", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_send_at@00080b10", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_send_at@00080b10", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_send_begin@000813dc", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_send_begin@000813dc", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_send_begin@000813dc", "edge_type": "calls", "dst": "func:strncmp", "source": "ghidra"}
+{"src": "func:gsm_send_data@00081708", "edge_type": "calls", "dst": "func:gsm_connect", "source": "ghidra"}
+{"src": "func:gsm_send_data@00081708", "edge_type": "calls", "dst": "func:gsm_disconnect", "source": "ghidra"}
+{"src": "func:gsm_send_data@00081708", "edge_type": "calls", "dst": "func:gsm_send_at", "source": "ghidra"}
+{"src": "func:gsm_send_data@00081708", "edge_type": "calls", "dst": "func:gsm_send_http_current", "source": "ghidra"}
+{"src": "func:gsm_send_data@00081708", "edge_type": "calls", "dst": "func:parse_receive_reply", "source": "ghidra"}
+{"src": "func:gsm_send_data_current@00081454", "edge_type": "calls", "dst": "func:gsm_get_modem_status", "source": "ghidra"}
+{"src": "func:gsm_send_data_current@00081454", "edge_type": "calls", "dst": "func:gsm_send_begin", "source": "ghidra"}
+{"src": "func:gsm_send_data_current@00081454", "edge_type": "calls", "dst": "func:gsm_send_done", "source": "ghidra"}
+{"src": "func:gsm_send_data_current@00081454", "edge_type": "calls", "dst": "func:gsm_validate_tcp", "source": "ghidra"}
+{"src": "func:gsm_send_data_current@00081454", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_send_data_current@00081454", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:gsm_send_data_current@00081454", "edge_type": "calls", "dst": "func:url_encoded_strlcpy", "source": "ghidra"}
+{"src": "func:gsm_send_done@0008142c", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_send_done@0008142c", "edge_type": "calls", "dst": "func:strncmp", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:gsm_get_modem_status", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:gsm_send_begin", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:gsm_send_data_current", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:gsm_send_done", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:gsm_validate_tcp", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:itoa", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:gsm_send_http_current@000814b8", "edge_type": "calls", "dst": "func:url_encoded_strlen", "source": "ghidra"}
+{"src": "func:gsm_set_apn@00081040", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:gsm_set_apn@00081040", "edge_type": "calls", "dst": "func:gsm_send_at", "source": "ghidra"}
+{"src": "func:gsm_set_apn@00081040", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_set_apn@00081040", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_set_apn@00081040", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_set_apn@00081040", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_set_pin@00080df0", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_set_pin@00080df0", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_set_pin@00080df0", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_set_pin@00080df0", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:gsm_set_pin@00080df0", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_set_time@00080d50", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_set_time@00080d50", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_setup@0008114e", "edge_type": "calls", "dst": "func:blink_start", "source": "ghidra"}
+{"src": "func:gsm_setup@0008114e", "edge_type": "calls", "dst": "func:gsm_config", "source": "ghidra"}
+{"src": "func:gsm_setup@0008114e", "edge_type": "calls", "dst": "func:gsm_off", "source": "ghidra"}
+{"src": "func:gsm_setup@0008114e", "edge_type": "calls", "dst": "func:gsm_on", "source": "ghidra"}
+{"src": "func:gsm_startup_cmd@00080ef4", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_startup_cmd@00080ef4", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_validate_tcp@0008137c", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:gsm_validate_tcp@0008137c", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_validate_tcp@0008137c", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:gsm_validate_tcp@0008137c", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:gsm_validate_tcp@0008137c", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:gsm_wait_for_reply@00080b64", "edge_type": "calls", "dst": "func:gsm_is_final_result", "source": "ghidra"}
+{"src": "func:gsm_wait_for_reply@00080b64", "edge_type": "calls", "dst": "func:gsm_read_line", "source": "ghidra"}
+{"src": "func:gsm_wait_for_reply@00080b64", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_wait_for_reply@00080b64", "edge_type": "calls", "dst": "func:reboot", "source": "ghidra"}
+{"src": "func:gsm_wait_for_reply@00080b64", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_wait_for_reply@00080bdc", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_wait_modem_ready@00080fc0", "edge_type": "calls", "dst": "func:gsm_get_modem_status", "source": "ghidra"}
+{"src": "func:gsm_wait_modem_ready@00080fc0", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:gsm_wait_modem_ready@00080fc0", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:gsm_wakeup@00080cc4", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:gsm_wakeup@00080cc4", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:gsm_wakeup@00080cc4", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "accesses_mmio", "dst": "mmio:0X400E0E00", "instruction": "mov r0,r4", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "accesses_mmio", "dst": "mmio:0X400E1000", "instruction": "mov r0,r5", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:PIO_Configure", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:SystemInit", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:WDT_Disable", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:__libc_init_array", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:adc_configure_timing", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:adc_configure_trigger", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:adc_disable_all_channel", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:adc_disable_interrupt", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:adc_init", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:analogOutputInit", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "calls", "dst": "func:pmc_enable_periph_clk", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "reads_mmio", "dst": "mmio:0X400E0E00", "instruction": "ldr.w r0,[r4,#-0xc]", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "reads_mmio", "dst": "mmio:0XE000E010", "instruction": "ldr r3,[0x00082d20]", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "writes_mmio", "dst": "mmio:0X400E0EA0", "instruction": "str.w r6,[r4,#0xa0]", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "writes_mmio", "dst": "mmio:0X400E10A0", "instruction": "str.w r6,[r5,#0xa0]", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "writes_mmio", "dst": "mmio:0XE000E010", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "writes_mmio", "dst": "mmio:0XE000E014", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "writes_mmio", "dst": "mmio:0XE000E018", "instruction": "str r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:init@00082c28", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED23", "instruction": "strb.w r1,[r2,#0x23]", "source": "ghidra"}
+{"src": "func:init@00083d78", "edge_type": "calls", "dst": "func:pmc_enable_periph_clk", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:cpu_slow_down", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:gps_close", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:gps_off", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:gsm_close", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:gsm_off", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:pinMode", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:pmc_disable_all_periph_clk", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:pmc_enable_waitmode", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:pmc_set_writeprotect", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:pmc_switch_mainck_to_fastrc", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:reboot", "source": "ghidra"}
+{"src": "func:kill_power@00080c68", "edge_type": "calls", "dst": "func:usb_console_disable", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:collect_all_data", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:cpu_full_speed", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:cpu_slow_down", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:digitalRead", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:gsm_close", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:gsm_deactivate", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:gsm_open", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:kill_power", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:reboot", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:send_data", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:settings_save", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:sms_check", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:sms_send_msg", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:loop@00082218", "edge_type": "calls", "dst": "func:status_led", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:_watchdogDefaultSetup", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:attach", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:delay", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:init", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:initVariant", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:loop", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:serialEventRun", "source": "ghidra"}
+{"src": "func:main@000847ec", "edge_type": "calls", "dst": "func:setup", "source": "ghidra"}
+{"src": "func:parse_cmd@00080d90", "edge_type": "calls", "dst": "func:gsm_set_time", "source": "ghidra"}
+{"src": "func:parse_cmd@00080d90", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:parse_cmd@00080d90", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:parse_cmd@00080d90", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:parse_cmd@00080d90", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:parse_decimal@0008253e", "edge_type": "calls", "dst": "func:gpsatol", "source": "ghidra"}
+{"src": "func:parse_degrees@00082598", "edge_type": "calls", "dst": "func:gpsatol", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:gsm_get_connection_status", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:gsm_get_modem_status", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:parse_cmd", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:strlcat", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:parse_receive_reply@000815a4", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:peek@00083e7c", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r3,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:pinMode@00083954", "edge_type": "calls", "dst": "func:PIO_Configure", "source": "ghidra"}
+{"src": "func:pinMode@00083954", "edge_type": "calls", "dst": "func:adc_disable_channel", "source": "ghidra"}
+{"src": "func:pinMode@00083954", "edge_type": "calls", "dst": "func:pmc_disable_periph_clk", "source": "ghidra"}
+{"src": "func:pinMode@00083954", "edge_type": "calls", "dst": "func:pmc_enable_periph_clk", "source": "ghidra"}
+{"src": "func:pmc_disable_all_periph_clk@00083098", "edge_type": "reads_mmio", "dst": "mmio:0X400E0618", "instruction": "ldr r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:pmc_disable_all_periph_clk@00083098", "edge_type": "reads_mmio", "dst": "mmio:0X400E0708", "instruction": "ldr.w r2,[r3,#0x108]", "source": "ghidra"}
+{"src": "func:pmc_disable_all_periph_clk@00083098", "edge_type": "writes_mmio", "dst": "mmio:0X400E0614", "instruction": "str r2,[r3,#0x14]", "source": "ghidra"}
+{"src": "func:pmc_disable_all_periph_clk@00083098", "edge_type": "writes_mmio", "dst": "mmio:0X400E0704", "instruction": "str.w r1,[r2,#0x104]", "source": "ghidra"}
+{"src": "func:pmc_disable_periph_clk@00083058", "edge_type": "reads_mmio", "dst": "mmio:0X400E0618", "instruction": "ldr r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:pmc_disable_periph_clk@00083058", "edge_type": "reads_mmio", "dst": "mmio:0X400E0708", "instruction": "ldr.w r2,[r3,#0x108]", "source": "ghidra"}
+{"src": "func:pmc_disable_periph_clk@00083058", "edge_type": "writes_mmio", "dst": "mmio:0X400E0614", "instruction": "str r2,[r3,#0x14]", "source": "ghidra"}
+{"src": "func:pmc_disable_periph_clk@00083058", "edge_type": "writes_mmio", "dst": "mmio:0X400E0704", "instruction": "str.w r2,[r3,#0x104]", "source": "ghidra"}
+{"src": "func:pmc_disable_udpck@000830e0", "edge_type": "writes_mmio", "dst": "mmio:0X400E0604", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:pmc_disable_upll_clock@00083004", "edge_type": "reads_mmio", "dst": "mmio:0X400E061C", "instruction": "ldr r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:pmc_disable_upll_clock@00083004", "edge_type": "writes_mmio", "dst": "mmio:0X400E061C", "instruction": "str r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:pmc_enable_periph_clk@00083014", "edge_type": "reads_mmio", "dst": "mmio:0X400E0618", "instruction": "ldr r1,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:pmc_enable_periph_clk@00083014", "edge_type": "reads_mmio", "dst": "mmio:0X400E0708", "instruction": "ldr.w r1,[r3,#0x108]", "source": "ghidra"}
+{"src": "func:pmc_enable_periph_clk@00083014", "edge_type": "writes_mmio", "dst": "mmio:0X400E0610", "instruction": "str r0,[r3,#0x10]", "source": "ghidra"}
+{"src": "func:pmc_enable_periph_clk@00083014", "edge_type": "writes_mmio", "dst": "mmio:0X400E0700", "instruction": "str.w r0,[r3,#0x100]", "source": "ghidra"}
+{"src": "func:pmc_enable_sleepmode@000830ec", "edge_type": "reads_mmio", "dst": "mmio:0X400E0670", "instruction": "ldr r2,[r3,#0x70]", "source": "ghidra"}
+{"src": "func:pmc_enable_sleepmode@000830ec", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED10", "instruction": "ldr r2,[r3,#0x10]", "source": "ghidra"}
+{"src": "func:pmc_enable_sleepmode@000830ec", "edge_type": "writes_mmio", "dst": "mmio:0X400E0670", "instruction": "str r2,[r3,#0x70]", "source": "ghidra"}
+{"src": "func:pmc_enable_sleepmode@000830ec", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED10", "instruction": "str r2,[r3,#0x10]", "source": "ghidra"}
+{"src": "func:pmc_enable_udpck@000830d4", "edge_type": "writes_mmio", "dst": "mmio:0X400E0600", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:pmc_enable_upll_clock@00082ff0", "edge_type": "reads_mmio", "dst": "mmio:0X400E0668", "instruction": "ldr r2,[r3,#0x68]", "source": "ghidra"}
+{"src": "func:pmc_enable_upll_clock@00082ff0", "edge_type": "writes_mmio", "dst": "mmio:0X400E061C", "instruction": "str r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:pmc_enable_waitmode@00083114", "edge_type": "reads_mmio", "dst": "mmio:0X400E0620", "instruction": "ldr r3,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:pmc_enable_waitmode@00083114", "edge_type": "reads_mmio", "dst": "mmio:0X400E0670", "instruction": "ldr r2,[r3,#0x70]", "source": "ghidra"}
+{"src": "func:pmc_enable_waitmode@00083114", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED10", "instruction": "ldr r2,[r3,#0x10]", "source": "ghidra"}
+{"src": "func:pmc_enable_waitmode@00083114", "edge_type": "writes_mmio", "dst": "mmio:0X400E0670", "instruction": "str r2,[r3,#0x70]", "source": "ghidra"}
+{"src": "func:pmc_enable_waitmode@00083114", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED10", "instruction": "str r2,[r3,#0x10]", "source": "ghidra"}
+{"src": "func:pmc_mck_set_prescaler@00082f6c", "edge_type": "reads_mmio", "dst": "mmio:0X400E0630", "instruction": "ldr r2,[r3,#0x30]", "source": "ghidra"}
+{"src": "func:pmc_mck_set_prescaler@00082f6c", "edge_type": "reads_mmio", "dst": "mmio:0X400E0668", "instruction": "ldr r2,[r3,#0x68]", "source": "ghidra"}
+{"src": "func:pmc_mck_set_prescaler@00082f6c", "edge_type": "writes_mmio", "dst": "mmio:0X400E0630", "instruction": "str r0,[r3,#0x30]", "source": "ghidra"}
+{"src": "func:pmc_set_writeprotect@00083148", "edge_type": "writes_mmio", "dst": "mmio:0X400E06E4", "instruction": "str.w r2,[r3,#0xe4]", "source": "ghidra"}
+{"src": "func:pmc_switch_mainck_to_fastrc@00082f84", "edge_type": "reads_mmio", "dst": "mmio:0X400E0620", "instruction": "ldr r1,[r3,#0x20]", "source": "ghidra"}
+{"src": "func:pmc_switch_mainck_to_fastrc@00082f84", "edge_type": "reads_mmio", "dst": "mmio:0X400E0620", "instruction": "ldr r2,[r3,#0x20]", "source": "ghidra"}
+{"src": "func:pmc_switch_mainck_to_fastrc@00082f84", "edge_type": "reads_mmio", "dst": "mmio:0X400E0620", "instruction": "ldr r3,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:pmc_switch_mainck_to_fastrc@00082f84", "edge_type": "reads_mmio", "dst": "mmio:0X400E0668", "instruction": "ldr r0,[r3,#0x68]", "source": "ghidra"}
+{"src": "func:pmc_switch_mainck_to_fastrc@00082f84", "edge_type": "writes_mmio", "dst": "mmio:0X400E0620", "instruction": "str r1,[r3,#0x20]", "source": "ghidra"}
+{"src": "func:pmc_switch_mainck_to_fastrc@00082f84", "edge_type": "writes_mmio", "dst": "mmio:0X400E0620", "instruction": "str r2,[r3,#0x20]", "source": "ghidra"}
+{"src": "func:pmc_switch_mainck_to_fastrc@00082f84", "edge_type": "writes_mmio", "dst": "mmio:0X400E0620", "instruction": "str r3,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:pmc_switch_udpck_to_upllck@000830c0", "edge_type": "writes_mmio", "dst": "mmio:0X400E0638", "instruction": "str r2,[r3,#0x38]", "source": "ghidra"}
+{"src": "func:print@00083b50", "edge_type": "calls", "dst": "func:write", "source": "ghidra"}
+{"src": "func:print@00083ba0", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:print@00083ba0", "edge_type": "calls", "dst": "func:printNumber", "source": "ghidra"}
+{"src": "func:printNumber@00083b62", "edge_type": "calls", "dst": "func:write", "source": "ghidra"}
+{"src": "func:quorem@00087684", "edge_type": "calls", "dst": "func:__mcmp", "source": "ghidra"}
+{"src": "func:read@00083ec4", "edge_type": "calls", "dst": "func:USBD_Available", "source": "ghidra"}
+{"src": "func:read@00083ec4", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r3,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:reboot@00080c30", "edge_type": "calls", "dst": "func:UDD_Detach", "source": "ghidra"}
+{"src": "func:reboot@00080c30", "edge_type": "calls", "dst": "func:WDT_Restart", "source": "ghidra"}
+{"src": "func:reboot@00080c30", "edge_type": "calls", "dst": "func:gps_off", "source": "ghidra"}
+{"src": "func:reboot@00080c30", "edge_type": "calls", "dst": "func:gsm_off", "source": "ghidra"}
+{"src": "func:reboot@00080c30", "edge_type": "calls", "dst": "func:rstc_start_software_reset", "source": "ghidra"}
+{"src": "func:reboot@00080c30", "edge_type": "reads_mmio", "dst": "mmio:0X400E1A00", "instruction": "ldr r0,[0x00080c60]", "source": "ghidra"}
+{"src": "func:register_fini@00087664", "edge_type": "calls", "dst": "func:atexit", "source": "ghidra"}
+{"src": "func:send_data@00081830", "edge_type": "calls", "dst": "func:data_reset", "source": "ghidra"}
+{"src": "func:send_data@00081830", "edge_type": "calls", "dst": "func:gsm_send_data", "source": "ghidra"}
+{"src": "func:send_data@00081830", "edge_type": "calls", "dst": "func:storage_save_current", "source": "ghidra"}
+{"src": "func:send_data@00081830", "edge_type": "calls", "dst": "func:storage_send_logs", "source": "ghidra"}
+{"src": "func:serialEventRun@00082e14", "edge_type": "calls", "dst": "func:available", "source": "ghidra"}
+{"src": "func:serialEventRun@00082e14", "edge_type": "calls", "dst": "func:serialEvent", "source": "ghidra"}
+{"src": "func:serialEventRun@00082e14", "edge_type": "calls", "dst": "func:serialEvent1", "source": "ghidra"}
+{"src": "func:serialEventRun@00082e14", "edge_type": "calls", "dst": "func:serialEvent2", "source": "ghidra"}
+{"src": "func:serialEventRun@00082e14", "edge_type": "calls", "dst": "func:serialEvent3", "source": "ghidra"}
+{"src": "func:settings_load@00080704", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:settings_load@00080704", "edge_type": "calls", "dst": "func:read", "source": "ghidra"}
+{"src": "func:settings_load@00080704", "edge_type": "calls", "dst": "func:readAddress", "source": "ghidra"}
+{"src": "func:settings_load@00080704", "edge_type": "calls", "dst": "func:settings_save", "source": "ghidra"}
+{"src": "func:settings_load@00080704", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:settings_load@00080704", "edge_type": "calls", "dst": "func:write", "source": "ghidra"}
+{"src": "func:settings_save@000806dc", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:settings_save@000806dc", "edge_type": "calls", "dst": "func:write", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:begin", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:blink_start", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:data_reset", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:device_init", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:gps_init", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:gps_setup", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:gsm_init", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:gsm_ntp_update", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:gsm_setup", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:settings_load", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:sms_check", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:sms_send_msg", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:storage_get_index", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:usb_console_disable", "source": "ghidra"}
+{"src": "func:setup@00082424", "edge_type": "calls", "dst": "func:usb_console_restore", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:memset", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:sms_cmd", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:status_delay", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:strstr", "source": "ghidra"}
+{"src": "func:sms_check@00081c2c", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:sms_cmd@00081bec", "edge_type": "calls", "dst": "func:sms_cmd_run", "source": "ghidra"}
+{"src": "func:sms_cmd@00081bec", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:sms_cmd@00081bec", "edge_type": "calls", "dst": "func:strtok", "source": "ghidra"}
+{"src": "func:sms_cmd_run@000818e0", "edge_type": "calls", "dst": "func:atol", "source": "ghidra"}
+{"src": "func:sms_cmd_run@000818e0", "edge_type": "calls", "dst": "func:sms_send_msg", "source": "ghidra"}
+{"src": "func:sms_cmd_run@000818e0", "edge_type": "calls", "dst": "func:snprintf", "source": "ghidra"}
+{"src": "func:sms_cmd_run@000818e0", "edge_type": "calls", "dst": "func:strcmp", "source": "ghidra"}
+{"src": "func:sms_cmd_run@000818e0", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:sms_cmd_run@000818e0", "edge_type": "calls", "dst": "func:strtok_r", "source": "ghidra"}
+{"src": "func:sms_send_msg@00081878", "edge_type": "calls", "dst": "func:gsm_get_reply", "source": "ghidra"}
+{"src": "func:sms_send_msg@00081878", "edge_type": "calls", "dst": "func:gsm_wait_for_reply", "source": "ghidra"}
+{"src": "func:sms_send_msg@00081878", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:sms_send_msg@00081878", "edge_type": "calls", "dst": "func:strchr", "source": "ghidra"}
+{"src": "func:snprintf@000855a4", "edge_type": "calls", "dst": "func:_svfprintf_r", "source": "ghidra"}
+{"src": "func:sprintf@0008560c", "edge_type": "calls", "dst": "func:_svfprintf_r", "source": "ghidra"}
+{"src": "func:status_delay@00080590", "edge_type": "calls", "dst": "func:status_led", "source": "ghidra"}
+{"src": "func:status_led@00080550", "edge_type": "calls", "dst": "func:digitalWrite", "source": "ghidra"}
+{"src": "func:status_led@00080550", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:storage_get_index@000808f0", "edge_type": "calls", "dst": "func:readAddress", "source": "ghidra"}
+{"src": "func:storage_get_index@000808f0", "edge_type": "calls", "dst": "func:write", "source": "ghidra"}
+{"src": "func:storage_save_current@000808a8", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:storage_save_current@000808a8", "edge_type": "calls", "dst": "func:write", "source": "ghidra"}
+{"src": "func:storage_send_logs@00081758", "edge_type": "calls", "dst": "func:gsm_send_data", "source": "ghidra"}
+{"src": "func:storage_send_logs@00081758", "edge_type": "calls", "dst": "func:read", "source": "ghidra"}
+{"src": "func:storage_send_logs@00081758", "edge_type": "calls", "dst": "func:readAddress", "source": "ghidra"}
+{"src": "func:storage_send_logs@00081758", "edge_type": "calls", "dst": "func:strlcpy", "source": "ghidra"}
+{"src": "func:storage_send_logs@00081758", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:storage_send_logs@00081758", "edge_type": "calls", "dst": "func:write", "source": "ghidra"}
+{"src": "func:strlcat@00085988", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:strstr@00085ddc", "edge_type": "calls", "dst": "func:critical_factorization", "source": "ghidra"}
+{"src": "func:strstr@00085ddc", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:strstr@00085ddc", "edge_type": "calls", "dst": "func:memcmp", "source": "ghidra"}
+{"src": "func:strstr@00085ddc", "edge_type": "calls", "dst": "func:strchr", "source": "ghidra"}
+{"src": "func:strstr@00085ddc", "edge_type": "calls", "dst": "func:two_way_long_needle", "source": "ghidra"}
+{"src": "func:strtok@00085fdc", "edge_type": "calls", "dst": "func:__strtok_r", "source": "ghidra"}
+{"src": "func:strtok_r@00086050", "edge_type": "calls", "dst": "func:__strtok_r", "source": "ghidra"}
+{"src": "func:strtol@0008616c", "edge_type": "calls", "dst": "func:_strtol_r", "source": "ghidra"}
+{"src": "func:term_complete@00082618", "edge_type": "calls", "dst": "func:atoi", "source": "ghidra"}
+{"src": "func:term_complete@00082618", "edge_type": "calls", "dst": "func:from_hex", "source": "ghidra"}
+{"src": "func:term_complete@00082618", "edge_type": "calls", "dst": "func:gpsatol", "source": "ghidra"}
+{"src": "func:term_complete@00082618", "edge_type": "calls", "dst": "func:gpsstrcmp", "source": "ghidra"}
+{"src": "func:term_complete@00082618", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:term_complete@00082618", "edge_type": "calls", "dst": "func:parse_decimal", "source": "ghidra"}
+{"src": "func:term_complete@00082618", "edge_type": "calls", "dst": "func:parse_degrees", "source": "ghidra"}
+{"src": "func:tickReset@00083bfc", "edge_type": "calls", "dst": "func:banzai", "source": "ghidra"}
+{"src": "func:translate_address@00082ab0", "edge_type": "writes_mmio", "dst": "mmio:0X400E0A00", "instruction": "str r5,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:translate_address@00082ab0", "edge_type": "writes_mmio", "dst": "mmio:0X400E0C00", "instruction": "str r5,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:two_way_long_needle@00085bf0", "edge_type": "calls", "dst": "func:critical_factorization", "source": "ghidra"}
+{"src": "func:two_way_long_needle@00085bf0", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:two_way_long_needle@00085bf0", "edge_type": "calls", "dst": "func:memcmp", "source": "ghidra"}
+{"src": "func:url_encoded_strlcpy@000802b0", "edge_type": "calls", "dst": "func:is_url_safe", "source": "ghidra"}
+{"src": "func:url_encoded_strlcpy@000802b0", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:url_encoded_strlen@00080284", "edge_type": "calls", "dst": "func:is_url_safe", "source": "ghidra"}
+{"src": "func:url_encoded_strlen@00080284", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "calls", "dst": "func:UDD_Detach", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "calls", "dst": "func:pmc_disable_periph_clk", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "calls", "dst": "func:pmc_disable_udpck", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "calls", "dst": "func:pmc_disable_upll_clock", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "reads_mmio", "dst": "mmio:0X400AC000", "instruction": "ldr r3,[0x00080658]", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r2,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "writes_mmio", "dst": "mmio:0X400AC800", "instruction": "str.w r2,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "writes_mmio", "dst": "mmio:0XE000E184", "instruction": "str.w r2,[r3,#0x84]", "source": "ghidra"}
+{"src": "func:usb_console_disable@000805f4", "edge_type": "writes_mmio", "dst": "mmio:0XE000E284", "instruction": "str.w r2,[r3,#0x184]", "source": "ghidra"}
+{"src": "func:usb_console_restore@00080660", "edge_type": "calls", "dst": "func:UDD_Attach", "source": "ghidra"}
+{"src": "func:usb_console_restore@00080660", "edge_type": "calls", "dst": "func:UDD_Init", "source": "ghidra"}
+{"src": "func:usb_console_restore@00080660", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r3,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:write@00082a34", "edge_type": "calls", "dst": "func:flash_write", "source": "ghidra"}
+{"src": "func:write@00082a34", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:write@00082a68", "edge_type": "calls", "dst": "func:flash_write", "source": "ghidra"}
+{"src": "func:write@00082a68", "edge_type": "calls", "dst": "func:print", "source": "ghidra"}
+{"src": "func:write@00083b32", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:write@00083fd8", "edge_type": "calls", "dst": "func:USBD_Send", "source": "ghidra"}
+{"src": "func:write@00083fd8", "edge_type": "reads_mmio", "dst": "mmio:0X400AC800", "instruction": "ldr.w r0,[r3,#0x800]", "source": "ghidra"}
+{"src": "func:yield@00080680", "edge_type": "calls", "dst": "func:pmc_enable_sleepmode", "source": "ghidra"}

@@ -1,0 +1,422 @@
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:AHRS_GetPitch", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:AHRS_GetRoll", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:AHRS_GetYaw", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:AK8963_ReadData", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:MPU9250_ReadAccelData", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:MPU9250_ReadGyroData", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:MadgwickQuaternionUpdate", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:MadgwickSetDelta", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:__aeabi_f2iz", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:__aeabi_fdiv", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:__floatunsisf", "source": "ghidra"}
+{"src": "func:AHRS_ComputeAngles@08002f28", "edge_type": "calls", "dst": "func:micros", "source": "ghidra"}
+{"src": "func:AHRS_GetPitch@08002ec0", "edge_type": "calls", "dst": "func:lowPassFilter", "source": "ghidra"}
+{"src": "func:AHRS_GetRoll@08002ed4", "edge_type": "calls", "dst": "func:lowPassFilter", "source": "ghidra"}
+{"src": "func:AHRS_GetYaw@08002ee8", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:AHRS_GetYaw@08002ee8", "edge_type": "calls", "dst": "func:__aeabi_fcmpge", "source": "ghidra"}
+{"src": "func:AHRS_GetYaw@08002ee8", "edge_type": "calls", "dst": "func:__aeabi_fcmplt", "source": "ghidra"}
+{"src": "func:AHRS_GetYaw@08002ee8", "edge_type": "calls", "dst": "func:__aeabi_fsub", "source": "ghidra"}
+{"src": "func:AK8963_Init@08002cb0", "edge_type": "calls", "dst": "func:I2C_ReadByte", "source": "ghidra"}
+{"src": "func:AK8963_Init@08002cb0", "edge_type": "calls", "dst": "func:I2C_ReadByteArray", "source": "ghidra"}
+{"src": "func:AK8963_Init@08002cb0", "edge_type": "calls", "dst": "func:I2C_WriteByte", "source": "ghidra"}
+{"src": "func:AK8963_Init@08002cb0", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:AK8963_Init@08002cb0", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:AK8963_Init@08002cb0", "edge_type": "calls", "dst": "func:__floatsisf", "source": "ghidra"}
+{"src": "func:AK8963_ReadData@08002d88", "edge_type": "calls", "dst": "func:I2C_ReadByte", "source": "ghidra"}
+{"src": "func:AK8963_ReadData@08002d88", "edge_type": "calls", "dst": "func:I2C_ReadByteArray", "source": "ghidra"}
+{"src": "func:AK8963_ReadData@08002d88", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:AK8963_ReadData@08002d88", "edge_type": "calls", "dst": "func:__aeabi_fsub", "source": "ghidra"}
+{"src": "func:AK8963_ReadData@08002d88", "edge_type": "calls", "dst": "func:__floatsisf", "source": "ghidra"}
+{"src": "func:Devices_Init@0800400c", "edge_type": "calls", "dst": "func:LED_StartupSequence", "source": "ghidra"}
+{"src": "func:Devices_Init@0800400c", "edge_type": "calls", "dst": "func:PWM_Init", "source": "ghidra"}
+{"src": "func:Devices_Init@0800400c", "edge_type": "calls", "dst": "func:Peripherals_Init", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "reads_mmio", "dst": "mmio:0X40010400", "instruction": "ldr r5,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "reads_mmio", "dst": "mmio:0X40010404", "instruction": "ldr r5,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "reads_mmio", "dst": "mmio:0X40010408", "instruction": "ldr r5,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "reads_mmio", "dst": "mmio:0X4001040C", "instruction": "ldr r5,[r3,#0xc]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r5,[r5,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r5,[r7,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "writes_mmio", "dst": "mmio:0X40010400", "instruction": "str r5,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "writes_mmio", "dst": "mmio:0X40010404", "instruction": "str r5,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "writes_mmio", "dst": "mmio:0X40010408", "instruction": "str r5,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "writes_mmio", "dst": "mmio:0X4001040C", "instruction": "str r4,[r3,#0xc]", "source": "ghidra"}
+{"src": "func:HAL_GPIO_Init@08001264", "edge_type": "writes_mmio", "dst": "mmio:0X40021018", "instruction": "str r5,[r7,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_I2C_Init@08001754", "edge_type": "calls", "dst": "func:HAL_I2C_MspInit", "source": "ghidra"}
+{"src": "func:HAL_I2C_Init@08001754", "edge_type": "calls", "dst": "func:HAL_RCC_GetPCLK1Freq", "source": "ghidra"}
+{"src": "func:HAL_I2C_Mem_Read@08001938", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:HAL_I2C_Mem_Read@08001938", "edge_type": "calls", "dst": "func:I2C_RequestMemoryRead", "source": "ghidra"}
+{"src": "func:HAL_I2C_Mem_Read@08001938", "edge_type": "calls", "dst": "func:I2C_WaitOnRXNEFlagUntilTimeout", "source": "ghidra"}
+{"src": "func:HAL_I2C_Mem_Write@08001828", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:HAL_I2C_Mem_Write@08001828", "edge_type": "calls", "dst": "func:I2C_RequestMemoryWrite", "source": "ghidra"}
+{"src": "func:HAL_I2C_Mem_Write@08001828", "edge_type": "calls", "dst": "func:I2C_WaitOnTXEFlagUntilTimeout", "source": "ghidra"}
+{"src": "func:HAL_I2C_MspInit@08004d24", "edge_type": "calls", "dst": "func:HAL_GPIO_Init", "source": "ghidra"}
+{"src": "func:HAL_I2C_MspInit@08004d24", "edge_type": "reads_mmio", "dst": "mmio:0X4002101C", "instruction": "ldr r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_I2C_MspInit@08004d24", "edge_type": "reads_mmio", "dst": "mmio:0X4002101C", "instruction": "ldr r3,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_I2C_MspInit@08004d24", "edge_type": "writes_mmio", "dst": "mmio:0X4002101C", "instruction": "str r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_Init@08001128", "edge_type": "calls", "dst": "func:HAL_InitTick", "source": "ghidra"}
+{"src": "func:HAL_Init@08001128", "edge_type": "calls", "dst": "func:HAL_MspInit", "source": "ghidra"}
+{"src": "func:HAL_Init@08001128", "edge_type": "calls", "dst": "func:HAL_NVIC_SetPriorityGrouping", "source": "ghidra"}
+{"src": "func:HAL_Init@08001128", "edge_type": "reads_mmio", "dst": "mmio:0X40022000", "instruction": "ldr r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_Init@08001128", "edge_type": "writes_mmio", "dst": "mmio:0X40022000", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_InitTick@08001104", "edge_type": "calls", "dst": "func:HAL_NVIC_SetPriority", "source": "ghidra"}
+{"src": "func:HAL_InitTick@08001104", "edge_type": "calls", "dst": "func:HAL_RCC_GetHCLKFreq", "source": "ghidra"}
+{"src": "func:HAL_InitTick@08001104", "edge_type": "calls", "dst": "func:HAL_SYSTICK_Config", "source": "ghidra"}
+{"src": "func:HAL_MspInit@08004ca8", "edge_type": "calls", "dst": "func:HAL_NVIC_SetPriority", "source": "ghidra"}
+{"src": "func:HAL_MspInit@08004ca8", "edge_type": "calls", "dst": "func:HAL_NVIC_SetPriorityGrouping", "source": "ghidra"}
+{"src": "func:HAL_MspInit@08004ca8", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_MspInit@08004ca8", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r3,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_MspInit@08004ca8", "edge_type": "writes_mmio", "dst": "mmio:0X40021018", "instruction": "str r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_NVIC_SetPriority@08001194", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED0C", "instruction": "ldr r4,[r3,#0xc]", "source": "ghidra"}
+{"src": "func:HAL_NVIC_SetPriorityGrouping@08001170", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED0C", "instruction": "ldr r3,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:HAL_NVIC_SetPriorityGrouping@08001170", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED0C", "instruction": "str r3,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "calls", "dst": "func:HAL_InitTick", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "calls", "dst": "func:HAL_RCC_GetSysClockFreq", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r1,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r3,[r1,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "reads_mmio", "dst": "mmio:0X40022000", "instruction": "ldr r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "writes_mmio", "dst": "mmio:0X40021004", "instruction": "str r3,[r1,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "writes_mmio", "dst": "mmio:0X40021004", "instruction": "str r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_ClockConfig@0800209c", "edge_type": "writes_mmio", "dst": "mmio:0X40022000", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_GetPCLK1Freq@08002220", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r3,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_GetPCLK2Freq@08002250", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r3,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_GetSysClockFreq@08002008", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r1,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_GetSysClockFreq@08002008", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "calls", "dst": "func:HAL_Delay", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40007000", "instruction": "ldr r3,[r6,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r1,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r2,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r2,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X4002101C", "instruction": "ldr r3,[r4,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021020", "instruction": "ldr r2,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021020", "instruction": "ldr r3,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "reads_mmio", "dst": "mmio:0X40021024", "instruction": "ldr r2,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "writes_mmio", "dst": "mmio:0X40007000", "instruction": "str r3,[r6,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "writes_mmio", "dst": "mmio:0X40021000", "instruction": "str r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "writes_mmio", "dst": "mmio:0X40021004", "instruction": "str r2,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "writes_mmio", "dst": "mmio:0X40021004", "instruction": "str r3,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "writes_mmio", "dst": "mmio:0X4002101C", "instruction": "str r3,[r4,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_RCC_OscConfig@08001b58", "edge_type": "writes_mmio", "dst": "mmio:0X40021020", "instruction": "str r3,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:HAL_SYSTICK_CLKSourceConfig@08001240", "edge_type": "reads_mmio", "dst": "mmio:0XE000E010", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_SYSTICK_CLKSourceConfig@08001240", "edge_type": "writes_mmio", "dst": "mmio:0XE000E010", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_SYSTICK_Config@08001214", "edge_type": "writes_mmio", "dst": "mmio:0XE000E010", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:HAL_SYSTICK_Config@08001214", "edge_type": "writes_mmio", "dst": "mmio:0XE000E014", "instruction": "str r0,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:HAL_SYSTICK_Config@08001214", "edge_type": "writes_mmio", "dst": "mmio:0XE000E018", "instruction": "str r0,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:HAL_SYSTICK_Config@08001214", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED23", "instruction": "strb.w r1,[r2,#0x23]", "source": "ghidra"}
+{"src": "func:HAL_SYSTICK_IRQHandler@0800125a", "edge_type": "calls", "dst": "func:HAL_SYSTICK_Callback", "source": "ghidra"}
+{"src": "func:HAL_TIM_MspPostInit@08004df0", "edge_type": "calls", "dst": "func:HAL_GPIO_Init", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_ConfigChannel@0800245c", "edge_type": "calls", "dst": "func:TIM_OC1_SetConfig", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_ConfigChannel@0800245c", "edge_type": "calls", "dst": "func:TIM_OC2_SetConfig", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_ConfigChannel@0800245c", "edge_type": "calls", "dst": "func:TIM_OC3_SetConfig", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_ConfigChannel@0800245c", "edge_type": "calls", "dst": "func:TIM_OC4_SetConfig", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_Init@080023d0", "edge_type": "calls", "dst": "func:HAL_TIM_PWM_MspInit", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_Init@080023d0", "edge_type": "calls", "dst": "func:TIM_Base_SetConfig", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_MspInit@08004d68", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_MspInit@08004d68", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r3,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_MspInit@08004d68", "edge_type": "reads_mmio", "dst": "mmio:0X4002101C", "instruction": "ldr r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_MspInit@08004d68", "edge_type": "reads_mmio", "dst": "mmio:0X4002101C", "instruction": "ldr r3,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_MspInit@08004d68", "edge_type": "writes_mmio", "dst": "mmio:0X40021018", "instruction": "str r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_MspInit@08004d68", "edge_type": "writes_mmio", "dst": "mmio:0X4002101C", "instruction": "str r2,[r3,#0x1c]", "source": "ghidra"}
+{"src": "func:HAL_TIM_PWM_Start@08002538", "edge_type": "calls", "dst": "func:TIM_CCxChannelCmd", "source": "ghidra"}
+{"src": "func:HAL_UART_IRQHandler@0800299a", "edge_type": "calls", "dst": "func:HAL_UART_ErrorCallback", "source": "ghidra"}
+{"src": "func:HAL_UART_IRQHandler@0800299a", "edge_type": "calls", "dst": "func:HAL_UART_TxCpltCallback", "source": "ghidra"}
+{"src": "func:HAL_UART_IRQHandler@0800299a", "edge_type": "calls", "dst": "func:UART_Receive_IT", "source": "ghidra"}
+{"src": "func:HAL_UART_Init@08002724", "edge_type": "calls", "dst": "func:HAL_UART_MspInit", "source": "ghidra"}
+{"src": "func:HAL_UART_Init@08002724", "edge_type": "calls", "dst": "func:UART_SetConfig", "source": "ghidra"}
+{"src": "func:HAL_UART_MspInit@08004e58", "edge_type": "calls", "dst": "func:HAL_GPIO_Init", "source": "ghidra"}
+{"src": "func:HAL_UART_MspInit@08004e58", "edge_type": "calls", "dst": "func:HAL_NVIC_EnableIRQ", "source": "ghidra"}
+{"src": "func:HAL_UART_MspInit@08004e58", "edge_type": "calls", "dst": "func:HAL_NVIC_SetPriority", "source": "ghidra"}
+{"src": "func:HAL_UART_MspInit@08004e58", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_UART_MspInit@08004e58", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r3,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_UART_MspInit@08004e58", "edge_type": "writes_mmio", "dst": "mmio:0X40021018", "instruction": "str r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:HAL_UART_RxCpltCallback@08004c0c", "edge_type": "calls", "dst": "func:CB_Write", "source": "ghidra"}
+{"src": "func:HAL_UART_RxCpltCallback@08004c0c", "edge_type": "calls", "dst": "func:HAL_UART_Receive_IT", "source": "ghidra"}
+{"src": "func:HAL_UART_Transmit@0800277c", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:I2C_ReadByte@08004060", "edge_type": "calls", "dst": "func:HAL_I2C_Mem_Read", "source": "ghidra"}
+{"src": "func:I2C_ReadByte@08004060", "edge_type": "calls", "dst": "func:_Error_Handler", "source": "ghidra"}
+{"src": "func:I2C_ReadByteArray@080040cc", "edge_type": "calls", "dst": "func:I2C_ReadByte", "source": "ghidra"}
+{"src": "func:I2C_ReadBytes@0800409c", "edge_type": "calls", "dst": "func:HAL_I2C_Mem_Read", "source": "ghidra"}
+{"src": "func:I2C_ReadBytes@0800409c", "edge_type": "calls", "dst": "func:_Error_Handler", "source": "ghidra"}
+{"src": "func:I2C_RequestMemoryRead@080015e8", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:I2C_RequestMemoryRead@080015e8", "edge_type": "calls", "dst": "func:I2C_WaitOnMasterAddressFlagUntilTimeout", "source": "ghidra"}
+{"src": "func:I2C_RequestMemoryRead@080015e8", "edge_type": "calls", "dst": "func:I2C_WaitOnTXEFlagUntilTimeout", "source": "ghidra"}
+{"src": "func:I2C_RequestMemoryWrite@08001530", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:I2C_RequestMemoryWrite@08001530", "edge_type": "calls", "dst": "func:I2C_WaitOnMasterAddressFlagUntilTimeout", "source": "ghidra"}
+{"src": "func:I2C_RequestMemoryWrite@08001530", "edge_type": "calls", "dst": "func:I2C_WaitOnTXEFlagUntilTimeout", "source": "ghidra"}
+{"src": "func:I2C_WaitOnMasterAddressFlagUntilTimeout@08001460", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:I2C_WaitOnRXNEFlagUntilTimeout@080016f4", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:I2C_WaitOnTXEFlagUntilTimeout@080014e2", "edge_type": "calls", "dst": "func:HAL_GetTick", "source": "ghidra"}
+{"src": "func:I2C_WaitOnTXEFlagUntilTimeout@080014e2", "edge_type": "calls", "dst": "func:I2C_IsAcknowledgeFailed", "source": "ghidra"}
+{"src": "func:I2C_WriteByte@08004020", "edge_type": "calls", "dst": "func:HAL_I2C_Mem_Write", "source": "ghidra"}
+{"src": "func:I2C_WriteByte@08004020", "edge_type": "calls", "dst": "func:_Error_Handler", "source": "ghidra"}
+{"src": "func:I2C_WriteByte@08004020", "edge_type": "calls", "dst": "func:delay_ms", "source": "ghidra"}
+{"src": "func:IMU_Init@08002ea0", "edge_type": "calls", "dst": "func:AK8963_Init", "source": "ghidra"}
+{"src": "func:IMU_Init@08002ea0", "edge_type": "calls", "dst": "func:MPU9250_Init", "source": "ghidra"}
+{"src": "func:IMU_Init@08002ea0", "edge_type": "calls", "dst": "func:MadgwickSetBeta", "source": "ghidra"}
+{"src": "func:IMU_Init@08002ea0", "edge_type": "calls", "dst": "func:MadgwickSetDelta", "source": "ghidra"}
+{"src": "func:LED_StartupSequence@08003f60", "edge_type": "calls", "dst": "func:delay_ms", "source": "ghidra"}
+{"src": "func:LED_StartupSequence@08003f60", "edge_type": "calls", "dst": "func:toggleLED", "source": "ghidra"}
+{"src": "func:MPU9250_Init@08002ad0", "edge_type": "calls", "dst": "func:I2C_ReadByte", "source": "ghidra"}
+{"src": "func:MPU9250_Init@08002ad0", "edge_type": "calls", "dst": "func:I2C_WriteByte", "source": "ghidra"}
+{"src": "func:MPU9250_ReadAccelData@08002b48", "edge_type": "calls", "dst": "func:I2C_ReadByteArray", "source": "ghidra"}
+{"src": "func:MPU9250_ReadAccelData@08002b48", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:MPU9250_ReadAccelData@08002b48", "edge_type": "calls", "dst": "func:__floatsisf", "source": "ghidra"}
+{"src": "func:MPU9250_ReadGyroData@08002bf0", "edge_type": "calls", "dst": "func:I2C_ReadByteArray", "source": "ghidra"}
+{"src": "func:MPU9250_ReadGyroData@08002bf0", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:MPU9250_ReadGyroData@08002bf0", "edge_type": "calls", "dst": "func:__aeabi_fsub", "source": "ghidra"}
+{"src": "func:MPU9250_ReadGyroData@08002bf0", "edge_type": "calls", "dst": "func:__floatsisf", "source": "ghidra"}
+{"src": "func:MS5611_Init@08003298", "edge_type": "calls", "dst": "func:I2C_ReadByteArray", "source": "ghidra"}
+{"src": "func:MS5611_Init@08003298", "edge_type": "calls", "dst": "func:I2C_WriteByte", "source": "ghidra"}
+{"src": "func:MS5611_Init@08003298", "edge_type": "calls", "dst": "func:delay_ms", "source": "ghidra"}
+{"src": "func:MS5611_ReadADC@08003034", "edge_type": "calls", "dst": "func:I2C_ReadBytes", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:I2C_WriteByte", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:MS5611_ReadADC", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__aeabi_f2d", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__aeabi_f2iz", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__aeabi_fdiv", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__floatsisf", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:__truncdfsf2", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:MS5611_Update@08003078", "edge_type": "calls", "dst": "func:pow", "source": "ghidra"}
+{"src": "func:MSP_SendAltitude@08004410", "edge_type": "calls", "dst": "func:MSP_SendFrame", "source": "ghidra"}
+{"src": "func:MSP_SendAttitude@080043ec", "edge_type": "calls", "dst": "func:MSP_SendFrame", "source": "ghidra"}
+{"src": "func:MSP_SendFrame@080042dc", "edge_type": "calls", "dst": "func:serialPrint", "source": "ghidra"}
+{"src": "func:MSP_SendFrame@080042dc", "edge_type": "calls", "dst": "func:serialWrite", "source": "ghidra"}
+{"src": "func:MSP_SendIdent@08004324", "edge_type": "calls", "dst": "func:MSP_SendFrame", "source": "ghidra"}
+{"src": "func:MSP_SendMotor@080043cc", "edge_type": "calls", "dst": "func:MSP_SendFrame", "source": "ghidra"}
+{"src": "func:MSP_SendPID@08004434", "edge_type": "calls", "dst": "func:MSP_SendFrame", "source": "ghidra"}
+{"src": "func:MSP_SendRawIMU@08004398", "edge_type": "calls", "dst": "func:MSP_SendFrame", "source": "ghidra"}
+{"src": "func:MSP_SendStatus@08004360", "edge_type": "calls", "dst": "func:MSP_SendFrame", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__aeabi_f2d", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__aeabi_fcmpeq", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__aeabi_fdiv", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__aeabi_fsub", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:__truncdfsf2", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:asin", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:atan2", "source": "ghidra"}
+{"src": "func:MadgwickQuaternionUpdate@08003330", "edge_type": "calls", "dst": "func:sqrt", "source": "ghidra"}
+{"src": "func:Motor_DistributeSpeed@08004248", "edge_type": "calls", "dst": "func:Motor_SetSpeed", "source": "ghidra"}
+{"src": "func:Motor_DistributeSpeed@08004248", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:Motor_DistributeSpeed@08004248", "edge_type": "calls", "dst": "func:__aeabi_f2iz", "source": "ghidra"}
+{"src": "func:Motor_DistributeSpeed@08004248", "edge_type": "calls", "dst": "func:__aeabi_fsub", "source": "ghidra"}
+{"src": "func:Motor_SetSpeed@080041c0", "edge_type": "calls", "dst": "func:Motor1_SetPWM", "source": "ghidra"}
+{"src": "func:Motor_SetSpeed@080041c0", "edge_type": "calls", "dst": "func:Motor2_SetPWM", "source": "ghidra"}
+{"src": "func:Motor_SetSpeed@080041c0", "edge_type": "calls", "dst": "func:Motor3_SetPWM", "source": "ghidra"}
+{"src": "func:Motor_SetSpeed@080041c0", "edge_type": "calls", "dst": "func:Motor4_SetPWM", "source": "ghidra"}
+{"src": "func:Motor_StopAll@080041a2", "edge_type": "calls", "dst": "func:Motor1_SetPWM", "source": "ghidra"}
+{"src": "func:Motor_StopAll@080041a2", "edge_type": "calls", "dst": "func:Motor2_SetPWM", "source": "ghidra"}
+{"src": "func:Motor_StopAll@080041a2", "edge_type": "calls", "dst": "func:Motor3_SetPWM", "source": "ghidra"}
+{"src": "func:Motor_StopAll@080041a2", "edge_type": "calls", "dst": "func:Motor4_SetPWM", "source": "ghidra"}
+{"src": "func:PID_Compute@08004818", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:PID_Compute@08004818", "edge_type": "calls", "dst": "func:__aeabi_fcmpgt", "source": "ghidra"}
+{"src": "func:PID_Compute@08004818", "edge_type": "calls", "dst": "func:__aeabi_fcmplt", "source": "ghidra"}
+{"src": "func:PID_Compute@08004818", "edge_type": "calls", "dst": "func:__aeabi_fdiv", "source": "ghidra"}
+{"src": "func:PID_Compute@08004818", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:PID_Compute@08004818", "edge_type": "calls", "dst": "func:__aeabi_fsub", "source": "ghidra"}
+{"src": "func:PID_Compute@08004818", "edge_type": "calls", "dst": "func:__floatsisf", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:AHRS_GetPitch", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:AHRS_GetRoll", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:AHRS_GetYaw", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:Motor_DistributeSpeed", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:Motor_StopAll", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:PID_Compute", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:PID_UpdateAltitude", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:__aeabi_fcmpgt", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:__aeabi_fcmplt", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:__fixunssfsi", "source": "ghidra"}
+{"src": "func:PID_Update@08004a60", "edge_type": "calls", "dst": "func:toggleLED", "source": "ghidra"}
+{"src": "func:PID_UpdateAltitude@08004a0c", "edge_type": "calls", "dst": "func:MS5611_GetFilteredAltitude", "source": "ghidra"}
+{"src": "func:PID_UpdateAltitude@08004a0c", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:PWM_Init@08003fd8", "edge_type": "calls", "dst": "func:HAL_TIM_PWM_Start", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_GPIO_Init", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_GPIO_WritePin", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_I2C_Init", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_Init", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_TIMEx_ConfigBreakDeadTime", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_TIMEx_MasterConfigSynchronization", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_TIM_MspPostInit", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_TIM_PWM_ConfigChannel", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_TIM_PWM_Init", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:HAL_UART_Init", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:SystemClock_Config", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "calls", "dst": "func:_Error_Handler", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "reads_mmio", "dst": "mmio:0X40021018", "instruction": "ldr r3,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:Peripherals_Init@08004568", "edge_type": "writes_mmio", "dst": "mmio:0X40021018", "instruction": "str r2,[r3,#0x18]", "source": "ghidra"}
+{"src": "func:Reset_Handler@08004f44", "edge_type": "calls", "dst": "func:SystemInit", "source": "ghidra"}
+{"src": "func:Reset_Handler@08004f44", "edge_type": "calls", "dst": "func:__libc_init_array", "source": "ghidra"}
+{"src": "func:Reset_Handler@08004f44", "edge_type": "calls", "dst": "func:main", "source": "ghidra"}
+{"src": "func:SysTick_Handler@08004ed0", "edge_type": "calls", "dst": "func:HAL_IncTick", "source": "ghidra"}
+{"src": "func:SysTick_Handler@08004ed0", "edge_type": "calls", "dst": "func:HAL_SYSTICK_IRQHandler", "source": "ghidra"}
+{"src": "func:SystemClock_Config@080044f0", "edge_type": "calls", "dst": "func:HAL_NVIC_SetPriority", "source": "ghidra"}
+{"src": "func:SystemClock_Config@080044f0", "edge_type": "calls", "dst": "func:HAL_RCC_ClockConfig", "source": "ghidra"}
+{"src": "func:SystemClock_Config@080044f0", "edge_type": "calls", "dst": "func:HAL_RCC_GetHCLKFreq", "source": "ghidra"}
+{"src": "func:SystemClock_Config@080044f0", "edge_type": "calls", "dst": "func:HAL_RCC_OscConfig", "source": "ghidra"}
+{"src": "func:SystemClock_Config@080044f0", "edge_type": "calls", "dst": "func:HAL_SYSTICK_CLKSourceConfig", "source": "ghidra"}
+{"src": "func:SystemClock_Config@080044f0", "edge_type": "calls", "dst": "func:HAL_SYSTICK_Config", "source": "ghidra"}
+{"src": "func:SystemClock_Config@080044f0", "edge_type": "calls", "dst": "func:_Error_Handler", "source": "ghidra"}
+{"src": "func:SystemInit@08004eec", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:SystemInit@08004eec", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r1,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:SystemInit@08004eec", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:SystemInit@08004eec", "edge_type": "writes_mmio", "dst": "mmio:0X40021000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:SystemInit@08004eec", "edge_type": "writes_mmio", "dst": "mmio:0X40021004", "instruction": "str r2,[r3,#0x4]", "source": "ghidra"}
+{"src": "func:SystemInit@08004eec", "edge_type": "writes_mmio", "dst": "mmio:0X40021008", "instruction": "str r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:SystemInit@08004eec", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED08", "instruction": "str r2,[r3,#0x8]", "source": "ghidra"}
+{"src": "func:UART_Receive_IT@0800290c", "edge_type": "calls", "dst": "func:HAL_UART_RxCpltCallback", "source": "ghidra"}
+{"src": "func:UART_SetConfig@080025e8", "edge_type": "calls", "dst": "func:HAL_RCC_GetPCLK1Freq", "source": "ghidra"}
+{"src": "func:UART_SetConfig@080025e8", "edge_type": "calls", "dst": "func:HAL_RCC_GetPCLK2Freq", "source": "ghidra"}
+{"src": "func:USART1_IRQHandler@08004ee0", "edge_type": "calls", "dst": "func:HAL_UART_IRQHandler", "source": "ghidra"}
+{"src": "func:_Error_Handler@0800446c", "edge_type": "calls", "dst": "func:HAL_GPIO_TogglePin", "source": "ghidra"}
+{"src": "func:_Error_Handler@0800446c", "edge_type": "calls", "dst": "func:HAL_GPIO_WritePin", "source": "ghidra"}
+{"src": "func:_Error_Handler@0800446c", "edge_type": "calls", "dst": "func:delay_ms", "source": "ghidra"}
+{"src": "func:_Error_Handler@0800446c", "edge_type": "calls", "dst": "func:serialInt", "source": "ghidra"}
+{"src": "func:_Error_Handler@0800446c", "edge_type": "calls", "dst": "func:serialPrint", "source": "ghidra"}
+{"src": "func:_Error_Handler@0800446c", "edge_type": "calls", "dst": "func:serialWrite", "source": "ghidra"}
+{"src": "func:__aeabi_cdcmpeq@08000990", "edge_type": "calls", "dst": "func:__nedf2", "source": "ghidra"}
+{"src": "func:__aeabi_cdrcmple@08000980", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_cfcmpeq@08001004", "edge_type": "calls", "dst": "func:__cmpsf2", "source": "ghidra"}
+{"src": "func:__aeabi_cfrcmple@08000ffc", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_dcmpeq@080009a0", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_dcmpge@080009dc", "edge_type": "calls", "dst": "func:__aeabi_cdrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_dcmpgt@080009f0", "edge_type": "calls", "dst": "func:__aeabi_cdrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_dcmple@080009c8", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_dcmplt@080009b4", "edge_type": "calls", "dst": "func:__aeabi_cdcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_drsub@08000160", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:__aeabi_fcmpeq@08001014", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_fcmpge@08001050", "edge_type": "calls", "dst": "func:__aeabi_cfrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_fcmpgt@08001064", "edge_type": "calls", "dst": "func:__aeabi_cfrcmple", "source": "ghidra"}
+{"src": "func:__aeabi_fcmple@0800103c", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_fcmplt@08001028", "edge_type": "calls", "dst": "func:__aeabi_cfcmpeq", "source": "ghidra"}
+{"src": "func:__aeabi_frsub@08000ad0", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:__divdf3@08000724", "edge_type": "calls", "dst": "func:FUN_08000892", "source": "ghidra"}
+{"src": "func:__ieee754_asin@08005c50", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:__ieee754_asin@08005c50", "edge_type": "calls", "dst": "func:__aeabi_dcmpgt", "source": "ghidra"}
+{"src": "func:__ieee754_asin@08005c50", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:__ieee754_asin@08005c50", "edge_type": "calls", "dst": "func:__ieee754_sqrt", "source": "ghidra"}
+{"src": "func:__ieee754_asin@08005c50", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:__ieee754_asin@08005c50", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:__ieee754_asin@08005c50", "edge_type": "calls", "dst": "func:fabs", "source": "ghidra"}
+{"src": "func:__ieee754_atan2@08006050", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:__ieee754_atan2@08006050", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:__ieee754_atan2@08006050", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:__ieee754_atan2@08006050", "edge_type": "calls", "dst": "func:atan", "source": "ghidra"}
+{"src": "func:__ieee754_atan2@08006050", "edge_type": "calls", "dst": "func:fabs", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__aeabi_dcmpgt", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__aeabi_dcmple", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__aeabi_i2d", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__ieee754_sqrt", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:fabs", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:nan", "source": "ghidra"}
+{"src": "func:__ieee754_pow@08006208", "edge_type": "calls", "dst": "func:scalbn", "source": "ghidra"}
+{"src": "func:__ieee754_sqrt@08006bec", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:__ieee754_sqrt@08006bec", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:__ieee754_sqrt@08006bec", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:__ieee754_sqrt@08006bec", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:__libc_init_array@08004f90", "edge_type": "calls", "dst": "func:_init", "source": "ghidra"}
+{"src": "func:__libc_init_array@08004f90", "edge_type": "calls", "dst": "func:frame_dummy", "source": "ghidra"}
+{"src": "func:__muldf3@080004d0", "edge_type": "calls", "dst": "func:FUN_080006ac", "source": "ghidra"}
+{"src": "func:__ssputs_r@08005020", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:__ssputs_r@08005020", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:__ssputs_r@08005020", "edge_type": "calls", "dst": "func:_realloc_r", "source": "ghidra"}
+{"src": "func:__ssputs_r@08005020", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:__ssputs_r@08005020", "edge_type": "calls", "dst": "func:memmove", "source": "ghidra"}
+{"src": "func:_free_r@08005658", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_free_r@08005658", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_malloc_r@080056f0", "edge_type": "calls", "dst": "func:__malloc_lock", "source": "ghidra"}
+{"src": "func:_malloc_r@080056f0", "edge_type": "calls", "dst": "func:__malloc_unlock", "source": "ghidra"}
+{"src": "func:_malloc_r@080056f0", "edge_type": "calls", "dst": "func:_sbrk_r", "source": "ghidra"}
+{"src": "func:_printf_i@080053b0", "edge_type": "calls", "dst": "func:_printf_common", "source": "ghidra"}
+{"src": "func:_printf_i@080053b0", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:_realloc_r@080057ac", "edge_type": "calls", "dst": "func:_free_r", "source": "ghidra"}
+{"src": "func:_realloc_r@080057ac", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:_realloc_r@080057ac", "edge_type": "calls", "dst": "func:_malloc_usable_size_r", "source": "ghidra"}
+{"src": "func:_realloc_r@080057ac", "edge_type": "calls", "dst": "func:memcpy", "source": "ghidra"}
+{"src": "func:_sbrk_r@080057f8", "edge_type": "calls", "dst": "func:_sbrk", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@080050d8", "edge_type": "calls", "dst": "func:__ssputs_r", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@080050d8", "edge_type": "calls", "dst": "func:_malloc_r", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@080050d8", "edge_type": "calls", "dst": "func:_printf_i", "source": "ghidra"}
+{"src": "func:_svfiprintf_r@080050d8", "edge_type": "calls", "dst": "func:memchr", "source": "ghidra"}
+{"src": "func:asin@08005830", "edge_type": "calls", "dst": "func:__aeabi_dcmpgt", "source": "ghidra"}
+{"src": "func:asin@08005830", "edge_type": "calls", "dst": "func:__errno", "source": "ghidra"}
+{"src": "func:asin@08005830", "edge_type": "calls", "dst": "func:__ieee754_asin", "source": "ghidra"}
+{"src": "func:asin@08005830", "edge_type": "calls", "dst": "func:__unorddf2", "source": "ghidra"}
+{"src": "func:asin@08005830", "edge_type": "calls", "dst": "func:fabs", "source": "ghidra"}
+{"src": "func:asin@08005830", "edge_type": "calls", "dst": "func:matherr", "source": "ghidra"}
+{"src": "func:asin@08005830", "edge_type": "calls", "dst": "func:nan", "source": "ghidra"}
+{"src": "func:atan@08006d48", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:atan@08006d48", "edge_type": "calls", "dst": "func:__aeabi_dcmpgt", "source": "ghidra"}
+{"src": "func:atan@08006d48", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:atan@08006d48", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:atan@08006d48", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:atan@08006d48", "edge_type": "calls", "dst": "func:fabs", "source": "ghidra"}
+{"src": "func:lowPassFilter@08003ef2", "edge_type": "calls", "dst": "func:__addsf3", "source": "ghidra"}
+{"src": "func:lowPassFilter@08003ef2", "edge_type": "calls", "dst": "func:__aeabi_fmul", "source": "ghidra"}
+{"src": "func:lowPassFilter@08003ef2", "edge_type": "calls", "dst": "func:__aeabi_fsub", "source": "ghidra"}
+{"src": "func:main@08004192", "edge_type": "calls", "dst": "func:HAL_IncTick", "source": "ghidra"}
+{"src": "func:main@08004192", "edge_type": "calls", "dst": "func:setup", "source": "ghidra"}
+{"src": "func:main@08004192", "edge_type": "calls", "dst": "func:taskScheduler", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:__aeabi_dcmpeq", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:__aeabi_dcmplt", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:__errno", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:__ieee754_pow", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:__unorddf2", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:finite", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:matherr", "source": "ghidra"}
+{"src": "func:pow@080058dc", "edge_type": "calls", "dst": "func:rint", "source": "ghidra"}
+{"src": "func:rint@08007090", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:rint@08007090", "edge_type": "calls", "dst": "func:__subdf3", "source": "ghidra"}
+{"src": "func:scalbn@080071a0", "edge_type": "calls", "dst": "func:__aeabi_dadd", "source": "ghidra"}
+{"src": "func:scalbn@080071a0", "edge_type": "calls", "dst": "func:__muldf3", "source": "ghidra"}
+{"src": "func:scalbn@080071a0", "edge_type": "calls", "dst": "func:copysign", "source": "ghidra"}
+{"src": "func:serialBegin@08004c4c", "edge_type": "calls", "dst": "func:HAL_UART_Receive_IT", "source": "ghidra"}
+{"src": "func:serialBegin@08004c4c", "edge_type": "calls", "dst": "func:serialFlush", "source": "ghidra"}
+{"src": "func:serialFlush@08004c40", "edge_type": "calls", "dst": "func:CB_Init", "source": "ghidra"}
+{"src": "func:serialInt@08004c88", "edge_type": "calls", "dst": "func:serialPrint", "source": "ghidra"}
+{"src": "func:serialInt@08004c88", "edge_type": "calls", "dst": "func:siprintf", "source": "ghidra"}
+{"src": "func:serialPrint@08004c68", "edge_type": "calls", "dst": "func:serialWrite", "source": "ghidra"}
+{"src": "func:serialPrint@08004c68", "edge_type": "calls", "dst": "func:strlen", "source": "ghidra"}
+{"src": "func:serialWrite@08004bf4", "edge_type": "calls", "dst": "func:HAL_UART_Transmit", "source": "ghidra"}
+{"src": "func:setup@08004178", "edge_type": "calls", "dst": "func:Devices_Init", "source": "ghidra"}
+{"src": "func:setup@08004178", "edge_type": "calls", "dst": "func:IMU_Init", "source": "ghidra"}
+{"src": "func:setup@08004178", "edge_type": "calls", "dst": "func:MS5611_Init", "source": "ghidra"}
+{"src": "func:setup@08004178", "edge_type": "calls", "dst": "func:PID_Init", "source": "ghidra"}
+{"src": "func:setup@08004178", "edge_type": "calls", "dst": "func:serialBegin", "source": "ghidra"}
+{"src": "func:siprintf@08004fd8", "edge_type": "calls", "dst": "func:_svfiprintf_r", "source": "ghidra"}
+{"src": "func:sqrt@08005ba4", "edge_type": "calls", "dst": "func:__aeabi_dcmplt", "source": "ghidra"}
+{"src": "func:sqrt@08005ba4", "edge_type": "calls", "dst": "func:__divdf3", "source": "ghidra"}
+{"src": "func:sqrt@08005ba4", "edge_type": "calls", "dst": "func:__errno", "source": "ghidra"}
+{"src": "func:sqrt@08005ba4", "edge_type": "calls", "dst": "func:__ieee754_sqrt", "source": "ghidra"}
+{"src": "func:sqrt@08005ba4", "edge_type": "calls", "dst": "func:__unorddf2", "source": "ghidra"}
+{"src": "func:sqrt@08005ba4", "edge_type": "calls", "dst": "func:matherr", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:AHRS_ComputeAngles", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MS5611_Update", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MSP_SendAltitude", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MSP_SendAttitude", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MSP_SendIdent", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MSP_SendMotor", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MSP_SendPID", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MSP_SendRawIMU", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:MSP_SendStatus", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:PID_Update", "source": "ghidra"}
+{"src": "func:taskScheduler@08004100", "edge_type": "calls", "dst": "func:millis", "source": "ghidra"}
+{"src": "func:toggleLED@08003f20", "edge_type": "calls", "dst": "func:HAL_GPIO_WritePin", "source": "ghidra"}

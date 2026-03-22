@@ -1,0 +1,80 @@
+--- a/extractor/relation_extractor.py
++++ b/extractor/relation_extractor.py
+@@ -214,10 +214,13 @@
+     field_name_only = field_name.split(".")[-1]
+     field_pattern = re.escape(field_name_only)
+ 
++    # Be tolerant to STM-style "Bit15SWRST: ..." (no separator between bit number and field)
+     start_pattern = re.compile(
+         rf"(?i)^[\u2022•\-–\s]*"
+-        rf"(?:bit\s*\d+\s*[-:]?\s*)?"
+-        rf"\b{field_pattern}\b\s*[:：\-–]"
++        rf"(?:bit\s*\d+(?:\s*[-:]?\s*)?)?"
++        rf"(?:\b|(?<=\d))"
++        rf"{field_pattern}"
++        rf"\b\s*[:：\-–]"
+     )
+ 
+     next_field_names = []
+@@ -228,12 +231,13 @@
+ 
+     next_field_pattern = None
+     if next_field_names:
++        # Mirror the tolerance of start_pattern: allow "Bit15FIELD" (digit directly before field).
+         next_field_pattern = re.compile(
+             r"(?i)^[\u2022•\-–\s]*"
+-            r"(?:bit\s*\d+\s*[-:]?\s*)?"
+-            r"(?:"
+-            + "|".join(re.escape(f) for f in next_field_names)
+-            + r")\b\s*[:：\-–]"
++            r"(?:bit\s*\d+(?:\s*[-:]?\s*)?)?"
++            r"(?:\b|(?<=\d))"
++            r"(?:" + "|".join(re.escape(f) for f in next_field_names) + r")"
++            r"\b\s*[:：\-–]"
+         )
+ 
+     snippets = []
+@@ -282,7 +286,9 @@
+             lines = _page_lines(p)
+             for i, line in enumerate(lines):
+                 if fuzzy_pattern.search(line):
+-                    start = max(0, i - 1)
++                    # Don't include the previous line: bitfield summary tables often sit right above
++                    # the "BitXXFIELD:" line and can introduce many unrelated field tokens.
++                    start = i
+                     end = min(len(lines), i + 6)
+                     text = " ".join(lines[start:end]).strip()
+                     snippets.append(
+@@ -597,21 +603,27 @@
+ 
+     edges = []
+     edge_id = 1
+-    target_names = [target_periph.upper()] + [x["register"].upper() for x in target_regs.values()]
++    target_periph_u = target_periph.upper()
++
++    # Only treat a line as "about" the target if it mentions the peripheral name
++    # or a peripheral-qualified register token like SPI_CR1. Plain "CR1" is way too generic.
++    target_reg_pats: List[re.Pattern] = []
++    for r in target_regs.values():
++        target_reg_pats.extend(_target_register_patterns(target_periph, r["register"]))
+ 
+     for pno, line in lines:
+         u = line.upper()
+ 
+-        if not any(tn in u for tn in target_names):
++        if (re.search(rf"\b{re.escape(target_periph_u)}\b", u) is None) and (not any(p.search(u) for p in target_reg_pats)):
+             continue
+         if not _has_controller_signal(line):
+             continue
+ 
+         for src_reg in controller_regs.values():
++            # Only emit edges when a *specific controller register* is referenced.
++            # Using the controller peripheral name alone is too ambiguous and leads to many false positives.
+             src_name = src_reg["register"].upper()
+-            src_periph = src_reg["peripheral"].upper()
+-
+-            if src_name not in u and src_periph not in u:
++            if re.search(rf"\b{re.escape(src_name)}\b", u) is None:
+                 continue
+ 
+             rel1 = _infer_relation(line, CTRL_REG_TO_PERIPH_REL, "controller_affects_peripheral")

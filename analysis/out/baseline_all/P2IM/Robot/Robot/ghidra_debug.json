@@ -1,0 +1,6276 @@
+{
+  "aggregate": {
+    "access_sources": {
+      "reference": 166
+    },
+    "decompile_failure": 0,
+    "decompile_success": 198,
+    "fallback": {
+      "constant_candidates_seen": 5119,
+      "mem_like_instructions_seen": 5137,
+      "operand_objects_seen": 15153
+    },
+    "functions_processed": 198,
+    "functions_with_mmio": 14,
+    "log_lines": [
+      "[DEBUG][start] program=Robot.elf out_json=/home/MultiFuzz/analysis/out/baseline_all/P2IM/Robot/Robot/ghidra_export.json",
+      "[DEBUG][mmio] func=__do_global_dtors_aux refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=2 unresolved_ssa=0",
+      "[DEBUG][mmio] func=frame_dummy refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_drsub refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__subdf3 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_dadd refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__floatunsidf refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_i2d refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_f2d refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__floatundidf refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_l2d refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__muldf3 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=FUN_080006a4 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__divdf3 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=FUN_0800088a refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__gedf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__ledf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__nedf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_cdrcmple refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_cdcmpeq refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_dcmpeq refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_dcmplt refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_dcmple refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_dcmpge refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_dcmpgt refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__truncdfsf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][progress] processed=25 functions_with_mmio=0",
+      "[DEBUG][mmio] func=__aeabi_frsub refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fsub refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__addsf3 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__floatunsisf refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__floatsisf refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_ul2f refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_l2f refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fmul refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fdiv refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__gesf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__ltsf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__cmpsf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_cfrcmple refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_cfcmpeq refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fcmpeq refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fcmplt refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fcmple refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fcmpge refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_fcmpgt refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__fixunssfsi refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=memcpy refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__unorddf2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_d2iz refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__aeabi_uldivmod refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__udivmoddi4 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][progress] processed=50 functions_with_mmio=0",
+      "[DEBUG][mmio] func=__aeabi_idiv0 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_Init refs_added=2 ssa_added=0 fallback_added=0 unique=2 resolved_ssa=2 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_InitTick refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=3 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_IncTick refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=3 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_GetTick refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=NVIC_SetPriorityGrouping refs_added=2 ssa_added=0 fallback_added=0 unique=2 resolved_ssa=2 unresolved_ssa=0",
+      "[DEBUG][mmio] func=NVIC_GetPriorityGrouping refs_added=1 ssa_added=0 fallback_added=0 unique=1 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=NVIC_SetPriority refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=NVIC_EncodePriority refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=SysTick_Config refs_added=3 ssa_added=0 fallback_added=0 unique=3 resolved_ssa=3 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_NVIC_SetPriorityGrouping refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_NVIC_SetPriority refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_SYSTICK_Config refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_SYSTICK_CLKSourceConfig refs_added=4 ssa_added=0 fallback_added=0 unique=4 resolved_ssa=4 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_SYSTICK_IRQHandler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_GPIO_Init refs_added=19 ssa_added=0 fallback_added=0 unique=19 resolved_ssa=18 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_GPIO_WritePin refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_I2C_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_I2C_MspInit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_I2C_Mem_Write refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_I2C_Mem_Read refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=I2C_RequestMemoryWrite refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=I2C_RequestMemoryRead refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=I2C_WaitOnMasterAddressFlagUntilTimeout refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=I2C_WaitOnTXEFlagUntilTimeout refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][progress] processed=75 functions_with_mmio=6",
+      "[DEBUG][mmio] func=I2C_WaitOnBTFFlagUntilTimeout refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=I2C_WaitOnRXNEFlagUntilTimeout refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=I2C_IsAcknowledgeFailed refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_MspInit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_RCC_OscConfig refs_added=73 ssa_added=0 fallback_added=0 unique=73 resolved_ssa=72 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_RCC_ClockConfig refs_added=23 ssa_added=0 fallback_added=0 unique=23 resolved_ssa=23 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_RCC_GetSysClockFreq refs_added=2 ssa_added=0 fallback_added=0 unique=2 resolved_ssa=7 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_RCC_GetHCLKFreq refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_RCC_GetPCLK1Freq refs_added=1 ssa_added=0 fallback_added=0 unique=1 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_RCC_GetPCLK2Freq refs_added=1 ssa_added=0 fallback_added=0 unique=1 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=RCC_Delay refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_Base_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_Base_MspInit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_Base_Start_IT refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_PWM_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_PWM_MspInit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_PWM_Start refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_IRQHandler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_PWM_ConfigChannel refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_ConfigClockSource refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_OC_DelayElapsedCallback refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_IC_CaptureCallback refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_PWM_PulseFinishedCallback refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_TriggerCallback refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_Base_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][progress] processed=100 functions_with_mmio=11",
+      "[DEBUG][mmio] func=TIM_OC1_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_OC2_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_OC3_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_OC4_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_TI1_ConfigInputStage refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_TI2_ConfigInputStage refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_ITRx_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_ETR_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM_CCxChannelCmd refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIMEx_ConfigBreakDeadTime refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIMEx_MasterConfigSynchronization refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIMEx_CommutationCallback refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIMEx_BreakCallback refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_UART_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_UART_MspInit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_UART_Transmit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=UART_WaitOnFlagUntilTimeout refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=UART_SetConfig refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=mpu6050_init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=3 unresolved_ssa=0",
+      "[DEBUG][mmio] func=mpu6050_calibrate refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=2 unresolved_ssa=0",
+      "[DEBUG][mmio] func=mpu6050_update refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=mpu6050_calc_pitch refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=8 unresolved_ssa=0",
+      "[DEBUG][mmio] func=mpu6050_calc_acc_pitch_roll refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_i2c_write_reg refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_i2c_read_reg refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][progress] processed=125 functions_with_mmio=11",
+      "[DEBUG][mmio] func=_get_ms_tick refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=uart_print refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=flush_strbuf refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_PeriodElapsedCallback refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=38 unresolved_ssa=0",
+      "[DEBUG][mmio] func=main refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=3 unresolved_ssa=0",
+      "[DEBUG][mmio] func=SystemClock_Config refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=MX_I2C1_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=8 unresolved_ssa=0",
+      "[DEBUG][mmio] func=MX_TIM1_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=6 unresolved_ssa=0",
+      "[DEBUG][mmio] func=MX_TIM2_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=5 unresolved_ssa=0",
+      "[DEBUG][mmio] func=MX_USART1_UART_Init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=7 unresolved_ssa=0",
+      "[DEBUG][mmio] func=MX_GPIO_Init refs_added=9 ssa_added=0 fallback_added=0 unique=9 resolved_ssa=6 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_Error_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HAL_TIM_MspPostInit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=NMI_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=HardFault_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=MemManage_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=BusFault_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=UsageFault_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=SVC_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=DebugMon_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=PendSV_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=SysTick_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=TIM2_IRQHandler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_sbrk refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=6 unresolved_ssa=0",
+      "[DEBUG][mmio] func=SystemInit refs_added=12 ssa_added=0 fallback_added=0 unique=12 resolved_ssa=12 unresolved_ssa=0",
+      "[DEBUG][progress] processed=150 functions_with_mmio=13",
+      "[DEBUG][mmio] func=Reset_Handler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=USBWakeUp_IRQHandler refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=atan2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__ieee754_atan2 refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=atan refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=fabs refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__errno refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__libc_init_array refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=memset refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=sprintf refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=strlen refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_svfprintf_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=register_fini refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=atexit refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=quorem refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_dtoa_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=2 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__libc_fini_array refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_localeconv_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=1 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__retarget_lock_acquire_recursive refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__retarget_lock_release_recursive refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_malloc_r refs_added=14 ssa_added=0 fallback_added=0 unique=14 resolved_ssa=34 unresolved_ssa=0",
+      "[DEBUG][mmio] func=memchr refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__malloc_lock refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__malloc_unlock refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_Balloc refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][progress] processed=175 functions_with_mmio=14",
+      "[DEBUG][mmio] func=_Bfree refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__multadd refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__hi0bits refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__lo0bits refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__i2b refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__multiply refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__pow5mult refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__lshift refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__mcmp refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__mdiff refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__d2b refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_sbrk_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=2 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__ssprint_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__register_exitproc refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=4 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_calloc_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_malloc_trim_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=8 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_free_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=10 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__ascii_mbtowc refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=memmove refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_realloc_r refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=3 unresolved_ssa=0",
+      "[DEBUG][mmio] func=__ascii_wctomb refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_init refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0",
+      "[DEBUG][mmio] func=_fini refs_added=0 ssa_added=0 fallback_added=0 unique=0 resolved_ssa=0 unresolved_ssa=0"
+    ],
+    "mmio_address_counter": {
+      "0x4000089C": 2,
+      "0x400008A0": 2,
+      "0x400008A4": 2,
+      "0x400008B4": 2,
+      "0x400008C4": 2,
+      "0x40000920": 2,
+      "0x40000924": 2,
+      "0x40007000": 4,
+      "0x40010400": 4,
+      "0x40010404": 4,
+      "0x40010408": 4,
+      "0x4001040C": 4,
+      "0x40021000": 36,
+      "0x40021004": 31,
+      "0x40021008": 1,
+      "0x40021018": 12,
+      "0x4002101C": 6,
+      "0x40021020": 16,
+      "0x40021024": 2,
+      "0x40022000": 10,
+      "0x42420000": 2,
+      "0x42420060": 3,
+      "0x42420480": 2,
+      "0xE000E010": 5,
+      "0xE000E014": 1,
+      "0xE000E018": 1,
+      "0xE000ED08": 1,
+      "0xE000ED0C": 3
+    },
+    "reference": {
+      "hits_added": 166,
+      "instructions_scanned": 14778,
+      "mmio_refs": 166,
+      "references_seen": 6347
+    },
+    "sample_mmio_hits": [
+      {
+        "address_hex": "0x40022000",
+        "function": "HAL_Init",
+        "instruction_address": "080014f6",
+        "instruction_text": "ldr r3,[r3,#0x0]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40022000",
+        "function": "HAL_Init",
+        "instruction_address": "080014fe",
+        "instruction_text": "str r3,[r2,#0x0]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000ED0C",
+        "function": "NVIC_SetPriorityGrouping",
+        "instruction_address": "080015c6",
+        "instruction_text": "ldr r3,[r3,#0xc]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000ED0C",
+        "function": "NVIC_SetPriorityGrouping",
+        "instruction_address": "080015ea",
+        "instruction_text": "str r3,[r2,#0xc]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000ED0C",
+        "function": "NVIC_GetPriorityGrouping",
+        "instruction_address": "08001602",
+        "instruction_text": "ldr r3,[r3,#0xc]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000E014",
+        "function": "SysTick_Config",
+        "instruction_address": "080016ec",
+        "instruction_text": "str r3,[r2,#0x4]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000E018",
+        "function": "SysTick_Config",
+        "instruction_address": "080016fc",
+        "instruction_text": "str r2,[r3,#0x8]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000E010",
+        "function": "SysTick_Config",
+        "instruction_address": "08001702",
+        "instruction_text": "str r2,[r3,#0x0]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000E010",
+        "function": "HAL_SYSTICK_CLKSourceConfig",
+        "instruction_address": "0800178c",
+        "instruction_text": "ldr r3,[r3,#0x0]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000E010",
+        "function": "HAL_SYSTICK_CLKSourceConfig",
+        "instruction_address": "08001794",
+        "instruction_text": "str r3,[r2,#0x0]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000E010",
+        "function": "HAL_SYSTICK_CLKSourceConfig",
+        "instruction_address": "0800179a",
+        "instruction_text": "ldr r3,[r3,#0x0]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0xE000E010",
+        "function": "HAL_SYSTICK_CLKSourceConfig",
+        "instruction_address": "080017a2",
+        "instruction_text": "str r3,[r2,#0x0]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40021018",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "08001908",
+        "instruction_text": "ldr r3,[r3,#0x18]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40021018",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "08001910",
+        "instruction_text": "str r3,[r2,#0x18]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40021018",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "08001914",
+        "instruction_text": "ldr r3,[r3,#0x18]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40010400",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "080019a0",
+        "instruction_text": "ldr r2,[r3,#0x0]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40010400",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "080019a8",
+        "instruction_text": "str r3,[r1,#0x0]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40010400",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "080019ae",
+        "instruction_text": "ldr r2,[r3,#0x0]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40010400",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "080019b8",
+        "instruction_text": "str r3,[r1,#0x0]",
+        "kind": "writes_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      },
+      {
+        "address_hex": "0x40010404",
+        "function": "HAL_GPIO_Init",
+        "instruction_address": "080019c8",
+        "instruction_text": "ldr r2,[r3,#0x4]",
+        "kind": "reads_mmio",
+        "resolver": "reference_manager",
+        "source": "reference"
+      }
+    ],
+    "sample_unresolved_ssa": [],
+    "ssa": {
+      "addr_resolved": 318,
+      "addr_resolved_non_mmio": 318,
+      "load_ops_seen": 1125,
+      "pcode_ops_seen": 38110,
+      "pruned_register_based_pointer": 1664,
+      "store_ops_seen": 857
+    },
+    "top_mmio_functions": [
+      {
+        "name": "HAL_RCC_OscConfig",
+        "sources": {
+          "reference": 73
+        },
+        "unique_accesses": 73
+      },
+      {
+        "name": "HAL_RCC_ClockConfig",
+        "sources": {
+          "reference": 23
+        },
+        "unique_accesses": 23
+      },
+      {
+        "name": "HAL_GPIO_Init",
+        "sources": {
+          "reference": 19
+        },
+        "unique_accesses": 19
+      },
+      {
+        "name": "_malloc_r",
+        "sources": {
+          "reference": 14
+        },
+        "unique_accesses": 14
+      },
+      {
+        "name": "SystemInit",
+        "sources": {
+          "reference": 12
+        },
+        "unique_accesses": 12
+      },
+      {
+        "name": "MX_GPIO_Init",
+        "sources": {
+          "reference": 9
+        },
+        "unique_accesses": 9
+      },
+      {
+        "name": "HAL_SYSTICK_CLKSourceConfig",
+        "sources": {
+          "reference": 4
+        },
+        "unique_accesses": 4
+      },
+      {
+        "name": "SysTick_Config",
+        "sources": {
+          "reference": 3
+        },
+        "unique_accesses": 3
+      },
+      {
+        "name": "HAL_Init",
+        "sources": {
+          "reference": 2
+        },
+        "unique_accesses": 2
+      },
+      {
+        "name": "NVIC_SetPriorityGrouping",
+        "sources": {
+          "reference": 2
+        },
+        "unique_accesses": 2
+      },
+      {
+        "name": "HAL_RCC_GetSysClockFreq",
+        "sources": {
+          "reference": 2
+        },
+        "unique_accesses": 2
+      },
+      {
+        "name": "NVIC_GetPriorityGrouping",
+        "sources": {
+          "reference": 1
+        },
+        "unique_accesses": 1
+      },
+      {
+        "name": "HAL_RCC_GetPCLK1Freq",
+        "sources": {
+          "reference": 1
+        },
+        "unique_accesses": 1
+      },
+      {
+        "name": "HAL_RCC_GetPCLK2Freq",
+        "sources": {
+          "reference": 1
+        },
+        "unique_accesses": 1
+      }
+    ]
+  },
+  "debug_json": "/home/MultiFuzz/analysis/out/baseline_all/P2IM/Robot/Robot/ghidra_debug.json",
+  "debug_log": "/home/MultiFuzz/analysis/out/baseline_all/P2IM/Robot/Robot/ghidra_debug.log",
+  "exceptions": [],
+  "functions": [
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000110",
+      "fallback": {
+        "constant_candidates_seen": 5,
+        "mem_like_instructions_seen": 5,
+        "operand_objects_seen": 12
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__do_global_dtors_aux",
+      "reference": {
+        "instructions_scanned": 11,
+        "references_seen": 8
+      },
+      "ssa": {
+        "addr_resolved": 2,
+        "addr_resolved_non_mmio": 2,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 20,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000134",
+      "fallback": {
+        "constant_candidates_seen": 3,
+        "mem_like_instructions_seen": 3,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "frame_dummy",
+      "reference": {
+        "instructions_scanned": 7,
+        "references_seen": 5
+      },
+      "ssa": {
+        "pcode_ops_seen": 11,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000150",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_drsub",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 3,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000158",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__subdf3",
+      "reference": {
+        "instructions_scanned": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 427,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800015c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_dadd",
+      "reference": {
+        "instructions_scanned": 201,
+        "references_seen": 21
+      },
+      "ssa": {
+        "pcode_ops_seen": 426,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080003d4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__floatunsidf",
+      "reference": {
+        "instructions_scanned": 10,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 93,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080003f4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_i2d",
+      "reference": {
+        "instructions_scanned": 12,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 104,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000418",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_f2d",
+      "reference": {
+        "instructions_scanned": 21,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 143,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800045c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__floatundidf",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 205,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800046c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_l2d",
+      "reference": {
+        "instructions_scanned": 28,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 224,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080004c8",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__muldf3",
+      "reference": {
+        "instructions_scanned": 117,
+        "references_seen": 7
+      },
+      "ssa": {
+        "pcode_ops_seen": 320,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080006a4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "FUN_080006a4",
+      "reference": {
+        "instructions_scanned": 61,
+        "references_seen": 10
+      },
+      "ssa": {
+        "pcode_ops_seen": 112,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800071c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__divdf3",
+      "reference": {
+        "instructions_scanned": 109,
+        "references_seen": 9
+      },
+      "ssa": {
+        "pcode_ops_seen": 434,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800088a",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "FUN_0800088a",
+      "reference": {
+        "instructions_scanned": 30,
+        "references_seen": 12
+      },
+      "ssa": {
+        "pcode_ops_seen": 105,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080008ec",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__gedf2",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 74,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080008f4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__ledf2",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 74,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080008fc",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__nedf2",
+      "reference": {
+        "instructions_scanned": 40,
+        "references_seen": 5
+      },
+      "ssa": {
+        "pcode_ops_seen": 74,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000978",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_cdrcmple",
+      "reference": {
+        "instructions_scanned": 7,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000988",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_cdcmpeq",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 3,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000998",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_dcmpeq",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 5,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080009ac",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_dcmplt",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 5,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080009c0",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_dcmple",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 9,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080009d4",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_dcmpge",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 9,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080009e8",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_dcmpgt",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 5,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080009fc",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__truncdfsf2",
+      "reference": {
+        "instructions_scanned": 46,
+        "references_seen": 4
+      },
+      "ssa": {
+        "pcode_ops_seen": 85,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000a9c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_frsub",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 3,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000aa4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fsub",
+      "reference": {
+        "instructions_scanned": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 220,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000aa8",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__addsf3",
+      "reference": {
+        "instructions_scanned": 119,
+        "references_seen": 11
+      },
+      "ssa": {
+        "pcode_ops_seen": 219,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000c08",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__floatunsisf",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 46,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000c10",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__floatsisf",
+      "reference": {
+        "instructions_scanned": 10,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 54,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000c2c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_ul2f",
+      "reference": {
+        "instructions_scanned": 5,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 63,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000c3c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_l2f",
+      "reference": {
+        "instructions_scanned": 39,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 74,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000cb8",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fmul",
+      "reference": {
+        "instructions_scanned": 116,
+        "references_seen": 14
+      },
+      "ssa": {
+        "pcode_ops_seen": 246,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000e20",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fdiv",
+      "reference": {
+        "instructions_scanned": 100,
+        "references_seen": 19
+      },
+      "ssa": {
+        "pcode_ops_seen": 262,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000f58",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__gesf2",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 65,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000f60",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__ltsf2",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 65,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000f68",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__cmpsf2",
+      "reference": {
+        "instructions_scanned": 31,
+        "references_seen": 5
+      },
+      "ssa": {
+        "pcode_ops_seen": 65,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000fc8",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_cfrcmple",
+      "reference": {
+        "instructions_scanned": 4,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000fd0",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_cfcmpeq",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000fe0",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fcmpeq",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 5,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08000ff4",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fcmplt",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 5,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001008",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fcmple",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 9,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800101c",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fcmpge",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 9,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001030",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_fcmpgt",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 5,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001044",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__fixunssfsi",
+      "reference": {
+        "instructions_scanned": 21,
+        "references_seen": 5
+      },
+      "ssa": {
+        "pcode_ops_seen": 28,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001084",
+      "fallback": {
+        "constant_candidates_seen": 58,
+        "mem_like_instructions_seen": 58,
+        "operand_objects_seen": 174
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "memcpy",
+      "reference": {
+        "instructions_scanned": 103,
+        "references_seen": 16
+      },
+      "ssa": {
+        "load_ops_seen": 29,
+        "pcode_ops_seen": 281,
+        "pruned_register_based_pointer": 58,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 29,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001170",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__unorddf2",
+      "reference": {
+        "instructions_scanned": 14,
+        "references_seen": 4
+      },
+      "ssa": {
+        "pcode_ops_seen": 24,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800119c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_d2iz",
+      "reference": {
+        "instructions_scanned": 25,
+        "references_seen": 4
+      },
+      "ssa": {
+        "pcode_ops_seen": 42,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080011ec",
+      "fallback": {
+        "constant_candidates_seen": 3,
+        "mem_like_instructions_seen": 3,
+        "operand_objects_seen": 11
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_uldivmod",
+      "reference": {
+        "instructions_scanned": 16,
+        "references_seen": 7
+      },
+      "ssa": {
+        "pcode_ops_seen": 16,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800121c",
+      "fallback": {
+        "constant_candidates_seen": 5,
+        "mem_like_instructions_seen": 5,
+        "operand_objects_seen": 19
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__udivmoddi4",
+      "reference": {
+        "instructions_scanned": 253,
+        "references_seen": 57
+      },
+      "ssa": {
+        "pcode_ops_seen": 391,
+        "pruned_register_based_pointer": 8,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 8,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080014ec",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__aeabi_idiv0",
+      "reference": {
+        "instructions_scanned": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080014f0",
+      "fallback": {
+        "constant_candidates_seen": 4,
+        "mem_like_instructions_seen": 4,
+        "operand_objects_seen": 10
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 2
+        },
+        "unique_accesses": 2
+      },
+      "name": "HAL_Init",
+      "reference": {
+        "hits_added": 2,
+        "instructions_scanned": 15,
+        "mmio_refs": 2,
+        "references_seen": 7
+      },
+      "ssa": {
+        "addr_resolved": 2,
+        "addr_resolved_non_mmio": 2,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800151c",
+      "fallback": {
+        "constant_candidates_seen": 10,
+        "mem_like_instructions_seen": 10,
+        "operand_objects_seen": 27
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_InitTick",
+      "reference": {
+        "instructions_scanned": 36,
+        "references_seen": 16
+      },
+      "ssa": {
+        "addr_resolved": 3,
+        "addr_resolved_non_mmio": 3,
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 37,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800157c",
+      "fallback": {
+        "constant_candidates_seen": 6,
+        "mem_like_instructions_seen": 6,
+        "operand_objects_seen": 15
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_IncTick",
+      "reference": {
+        "instructions_scanned": 14,
+        "references_seen": 7
+      },
+      "ssa": {
+        "addr_resolved": 3,
+        "addr_resolved_non_mmio": 3,
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 10,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080015a0",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 5
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_GetTick",
+      "reference": {
+        "instructions_scanned": 8,
+        "references_seen": 3
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080015b4",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 40
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 2
+        },
+        "unique_accesses": 2
+      },
+      "name": "NVIC_SetPriorityGrouping",
+      "reference": {
+        "hits_added": 2,
+        "instructions_scanned": 29,
+        "mmio_refs": 2,
+        "references_seen": 15
+      },
+      "ssa": {
+        "addr_resolved": 2,
+        "addr_resolved_non_mmio": 2,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 14,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080015fc",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 5
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 1
+        },
+        "unique_accesses": 1
+      },
+      "name": "NVIC_GetPriorityGrouping",
+      "reference": {
+        "hits_added": 1,
+        "instructions_scanned": 10,
+        "mmio_refs": 1,
+        "references_seen": 3
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 8,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001618",
+      "fallback": {
+        "constant_candidates_seen": 11,
+        "mem_like_instructions_seen": 11,
+        "operand_objects_seen": 31
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "NVIC_SetPriority",
+      "reference": {
+        "instructions_scanned": 33,
+        "references_seen": 12
+      },
+      "ssa": {
+        "pcode_ops_seen": 30,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800166c",
+      "fallback": {
+        "constant_candidates_seen": 15,
+        "mem_like_instructions_seen": 15,
+        "operand_objects_seen": 45
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "NVIC_EncodePriority",
+      "reference": {
+        "instructions_scanned": 44,
+        "references_seen": 18
+      },
+      "ssa": {
+        "pcode_ops_seen": 26,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080016d0",
+      "fallback": {
+        "constant_candidates_seen": 9,
+        "mem_like_instructions_seen": 9,
+        "operand_objects_seen": 24
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 3
+        },
+        "unique_accesses": 3
+      },
+      "name": "SysTick_Config",
+      "reference": {
+        "hits_added": 3,
+        "instructions_scanned": 28,
+        "mmio_refs": 3,
+        "references_seen": 12
+      },
+      "ssa": {
+        "addr_resolved": 3,
+        "addr_resolved_non_mmio": 3,
+        "pcode_ops_seen": 20,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001714",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_NVIC_SetPriorityGrouping",
+      "reference": {
+        "instructions_scanned": 10,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800172a",
+      "fallback": {
+        "constant_candidates_seen": 9,
+        "mem_like_instructions_seen": 9,
+        "operand_objects_seen": 27
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_NVIC_SetPriority",
+      "reference": {
+        "instructions_scanned": 24,
+        "references_seen": 12
+      },
+      "ssa": {
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001762",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_SYSTICK_Config",
+      "reference": {
+        "instructions_scanned": 11,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 3,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800177c",
+      "fallback": {
+        "constant_candidates_seen": 10,
+        "mem_like_instructions_seen": 10,
+        "operand_objects_seen": 26
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 4
+        },
+        "unique_accesses": 4
+      },
+      "name": "HAL_SYSTICK_CLKSourceConfig",
+      "reference": {
+        "hits_added": 4,
+        "instructions_scanned": 23,
+        "mmio_refs": 4,
+        "references_seen": 13
+      },
+      "ssa": {
+        "addr_resolved": 4,
+        "addr_resolved_non_mmio": 4,
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 14,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080017b4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_SYSTICK_IRQHandler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080017c4",
+      "fallback": {
+        "constant_candidates_seen": 149,
+        "mem_like_instructions_seen": 149,
+        "operand_objects_seen": 417
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 19
+        },
+        "unique_accesses": 19
+      },
+      "name": "HAL_GPIO_Init",
+      "reference": {
+        "hits_added": 19,
+        "instructions_scanned": 305,
+        "mmio_refs": 19,
+        "references_seen": 183
+      },
+      "ssa": {
+        "addr_resolved": 18,
+        "addr_resolved_non_mmio": 18,
+        "load_ops_seen": 24,
+        "pcode_ops_seen": 483,
+        "pruned_register_based_pointer": 19,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 13,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001a80",
+      "fallback": {
+        "constant_candidates_seen": 10,
+        "mem_like_instructions_seen": 10,
+        "operand_objects_seen": 30
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_GPIO_WritePin",
+      "reference": {
+        "instructions_scanned": 24,
+        "references_seen": 11
+      },
+      "ssa": {
+        "pcode_ops_seen": 11,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001ab0",
+      "fallback": {
+        "constant_candidates_seen": 101,
+        "mem_like_instructions_seen": 101,
+        "operand_objects_seen": 296
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_I2C_Init",
+      "reference": {
+        "instructions_scanned": 224,
+        "references_seen": 77
+      },
+      "ssa": {
+        "load_ops_seen": 29,
+        "pcode_ops_seen": 279,
+        "pruned_register_based_pointer": 43,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 14,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001cb8",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_I2C_MspInit",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001ccc",
+      "fallback": {
+        "constant_candidates_seen": 163,
+        "mem_like_instructions_seen": 163,
+        "operand_objects_seen": 487
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_I2C_Mem_Write",
+      "reference": {
+        "instructions_scanned": 304,
+        "references_seen": 127
+      },
+      "ssa": {
+        "load_ops_seen": 41,
+        "pcode_ops_seen": 312,
+        "pruned_register_based_pointer": 71,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 30,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08001f6c",
+      "fallback": {
+        "constant_candidates_seen": 438,
+        "mem_like_instructions_seen": 438,
+        "operand_objects_seen": 1309
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_I2C_Mem_Read",
+      "reference": {
+        "instructions_scanned": 799,
+        "references_seen": 324
+      },
+      "ssa": {
+        "load_ops_seen": 106,
+        "pcode_ops_seen": 876,
+        "pruned_register_based_pointer": 178,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 72,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002640",
+      "fallback": {
+        "constant_candidates_seen": 95,
+        "mem_like_instructions_seen": 95,
+        "operand_objects_seen": 284
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "I2C_RequestMemoryWrite",
+      "reference": {
+        "instructions_scanned": 202,
+        "references_seen": 88
+      },
+      "ssa": {
+        "load_ops_seen": 18,
+        "pcode_ops_seen": 148,
+        "pruned_register_based_pointer": 29,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 11,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080027f4",
+      "fallback": {
+        "constant_candidates_seen": 158,
+        "mem_like_instructions_seen": 158,
+        "operand_objects_seen": 472
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "I2C_RequestMemoryRead",
+      "reference": {
+        "instructions_scanned": 339,
+        "references_seen": 148
+      },
+      "ssa": {
+        "load_ops_seen": 32,
+        "pcode_ops_seen": 251,
+        "pruned_register_based_pointer": 51,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 19,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002ad8",
+      "fallback": {
+        "constant_candidates_seen": 43,
+        "mem_like_instructions_seen": 43,
+        "operand_objects_seen": 129
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "I2C_WaitOnMasterAddressFlagUntilTimeout",
+      "reference": {
+        "instructions_scanned": 100,
+        "references_seen": 35
+      },
+      "ssa": {
+        "load_ops_seen": 10,
+        "pcode_ops_seen": 67,
+        "pruned_register_based_pointer": 19,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 9,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002bb4",
+      "fallback": {
+        "constant_candidates_seen": 21,
+        "mem_like_instructions_seen": 21,
+        "operand_objects_seen": 63
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "I2C_WaitOnTXEFlagUntilTimeout",
+      "reference": {
+        "instructions_scanned": 54,
+        "references_seen": 24
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 36,
+        "pruned_register_based_pointer": 7,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 4,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002c2e",
+      "fallback": {
+        "constant_candidates_seen": 21,
+        "mem_like_instructions_seen": 21,
+        "operand_objects_seen": 63
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "I2C_WaitOnBTFFlagUntilTimeout",
+      "reference": {
+        "instructions_scanned": 54,
+        "references_seen": 24
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 36,
+        "pruned_register_based_pointer": 7,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 4,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002ca8",
+      "fallback": {
+        "constant_candidates_seen": 31,
+        "mem_like_instructions_seen": 31,
+        "operand_objects_seen": 93
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "I2C_WaitOnRXNEFlagUntilTimeout",
+      "reference": {
+        "instructions_scanned": 65,
+        "references_seen": 25
+      },
+      "ssa": {
+        "load_ops_seen": 6,
+        "pcode_ops_seen": 48,
+        "pruned_register_based_pointer": 14,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 8,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002d3c",
+      "fallback": {
+        "constant_candidates_seen": 15,
+        "mem_like_instructions_seen": 15,
+        "operand_objects_seen": 45
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "I2C_IsAcknowledgeFailed",
+      "reference": {
+        "instructions_scanned": 34,
+        "references_seen": 10
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 22,
+        "pruned_register_based_pointer": 8,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002d8a",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_MspInit",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08002d98",
+      "fallback": {
+        "constant_candidates_seen": 225,
+        "mem_like_instructions_seen": 225,
+        "operand_objects_seen": 602
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 73
+        },
+        "unique_accesses": 73
+      },
+      "name": "HAL_RCC_OscConfig",
+      "reference": {
+        "hits_added": 73,
+        "instructions_scanned": 518,
+        "mmio_refs": 73,
+        "references_seen": 322
+      },
+      "ssa": {
+        "addr_resolved": 72,
+        "addr_resolved_non_mmio": 72,
+        "load_ops_seen": 68,
+        "pcode_ops_seen": 955,
+        "pruned_register_based_pointer": 24,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 28,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003260",
+      "fallback": {
+        "constant_candidates_seen": 86,
+        "mem_like_instructions_seen": 87,
+        "operand_objects_seen": 236
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 23
+        },
+        "unique_accesses": 23
+      },
+      "name": "HAL_RCC_ClockConfig",
+      "reference": {
+        "hits_added": 23,
+        "instructions_scanned": 201,
+        "mmio_refs": 23,
+        "references_seen": 113
+      },
+      "ssa": {
+        "addr_resolved": 23,
+        "addr_resolved_non_mmio": 23,
+        "load_ops_seen": 29,
+        "pcode_ops_seen": 262,
+        "pruned_register_based_pointer": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 7,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003440",
+      "fallback": {
+        "constant_candidates_seen": 35,
+        "mem_like_instructions_seen": 37,
+        "operand_objects_seen": 107
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 2
+        },
+        "unique_accesses": 2
+      },
+      "name": "HAL_RCC_GetSysClockFreq",
+      "reference": {
+        "hits_added": 2,
+        "instructions_scanned": 75,
+        "mmio_refs": 2,
+        "references_seen": 45
+      },
+      "ssa": {
+        "addr_resolved": 7,
+        "addr_resolved_non_mmio": 7,
+        "load_ops_seen": 9,
+        "pcode_ops_seen": 61,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003504",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 5
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_RCC_GetHCLKFreq",
+      "reference": {
+        "instructions_scanned": 8,
+        "references_seen": 3
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003518",
+      "fallback": {
+        "constant_candidates_seen": 3,
+        "mem_like_instructions_seen": 4,
+        "operand_objects_seen": 10
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 1
+        },
+        "unique_accesses": 1
+      },
+      "name": "HAL_RCC_GetPCLK1Freq",
+      "reference": {
+        "hits_added": 1,
+        "instructions_scanned": 13,
+        "mmio_refs": 1,
+        "references_seen": 5
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 16,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003540",
+      "fallback": {
+        "constant_candidates_seen": 3,
+        "mem_like_instructions_seen": 4,
+        "operand_objects_seen": 10
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 1
+        },
+        "unique_accesses": 1
+      },
+      "name": "HAL_RCC_GetPCLK2Freq",
+      "reference": {
+        "hits_added": 1,
+        "instructions_scanned": 13,
+        "mmio_refs": 1,
+        "references_seen": 5
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 16,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003568",
+      "fallback": {
+        "constant_candidates_seen": 8,
+        "mem_like_instructions_seen": 8,
+        "operand_objects_seen": 22
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "RCC_Delay",
+      "reference": {
+        "instructions_scanned": 23,
+        "references_seen": 10
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 16,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080035a4",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 42
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_Base_Init",
+      "reference": {
+        "instructions_scanned": 37,
+        "references_seen": 14
+      },
+      "ssa": {
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 23,
+        "pruned_register_based_pointer": 5,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080035fa",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_Base_MspInit",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800360c",
+      "fallback": {
+        "constant_candidates_seen": 13,
+        "mem_like_instructions_seen": 13,
+        "operand_objects_seen": 39
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_Base_Start_IT",
+      "reference": {
+        "instructions_scanned": 24,
+        "references_seen": 6
+      },
+      "ssa": {
+        "load_ops_seen": 6,
+        "pcode_ops_seen": 20,
+        "pruned_register_based_pointer": 8,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003640",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 42
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_PWM_Init",
+      "reference": {
+        "instructions_scanned": 37,
+        "references_seen": 14
+      },
+      "ssa": {
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 23,
+        "pruned_register_based_pointer": 5,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003696",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_PWM_MspInit",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080036a8",
+      "fallback": {
+        "constant_candidates_seen": 20,
+        "mem_like_instructions_seen": 20,
+        "operand_objects_seen": 59
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_PWM_Start",
+      "reference": {
+        "instructions_scanned": 35,
+        "references_seen": 12
+      },
+      "ssa": {
+        "load_ops_seen": 8,
+        "pcode_ops_seen": 32,
+        "pruned_register_based_pointer": 10,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080036f8",
+      "fallback": {
+        "constant_candidates_seen": 117,
+        "mem_like_instructions_seen": 117,
+        "operand_objects_seen": 351
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_IRQHandler",
+      "reference": {
+        "instructions_scanned": 220,
+        "references_seen": 93
+      },
+      "ssa": {
+        "load_ops_seen": 48,
+        "pcode_ops_seen": 209,
+        "pruned_register_based_pointer": 64,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 16,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003908",
+      "fallback": {
+        "constant_candidates_seen": 108,
+        "mem_like_instructions_seen": 108,
+        "operand_objects_seen": 324
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_PWM_ConfigChannel",
+      "reference": {
+        "instructions_scanned": 153,
+        "references_seen": 62
+      },
+      "ssa": {
+        "load_ops_seen": 45,
+        "pcode_ops_seen": 153,
+        "pruned_register_based_pointer": 61,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 16,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003a94",
+      "fallback": {
+        "constant_candidates_seen": 99,
+        "mem_like_instructions_seen": 99,
+        "operand_objects_seen": 297
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_ConfigClockSource",
+      "reference": {
+        "instructions_scanned": 191,
+        "references_seen": 93
+      },
+      "ssa": {
+        "load_ops_seen": 38,
+        "pcode_ops_seen": 152,
+        "pruned_register_based_pointer": 46,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 8,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003c4a",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_OC_DelayElapsedCallback",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003c5c",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_IC_CaptureCallback",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003c6e",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_PWM_PulseFinishedCallback",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003c80",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_TriggerCallback",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003c94",
+      "fallback": {
+        "constant_candidates_seen": 57,
+        "mem_like_instructions_seen": 57,
+        "operand_objects_seen": 164
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_Base_SetConfig",
+      "reference": {
+        "instructions_scanned": 91,
+        "references_seen": 55
+      },
+      "ssa": {
+        "load_ops_seen": 7,
+        "pcode_ops_seen": 72,
+        "pruned_register_based_pointer": 12,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003d60",
+      "fallback": {
+        "constant_candidates_seen": 69,
+        "mem_like_instructions_seen": 69,
+        "operand_objects_seen": 205
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_OC1_SetConfig",
+      "reference": {
+        "instructions_scanned": 97,
+        "references_seen": 57
+      },
+      "ssa": {
+        "load_ops_seen": 10,
+        "pcode_ops_seen": 52,
+        "pruned_register_based_pointer": 15,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003e38",
+      "fallback": {
+        "constant_candidates_seen": 69,
+        "mem_like_instructions_seen": 69,
+        "operand_objects_seen": 205
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_OC2_SetConfig",
+      "reference": {
+        "instructions_scanned": 102,
+        "references_seen": 57
+      },
+      "ssa": {
+        "load_ops_seen": 10,
+        "pcode_ops_seen": 57,
+        "pruned_register_based_pointer": 15,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003f18",
+      "fallback": {
+        "constant_candidates_seen": 69,
+        "mem_like_instructions_seen": 69,
+        "operand_objects_seen": 205
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_OC3_SetConfig",
+      "reference": {
+        "instructions_scanned": 101,
+        "references_seen": 57
+      },
+      "ssa": {
+        "load_ops_seen": 10,
+        "pcode_ops_seen": 56,
+        "pruned_register_based_pointer": 15,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08003ff8",
+      "fallback": {
+        "constant_candidates_seen": 53,
+        "mem_like_instructions_seen": 53,
+        "operand_objects_seen": 158
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_OC4_SetConfig",
+      "reference": {
+        "instructions_scanned": 77,
+        "references_seen": 42
+      },
+      "ssa": {
+        "load_ops_seen": 8,
+        "pcode_ops_seen": 46,
+        "pruned_register_based_pointer": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080040a0",
+      "fallback": {
+        "constant_candidates_seen": 31,
+        "mem_like_instructions_seen": 31,
+        "operand_objects_seen": 93
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_TI1_ConfigInputStage",
+      "reference": {
+        "instructions_scanned": 47,
+        "references_seen": 26
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 19,
+        "pruned_register_based_pointer": 6,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004104",
+      "fallback": {
+        "constant_candidates_seen": 31,
+        "mem_like_instructions_seen": 31,
+        "operand_objects_seen": 93
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_TI2_ConfigInputStage",
+      "reference": {
+        "instructions_scanned": 48,
+        "references_seen": 26
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 20,
+        "pruned_register_based_pointer": 6,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800416a",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 42
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_ITRx_SetConfig",
+      "reference": {
+        "instructions_scanned": 29,
+        "references_seen": 13
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 9,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080041a8",
+      "fallback": {
+        "constant_candidates_seen": 18,
+        "mem_like_instructions_seen": 18,
+        "operand_objects_seen": 54
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_ETR_SetConfig",
+      "reference": {
+        "instructions_scanned": 32,
+        "references_seen": 17
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 10,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080041ea",
+      "fallback": {
+        "constant_candidates_seen": 17,
+        "mem_like_instructions_seen": 17,
+        "operand_objects_seen": 51
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM_CCxChannelCmd",
+      "reference": {
+        "instructions_scanned": 32,
+        "references_seen": 14
+      },
+      "ssa": {
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 16,
+        "pruned_register_based_pointer": 4,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800422e",
+      "fallback": {
+        "constant_candidates_seen": 45,
+        "mem_like_instructions_seen": 45,
+        "operand_objects_seen": 135
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIMEx_ConfigBreakDeadTime",
+      "reference": {
+        "instructions_scanned": 77,
+        "references_seen": 35
+      },
+      "ssa": {
+        "load_ops_seen": 10,
+        "pcode_ops_seen": 48,
+        "pruned_register_based_pointer": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080042de",
+      "fallback": {
+        "constant_candidates_seen": 40,
+        "mem_like_instructions_seen": 40,
+        "operand_objects_seen": 120
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIMEx_MasterConfigSynchronization",
+      "reference": {
+        "instructions_scanned": 61,
+        "references_seen": 20
+      },
+      "ssa": {
+        "load_ops_seen": 15,
+        "pcode_ops_seen": 58,
+        "pruned_register_based_pointer": 23,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 8,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004366",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIMEx_CommutationCallback",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004378",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIMEx_BreakCallback",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800438a",
+      "fallback": {
+        "constant_candidates_seen": 40,
+        "mem_like_instructions_seen": 40,
+        "operand_objects_seen": 120
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_UART_Init",
+      "reference": {
+        "instructions_scanned": 66,
+        "references_seen": 23
+      },
+      "ssa": {
+        "load_ops_seen": 13,
+        "pcode_ops_seen": 60,
+        "pruned_register_based_pointer": 22,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 9,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004424",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 3
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_UART_MspInit",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004436",
+      "fallback": {
+        "constant_candidates_seen": 67,
+        "mem_like_instructions_seen": 67,
+        "operand_objects_seen": 201
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_UART_Transmit",
+      "reference": {
+        "instructions_scanned": 140,
+        "references_seen": 70
+      },
+      "ssa": {
+        "load_ops_seen": 10,
+        "pcode_ops_seen": 97,
+        "pruned_register_based_pointer": 20,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 10,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004568",
+      "fallback": {
+        "constant_candidates_seen": 32,
+        "mem_like_instructions_seen": 32,
+        "operand_objects_seen": 96
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "UART_WaitOnFlagUntilTimeout",
+      "reference": {
+        "instructions_scanned": 67,
+        "references_seen": 26
+      },
+      "ssa": {
+        "load_ops_seen": 8,
+        "pcode_ops_seen": 46,
+        "pruned_register_based_pointer": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080045fc",
+      "fallback": {
+        "constant_candidates_seen": 72,
+        "mem_like_instructions_seen": 72,
+        "operand_objects_seen": 205
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "UART_SetConfig",
+      "reference": {
+        "instructions_scanned": 233,
+        "references_seen": 52
+      },
+      "ssa": {
+        "load_ops_seen": 27,
+        "pcode_ops_seen": 247,
+        "pruned_register_based_pointer": 32,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800482c",
+      "fallback": {
+        "constant_candidates_seen": 33,
+        "mem_like_instructions_seen": 33,
+        "operand_objects_seen": 96
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "mpu6050_init",
+      "reference": {
+        "instructions_scanned": 70,
+        "references_seen": 23
+      },
+      "ssa": {
+        "addr_resolved": 3,
+        "addr_resolved_non_mmio": 3,
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 64,
+        "pruned_register_based_pointer": 11,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 11,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080048dc",
+      "fallback": {
+        "constant_candidates_seen": 51,
+        "mem_like_instructions_seen": 51,
+        "operand_objects_seen": 151
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "mpu6050_calibrate",
+      "reference": {
+        "instructions_scanned": 113,
+        "references_seen": 61
+      },
+      "ssa": {
+        "addr_resolved": 2,
+        "addr_resolved_non_mmio": 2,
+        "load_ops_seen": 4,
+        "pcode_ops_seen": 228,
+        "pruned_register_based_pointer": 6,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 4,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080049f0",
+      "fallback": {
+        "constant_candidates_seen": 45,
+        "mem_like_instructions_seen": 45,
+        "operand_objects_seen": 134
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "mpu6050_update",
+      "reference": {
+        "instructions_scanned": 106,
+        "references_seen": 45
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 77,
+        "pruned_register_based_pointer": 7,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 7,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004ae8",
+      "fallback": {
+        "constant_candidates_seen": 47,
+        "mem_like_instructions_seen": 47,
+        "operand_objects_seen": 129
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "mpu6050_calc_pitch",
+      "reference": {
+        "instructions_scanned": 146,
+        "references_seen": 66
+      },
+      "ssa": {
+        "addr_resolved": 8,
+        "addr_resolved_non_mmio": 8,
+        "load_ops_seen": 9,
+        "pcode_ops_seen": 515,
+        "pruned_register_based_pointer": 6,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004c88",
+      "fallback": {
+        "constant_candidates_seen": 30,
+        "mem_like_instructions_seen": 30,
+        "operand_objects_seen": 88
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "mpu6050_calc_acc_pitch_roll",
+      "reference": {
+        "instructions_scanned": 93,
+        "references_seen": 40
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 120,
+        "pruned_register_based_pointer": 5,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004d7c",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 40
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_i2c_write_reg",
+      "reference": {
+        "instructions_scanned": 29,
+        "references_seen": 16
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 9,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004dc0",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 40
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_i2c_read_reg",
+      "reference": {
+        "instructions_scanned": 29,
+        "references_seen": 16
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 9,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004e04",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_get_ms_tick",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 3,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004e14",
+      "fallback": {
+        "constant_candidates_seen": 5,
+        "mem_like_instructions_seen": 5,
+        "operand_objects_seen": 14
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "uart_print",
+      "reference": {
+        "instructions_scanned": 15,
+        "references_seen": 7
+      },
+      "ssa": {
+        "pcode_ops_seen": 6,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004e38",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 2
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "flush_strbuf",
+      "reference": {
+        "instructions_scanned": 8,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08004e50",
+      "fallback": {
+        "constant_candidates_seen": 99,
+        "mem_like_instructions_seen": 99,
+        "operand_objects_seen": 248
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_PeriodElapsedCallback",
+      "reference": {
+        "instructions_scanned": 266,
+        "references_seen": 149
+      },
+      "ssa": {
+        "addr_resolved": 38,
+        "addr_resolved_non_mmio": 38,
+        "load_ops_seen": 31,
+        "pcode_ops_seen": 884,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 9,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080050fc",
+      "fallback": {
+        "constant_candidates_seen": 13,
+        "mem_like_instructions_seen": 13,
+        "operand_objects_seen": 29
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "main",
+      "reference": {
+        "instructions_scanned": 29,
+        "references_seen": 32
+      },
+      "ssa": {
+        "addr_resolved": 3,
+        "addr_resolved_non_mmio": 3,
+        "pcode_ops_seen": 141,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005170",
+      "fallback": {
+        "constant_candidates_seen": 15,
+        "mem_like_instructions_seen": 15,
+        "operand_objects_seen": 42
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "SystemClock_Config",
+      "reference": {
+        "instructions_scanned": 63,
+        "references_seen": 27
+      },
+      "ssa": {
+        "pcode_ops_seen": 159,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005218",
+      "fallback": {
+        "constant_candidates_seen": 22,
+        "mem_like_instructions_seen": 22,
+        "operand_objects_seen": 53
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "MX_I2C1_Init",
+      "reference": {
+        "instructions_scanned": 39,
+        "references_seen": 27
+      },
+      "ssa": {
+        "addr_resolved": 8,
+        "addr_resolved_non_mmio": 8,
+        "pcode_ops_seen": 83,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 9,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005280",
+      "fallback": {
+        "constant_candidates_seen": 47,
+        "mem_like_instructions_seen": 47,
+        "operand_objects_seen": 118
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "MX_TIM1_Init",
+      "reference": {
+        "instructions_scanned": 132,
+        "references_seen": 84
+      },
+      "ssa": {
+        "addr_resolved": 6,
+        "addr_resolved_non_mmio": 6,
+        "pcode_ops_seen": 305,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 7,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080053d0",
+      "fallback": {
+        "constant_candidates_seen": 21,
+        "mem_like_instructions_seen": 21,
+        "operand_objects_seen": 51
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "MX_TIM2_Init",
+      "reference": {
+        "instructions_scanned": 59,
+        "references_seen": 36
+      },
+      "ssa": {
+        "addr_resolved": 5,
+        "addr_resolved_non_mmio": 5,
+        "pcode_ops_seen": 76,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 6,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005468",
+      "fallback": {
+        "constant_candidates_seen": 19,
+        "mem_like_instructions_seen": 19,
+        "operand_objects_seen": 46
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "MX_USART1_UART_Init",
+      "reference": {
+        "instructions_scanned": 36,
+        "references_seen": 24
+      },
+      "ssa": {
+        "addr_resolved": 7,
+        "addr_resolved_non_mmio": 7,
+        "pcode_ops_seen": 64,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 8,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080054c4",
+      "fallback": {
+        "constant_candidates_seen": 29,
+        "mem_like_instructions_seen": 29,
+        "operand_objects_seen": 76
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 9
+        },
+        "unique_accesses": 9
+      },
+      "name": "MX_GPIO_Init",
+      "reference": {
+        "hits_added": 9,
+        "instructions_scanned": 51,
+        "mmio_refs": 9,
+        "references_seen": 31
+      },
+      "ssa": {
+        "addr_resolved": 6,
+        "addr_resolved_non_mmio": 6,
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 43,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005544",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_Error_Handler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005550",
+      "fallback": {
+        "constant_candidates_seen": 8,
+        "mem_like_instructions_seen": 8,
+        "operand_objects_seen": 22
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HAL_TIM_MspPostInit",
+      "reference": {
+        "instructions_scanned": 23,
+        "references_seen": 9
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 19,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800558c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "NMI_Handler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005598",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "HardFault_Handler",
+      "reference": {
+        "instructions_scanned": 3,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800559e",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "MemManage_Handler",
+      "reference": {
+        "instructions_scanned": 3,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055a4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "BusFault_Handler",
+      "reference": {
+        "instructions_scanned": 3,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055aa",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "UsageFault_Handler",
+      "reference": {
+        "instructions_scanned": 3,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055b0",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "SVC_Handler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055bc",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "DebugMon_Handler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055c8",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "PendSV_Handler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055d4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "SysTick_Handler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 2
+      },
+      "ssa": {
+        "pcode_ops_seen": 3,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055e4",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 2
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "TIM2_IRQHandler",
+      "reference": {
+        "instructions_scanned": 6,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080055f8",
+      "fallback": {
+        "constant_candidates_seen": 19,
+        "mem_like_instructions_seen": 19,
+        "operand_objects_seen": 50
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_sbrk",
+      "reference": {
+        "instructions_scanned": 38,
+        "references_seen": 25
+      },
+      "ssa": {
+        "addr_resolved": 6,
+        "addr_resolved_non_mmio": 6,
+        "load_ops_seen": 4,
+        "pcode_ops_seen": 40,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005650",
+      "fallback": {
+        "constant_candidates_seen": 25,
+        "mem_like_instructions_seen": 25,
+        "operand_objects_seen": 62
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 12
+        },
+        "unique_accesses": 12
+      },
+      "name": "SystemInit",
+      "reference": {
+        "hits_added": 12,
+        "instructions_scanned": 39,
+        "mmio_refs": 12,
+        "references_seen": 27
+      },
+      "ssa": {
+        "addr_resolved": 12,
+        "addr_resolved_non_mmio": 12,
+        "load_ops_seen": 5,
+        "pcode_ops_seen": 49,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 7,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080056b8",
+      "fallback": {
+        "constant_candidates_seen": 6,
+        "mem_like_instructions_seen": 8,
+        "operand_objects_seen": 19
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "Reset_Handler",
+      "reference": {
+        "instructions_scanned": 22,
+        "references_seen": 16
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 60,
+        "pruned_register_based_pointer": 3,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005700",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "USBWakeUp_IRQHandler",
+      "reference": {
+        "instructions_scanned": 1,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005704",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "atan2",
+      "reference": {
+        "instructions_scanned": 1,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 323,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005708",
+      "fallback": {
+        "constant_candidates_seen": 27,
+        "mem_like_instructions_seen": 27,
+        "operand_objects_seen": 80
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__ieee754_atan2",
+      "reference": {
+        "instructions_scanned": 136,
+        "references_seen": 75
+      },
+      "ssa": {
+        "pcode_ops_seen": 323,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080058c0",
+      "fallback": {
+        "constant_candidates_seen": 44,
+        "mem_like_instructions_seen": 44,
+        "operand_objects_seen": 116
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "atan",
+      "reference": {
+        "instructions_scanned": 239,
+        "references_seen": 106
+      },
+      "ssa": {
+        "load_ops_seen": 4,
+        "pcode_ops_seen": 2038,
+        "pruned_register_based_pointer": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005bdc",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "fabs",
+      "reference": {
+        "instructions_scanned": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005be4",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 5
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__errno",
+      "reference": {
+        "instructions_scanned": 3,
+        "references_seen": 3
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005bf0",
+      "fallback": {
+        "constant_candidates_seen": 6,
+        "mem_like_instructions_seen": 6,
+        "operand_objects_seen": 14
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__libc_init_array",
+      "reference": {
+        "instructions_scanned": 25,
+        "references_seen": 21
+      },
+      "ssa": {
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 72,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005c38",
+      "fallback": {
+        "constant_candidates_seen": 5,
+        "mem_like_instructions_seen": 5,
+        "operand_objects_seen": 17
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "memset",
+      "reference": {
+        "instructions_scanned": 58,
+        "references_seen": 13
+      },
+      "ssa": {
+        "pcode_ops_seen": 93,
+        "pruned_register_based_pointer": 7,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 7,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005ccc",
+      "fallback": {
+        "constant_candidates_seen": 11,
+        "mem_like_instructions_seen": 11,
+        "operand_objects_seen": 32
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "sprintf",
+      "reference": {
+        "instructions_scanned": 25,
+        "references_seen": 11
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 27,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005d10",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "strlen",
+      "reference": {
+        "instructions_scanned": 26,
+        "references_seen": 1
+      },
+      "ssa": {
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 34,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08005d6c",
+      "fallback": {
+        "constant_candidates_seen": 646,
+        "mem_like_instructions_seen": 647,
+        "operand_objects_seen": 2035
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_svfprintf_r",
+      "reference": {
+        "instructions_scanned": 1904,
+        "references_seen": 1059
+      },
+      "ssa": {
+        "load_ops_seen": 46,
+        "pcode_ops_seen": 9248,
+        "pruned_register_based_pointer": 130,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 84,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08007258",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 4
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "register_fini",
+      "reference": {
+        "instructions_scanned": 5,
+        "references_seen": 5
+      },
+      "ssa": {
+        "pcode_ops_seen": 11,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800726c",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "atexit",
+      "reference": {
+        "instructions_scanned": 5,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 2,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08007278",
+      "fallback": {
+        "constant_candidates_seen": 21,
+        "mem_like_instructions_seen": 22,
+        "operand_objects_seen": 69
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "quorem",
+      "reference": {
+        "instructions_scanned": 108,
+        "references_seen": 22
+      },
+      "ssa": {
+        "load_ops_seen": 14,
+        "pcode_ops_seen": 158,
+        "pruned_register_based_pointer": 18,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 4,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080073a0",
+      "fallback": {
+        "constant_candidates_seen": 368,
+        "mem_like_instructions_seen": 369,
+        "operand_objects_seen": 1141
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_dtoa_r",
+      "reference": {
+        "instructions_scanned": 1326,
+        "references_seen": 675
+      },
+      "ssa": {
+        "addr_resolved": 2,
+        "addr_resolved_non_mmio": 2,
+        "load_ops_seen": 30,
+        "pcode_ops_seen": 7770,
+        "pruned_register_based_pointer": 61,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 33,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080081d0",
+      "fallback": {
+        "constant_candidates_seen": 3,
+        "mem_like_instructions_seen": 3,
+        "operand_objects_seen": 7
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__libc_fini_array",
+      "reference": {
+        "instructions_scanned": 16,
+        "references_seen": 11
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 31,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008204",
+      "fallback": {
+        "constant_candidates_seen": 4,
+        "mem_like_instructions_seen": 4,
+        "operand_objects_seen": 10
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_localeconv_r",
+      "reference": {
+        "instructions_scanned": 9,
+        "references_seen": 5
+      },
+      "ssa": {
+        "addr_resolved": 1,
+        "addr_resolved_non_mmio": 1,
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 14,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008220",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__retarget_lock_acquire_recursive",
+      "reference": {
+        "instructions_scanned": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008224",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__retarget_lock_release_recursive",
+      "reference": {
+        "instructions_scanned": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008228",
+      "fallback": {
+        "constant_candidates_seen": 108,
+        "mem_like_instructions_seen": 111,
+        "operand_objects_seen": 335
+      },
+      "mmio_summary": {
+        "sources": {
+          "reference": 14
+        },
+        "unique_accesses": 14
+      },
+      "name": "_malloc_r",
+      "reference": {
+        "hits_added": 14,
+        "instructions_scanned": 474,
+        "mmio_refs": 14,
+        "references_seen": 279
+      },
+      "ssa": {
+        "addr_resolved": 34,
+        "addr_resolved_non_mmio": 34,
+        "load_ops_seen": 51,
+        "pcode_ops_seen": 1422,
+        "pruned_register_based_pointer": 71,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 54,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800874c",
+      "fallback": {
+        "constant_candidates_seen": 5,
+        "mem_like_instructions_seen": 5,
+        "operand_objects_seen": 15
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "memchr",
+      "reference": {
+        "instructions_scanned": 61,
+        "references_seen": 18
+      },
+      "ssa": {
+        "load_ops_seen": 5,
+        "pcode_ops_seen": 87,
+        "pruned_register_based_pointer": 5,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080087d8",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 2
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__malloc_lock",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080087e4",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 2
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__malloc_unlock",
+      "reference": {
+        "instructions_scanned": 2,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080087f0",
+      "fallback": {
+        "constant_candidates_seen": 7,
+        "mem_like_instructions_seen": 7,
+        "operand_objects_seen": 25
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_Balloc",
+      "reference": {
+        "instructions_scanned": 31,
+        "references_seen": 7
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 47,
+        "pruned_register_based_pointer": 9,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 6,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "0800883c",
+      "fallback": {
+        "constant_candidates_seen": 5,
+        "mem_like_instructions_seen": 5,
+        "operand_objects_seen": 17
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_Bfree",
+      "reference": {
+        "instructions_scanned": 7,
+        "references_seen": 1
+      },
+      "ssa": {
+        "load_ops_seen": 3,
+        "pcode_ops_seen": 17,
+        "pruned_register_based_pointer": 5,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008850",
+      "fallback": {
+        "constant_candidates_seen": 15,
+        "mem_like_instructions_seen": 15,
+        "operand_objects_seen": 47
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__multadd",
+      "reference": {
+        "instructions_scanned": 51,
+        "references_seen": 8
+      },
+      "ssa": {
+        "load_ops_seen": 8,
+        "pcode_ops_seen": 71,
+        "pruned_register_based_pointer": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 5,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080088d4",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__hi0bits",
+      "reference": {
+        "instructions_scanned": 28,
+        "references_seen": 4
+      },
+      "ssa": {
+        "pcode_ops_seen": 44,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008914",
+      "fallback": {
+        "constant_candidates_seen": 4,
+        "mem_like_instructions_seen": 4,
+        "operand_objects_seen": 12
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__lo0bits",
+      "reference": {
+        "instructions_scanned": 45,
+        "references_seen": 7
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 67,
+        "pruned_register_based_pointer": 4,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 3,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008974",
+      "fallback": {
+        "constant_candidates_seen": 1,
+        "mem_like_instructions_seen": 1,
+        "operand_objects_seen": 4
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__i2b",
+      "reference": {
+        "instructions_scanned": 7,
+        "references_seen": 1
+      },
+      "ssa": {
+        "pcode_ops_seen": 8,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008988",
+      "fallback": {
+        "constant_candidates_seen": 24,
+        "mem_like_instructions_seen": 24,
+        "operand_objects_seen": 74
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__multiply",
+      "reference": {
+        "instructions_scanned": 123,
+        "references_seen": 24
+      },
+      "ssa": {
+        "load_ops_seen": 14,
+        "pcode_ops_seen": 173,
+        "pruned_register_based_pointer": 20,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 6,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008ad4",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 45
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__pow5mult",
+      "reference": {
+        "instructions_scanned": 63,
+        "references_seen": 19
+      },
+      "ssa": {
+        "load_ops_seen": 6,
+        "pcode_ops_seen": 112,
+        "pruned_register_based_pointer": 14,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 8,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008b74",
+      "fallback": {
+        "constant_candidates_seen": 17,
+        "mem_like_instructions_seen": 17,
+        "operand_objects_seen": 53
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__lshift",
+      "reference": {
+        "instructions_scanned": 64,
+        "references_seen": 12
+      },
+      "ssa": {
+        "load_ops_seen": 10,
+        "pcode_ops_seen": 96,
+        "pruned_register_based_pointer": 17,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 7,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008c28",
+      "fallback": {
+        "constant_candidates_seen": 4,
+        "mem_like_instructions_seen": 4,
+        "operand_objects_seen": 12
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__mcmp",
+      "reference": {
+        "instructions_scanned": 24,
+        "references_seen": 6
+      },
+      "ssa": {
+        "load_ops_seen": 4,
+        "pcode_ops_seen": 35,
+        "pruned_register_based_pointer": 4,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008c60",
+      "fallback": {
+        "constant_candidates_seen": 16,
+        "mem_like_instructions_seen": 16,
+        "operand_objects_seen": 49
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__mdiff",
+      "reference": {
+        "instructions_scanned": 91,
+        "references_seen": 14
+      },
+      "ssa": {
+        "load_ops_seen": 11,
+        "pcode_ops_seen": 160,
+        "pruned_register_based_pointer": 17,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 6,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008d60",
+      "fallback": {
+        "constant_candidates_seen": 18,
+        "mem_like_instructions_seen": 18,
+        "operand_objects_seen": 57
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__d2b",
+      "reference": {
+        "instructions_scanned": 65,
+        "references_seen": 18
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 87,
+        "pruned_register_based_pointer": 11,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 10,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008e10",
+      "fallback": {
+        "constant_candidates_seen": 4,
+        "mem_like_instructions_seen": 4,
+        "operand_objects_seen": 11
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_sbrk_r",
+      "reference": {
+        "instructions_scanned": 15,
+        "references_seen": 6
+      },
+      "ssa": {
+        "addr_resolved": 2,
+        "addr_resolved_non_mmio": 2,
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 16,
+        "pruned_register_based_pointer": 1,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008e34",
+      "fallback": {
+        "constant_candidates_seen": 28,
+        "mem_like_instructions_seen": 28,
+        "operand_objects_seen": 87
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__ssprint_r",
+      "reference": {
+        "instructions_scanned": 97,
+        "references_seen": 17
+      },
+      "ssa": {
+        "load_ops_seen": 16,
+        "pcode_ops_seen": 129,
+        "pruned_register_based_pointer": 29,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 13,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008f28",
+      "fallback": {
+        "constant_candidates_seen": 23,
+        "mem_like_instructions_seen": 23,
+        "operand_objects_seen": 68
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__register_exitproc",
+      "reference": {
+        "instructions_scanned": 62,
+        "references_seen": 41
+      },
+      "ssa": {
+        "addr_resolved": 4,
+        "addr_resolved_non_mmio": 4,
+        "load_ops_seen": 9,
+        "pcode_ops_seen": 201,
+        "pruned_register_based_pointer": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 8,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08008fe8",
+      "fallback": {
+        "constant_candidates_seen": 8,
+        "mem_like_instructions_seen": 8,
+        "operand_objects_seen": 29
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_calloc_r",
+      "reference": {
+        "instructions_scanned": 40,
+        "references_seen": 7
+      },
+      "ssa": {
+        "load_ops_seen": 1,
+        "pcode_ops_seen": 55,
+        "pruned_register_based_pointer": 13,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 12,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08009054",
+      "fallback": {
+        "constant_candidates_seen": 15,
+        "mem_like_instructions_seen": 15,
+        "operand_objects_seen": 41
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_malloc_trim_r",
+      "reference": {
+        "instructions_scanned": 59,
+        "references_seen": 31
+      },
+      "ssa": {
+        "addr_resolved": 8,
+        "addr_resolved_non_mmio": 8,
+        "load_ops_seen": 7,
+        "pcode_ops_seen": 100,
+        "pruned_register_based_pointer": 3,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 4,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080090f4",
+      "fallback": {
+        "constant_candidates_seen": 52,
+        "mem_like_instructions_seen": 57,
+        "operand_objects_seen": 175
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_free_r",
+      "reference": {
+        "instructions_scanned": 181,
+        "references_seen": 63
+      },
+      "ssa": {
+        "addr_resolved": 10,
+        "addr_resolved_non_mmio": 10,
+        "load_ops_seen": 24,
+        "pcode_ops_seen": 502,
+        "pruned_register_based_pointer": 49,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 35,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080092dc",
+      "fallback": {
+        "constant_candidates_seen": 3,
+        "mem_like_instructions_seen": 3,
+        "operand_objects_seen": 9
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__ascii_mbtowc",
+      "reference": {
+        "instructions_scanned": 20,
+        "references_seen": 6
+      },
+      "ssa": {
+        "load_ops_seen": 2,
+        "pcode_ops_seen": 23,
+        "pruned_register_based_pointer": 3,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 1,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08009308",
+      "fallback": {
+        "constant_candidates_seen": 14,
+        "mem_like_instructions_seen": 14,
+        "operand_objects_seen": 42
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "memmove",
+      "reference": {
+        "instructions_scanned": 75,
+        "references_seen": 14
+      },
+      "ssa": {
+        "load_ops_seen": 7,
+        "pcode_ops_seen": 139,
+        "pruned_register_based_pointer": 14,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 7,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "080093cc",
+      "fallback": {
+        "constant_candidates_seen": 107,
+        "mem_like_instructions_seen": 107,
+        "operand_objects_seen": 322
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_realloc_r",
+      "reference": {
+        "instructions_scanned": 320,
+        "references_seen": 70
+      },
+      "ssa": {
+        "addr_resolved": 3,
+        "addr_resolved_non_mmio": 3,
+        "load_ops_seen": 57,
+        "pcode_ops_seen": 569,
+        "pruned_register_based_pointer": 103,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 49,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08009740",
+      "fallback": {
+        "constant_candidates_seen": 2,
+        "mem_like_instructions_seen": 2,
+        "operand_objects_seen": 6
+      },
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "__ascii_wctomb",
+      "reference": {
+        "instructions_scanned": 11,
+        "references_seen": 3
+      },
+      "ssa": {
+        "pcode_ops_seen": 14,
+        "pruned_register_based_pointer": 2,
+        "resolved_mmio_samples": [],
+        "store_ops_seen": 2,
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08009758",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_init",
+      "reference": {
+        "instructions_scanned": 6
+      },
+      "ssa": {
+        "pcode_ops_seen": 3,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    },
+    {
+      "decompile": {
+        "completed": true,
+        "error": "",
+        "high_function_available": true
+      },
+      "entry": "08009764",
+      "fallback": {},
+      "mmio_summary": {
+        "sources": {},
+        "unique_accesses": 0
+      },
+      "name": "_fini",
+      "reference": {
+        "instructions_scanned": 6
+      },
+      "ssa": {
+        "pcode_ops_seen": 1,
+        "resolved_mmio_samples": [],
+        "unresolved_samples": []
+      },
+      "stage_errors": {}
+    }
+  ],
+  "program_name": "Robot.elf"
+}

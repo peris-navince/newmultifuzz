@@ -1,0 +1,537 @@
+{"node_id": "func:CAN2_SCE_IRQHandler@08000d68", "node_type": "function", "name": "CAN2_SCE_IRQHandler", "entry": "08000d68", "is_isr": true, "signature": "undefined CAN2_SCE_IRQHandler(void)"}
+{"node_id": "func:EXTI0_IRQHandler@0800473c", "node_type": "function", "name": "EXTI0_IRQHandler", "entry": "0800473c", "is_isr": true, "signature": "void EXTI0_IRQHandler(void)"}
+{"node_id": "func:EXTI15_10_IRQHandler@08004784", "node_type": "function", "name": "EXTI15_10_IRQHandler", "entry": "08004784", "is_isr": true, "signature": "void EXTI15_10_IRQHandler(void)"}
+{"node_id": "func:EXTI1_IRQHandler@08004746", "node_type": "function", "name": "EXTI1_IRQHandler", "entry": "08004746", "is_isr": true, "signature": "void EXTI1_IRQHandler(void)"}
+{"node_id": "func:EXTI2_IRQHandler@08004750", "node_type": "function", "name": "EXTI2_IRQHandler", "entry": "08004750", "is_isr": true, "signature": "void EXTI2_IRQHandler(void)"}
+{"node_id": "func:EXTI3_IRQHandler@0800475a", "node_type": "function", "name": "EXTI3_IRQHandler", "entry": "0800475a", "is_isr": true, "signature": "void EXTI3_IRQHandler(void)"}
+{"node_id": "func:EXTI4_IRQHandler@08004764", "node_type": "function", "name": "EXTI4_IRQHandler", "entry": "08004764", "is_isr": true, "signature": "void EXTI4_IRQHandler(void)"}
+{"node_id": "func:EXTI9_5_IRQHandler@0800476e", "node_type": "function", "name": "EXTI9_5_IRQHandler", "entry": "0800476e", "is_isr": true, "signature": "void EXTI9_5_IRQHandler(void)"}
+{"node_id": "func:GetCurrentMilli", "node_type": "function", "name": "GetCurrentMilli"}
+{"node_id": "func:GetCurrentMilli@08003448", "node_type": "function", "name": "GetCurrentMilli", "entry": "08003448", "is_isr": false, "signature": "uint32_t GetCurrentMilli(void)"}
+{"node_id": "func:HAL_DAC_DeInit", "node_type": "function", "name": "HAL_DAC_DeInit"}
+{"node_id": "func:HAL_DAC_DeInit@08000f32", "node_type": "function", "name": "HAL_DAC_DeInit", "entry": "08000f32", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_DAC_DeInit(DAC_HandleTypeDef * hdac)"}
+{"node_id": "func:HAL_DAC_MspDeInit", "node_type": "function", "name": "HAL_DAC_MspDeInit"}
+{"node_id": "func:HAL_DAC_MspDeInit@080033a4", "node_type": "function", "name": "HAL_DAC_MspDeInit", "entry": "080033a4", "is_isr": false, "signature": "void __stdcall HAL_DAC_MspDeInit(DAC_HandleTypeDef * hdac)"}
+{"node_id": "func:HAL_DAC_Stop", "node_type": "function", "name": "HAL_DAC_Stop"}
+{"node_id": "func:HAL_DAC_Stop@08000f4e", "node_type": "function", "name": "HAL_DAC_Stop", "entry": "08000f4e", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_DAC_Stop(DAC_HandleTypeDef * hdac, uint32_t Channel)"}
+{"node_id": "func:HAL_DMA_Abort_IT", "node_type": "function", "name": "HAL_DMA_Abort_IT"}
+{"node_id": "func:HAL_DMA_Abort_IT@08000f68", "node_type": "function", "name": "HAL_DMA_Abort_IT", "entry": "08000f68", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_DMA_Abort_IT(DMA_HandleTypeDef * hdma)"}
+{"node_id": "func:HAL_GPIO_EXTI_Callback", "node_type": "function", "name": "HAL_GPIO_EXTI_Callback"}
+{"node_id": "func:HAL_GPIO_EXTI_Callback@080047ac", "node_type": "function", "name": "HAL_GPIO_EXTI_Callback", "entry": "080047ac", "is_isr": false, "signature": "void __stdcall HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)"}
+{"node_id": "func:HAL_GPIO_EXTI_IRQHandler", "node_type": "function", "name": "HAL_GPIO_EXTI_IRQHandler"}
+{"node_id": "func:HAL_GPIO_EXTI_IRQHandler@08001180", "node_type": "function", "name": "HAL_GPIO_EXTI_IRQHandler", "entry": "08001180", "is_isr": true, "signature": "void __stdcall HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin)"}
+{"node_id": "func:HAL_GPIO_Init", "node_type": "function", "name": "HAL_GPIO_Init"}
+{"node_id": "func:HAL_GPIO_Init@08000f90", "node_type": "function", "name": "HAL_GPIO_Init", "entry": "08000f90", "is_isr": false, "signature": "void __stdcall HAL_GPIO_Init(GPIO_TypeDef * GPIOx, GPIO_InitTypeDef * GPIO_Init)"}
+{"node_id": "func:HAL_GPIO_WritePin", "node_type": "function", "name": "HAL_GPIO_WritePin"}
+{"node_id": "func:HAL_GPIO_WritePin@08001174", "node_type": "function", "name": "HAL_GPIO_WritePin", "entry": "08001174", "is_isr": false, "signature": "void __stdcall HAL_GPIO_WritePin(GPIO_TypeDef * GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)"}
+{"node_id": "func:HAL_GetTick", "node_type": "function", "name": "HAL_GetTick"}
+{"node_id": "func:HAL_GetTick@08000e0c", "node_type": "function", "name": "HAL_GetTick", "entry": "08000e0c", "is_isr": false, "signature": "uint32_t HAL_GetTick(void)"}
+{"node_id": "func:HAL_I2C_AbortCpltCallback", "node_type": "function", "name": "HAL_I2C_AbortCpltCallback"}
+{"node_id": "func:HAL_I2C_AbortCpltCallback@08001a88", "node_type": "function", "name": "HAL_I2C_AbortCpltCallback", "entry": "08001a88", "is_isr": false, "signature": "void __stdcall HAL_I2C_AbortCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_AddrCallback", "node_type": "function", "name": "HAL_I2C_AddrCallback"}
+{"node_id": "func:HAL_I2C_AddrCallback@0800385c", "node_type": "function", "name": "HAL_I2C_AddrCallback", "entry": "0800385c", "is_isr": false, "signature": "void __stdcall HAL_I2C_AddrCallback(I2C_HandleTypeDef * hi2c, uint8_t TransferDirection, uint16_t AddrMatchCode)"}
+{"node_id": "func:HAL_I2C_ER_IRQHandler", "node_type": "function", "name": "HAL_I2C_ER_IRQHandler"}
+{"node_id": "func:HAL_I2C_ER_IRQHandler@08001e44", "node_type": "function", "name": "HAL_I2C_ER_IRQHandler", "entry": "08001e44", "is_isr": true, "signature": "void __stdcall HAL_I2C_ER_IRQHandler(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_EV_IRQHandler", "node_type": "function", "name": "HAL_I2C_EV_IRQHandler"}
+{"node_id": "func:HAL_I2C_EV_IRQHandler@08001cdc", "node_type": "function", "name": "HAL_I2C_EV_IRQHandler", "entry": "08001cdc", "is_isr": true, "signature": "void __stdcall HAL_I2C_EV_IRQHandler(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_EnableListen_IT", "node_type": "function", "name": "HAL_I2C_EnableListen_IT"}
+{"node_id": "func:HAL_I2C_EnableListen_IT@08001554", "node_type": "function", "name": "HAL_I2C_EnableListen_IT", "entry": "08001554", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_I2C_EnableListen_IT(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_ErrorCallback", "node_type": "function", "name": "HAL_I2C_ErrorCallback"}
+{"node_id": "func:HAL_I2C_ErrorCallback@080038dc", "node_type": "function", "name": "HAL_I2C_ErrorCallback", "entry": "080038dc", "is_isr": false, "signature": "void __stdcall HAL_I2C_ErrorCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_ListenCpltCallback", "node_type": "function", "name": "HAL_I2C_ListenCpltCallback"}
+{"node_id": "func:HAL_I2C_ListenCpltCallback@080038ac", "node_type": "function", "name": "HAL_I2C_ListenCpltCallback", "entry": "080038ac", "is_isr": false, "signature": "void __stdcall HAL_I2C_ListenCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_MasterRxCpltCallback", "node_type": "function", "name": "HAL_I2C_MasterRxCpltCallback"}
+{"node_id": "func:HAL_I2C_MasterRxCpltCallback@08001594", "node_type": "function", "name": "HAL_I2C_MasterRxCpltCallback", "entry": "08001594", "is_isr": false, "signature": "void __stdcall HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_MasterTxCpltCallback", "node_type": "function", "name": "HAL_I2C_MasterTxCpltCallback"}
+{"node_id": "func:HAL_I2C_MasterTxCpltCallback@08001592", "node_type": "function", "name": "HAL_I2C_MasterTxCpltCallback", "entry": "08001592", "is_isr": false, "signature": "void __stdcall HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_MemRxCpltCallback", "node_type": "function", "name": "HAL_I2C_MemRxCpltCallback"}
+{"node_id": "func:HAL_I2C_MemRxCpltCallback@080018de", "node_type": "function", "name": "HAL_I2C_MemRxCpltCallback", "entry": "080018de", "is_isr": false, "signature": "void __stdcall HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_MemTxCpltCallback", "node_type": "function", "name": "HAL_I2C_MemTxCpltCallback"}
+{"node_id": "func:HAL_I2C_MemTxCpltCallback@080016f4", "node_type": "function", "name": "HAL_I2C_MemTxCpltCallback", "entry": "080016f4", "is_isr": false, "signature": "void __stdcall HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_SlaveRxCpltCallback", "node_type": "function", "name": "HAL_I2C_SlaveRxCpltCallback"}
+{"node_id": "func:HAL_I2C_SlaveRxCpltCallback@080015e8", "node_type": "function", "name": "HAL_I2C_SlaveRxCpltCallback", "entry": "080015e8", "is_isr": false, "signature": "void __stdcall HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_SlaveTxCpltCallback", "node_type": "function", "name": "HAL_I2C_SlaveTxCpltCallback"}
+{"node_id": "func:HAL_I2C_SlaveTxCpltCallback@08001596", "node_type": "function", "name": "HAL_I2C_SlaveTxCpltCallback", "entry": "08001596", "is_isr": false, "signature": "void __stdcall HAL_I2C_SlaveTxCpltCallback(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:HAL_I2C_Slave_Sequential_Receive_IT", "node_type": "function", "name": "HAL_I2C_Slave_Sequential_Receive_IT"}
+{"node_id": "func:HAL_I2C_Slave_Sequential_Receive_IT@080014c8", "node_type": "function", "name": "HAL_I2C_Slave_Sequential_Receive_IT", "entry": "080014c8", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_I2C_Slave_Sequential_Receive_IT(I2C_HandleTypeDef * hi2c, uint8_t * pData, uint16_t Size, uint32_t XferOptions)"}
+{"node_id": "func:HAL_I2C_Slave_Sequential_Transmit_IT", "node_type": "function", "name": "HAL_I2C_Slave_Sequential_Transmit_IT"}
+{"node_id": "func:HAL_I2C_Slave_Sequential_Transmit_IT@0800143c", "node_type": "function", "name": "HAL_I2C_Slave_Sequential_Transmit_IT", "entry": "0800143c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_I2C_Slave_Sequential_Transmit_IT(I2C_HandleTypeDef * hi2c, uint8_t * pData, uint16_t Size, uint32_t XferOptions)"}
+{"node_id": "func:HAL_IncTick", "node_type": "function", "name": "HAL_IncTick"}
+{"node_id": "func:HAL_IncTick@08000df4", "node_type": "function", "name": "HAL_IncTick", "entry": "08000df4", "is_isr": false, "signature": "void HAL_IncTick(void)"}
+{"node_id": "func:HAL_Init", "node_type": "function", "name": "HAL_Init"}
+{"node_id": "func:HAL_Init@08000dc0", "node_type": "function", "name": "HAL_Init", "entry": "08000dc0", "is_isr": false, "signature": "HAL_StatusTypeDef HAL_Init(void)"}
+{"node_id": "func:HAL_InitTick", "node_type": "function", "name": "HAL_InitTick"}
+{"node_id": "func:HAL_InitTick@08000d74", "node_type": "function", "name": "HAL_InitTick", "entry": "08000d74", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_InitTick(uint32_t TickPriority)"}
+{"node_id": "func:HAL_MspInit", "node_type": "function", "name": "HAL_MspInit"}
+{"node_id": "func:HAL_MspInit@08000d72", "node_type": "function", "name": "HAL_MspInit", "entry": "08000d72", "is_isr": false, "signature": "void HAL_MspInit(void)"}
+{"node_id": "func:HAL_NVIC_ClearPendingIRQ", "node_type": "function", "name": "HAL_NVIC_ClearPendingIRQ"}
+{"node_id": "func:HAL_NVIC_ClearPendingIRQ@08000ee8", "node_type": "function", "name": "HAL_NVIC_ClearPendingIRQ", "entry": "08000ee8", "is_isr": true, "signature": "void __stdcall HAL_NVIC_ClearPendingIRQ(IRQn_Type.conflict IRQn)"}
+{"node_id": "func:HAL_NVIC_EnableIRQ", "node_type": "function", "name": "HAL_NVIC_EnableIRQ"}
+{"node_id": "func:HAL_NVIC_EnableIRQ@08000ea0", "node_type": "function", "name": "HAL_NVIC_EnableIRQ", "entry": "08000ea0", "is_isr": true, "signature": "void __stdcall HAL_NVIC_EnableIRQ(IRQn_Type.conflict IRQn)"}
+{"node_id": "func:HAL_NVIC_SetPriority", "node_type": "function", "name": "HAL_NVIC_SetPriority"}
+{"node_id": "func:HAL_NVIC_SetPriority@08000e3c", "node_type": "function", "name": "HAL_NVIC_SetPriority", "entry": "08000e3c", "is_isr": false, "signature": "void __stdcall HAL_NVIC_SetPriority(IRQn_Type.conflict IRQn, uint32_t PreemptPriority, uint32_t SubPriority)"}
+{"node_id": "func:HAL_NVIC_SetPriorityGrouping", "node_type": "function", "name": "HAL_NVIC_SetPriorityGrouping"}
+{"node_id": "func:HAL_NVIC_SetPriorityGrouping@08000e18", "node_type": "function", "name": "HAL_NVIC_SetPriorityGrouping", "entry": "08000e18", "is_isr": false, "signature": "void __stdcall HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup)"}
+{"node_id": "func:HAL_PWREx_EnableOverDrive", "node_type": "function", "name": "HAL_PWREx_EnableOverDrive"}
+{"node_id": "func:HAL_PWREx_EnableOverDrive@08001f78", "node_type": "function", "name": "HAL_PWREx_EnableOverDrive", "entry": "08001f78", "is_isr": false, "signature": "HAL_StatusTypeDef HAL_PWREx_EnableOverDrive(void)"}
+{"node_id": "func:HAL_RCC_ClockConfig", "node_type": "function", "name": "HAL_RCC_ClockConfig"}
+{"node_id": "func:HAL_RCC_ClockConfig@08002464", "node_type": "function", "name": "HAL_RCC_ClockConfig", "entry": "08002464", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_RCC_ClockConfig(RCC_ClkInitTypeDef.conflict * RCC_ClkInitStruct, uint32_t FLatency)"}
+{"node_id": "func:HAL_RCC_GetHCLKFreq", "node_type": "function", "name": "HAL_RCC_GetHCLKFreq"}
+{"node_id": "func:HAL_RCC_GetHCLKFreq@080025bc", "node_type": "function", "name": "HAL_RCC_GetHCLKFreq", "entry": "080025bc", "is_isr": false, "signature": "uint32_t HAL_RCC_GetHCLKFreq(void)"}
+{"node_id": "func:HAL_RCC_GetPCLK1Freq", "node_type": "function", "name": "HAL_RCC_GetPCLK1Freq"}
+{"node_id": "func:HAL_RCC_GetPCLK1Freq@080025c8", "node_type": "function", "name": "HAL_RCC_GetPCLK1Freq", "entry": "080025c8", "is_isr": false, "signature": "uint32_t HAL_RCC_GetPCLK1Freq(void)"}
+{"node_id": "func:HAL_RCC_GetPCLK2Freq", "node_type": "function", "name": "HAL_RCC_GetPCLK2Freq"}
+{"node_id": "func:HAL_RCC_GetPCLK2Freq@080025e8", "node_type": "function", "name": "HAL_RCC_GetPCLK2Freq", "entry": "080025e8", "is_isr": false, "signature": "uint32_t HAL_RCC_GetPCLK2Freq(void)"}
+{"node_id": "func:HAL_RCC_GetSysClockFreq", "node_type": "function", "name": "HAL_RCC_GetSysClockFreq"}
+{"node_id": "func:HAL_RCC_GetSysClockFreq@08002390", "node_type": "function", "name": "HAL_RCC_GetSysClockFreq", "entry": "08002390", "is_isr": false, "signature": "uint32_t HAL_RCC_GetSysClockFreq(void)"}
+{"node_id": "func:HAL_RCC_OscConfig", "node_type": "function", "name": "HAL_RCC_OscConfig"}
+{"node_id": "func:HAL_RCC_OscConfig@08001ff8", "node_type": "function", "name": "HAL_RCC_OscConfig", "entry": "08001ff8", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_RCC_OscConfig(RCC_OscInitTypeDef.conflict * RCC_OscInitStruct)"}
+{"node_id": "func:HAL_RTCEx_AlarmBEventCallback", "node_type": "function", "name": "HAL_RTCEx_AlarmBEventCallback"}
+{"node_id": "func:HAL_RTCEx_AlarmBEventCallback@08002668", "node_type": "function", "name": "HAL_RTCEx_AlarmBEventCallback", "entry": "08002668", "is_isr": false, "signature": "void __stdcall HAL_RTCEx_AlarmBEventCallback(RTC_HandleTypeDef * hrtc)"}
+{"node_id": "func:HAL_RTC_AlarmAEventCallback", "node_type": "function", "name": "HAL_RTC_AlarmAEventCallback"}
+{"node_id": "func:HAL_RTC_AlarmAEventCallback@08003570", "node_type": "function", "name": "HAL_RTC_AlarmAEventCallback", "entry": "08003570", "is_isr": false, "signature": "void __stdcall HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef * hrtc)"}
+{"node_id": "func:HAL_RTC_AlarmIRQHandler", "node_type": "function", "name": "HAL_RTC_AlarmIRQHandler"}
+{"node_id": "func:HAL_RTC_AlarmIRQHandler@08002608", "node_type": "function", "name": "HAL_RTC_AlarmIRQHandler", "entry": "08002608", "is_isr": true, "signature": "void __stdcall HAL_RTC_AlarmIRQHandler(RTC_HandleTypeDef * hrtc)"}
+{"node_id": "func:HAL_SYSTICK_CLKSourceConfig", "node_type": "function", "name": "HAL_SYSTICK_CLKSourceConfig"}
+{"node_id": "func:HAL_SYSTICK_CLKSourceConfig@08000f08", "node_type": "function", "name": "HAL_SYSTICK_CLKSourceConfig", "entry": "08000f08", "is_isr": false, "signature": "void __stdcall HAL_SYSTICK_CLKSourceConfig(uint32_t CLKSource)"}
+{"node_id": "func:HAL_SYSTICK_Callback", "node_type": "function", "name": "HAL_SYSTICK_Callback"}
+{"node_id": "func:HAL_SYSTICK_Callback@08000f28", "node_type": "function", "name": "HAL_SYSTICK_Callback", "entry": "08000f28", "is_isr": false, "signature": "void HAL_SYSTICK_Callback(void)"}
+{"node_id": "func:HAL_SYSTICK_Config", "node_type": "function", "name": "HAL_SYSTICK_Config"}
+{"node_id": "func:HAL_SYSTICK_Config@08000ebc", "node_type": "function", "name": "HAL_SYSTICK_Config", "entry": "08000ebc", "is_isr": false, "signature": "uint32_t __stdcall HAL_SYSTICK_Config(uint32_t TicksNumb)"}
+{"node_id": "func:HAL_SYSTICK_IRQHandler", "node_type": "function", "name": "HAL_SYSTICK_IRQHandler"}
+{"node_id": "func:HAL_SYSTICK_IRQHandler@08000f2a", "node_type": "function", "name": "HAL_SYSTICK_IRQHandler", "entry": "08000f2a", "is_isr": true, "signature": "void HAL_SYSTICK_IRQHandler(void)"}
+{"node_id": "func:HAL_TIMEx_BreakCallback", "node_type": "function", "name": "HAL_TIMEx_BreakCallback"}
+{"node_id": "func:HAL_TIMEx_BreakCallback@0800291a", "node_type": "function", "name": "HAL_TIMEx_BreakCallback", "entry": "0800291a", "is_isr": false, "signature": "void __stdcall HAL_TIMEx_BreakCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIMEx_CommutationCallback", "node_type": "function", "name": "HAL_TIMEx_CommutationCallback"}
+{"node_id": "func:HAL_TIMEx_CommutationCallback@08002918", "node_type": "function", "name": "HAL_TIMEx_CommutationCallback", "entry": "08002918", "is_isr": false, "signature": "void __stdcall HAL_TIMEx_CommutationCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIMEx_PWMN_Stop", "node_type": "function", "name": "HAL_TIMEx_PWMN_Stop"}
+{"node_id": "func:HAL_TIMEx_PWMN_Stop@080028cc", "node_type": "function", "name": "HAL_TIMEx_PWMN_Stop", "entry": "080028cc", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIMEx_PWMN_Stop(TIM_HandleTypeDef * htim, uint32_t Channel)"}
+{"node_id": "func:HAL_TIM_IC_CaptureCallback", "node_type": "function", "name": "HAL_TIM_IC_CaptureCallback"}
+{"node_id": "func:HAL_TIM_IC_CaptureCallback@080026a4", "node_type": "function", "name": "HAL_TIM_IC_CaptureCallback", "entry": "080026a4", "is_isr": false, "signature": "void __stdcall HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_IRQHandler", "node_type": "function", "name": "HAL_TIM_IRQHandler"}
+{"node_id": "func:HAL_TIM_IRQHandler@080026aa", "node_type": "function", "name": "HAL_TIM_IRQHandler", "entry": "080026aa", "is_isr": true, "signature": "void __stdcall HAL_TIM_IRQHandler(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_OC_DelayElapsedCallback", "node_type": "function", "name": "HAL_TIM_OC_DelayElapsedCallback"}
+{"node_id": "func:HAL_TIM_OC_DelayElapsedCallback@08003730", "node_type": "function", "name": "HAL_TIM_OC_DelayElapsedCallback", "entry": "08003730", "is_isr": false, "signature": "void __stdcall HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_DeInit", "node_type": "function", "name": "HAL_TIM_PWM_DeInit"}
+{"node_id": "func:HAL_TIM_PWM_DeInit@0800266a", "node_type": "function", "name": "HAL_TIM_PWM_DeInit", "entry": "0800266a", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_PWM_DeInit(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_MspDeInit", "node_type": "function", "name": "HAL_TIM_PWM_MspDeInit"}
+{"node_id": "func:HAL_TIM_PWM_MspDeInit@080033e8", "node_type": "function", "name": "HAL_TIM_PWM_MspDeInit", "entry": "080033e8", "is_isr": false, "signature": "void __stdcall HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_PulseFinishedCallback", "node_type": "function", "name": "HAL_TIM_PWM_PulseFinishedCallback"}
+{"node_id": "func:HAL_TIM_PWM_PulseFinishedCallback@080026a6", "node_type": "function", "name": "HAL_TIM_PWM_PulseFinishedCallback", "entry": "080026a6", "is_isr": false, "signature": "void __stdcall HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_PWM_Stop", "node_type": "function", "name": "HAL_TIM_PWM_Stop"}
+{"node_id": "func:HAL_TIM_PWM_Stop@08002840", "node_type": "function", "name": "HAL_TIM_PWM_Stop", "entry": "08002840", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_TIM_PWM_Stop(TIM_HandleTypeDef * htim, uint32_t Channel)"}
+{"node_id": "func:HAL_TIM_PeriodElapsedCallback", "node_type": "function", "name": "HAL_TIM_PeriodElapsedCallback"}
+{"node_id": "func:HAL_TIM_PeriodElapsedCallback@0800374a", "node_type": "function", "name": "HAL_TIM_PeriodElapsedCallback", "entry": "0800374a", "is_isr": false, "signature": "void __stdcall HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_TIM_TriggerCallback", "node_type": "function", "name": "HAL_TIM_TriggerCallback"}
+{"node_id": "func:HAL_TIM_TriggerCallback@080026a8", "node_type": "function", "name": "HAL_TIM_TriggerCallback", "entry": "080026a8", "is_isr": false, "signature": "void __stdcall HAL_TIM_TriggerCallback(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:HAL_UART_ErrorCallback", "node_type": "function", "name": "HAL_UART_ErrorCallback"}
+{"node_id": "func:HAL_UART_ErrorCallback@08003f70", "node_type": "function", "name": "HAL_UART_ErrorCallback", "entry": "08003f70", "is_isr": false, "signature": "void __stdcall HAL_UART_ErrorCallback(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_GetState", "node_type": "function", "name": "HAL_UART_GetState"}
+{"node_id": "func:HAL_UART_GetState@08003108", "node_type": "function", "name": "HAL_UART_GetState", "entry": "08003108", "is_isr": false, "signature": "HAL_UART_StateTypeDef __stdcall HAL_UART_GetState(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_IRQHandler", "node_type": "function", "name": "HAL_UART_IRQHandler"}
+{"node_id": "func:HAL_UART_IRQHandler@08002fd8", "node_type": "function", "name": "HAL_UART_IRQHandler", "entry": "08002fd8", "is_isr": true, "signature": "void __stdcall HAL_UART_IRQHandler(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_Init", "node_type": "function", "name": "HAL_UART_Init"}
+{"node_id": "func:HAL_UART_Init@08002d4e", "node_type": "function", "name": "HAL_UART_Init", "entry": "08002d4e", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_UART_Init(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_MspInit", "node_type": "function", "name": "HAL_UART_MspInit"}
+{"node_id": "func:HAL_UART_MspInit@08002d4c", "node_type": "function", "name": "HAL_UART_MspInit", "entry": "08002d4c", "is_isr": false, "signature": "void __stdcall HAL_UART_MspInit(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_Receive_IT", "node_type": "function", "name": "HAL_UART_Receive_IT"}
+{"node_id": "func:HAL_UART_Receive_IT@08002ed6", "node_type": "function", "name": "HAL_UART_Receive_IT", "entry": "08002ed6", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_UART_Receive_IT(UART_HandleTypeDef * huart, uint8_t * pData, uint16_t Size)"}
+{"node_id": "func:HAL_UART_RxCpltCallback", "node_type": "function", "name": "HAL_UART_RxCpltCallback"}
+{"node_id": "func:HAL_UART_RxCpltCallback@08003f00", "node_type": "function", "name": "HAL_UART_RxCpltCallback", "entry": "08003f00", "is_isr": false, "signature": "void __stdcall HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HAL_UART_Transmit", "node_type": "function", "name": "HAL_UART_Transmit"}
+{"node_id": "func:HAL_UART_Transmit@08002dac", "node_type": "function", "name": "HAL_UART_Transmit", "entry": "08002dac", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_UART_Transmit(UART_HandleTypeDef * huart, uint8_t * pData, uint16_t Size, uint32_t Timeout)"}
+{"node_id": "func:HAL_UART_Transmit_IT", "node_type": "function", "name": "HAL_UART_Transmit_IT"}
+{"node_id": "func:HAL_UART_Transmit_IT@08002e8e", "node_type": "function", "name": "HAL_UART_Transmit_IT", "entry": "08002e8e", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall HAL_UART_Transmit_IT(UART_HandleTypeDef * huart, uint8_t * pData, uint16_t Size)"}
+{"node_id": "func:HAL_UART_TxCpltCallback", "node_type": "function", "name": "HAL_UART_TxCpltCallback"}
+{"node_id": "func:HAL_UART_TxCpltCallback@08003f24", "node_type": "function", "name": "HAL_UART_TxCpltCallback", "entry": "08003f24", "is_isr": false, "signature": "void __stdcall HAL_UART_TxCpltCallback(UART_HandleTypeDef * huart)"}
+{"node_id": "func:HardwareSerial", "node_type": "function", "name": "HardwareSerial"}
+{"node_id": "func:HardwareSerial@08004458", "node_type": "function", "name": "HardwareSerial", "entry": "08004458", "is_isr": false, "signature": "HardwareSerial * __thiscall HardwareSerial(HardwareSerial * this, void * peripheral)"}
+{"node_id": "func:I2C1_ER_IRQHandler@08003904", "node_type": "function", "name": "I2C1_ER_IRQHandler", "entry": "08003904", "is_isr": true, "signature": "void I2C1_ER_IRQHandler(void)"}
+{"node_id": "func:I2C1_EV_IRQHandler@080038f4", "node_type": "function", "name": "I2C1_EV_IRQHandler", "entry": "080038f4", "is_isr": true, "signature": "void I2C1_EV_IRQHandler(void)"}
+{"node_id": "func:I2C2_ER_IRQHandler@08003924", "node_type": "function", "name": "I2C2_ER_IRQHandler", "entry": "08003924", "is_isr": true, "signature": "void I2C2_ER_IRQHandler(void)"}
+{"node_id": "func:I2C2_EV_IRQHandler@08003914", "node_type": "function", "name": "I2C2_EV_IRQHandler", "entry": "08003914", "is_isr": true, "signature": "void I2C2_EV_IRQHandler(void)"}
+{"node_id": "func:I2C3_ER_IRQHandler@08003944", "node_type": "function", "name": "I2C3_ER_IRQHandler", "entry": "08003944", "is_isr": true, "signature": "void I2C3_ER_IRQHandler(void)"}
+{"node_id": "func:I2C3_EV_IRQHandler@08003934", "node_type": "function", "name": "I2C3_EV_IRQHandler", "entry": "08003934", "is_isr": true, "signature": "void I2C3_EV_IRQHandler(void)"}
+{"node_id": "func:I2C_DMAAbort@08001f18", "node_type": "function", "name": "I2C_DMAAbort", "entry": "08001f18", "is_isr": false, "signature": "void __stdcall I2C_DMAAbort(DMA_HandleTypeDef * hdma)"}
+{"node_id": "func:I2C_ITError", "node_type": "function", "name": "I2C_ITError"}
+{"node_id": "func:I2C_ITError@08001a8c", "node_type": "function", "name": "I2C_ITError", "entry": "08001a8c", "is_isr": false, "signature": "void __stdcall I2C_ITError(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_MasterReceive_BTF", "node_type": "function", "name": "I2C_MasterReceive_BTF"}
+{"node_id": "func:I2C_MasterReceive_BTF@0800197c", "node_type": "function", "name": "I2C_MasterReceive_BTF", "entry": "0800197c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_MasterReceive_BTF(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_MasterReceive_RXNE", "node_type": "function", "name": "I2C_MasterReceive_RXNE"}
+{"node_id": "func:I2C_MasterReceive_RXNE@080018e0", "node_type": "function", "name": "I2C_MasterReceive_RXNE", "entry": "080018e0", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_MasterReceive_RXNE(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_MasterTransmit_BTF", "node_type": "function", "name": "I2C_MasterTransmit_BTF"}
+{"node_id": "func:I2C_MasterTransmit_BTF@08001840", "node_type": "function", "name": "I2C_MasterTransmit_BTF", "entry": "08001840", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_MasterTransmit_BTF(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_MasterTransmit_TXE", "node_type": "function", "name": "I2C_MasterTransmit_TXE"}
+{"node_id": "func:I2C_MasterTransmit_TXE@080016f6", "node_type": "function", "name": "I2C_MasterTransmit_TXE", "entry": "080016f6", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_MasterTransmit_TXE(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_Master_ADD10", "node_type": "function", "name": "I2C_Master_ADD10"}
+{"node_id": "func:I2C_Master_ADD10@08001226", "node_type": "function", "name": "I2C_Master_ADD10", "entry": "08001226", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_Master_ADD10(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_Master_ADDR", "node_type": "function", "name": "I2C_Master_ADDR"}
+{"node_id": "func:I2C_Master_ADDR@08001232", "node_type": "function", "name": "I2C_Master_ADDR", "entry": "08001232", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_Master_ADDR(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_Master_SB", "node_type": "function", "name": "I2C_Master_SB"}
+{"node_id": "func:I2C_Master_SB@0800119c", "node_type": "function", "name": "I2C_Master_SB", "entry": "0800119c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_Master_SB(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_SlaveReceive_BTF", "node_type": "function", "name": "I2C_SlaveReceive_BTF"}
+{"node_id": "func:I2C_SlaveReceive_BTF@0800141c", "node_type": "function", "name": "I2C_SlaveReceive_BTF", "entry": "0800141c", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_SlaveReceive_BTF(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_SlaveReceive_RXNE", "node_type": "function", "name": "I2C_SlaveReceive_RXNE"}
+{"node_id": "func:I2C_SlaveReceive_RXNE@080015ea", "node_type": "function", "name": "I2C_SlaveReceive_RXNE", "entry": "080015ea", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_SlaveReceive_RXNE(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_SlaveTransmit_BTF", "node_type": "function", "name": "I2C_SlaveTransmit_BTF"}
+{"node_id": "func:I2C_SlaveTransmit_BTF@080013fc", "node_type": "function", "name": "I2C_SlaveTransmit_BTF", "entry": "080013fc", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_SlaveTransmit_BTF(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_SlaveTransmit_TXE", "node_type": "function", "name": "I2C_SlaveTransmit_TXE"}
+{"node_id": "func:I2C_SlaveTransmit_TXE@08001598", "node_type": "function", "name": "I2C_SlaveTransmit_TXE", "entry": "08001598", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_SlaveTransmit_TXE(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_Slave_ADDR", "node_type": "function", "name": "I2C_Slave_ADDR"}
+{"node_id": "func:I2C_Slave_ADDR@08001636", "node_type": "function", "name": "I2C_Slave_ADDR", "entry": "08001636", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_Slave_ADDR(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_Slave_AF", "node_type": "function", "name": "I2C_Slave_AF"}
+{"node_id": "func:I2C_Slave_AF@08001660", "node_type": "function", "name": "I2C_Slave_AF", "entry": "08001660", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_Slave_AF(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:I2C_Slave_STOPF", "node_type": "function", "name": "I2C_Slave_STOPF"}
+{"node_id": "func:I2C_Slave_STOPF@08001bd8", "node_type": "function", "name": "I2C_Slave_STOPF", "entry": "08001bd8", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall I2C_Slave_STOPF(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:IPAddress", "node_type": "function", "name": "IPAddress"}
+{"node_id": "func:IPAddress@08004520", "node_type": "function", "name": "IPAddress", "entry": "08004520", "is_isr": false, "signature": "IPAddress * __thiscall IPAddress(IPAddress * this, uint8_t first_octet, uint8_t second_octet, uint8_t third_octet, uint8_t fourth_octet)"}
+{"node_id": "func:Modbus", "node_type": "function", "name": "Modbus"}
+{"node_id": "func:Modbus@08000662", "node_type": "function", "name": "Modbus", "entry": "08000662", "is_isr": false, "signature": "Modbus * __thiscall Modbus(Modbus * this, uint8_t u8id, uint8_t u8serno, uint8_t u8txenpin)"}
+{"node_id": "func:RTC_Alarm_IRQHandler@08003588", "node_type": "function", "name": "RTC_Alarm_IRQHandler", "entry": "08003588", "is_isr": true, "signature": "void RTC_Alarm_IRQHandler(void)"}
+{"node_id": "func:Reset_Handler@08000d18", "node_type": "function", "name": "Reset_Handler", "entry": "08000d18", "is_isr": true, "signature": "undefined Reset_Handler(void)"}
+{"node_id": "func:SysTick_Handler@08003452", "node_type": "function", "name": "SysTick_Handler", "entry": "08003452", "is_isr": true, "signature": "void SysTick_Handler(void)"}
+{"node_id": "func:SystemClock_Config", "node_type": "function", "name": "SystemClock_Config"}
+{"node_id": "func:SystemClock_Config@08000c68", "node_type": "function", "name": "SystemClock_Config", "entry": "08000c68", "is_isr": false, "signature": "void SystemClock_Config(void)"}
+{"node_id": "func:SystemInit", "node_type": "function", "name": "SystemInit"}
+{"node_id": "func:SystemInit@08003598", "node_type": "function", "name": "SystemInit", "entry": "08003598", "is_isr": false, "signature": "void SystemInit(void)"}
+{"node_id": "func:TIM1_BRK_TIM9_IRQHandler@08003808", "node_type": "function", "name": "TIM1_BRK_TIM9_IRQHandler", "entry": "08003808", "is_isr": true, "signature": "void TIM1_BRK_TIM9_IRQHandler(void)"}
+{"node_id": "func:TIM1_TRG_COM_TIM11_IRQHandler@0800381c", "node_type": "function", "name": "TIM1_TRG_COM_TIM11_IRQHandler", "entry": "0800381c", "is_isr": true, "signature": "void TIM1_TRG_COM_TIM11_IRQHandler(void)"}
+{"node_id": "func:TIM1_UP_TIM10_IRQHandler@08003758", "node_type": "function", "name": "TIM1_UP_TIM10_IRQHandler", "entry": "08003758", "is_isr": true, "signature": "void TIM1_UP_TIM10_IRQHandler(void)"}
+{"node_id": "func:TIM2_IRQHandler@08003774", "node_type": "function", "name": "TIM2_IRQHandler", "entry": "08003774", "is_isr": true, "signature": "void TIM2_IRQHandler(void)"}
+{"node_id": "func:TIM3_IRQHandler@08003788", "node_type": "function", "name": "TIM3_IRQHandler", "entry": "08003788", "is_isr": true, "signature": "void TIM3_IRQHandler(void)"}
+{"node_id": "func:TIM4_IRQHandler@0800379c", "node_type": "function", "name": "TIM4_IRQHandler", "entry": "0800379c", "is_isr": true, "signature": "void TIM4_IRQHandler(void)"}
+{"node_id": "func:TIM5_IRQHandler@080037b0", "node_type": "function", "name": "TIM5_IRQHandler", "entry": "080037b0", "is_isr": true, "signature": "void TIM5_IRQHandler(void)"}
+{"node_id": "func:TIM6_DAC_IRQHandler@080037c4", "node_type": "function", "name": "TIM6_DAC_IRQHandler", "entry": "080037c4", "is_isr": true, "signature": "void TIM6_DAC_IRQHandler(void)"}
+{"node_id": "func:TIM7_IRQHandler@080037d8", "node_type": "function", "name": "TIM7_IRQHandler", "entry": "080037d8", "is_isr": true, "signature": "void TIM7_IRQHandler(void)"}
+{"node_id": "func:TIM8_BRK_TIM12_IRQHandler@08003830", "node_type": "function", "name": "TIM8_BRK_TIM12_IRQHandler", "entry": "08003830", "is_isr": true, "signature": "void TIM8_BRK_TIM12_IRQHandler(void)"}
+{"node_id": "func:TIM8_TRG_COM_TIM14_IRQHandler@08003844", "node_type": "function", "name": "TIM8_TRG_COM_TIM14_IRQHandler", "entry": "08003844", "is_isr": true, "signature": "void TIM8_TRG_COM_TIM14_IRQHandler(void)"}
+{"node_id": "func:TIM8_UP_TIM13_IRQHandler@080037ec", "node_type": "function", "name": "TIM8_UP_TIM13_IRQHandler", "entry": "080037ec", "is_isr": true, "signature": "void TIM8_UP_TIM13_IRQHandler(void)"}
+{"node_id": "func:TIM_CCxChannelCmd", "node_type": "function", "name": "TIM_CCxChannelCmd"}
+{"node_id": "func:TIM_CCxChannelCmd@08002824", "node_type": "function", "name": "TIM_CCxChannelCmd", "entry": "08002824", "is_isr": false, "signature": "void __stdcall TIM_CCxChannelCmd(TIM_TypeDef * TIMx, uint32_t Channel, uint32_t ChannelState)"}
+{"node_id": "func:TIM_CCxNChannelCmd", "node_type": "function", "name": "TIM_CCxNChannelCmd"}
+{"node_id": "func:TIM_CCxNChannelCmd@080028b0", "node_type": "function", "name": "TIM_CCxNChannelCmd", "entry": "080028b0", "is_isr": false, "signature": "void __stdcall TIM_CCxNChannelCmd(TIM_TypeDef * TIMx, uint32_t Channel, uint32_t ChannelNState)"}
+{"node_id": "func:UART4_IRQHandler@08003ff8", "node_type": "function", "name": "UART4_IRQHandler", "entry": "08003ff8", "is_isr": true, "signature": "void UART4_IRQHandler(void)"}
+{"node_id": "func:UART5_IRQHandler@08004010", "node_type": "function", "name": "UART5_IRQHandler", "entry": "08004010", "is_isr": true, "signature": "void UART5_IRQHandler(void)"}
+{"node_id": "func:UART7_IRQHandler@08004040", "node_type": "function", "name": "UART7_IRQHandler", "entry": "08004040", "is_isr": true, "signature": "void UART7_IRQHandler(void)"}
+{"node_id": "func:UART8_IRQHandler@08004058", "node_type": "function", "name": "UART8_IRQHandler", "entry": "08004058", "is_isr": true, "signature": "void UART8_IRQHandler(void)"}
+{"node_id": "func:UART_DMAAbortOnError@080030f8", "node_type": "function", "name": "UART_DMAAbortOnError", "entry": "080030f8", "is_isr": false, "signature": "void __stdcall UART_DMAAbortOnError(DMA_HandleTypeDef * hdma)"}
+{"node_id": "func:UART_EndRxTransfer", "node_type": "function", "name": "UART_EndRxTransfer"}
+{"node_id": "func:UART_EndRxTransfer@0800291c", "node_type": "function", "name": "UART_EndRxTransfer", "entry": "0800291c", "is_isr": false, "signature": "void __stdcall UART_EndRxTransfer(UART_HandleTypeDef * huart)"}
+{"node_id": "func:UART_EndTransmit_IT", "node_type": "function", "name": "UART_EndTransmit_IT"}
+{"node_id": "func:UART_EndTransmit_IT@08002f28", "node_type": "function", "name": "UART_EndTransmit_IT", "entry": "08002f28", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall UART_EndTransmit_IT(UART_HandleTypeDef * huart)"}
+{"node_id": "func:UART_Receive_IT", "node_type": "function", "name": "UART_Receive_IT"}
+{"node_id": "func:UART_Receive_IT@08002f42", "node_type": "function", "name": "UART_Receive_IT", "entry": "08002f42", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall UART_Receive_IT(UART_HandleTypeDef * huart)"}
+{"node_id": "func:UART_SetConfig", "node_type": "function", "name": "UART_SetConfig"}
+{"node_id": "func:UART_SetConfig@080029a4", "node_type": "function", "name": "UART_SetConfig", "entry": "080029a4", "is_isr": false, "signature": "void __stdcall UART_SetConfig(UART_HandleTypeDef * huart)"}
+{"node_id": "func:UART_Transmit_IT", "node_type": "function", "name": "UART_Transmit_IT"}
+{"node_id": "func:UART_Transmit_IT@08002938", "node_type": "function", "name": "UART_Transmit_IT", "entry": "08002938", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall UART_Transmit_IT(UART_HandleTypeDef * huart)"}
+{"node_id": "func:UART_WaitOnFlagUntilTimeout", "node_type": "function", "name": "UART_WaitOnFlagUntilTimeout"}
+{"node_id": "func:UART_WaitOnFlagUntilTimeout@08002ce8", "node_type": "function", "name": "UART_WaitOnFlagUntilTimeout", "entry": "08002ce8", "is_isr": false, "signature": "HAL_StatusTypeDef __stdcall UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef * huart, uint32_t Flag, FlagStatus Status, uint32_t Tickstart, uint32_t Timeout)"}
+{"node_id": "func:USART1_IRQHandler@08003fb0", "node_type": "function", "name": "USART1_IRQHandler", "entry": "08003fb0", "is_isr": true, "signature": "void USART1_IRQHandler(void)"}
+{"node_id": "func:USART2_IRQHandler@08003fc8", "node_type": "function", "name": "USART2_IRQHandler", "entry": "08003fc8", "is_isr": true, "signature": "void USART2_IRQHandler(void)"}
+{"node_id": "func:USART3_IRQHandler@08003fe0", "node_type": "function", "name": "USART3_IRQHandler", "entry": "08003fe0", "is_isr": true, "signature": "void USART3_IRQHandler(void)"}
+{"node_id": "func:USART6_IRQHandler@08004028", "node_type": "function", "name": "USART6_IRQHandler", "entry": "08004028", "is_isr": true, "signature": "void USART6_IRQHandler(void)"}
+{"node_id": "func:_GLOBAL__sub_I_Serial3@080044d8", "node_type": "function", "name": "_GLOBAL__sub_I_Serial3", "entry": "080044d8", "is_isr": false, "signature": "void _GLOBAL__sub_I_Serial3(void)"}
+{"node_id": "func:_GLOBAL__sub_I__Z22stm32_interrupt_enableP12GPIO_TypeDeftSt8functionIFvvEEm@080047cc", "node_type": "function", "name": "_GLOBAL__sub_I__Z22stm32_interrupt_enableP12GPIO_TypeDeftSt8functionIFvvEEm", "entry": "080047cc", "is_isr": false, "signature": "void _GLOBAL__sub_I__Z22stm32_interrupt_enableP12GPIO_TypeDeftSt8functionIFvvEEm(void)"}
+{"node_id": "func:_GLOBAL__sub_I__ZN6ModbusC2Ev@08000c58", "node_type": "function", "name": "_GLOBAL__sub_I__ZN6ModbusC2Ev", "entry": "08000c58", "is_isr": false, "signature": "void _GLOBAL__sub_I__ZN6ModbusC2Ev(void)"}
+{"node_id": "func:_GLOBAL__sub_I__ZN9IPAddressC2Ev@08004568", "node_type": "function", "name": "_GLOBAL__sub_I__ZN9IPAddressC2Ev", "entry": "08004568", "is_isr": false, "signature": "void _GLOBAL__sub_I__ZN9IPAddressC2Ev(void)"}
+{"node_id": "func:_GLOBAL__sub_I_ctype_byname@08005744", "node_type": "function", "name": "_GLOBAL__sub_I_ctype_byname", "entry": "08005744", "is_isr": false, "signature": "undefined __stdcall _GLOBAL__sub_I_ctype_byname(void)"}
+{"node_id": "func:_GLOBAL__sub_I_ctype_byname@08005808", "node_type": "function", "name": "_GLOBAL__sub_I_ctype_byname", "entry": "08005808", "is_isr": false, "signature": "undefined __stdcall _GLOBAL__sub_I_ctype_byname(void)"}
+{"node_id": "func:_GLOBAL__sub_I_ctype_byname@080058cc", "node_type": "function", "name": "_GLOBAL__sub_I_ctype_byname", "entry": "080058cc", "is_isr": false, "signature": "undefined __stdcall _GLOBAL__sub_I_ctype_byname(void)"}
+{"node_id": "func:_GLOBAL__sub_I_ctype_byname@08005950", "node_type": "function", "name": "_GLOBAL__sub_I_ctype_byname", "entry": "08005950", "is_isr": false, "signature": "undefined __stdcall _GLOBAL__sub_I_ctype_byname(void)"}
+{"node_id": "func:__aeabi_atexit", "node_type": "function", "name": "__aeabi_atexit"}
+{"node_id": "func:__aeabi_atexit@080047da", "node_type": "function", "name": "__aeabi_atexit", "entry": "080047da", "is_isr": false, "signature": "undefined __aeabi_atexit(void)"}
+{"node_id": "func:__aeabi_idiv0", "node_type": "function", "name": "__aeabi_idiv0"}
+{"node_id": "func:__aeabi_idiv0@080005dc", "node_type": "function", "name": "__aeabi_idiv0", "entry": "080005dc", "is_isr": false, "signature": "undefined __aeabi_idiv0(void)"}
+{"node_id": "func:__aeabi_uldivmod", "node_type": "function", "name": "__aeabi_uldivmod"}
+{"node_id": "func:__aeabi_uldivmod@080002d0", "node_type": "function", "name": "__aeabi_uldivmod", "entry": "080002d0", "is_isr": false, "signature": "undefined __aeabi_uldivmod(void)"}
+{"node_id": "func:__assert_func", "node_type": "function", "name": "__assert_func"}
+{"node_id": "func:__assert_func@080047e4", "node_type": "function", "name": "__assert_func", "entry": "080047e4", "is_isr": false, "signature": "noreturn undefined __assert_func(void)"}
+{"node_id": "func:__cxa_atexit", "node_type": "function", "name": "__cxa_atexit"}
+{"node_id": "func:__cxa_atexit@08004820", "node_type": "function", "name": "__cxa_atexit", "entry": "08004820", "is_isr": false, "signature": "undefined __cxa_atexit(void)"}
+{"node_id": "func:__do_global_dtors_aux@080001ac", "node_type": "function", "name": "__do_global_dtors_aux", "entry": "080001ac", "is_isr": false, "signature": "undefined __do_global_dtors_aux(void)"}
+{"node_id": "func:__libc_init_array", "node_type": "function", "name": "__libc_init_array"}
+{"node_id": "func:__libc_init_array@08004860", "node_type": "function", "name": "__libc_init_array", "entry": "08004860", "is_isr": false, "signature": "undefined __libc_init_array(void)"}
+{"node_id": "func:__malloc_lock", "node_type": "function", "name": "__malloc_lock"}
+{"node_id": "func:__malloc_lock@08005558", "node_type": "function", "name": "__malloc_lock", "entry": "08005558", "is_isr": false, "signature": "undefined __malloc_lock(void)"}
+{"node_id": "func:__malloc_unlock", "node_type": "function", "name": "__malloc_unlock"}
+{"node_id": "func:__malloc_unlock@0800555a", "node_type": "function", "name": "__malloc_unlock", "entry": "0800555a", "is_isr": false, "signature": "undefined __malloc_unlock(void)"}
+{"node_id": "func:__sclose@08005662", "node_type": "function", "name": "__sclose", "entry": "08005662", "is_isr": false, "signature": "undefined __sclose(void)"}
+{"node_id": "func:__sflush_r", "node_type": "function", "name": "__sflush_r"}
+{"node_id": "func:__sflush_r@08005198", "node_type": "function", "name": "__sflush_r", "entry": "08005198", "is_isr": false, "signature": "undefined __sflush_r(void)"}
+{"node_id": "func:__sfmoreglue", "node_type": "function", "name": "__sfmoreglue"}
+{"node_id": "func:__sfmoreglue@08005350", "node_type": "function", "name": "__sfmoreglue", "entry": "08005350", "is_isr": false, "signature": "undefined __sfmoreglue(void)"}
+{"node_id": "func:__sfp", "node_type": "function", "name": "__sfp"}
+{"node_id": "func:__sfp@080053dc", "node_type": "function", "name": "__sfp", "entry": "080053dc", "is_isr": false, "signature": "undefined __sfp(void)"}
+{"node_id": "func:__sfputc_r", "node_type": "function", "name": "__sfputc_r"}
+{"node_id": "func:__sfputc_r@08004a10", "node_type": "function", "name": "__sfputc_r", "entry": "08004a10", "is_isr": false, "signature": "undefined __sfputc_r(void)"}
+{"node_id": "func:__sfputs_r", "node_type": "function", "name": "__sfputs_r"}
+{"node_id": "func:__sfputs_r@08004a3c", "node_type": "function", "name": "__sfputs_r", "entry": "08004a3c", "is_isr": false, "signature": "undefined __sfputs_r(void)"}
+{"node_id": "func:__sinit", "node_type": "function", "name": "__sinit"}
+{"node_id": "func:__sinit@0800537c", "node_type": "function", "name": "__sinit", "entry": "0800537c", "is_isr": false, "signature": "undefined __sinit(void)"}
+{"node_id": "func:__smakebuf_r", "node_type": "function", "name": "__smakebuf_r"}
+{"node_id": "func:__smakebuf_r@080054d8", "node_type": "function", "name": "__smakebuf_r", "entry": "080054d8", "is_isr": false, "signature": "undefined __smakebuf_r(void)"}
+{"node_id": "func:__sread@080055e4", "node_type": "function", "name": "__sread", "entry": "080055e4", "is_isr": false, "signature": "undefined __sread(void)"}
+{"node_id": "func:__sseek@0800563e", "node_type": "function", "name": "__sseek", "entry": "0800563e", "is_isr": false, "signature": "undefined __sseek(void)"}
+{"node_id": "func:__static_initialization_and_destruction_0", "node_type": "function", "name": "__static_initialization_and_destruction_0"}
+{"node_id": "func:__static_initialization_and_destruction_0@08000670", "node_type": "function", "name": "__static_initialization_and_destruction_0", "entry": "08000670", "is_isr": false, "signature": "void __stdcall __static_initialization_and_destruction_0(int __initialize_p, int __priority)"}
+{"node_id": "func:__static_initialization_and_destruction_0@080044b4", "node_type": "function", "name": "__static_initialization_and_destruction_0", "entry": "080044b4", "is_isr": false, "signature": "void __stdcall __static_initialization_and_destruction_0(int __initialize_p, int __priority)"}
+{"node_id": "func:__static_initialization_and_destruction_0@0800453c", "node_type": "function", "name": "__static_initialization_and_destruction_0", "entry": "0800453c", "is_isr": false, "signature": "void __stdcall __static_initialization_and_destruction_0(int __initialize_p, int __priority)"}
+{"node_id": "func:__static_initialization_and_destruction_0@08004690", "node_type": "function", "name": "__static_initialization_and_destruction_0", "entry": "08004690", "is_isr": false, "signature": "void __stdcall __static_initialization_and_destruction_0(int __initialize_p, int __priority)"}
+{"node_id": "func:__swbuf_r", "node_type": "function", "name": "__swbuf_r"}
+{"node_id": "func:__swbuf_r@08005008", "node_type": "function", "name": "__swbuf_r", "entry": "08005008", "is_isr": false, "signature": "undefined __swbuf_r(void)"}
+{"node_id": "func:__swhatbuf_r", "node_type": "function", "name": "__swhatbuf_r"}
+{"node_id": "func:__swhatbuf_r@08005490", "node_type": "function", "name": "__swhatbuf_r", "entry": "08005490", "is_isr": false, "signature": "undefined __swhatbuf_r(void)"}
+{"node_id": "func:__swrite@08005606", "node_type": "function", "name": "__swrite", "entry": "08005606", "is_isr": false, "signature": "undefined __swrite(void)"}
+{"node_id": "func:__swsetup_r", "node_type": "function", "name": "__swsetup_r"}
+{"node_id": "func:__swsetup_r@080050ac", "node_type": "function", "name": "__swsetup_r", "entry": "080050ac", "is_isr": false, "signature": "undefined __swsetup_r(void)"}
+{"node_id": "func:__tcf_0@08004668", "node_type": "function", "name": "__tcf_0", "entry": "08004668", "is_isr": false, "signature": "void __stdcall __tcf_0(void * param_1)"}
+{"node_id": "func:__throw_bad_function_call", "node_type": "function", "name": "__throw_bad_function_call"}
+{"node_id": "func:__throw_bad_function_call@0800573c", "node_type": "function", "name": "__throw_bad_function_call", "entry": "0800573c", "is_isr": false, "signature": "noreturn undefined __throw_bad_function_call(void)"}
+{"node_id": "func:__udivmoddi4", "node_type": "function", "name": "__udivmoddi4"}
+{"node_id": "func:__udivmoddi4@08000300", "node_type": "function", "name": "__udivmoddi4", "entry": "08000300", "is_isr": false, "signature": "undefined __udivmoddi4(void)"}
+{"node_id": "func:_cleanup_r@080052fc", "node_type": "function", "name": "_cleanup_r", "entry": "080052fc", "is_isr": false, "signature": "undefined _cleanup_r(void)"}
+{"node_id": "func:_close", "node_type": "function", "name": "_close"}
+{"node_id": "func:_close@080040ac", "node_type": "function", "name": "_close", "entry": "080040ac", "is_isr": false, "signature": "int __stdcall _close(int file_UNUSED)"}
+{"node_id": "func:_close_r", "node_type": "function", "name": "_close_r"}
+{"node_id": "func:_close_r@08005690", "node_type": "function", "name": "_close_r", "entry": "08005690", "is_isr": false, "signature": "undefined _close_r(void)"}
+{"node_id": "func:_exit", "node_type": "function", "name": "_exit"}
+{"node_id": "func:_exit@080040d4", "node_type": "function", "name": "_exit", "entry": "080040d4", "is_isr": false, "signature": "noreturn void __stdcall _exit(int status_UNUSED)"}
+{"node_id": "func:_fflush_r", "node_type": "function", "name": "_fflush_r"}
+{"node_id": "func:_fflush_r@080052a8", "node_type": "function", "name": "_fflush_r", "entry": "080052a8", "is_isr": false, "signature": "undefined _fflush_r(void)"}
+{"node_id": "func:_fini@080059e0", "node_type": "function", "name": "_fini", "entry": "080059e0", "is_isr": false, "signature": "undefined _fini(void)"}
+{"node_id": "func:_free_r", "node_type": "function", "name": "_free_r"}
+{"node_id": "func:_free_r@080048b8", "node_type": "function", "name": "_free_r", "entry": "080048b8", "is_isr": false, "signature": "undefined _free_r(void)"}
+{"node_id": "func:_fstat", "node_type": "function", "name": "_fstat"}
+{"node_id": "func:_fstat@080040b2", "node_type": "function", "name": "_fstat", "entry": "080040b2", "is_isr": false, "signature": "int __stdcall _fstat(int file_UNUSED, stat * st)"}
+{"node_id": "func:_fstat_r", "node_type": "function", "name": "_fstat_r"}
+{"node_id": "func:_fstat_r@080056b0", "node_type": "function", "name": "_fstat_r", "entry": "080056b0", "is_isr": false, "signature": "undefined _fstat_r(void)"}
+{"node_id": "func:_fwalk_reent", "node_type": "function", "name": "_fwalk_reent"}
+{"node_id": "func:_fwalk_reent@08005454", "node_type": "function", "name": "_fwalk_reent", "entry": "08005454", "is_isr": false, "signature": "undefined _fwalk_reent(void)"}
+{"node_id": "func:_getpid@080040e8", "node_type": "function", "name": "_getpid", "entry": "080040e8", "is_isr": false, "signature": "int _getpid(void)"}
+{"node_id": "func:_getpid_r", "node_type": "function", "name": "_getpid_r"}
+{"node_id": "func:_getpid_r@080055e0", "node_type": "function", "name": "_getpid_r", "entry": "080055e0", "is_isr": false, "signature": "int _getpid_r(void)"}
+{"node_id": "func:_init", "node_type": "function", "name": "_init"}
+{"node_id": "func:_init@080059d4", "node_type": "function", "name": "_init", "entry": "080059d4", "is_isr": false, "signature": "undefined _init(void)"}
+{"node_id": "func:_isatty", "node_type": "function", "name": "_isatty"}
+{"node_id": "func:_isatty@080040bc", "node_type": "function", "name": "_isatty", "entry": "080040bc", "is_isr": false, "signature": "int __stdcall _isatty(int file_UNUSED)"}
+{"node_id": "func:_isatty_r", "node_type": "function", "name": "_isatty_r"}
+{"node_id": "func:_isatty_r@080056d4", "node_type": "function", "name": "_isatty_r", "entry": "080056d4", "is_isr": false, "signature": "undefined _isatty_r(void)"}
+{"node_id": "func:_kill", "node_type": "function", "name": "_kill"}
+{"node_id": "func:_kill@080040d8", "node_type": "function", "name": "_kill", "entry": "080040d8", "is_isr": false, "signature": "int __stdcall _kill(int pid_UNUSED, int sig_UNUSED)"}
+{"node_id": "func:_kill_r", "node_type": "function", "name": "_kill_r"}
+{"node_id": "func:_kill_r@080055bc", "node_type": "function", "name": "_kill_r", "entry": "080055bc", "is_isr": false, "signature": "undefined _kill_r(void)"}
+{"node_id": "func:_lseek", "node_type": "function", "name": "_lseek"}
+{"node_id": "func:_lseek@080040c0", "node_type": "function", "name": "_lseek", "entry": "080040c0", "is_isr": false, "signature": "int __stdcall _lseek(int file_UNUSED, int ptr_UNUSED, int dir_UNUSED)"}
+{"node_id": "func:_lseek_r", "node_type": "function", "name": "_lseek_r"}
+{"node_id": "func:_lseek_r@080056f4", "node_type": "function", "name": "_lseek_r", "entry": "080056f4", "is_isr": false, "signature": "undefined _lseek_r(void)"}
+{"node_id": "func:_malloc_r", "node_type": "function", "name": "_malloc_r"}
+{"node_id": "func:_malloc_r@08004954", "node_type": "function", "name": "_malloc_r", "entry": "08004954", "is_isr": false, "signature": "undefined _malloc_r(void)"}
+{"node_id": "func:_printf_common", "node_type": "function", "name": "_printf_common"}
+{"node_id": "func:_printf_common@08004c8c", "node_type": "function", "name": "_printf_common", "entry": "08004c8c", "is_isr": false, "signature": "undefined _printf_common(void)"}
+{"node_id": "func:_printf_i", "node_type": "function", "name": "_printf_i"}
+{"node_id": "func:_printf_i@08004d78", "node_type": "function", "name": "_printf_i", "entry": "08004d78", "is_isr": false, "signature": "undefined _printf_i(void)"}
+{"node_id": "func:_raise_r", "node_type": "function", "name": "_raise_r"}
+{"node_id": "func:_raise_r@0800555c", "node_type": "function", "name": "_raise_r", "entry": "0800555c", "is_isr": false, "signature": "undefined _raise_r(void)"}
+{"node_id": "func:_read", "node_type": "function", "name": "_read"}
+{"node_id": "func:_read@080040c4", "node_type": "function", "name": "_read", "entry": "080040c4", "is_isr": false, "signature": "int __stdcall _read(int file_UNUSED, char * ptr_UNUSED, int len_UNUSED)"}
+{"node_id": "func:_read_r", "node_type": "function", "name": "_read_r"}
+{"node_id": "func:_read_r@08005718", "node_type": "function", "name": "_read_r", "entry": "08005718", "is_isr": false, "signature": "undefined _read_r(void)"}
+{"node_id": "func:_rx_complete_irq@08004288", "node_type": "function", "name": "_rx_complete_irq", "entry": "08004288", "is_isr": true, "signature": "void __stdcall _rx_complete_irq(serial_t.conflict * obj)"}
+{"node_id": "func:_sbrk", "node_type": "function", "name": "_sbrk"}
+{"node_id": "func:_sbrk@08004070", "node_type": "function", "name": "_sbrk", "entry": "08004070", "is_isr": false, "signature": "caddr_t __stdcall _sbrk(int incr)"}
+{"node_id": "func:_sbrk_r", "node_type": "function", "name": "_sbrk_r"}
+{"node_id": "func:_sbrk_r@08004fe8", "node_type": "function", "name": "_sbrk_r", "entry": "08004fe8", "is_isr": false, "signature": "undefined _sbrk_r(void)"}
+{"node_id": "func:_tx_complete_irq@080041e8", "node_type": "function", "name": "_tx_complete_irq", "entry": "080041e8", "is_isr": true, "signature": "int __stdcall _tx_complete_irq(serial_t.conflict * obj)"}
+{"node_id": "func:_vfiprintf_r", "node_type": "function", "name": "_vfiprintf_r"}
+{"node_id": "func:_vfiprintf_r@08004a60", "node_type": "function", "name": "_vfiprintf_r", "entry": "08004a60", "is_isr": false, "signature": "undefined _vfiprintf_r(void)"}
+{"node_id": "func:_write", "node_type": "function", "name": "_write"}
+{"node_id": "func:_write@080040c8", "node_type": "function", "name": "_write", "entry": "080040c8", "is_isr": false, "signature": "int __stdcall _write(int file_UNUSED, char * ptr, int len)"}
+{"node_id": "func:_write_r", "node_type": "function", "name": "_write_r"}
+{"node_id": "func:_write_r@0800566c", "node_type": "function", "name": "_write_r", "entry": "0800566c", "is_isr": false, "signature": "undefined _write_r(void)"}
+{"node_id": "func:abort", "node_type": "function", "name": "abort"}
+{"node_id": "func:abort@08005188", "node_type": "function", "name": "abort", "entry": "08005188", "is_isr": false, "signature": "noreturn void abort(void)"}
+{"node_id": "func:available", "node_type": "function", "name": "available"}
+{"node_id": "func:available@0800421c", "node_type": "function", "name": "available", "entry": "0800421c", "is_isr": false, "signature": "int __thiscall available(HardwareSerial * this)"}
+{"node_id": "func:begin", "node_type": "function", "name": "begin"}
+{"node_id": "func:begin@080005e0", "node_type": "function", "name": "begin", "entry": "080005e0", "is_isr": false, "signature": "void __thiscall begin(Modbus * this, long u32speed)"}
+{"node_id": "func:begin@08004364", "node_type": "function", "name": "begin", "entry": "08004364", "is_isr": false, "signature": "void __thiscall begin(HardwareSerial * this, ulong baud, byte config)"}
+{"node_id": "func:buildException", "node_type": "function", "name": "buildException"}
+{"node_id": "func:buildException@080008ac", "node_type": "function", "name": "buildException", "entry": "080008ac", "is_isr": false, "signature": "void __thiscall buildException(Modbus * this, uint8_t u8exception)"}
+{"node_id": "func:calcCRC", "node_type": "function", "name": "calcCRC"}
+{"node_id": "func:calcCRC@08000708", "node_type": "function", "name": "calcCRC", "entry": "08000708", "is_isr": false, "signature": "uint16_t __thiscall calcCRC(Modbus * this, uint8_t u8length)"}
+{"node_id": "func:dac_stop", "node_type": "function", "name": "dac_stop"}
+{"node_id": "func:dac_stop@080033b4", "node_type": "function", "name": "dac_stop", "entry": "080033b4", "is_isr": false, "signature": "void __stdcall dac_stop(PinName.conflict pin)"}
+{"node_id": "func:digitalWrite", "node_type": "function", "name": "digitalWrite"}
+{"node_id": "func:digitalWrite@08004198", "node_type": "function", "name": "digitalWrite", "entry": "08004198", "is_isr": false, "signature": "void __stdcall digitalWrite(uint32_t ulPin, uint32_t ulVal)"}
+{"node_id": "func:digital_io_init", "node_type": "function", "name": "digital_io_init"}
+{"node_id": "func:digital_io_init@08003462", "node_type": "function", "name": "digital_io_init", "entry": "08003462", "is_isr": false, "signature": "void __stdcall digital_io_init(PinName.conflict pin, uint32_t mode, uint32_t pull)"}
+{"node_id": "func:digital_io_write", "node_type": "function", "name": "digital_io_write"}
+{"node_id": "func:digital_io_write@08003492", "node_type": "function", "name": "digital_io_write", "entry": "08003492", "is_isr": false, "signature": "void __stdcall digital_io_write(GPIO_TypeDef * port, uint32_t pin, uint32_t val)"}
+{"node_id": "func:fiprintf", "node_type": "function", "name": "fiprintf"}
+{"node_id": "func:fiprintf@0800483c", "node_type": "function", "name": "fiprintf", "entry": "0800483c", "is_isr": false, "signature": "int __stdcall fiprintf(FILE * __stream, char * __format, ...)"}
+{"node_id": "func:flush@08004274", "node_type": "function", "name": "flush", "entry": "08004274", "is_isr": false, "signature": "void __thiscall flush(HardwareSerial * this)"}
+{"node_id": "func:frame_dummy@080001d0", "node_type": "function", "name": "frame_dummy", "entry": "080001d0", "is_isr": false, "signature": "undefined frame_dummy(void)"}
+{"node_id": "func:getRxBuffer", "node_type": "function", "name": "getRxBuffer"}
+{"node_id": "func:getRxBuffer@08000694", "node_type": "function", "name": "getRxBuffer", "entry": "08000694", "is_isr": false, "signature": "int8_t __thiscall getRxBuffer(Modbus * this)"}
+{"node_id": "func:get_GPIO_Port", "node_type": "function", "name": "get_GPIO_Port"}
+{"node_id": "func:get_GPIO_Port@08003168", "node_type": "function", "name": "get_GPIO_Port", "entry": "08003168", "is_isr": false, "signature": "GPIO_TypeDef * __stdcall get_GPIO_Port(uint32_t port_idx)"}
+{"node_id": "func:get_dac_channel", "node_type": "function", "name": "get_dac_channel"}
+{"node_id": "func:get_dac_channel@0800335c", "node_type": "function", "name": "get_dac_channel", "entry": "0800335c", "is_isr": false, "signature": "uint32_t __stdcall get_dac_channel(PinName.conflict pin)"}
+{"node_id": "func:get_i2c_obj", "node_type": "function", "name": "get_i2c_obj"}
+{"node_id": "func:get_i2c_obj@08003858", "node_type": "function", "name": "get_i2c_obj", "entry": "08003858", "is_isr": false, "signature": "i2c_t * __stdcall get_i2c_obj(I2C_HandleTypeDef * hi2c)"}
+{"node_id": "func:get_pin_id", "node_type": "function", "name": "get_pin_id"}
+{"node_id": "func:get_pin_id@08004654", "node_type": "function", "name": "get_pin_id", "entry": "08004654", "is_isr": false, "signature": "uint8_t __stdcall get_pin_id(uint16_t pin)"}
+{"node_id": "func:get_pwm_channel", "node_type": "function", "name": "get_pwm_channel"}
+{"node_id": "func:get_pwm_channel@08003378", "node_type": "function", "name": "get_pwm_channel", "entry": "08003378", "is_isr": false, "signature": "uint32_t __stdcall get_pwm_channel(PinName.conflict pin)"}
+{"node_id": "func:get_timer_obj", "node_type": "function", "name": "get_timer_obj"}
+{"node_id": "func:get_timer_obj@0800372c", "node_type": "function", "name": "get_timer_obj", "entry": "0800372c", "is_isr": false, "signature": "stimer_t * __stdcall get_timer_obj(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:hw_config_init", "node_type": "function", "name": "hw_config_init"}
+{"node_id": "func:hw_config_init@080034aa", "node_type": "function", "name": "hw_config_init", "entry": "080034aa", "is_isr": false, "signature": "void hw_config_init(void)"}
+{"node_id": "func:init", "node_type": "function", "name": "init"}
+{"node_id": "func:init@0800064c", "node_type": "function", "name": "init", "entry": "0800064c", "is_isr": false, "signature": "void __thiscall init(Modbus * this, uint8_t u8id, uint8_t u8serno, uint8_t u8txenpin)"}
+{"node_id": "func:init@08000d6a", "node_type": "function", "name": "init", "entry": "08000d6a", "is_isr": false, "signature": "void init(void)"}
+{"node_id": "func:init@08004340", "node_type": "function", "name": "init", "entry": "08004340", "is_isr": false, "signature": "void __thiscall init(HardwareSerial * this)"}
+{"node_id": "func:initVariant", "node_type": "function", "name": "initVariant"}
+{"node_id": "func:initVariant@08004622", "node_type": "function", "name": "initVariant", "entry": "08004622", "is_isr": false, "signature": "void initVariant(void)"}
+{"node_id": "func:iprintf", "node_type": "function", "name": "iprintf"}
+{"node_id": "func:iprintf@08004fb8", "node_type": "function", "name": "iprintf", "entry": "08004fb8", "is_isr": false, "signature": "int __stdcall iprintf(char * __format, ...)"}
+{"node_id": "func:is_pin_configured", "node_type": "function", "name": "is_pin_configured"}
+{"node_id": "func:is_pin_configured@08003114", "node_type": "function", "name": "is_pin_configured", "entry": "08003114", "is_isr": false, "signature": "_Bool __stdcall is_pin_configured(PinName.conflict pin, uint32_t * map)"}
+{"node_id": "func:loop", "node_type": "function", "name": "loop"}
+{"node_id": "func:loop@08000c40", "node_type": "function", "name": "loop", "entry": "08000c40", "is_isr": false, "signature": "void loop(void)"}
+{"node_id": "func:main", "node_type": "function", "name": "main"}
+{"node_id": "func:main@08004634", "node_type": "function", "name": "main", "entry": "08004634", "is_isr": false, "signature": "int main(void)"}
+{"node_id": "func:makeWord", "node_type": "function", "name": "makeWord"}
+{"node_id": "func:makeWord@0800461c", "node_type": "function", "name": "makeWord", "entry": "0800461c", "is_isr": false, "signature": "uint16_t __stdcall makeWord(uint8_t h, uint8_t l)"}
+{"node_id": "func:memchr", "node_type": "function", "name": "memchr"}
+{"node_id": "func:memchr@08000230", "node_type": "function", "name": "memchr", "entry": "08000230", "is_isr": false, "signature": "void * __stdcall memchr(void * __s, int __c, size_t __n)"}
+{"node_id": "func:memset", "node_type": "function", "name": "memset"}
+{"node_id": "func:memset@080048a8", "node_type": "function", "name": "memset", "entry": "080048a8", "is_isr": false, "signature": "void * __stdcall memset(void * __s, int __c, size_t __n)"}
+{"node_id": "func:millis", "node_type": "function", "name": "millis"}
+{"node_id": "func:millis@080041e0", "node_type": "function", "name": "millis", "entry": "080041e0", "is_isr": false, "signature": "uint32_t millis(void)"}
+{"node_id": "func:noOsSystickHandler", "node_type": "function", "name": "noOsSystickHandler"}
+{"node_id": "func:noOsSystickHandler@08003450", "node_type": "function", "name": "noOsSystickHandler", "entry": "08003450", "is_isr": true, "signature": "void noOsSystickHandler(void)"}
+{"node_id": "func:operator()", "node_type": "function", "name": "operator()"}
+{"node_id": "func:operator()@0800479c", "node_type": "function", "name": "operator()", "entry": "0800479c", "is_isr": false, "signature": "void __thiscall operator()(function<void()> * this)"}
+{"node_id": "func:peek@08004230", "node_type": "function", "name": "peek", "entry": "08004230", "is_isr": false, "signature": "int __thiscall peek(HardwareSerial * this)"}
+{"node_id": "func:pinMode", "node_type": "function", "name": "pinMode"}
+{"node_id": "func:pinMode@080040ec", "node_type": "function", "name": "pinMode", "entry": "080040ec", "is_isr": false, "signature": "void __stdcall pinMode(uint32_t ulPin, uint32_t ulMode)"}
+{"node_id": "func:pin_in_pinmap", "node_type": "function", "name": "pin_in_pinmap"}
+{"node_id": "func:pin_in_pinmap@0800353a", "node_type": "function", "name": "pin_in_pinmap", "entry": "0800353a", "is_isr": false, "signature": "_Bool __stdcall pin_in_pinmap(PinName.conflict pin, PinMap.conflict * map)"}
+{"node_id": "func:pinmap_find_function", "node_type": "function", "name": "pinmap_find_function"}
+{"node_id": "func:pinmap_find_function@0800350a", "node_type": "function", "name": "pinmap_find_function", "entry": "0800350a", "is_isr": false, "signature": "uint32_t __stdcall pinmap_find_function(PinName.conflict pin, PinMap.conflict * map)"}
+{"node_id": "func:pinmap_find_peripheral", "node_type": "function", "name": "pinmap_find_peripheral"}
+{"node_id": "func:pinmap_find_peripheral@080034b6", "node_type": "function", "name": "pinmap_find_peripheral", "entry": "080034b6", "is_isr": false, "signature": "void * __stdcall pinmap_find_peripheral(PinName.conflict pin, PinMap.conflict * map)"}
+{"node_id": "func:pinmap_find_pin", "node_type": "function", "name": "pinmap_find_pin"}
+{"node_id": "func:pinmap_find_pin@080034e2", "node_type": "function", "name": "pinmap_find_pin", "entry": "080034e2", "is_isr": false, "signature": "PinName.conflict __stdcall pinmap_find_pin(void * peripheral, PinMap.conflict * map)"}
+{"node_id": "func:pinmap_function", "node_type": "function", "name": "pinmap_function"}
+{"node_id": "func:pinmap_function@08003526", "node_type": "function", "name": "pinmap_function", "entry": "08003526", "is_isr": false, "signature": "uint32_t __stdcall pinmap_function(PinName.conflict pin, PinMap.conflict * map)"}
+{"node_id": "func:pinmap_merge_peripheral", "node_type": "function", "name": "pinmap_merge_peripheral"}
+{"node_id": "func:pinmap_merge_peripheral@0800355e", "node_type": "function", "name": "pinmap_merge_peripheral", "entry": "0800355e", "is_isr": false, "signature": "void * __stdcall pinmap_merge_peripheral(void * a, void * b)"}
+{"node_id": "func:pinmap_peripheral", "node_type": "function", "name": "pinmap_peripheral"}
+{"node_id": "func:pinmap_peripheral@080034d0", "node_type": "function", "name": "pinmap_peripheral", "entry": "080034d0", "is_isr": false, "signature": "void * __stdcall pinmap_peripheral(PinName.conflict pin, PinMap.conflict * map)"}
+{"node_id": "func:pinmap_pin", "node_type": "function", "name": "pinmap_pin"}
+{"node_id": "func:pinmap_pin@080034fa", "node_type": "function", "name": "pinmap_pin", "entry": "080034fa", "is_isr": false, "signature": "PinName.conflict __stdcall pinmap_pin(void * peripheral, PinMap.conflict * map)"}
+{"node_id": "func:poll", "node_type": "function", "name": "poll"}
+{"node_id": "func:poll@08000b34", "node_type": "function", "name": "poll", "entry": "08000b34", "is_isr": false, "signature": "int8_t __thiscall poll(Modbus * this, uint16_t * regs, uint8_t u8size)"}
+{"node_id": "func:premain", "node_type": "function", "name": "premain"}
+{"node_id": "func:premain@08004624", "node_type": "function", "name": "premain", "entry": "08004624", "is_isr": false, "signature": "void premain(void)"}
+{"node_id": "func:print", "node_type": "function", "name": "print"}
+{"node_id": "func:print@0800459a", "node_type": "function", "name": "print", "entry": "0800459a", "is_isr": false, "signature": "size_t __thiscall print(Print * this, char c)"}
+{"node_id": "func:print@080045fe", "node_type": "function", "name": "print", "entry": "080045fe", "is_isr": false, "signature": "size_t __thiscall print(Print * this, ulong n, int base)"}
+{"node_id": "func:print@08004614", "node_type": "function", "name": "print", "entry": "08004614", "is_isr": false, "signature": "size_t __thiscall print(Print * this, uchar b, int base)"}
+{"node_id": "func:printNumber", "node_type": "function", "name": "printNumber"}
+{"node_id": "func:printNumber@080045a4", "node_type": "function", "name": "printNumber", "entry": "080045a4", "is_isr": false, "signature": "size_t __thiscall printNumber(Print * this, ulong n, uint8_t base)"}
+{"node_id": "func:printTo@080044e6", "node_type": "function", "name": "printTo", "entry": "080044e6", "is_isr": false, "signature": "size_t __thiscall printTo(IPAddress * this, Print * p)"}
+{"node_id": "func:process_FC1", "node_type": "function", "name": "process_FC1"}
+{"node_id": "func:process_FC15", "node_type": "function", "name": "process_FC15"}
+{"node_id": "func:process_FC15@08000a5a", "node_type": "function", "name": "process_FC15", "entry": "08000a5a", "is_isr": false, "signature": "int8_t __thiscall process_FC15(Modbus * this, uint16_t * regs, uint8_t u8size)"}
+{"node_id": "func:process_FC16", "node_type": "function", "name": "process_FC16"}
+{"node_id": "func:process_FC16@08000ae4", "node_type": "function", "name": "process_FC16", "entry": "08000ae4", "is_isr": false, "signature": "int8_t __thiscall process_FC16(Modbus * this, uint16_t * regs, uint8_t u8size)"}
+{"node_id": "func:process_FC1@080008c2", "node_type": "function", "name": "process_FC1", "entry": "080008c2", "is_isr": false, "signature": "int8_t __thiscall process_FC1(Modbus * this, uint16_t * regs, uint8_t u8size)"}
+{"node_id": "func:process_FC3", "node_type": "function", "name": "process_FC3"}
+{"node_id": "func:process_FC3@08000978", "node_type": "function", "name": "process_FC3", "entry": "08000978", "is_isr": false, "signature": "int8_t __thiscall process_FC3(Modbus * this, uint16_t * regs, uint8_t u8size)"}
+{"node_id": "func:process_FC5", "node_type": "function", "name": "process_FC5"}
+{"node_id": "func:process_FC5@080009e0", "node_type": "function", "name": "process_FC5", "entry": "080009e0", "is_isr": false, "signature": "int8_t __thiscall process_FC5(Modbus * this, uint16_t * regs, uint8_t u8size)"}
+{"node_id": "func:process_FC6", "node_type": "function", "name": "process_FC6"}
+{"node_id": "func:process_FC6@08000a2e", "node_type": "function", "name": "process_FC6", "entry": "08000a2e", "is_isr": false, "signature": "int8_t __thiscall process_FC6(Modbus * this, uint16_t * regs, uint8_t u8size)"}
+{"node_id": "func:pwm_stop", "node_type": "function", "name": "pwm_stop"}
+{"node_id": "func:pwm_stop@080033f0", "node_type": "function", "name": "pwm_stop", "entry": "080033f0", "is_isr": false, "signature": "void __stdcall pwm_stop(PinName.conflict pin)"}
+{"node_id": "func:raise", "node_type": "function", "name": "raise"}
+{"node_id": "func:raise@080055ac", "node_type": "function", "name": "raise", "entry": "080055ac", "is_isr": false, "signature": "int __stdcall raise(int __sig)"}
+{"node_id": "func:read@0800424c", "node_type": "function", "name": "read", "entry": "0800424c", "is_isr": false, "signature": "int __thiscall read(HardwareSerial * this)"}
+{"node_id": "func:reset_pin_configured", "node_type": "function", "name": "reset_pin_configured"}
+{"node_id": "func:reset_pin_configured@08003148", "node_type": "function", "name": "reset_pin_configured", "entry": "08003148", "is_isr": false, "signature": "void __stdcall reset_pin_configured(PinName.conflict pin, uint32_t * map)"}
+{"node_id": "func:sendTxBuffer", "node_type": "function", "name": "sendTxBuffer"}
+{"node_id": "func:sendTxBuffer@0800074c", "node_type": "function", "name": "sendTxBuffer", "entry": "0800074c", "is_isr": false, "signature": "void __thiscall sendTxBuffer(Modbus * this)"}
+{"node_id": "func:serialEventRun", "node_type": "function", "name": "serialEventRun"}
+{"node_id": "func:serialEventRun@08004314", "node_type": "function", "name": "serialEventRun", "entry": "08004314", "is_isr": false, "signature": "void serialEventRun(void)"}
+{"node_id": "func:serial_rx_active", "node_type": "function", "name": "serial_rx_active"}
+{"node_id": "func:serial_rx_active@08003dac", "node_type": "function", "name": "serial_rx_active", "entry": "08003dac", "is_isr": false, "signature": "uint8_t __stdcall serial_rx_active(serial_t * obj)"}
+{"node_id": "func:serial_tx_active", "node_type": "function", "name": "serial_tx_active"}
+{"node_id": "func:serial_tx_active@08003dd0", "node_type": "function", "name": "serial_tx_active", "entry": "08003dd0", "is_isr": false, "signature": "uint8_t __stdcall serial_tx_active(serial_t * obj)"}
+{"node_id": "func:setRx", "node_type": "function", "name": "setRx"}
+{"node_id": "func:setRx@08004420", "node_type": "function", "name": "setRx", "entry": "08004420", "is_isr": false, "signature": "void __thiscall setRx(HardwareSerial * this, uint32_t _rx)"}
+{"node_id": "func:setTx", "node_type": "function", "name": "setTx"}
+{"node_id": "func:setTx@0800443c", "node_type": "function", "name": "setTx", "entry": "0800443c", "is_isr": false, "signature": "void __thiscall setTx(HardwareSerial * this, uint32_t _tx)"}
+{"node_id": "func:set_GPIO_Port_Clock", "node_type": "function", "name": "set_GPIO_Port_Clock"}
+{"node_id": "func:set_GPIO_Port_Clock@080031d8", "node_type": "function", "name": "set_GPIO_Port_Clock", "entry": "080031d8", "is_isr": false, "signature": "GPIO_TypeDef * __stdcall set_GPIO_Port_Clock(uint32_t port_idx)"}
+{"node_id": "func:set_pin_configured", "node_type": "function", "name": "set_pin_configured"}
+{"node_id": "func:set_pin_configured@0800312a", "node_type": "function", "name": "set_pin_configured", "entry": "0800312a", "is_isr": false, "signature": "void __stdcall set_pin_configured(PinName.conflict pin, uint32_t * map)"}
+{"node_id": "func:setup", "node_type": "function", "name": "setup"}
+{"node_id": "func:setup@08000c2c", "node_type": "function", "name": "setup", "entry": "08000c2c", "is_isr": false, "signature": "void setup(void)"}
+{"node_id": "func:std.isra.0", "node_type": "function", "name": "std.isra.0"}
+{"node_id": "func:std.isra.0@08005308", "node_type": "function", "name": "std.isra.0", "entry": "08005308", "is_isr": true, "signature": "undefined std.isra.0(void)"}
+{"node_id": "func:strlen", "node_type": "function", "name": "strlen"}
+{"node_id": "func:strlen@08000218", "node_type": "function", "name": "strlen", "entry": "08000218", "is_isr": false, "signature": "size_t __stdcall strlen(char * __s)"}
+{"node_id": "func:timer_disable_clock", "node_type": "function", "name": "timer_disable_clock"}
+{"node_id": "func:timer_disable_clock@080035d8", "node_type": "function", "name": "timer_disable_clock", "entry": "080035d8", "is_isr": false, "signature": "void __stdcall timer_disable_clock(TIM_HandleTypeDef * htim)"}
+{"node_id": "func:uart_attach_rx_callback", "node_type": "function", "name": "uart_attach_rx_callback"}
+{"node_id": "func:uart_attach_rx_callback@08003e30", "node_type": "function", "name": "uart_attach_rx_callback", "entry": "08003e30", "is_isr": false, "signature": "void __stdcall uart_attach_rx_callback(serial_t * obj, _func_void_serial_t_ptr * callback)"}
+{"node_id": "func:uart_attach_tx_callback", "node_type": "function", "name": "uart_attach_tx_callback"}
+{"node_id": "func:uart_attach_tx_callback@08003e88", "node_type": "function", "name": "uart_attach_tx_callback", "entry": "08003e88", "is_isr": false, "signature": "void __stdcall uart_attach_tx_callback(serial_t * obj, _func_int_serial_t_ptr * callback)"}
+{"node_id": "func:uart_debug_init", "node_type": "function", "name": "uart_debug_init"}
+{"node_id": "func:uart_debug_init@08003ca4", "node_type": "function", "name": "uart_debug_init", "entry": "08003ca4", "is_isr": false, "signature": "void uart_debug_init(void)"}
+{"node_id": "func:uart_debug_write", "node_type": "function", "name": "uart_debug_write"}
+{"node_id": "func:uart_debug_write@08003cf4", "node_type": "function", "name": "uart_debug_write", "entry": "08003cf4", "is_isr": false, "signature": "size_t __stdcall uart_debug_write(uint8_t * data, uint32_t size)"}
+{"node_id": "func:uart_getc", "node_type": "function", "name": "uart_getc"}
+{"node_id": "func:uart_getc@08003df4", "node_type": "function", "name": "uart_getc", "entry": "08003df4", "is_isr": false, "signature": "int __stdcall uart_getc(serial_t * obj, uchar * c)"}
+{"node_id": "func:uart_index", "node_type": "function", "name": "uart_index"}
+{"node_id": "func:uart_index@08003edc", "node_type": "function", "name": "uart_index", "entry": "08003edc", "is_isr": false, "signature": "uint8_t __stdcall uart_index(UART_HandleTypeDef * huart)"}
+{"node_id": "func:uart_init", "node_type": "function", "name": "uart_init"}
+{"node_id": "func:uart_init@08003954", "node_type": "function", "name": "uart_init", "entry": "08003954", "is_isr": false, "signature": "void __stdcall uart_init(serial_t * obj)"}
+{"node_id": "func:validateRequest", "node_type": "function", "name": "validateRequest"}
+{"node_id": "func:validateRequest@080007d0", "node_type": "function", "name": "validateRequest", "entry": "080007d0", "is_isr": false, "signature": "uint8_t __thiscall validateRequest(Modbus * this)"}
+{"node_id": "func:write@080042c4", "node_type": "function", "name": "write", "entry": "080042c4", "is_isr": false, "signature": "size_t __thiscall write(HardwareSerial * this, uint8_t c)"}
+{"node_id": "func:write@08004576", "node_type": "function", "name": "write", "entry": "08004576", "is_isr": false, "signature": "size_t __thiscall write(Print * this, uint8_t * buffer, size_t size)"}
+{"node_id": "mmio:0X40007000", "node_type": "mmio", "address_hex": "0x40007000", "address": 1073770496}
+{"node_id": "mmio:0X40007004", "node_type": "mmio", "address_hex": "0x40007004", "address": 1073770500}
+{"node_id": "mmio:0X40013C00", "node_type": "mmio", "address_hex": "0x40013C00", "address": 1073822720}
+{"node_id": "mmio:0X40013C04", "node_type": "mmio", "address_hex": "0x40013C04", "address": 1073822724}
+{"node_id": "mmio:0X40013C08", "node_type": "mmio", "address_hex": "0x40013C08", "address": 1073822728}
+{"node_id": "mmio:0X40013C0C", "node_type": "mmio", "address_hex": "0x40013C0C", "address": 1073822732}
+{"node_id": "mmio:0X40013C14", "node_type": "mmio", "address_hex": "0x40013C14", "address": 1073822740}
+{"node_id": "mmio:0X40023800", "node_type": "mmio", "address_hex": "0x40023800", "address": 1073887232}
+{"node_id": "mmio:0X40023804", "node_type": "mmio", "address_hex": "0x40023804", "address": 1073887236}
+{"node_id": "mmio:0X40023808", "node_type": "mmio", "address_hex": "0x40023808", "address": 1073887240}
+{"node_id": "mmio:0X4002380C", "node_type": "mmio", "address_hex": "0x4002380C", "address": 1073887244}
+{"node_id": "mmio:0X40023820", "node_type": "mmio", "address_hex": "0x40023820", "address": 1073887264}
+{"node_id": "mmio:0X40023824", "node_type": "mmio", "address_hex": "0x40023824", "address": 1073887268}
+{"node_id": "mmio:0X40023830", "node_type": "mmio", "address_hex": "0x40023830", "address": 1073887280}
+{"node_id": "mmio:0X40023840", "node_type": "mmio", "address_hex": "0x40023840", "address": 1073887296}
+{"node_id": "mmio:0X40023844", "node_type": "mmio", "address_hex": "0x40023844", "address": 1073887300}
+{"node_id": "mmio:0X40023870", "node_type": "mmio", "address_hex": "0x40023870", "address": 1073887344}
+{"node_id": "mmio:0X40023874", "node_type": "mmio", "address_hex": "0x40023874", "address": 1073887348}
+{"node_id": "mmio:0X40023C00", "node_type": "mmio", "address_hex": "0x40023C00", "address": 1073888256}
+{"node_id": "mmio:0X420E0040", "node_type": "mmio", "address_hex": "0x420E0040", "address": 1108213824}
+{"node_id": "mmio:0X420E0044", "node_type": "mmio", "address_hex": "0x420E0044", "address": 1108213828}
+{"node_id": "mmio:0X42470000", "node_type": "mmio", "address_hex": "0x42470000", "address": 1111949312}
+{"node_id": "mmio:0X42470060", "node_type": "mmio", "address_hex": "0x42470060", "address": 1111949408}
+{"node_id": "mmio:0X42470E80", "node_type": "mmio", "address_hex": "0x42470E80", "address": 1111953024}
+{"node_id": "mmio:0XE000E010", "node_type": "mmio", "address_hex": "0xE000E010", "address": 3758153744}
+{"node_id": "mmio:0XE000E014", "node_type": "mmio", "address_hex": "0xE000E014", "address": 3758153748}
+{"node_id": "mmio:0XE000E018", "node_type": "mmio", "address_hex": "0xE000E018", "address": 3758153752}
+{"node_id": "mmio:0XE000ED08", "node_type": "mmio", "address_hex": "0xE000ED08", "address": 3758157064}
+{"node_id": "mmio:0XE000ED0C", "node_type": "mmio", "address_hex": "0xE000ED0C", "address": 3758157068}
+{"node_id": "mmio:0XE000ED23", "node_type": "mmio", "address_hex": "0xE000ED23", "address": 3758157091}

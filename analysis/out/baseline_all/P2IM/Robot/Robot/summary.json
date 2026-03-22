@@ -1,0 +1,33 @@
+{
+  "binary": "/home/MultiFuzz-benchmarks/benchmarks/P2IM/Robot/Robot.elf",
+  "ghidra_export_json": "/home/MultiFuzz/analysis/out/baseline_all/P2IM/Robot/Robot/ghidra_export.json",
+  "outdir": "/home/MultiFuzz/analysis/out/baseline_all/P2IM/Robot/Robot",
+  "relation_mode": "off",
+  "llm_model": "gpt-5.4",
+  "batch_relative_path": "P2IM/Robot/Robot.elf",
+  "ghidra_runtime": "pyghidra",
+  "ghidra_cmd": [
+    "/home/MultiFuzz/tools/ghidra/support/pyghidraRun",
+    "-H",
+    "/tmp/ghidra_kg_proj_xzwzfzeg",
+    "kgproj",
+    "-import",
+    "/home/MultiFuzz-benchmarks/benchmarks/P2IM/Robot/Robot.elf",
+    "-scriptPath",
+    "/home/MultiFuzz/analysis/ghidra_kg/ghidra_scripts",
+    "-postScript",
+    "export_binary_kg.py",
+    "/home/MultiFuzz/analysis/out/baseline_all/P2IM/Robot/Robot/ghidra_export.json",
+    "0"
+  ],
+  "function_count": 198,
+  "ghidra_mmio_edge_count": 166,
+  "ghidra_call_edge_count": 268,
+  "resolved_mmio_count": 0,
+  "candidate_function_count": 0,
+  "llm_edge_count": 0,
+  "llm_finding_count": 0,
+  "node_count": 392,
+  "edge_count": 335,
+  "finding_count": 0
+}

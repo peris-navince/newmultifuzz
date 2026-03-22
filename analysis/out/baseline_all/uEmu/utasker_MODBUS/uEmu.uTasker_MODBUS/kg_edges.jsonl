@@ -1,0 +1,1227 @@
+{"src": "func:.text_10@0801466c", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:.text_12@08013476", "edge_type": "calls", "dst": "func:fnAddARP", "source": "ghidra"}
+{"src": "func:.text_13@0801347e", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:.text_162@0800f6b8", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:.text_16@08012d40", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:.text_16@0801359e", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:.text_16@08013cde", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:.text_173@0800d5ac", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:.text_178@0800f9a2", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:.text_179@0800d614", "edge_type": "reads_mmio", "dst": "mmio:0X40023840", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:.text_179@0800d614", "edge_type": "reads_mmio", "dst": "mmio:0X40023840", "instruction": "ldr.w r0,[0x0800e2a4]", "source": "ghidra"}
+{"src": "func:.text_17@080119aa", "edge_type": "calls", "dst": "func:fnACSIIDecode2", "source": "ghidra"}
+{"src": "func:.text_184@0800fa3a", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:.text_188@0800d6ae", "edge_type": "reads_mmio", "dst": "mmio:0X40023844", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:.text_188@0800d6ae", "edge_type": "reads_mmio", "dst": "mmio:0X40023844", "instruction": "ldr.w r0,[0x0800e2a8]", "source": "ghidra"}
+{"src": "func:.text_18@080119b6", "edge_type": "calls", "dst": "func:uTaskerGlobalStopTimer", "source": "ghidra"}
+{"src": "func:.text_192@0800fad6", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:.text_21@08013db2", "edge_type": "calls", "dst": "func:fnNewTCPState", "source": "ghidra"}
+{"src": "func:.text_23@08011a6c", "edge_type": "calls", "dst": "func:fnInterruptMessage", "source": "ghidra"}
+{"src": "func:.text_274@08010a28", "edge_type": "calls", "dst": "func:fnHexStrHex", "source": "ghidra"}
+{"src": "func:.text_275@08010a2e", "edge_type": "calls", "dst": "func:fnJumpWhiteSpace", "source": "ghidra"}
+{"src": "func:.text_28@0800ecd6", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:.text_31@08011b08", "edge_type": "calls", "dst": "func:fnDriver", "source": "ghidra"}
+{"src": "func:.text_34@08014422", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:.text_37@08014478", "edge_type": "calls", "dst": "func:fnNewTCPState", "source": "ghidra"}
+{"src": "func:.text_43@0800eeb0", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:.text_4@0800e686", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:.text_51@08012610", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:.text_52@0801261e", "edge_type": "calls", "dst": "func:fnDriver", "source": "ghidra"}
+{"src": "func:.text_6@0800e4e4", "edge_type": "calls", "dst": "func:uMemset", "source": "ghidra"}
+{"src": "func:.text_6@08012b12", "edge_type": "calls", "dst": "func:fnCommandInput", "source": "ghidra"}
+{"src": "func:.text_6@08013a4c", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:.text_70@0800c946", "edge_type": "calls", "dst": "func:fnSciRxByte", "source": "ghidra"}
+{"src": "func:?main@08015804", "edge_type": "calls", "dst": "func:__iar_data_init3", "source": "ghidra"}
+{"src": "func:EMAC_Interrupt@0800c400", "edge_type": "calls", "dst": "func:uTaskerStateChange", "source": "ghidra"}
+{"src": "func:EMAC_Interrupt@0800c400", "edge_type": "reads_mmio", "dst": "mmio:0X40029014", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:EMAC_Interrupt@0800c400", "edge_type": "reads_mmio", "dst": "mmio:0X40029014", "instruction": "ldr r1,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:EMAC_Interrupt@0800c400", "edge_type": "reads_mmio", "dst": "mmio:0X4002901C", "instruction": "ldr r0,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:EMAC_Interrupt@0800c400", "edge_type": "writes_mmio", "dst": "mmio:0X40029014", "instruction": "str r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:FUN_0800f20c@0800f20c", "edge_type": "calls", "dst": "func:fnControlLine", "source": "ghidra"}
+{"src": "func:FUN_0800f214@0800f214", "edge_type": "calls", "dst": "func:send_next_byte", "source": "ghidra"}
+{"src": "func:FUN_0800f98a@0800f98a", "edge_type": "calls", "dst": "func:fnGetWordShift", "source": "ghidra"}
+{"src": "func:FUN_08012440@08012440", "edge_type": "calls", "dst": "func:fnSendMODBUS_transparent_response", "source": "ghidra"}
+{"src": "func:FUN_08013046@08013046", "edge_type": "calls", "dst": "func:fnBufferDec", "source": "ghidra"}
+{"src": "func:FUN_0801440e@0801440e", "edge_type": "calls", "dst": "func:fnCheckFIN", "source": "ghidra"}
+{"src": "func:FUN_08014482@08014482", "edge_type": "calls", "dst": "func:fnGetSocketControl", "source": "ghidra"}
+{"src": "func:SCI1_Interrupt@0800c84c", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI1_Interrupt@0800c84c", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI1_Interrupt@0800c84c", "edge_type": "reads_mmio", "dst": "mmio:0X40011000", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI1_Interrupt@0800c84c", "edge_type": "reads_mmio", "dst": "mmio:0X40011004", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI1_Interrupt@0800c84c", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:SCI2_Interrupt@0800c87e", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI2_Interrupt@0800c87e", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI2_Interrupt@0800c87e", "edge_type": "reads_mmio", "dst": "mmio:0X40004400", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI2_Interrupt@0800c87e", "edge_type": "reads_mmio", "dst": "mmio:0X40004404", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI2_Interrupt@0800c87e", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:SCI3_Interrupt@0800c8b0", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI3_Interrupt@0800c8b0", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI3_Interrupt@0800c8b0", "edge_type": "reads_mmio", "dst": "mmio:0X40004800", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI3_Interrupt@0800c8b0", "edge_type": "reads_mmio", "dst": "mmio:0X40004804", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI3_Interrupt@0800c8b0", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:SCI4_Interrupt@0800c8e2", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI4_Interrupt@0800c8e2", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI4_Interrupt@0800c8e2", "edge_type": "reads_mmio", "dst": "mmio:0X40004C00", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI4_Interrupt@0800c8e2", "edge_type": "reads_mmio", "dst": "mmio:0X40004C04", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI4_Interrupt@0800c8e2", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:SCI5_Interrupt@0800c914", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI5_Interrupt@0800c914", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI5_Interrupt@0800c914", "edge_type": "reads_mmio", "dst": "mmio:0X40005000", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI5_Interrupt@0800c914", "edge_type": "reads_mmio", "dst": "mmio:0X40005004", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI5_Interrupt@0800c914", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:SCI6_Interrupt@0800c94c", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI6_Interrupt@0800c94c", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI6_Interrupt@0800c94c", "edge_type": "reads_mmio", "dst": "mmio:0X40011400", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI6_Interrupt@0800c94c", "edge_type": "reads_mmio", "dst": "mmio:0X40011404", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI6_Interrupt@0800c94c", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:SCI7_Interrupt@0800c97e", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI7_Interrupt@0800c97e", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI7_Interrupt@0800c97e", "edge_type": "reads_mmio", "dst": "mmio:0X40007800", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI7_Interrupt@0800c97e", "edge_type": "reads_mmio", "dst": "mmio:0X40007804", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI7_Interrupt@0800c97e", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:SCI8_Interrupt@0800c9b0", "edge_type": "calls", "dst": "func:.text_70", "source": "ghidra"}
+{"src": "func:SCI8_Interrupt@0800c9b0", "edge_type": "calls", "dst": "func:fnSciTxByte", "source": "ghidra"}
+{"src": "func:SCI8_Interrupt@0800c9b0", "edge_type": "reads_mmio", "dst": "mmio:0X40007C00", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:SCI8_Interrupt@0800c9b0", "edge_type": "reads_mmio", "dst": "mmio:0X40007C04", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:SCI8_Interrupt@0800c9b0", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:_RealTimeInterrupt@0800c2ac", "edge_type": "calls", "dst": "func:fnRtmkSystemTick", "source": "ghidra"}
+{"src": "func:_RealTimeInterrupt@0800c2ac", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:_RealTimeInterrupt@0800c2ac", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:_RealTimeInterrupt@0800c2ac", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED04", "instruction": "str r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:__iar_data_init3@08015628", "edge_type": "calls", "dst": "func:__iar_zero_init3", "source": "ghidra"}
+{"src": "func:__iar_program_start@08015ecc", "edge_type": "calls", "dst": "func:?main", "source": "ghidra"}
+{"src": "func:_call_main@08015810", "edge_type": "calls", "dst": "func:main", "source": "ghidra"}
+{"src": "func:_exit@08015828", "edge_type": "calls", "dst": "func:__exit", "source": "ghidra"}
+{"src": "func:_fnMIIread@0800c356", "edge_type": "calls", "dst": "func:fnReadMII_PHY", "source": "ghidra"}
+{"src": "func:_fnMIIwrite@0800c35a", "edge_type": "calls", "dst": "func:fnWriteMII_PHY", "source": "ghidra"}
+{"src": "func:_main@0801581e", "edge_type": "calls", "dst": "func:exit", "source": "ghidra"}
+{"src": "func:entry_eth@0800f478", "edge_type": "calls", "dst": "func:fnFreeEthernetBuffer", "source": "ghidra"}
+{"src": "func:entry_eth@0800f478", "edge_type": "calls", "dst": "func:fnGetTxBufferAdd", "source": "ghidra"}
+{"src": "func:entry_eth@0800f478", "edge_type": "calls", "dst": "func:fnStartEthTx", "source": "ghidra"}
+{"src": "func:entry_eth@0800f478", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:entry_eth@0800f478", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:entry_eth@0800f478", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:entry_que@0800ec24", "edge_type": "calls", "dst": "func:fnGetBuf", "source": "ghidra"}
+{"src": "func:entry_que@0800ec24", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:entry_que@0800ec24", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:.text_4", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:.text_5", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:FUN_0800f20c", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:FUN_0800f214", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnFillBuf", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnGetBuf", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnGetBufPeek", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnRTS_change", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnRxOff", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnRxOn", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnTxOff", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:fnTxOn", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:entry_tty@0800effc", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:fnAbortTCPSession@08014454", "edge_type": "calls", "dst": "func:.text_37", "source": "ghidra"}
+{"src": "func:fnAbortTCPSession@08014454", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:fnAddARP@080131ea", "edge_type": "calls", "dst": "func:fnAddNewARP", "source": "ghidra"}
+{"src": "func:fnAddARP@080131ea", "edge_type": "calls", "dst": "func:fnArpMessage", "source": "ghidra"}
+{"src": "func:fnAddARP@080131ea", "edge_type": "calls", "dst": "func:fnTimeoutValue", "source": "ghidra"}
+{"src": "func:fnAddARP@080131ea", "edge_type": "calls", "dst": "func:is_subnet", "source": "ghidra"}
+{"src": "func:fnAddARP@080131ea", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:fnAddARP@080131ea", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnAddResetCause@08011202", "edge_type": "calls", "dst": "func:.text_184", "source": "ghidra"}
+{"src": "func:fnAddResetCause@08011202", "edge_type": "calls", "dst": "func:uStrcpy", "source": "ghidra"}
+{"src": "func:fnAddResetCause@08011202", "edge_type": "reads_mmio", "dst": "mmio:0X40023874", "instruction": "ldr r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnAddResetCause@08011202", "edge_type": "writes_mmio", "dst": "mmio:0X40023874", "instruction": "str r3,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnAllocateBuffer@0800e8e2", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnAllocateQueue@0800e908", "edge_type": "calls", "dst": "func:fnAllocateBuffer", "source": "ghidra"}
+{"src": "func:fnAllocateQueue@0800e908", "edge_type": "calls", "dst": "func:fnSearchID", "source": "ghidra"}
+{"src": "func:fnAllocateQueue@0800e908", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:.text_6", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnAddResetCause", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnConfigureInterrupt", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnDebugHex", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnDelPar", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnEchoInput", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnGetOurParameters", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnHeapAvailable", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnHeapFree", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnInitModbus", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnInitialisePorts", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnInitiateLogin", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnInterruptMessage", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnMsgs", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnResetBoard", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnSetNewSerialMode", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnSimulateEthernetIn", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnStackFree", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnApplication@08012958", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:fnArpMessage@08013354", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnArpMessage@08013354", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnBuildSendARP@080132a4", "edge_type": "calls", "dst": "func:fnIncrementEthernetStats", "source": "ghidra"}
+{"src": "func:fnBuildSendARP@080132a4", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnBuildSendARP@080132a4", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "calls", "dst": "func:fnReadMII_PHY", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "reads_mmio", "dst": "mmio:0X40028000", "instruction": "ldr r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "reads_mmio", "dst": "mmio:0X40028000", "instruction": "ldr r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "reads_mmio", "dst": "mmio:0X40028000", "instruction": "ldr r3,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "writes_mmio", "dst": "mmio:0X40028000", "instruction": "str r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "writes_mmio", "dst": "mmio:0X40028000", "instruction": "str r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnCheckEthLinkState@0800c35e", "edge_type": "writes_mmio", "dst": "mmio:0X40028000", "instruction": "str r3,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnCheckFIN@08013e1c", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X4000440C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X4000480C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X40004C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X4000500C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X4000780C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X4001100C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnClearTxInt@0800d124", "edge_type": "writes_mmio", "dst": "mmio:0X4001140C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:.text_278", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:fnCheckInput", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:fnDoCommand", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:fnGotoNextState", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:fnRestoreDebugHandle", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:fnSaveDebugHandle", "source": "ghidra"}
+{"src": "func:fnCommandInput@08010a46", "edge_type": "calls", "dst": "func:uStrlen", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "calls", "dst": "func:.text_118", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "calls", "dst": "func:.text_241", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "calls", "dst": "func:fnEnterInterrupt", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "calls", "dst": "func:fnReadMII_PHY", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "calls", "dst": "func:fnWriteMII_PHY", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "calls", "dst": "func:uMallocAlign", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr.w r2,[0x0800ce8c]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020004", "instruction": "ldr r0,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020008", "instruction": "ldr r0,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X4002000C", "instruction": "ldr r0,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020020", "instruction": "ldr r0,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldr r7,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldr.w r0,[0x0800ca44]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020404", "instruction": "ldr r3,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020408", "instruction": "ldr r7,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X4002040C", "instruction": "ldr r3,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020800", "instruction": "ldr r0,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020800", "instruction": "ldr r1,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020804", "instruction": "ldr r0,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020808", "instruction": "ldr r0,[r5,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X4002080C", "instruction": "ldr r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020820", "instruction": "ldr r0,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020820", "instruction": "ldr r1,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40020824", "instruction": "ldr r0,[r5,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40021800", "instruction": "ldr r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40021804", "instruction": "ldr r0,[r7,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40021808", "instruction": "ldr r0,[r7,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X4002180C", "instruction": "ldr r0,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40021820", "instruction": "ldr r0,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40021824", "instruction": "ldr.w r12,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r3,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr.w r1,[0x0800ce84]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40023844", "instruction": "ldr r0,[r1,#0x14]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40028000", "instruction": "ldr r1,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40028000", "instruction": "ldr r2,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40028000", "instruction": "ldr r3,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40029000", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X40029018", "instruction": "ldr r2,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "reads_mmio", "dst": "mmio:0X4002904C", "instruction": "ldr r2,[r4,#0x4c]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40013804", "instruction": "str r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020000", "instruction": "str r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020004", "instruction": "str r0,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020008", "instruction": "str r0,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002000C", "instruction": "str r0,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020400", "instruction": "str r7,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020404", "instruction": "str r3,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020408", "instruction": "str r7,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020800", "instruction": "str r0,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020800", "instruction": "str r1,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020804", "instruction": "str r0,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020808", "instruction": "str r0,[r5,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002080C", "instruction": "str r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020820", "instruction": "str r0,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020820", "instruction": "str r1,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40020824", "instruction": "str r0,[r5,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40021800", "instruction": "str r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40021804", "instruction": "str r0,[r7,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40021808", "instruction": "str r0,[r7,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002180C", "instruction": "str r0,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40021820", "instruction": "str r0,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40021824", "instruction": "str r0,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r3,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40023844", "instruction": "str r0,[r1,#0x14]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028000", "instruction": "str r1,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028000", "instruction": "str r2,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028000", "instruction": "str r3,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028000", "instruction": "str r7,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028004", "instruction": "str.mi r1,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028004", "instruction": "str.pl r7,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028018", "instruction": "str r0,[r5,#0x18]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002801C", "instruction": "str r0,[r5,#0x1c]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028040", "instruction": "str r1,[r5,#0x40]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40028044", "instruction": "str r1,[r5,#0x44]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40029000", "instruction": "str r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40029000", "instruction": "str r1,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40029008", "instruction": "str r1,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002900C", "instruction": "str r1,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40029010", "instruction": "str r1,[r4,#0x10]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X40029018", "instruction": "str r2,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002901C", "instruction": "str r0,[r4,#0x1c]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002904C", "instruction": "str r0,[r4,#0x4c]", "source": "ghidra"}
+{"src": "func:fnConfigEthernet@0800c42c", "edge_type": "writes_mmio", "dst": "mmio:0X4002904C", "instruction": "str r2,[r4,#0x4c]", "source": "ghidra"}
+{"src": "func:fnConfigPort@08011074", "edge_type": "calls", "dst": "func:.text_306", "source": "ghidra"}
+{"src": "func:fnConfigPort@08011074", "edge_type": "calls", "dst": "func:.text_307", "source": "ghidra"}
+{"src": "func:fnConfigPort@08011074", "edge_type": "calls", "dst": "func:.text_308", "source": "ghidra"}
+{"src": "func:fnConfigPort@08011074", "edge_type": "calls", "dst": "func:FUN_0801118e", "source": "ghidra"}
+{"src": "func:fnConfigPort@08011074", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldr r2,[0x08011298]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "calls", "dst": "func:fnControlLine", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "calls", "dst": "func:fnEnterInterrupt", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "reads_mmio", "dst": "mmio:0X40023840", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "reads_mmio", "dst": "mmio:0X40023840", "instruction": "ldr r3,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "reads_mmio", "dst": "mmio:0X40023844", "instruction": "ldr r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40007C08", "instruction": "str r0,[r5,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str.mi r1,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str.pl r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40007C10", "instruction": "str r0,[r5,#0x10]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40007C10", "instruction": "str r1,[r5,#0x10]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40023840", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40023840", "instruction": "str r3,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigSCI@0800ca50", "edge_type": "writes_mmio", "dst": "mmio:0X40023844", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:.text_240", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:.text_241", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:.text_242", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:.text_243", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:.text_244", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:.text_245", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:.text_246", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "calls", "dst": "func:fnEnterInterrupt", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40002018", "instruction": "ldr.w r12,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40002018", "instruction": "ldr.w r8,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X4000201C", "instruction": "ldr r7,[r4,#0x1c]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40002020", "instruction": "ldr r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40002028", "instruction": "ldr r0,[r4,#0x28]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr.w r2,[0x0800e454]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020004", "instruction": "ldr r0,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020008", "instruction": "ldr r0,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X4002000C", "instruction": "ldr r0,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020020", "instruction": "ldr r0,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldr.w r0,[0x0800e450]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020404", "instruction": "ldr r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020408", "instruction": "ldr r1,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X4002040C", "instruction": "ldr r1,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020420", "instruction": "ldr r1,[r0,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020424", "instruction": "ldr r1,[r0,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020800", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020804", "instruction": "ldr r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020808", "instruction": "ldr r1,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X4002080C", "instruction": "ldr r1,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020820", "instruction": "ldr r1,[r0,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40020824", "instruction": "ldr r1,[r0,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40021C00", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40021C00", "instruction": "ldr.w r0,[0x0800e458]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r7,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr.w r1,[0x0800e400]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023840", "instruction": "ldr r0,[r1,#0x10]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023840", "instruction": "ldr r2,[r1,#0x10]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023844", "instruction": "ldr r0,[r1,#0x14]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "reads_mmio", "dst": "mmio:0X40023844", "instruction": "ldr r2,[r1,#0x14]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002000", "instruction": "str r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002000", "instruction": "str r1,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X4000200C", "instruction": "str r2,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002014", "instruction": "str r6,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002018", "instruction": "str.w r12,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X4000201C", "instruction": "str r7,[r4,#0x1c]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002020", "instruction": "str r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002024", "instruction": "str r1,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002028", "instruction": "str r0,[r4,#0x28]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002028", "instruction": "str.eq r7,[r4,#0x28]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002028", "instruction": "str.ne r0,[r4,#0x28]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002028", "instruction": "str.w lr,[r4,#0x28]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002028", "instruction": "str.w r8,[r4,#0x28]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X4000202C", "instruction": "str r7,[r4,#0x2c]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002034", "instruction": "str.w.pl r12,[r4,#0x34]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002038", "instruction": "str.w r8,[r4,#0x38]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X4000203C", "instruction": "str.w r8,[r4,#0x3c]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002040", "instruction": "str.w r8,[r4,#0x40]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40002044", "instruction": "str.eq r0,[r4,#0x44]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020000", "instruction": "str r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020004", "instruction": "str r0,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020008", "instruction": "str r0,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X4002000C", "instruction": "str r0,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020400", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020404", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020408", "instruction": "str r1,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X4002040C", "instruction": "str r1,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020420", "instruction": "str r1,[r0,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020424", "instruction": "str r1,[r0,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020800", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020804", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020808", "instruction": "str r1,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X4002080C", "instruction": "str r1,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020820", "instruction": "str r1,[r0,#0x20]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40020824", "instruction": "str r1,[r0,#0x24]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r7,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40023840", "instruction": "str r0,[r1,#0x10]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40023840", "instruction": "str r2,[r1,#0x10]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40023844", "instruction": "str r0,[r1,#0x14]", "source": "ghidra"}
+{"src": "func:fnConfigureInterrupt@0800dbd4", "edge_type": "writes_mmio", "dst": "mmio:0X40023844", "instruction": "str r2,[r1,#0x14]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "calls", "dst": "func:fnSetRTS", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr r5,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020004", "instruction": "ldr r5,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020008", "instruction": "ldr r5,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X4002000C", "instruction": "ldr r4,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X4002000C", "instruction": "ldr r5,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020020", "instruction": "ldr r0,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020020", "instruction": "ldr r5,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020024", "instruction": "ldr r0,[r2,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020024", "instruction": "ldr.w r12,[r2,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C00", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C00", "instruction": "ldr r5,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C04", "instruction": "ldr r5,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C08", "instruction": "ldr r5,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C0C", "instruction": "ldr r2,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C0C", "instruction": "ldr r5,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C20", "instruction": "ldr r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C20", "instruction": "ldr r5,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C20", "instruction": "ldr.w r12,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C24", "instruction": "ldr r0,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C24", "instruction": "ldr r5,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40020C24", "instruction": "ldr.w r12,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021800", "instruction": "ldr r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021800", "instruction": "ldr r5,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021804", "instruction": "ldr r5,[r7,#0x4]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021808", "instruction": "ldr r5,[r7,#0x8]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X4002180C", "instruction": "ldr r2,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X4002180C", "instruction": "ldr r5,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021820", "instruction": "ldr r0,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021820", "instruction": "ldr r5,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021824", "instruction": "ldr r0,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40021824", "instruction": "ldr.w r12,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr.w r0,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr.w r2,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr.w r5,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr.w r6,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020000", "instruction": "str r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020000", "instruction": "str r5,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020004", "instruction": "str r5,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020008", "instruction": "str r5,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X4002000C", "instruction": "str r4,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X4002000C", "instruction": "str r5,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020020", "instruction": "str r0,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020020", "instruction": "str r5,[r2,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020024", "instruction": "str r0,[r2,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020024", "instruction": "str.w r12,[r2,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C00", "instruction": "str r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C00", "instruction": "str r5,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C04", "instruction": "str r5,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C08", "instruction": "str r5,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C0C", "instruction": "str r2,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C0C", "instruction": "str r5,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C20", "instruction": "str r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C20", "instruction": "str r5,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C20", "instruction": "str.w r12,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C24", "instruction": "str r0,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C24", "instruction": "str r5,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40020C24", "instruction": "str.w r12,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021800", "instruction": "str r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021800", "instruction": "str r5,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021804", "instruction": "str r5,[r7,#0x4]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021808", "instruction": "str r5,[r7,#0x8]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X4002180C", "instruction": "str r2,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X4002180C", "instruction": "str r5,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021820", "instruction": "str r0,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021820", "instruction": "str r5,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021824", "instruction": "str r0,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40021824", "instruction": "str.w r12,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str.w r0,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str.w r2,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str.w r5,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnControlLine@0800d264", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str.w r6,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnDebug@0800f608", "edge_type": "calls", "dst": "func:.text_162", "source": "ghidra"}
+{"src": "func:fnDebug@0800f608", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnDebug@0800f608", "edge_type": "calls", "dst": "func:fnDisplayHelp", "source": "ghidra"}
+{"src": "func:fnDebug@0800f608", "edge_type": "calls", "dst": "func:fnTestTCPServer", "source": "ghidra"}
+{"src": "func:fnDebug@0800f608", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnDebugDec@0800ee0e", "edge_type": "calls", "dst": "func:.text_43", "source": "ghidra"}
+{"src": "func:fnDebugDec@0800ee0e", "edge_type": "calls", "dst": "func:fnBufferDec", "source": "ghidra"}
+{"src": "func:fnDebugHex@0800eea8", "edge_type": "calls", "dst": "func:fnBufferHex", "source": "ghidra"}
+{"src": "func:fnDebugMsg@0800ed08", "edge_type": "calls", "dst": "func:fnPrint", "source": "ghidra"}
+{"src": "func:fnDelPar@0801290e", "edge_type": "calls", "dst": "func:fnGetValidPars", "source": "ghidra"}
+{"src": "func:fnDelPar@0801290e", "edge_type": "calls", "dst": "func:fnSetParameters", "source": "ghidra"}
+{"src": "func:fnDeleteEthernetStats@080137c2", "edge_type": "calls", "dst": "func:uMemset", "source": "ghidra"}
+{"src": "func:fnDeleteParBlock@0800dabc", "edge_type": "calls", "dst": "func:fnEraseFlashSector", "source": "ghidra"}
+{"src": "func:fnDisplayHelp@0800f6e8", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnDisplayHelp@0800f6e8", "edge_type": "calls", "dst": "func:fnDriver", "source": "ghidra"}
+{"src": "func:fnDisplayHelp@0800f6e8", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnDisplayHelp@0800f6e8", "edge_type": "calls", "dst": "func:uMemset", "source": "ghidra"}
+{"src": "func:fnDisplayIP@0800f99a", "edge_type": "calls", "dst": "func:fnIPStr", "source": "ghidra"}
+{"src": "func:fnDisplayMAC@0800f98e", "edge_type": "calls", "dst": "func:.text_178", "source": "ghidra"}
+{"src": "func:fnDisplayMAC@0800f98e", "edge_type": "calls", "dst": "func:fnMACStr", "source": "ghidra"}
+{"src": "func:fnDisplayMemoryUsage@08010ef0", "edge_type": "calls", "dst": "func:fnDebugHex", "source": "ghidra"}
+{"src": "func:fnDisplayMemoryUsage@08010ef0", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnDisplayMemoryUsage@08010ef0", "edge_type": "calls", "dst": "func:fnHeapAvailable", "source": "ghidra"}
+{"src": "func:fnDisplayMemoryUsage@08010ef0", "edge_type": "calls", "dst": "func:fnHeapFree", "source": "ghidra"}
+{"src": "func:fnDisplayMemoryUsage@08010ef0", "edge_type": "calls", "dst": "func:fnStackFree", "source": "ghidra"}
+{"src": "func:fnDoAdmin@0800fb68", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnDoAdmin@0800fb68", "edge_type": "calls", "dst": "func:fnDecStrHex", "source": "ghidra"}
+{"src": "func:fnDoAdmin@0800fb68", "edge_type": "calls", "dst": "func:fnJumpWhiteSpace", "source": "ghidra"}
+{"src": "func:fnDoAdmin@0800fb68", "edge_type": "calls", "dst": "func:fnShowSN", "source": "ghidra"}
+{"src": "func:fnDoAdmin@0800fb68", "edge_type": "calls", "dst": "func:fnStrIP", "source": "ghidra"}
+{"src": "func:fnDoAdmin@0800fb68", "edge_type": "calls", "dst": "func:fnTestTCPServer", "source": "ghidra"}
+{"src": "func:fnDoAdmin@0800fb68", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:.text_273", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:.text_274", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:.text_275", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:_fnMIIread", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:_fnMIIwrite", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnAddARP", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnAddResetCause", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnConfigPort", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDebugDec", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDebugHex", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDecStrHex", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDeleteArp", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDeleteEthernetStats", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDisplayHelp", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDisplayIP", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDisplayMAC", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDisplayMemoryUsage", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDoAdmin", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnDoFlash", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnEnableDisableServers", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnEraseFlashSector", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnGetARPentry", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnGetEthernetStats", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnGetParsFile", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnGotoNextState", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnHexStrHex", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnIpConfig", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnJumpWhiteSpace", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnPortInputConfig", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnPortState", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnResetBoard", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnSavePorts", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnSetFlashOption", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnSetMAC", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnSetNewSerialMode", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnSetPortOut", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnSetUserPortOut", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnShowLAN", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnShowServerEnabled", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnStrIP", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnUpTime", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:fnWriteBytesFlash", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:fnDoCommand@0800fc54", "edge_type": "calls", "dst": "func:uStrcmp", "source": "ghidra"}
+{"src": "func:fnDoCountDown@0801442c", "edge_type": "calls", "dst": "func:fnAbortTCPSession", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:.text_175", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:FUN_0800f98a", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:fnDebugHex", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:fnDelPar", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:fnGetPar", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:fnRestoreFactory", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:fnSaveNewPars", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:fnSetPar", "source": "ghidra"}
+{"src": "func:fnDoFlash@0800f7fc", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnEchoInput@08010c8c", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnEnableDisableServers@0800f9ac", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnEnableDisableServers@0800f9ac", "edge_type": "calls", "dst": "func:uStrcmp", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "reads_mmio", "dst": "mmio:0X40023C0C", "instruction": "ldr r3,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "reads_mmio", "dst": "mmio:0X40023C10", "instruction": "ldr r3,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "reads_mmio", "dst": "mmio:0X40023C10", "instruction": "ldr r4,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "reads_mmio", "dst": "mmio:0X40023C14", "instruction": "ldr.cc r0,[r2,#0x10]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "reads_mmio", "dst": "mmio:0X40023C18", "instruction": "ldr.cs r6,[r2,#0x14]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "writes_mmio", "dst": "mmio:0X40023C04", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "writes_mmio", "dst": "mmio:0X40023C04", "instruction": "str r7,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "writes_mmio", "dst": "mmio:0X40023C10", "instruction": "str r0,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "writes_mmio", "dst": "mmio:0X40023C10", "instruction": "str r3,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnEraseFlashSector@0800d858", "edge_type": "writes_mmio", "dst": "mmio:0X40023C10", "instruction": "str r4,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:fnEthernetStateChange@080136c4", "edge_type": "calls", "dst": "func:fnDebugDec", "source": "ghidra"}
+{"src": "func:fnEthernetStateChange@080136c4", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnExtractMSS@08013e70", "edge_type": "calls", "dst": "func:fnGetTCP_Option", "source": "ghidra"}
+{"src": "func:fnFillBuf@0800eb8e", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:fnFillBuf@0800eb8e", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:fnFillBuf@0800eb8e", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnFlush@0800ea7e", "edge_type": "calls", "dst": "func:.text_16", "source": "ghidra"}
+{"src": "func:fnFreeBuffer@0800eaa6", "edge_type": "calls", "dst": "func:.text_15", "source": "ghidra"}
+{"src": "func:fnFreeBuffer@0800eaa6", "edge_type": "calls", "dst": "func:.text_18", "source": "ghidra"}
+{"src": "func:fnGetBuf@0800eaca", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:fnGetBuf@0800eaca", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:fnGetBuf@0800eaca", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnGetBufPeek@0800eb38", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnGetControlBlock@0800f218", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnGetEthernetPars@08012bac", "edge_type": "calls", "dst": "func:fnGetPar", "source": "ghidra"}
+{"src": "func:fnGetEthernetPars@08012bac", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnGetFreeTCP_Port@08013b24", "edge_type": "calls", "dst": "func:fnRandom", "source": "ghidra"}
+{"src": "func:fnGetIP_ARP@080134da", "edge_type": "calls", "dst": "func:.text_16", "source": "ghidra"}
+{"src": "func:fnGetIP_ARP@080134da", "edge_type": "calls", "dst": "func:fnResolveAddress", "source": "ghidra"}
+{"src": "func:fnGetIP_ARP@080134da", "edge_type": "calls", "dst": "func:fnSubnetBroadcast", "source": "ghidra"}
+{"src": "func:fnGetIP_ARP@080134da", "edge_type": "calls", "dst": "func:is_subnet", "source": "ghidra"}
+{"src": "func:fnGetIP_ARP@080134da", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:fnGetOurParameters@08012c54", "edge_type": "calls", "dst": "func:.text_16", "source": "ghidra"}
+{"src": "func:fnGetOurParameters@08012c54", "edge_type": "calls", "dst": "func:fnDelPar", "source": "ghidra"}
+{"src": "func:fnGetOurParameters@08012c54", "edge_type": "calls", "dst": "func:fnGetOurParameters_1", "source": "ghidra"}
+{"src": "func:fnGetOurParameters@08012c54", "edge_type": "calls", "dst": "func:fnGetPar", "source": "ghidra"}
+{"src": "func:fnGetOurParameters@08012c54", "edge_type": "calls", "dst": "func:fnSaveNewPars", "source": "ghidra"}
+{"src": "func:fnGetOurParameters@08012c54", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnGetOurParameters_1@08012be4", "edge_type": "calls", "dst": "func:fnGetPar", "source": "ghidra"}
+{"src": "func:fnGetOurParameters_1@08012be4", "edge_type": "calls", "dst": "func:fnSetDefaultNetwork", "source": "ghidra"}
+{"src": "func:fnGetOurParameters_1@08012be4", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnGetPar@080128de", "edge_type": "calls", "dst": "func:fnGetParameters", "source": "ghidra"}
+{"src": "func:fnGetPar@080128de", "edge_type": "calls", "dst": "func:fnGetValidPars", "source": "ghidra"}
+{"src": "func:fnGetParameters@0800dac2", "edge_type": "calls", "dst": "func:fnGetParsFile", "source": "ghidra"}
+{"src": "func:fnGetParsFile@0800da62", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnGetTCP_Socket@08013a54", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnGetTCP_Socket@08013a54", "edge_type": "calls", "dst": "func:uMemset", "source": "ghidra"}
+{"src": "func:fnGetValidPars@0800da6c", "edge_type": "calls", "dst": "func:fnGetParsFile", "source": "ghidra"}
+{"src": "func:fnGetWordShift@0800f7bc", "edge_type": "calls", "dst": "func:fnSkipWhiteSpace", "source": "ghidra"}
+{"src": "func:fnGotoNextState@08012b56", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:fnGotoNextState@08012b56", "edge_type": "calls", "dst": "func:uTaskerStopTimer", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:.text_15", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:.text_16", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:.text_17", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:.text_18", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:fnACSIIDecode2", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:fnHandleMODBUS_input", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:fnHandleASCIIInputs@0801180c", "edge_type": "calls", "dst": "func:uTaskerGlobalMonoTimer", "source": "ghidra"}
+{"src": "func:fnHandleEthernetFrame@0801368c", "edge_type": "calls", "dst": "func:fnHandleIPv4", "source": "ghidra"}
+{"src": "func:fnHandleEthernetFrame@0801368c", "edge_type": "calls", "dst": "func:fnHandleTCP", "source": "ghidra"}
+{"src": "func:fnHandleEthernetFrame@0801368c", "edge_type": "calls", "dst": "func:fnProcessARP", "source": "ghidra"}
+{"src": "func:fnHandleIPv4@080148fe", "edge_type": "calls", "dst": "func:fnAddARP", "source": "ghidra"}
+{"src": "func:fnHandleIPv4@080148fe", "edge_type": "calls", "dst": "func:fnRxStats", "source": "ghidra"}
+{"src": "func:fnHandleIPv4@080148fe", "edge_type": "calls", "dst": "func:fnSubnetBroadcast", "source": "ghidra"}
+{"src": "func:fnHandleIPv4@080148fe", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:.text_42", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:.text_43", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:.text_44", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:.text_45", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:.text_46", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:FUN_08012440", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:fnHandleMODBUS_input", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:fnMODBUS_transmit", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:fnSendMODBUS_exception", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:fnSendMODBUS_response", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:uMemset", "source": "ghidra"}
+{"src": "func:fnHandleMODBUS_input@08011b60", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:.text_21", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:.text_31", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:.text_32", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:.text_33", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:.text_34", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:.text_37", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:FUN_0801440e", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnAbortTCPSession", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnExtractMSS", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnGetSocketControl", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnGetTCP_init_seq", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnNewTCPState", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnSendSyn", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:fnTCP_send_reset", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:fnHandleTCP@08013eb8", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnHeapAvailable@0800e502", "edge_type": "calls", "dst": "func:.text_10", "source": "ghidra"}
+{"src": "func:fnIPStr@08012f88", "edge_type": "calls", "dst": "func:fnBufferDec", "source": "ghidra"}
+{"src": "func:fnInitModbus@0801480c", "edge_type": "calls", "dst": "func:fnGetPar", "source": "ghidra"}
+{"src": "func:fnInitModbus@0801480c", "edge_type": "calls", "dst": "func:fnInitialiseMODBUS_port", "source": "ghidra"}
+{"src": "func:fnInitModbus@0801480c", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnInitModbus@0801480c", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnInitialiseMODBUS_port@080114d4", "edge_type": "calls", "dst": "func:.text_48", "source": "ghidra"}
+{"src": "func:fnInitialiseMODBUS_port@080114d4", "edge_type": "calls", "dst": "func:fnDriver", "source": "ghidra"}
+{"src": "func:fnInitialiseMODBUS_port@080114d4", "edge_type": "calls", "dst": "func:fnGetTCP_Socket", "source": "ghidra"}
+{"src": "func:fnInitialiseMODBUS_port@080114d4", "edge_type": "calls", "dst": "func:fnGetTCP_session_count", "source": "ghidra"}
+{"src": "func:fnInitialiseMODBUS_port@080114d4", "edge_type": "calls", "dst": "func:fnOpen", "source": "ghidra"}
+{"src": "func:fnInitialiseMODBUS_port@080114d4", "edge_type": "calls", "dst": "func:fnTCP_Listen", "source": "ghidra"}
+{"src": "func:fnInitialiseMODBUS_port@080114d4", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnInitialisePorts@08010d7a", "edge_type": "calls", "dst": "func:fnConfigPort", "source": "ghidra"}
+{"src": "func:fnInitialisePorts@08010d7a", "edge_type": "calls", "dst": "func:fnSetPortOut", "source": "ghidra"}
+{"src": "func:fnInitialisePorts@08010d7a", "edge_type": "calls", "dst": "func:fnSetUserPortOut", "source": "ghidra"}
+{"src": "func:fnInitialiseRND@0800c22c", "edge_type": "calls", "dst": "func:fnRandom", "source": "ghidra"}
+{"src": "func:fnInitiateLogin@08010c42", "edge_type": "calls", "dst": "func:fnDisplayHelp", "source": "ghidra"}
+{"src": "func:fnInitiateLogin@08010c42", "edge_type": "calls", "dst": "func:fnDoAdmin", "source": "ghidra"}
+{"src": "func:fnInitiateLogin@08010c42", "edge_type": "calls", "dst": "func:fnGotoNextState", "source": "ghidra"}
+{"src": "func:fnInterruptMessage@0800ecb4", "edge_type": "calls", "dst": "func:.text_28", "source": "ghidra"}
+{"src": "func:fnIpConfig@0800fa98", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnIpConfig@0800fa98", "edge_type": "calls", "dst": "func:fnDisplayIP", "source": "ghidra"}
+{"src": "func:fnIpConfig@0800fa98", "edge_type": "calls", "dst": "func:fnDisplayMAC", "source": "ghidra"}
+{"src": "func:fnMACStr@08012f18", "edge_type": "calls", "dst": "func:fnBufferHex", "source": "ghidra"}
+{"src": "func:fnMODBUS@080113a8", "edge_type": "calls", "dst": "func:fnCRCRTUFrame", "source": "ghidra"}
+{"src": "func:fnMODBUS@080113a8", "edge_type": "calls", "dst": "func:fnHandleASCIIInputs", "source": "ghidra"}
+{"src": "func:fnMODBUS@080113a8", "edge_type": "calls", "dst": "func:fnHandleMODBUS_input", "source": "ghidra"}
+{"src": "func:fnMODBUS@080113a8", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:fnMODBUSListener@08012738", "edge_type": "calls", "dst": "func:fnHandleMODBUS_input", "source": "ghidra"}
+{"src": "func:fnMODBUSListener@08012738", "edge_type": "calls", "dst": "func:fnSendMODBUS_exception", "source": "ghidra"}
+{"src": "func:fnMODBUSListener@08012738", "edge_type": "calls", "dst": "func:fnSendTCP", "source": "ghidra"}
+{"src": "func:fnMODBUSListener@08012738", "edge_type": "calls", "dst": "func:fnTCP_Listen", "source": "ghidra"}
+{"src": "func:fnMODBUSListener@08012738", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:.text_48", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:.text_51", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:.text_52", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:fnCRCRTUFrame", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:fnConvertToASCII", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:fnSendTCP", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnMODBUS_transmit@0801247a", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnMODBUSuserFunction@080147c6", "edge_type": "calls", "dst": "func:fnMODBUS_transmit", "source": "ghidra"}
+{"src": "func:fnMsgs@0800ea70", "edge_type": "calls", "dst": "func:.text_15", "source": "ghidra"}
+{"src": "func:fnMsgs@0800ea70", "edge_type": "calls", "dst": "func:.text_16", "source": "ghidra"}
+{"src": "func:fnNeedQueues@0800e8d0", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnNetworkIndicator@08015388", "edge_type": "calls", "dst": "func:fnCheckEthLinkState", "source": "ghidra"}
+{"src": "func:fnNetworkIndicator@08015388", "edge_type": "calls", "dst": "func:fnEthernetStateChange", "source": "ghidra"}
+{"src": "func:fnNetworkIndicator@08015388", "edge_type": "calls", "dst": "func:fnFlush", "source": "ghidra"}
+{"src": "func:fnNetworkIndicator@08015388", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:fnNetworkIndicator@08015388", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:fnNewTCPState@08013c7a", "edge_type": "calls", "dst": "func:.text_16", "source": "ghidra"}
+{"src": "func:fnNewTCPState@08013c7a", "edge_type": "calls", "dst": "func:.text_19", "source": "ghidra"}
+{"src": "func:fnOpen@0800e970", "edge_type": "calls", "dst": "func:fnAllocateQueue", "source": "ghidra"}
+{"src": "func:fnOpen@0800e970", "edge_type": "calls", "dst": "func:fnOpenETHERNET", "source": "ghidra"}
+{"src": "func:fnOpen@0800e970", "edge_type": "calls", "dst": "func:fnOpenTTY", "source": "ghidra"}
+{"src": "func:fnOpenETHERNET@0800f542", "edge_type": "calls", "dst": "func:fnConfigEthernet", "source": "ghidra"}
+{"src": "func:fnOpenETHERNET@0800f542", "edge_type": "calls", "dst": "func:fnSearchID", "source": "ghidra"}
+{"src": "func:fnOpenETHERNET@0800f542", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnOpenTTY@0800f246", "edge_type": "calls", "dst": "func:.text_8", "source": "ghidra"}
+{"src": "func:fnOpenTTY@0800f246", "edge_type": "calls", "dst": "func:fnConfigSCI", "source": "ghidra"}
+{"src": "func:fnOpenTTY@0800f246", "edge_type": "calls", "dst": "func:fnGetControlBlock", "source": "ghidra"}
+{"src": "func:fnOpenTTY@0800f246", "edge_type": "calls", "dst": "func:fnSearchID", "source": "ghidra"}
+{"src": "func:fnPortInputConfig@08011034", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnPortInputConfig@08011034", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldrb r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnPortState@08011008", "edge_type": "reads_mmio", "dst": "mmio:0X40020410", "instruction": "ldr r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnPrint@0800ece0", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:.text_12", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:.text_13", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:fnArpMessage", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:fnBuildSendARP", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:fnIncrementEthernetStats", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:fnTimeoutValue", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:fnProcessARP@0801338a", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnRTS_change@0800f432", "edge_type": "calls", "dst": "func:send_next_byte", "source": "ghidra"}
+{"src": "func:fnRead@0800ea60", "edge_type": "calls", "dst": "func:.text_18", "source": "ghidra"}
+{"src": "func:fnReadMII_PHY@0800c32c", "edge_type": "reads_mmio", "dst": "mmio:0X40028010", "instruction": "ldr r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnReadMII_PHY@0800c32c", "edge_type": "reads_mmio", "dst": "mmio:0X40028014", "instruction": "ldr r0,[r1,#0x4]", "source": "ghidra"}
+{"src": "func:fnReadMII_PHY@0800c32c", "edge_type": "writes_mmio", "dst": "mmio:0X40028010", "instruction": "str r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnReportTCPWindow@080144c0", "edge_type": "calls", "dst": "func:.text_43", "source": "ghidra"}
+{"src": "func:fnReportTCPWindow@080144c0", "edge_type": "calls", "dst": "func:FUN_08014482", "source": "ghidra"}
+{"src": "func:fnReportTCPWindow@080144c0", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:fnResetBoard@0800e3a6", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED0C", "instruction": "str r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnResetChanges@08010c9a", "edge_type": "calls", "dst": "func:fnGetOurParameters", "source": "ghidra"}
+{"src": "func:fnResetChanges@08010c9a", "edge_type": "calls", "dst": "func:fnSetNewSerialMode", "source": "ghidra"}
+{"src": "func:fnResolveAddress@0801348a", "edge_type": "calls", "dst": "func:fnAddNewARP", "source": "ghidra"}
+{"src": "func:fnResolveAddress@0801348a", "edge_type": "calls", "dst": "func:fnSendARP_request", "source": "ghidra"}
+{"src": "func:fnResolveAddress@0801348a", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnResolveAddress@0801348a", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:fnRestoreFactory@08012b28", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnRetriggerWatchdog@0800c24a", "edge_type": "reads_mmio", "dst": "mmio:0X40020414", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRetriggerWatchdog@0800c24a", "edge_type": "writes_mmio", "dst": "mmio:0X40003000", "instruction": "str r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnRetriggerWatchdog@0800c24a", "edge_type": "writes_mmio", "dst": "mmio:0X40020414", "instruction": "str r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRetrigger_T1_5_monitor@08011a98", "edge_type": "calls", "dst": "func:.text_23", "source": "ghidra"}
+{"src": "func:fnRetrigger_T1_5_monitor@08011a98", "edge_type": "calls", "dst": "func:fnConfigureInterrupt", "source": "ghidra"}
+{"src": "func:fnRetrigger_T1_5_monitor@08011a98", "edge_type": "calls", "dst": "func:fnFlush", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "calls", "dst": "func:.text_145", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr.w r0,[0x0800d774]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr.w r0,[0x0800d778]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr.w r0,[0x0800d848]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr.w r0,[0x0800d84c]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr.w r0,[0x0800d854]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr.w r0,[0x0800d90c]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr.w r0,[0x0800d770]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr.w r0,[0x0800d850]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X4000440C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X4000480C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X40004C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X4000500C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X4000780C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X4001100C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOff@0800ce14", "edge_type": "writes_mmio", "dst": "mmio:0X4001140C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "calls", "dst": "func:.text_116", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "calls", "dst": "func:.text_117", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "calls", "dst": "func:.text_118", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr r0,[0x0800ce8c]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr r4,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4002000C", "instruction": "ldr r3,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020820", "instruction": "ldr r0,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020824", "instruction": "ldr r0,[r5,#0x24]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020C0C", "instruction": "ldr r2,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020C0C", "instruction": "ldr r3,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020C20", "instruction": "ldr r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40020C24", "instruction": "ldr r0,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr.w r0,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X4002100C", "instruction": "ldr.w r2,[lr,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40021020", "instruction": "ldr.w r0,[lr,#0x20]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40021024", "instruction": "ldr.w r0,[lr,#0x24]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4000440C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4000480C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40004C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4000500C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4000780C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4001100C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4001140C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020000", "instruction": "str r4,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020800", "instruction": "str r0,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4002080C", "instruction": "str r2,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020820", "instruction": "str r0,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020824", "instruction": "str r0,[r5,#0x24]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020C00", "instruction": "str r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020C0C", "instruction": "str r2,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020C0C", "instruction": "str r3,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020C20", "instruction": "str r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40020C24", "instruction": "str r0,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40021000", "instruction": "str.w r0,[lr,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X4002100C", "instruction": "str.w r2,[lr,#0xc]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40021020", "instruction": "str.w r0,[lr,#0x20]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40021024", "instruction": "str.w r0,[lr,#0x24]", "source": "ghidra"}
+{"src": "func:fnRxOn@0800cc54", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnRxStats@08013788", "edge_type": "calls", "dst": "func:fnIncrementEthernetStats", "source": "ghidra"}
+{"src": "func:fnSaveNewPars@08010f50", "edge_type": "calls", "dst": "func:fnDelPar", "source": "ghidra"}
+{"src": "func:fnSaveNewPars@08010f50", "edge_type": "calls", "dst": "func:fnSetPar", "source": "ghidra"}
+{"src": "func:fnSaveNewPars@08010f50", "edge_type": "calls", "dst": "func:uMemcmp", "source": "ghidra"}
+{"src": "func:fnSaveNewPars@08010f50", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnSavePorts@08010d22", "edge_type": "calls", "dst": "func:fnPortState", "source": "ghidra"}
+{"src": "func:fnSavePorts@08010d22", "edge_type": "calls", "dst": "func:fnResetChanges", "source": "ghidra"}
+{"src": "func:fnSavePorts@08010d22", "edge_type": "calls", "dst": "func:fnSaveNewPars", "source": "ghidra"}
+{"src": "func:fnSciRxByte@0800f388", "edge_type": "calls", "dst": "func:fnControlLine", "source": "ghidra"}
+{"src": "func:fnSciRxByte@0800f388", "edge_type": "calls", "dst": "func:fnRetrigger_T1_5_monitor", "source": "ghidra"}
+{"src": "func:fnSciRxByte@0800f388", "edge_type": "calls", "dst": "func:send_next_byte", "source": "ghidra"}
+{"src": "func:fnSciRxByte@0800f388", "edge_type": "calls", "dst": "func:uTaskerStateChange", "source": "ghidra"}
+{"src": "func:fnSciTxByte@0800f460", "edge_type": "calls", "dst": "func:send_next_byte", "source": "ghidra"}
+{"src": "func:fnSendARP_request@0801332c", "edge_type": "calls", "dst": "func:fnBuildSendARP", "source": "ghidra"}
+{"src": "func:fnSendIPv4@080149e0", "edge_type": "calls", "dst": "func:fnGetIP_ARP", "source": "ghidra"}
+{"src": "func:fnSendIPv4@080149e0", "edge_type": "calls", "dst": "func:fnTxStats", "source": "ghidra"}
+{"src": "func:fnSendIPv4@080149e0", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnSendIPv4@080149e0", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnSendMODBUS_exception@08012708", "edge_type": "calls", "dst": "func:fnMODBUS_transmit", "source": "ghidra"}
+{"src": "func:fnSendMODBUS_response@0801262a", "edge_type": "calls", "dst": "func:fnMODBUS_transmit", "source": "ghidra"}
+{"src": "func:fnSendMODBUS_transparent_response@080126f8", "edge_type": "calls", "dst": "func:fnMODBUS_transmit", "source": "ghidra"}
+{"src": "func:fnSendSyn@08014488", "edge_type": "calls", "dst": "func:fnSendTCP", "source": "ghidra"}
+{"src": "func:fnSendTCP@08013ba4", "edge_type": "calls", "dst": "func:fnGetSocketControl", "source": "ghidra"}
+{"src": "func:fnSendTCP@08013ba4", "edge_type": "calls", "dst": "func:fnSendIPv4", "source": "ghidra"}
+{"src": "func:fnSendTCPControl@08013c64", "edge_type": "calls", "dst": "func:fnSendTCP", "source": "ghidra"}
+{"src": "func:fnSetDefaultNetwork@08012b1c", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "accesses_mmio", "dst": "mmio:0X40023C00", "instruction": "mov r0,r4", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "reads_mmio", "dst": "mmio:0X40003000", "instruction": "ldr.w r1,[0x0800e3dc]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "reads_mmio", "dst": "mmio:0X40023C0C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "reads_mmio", "dst": "mmio:0X40023C14", "instruction": "ldr r0,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "reads_mmio", "dst": "mmio:0X40023C14", "instruction": "ldr r2,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "reads_mmio", "dst": "mmio:0X40023C14", "instruction": "ldr.ne r0,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "reads_mmio", "dst": "mmio:0X40023C18", "instruction": "ldr.eq r3,[r4,#0x18]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "writes_mmio", "dst": "mmio:0X40023C08", "instruction": "str r0,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "writes_mmio", "dst": "mmio:0X40023C08", "instruction": "str r1,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "writes_mmio", "dst": "mmio:0X40023C14", "instruction": "str r5,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:fnSetFlashOption@0800d78e", "edge_type": "writes_mmio", "dst": "mmio:0X40023C14", "instruction": "str r6,[r4,#0x14]", "source": "ghidra"}
+{"src": "func:fnSetMAC@08012ecc", "edge_type": "calls", "dst": "func:fnHexStrHex", "source": "ghidra"}
+{"src": "func:fnSetMAC@08012ecc", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnSetNewSerialMode@08012d6a", "edge_type": "calls", "dst": "func:fnDriver", "source": "ghidra"}
+{"src": "func:fnSetNewSerialMode@08012d6a", "edge_type": "calls", "dst": "func:fnOpen", "source": "ghidra"}
+{"src": "func:fnSetPar@080128a0", "edge_type": "calls", "dst": "func:fnGetValidPars", "source": "ghidra"}
+{"src": "func:fnSetPar@080128a0", "edge_type": "calls", "dst": "func:fnSetParameters", "source": "ghidra"}
+{"src": "func:fnSetParameters@0800daf4", "edge_type": "calls", "dst": "func:fnDeleteParBlock", "source": "ghidra"}
+{"src": "func:fnSetParameters@0800daf4", "edge_type": "calls", "dst": "func:fnWriteBytesFlash", "source": "ghidra"}
+{"src": "func:fnSetPortOut@08011196", "edge_type": "calls", "dst": "func:.text_312", "source": "ghidra"}
+{"src": "func:fnSetRTS@0800d1c8", "edge_type": "writes_mmio", "dst": "mmio:0X40020018", "instruction": "str r3,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnSetRTS@0800d1c8", "edge_type": "writes_mmio", "dst": "mmio:0X40020018", "instruction": "str r5,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnSetRTS@0800d1c8", "edge_type": "writes_mmio", "dst": "mmio:0X40020C18", "instruction": "str r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnSetRTS@0800d1c8", "edge_type": "writes_mmio", "dst": "mmio:0X40020C18", "instruction": "str r3,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnSetRTS@0800d1c8", "edge_type": "writes_mmio", "dst": "mmio:0X40020C18", "instruction": "str r5,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnSetRTS@0800d1c8", "edge_type": "writes_mmio", "dst": "mmio:0X40021818", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnShowLAN@0800fa60", "edge_type": "calls", "dst": "func:.text_192", "source": "ghidra"}
+{"src": "func:fnShowLAN@0800fa60", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnShowSN@08010fc4", "edge_type": "calls", "dst": "func:fnBufferDec", "source": "ghidra"}
+{"src": "func:fnShowServerEnabled@0800fa10", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "accesses_mmio", "dst": "mmio:0XE000E284", "instruction": "blx.mi r1", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0X40028000", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0X40029014", "instruction": "ldr r1,[r6,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0X4002901C", "instruction": "ldr r0,[r6,#0x8]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0X4002904C", "instruction": "ldr r7,[r6,#0x38]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0XE000E104", "instruction": "ldr r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0XE000E104", "instruction": "ldr.w r2,[0x0800d24c]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0XE000E204", "instruction": "ldr r0,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0XE000E204", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED08", "instruction": "ldr r4,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "writes_mmio", "dst": "mmio:0X40029014", "instruction": "str r1,[r6,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "writes_mmio", "dst": "mmio:0X4002904C", "instruction": "str r0,[r6,#0x38]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "writes_mmio", "dst": "mmio:0XE000E204", "instruction": "str r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnSimulateEthernetIn@0800c77c", "edge_type": "writes_mmio", "dst": "mmio:0XE000E284", "instruction": "str r0,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnStartEthTx@0800c816", "edge_type": "calls", "dst": "func:fnSimulateEthernetIn", "source": "ghidra"}
+{"src": "func:fnStartEthTx@0800c816", "edge_type": "writes_mmio", "dst": "mmio:0X40029004", "instruction": "str r6,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnStartNewTimer@08014622", "edge_type": "calls", "dst": "func:.text_10", "source": "ghidra"}
+{"src": "func:fnStartNewTimer@08014622", "edge_type": "calls", "dst": "func:fnGetNotTimer", "source": "ghidra"}
+{"src": "func:fnStartNewTimer@08014622", "edge_type": "calls", "dst": "func:fnReduceSWTimers", "source": "ghidra"}
+{"src": "func:fnStartNewTimer@08014622", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:fnStartNewTimer@08014622", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:fnStartNewTimer@08014622", "edge_type": "calls", "dst": "func:uTaskerRemainingTime", "source": "ghidra"}
+{"src": "func:fnStartTick@0800c2c6", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED20", "instruction": "ldr r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnStartTick@0800c2c6", "edge_type": "writes_mmio", "dst": "mmio:0XE000E010", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnStartTick@0800c2c6", "edge_type": "writes_mmio", "dst": "mmio:0XE000E014", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnStartTick@0800c2c6", "edge_type": "writes_mmio", "dst": "mmio:0XE000E018", "instruction": "str r1,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnStartTick@0800c2c6", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED20", "instruction": "str r2,[r1,#0x0]", "source": "ghidra"}
+{"src": "func:fnStrIP@08012f44", "edge_type": "calls", "dst": "func:fnDecStrHex", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:.text_19", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:.text_21", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:fnGetFreeTCP_Port", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:fnGetSocketControl", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:fnGetTCP_init_seq", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:fnNewTCPState", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:fnSendSyn", "source": "ghidra"}
+{"src": "func:fnTCP_Connect@08013d02", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnTCP_Listen@08013aba", "edge_type": "calls", "dst": "func:fnGetSocketControl", "source": "ghidra"}
+{"src": "func:fnTCP_Listen@08013aba", "edge_type": "calls", "dst": "func:uMemset", "source": "ghidra"}
+{"src": "func:fnTCP_send_reset@08013db6", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:fnTCP_send_reset@08013db6", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnTaskArp@0801304c", "edge_type": "calls", "dst": "func:fnArpMessage", "source": "ghidra"}
+{"src": "func:fnTaskArp@0801304c", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:fnTaskArp@0801304c", "edge_type": "calls", "dst": "func:fnSendARP_request", "source": "ghidra"}
+{"src": "func:fnTaskArp@0801304c", "edge_type": "calls", "dst": "func:uMalloc", "source": "ghidra"}
+{"src": "func:fnTaskArp@0801304c", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnTaskArp@0801304c", "edge_type": "calls", "dst": "func:uTaskerMonoTimer", "source": "ghidra"}
+{"src": "func:fnTaskEthernet@08013604", "edge_type": "calls", "dst": "func:fnEthernetEvent", "source": "ghidra"}
+{"src": "func:fnTaskEthernet@08013604", "edge_type": "calls", "dst": "func:fnFreeBuffer", "source": "ghidra"}
+{"src": "func:fnTaskEthernet@08013604", "edge_type": "calls", "dst": "func:fnGetEthernetPars", "source": "ghidra"}
+{"src": "func:fnTaskEthernet@08013604", "edge_type": "calls", "dst": "func:fnHandleEthernetFrame", "source": "ghidra"}
+{"src": "func:fnTaskEthernet@08013604", "edge_type": "calls", "dst": "func:fnOpen", "source": "ghidra"}
+{"src": "func:fnTaskEthernet@08013604", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnTaskEthernet@08013604", "edge_type": "calls", "dst": "func:uTaskerStateChange", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:.text_16", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:.text_5", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:.text_6", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:fnAbortTCPSession", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:fnDoCountDown", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:fnNewTCPState", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:fnReportTCPWindow", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:fnSendSyn", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:fnSendTCPControl", "source": "ghidra"}
+{"src": "func:fnTaskTCP@08013828", "edge_type": "calls", "dst": "func:uMemcpy", "source": "ghidra"}
+{"src": "func:fnTestListener@08010ddc", "edge_type": "calls", "dst": "func:fnDebugMsg", "source": "ghidra"}
+{"src": "func:fnTestListener@08010ddc", "edge_type": "calls", "dst": "func:fnTestTCPServer", "source": "ghidra"}
+{"src": "func:fnTestTCPServer@08010e30", "edge_type": "calls", "dst": "func:fnGetTCP_Socket", "source": "ghidra"}
+{"src": "func:fnTestTCPServer@08010e30", "edge_type": "calls", "dst": "func:fnSendTCP", "source": "ghidra"}
+{"src": "func:fnTestTCPServer@08010e30", "edge_type": "calls", "dst": "func:fnTCP_Connect", "source": "ghidra"}
+{"src": "func:fnTestTCPServer@08010e30", "edge_type": "calls", "dst": "func:fnTCP_Listen", "source": "ghidra"}
+{"src": "func:fnTestTCPServer@08010e30", "edge_type": "calls", "dst": "func:uMemset", "source": "ghidra"}
+{"src": "func:fnTimer@080144f8", "edge_type": "calls", "dst": "func:.text_10", "source": "ghidra"}
+{"src": "func:fnTimer@080144f8", "edge_type": "calls", "dst": "func:fnGetSWFired", "source": "ghidra"}
+{"src": "func:fnTimer@080144f8", "edge_type": "calls", "dst": "func:fnRead", "source": "ghidra"}
+{"src": "func:fnTimer@080144f8", "edge_type": "calls", "dst": "func:fnReduceSWTimers", "source": "ghidra"}
+{"src": "func:fnTimer@080144f8", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:fnTimerT3_5_fired@08011a32", "edge_type": "calls", "dst": "func:fnFlush", "source": "ghidra"}
+{"src": "func:fnTimerT3_5_fired@08011a32", "edge_type": "calls", "dst": "func:fnMsgs", "source": "ghidra"}
+{"src": "func:fnTimer_RTS_0@08011af4", "edge_type": "calls", "dst": "func:.text_31", "source": "ghidra"}
+{"src": "func:fnTimer_T_1_5_fired_0@08011a7c", "edge_type": "calls", "dst": "func:fnConfigureInterrupt", "source": "ghidra"}
+{"src": "func:fnTimer_T_1_5_fired_1@08011a88", "edge_type": "calls", "dst": "func:fnConfigureInterrupt", "source": "ghidra"}
+{"src": "func:fnTimer_T_3_5_fired_0@08011a74", "edge_type": "calls", "dst": "func:fnTimerT3_5_fired", "source": "ghidra"}
+{"src": "func:fnTimer_T_3_5_fired_1@08011a78", "edge_type": "calls", "dst": "func:fnTimerT3_5_fired", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40004400", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40004800", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40004C00", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40005000", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40007800", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40007C00", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40011000", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X40011400", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40004404", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X4000440C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40004804", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X4000480C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40004C04", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40004C0C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40005004", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X4000500C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40007804", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X4000780C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40007C04", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40011004", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X4001100C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X40011404", "instruction": "str r1,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxByte@0800d174", "edge_type": "writes_mmio", "dst": "mmio:0X4001140C", "instruction": "str r2,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X4000440C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X4000480C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X40004C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X4000500C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X4000780C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X4001100C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOff@0800d0c8", "edge_type": "writes_mmio", "dst": "mmio:0X4001140C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "calls", "dst": "func:.text_118", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "calls", "dst": "func:.text_143", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4000440C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4000480C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40004C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4000500C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4000780C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40007C0C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4001100C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4001140C", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr r5,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020000", "instruction": "ldr.w r0,[0x0800d914]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020004", "instruction": "ldr r3,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020008", "instruction": "ldr.w r8,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4002000C", "instruction": "ldr r3,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020800", "instruction": "ldr r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020804", "instruction": "ldr r0,[r7,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020808", "instruction": "ldr r0,[r7,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4002080C", "instruction": "ldr r0,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020820", "instruction": "ldr r0,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020824", "instruction": "ldr r0,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020C04", "instruction": "ldr r0,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020C08", "instruction": "ldr r0,[r5,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020C0C", "instruction": "ldr r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020C20", "instruction": "ldr r0,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40020C24", "instruction": "ldr r0,[r5,#0x24]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40021000", "instruction": "ldr r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40021004", "instruction": "ldr r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40021008", "instruction": "ldr r0,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X4002100C", "instruction": "ldr r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40021020", "instruction": "ldr r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40021024", "instruction": "ldr r0,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r0,[r6,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4000440C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4000480C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40004C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4000500C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4000780C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40007C0C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4001100C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4001140C", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020000", "instruction": "str r5,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020004", "instruction": "str r3,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020008", "instruction": "str.w r8,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020800", "instruction": "str r0,[r7,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020804", "instruction": "str r0,[r7,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020808", "instruction": "str r0,[r7,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4002080C", "instruction": "str r0,[r7,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020820", "instruction": "str r0,[r7,#0x20]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020824", "instruction": "str r0,[r7,#0x24]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020C00", "instruction": "str r0,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020C04", "instruction": "str r0,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020C08", "instruction": "str r0,[r5,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020C0C", "instruction": "str r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020C20", "instruction": "str r0,[r5,#0x20]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40020C24", "instruction": "str r0,[r5,#0x24]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40021000", "instruction": "str r0,[r4,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40021004", "instruction": "str r0,[r4,#0x4]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40021008", "instruction": "str r0,[r4,#0x8]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X4002100C", "instruction": "str r0,[r4,#0xc]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40021020", "instruction": "str r0,[r4,#0x20]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40021024", "instruction": "str r0,[r4,#0x24]", "source": "ghidra"}
+{"src": "func:fnTxOn@0800ce9c", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r0,[r6,#0x0]", "source": "ghidra"}
+{"src": "func:fnTxStats@08013760", "edge_type": "calls", "dst": "func:fnIncrementEthernetStats", "source": "ghidra"}
+{"src": "func:fnUARTFrameTermination@08011b10", "edge_type": "calls", "dst": "func:fnConfigureInterrupt", "source": "ghidra"}
+{"src": "func:fnUpTime@08012fb4", "edge_type": "calls", "dst": "func:.text_5", "source": "ghidra"}
+{"src": "func:fnUpTime@08012fb4", "edge_type": "calls", "dst": "func:FUN_08013046", "source": "ghidra"}
+{"src": "func:fnUpTime@08012fb4", "edge_type": "calls", "dst": "func:fnBufferDec", "source": "ghidra"}
+{"src": "func:fnWrite@0800e9de", "edge_type": "calls", "dst": "func:fnFillBuf", "source": "ghidra"}
+{"src": "func:fnWrite@0800e9de", "edge_type": "calls", "dst": "func:fnNetworkTx", "source": "ghidra"}
+{"src": "func:fnWrite@0800e9de", "edge_type": "calls", "dst": "func:fnSearchID", "source": "ghidra"}
+{"src": "func:fnWrite@0800e9de", "edge_type": "calls", "dst": "func:uTaskerStateChange", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "calls", "dst": "func:.text_214", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "reads_mmio", "dst": "mmio:0X40023C00", "instruction": "ldr r0,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "reads_mmio", "dst": "mmio:0X40023C00", "instruction": "ldr.w lr,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "reads_mmio", "dst": "mmio:0X40023C00", "instruction": "ldr.w r12,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "reads_mmio", "dst": "mmio:0X40023C00", "instruction": "ldr.w r9,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "reads_mmio", "dst": "mmio:0X40023C0C", "instruction": "ldr.w lr,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "reads_mmio", "dst": "mmio:0X40023C0C", "instruction": "ldr.w r12,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "reads_mmio", "dst": "mmio:0X40023C10", "instruction": "ldr r0,[r5,#0x10]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C00", "instruction": "str r0,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C00", "instruction": "str.w lr,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C00", "instruction": "str.w r12,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C00", "instruction": "str.w r9,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C04", "instruction": "str r0,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C04", "instruction": "str r6,[r5,#0x4]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C0C", "instruction": "str r0,[r5,#0xc]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C10", "instruction": "str r0,[r5,#0x10]", "source": "ghidra"}
+{"src": "func:fnWriteBytesFlash@0800d918", "edge_type": "writes_mmio", "dst": "mmio:0X40023C10", "instruction": "str.w lr,[r5,#0x10]", "source": "ghidra"}
+{"src": "func:fnWriteMII_PHY@0800c342", "edge_type": "reads_mmio", "dst": "mmio:0X40028010", "instruction": "ldr r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteMII_PHY@0800c342", "edge_type": "writes_mmio", "dst": "mmio:0X40028010", "instruction": "str r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:fnWriteMII_PHY@0800c342", "edge_type": "writes_mmio", "dst": "mmio:0X40028014", "instruction": "str r1,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "calls", "dst": "func:fnInitialiseHeap", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "calls", "dst": "func:uTaskerSchedule", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "calls", "dst": "func:uTaskerStart", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X4000300C", "instruction": "ldr r0,[r2,#0xc]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40020400", "instruction": "ldr r4,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X4002040C", "instruction": "ldr r5,[r3,#0xc]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40020800", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X4002080C", "instruction": "ldr r3,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40020810", "instruction": "ldr r0,[r0,#0x10]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40023800", "instruction": "ldr r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40023800", "instruction": "ldr r3,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40023808", "instruction": "ldr r2,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40023808", "instruction": "ldr r3,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40023830", "instruction": "ldr r2,[r0,#0x30]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0X40023840", "instruction": "ldr r3,[r0,#0x40]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0XE0001000", "instruction": "ldr r4,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0XE000ED88", "instruction": "ldr r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "reads_mmio", "dst": "mmio:0XE000EDFC", "instruction": "ldr r4,[r2,#0x74]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40003000", "instruction": "str r0,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40003000", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40003004", "instruction": "str r0,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40003008", "instruction": "str r3,[r2,#0x8]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40007000", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40020400", "instruction": "str r4,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X4002040C", "instruction": "str r2,[r3,#0xc]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40020800", "instruction": "str r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X4002080C", "instruction": "str r3,[r0,#0xc]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023800", "instruction": "str r2,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023804", "instruction": "str r4,[r0,#0x4]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023808", "instruction": "str r2,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023808", "instruction": "str r3,[r0,#0x8]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023830", "instruction": "str r2,[r0,#0x30]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023840", "instruction": "str r3,[r0,#0x40]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023C00", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0X40023C00", "instruction": "str r4,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0XE0001000", "instruction": "str r4,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0XE0001004", "instruction": "str r3,[r2,#0x4]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED08", "instruction": "str r2,[r3,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0XE000ED88", "instruction": "str r3,[r2,#0x0]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0XE000EDFC", "instruction": "str r4,[r2,#0x74]", "source": "ghidra"}
+{"src": "func:main@0800c088", "edge_type": "writes_mmio", "dst": "mmio:0XE0042004", "instruction": "str r4,[r5,#0x0]", "source": "ghidra"}
+{"src": "func:send_next_byte@0800f2f0", "edge_type": "calls", "dst": "func:fnClearTxInt", "source": "ghidra"}
+{"src": "func:send_next_byte@0800f2f0", "edge_type": "calls", "dst": "func:fnTxByte", "source": "ghidra"}
+{"src": "func:send_next_byte@0800f2f0", "edge_type": "calls", "dst": "func:fnUARTFrameTermination", "source": "ghidra"}
+{"src": "func:send_next_byte@0800f2f0", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:timer_10_irq@0800d686", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_10_irq@0800d686", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_10_irq@0800d686", "edge_type": "calls", "dst": "func:.text_188", "source": "ghidra"}
+{"src": "func:timer_10_irq@0800d686", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_11_irq@0800d6bc", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_11_irq@0800d6bc", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_11_irq@0800d6bc", "edge_type": "calls", "dst": "func:.text_188", "source": "ghidra"}
+{"src": "func:timer_11_irq@0800d6bc", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_12_irq@0800d6e8", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_12_irq@0800d6e8", "edge_type": "calls", "dst": "func:.text_179", "source": "ghidra"}
+{"src": "func:timer_12_irq@0800d6e8", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_12_irq@0800d6e8", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_13_irq@0800d710", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_13_irq@0800d710", "edge_type": "calls", "dst": "func:.text_179", "source": "ghidra"}
+{"src": "func:timer_13_irq@0800d710", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_13_irq@0800d710", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_14_irq@0800d738", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_14_irq@0800d738", "edge_type": "calls", "dst": "func:.text_179", "source": "ghidra"}
+{"src": "func:timer_14_irq@0800d738", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_14_irq@0800d738", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_2_irq@0800d540", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_2_irq@0800d540", "edge_type": "calls", "dst": "func:.text_179", "source": "ghidra"}
+{"src": "func:timer_2_irq@0800d540", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_2_irq@0800d540", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_3_irq@0800d574", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_3_irq@0800d574", "edge_type": "calls", "dst": "func:.text_179", "source": "ghidra"}
+{"src": "func:timer_3_irq@0800d574", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_3_irq@0800d574", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_4_irq@0800d5b6", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_4_irq@0800d5b6", "edge_type": "calls", "dst": "func:.text_179", "source": "ghidra"}
+{"src": "func:timer_4_irq@0800d5b6", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_4_irq@0800d5b6", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_5_irq@0800d5ec", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_5_irq@0800d5ec", "edge_type": "calls", "dst": "func:.text_179", "source": "ghidra"}
+{"src": "func:timer_5_irq@0800d5ec", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_5_irq@0800d5ec", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_8_irq@0800d624", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_8_irq@0800d624", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_8_irq@0800d624", "edge_type": "calls", "dst": "func:.text_188", "source": "ghidra"}
+{"src": "func:timer_8_irq@0800d624", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_9_irq@0800d650", "edge_type": "calls", "dst": "func:.text_173", "source": "ghidra"}
+{"src": "func:timer_9_irq@0800d650", "edge_type": "calls", "dst": "func:.text_186", "source": "ghidra"}
+{"src": "func:timer_9_irq@0800d650", "edge_type": "calls", "dst": "func:.text_188", "source": "ghidra"}
+{"src": "func:timer_9_irq@0800d650", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:timer_int@08012e00", "edge_type": "reads_mmio", "dst": "mmio:0X40020414", "instruction": "ldr r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:timer_int@08012e00", "edge_type": "writes_mmio", "dst": "mmio:0X40020414", "instruction": "str r1,[r0,#0x0]", "source": "ghidra"}
+{"src": "func:uMalloc@0800e49c", "edge_type": "calls", "dst": "func:.text_6", "source": "ghidra"}
+{"src": "func:uMemset@0800ef2e", "edge_type": "calls", "dst": "func:__iar_small_memset", "source": "ghidra"}
+{"src": "func:uTaskerGlobalMonoTimer@08014676", "edge_type": "calls", "dst": "func:fnGetOwnerTimer", "source": "ghidra"}
+{"src": "func:uTaskerGlobalMonoTimer@08014676", "edge_type": "calls", "dst": "func:fnStartNewTimer", "source": "ghidra"}
+{"src": "func:uTaskerGlobalStopTimer@080146bc", "edge_type": "calls", "dst": "func:fnGetNotTimer", "source": "ghidra"}
+{"src": "func:uTaskerGlobalStopTimer@080146bc", "edge_type": "calls", "dst": "func:fnGetOwnerTimer", "source": "ghidra"}
+{"src": "func:uTaskerGlobalStopTimer@080146bc", "edge_type": "calls", "dst": "func:uTaskerGlobalStopTimer", "source": "ghidra"}
+{"src": "func:uTaskerGlobalStopTimer@080146bc", "edge_type": "calls", "dst": "func:uTaskerStopTimer", "source": "ghidra"}
+{"src": "func:uTaskerMonoTimer@0800e750", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerMonoTimer@0800e750", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerRemainingTime@0800e7d0", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerRemainingTime@0800e7d0", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerSchedule@0800e690", "edge_type": "calls", "dst": "func:fnWrite", "source": "ghidra"}
+{"src": "func:uTaskerSchedule@0800e690", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerSchedule@0800e690", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerStart@0800e528", "edge_type": "calls", "dst": "func:.text_4", "source": "ghidra"}
+{"src": "func:uTaskerStart@0800e528", "edge_type": "calls", "dst": "func:fnInitialiseRND", "source": "ghidra"}
+{"src": "func:uTaskerStart@0800e528", "edge_type": "calls", "dst": "func:fnNeedQueues", "source": "ghidra"}
+{"src": "func:uTaskerStart@0800e528", "edge_type": "calls", "dst": "func:fnOpen", "source": "ghidra"}
+{"src": "func:uTaskerStart@0800e528", "edge_type": "calls", "dst": "func:fnStartTick", "source": "ghidra"}
+{"src": "func:uTaskerStateChange@0800e6f8", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerStateChange@0800e6f8", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerStopTimer@0800e816", "edge_type": "calls", "dst": "func:uDisable_Interrupt", "source": "ghidra"}
+{"src": "func:uTaskerStopTimer@0800e816", "edge_type": "calls", "dst": "func:uEnable_Interrupt", "source": "ghidra"}

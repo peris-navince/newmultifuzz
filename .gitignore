@@ -1,0 +1,29 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Rust / build outputs
+target/
+Cargo.lock
+
+# logs / temp
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# local work dirs
+workdir/
+
+# downloaded tools / archives
+*.zip
+*.tar
+*.tar.gz
+*.7z
+tools/ghidra/
+
+# optional: local binaries / test artifacts
+*.bin
+*.elf

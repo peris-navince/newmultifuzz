@@ -1,0 +1,892 @@
+{"node_id": "func:DMA2_Channel3_IRQHandler@0800be20", "node_type": "function", "name": "DMA2_Channel3_IRQHandler", "entry": "0800be20", "is_isr": true, "signature": "undefined DMA2_Channel3_IRQHandler(void)"}
+{"node_id": "func:FUN_080148f4", "node_type": "function", "name": "FUN_080148f4"}
+{"node_id": "func:FUN_080148f4@080148f4", "node_type": "function", "name": "FUN_080148f4", "entry": "080148f4", "is_isr": false, "signature": "undefined FUN_080148f4(void)"}
+{"node_id": "func:FUN_08014ada", "node_type": "function", "name": "FUN_08014ada"}
+{"node_id": "func:FUN_08014ada@08014ada", "node_type": "function", "name": "FUN_08014ada", "entry": "08014ada", "is_isr": false, "signature": "undefined FUN_08014ada(void)"}
+{"node_id": "func:FileBase", "node_type": "function", "name": "FileBase"}
+{"node_id": "func:FileBase@0800de7c", "node_type": "function", "name": "FileBase", "entry": "0800de7c", "is_isr": false, "signature": "undefined __thiscall FileBase(FileBase * this, char * param_1, PathType param_2)"}
+{"node_id": "func:FileLike", "node_type": "function", "name": "FileLike"}
+{"node_id": "func:FileLike@0800ddc4", "node_type": "function", "name": "FileLike", "entry": "0800ddc4", "is_isr": false, "signature": "undefined __thiscall FileLike(FileLike * this, char * param_1)"}
+{"node_id": "func:FilePath", "node_type": "function", "name": "FilePath"}
+{"node_id": "func:FilePath@0800d51c", "node_type": "function", "name": "FilePath", "entry": "0800d51c", "is_isr": false, "signature": "undefined __thiscall FilePath(FilePath * this, char * param_1)"}
+{"node_id": "func:HAL_GPIO_Init", "node_type": "function", "name": "HAL_GPIO_Init"}
+{"node_id": "func:HAL_GPIO_Init@0800be94", "node_type": "function", "name": "HAL_GPIO_Init", "entry": "0800be94", "is_isr": false, "signature": "undefined HAL_GPIO_Init(void)"}
+{"node_id": "func:HAL_GetTick", "node_type": "function", "name": "HAL_GetTick"}
+{"node_id": "func:HAL_GetTick@0800be64", "node_type": "function", "name": "HAL_GetTick", "entry": "0800be64", "is_isr": false, "signature": "undefined HAL_GetTick(void)"}
+{"node_id": "func:HAL_IncTick", "node_type": "function", "name": "HAL_IncTick"}
+{"node_id": "func:HAL_IncTick@0800be54", "node_type": "function", "name": "HAL_IncTick", "entry": "0800be54", "is_isr": false, "signature": "undefined HAL_IncTick(void)"}
+{"node_id": "func:HAL_Init", "node_type": "function", "name": "HAL_Init"}
+{"node_id": "func:HAL_Init@0800be28", "node_type": "function", "name": "HAL_Init", "entry": "0800be28", "is_isr": false, "signature": "undefined HAL_Init(void)"}
+{"node_id": "func:HAL_InitTick", "node_type": "function", "name": "HAL_InitTick"}
+{"node_id": "func:HAL_InitTick@0800ba28", "node_type": "function", "name": "HAL_InitTick", "entry": "0800ba28", "is_isr": false, "signature": "undefined HAL_InitTick(void)"}
+{"node_id": "func:HAL_MspInit", "node_type": "function", "name": "HAL_MspInit"}
+{"node_id": "func:HAL_MspInit@0800be24", "node_type": "function", "name": "HAL_MspInit", "entry": "0800be24", "is_isr": false, "signature": "undefined HAL_MspInit(void)"}
+{"node_id": "func:HAL_NVIC_SetPriorityGrouping", "node_type": "function", "name": "HAL_NVIC_SetPriorityGrouping"}
+{"node_id": "func:HAL_NVIC_SetPriorityGrouping@0800be70", "node_type": "function", "name": "HAL_NVIC_SetPriorityGrouping", "entry": "0800be70", "is_isr": false, "signature": "undefined HAL_NVIC_SetPriorityGrouping(void)"}
+{"node_id": "func:HAL_PWR_EnableBkUpAccess", "node_type": "function", "name": "HAL_PWR_EnableBkUpAccess"}
+{"node_id": "func:HAL_PWR_EnableBkUpAccess@0800c07c", "node_type": "function", "name": "HAL_PWR_EnableBkUpAccess", "entry": "0800c07c", "is_isr": false, "signature": "undefined HAL_PWR_EnableBkUpAccess(void)"}
+{"node_id": "func:HAL_RCC_ClockConfig", "node_type": "function", "name": "HAL_RCC_ClockConfig"}
+{"node_id": "func:HAL_RCC_ClockConfig@0800c720", "node_type": "function", "name": "HAL_RCC_ClockConfig", "entry": "0800c720", "is_isr": false, "signature": "undefined HAL_RCC_ClockConfig(void)"}
+{"node_id": "func:HAL_RCC_GetHCLKFreq", "node_type": "function", "name": "HAL_RCC_GetHCLKFreq"}
+{"node_id": "func:HAL_RCC_GetHCLKFreq@0800ca14", "node_type": "function", "name": "HAL_RCC_GetHCLKFreq", "entry": "0800ca14", "is_isr": false, "signature": "undefined HAL_RCC_GetHCLKFreq(void)"}
+{"node_id": "func:HAL_RCC_GetPCLK1Freq", "node_type": "function", "name": "HAL_RCC_GetPCLK1Freq"}
+{"node_id": "func:HAL_RCC_GetPCLK1Freq@0800ca48", "node_type": "function", "name": "HAL_RCC_GetPCLK1Freq", "entry": "0800ca48", "is_isr": false, "signature": "undefined HAL_RCC_GetPCLK1Freq(void)"}
+{"node_id": "func:HAL_RCC_GetPCLK2Freq", "node_type": "function", "name": "HAL_RCC_GetPCLK2Freq"}
+{"node_id": "func:HAL_RCC_GetPCLK2Freq@0800ca74", "node_type": "function", "name": "HAL_RCC_GetPCLK2Freq", "entry": "0800ca74", "is_isr": false, "signature": "undefined HAL_RCC_GetPCLK2Freq(void)"}
+{"node_id": "func:HAL_RCC_GetSysClockFreq", "node_type": "function", "name": "HAL_RCC_GetSysClockFreq"}
+{"node_id": "func:HAL_RCC_GetSysClockFreq@0800c97c", "node_type": "function", "name": "HAL_RCC_GetSysClockFreq", "entry": "0800c97c", "is_isr": false, "signature": "undefined HAL_RCC_GetSysClockFreq(void)"}
+{"node_id": "func:HAL_RCC_OscConfig", "node_type": "function", "name": "HAL_RCC_OscConfig"}
+{"node_id": "func:HAL_RCC_OscConfig@0800c098", "node_type": "function", "name": "HAL_RCC_OscConfig", "entry": "0800c098", "is_isr": false, "signature": "undefined HAL_RCC_OscConfig(void)"}
+{"node_id": "func:HAL_RTC_GetDate", "node_type": "function", "name": "HAL_RTC_GetDate"}
+{"node_id": "func:HAL_RTC_GetDate@0800caa4", "node_type": "function", "name": "HAL_RTC_GetDate", "entry": "0800caa4", "is_isr": false, "signature": "undefined HAL_RTC_GetDate(void)"}
+{"node_id": "func:HAL_RTC_GetTime", "node_type": "function", "name": "HAL_RTC_GetTime"}
+{"node_id": "func:HAL_RTC_GetTime@0800ce04", "node_type": "function", "name": "HAL_RTC_GetTime", "entry": "0800ce04", "is_isr": false, "signature": "undefined HAL_RTC_GetTime(void)"}
+{"node_id": "func:HAL_RTC_Init", "node_type": "function", "name": "HAL_RTC_Init"}
+{"node_id": "func:HAL_RTC_Init@0800cb30", "node_type": "function", "name": "HAL_RTC_Init", "entry": "0800cb30", "is_isr": false, "signature": "undefined HAL_RTC_Init(void)"}
+{"node_id": "func:HAL_RTC_MspInit", "node_type": "function", "name": "HAL_RTC_MspInit"}
+{"node_id": "func:HAL_RTC_MspInit@0800caa0", "node_type": "function", "name": "HAL_RTC_MspInit", "entry": "0800caa0", "is_isr": false, "signature": "undefined HAL_RTC_MspInit(void)"}
+{"node_id": "func:HAL_RTC_SetDate", "node_type": "function", "name": "HAL_RTC_SetDate"}
+{"node_id": "func:HAL_RTC_SetDate@0800ccf0", "node_type": "function", "name": "HAL_RTC_SetDate", "entry": "0800ccf0", "is_isr": false, "signature": "undefined HAL_RTC_SetDate(void)"}
+{"node_id": "func:HAL_RTC_SetTime", "node_type": "function", "name": "HAL_RTC_SetTime"}
+{"node_id": "func:HAL_RTC_SetTime@0800cbbc", "node_type": "function", "name": "HAL_RTC_SetTime", "entry": "0800cbbc", "is_isr": false, "signature": "undefined HAL_RTC_SetTime(void)"}
+{"node_id": "func:HAL_RTC_WaitForSynchro", "node_type": "function", "name": "HAL_RTC_WaitForSynchro"}
+{"node_id": "func:HAL_RTC_WaitForSynchro@0800ce48", "node_type": "function", "name": "HAL_RTC_WaitForSynchro", "entry": "0800ce48", "is_isr": false, "signature": "undefined HAL_RTC_WaitForSynchro(void)"}
+{"node_id": "func:HAL_TIM_OC_Init", "node_type": "function", "name": "HAL_TIM_OC_Init"}
+{"node_id": "func:HAL_TIM_OC_Init@0800cee8", "node_type": "function", "name": "HAL_TIM_OC_Init", "entry": "0800cee8", "is_isr": false, "signature": "undefined HAL_TIM_OC_Init(void)"}
+{"node_id": "func:HAL_TIM_OC_MspInit", "node_type": "function", "name": "HAL_TIM_OC_MspInit"}
+{"node_id": "func:HAL_TIM_OC_MspInit@0800cee4", "node_type": "function", "name": "HAL_TIM_OC_MspInit", "entry": "0800cee4", "is_isr": false, "signature": "undefined HAL_TIM_OC_MspInit(void)"}
+{"node_id": "func:HAL_TIM_OC_Start", "node_type": "function", "name": "HAL_TIM_OC_Start"}
+{"node_id": "func:HAL_TIM_OC_Start@0800cf18", "node_type": "function", "name": "HAL_TIM_OC_Start", "entry": "0800cf18", "is_isr": false, "signature": "undefined HAL_TIM_OC_Start(void)"}
+{"node_id": "func:HAL_UART_Init", "node_type": "function", "name": "HAL_UART_Init"}
+{"node_id": "func:HAL_UART_Init@0800d0bc", "node_type": "function", "name": "HAL_UART_Init", "entry": "0800d0bc", "is_isr": false, "signature": "undefined HAL_UART_Init(void)"}
+{"node_id": "func:HAL_UART_MspInit", "node_type": "function", "name": "HAL_UART_MspInit"}
+{"node_id": "func:HAL_UART_MspInit@0800d0b8", "node_type": "function", "name": "HAL_UART_MspInit", "entry": "0800d0b8", "is_isr": false, "signature": "undefined HAL_UART_MspInit(void)"}
+{"node_id": "func:L_shift", "node_type": "function", "name": "L_shift"}
+{"node_id": "func:L_shift@080131ec", "node_type": "function", "name": "L_shift", "entry": "080131ec", "is_isr": false, "signature": "void __stdcall L_shift(__ULong * x, __ULong * x1, int i)"}
+{"node_id": "func:NVIC_SetVector", "node_type": "function", "name": "NVIC_SetVector"}
+{"node_id": "func:NVIC_SetVector@0800b998", "node_type": "function", "name": "NVIC_SetVector", "entry": "0800b998", "is_isr": false, "signature": "undefined NVIC_SetVector(void)"}
+{"node_id": "func:RTC_Bcd2ToByte", "node_type": "function", "name": "RTC_Bcd2ToByte"}
+{"node_id": "func:RTC_Bcd2ToByte@0800cdf0", "node_type": "function", "name": "RTC_Bcd2ToByte", "entry": "0800cdf0", "is_isr": false, "signature": "undefined RTC_Bcd2ToByte(void)"}
+{"node_id": "func:RTC_EnterInitMode", "node_type": "function", "name": "RTC_EnterInitMode"}
+{"node_id": "func:RTC_EnterInitMode@0800cafc", "node_type": "function", "name": "RTC_EnterInitMode", "entry": "0800cafc", "is_isr": false, "signature": "undefined RTC_EnterInitMode(void)"}
+{"node_id": "func:Reset_Handler@0800bdd4", "node_type": "function", "name": "Reset_Handler", "entry": "0800bdd4", "is_isr": true, "signature": "undefined Reset_Handler(void)"}
+{"node_id": "func:Serial", "node_type": "function", "name": "Serial"}
+{"node_id": "func:Serial@0800d5ec", "node_type": "function", "name": "Serial", "entry": "0800d5ec", "is_isr": false, "signature": "undefined __thiscall Serial(Serial * this, PinName param_1, PinName param_2, char * param_3)"}
+{"node_id": "func:SerialBase", "node_type": "function", "name": "SerialBase"}
+{"node_id": "func:SerialBase@0800d63c", "node_type": "function", "name": "SerialBase", "entry": "0800d63c", "is_isr": false, "signature": "undefined __thiscall SerialBase(SerialBase * this, PinName param_1, PinName param_2)"}
+{"node_id": "func:SetSysClock", "node_type": "function", "name": "SetSysClock"}
+{"node_id": "func:SetSysClock@0800d2bc", "node_type": "function", "name": "SetSysClock", "entry": "0800d2bc", "is_isr": false, "signature": "undefined SetSysClock(void)"}
+{"node_id": "func:SetSysClock_PLL_HSE", "node_type": "function", "name": "SetSysClock_PLL_HSE"}
+{"node_id": "func:SetSysClock_PLL_HSE@0800d1a0", "node_type": "function", "name": "SetSysClock_PLL_HSE", "entry": "0800d1a0", "is_isr": false, "signature": "undefined SetSysClock_PLL_HSE(void)"}
+{"node_id": "func:SetSysClock_PLL_HSI", "node_type": "function", "name": "SetSysClock_PLL_HSI"}
+{"node_id": "func:SetSysClock_PLL_HSI@0800d240", "node_type": "function", "name": "SetSysClock_PLL_HSI", "entry": "0800d240", "is_isr": false, "signature": "undefined SetSysClock_PLL_HSI(void)"}
+{"node_id": "func:Set_GPIO_Clock", "node_type": "function", "name": "Set_GPIO_Clock"}
+{"node_id": "func:Set_GPIO_Clock@0800da48", "node_type": "function", "name": "Set_GPIO_Clock", "entry": "0800da48", "is_isr": false, "signature": "undefined Set_GPIO_Clock(void)"}
+{"node_id": "func:Stream", "node_type": "function", "name": "Stream"}
+{"node_id": "func:Stream@0800d718", "node_type": "function", "name": "Stream", "entry": "0800d718", "is_isr": false, "signature": "undefined __thiscall Stream(Stream * this, char * param_1)"}
+{"node_id": "func:SystemCoreClockUpdate", "node_type": "function", "name": "SystemCoreClockUpdate"}
+{"node_id": "func:SystemCoreClockUpdate@0800d114", "node_type": "function", "name": "SystemCoreClockUpdate", "entry": "0800d114", "is_isr": false, "signature": "undefined SystemCoreClockUpdate(void)"}
+{"node_id": "func:SystemInit", "node_type": "function", "name": "SystemInit"}
+{"node_id": "func:SystemInit@0800d2dc", "node_type": "function", "name": "SystemInit", "entry": "0800d2dc", "is_isr": false, "signature": "undefined SystemInit(void)"}
+{"node_id": "func:TIM_Base_SetConfig", "node_type": "function", "name": "TIM_Base_SetConfig"}
+{"node_id": "func:TIM_Base_SetConfig@0800ce80", "node_type": "function", "name": "TIM_Base_SetConfig", "entry": "0800ce80", "is_isr": false, "signature": "undefined TIM_Base_SetConfig(void)"}
+{"node_id": "func:UART_SetConfig", "node_type": "function", "name": "UART_SetConfig"}
+{"node_id": "func:UART_SetConfig@0800cf3c", "node_type": "function", "name": "UART_SetConfig", "entry": "0800cf3c", "is_isr": false, "signature": "undefined UART_SetConfig(void)"}
+{"node_id": "func:XML_ErrorString", "node_type": "function", "name": "XML_ErrorString"}
+{"node_id": "func:XML_ErrorString@0800b720", "node_type": "function", "name": "XML_ErrorString", "entry": "0800b720", "is_isr": false, "signature": "XML_LChar * __stdcall XML_ErrorString(XML_Error code)"}
+{"node_id": "func:XML_GetBuffer", "node_type": "function", "name": "XML_GetBuffer"}
+{"node_id": "func:XML_GetBuffer@0800b4b8", "node_type": "function", "name": "XML_GetBuffer", "entry": "0800b4b8", "is_isr": false, "signature": "void * __stdcall XML_GetBuffer(XML_Parser.conflict parser, int len)"}
+{"node_id": "func:XML_GetCurrentLineNumber", "node_type": "function", "name": "XML_GetCurrentLineNumber"}
+{"node_id": "func:XML_GetCurrentLineNumber@0800b6f2", "node_type": "function", "name": "XML_GetCurrentLineNumber", "entry": "0800b6f2", "is_isr": false, "signature": "XML_Size __stdcall XML_GetCurrentLineNumber(XML_Parser.conflict parser)"}
+{"node_id": "func:XML_GetErrorCode", "node_type": "function", "name": "XML_GetErrorCode"}
+{"node_id": "func:XML_GetErrorCode@0800b6ec", "node_type": "function", "name": "XML_GetErrorCode", "entry": "0800b6ec", "is_isr": false, "signature": "XML_Error __stdcall XML_GetErrorCode(XML_Parser.conflict parser)"}
+{"node_id": "func:XML_Parse", "node_type": "function", "name": "XML_Parse"}
+{"node_id": "func:XML_Parse@0800b5c0", "node_type": "function", "name": "XML_Parse", "entry": "0800b5c0", "is_isr": false, "signature": "XML_Status __stdcall XML_Parse(XML_Parser.conflict parser, char * s, int len, int isFinal)"}
+{"node_id": "func:XML_ParseBuffer", "node_type": "function", "name": "XML_ParseBuffer"}
+{"node_id": "func:XML_ParseBuffer@0800b400", "node_type": "function", "name": "XML_ParseBuffer", "entry": "0800b400", "is_isr": false, "signature": "XML_Status __stdcall XML_ParseBuffer(XML_Parser.conflict parser, int len, int isFinal)"}
+{"node_id": "func:XML_ParserCreate", "node_type": "function", "name": "XML_ParserCreate"}
+{"node_id": "func:XML_ParserCreate@0800b3f0", "node_type": "function", "name": "XML_ParserCreate", "entry": "0800b3f0", "is_isr": false, "signature": "XML_Parser.conflict __stdcall XML_ParserCreate(XML_Char * encodingName)"}
+{"node_id": "func:XML_ParserCreate_MM", "node_type": "function", "name": "XML_ParserCreate_MM"}
+{"node_id": "func:XML_ParserCreate_MM@0800b3ec", "node_type": "function", "name": "XML_ParserCreate_MM", "entry": "0800b3ec", "is_isr": false, "signature": "XML_Parser.conflict __stdcall XML_ParserCreate_MM(XML_Char * encodingName, XML_Memory_Handling_Suite * memsuite, XML_Char * nameSep)"}
+{"node_id": "func:XML_ParserFree", "node_type": "function", "name": "XML_ParserFree"}
+{"node_id": "func:XML_ParserFree@0800b0d8", "node_type": "function", "name": "XML_ParserFree", "entry": "0800b0d8", "is_isr": false, "signature": "void __stdcall XML_ParserFree(XML_Parser.conflict parser)"}
+{"node_id": "func:XML_SetElementHandler", "node_type": "function", "name": "XML_SetElementHandler"}
+{"node_id": "func:XML_SetElementHandler@0800b3f8", "node_type": "function", "name": "XML_SetElementHandler", "entry": "0800b3f8", "is_isr": true, "signature": "void __stdcall XML_SetElementHandler(XML_Parser.conflict parser, XML_StartElementHandler start, XML_EndElementHandler end)"}
+{"node_id": "func:XmlGetUtf8InternalEncoding", "node_type": "function", "name": "XmlGetUtf8InternalEncoding"}
+{"node_id": "func:XmlGetUtf8InternalEncoding@08006b60", "node_type": "function", "name": "XmlGetUtf8InternalEncoding", "entry": "08006b60", "is_isr": false, "signature": "ENCODING * XmlGetUtf8InternalEncoding(void)"}
+{"node_id": "func:XmlInitEncoding", "node_type": "function", "name": "XmlInitEncoding"}
+{"node_id": "func:XmlInitEncoding@08006b68", "node_type": "function", "name": "XmlInitEncoding", "entry": "08006b68", "is_isr": false, "signature": "int __stdcall XmlInitEncoding(INIT_ENCODING * p, ENCODING * * encPtr, char * name)"}
+{"node_id": "func:XmlInitUnknownEncoding", "node_type": "function", "name": "XmlInitUnknownEncoding"}
+{"node_id": "func:XmlInitUnknownEncoding@080069b8", "node_type": "function", "name": "XmlInitUnknownEncoding", "entry": "080069b8", "is_isr": false, "signature": "ENCODING * __stdcall XmlInitUnknownEncoding(void * mem, int * table, CONVERTER convert, void * userData)"}
+{"node_id": "func:XmlParseXmlDecl", "node_type": "function", "name": "XmlParseXmlDecl"}
+{"node_id": "func:XmlParseXmlDecl@08006ba4", "node_type": "function", "name": "XmlParseXmlDecl", "entry": "08006ba4", "is_isr": false, "signature": "int __stdcall XmlParseXmlDecl(int isGeneralTextEntity, ENCODING * enc, char * ptr, char * end, char * * badPtr, char * * versionPtr, char * * versionEndPtr, char * * encodingName, ENCODING * * encoding, int * standalone)"}
+{"node_id": "func:XmlPrologStateInit", "node_type": "function", "name": "XmlPrologStateInit"}
+{"node_id": "func:XmlPrologStateInit@08007a7c", "node_type": "function", "name": "XmlPrologStateInit", "entry": "08007a7c", "is_isr": false, "signature": "void __stdcall XmlPrologStateInit(PROLOG_STATE * state)"}
+{"node_id": "func:XmlSizeOfUnknownEncoding", "node_type": "function", "name": "XmlSizeOfUnknownEncoding"}
+{"node_id": "func:XmlSizeOfUnknownEncoding@080069b0", "node_type": "function", "name": "XmlSizeOfUnknownEncoding", "entry": "080069b0", "is_isr": false, "signature": "int XmlSizeOfUnknownEncoding(void)"}
+{"node_id": "func:XmlUtf8Encode", "node_type": "function", "name": "XmlUtf8Encode"}
+{"node_id": "func:XmlUtf8Encode@080068b0", "node_type": "function", "name": "XmlUtf8Encode", "entry": "080068b0", "is_isr": false, "signature": "int __stdcall XmlUtf8Encode(int c, char * buf)"}
+{"node_id": "func:_Balloc", "node_type": "function", "name": "_Balloc"}
+{"node_id": "func:_Balloc@08013524", "node_type": "function", "name": "_Balloc", "entry": "08013524", "is_isr": false, "signature": "_Bigint * __stdcall _Balloc(_reent.conflict * ptr, int k)"}
+{"node_id": "func:_Bfree", "node_type": "function", "name": "_Bfree"}
+{"node_id": "func:_Bfree@0801358e", "node_type": "function", "name": "_Bfree", "entry": "0801358e", "is_isr": false, "signature": "void __stdcall _Bfree(_reent.conflict * ptr, _Bigint * v)"}
+{"node_id": "func:_GLOBAL__sub_I_pc", "node_type": "function", "name": "_GLOBAL__sub_I_pc"}
+{"node_id": "func:_GLOBAL__sub_I_pc@0800b940", "node_type": "function", "name": "_GLOBAL__sub_I_pc", "entry": "0800b940", "is_isr": false, "signature": "void _GLOBAL__sub_I_pc(void)"}
+{"node_id": "func:__aeabi_atexit", "node_type": "function", "name": "__aeabi_atexit"}
+{"node_id": "func:__aeabi_atexit@0800dee8", "node_type": "function", "name": "__aeabi_atexit", "entry": "0800dee8", "is_isr": false, "signature": "int __stdcall __aeabi_atexit(void * object, _func_void_void_ptr * destructor, void * dso_handle)"}
+{"node_id": "func:__aeabi_cdcmpeq", "node_type": "function", "name": "__aeabi_cdcmpeq"}
+{"node_id": "func:__aeabi_cdcmpeq@08014bd8", "node_type": "function", "name": "__aeabi_cdcmpeq", "entry": "08014bd8", "is_isr": false, "signature": "undefined __aeabi_cdcmpeq(void)"}
+{"node_id": "func:__aeabi_cdrcmple", "node_type": "function", "name": "__aeabi_cdrcmple"}
+{"node_id": "func:__aeabi_cdrcmple@08014bc8", "node_type": "function", "name": "__aeabi_cdrcmple", "entry": "08014bc8", "is_isr": false, "signature": "undefined __aeabi_cdrcmple(void)"}
+{"node_id": "func:__aeabi_d2iz", "node_type": "function", "name": "__aeabi_d2iz"}
+{"node_id": "func:__aeabi_d2iz@08014c4c", "node_type": "function", "name": "__aeabi_d2iz", "entry": "08014c4c", "is_isr": false, "signature": "undefined __aeabi_d2iz(void)"}
+{"node_id": "func:__aeabi_d2uiz", "node_type": "function", "name": "__aeabi_d2uiz"}
+{"node_id": "func:__aeabi_d2uiz@08014c9c", "node_type": "function", "name": "__aeabi_d2uiz", "entry": "08014c9c", "is_isr": false, "signature": "undefined __aeabi_d2uiz(void)"}
+{"node_id": "func:__aeabi_dadd", "node_type": "function", "name": "__aeabi_dadd"}
+{"node_id": "func:__aeabi_dadd@080143b4", "node_type": "function", "name": "__aeabi_dadd", "entry": "080143b4", "is_isr": false, "signature": "undefined __aeabi_dadd(void)"}
+{"node_id": "func:__aeabi_dcmpeq", "node_type": "function", "name": "__aeabi_dcmpeq"}
+{"node_id": "func:__aeabi_dcmpeq@08014be8", "node_type": "function", "name": "__aeabi_dcmpeq", "entry": "08014be8", "is_isr": false, "signature": "undefined __aeabi_dcmpeq(void)"}
+{"node_id": "func:__aeabi_dcmpge", "node_type": "function", "name": "__aeabi_dcmpge"}
+{"node_id": "func:__aeabi_dcmpge@08014c24", "node_type": "function", "name": "__aeabi_dcmpge", "entry": "08014c24", "is_isr": false, "signature": "undefined __aeabi_dcmpge(void)"}
+{"node_id": "func:__aeabi_dcmpgt", "node_type": "function", "name": "__aeabi_dcmpgt"}
+{"node_id": "func:__aeabi_dcmpgt@08014c38", "node_type": "function", "name": "__aeabi_dcmpgt", "entry": "08014c38", "is_isr": false, "signature": "undefined __aeabi_dcmpgt(void)"}
+{"node_id": "func:__aeabi_dcmple", "node_type": "function", "name": "__aeabi_dcmple"}
+{"node_id": "func:__aeabi_dcmple@08014c10", "node_type": "function", "name": "__aeabi_dcmple", "entry": "08014c10", "is_isr": false, "signature": "undefined __aeabi_dcmple(void)"}
+{"node_id": "func:__aeabi_dcmplt", "node_type": "function", "name": "__aeabi_dcmplt"}
+{"node_id": "func:__aeabi_dcmplt@08014bfc", "node_type": "function", "name": "__aeabi_dcmplt", "entry": "08014bfc", "is_isr": false, "signature": "undefined __aeabi_dcmplt(void)"}
+{"node_id": "func:__aeabi_drsub@080143a8", "node_type": "function", "name": "__aeabi_drsub", "entry": "080143a8", "is_isr": false, "signature": "undefined __aeabi_drsub(void)"}
+{"node_id": "func:__aeabi_f2d@08014670", "node_type": "function", "name": "__aeabi_f2d", "entry": "08014670", "is_isr": false, "signature": "undefined __aeabi_f2d(void)"}
+{"node_id": "func:__aeabi_i2d", "node_type": "function", "name": "__aeabi_i2d"}
+{"node_id": "func:__aeabi_i2d@0801464c", "node_type": "function", "name": "__aeabi_i2d", "entry": "0801464c", "is_isr": false, "signature": "undefined __aeabi_i2d(void)"}
+{"node_id": "func:__aeabi_l2d@080146bc", "node_type": "function", "name": "__aeabi_l2d", "entry": "080146bc", "is_isr": false, "signature": "undefined __aeabi_l2d(void)"}
+{"node_id": "func:__any_on", "node_type": "function", "name": "__any_on"}
+{"node_id": "func:__any_on@08013cca", "node_type": "function", "name": "__any_on", "entry": "08013cca", "is_isr": false, "signature": "__ULong __stdcall __any_on(_Bigint * b, int k)"}
+{"node_id": "func:__b2d", "node_type": "function", "name": "__b2d"}
+{"node_id": "func:__b2d@08013b04", "node_type": "function", "name": "__b2d", "entry": "08013b04", "is_isr": false, "signature": "double __stdcall __b2d(_Bigint * a, int * e)"}
+{"node_id": "func:__call_exitprocs", "node_type": "function", "name": "__call_exitprocs"}
+{"node_id": "func:__call_exitprocs@08011ed0", "node_type": "function", "name": "__call_exitprocs", "entry": "08011ed0", "is_isr": false, "signature": "void __stdcall __call_exitprocs(int code, void * d)"}
+{"node_id": "func:__copybits", "node_type": "function", "name": "__copybits"}
+{"node_id": "func:__copybits@08013c96", "node_type": "function", "name": "__copybits", "entry": "08013c96", "is_isr": false, "signature": "void __stdcall __copybits(__ULong * c, int n, _Bigint * b)"}
+{"node_id": "func:__cvt", "node_type": "function", "name": "__cvt"}
+{"node_id": "func:__cvt@0800f274", "node_type": "function", "name": "__cvt", "entry": "0800f274", "is_isr": false, "signature": "char * __stdcall __cvt(_reent.conflict * data, double value, int ndigits, int flags, char * sign, int * decpt, int ch, int * length, char * buf)"}
+{"node_id": "func:__cxa_atexit", "node_type": "function", "name": "__cxa_atexit"}
+{"node_id": "func:__cxa_atexit@0800df00", "node_type": "function", "name": "__cxa_atexit", "entry": "0800df00", "is_isr": false, "signature": "int __stdcall __cxa_atexit(_func_void_void_ptr * fn, void * arg, void * d)"}
+{"node_id": "func:__cxa_pure_virtual@0800bd5c", "node_type": "function", "name": "__cxa_pure_virtual", "entry": "0800bd5c", "is_isr": false, "signature": "undefined __cxa_pure_virtual(void)"}
+{"node_id": "func:__d2b", "node_type": "function", "name": "__d2b"}
+{"node_id": "func:__d2b@08013ba2", "node_type": "function", "name": "__d2b", "entry": "08013ba2", "is_isr": false, "signature": "_Bigint * __stdcall __d2b(_reent.conflict * ptr, double _d, int * e, int * bits)"}
+{"node_id": "func:__divdf3", "node_type": "function", "name": "__divdf3"}
+{"node_id": "func:__divdf3@0801496c", "node_type": "function", "name": "__divdf3", "entry": "0801496c", "is_isr": false, "signature": "undefined __divdf3(void)"}
+{"node_id": "func:__do_global_dtors_aux", "node_type": "function", "name": "__do_global_dtors_aux"}
+{"node_id": "func:__do_global_dtors_aux@08000180", "node_type": "function", "name": "__do_global_dtors_aux", "entry": "08000180", "is_isr": false, "signature": "undefined __do_global_dtors_aux(void)"}
+{"node_id": "func:__env_lock", "node_type": "function", "name": "__env_lock"}
+{"node_id": "func:__env_lock@08014390", "node_type": "function", "name": "__env_lock", "entry": "08014390", "is_isr": false, "signature": "void __stdcall __env_lock(_reent.conflict * ptr)"}
+{"node_id": "func:__env_unlock", "node_type": "function", "name": "__env_unlock"}
+{"node_id": "func:__env_unlock@08014392", "node_type": "function", "name": "__env_unlock", "entry": "08014392", "is_isr": false, "signature": "void __stdcall __env_unlock(_reent.conflict * ptr)"}
+{"node_id": "func:__errno", "node_type": "function", "name": "__errno"}
+{"node_id": "func:__errno@0800df1c", "node_type": "function", "name": "__errno", "entry": "0800df1c", "is_isr": false, "signature": "int * __errno(void)"}
+{"node_id": "func:__exponent", "node_type": "function", "name": "__exponent"}
+{"node_id": "func:__exponent@0800f330", "node_type": "function", "name": "__exponent", "entry": "0800f330", "is_isr": false, "signature": "int __stdcall __exponent(char * p0, int exp, int fmtch)"}
+{"node_id": "func:__floatundidf@080146ac", "node_type": "function", "name": "__floatundidf", "entry": "080146ac", "is_isr": false, "signature": "undefined __floatundidf(void)"}
+{"node_id": "func:__floatunsidf", "node_type": "function", "name": "__floatunsidf"}
+{"node_id": "func:__floatunsidf@0801462c", "node_type": "function", "name": "__floatunsidf", "entry": "0801462c", "is_isr": false, "signature": "undefined __floatunsidf(void)"}
+{"node_id": "func:__fpclassifyd", "node_type": "function", "name": "__fpclassifyd"}
+{"node_id": "func:__fpclassifyd@0801055c", "node_type": "function", "name": "__fpclassifyd", "entry": "0801055c", "is_isr": false, "signature": "int __stdcall __fpclassifyd(double x)"}
+{"node_id": "func:__gedf2@08014b3c", "node_type": "function", "name": "__gedf2", "entry": "08014b3c", "is_isr": false, "signature": "undefined __gedf2(void)"}
+{"node_id": "func:__gethex", "node_type": "function", "name": "__gethex"}
+{"node_id": "func:__gethex@08012da2", "node_type": "function", "name": "__gethex", "entry": "08012da2", "is_isr": false, "signature": "int __stdcall __gethex(_reent.conflict * ptr, char * * sp, FPI * fpi, Long * exp, _Bigint * * bp, int sign)"}
+{"node_id": "func:__gettzinfo", "node_type": "function", "name": "__gettzinfo"}
+{"node_id": "func:__gettzinfo@080133ac", "node_type": "function", "name": "__gettzinfo", "entry": "080133ac", "is_isr": false, "signature": "__tzinfo_type * __gettzinfo(void)"}
+{"node_id": "func:__hexdig_fun", "node_type": "function", "name": "__hexdig_fun"}
+{"node_id": "func:__hexdig_fun@08012d78", "node_type": "function", "name": "__hexdig_fun", "entry": "08012d78", "is_isr": false, "signature": "uchar __stdcall __hexdig_fun(uchar c)"}
+{"node_id": "func:__hexnan", "node_type": "function", "name": "__hexnan"}
+{"node_id": "func:__hexnan@08013210", "node_type": "function", "name": "__hexnan", "entry": "08013210", "is_isr": false, "signature": "int __stdcall __hexnan(char * * sp, FPI * fpi, __ULong * x0)"}
+{"node_id": "func:__hi0bits", "node_type": "function", "name": "__hi0bits"}
+{"node_id": "func:__hi0bits@080136b8", "node_type": "function", "name": "__hi0bits", "entry": "080136b8", "is_isr": false, "signature": "int __stdcall __hi0bits(__ULong x)"}
+{"node_id": "func:__i2b", "node_type": "function", "name": "__i2b"}
+{"node_id": "func:__i2b@08013752", "node_type": "function", "name": "__i2b", "entry": "08013752", "is_isr": false, "signature": "_Bigint * __stdcall __i2b(_reent.conflict * ptr, int i)"}
+{"node_id": "func:__ledf2@08014b44", "node_type": "function", "name": "__ledf2", "entry": "08014b44", "is_isr": false, "signature": "undefined __ledf2(void)"}
+{"node_id": "func:__libc_fini_array@0800e38c", "node_type": "function", "name": "__libc_fini_array", "entry": "0800e38c", "is_isr": false, "signature": "void __libc_fini_array(void)"}
+{"node_id": "func:__libc_init_array", "node_type": "function", "name": "__libc_init_array"}
+{"node_id": "func:__libc_init_array@0800e694", "node_type": "function", "name": "__libc_init_array", "entry": "0800e694", "is_isr": false, "signature": "void __libc_init_array(void)"}
+{"node_id": "func:__lo0bits", "node_type": "function", "name": "__lo0bits"}
+{"node_id": "func:__lo0bits@080136f8", "node_type": "function", "name": "__lo0bits", "entry": "080136f8", "is_isr": false, "signature": "int __stdcall __lo0bits(__ULong * y)"}
+{"node_id": "func:__lshift", "node_type": "function", "name": "__lshift"}
+{"node_id": "func:__lshift@08013920", "node_type": "function", "name": "__lshift", "entry": "08013920", "is_isr": false, "signature": "_Bigint * __stdcall __lshift(_reent.conflict * ptr, _Bigint * b, int k)"}
+{"node_id": "func:__mcmp", "node_type": "function", "name": "__mcmp"}
+{"node_id": "func:__mcmp@080139c6", "node_type": "function", "name": "__mcmp", "entry": "080139c6", "is_isr": false, "signature": "int __stdcall __mcmp(_Bigint * a, _Bigint * b)"}
+{"node_id": "func:__mdiff", "node_type": "function", "name": "__mdiff"}
+{"node_id": "func:__mdiff@080139fe", "node_type": "function", "name": "__mdiff", "entry": "080139fe", "is_isr": false, "signature": "_Bigint * __stdcall __mdiff(_reent.conflict * ptr, _Bigint * a, _Bigint * b)"}
+{"node_id": "func:__muldf3", "node_type": "function", "name": "__muldf3"}
+{"node_id": "func:__muldf3@08014718", "node_type": "function", "name": "__muldf3", "entry": "08014718", "is_isr": false, "signature": "undefined __muldf3(void)"}
+{"node_id": "func:__multadd", "node_type": "function", "name": "__multadd"}
+{"node_id": "func:__multadd@080135bc", "node_type": "function", "name": "__multadd", "entry": "080135bc", "is_isr": false, "signature": "_Bigint * __stdcall __multadd(_reent.conflict * ptr, _Bigint * b, int m, int a)"}
+{"node_id": "func:__multiply", "node_type": "function", "name": "__multiply"}
+{"node_id": "func:__multiply@08013764", "node_type": "function", "name": "__multiply", "entry": "08013764", "is_isr": false, "signature": "_Bigint * __stdcall __multiply(_reent.conflict * ptr, _Bigint * a, _Bigint * b)"}
+{"node_id": "func:__nedf2", "node_type": "function", "name": "__nedf2"}
+{"node_id": "func:__nedf2@08014b4c", "node_type": "function", "name": "__nedf2", "entry": "08014b4c", "is_isr": false, "signature": "undefined __nedf2(void)"}
+{"node_id": "func:__pow5mult", "node_type": "function", "name": "__pow5mult"}
+{"node_id": "func:__pow5mult@08013884", "node_type": "function", "name": "__pow5mult", "entry": "08013884", "is_isr": false, "signature": "_Bigint * __stdcall __pow5mult(_reent.conflict * ptr, _Bigint * b, int k)"}
+{"node_id": "func:__ratio", "node_type": "function", "name": "__ratio"}
+{"node_id": "func:__ratio@08013c46", "node_type": "function", "name": "__ratio", "entry": "08013c46", "is_isr": false, "signature": "double __stdcall __ratio(_Bigint * a, _Bigint * b)"}
+{"node_id": "func:__register_exitproc", "node_type": "function", "name": "__register_exitproc"}
+{"node_id": "func:__register_exitproc@08011e18", "node_type": "function", "name": "__register_exitproc", "entry": "08011e18", "is_isr": false, "signature": "int __stdcall __register_exitproc(int type, _func_void * fn, void * arg, void * d)"}
+{"node_id": "func:__s2b", "node_type": "function", "name": "__s2b"}
+{"node_id": "func:__s2b@08013638", "node_type": "function", "name": "__s2b", "entry": "08013638", "is_isr": false, "signature": "_Bigint * __stdcall __s2b(_reent.conflict * ptr, char * s, int nd0, int nd, __ULong y9)"}
+{"node_id": "func:__sccl", "node_type": "function", "name": "__sccl"}
+{"node_id": "func:__sccl@080105cc", "node_type": "function", "name": "__sccl", "entry": "080105cc", "is_isr": false, "signature": "u_char * __stdcall __sccl(char * tab, u_char * fmt)"}
+{"node_id": "func:__sclose@08010876", "node_type": "function", "name": "__sclose", "entry": "08010876", "is_isr": false, "signature": "int __stdcall __sclose(_reent.conflict * ptr, void * cookie)"}
+{"node_id": "func:__seofread@08010816", "node_type": "function", "name": "__seofread", "entry": "08010816", "is_isr": false, "signature": "int __stdcall __seofread(_reent.conflict * _ptr, void * cookie, char * buf, int len)"}
+{"node_id": "func:__sflags", "node_type": "function", "name": "__sflags"}
+{"node_id": "func:__sflags@08012c78", "node_type": "function", "name": "__sflags", "entry": "08012c78", "is_isr": false, "signature": "int __stdcall __sflags(_reent.conflict * ptr, char * mode, int * optr)"}
+{"node_id": "func:__sflush_r", "node_type": "function", "name": "__sflush_r"}
+{"node_id": "func:__sflush_r@0800e04c", "node_type": "function", "name": "__sflush_r", "entry": "0800e04c", "is_isr": false, "signature": "int __stdcall __sflush_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:__sfmoreglue", "node_type": "function", "name": "__sfmoreglue"}
+{"node_id": "func:__sfmoreglue@0800e288", "node_type": "function", "name": "__sfmoreglue", "entry": "0800e288", "is_isr": false, "signature": "_glue * __stdcall __sfmoreglue(_reent.conflict * d, int n)"}
+{"node_id": "func:__sfp", "node_type": "function", "name": "__sfp"}
+{"node_id": "func:__sfp@0800e314", "node_type": "function", "name": "__sfp", "entry": "0800e314", "is_isr": false, "signature": "FILE.conflict * __stdcall __sfp(_reent.conflict * d)"}
+{"node_id": "func:__sfp_lock_acquire", "node_type": "function", "name": "__sfp_lock_acquire"}
+{"node_id": "func:__sfp_lock_acquire@0800e388", "node_type": "function", "name": "__sfp_lock_acquire", "entry": "0800e388", "is_isr": false, "signature": "void __sfp_lock_acquire(void)"}
+{"node_id": "func:__sfp_lock_release", "node_type": "function", "name": "__sfp_lock_release"}
+{"node_id": "func:__sfp_lock_release@0800e38a", "node_type": "function", "name": "__sfp_lock_release", "entry": "0800e38a", "is_isr": false, "signature": "void __sfp_lock_release(void)"}
+{"node_id": "func:__sfputc_r", "node_type": "function", "name": "__sfputc_r"}
+{"node_id": "func:__sfputc_r@0800eff8", "node_type": "function", "name": "__sfputc_r", "entry": "0800eff8", "is_isr": false, "signature": "int __stdcall __sfputc_r(_reent.conflict * ptr, int c, FILE.conflict * fp)"}
+{"node_id": "func:__sfputs_r", "node_type": "function", "name": "__sfputs_r"}
+{"node_id": "func:__sfputs_r@0800f024", "node_type": "function", "name": "__sfputs_r", "entry": "0800f024", "is_isr": false, "signature": "int __stdcall __sfputs_r(_reent.conflict * ptr, FILE.conflict * fp, char * buf, size_t len)"}
+{"node_id": "func:__sinit", "node_type": "function", "name": "__sinit"}
+{"node_id": "func:__sinit@0800e2b4", "node_type": "function", "name": "__sinit", "entry": "0800e2b4", "is_isr": false, "signature": "void __stdcall __sinit(_reent.conflict * s)"}
+{"node_id": "func:__smakebuf_r", "node_type": "function", "name": "__smakebuf_r"}
+{"node_id": "func:__smakebuf_r@0800e8d0", "node_type": "function", "name": "__smakebuf_r", "entry": "0800e8d0", "is_isr": false, "signature": "void __stdcall __smakebuf_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:__sread@080107f4", "node_type": "function", "name": "__sread", "entry": "080107f4", "is_isr": false, "signature": "int __stdcall __sread(_reent.conflict * ptr, void * cookie, char * buf, int n)"}
+{"node_id": "func:__srefill_r", "node_type": "function", "name": "__srefill_r"}
+{"node_id": "func:__srefill_r@080103f8", "node_type": "function", "name": "__srefill_r", "entry": "080103f8", "is_isr": false, "signature": "int __stdcall __srefill_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:__srget_r", "node_type": "function", "name": "__srget_r"}
+{"node_id": "func:__srget_r@08010504", "node_type": "function", "name": "__srget_r", "entry": "08010504", "is_isr": false, "signature": "int __stdcall __srget_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:__sseek@08010852", "node_type": "function", "name": "__sseek", "entry": "08010852", "is_isr": false, "signature": "_fpos_t __stdcall __sseek(_reent.conflict * ptr, void * cookie, _fpos_t offset, int whence)"}
+{"node_id": "func:__ssputs_r", "node_type": "function", "name": "__ssputs_r"}
+{"node_id": "func:__ssputs_r@08013d76", "node_type": "function", "name": "__ssputs_r", "entry": "08013d76", "is_isr": false, "signature": "int __stdcall __ssputs_r(_reent.conflict * ptr, FILE.conflict * fp, char * buf, size_t len)"}
+{"node_id": "func:__ssrefill_r", "node_type": "function", "name": "__ssrefill_r"}
+{"node_id": "func:__ssrefill_r@08014086", "node_type": "function", "name": "__ssrefill_r", "entry": "08014086", "is_isr": false, "signature": "int __stdcall __ssrefill_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:__ssvfscanf_r", "node_type": "function", "name": "__ssvfscanf_r"}
+{"node_id": "func:__ssvfscanf_r@080140c0", "node_type": "function", "name": "__ssvfscanf_r", "entry": "080140c0", "is_isr": false, "signature": "int __stdcall __ssvfscanf_r(_reent.conflict * rptr, FILE.conflict * fp, char * fmt0, va_list ap)"}
+{"node_id": "func:__subdf3", "node_type": "function", "name": "__subdf3"}
+{"node_id": "func:__subdf3@080143b0", "node_type": "function", "name": "__subdf3", "entry": "080143b0", "is_isr": false, "signature": "undefined __subdf3(void)"}
+{"node_id": "func:__submore", "node_type": "function", "name": "__submore"}
+{"node_id": "func:__submore@08011c00", "node_type": "function", "name": "__submore", "entry": "08011c00", "is_isr": false, "signature": "int __stdcall __submore(_reent.conflict * rptr, FILE.conflict * fp)"}
+{"node_id": "func:__swbuf_r", "node_type": "function", "name": "__swbuf_r"}
+{"node_id": "func:__swbuf_r@08011c74", "node_type": "function", "name": "__swbuf_r", "entry": "08011c74", "is_isr": false, "signature": "int __stdcall __swbuf_r(_reent.conflict * ptr, int c, FILE.conflict * fp)"}
+{"node_id": "func:__swrite@0801081a", "node_type": "function", "name": "__swrite", "entry": "0801081a", "is_isr": false, "signature": "int __stdcall __swrite(_reent.conflict * ptr, void * cookie, char * buf, int n)"}
+{"node_id": "func:__swsetup_r", "node_type": "function", "name": "__swsetup_r"}
+{"node_id": "func:__swsetup_r@08011d40", "node_type": "function", "name": "__swsetup_r", "entry": "08011d40", "is_isr": false, "signature": "int __stdcall __swsetup_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:__truncdfsf2", "node_type": "function", "name": "__truncdfsf2"}
+{"node_id": "func:__truncdfsf2@08014cdc", "node_type": "function", "name": "__truncdfsf2", "entry": "08014cdc", "is_isr": false, "signature": "undefined __truncdfsf2(void)"}
+{"node_id": "func:__tz_lock", "node_type": "function", "name": "__tz_lock"}
+{"node_id": "func:__tz_lock@080118e8", "node_type": "function", "name": "__tz_lock", "entry": "080118e8", "is_isr": false, "signature": "void __tz_lock(void)"}
+{"node_id": "func:__tz_unlock", "node_type": "function", "name": "__tz_unlock"}
+{"node_id": "func:__tz_unlock@080118ea", "node_type": "function", "name": "__tz_unlock", "entry": "080118ea", "is_isr": false, "signature": "void __tz_unlock(void)"}
+{"node_id": "func:__tzcalc_limits", "node_type": "function", "name": "__tzcalc_limits"}
+{"node_id": "func:__tzcalc_limits@080117a0", "node_type": "function", "name": "__tzcalc_limits", "entry": "080117a0", "is_isr": false, "signature": "int __stdcall __tzcalc_limits(int year)"}
+{"node_id": "func:__ulp", "node_type": "function", "name": "__ulp"}
+{"node_id": "func:__ulp@08013abc", "node_type": "function", "name": "__ulp", "entry": "08013abc", "is_isr": false, "signature": "double __stdcall __ulp(double _x)"}
+{"node_id": "func:__wrap_main", "node_type": "function", "name": "__wrap_main"}
+{"node_id": "func:__wrap_main@0800bd68", "node_type": "function", "name": "__wrap_main", "entry": "0800bd68", "is_isr": false, "signature": "undefined __wrap_main(void)"}
+{"node_id": "func:_base_getc@0800d694", "node_type": "function", "name": "_base_getc", "entry": "0800d694", "is_isr": false, "signature": "undefined __thiscall _base_getc(SerialBase * this)"}
+{"node_id": "func:_base_putc@0800d69c", "node_type": "function", "name": "_base_putc", "entry": "0800d69c", "is_isr": false, "signature": "undefined __thiscall _base_putc(SerialBase * this, int param_1)"}
+{"node_id": "func:_calloc_r", "node_type": "function", "name": "_calloc_r"}
+{"node_id": "func:_calloc_r@08013d0e", "node_type": "function", "name": "_calloc_r", "entry": "08013d0e", "is_isr": false, "signature": "void * __stdcall _calloc_r(_reent.conflict * reent_ptr, malloc_size_t n, malloc_size_t elem)"}
+{"node_id": "func:_cleanup_r@0800e234", "node_type": "function", "name": "_cleanup_r", "entry": "0800e234", "is_isr": false, "signature": "void __stdcall _cleanup_r(_reent.conflict * ptr)"}
+{"node_id": "func:_close", "node_type": "function", "name": "_close"}
+{"node_id": "func:_close@0800bc3c", "node_type": "function", "name": "_close", "entry": "0800bc3c", "is_isr": false, "signature": "int __stdcall _close(int __fd)"}
+{"node_id": "func:_close_r", "node_type": "function", "name": "_close_r"}
+{"node_id": "func:_close_r@08011fa4", "node_type": "function", "name": "_close_r", "entry": "08011fa4", "is_isr": false, "signature": "int __stdcall _close_r(_reent.conflict * ptr, int fd)"}
+{"node_id": "func:_dtoa_r", "node_type": "function", "name": "_dtoa_r"}
+{"node_id": "func:_dtoa_r@08012100", "node_type": "function", "name": "_dtoa_r", "entry": "08012100", "is_isr": false, "signature": "char * __stdcall _dtoa_r(_reent.conflict * ptr, double _d, int mode, int ndigits, int * decpt, int * sign, char * * rve)"}
+{"node_id": "func:_exit", "node_type": "function", "name": "_exit"}
+{"node_id": "func:_exit@0800bda4", "node_type": "function", "name": "_exit", "entry": "0800bda4", "is_isr": false, "signature": "noreturn void __stdcall _exit(int __status)"}
+{"node_id": "func:_fclose_r", "node_type": "function", "name": "_fclose_r"}
+{"node_id": "func:_fclose_r@0800df50", "node_type": "function", "name": "_fclose_r", "entry": "0800df50", "is_isr": false, "signature": "int __stdcall _fclose_r(_reent.conflict * rptr, FILE.conflict * fp)"}
+{"node_id": "func:_fflush_r", "node_type": "function", "name": "_fflush_r"}
+{"node_id": "func:_fflush_r@0800e154", "node_type": "function", "name": "_fflush_r", "entry": "0800e154", "is_isr": false, "signature": "int __stdcall _fflush_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:_fgetc_r", "node_type": "function", "name": "_fgetc_r"}
+{"node_id": "func:_fgetc_r@0800e1cc", "node_type": "function", "name": "_fgetc_r", "entry": "0800e1cc", "is_isr": false, "signature": "int __stdcall _fgetc_r(_reent.conflict * ptr, FILE.conflict * fp)"}
+{"node_id": "func:_findenv_r", "node_type": "function", "name": "_findenv_r"}
+{"node_id": "func:_findenv_r@08013324", "node_type": "function", "name": "_findenv_r", "entry": "08013324", "is_isr": false, "signature": "char * __stdcall _findenv_r(_reent.conflict * reent_ptr, char * name, int * offset)"}
+{"node_id": "func:_fini", "node_type": "function", "name": "_fini"}
+{"node_id": "func:_fini@08014d88", "node_type": "function", "name": "_fini", "entry": "08014d88", "is_isr": false, "signature": "undefined _fini(void)"}
+{"node_id": "func:_fopen_r", "node_type": "function", "name": "_fopen_r"}
+{"node_id": "func:_fopen_r@0800e3b4", "node_type": "function", "name": "_fopen_r", "entry": "0800e3b4", "is_isr": false, "signature": "FILE.conflict * __stdcall _fopen_r(_reent.conflict * ptr, char * file, char * mode)"}
+{"node_id": "func:_fputs_r", "node_type": "function", "name": "_fputs_r"}
+{"node_id": "func:_fputs_r@0800e448", "node_type": "function", "name": "_fputs_r", "entry": "0800e448", "is_isr": false, "signature": "int __stdcall _fputs_r(_reent.conflict * ptr, char * s, FILE.conflict * fp)"}
+{"node_id": "func:_free_r", "node_type": "function", "name": "_free_r"}
+{"node_id": "func:_free_r@0800eec4", "node_type": "function", "name": "_free_r", "entry": "0800eec4", "is_isr": false, "signature": "void __stdcall _free_r(_reent.conflict * reent_ptr, void * free_p)"}
+{"node_id": "func:_fseek_r", "node_type": "function", "name": "_fseek_r"}
+{"node_id": "func:_fseek_r@0800e504", "node_type": "function", "name": "_fseek_r", "entry": "0800e504", "is_isr": false, "signature": "int __stdcall _fseek_r(_reent.conflict * ptr, FILE.conflict * fp, long offset, int whence)"}
+{"node_id": "func:_fseeko_r@0800e508", "node_type": "function", "name": "_fseeko_r", "entry": "0800e508", "is_isr": false, "signature": "int __stdcall _fseeko_r(_reent.conflict * ptr, FILE.conflict * fp, _off_t offset, int whence)"}
+{"node_id": "func:_fstat", "node_type": "function", "name": "_fstat"}
+{"node_id": "func:_fstat@0800bd3c", "node_type": "function", "name": "_fstat", "entry": "0800bd3c", "is_isr": false, "signature": "int __stdcall _fstat(int __fd, stat * __buf)"}
+{"node_id": "func:_fstat_r", "node_type": "function", "name": "_fstat_r"}
+{"node_id": "func:_fstat_r@08012ce8", "node_type": "function", "name": "_fstat_r", "entry": "08012ce8", "is_isr": false, "signature": "int __stdcall _fstat_r(_reent.conflict * ptr, int fd, stat * pstat)"}
+{"node_id": "func:_fwalk", "node_type": "function", "name": "_fwalk"}
+{"node_id": "func:_fwalk@0800e620", "node_type": "function", "name": "_fwalk", "entry": "0800e620", "is_isr": false, "signature": "int __stdcall _fwalk(_reent.conflict * ptr, _func_int_FILE_ptr * function)"}
+{"node_id": "func:_fwalk_reent", "node_type": "function", "name": "_fwalk_reent"}
+{"node_id": "func:_fwalk_reent@0800e658", "node_type": "function", "name": "_fwalk_reent", "entry": "0800e658", "is_isr": false, "signature": "int __stdcall _fwalk_reent(_reent.conflict * ptr, _func_int__reent_ptr_FILE_ptr * reent_function)"}
+{"node_id": "func:_getc", "node_type": "function", "name": "_getc"}
+{"node_id": "func:_getc@0800d5d4", "node_type": "function", "name": "_getc", "entry": "0800d5d4", "is_isr": false, "signature": "undefined __thiscall _getc(Serial * this)"}
+{"node_id": "func:_getc@0800d5d8", "node_type": "function", "name": "_getc", "entry": "0800d5d8", "is_isr": false, "signature": "undefined __thiscall _getc(Serial * this)"}
+{"node_id": "func:_getenv_r", "node_type": "function", "name": "_getenv_r"}
+{"node_id": "func:_getenv_r@0801339c", "node_type": "function", "name": "_getenv_r", "entry": "0801339c", "is_isr": false, "signature": "char * __stdcall _getenv_r(_reent.conflict * reent_ptr, char * name)"}
+{"node_id": "func:_init", "node_type": "function", "name": "_init"}
+{"node_id": "func:_init@08014d7c", "node_type": "function", "name": "_init", "entry": "08014d7c", "is_isr": false, "signature": "int __stdcall _init(EVP_PKEY_CTX * ctx)"}
+{"node_id": "func:_irq_handler@0800d61c", "node_type": "function", "name": "_irq_handler", "entry": "0800d61c", "is_isr": true, "signature": "undefined __stdcall _irq_handler(ulong param_1, SerialIrq param_2)"}
+{"node_id": "func:_isatty", "node_type": "function", "name": "_isatty"}
+{"node_id": "func:_isatty@0800bcf4", "node_type": "function", "name": "_isatty", "entry": "0800bcf4", "is_isr": false, "signature": "int __stdcall _isatty(int __fd)"}
+{"node_id": "func:_isatty_r", "node_type": "function", "name": "_isatty_r"}
+{"node_id": "func:_isatty_r@080134d8", "node_type": "function", "name": "_isatty_r", "entry": "080134d8", "is_isr": false, "signature": "int __stdcall _isatty_r(_reent.conflict * ptr, int fd)"}
+{"node_id": "func:_localeconv_r", "node_type": "function", "name": "_localeconv_r"}
+{"node_id": "func:_localeconv_r@080134f8", "node_type": "function", "name": "_localeconv_r", "entry": "080134f8", "is_isr": false, "signature": "lconv * __stdcall _localeconv_r(_reent.conflict * data)"}
+{"node_id": "func:_lseek", "node_type": "function", "name": "_lseek"}
+{"node_id": "func:_lseek@0800bd18", "node_type": "function", "name": "_lseek", "entry": "0800bd18", "is_isr": false, "signature": "__off_t __stdcall _lseek(int __fd, __off_t __offset, int __whence)"}
+{"node_id": "func:_lseek_r", "node_type": "function", "name": "_lseek_r"}
+{"node_id": "func:_lseek_r@08013500", "node_type": "function", "name": "_lseek_r", "entry": "08013500", "is_isr": false, "signature": "_off_t __stdcall _lseek_r(_reent.conflict * ptr, int fd, _off_t pos, int whence)"}
+{"node_id": "func:_malloc_r", "node_type": "function", "name": "_malloc_r"}
+{"node_id": "func:_malloc_r@0800ef4c", "node_type": "function", "name": "_malloc_r", "entry": "0800ef4c", "is_isr": false, "signature": "void * __stdcall _malloc_r(_reent.conflict * reent_ptr, malloc_size_t s)"}
+{"node_id": "func:_malloc_usable_size_r", "node_type": "function", "name": "_malloc_usable_size_r"}
+{"node_id": "func:_malloc_usable_size_r@08014394", "node_type": "function", "name": "_malloc_usable_size_r", "entry": "08014394", "is_isr": false, "signature": "malloc_size_t __stdcall _malloc_usable_size_r(_reent.conflict * reent_ptr, void * ptr)"}
+{"node_id": "func:_open", "node_type": "function", "name": "_open"}
+{"node_id": "func:_open@0800bb40", "node_type": "function", "name": "_open", "entry": "0800bb40", "is_isr": false, "signature": "int __stdcall _open(char * __file, int __oflag, ...)"}
+{"node_id": "func:_open_r", "node_type": "function", "name": "_open_r"}
+{"node_id": "func:_open_r@080101b8", "node_type": "function", "name": "_open_r", "entry": "080101b8", "is_isr": false, "signature": "int __stdcall _open_r(_reent.conflict * ptr, char * file, int flags, int mode)"}
+{"node_id": "func:_printf_common", "node_type": "function", "name": "_printf_common"}
+{"node_id": "func:_printf_common@0800f820", "node_type": "function", "name": "_printf_common", "entry": "0800f820", "is_isr": false, "signature": "int __stdcall _printf_common(_reent.conflict * data, _prt_data_t * pdata, int * realsz, FILE.conflict * fp, _func_int__reent_ptr_FILE_ptr_char_ptr_size_t * pfunc)"}
+{"node_id": "func:_printf_float", "node_type": "function", "name": "_printf_float"}
+{"node_id": "func:_printf_float@0800f394", "node_type": "function", "name": "_printf_float", "entry": "0800f394", "is_isr": false, "signature": "int __stdcall _printf_float(_reent.conflict * data, _prt_data_t * pdata, FILE.conflict * fp, _func_int__reent_ptr_FILE_ptr_char_ptr_size_t * pfunc, va_list * ap)"}
+{"node_id": "func:_printf_i", "node_type": "function", "name": "_printf_i"}
+{"node_id": "func:_printf_i@0800f90c", "node_type": "function", "name": "_printf_i", "entry": "0800f90c", "is_isr": false, "signature": "int __stdcall _printf_i(_reent.conflict * data, _prt_data_t * pdata, FILE.conflict * fp, _func_int__reent_ptr_FILE_ptr_char_ptr_size_t * pfunc, va_list * ap)"}
+{"node_id": "func:_putc", "node_type": "function", "name": "_putc"}
+{"node_id": "func:_putc@0800d5e0", "node_type": "function", "name": "_putc", "entry": "0800d5e0", "is_isr": false, "signature": "undefined __thiscall _putc(Serial * this, int param_1)"}
+{"node_id": "func:_putc@0800d5e4", "node_type": "function", "name": "_putc", "entry": "0800d5e4", "is_isr": false, "signature": "undefined __thiscall _putc(Serial * this, int param_1)"}
+{"node_id": "func:_puts_r", "node_type": "function", "name": "_puts_r"}
+{"node_id": "func:_puts_r@0801020c", "node_type": "function", "name": "_puts_r", "entry": "0801020c", "is_isr": false, "signature": "int __stdcall _puts_r(_reent.conflict * ptr, char * s)"}
+{"node_id": "func:_read", "node_type": "function", "name": "_read"}
+{"node_id": "func:_read@0800bcb0", "node_type": "function", "name": "_read", "entry": "0800bcb0", "is_isr": false, "signature": "ssize_t __stdcall _read(int __fd, void * __buf, size_t __nbytes)"}
+{"node_id": "func:_read_r", "node_type": "function", "name": "_read_r"}
+{"node_id": "func:_read_r@0801435c", "node_type": "function", "name": "_read_r", "entry": "0801435c", "is_isr": false, "signature": "_ssize_t __stdcall _read_r(_reent.conflict * ptr, int fd, void * buf, size_t cnt)"}
+{"node_id": "func:_realloc_r", "node_type": "function", "name": "_realloc_r"}
+{"node_id": "func:_realloc_r@08013d2a", "node_type": "function", "name": "_realloc_r", "entry": "08013d2a", "is_isr": false, "signature": "void * __stdcall _realloc_r(_reent.conflict * reent_ptr, void * ptr, malloc_size_t size)"}
+{"node_id": "func:_sbrk", "node_type": "function", "name": "_sbrk"}
+{"node_id": "func:_sbrk@0800bd7c", "node_type": "function", "name": "_sbrk", "entry": "0800bd7c", "is_isr": false, "signature": "void * __stdcall _sbrk(intptr_t __delta)"}
+{"node_id": "func:_sbrk_r", "node_type": "function", "name": "_sbrk_r"}
+{"node_id": "func:_sbrk_r@080105ac", "node_type": "function", "name": "_sbrk_r", "entry": "080105ac", "is_isr": false, "signature": "void * __stdcall _sbrk_r(_reent.conflict * ptr, ptrdiff_t incr)"}
+{"node_id": "func:_scanf_chars", "node_type": "function", "name": "_scanf_chars"}
+{"node_id": "func:_scanf_chars@0800ff18", "node_type": "function", "name": "_scanf_chars", "entry": "0800ff18", "is_isr": false, "signature": "int __stdcall _scanf_chars(_reent.conflict * rptr, _scan_data_t * pdata, FILE.conflict * fp, va_list * ap)"}
+{"node_id": "func:_scanf_float", "node_type": "function", "name": "_scanf_float"}
+{"node_id": "func:_scanf_float@0800fb4c", "node_type": "function", "name": "_scanf_float", "entry": "0800fb4c", "is_isr": false, "signature": "int __stdcall _scanf_float(_reent.conflict * rptr, _scan_data_t * pdata, FILE.conflict * fp, va_list * ap)"}
+{"node_id": "func:_scanf_i", "node_type": "function", "name": "_scanf_i"}
+{"node_id": "func:_scanf_i@0800ffd4", "node_type": "function", "name": "_scanf_i", "entry": "0800ffd4", "is_isr": false, "signature": "int __stdcall _scanf_i(_reent.conflict * rptr, _scan_data_t * pdata, FILE.conflict * fp, va_list * ap)"}
+{"node_id": "func:_start", "node_type": "function", "name": "_start"}
+{"node_id": "func:_start@080001e0", "node_type": "function", "name": "_start", "entry": "080001e0", "is_isr": false, "signature": "undefined _start(void)"}
+{"node_id": "func:_strtod_r", "node_type": "function", "name": "_strtod_r"}
+{"node_id": "func:_strtod_r@08010940", "node_type": "function", "name": "_strtod_r", "entry": "08010940", "is_isr": false, "signature": "double __stdcall _strtod_r(_reent.conflict * ptr, char * s00, char * * se)"}
+{"node_id": "func:_strtol_r", "node_type": "function", "name": "_strtol_r"}
+{"node_id": "func:_strtol_r@08011580", "node_type": "function", "name": "_strtol_r", "entry": "08011580", "is_isr": false, "signature": "long __stdcall _strtol_r(_reent.conflict * rptr, char * nptr, char * * endptr, int base)"}
+{"node_id": "func:_strtoul_r", "node_type": "function", "name": "_strtoul_r"}
+{"node_id": "func:_strtoul_r@0801168c", "node_type": "function", "name": "_strtoul_r", "entry": "0801168c", "is_isr": false, "signature": "ulong __stdcall _strtoul_r(_reent.conflict * rptr, char * nptr, char * * endptr, int base)"}
+{"node_id": "func:_sungetc_r@0801400c", "node_type": "function", "name": "_sungetc_r", "entry": "0801400c", "is_isr": false, "signature": "int __stdcall _sungetc_r(_reent.conflict * data, int c, FILE.conflict * fp)"}
+{"node_id": "func:_svfprintf_r", "node_type": "function", "name": "_svfprintf_r"}
+{"node_id": "func:_svfprintf_r@08013e28", "node_type": "function", "name": "_svfprintf_r", "entry": "08013e28", "is_isr": false, "signature": "int __stdcall _svfprintf_r(_reent.conflict * data, FILE.conflict * fp, char * fmt0, va_list ap)"}
+{"node_id": "func:_tzset_unlocked", "node_type": "function", "name": "_tzset_unlocked"}
+{"node_id": "func:_tzset_unlocked@080118ec", "node_type": "function", "name": "_tzset_unlocked", "entry": "080118ec", "is_isr": false, "signature": "void _tzset_unlocked(void)"}
+{"node_id": "func:_tzset_unlocked_r", "node_type": "function", "name": "_tzset_unlocked_r"}
+{"node_id": "func:_tzset_unlocked_r@080118f8", "node_type": "function", "name": "_tzset_unlocked_r", "entry": "080118f8", "is_isr": false, "signature": "void __stdcall _tzset_unlocked_r(_reent.conflict * reent_ptr)"}
+{"node_id": "func:_vfprintf_r", "node_type": "function", "name": "_vfprintf_r"}
+{"node_id": "func:_vfprintf_r@0800f048", "node_type": "function", "name": "_vfprintf_r", "entry": "0800f048", "is_isr": false, "signature": "int __stdcall _vfprintf_r(_reent.conflict * data, FILE.conflict * fp, char * fmt0, va_list ap)"}
+{"node_id": "func:_write", "node_type": "function", "name": "_write"}
+{"node_id": "func:_write@0800bc64", "node_type": "function", "name": "_write", "entry": "0800bc64", "is_isr": false, "signature": "ssize_t __stdcall _write(int __fd, void * __buf, size_t __n)"}
+{"node_id": "func:_write_r", "node_type": "function", "name": "_write_r"}
+{"node_id": "func:_write_r@08011d1c", "node_type": "function", "name": "_write_r", "entry": "08011d1c", "is_isr": false, "signature": "_ssize_t __stdcall _write_r(_reent.conflict * ptr, int fd, void * buf, size_t cnt)"}
+{"node_id": "func:addBinding", "node_type": "function", "name": "addBinding"}
+{"node_id": "func:addBinding@0800846c", "node_type": "function", "name": "addBinding", "entry": "0800846c", "is_isr": false, "signature": "XML_Error __stdcall addBinding(XML_Parser.conflict parser, PREFIX * prefix, ATTRIBUTE_ID * attId, XML_Char * uri, BINDING * * bindingsPtr)"}
+{"node_id": "func:appendAttributeValue", "node_type": "function", "name": "appendAttributeValue"}
+{"node_id": "func:appendAttributeValue@08008bb4", "node_type": "function", "name": "appendAttributeValue", "entry": "08008bb4", "is_isr": false, "signature": "XML_Error __stdcall appendAttributeValue(XML_Parser.conflict parser, ENCODING * enc, XML_Bool isCdata, char * ptr, char * end, STRING_POOL * pool)"}
+{"node_id": "func:ascii_toUtf8@08000f4a", "node_type": "function", "name": "ascii_toUtf8", "entry": "08000f4a", "is_isr": false, "signature": "void __stdcall ascii_toUtf8(ENCODING * enc, char * * fromP, char * fromLim, char * * toP, char * toLim)"}
+{"node_id": "func:atexit", "node_type": "function", "name": "atexit"}
+{"node_id": "func:atexit@0800def2", "node_type": "function", "name": "atexit", "entry": "0800def2", "is_isr": false, "signature": "int __stdcall atexit(_func_void * fn)"}
+{"node_id": "func:attlist0@080074cc", "node_type": "function", "name": "attlist0", "entry": "080074cc", "is_isr": false, "signature": "int __stdcall attlist0(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist1@080074f8", "node_type": "function", "name": "attlist1", "entry": "080074f8", "is_isr": false, "signature": "int __stdcall attlist1(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist2@08007538", "node_type": "function", "name": "attlist2", "entry": "08007538", "is_isr": false, "signature": "int __stdcall attlist2(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist3@080075bc", "node_type": "function", "name": "attlist3", "entry": "080075bc", "is_isr": false, "signature": "int __stdcall attlist3(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist4@080075ec", "node_type": "function", "name": "attlist4", "entry": "080075ec", "is_isr": false, "signature": "int __stdcall attlist4(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist5@0800761c", "node_type": "function", "name": "attlist5", "entry": "0800761c", "is_isr": false, "signature": "int __stdcall attlist5(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist6@08007640", "node_type": "function", "name": "attlist6", "entry": "08007640", "is_isr": false, "signature": "int __stdcall attlist6(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist7@08007668", "node_type": "function", "name": "attlist7", "entry": "08007668", "is_isr": false, "signature": "int __stdcall attlist7(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist8@08007698", "node_type": "function", "name": "attlist8", "entry": "08007698", "is_isr": false, "signature": "int __stdcall attlist8(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:attlist9@08007730", "node_type": "function", "name": "attlist9", "entry": "08007730", "is_isr": false, "signature": "int __stdcall attlist9(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:baud", "node_type": "function", "name": "baud"}
+{"node_id": "func:baud@0800d684", "node_type": "function", "name": "baud", "entry": "0800d684", "is_isr": false, "signature": "undefined __thiscall baud(SerialBase * this, int param_1)"}
+{"node_id": "func:big2_attributeValueTok@0800242c", "node_type": "function", "name": "big2_attributeValueTok", "entry": "0800242c", "is_isr": false, "signature": "int __stdcall big2_attributeValueTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_cdataSectionTok@08001e80", "node_type": "function", "name": "big2_cdataSectionTok", "entry": "08001e80", "is_isr": false, "signature": "int __stdcall big2_cdataSectionTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_charRefNumber@08002b8a", "node_type": "function", "name": "big2_charRefNumber", "entry": "08002b8a", "is_isr": false, "signature": "int __stdcall big2_charRefNumber(ENCODING * enc, char * ptr)"}
+{"node_id": "func:big2_checkPiTarget", "node_type": "function", "name": "big2_checkPiTarget"}
+{"node_id": "func:big2_checkPiTarget@08004854", "node_type": "function", "name": "big2_checkPiTarget", "entry": "08004854", "is_isr": false, "signature": "int __stdcall big2_checkPiTarget(ENCODING * enc, char * ptr, char * end, int * tokPtr)"}
+{"node_id": "func:big2_contentTok@08004af8", "node_type": "function", "name": "big2_contentTok", "entry": "08004af8", "is_isr": false, "signature": "int __stdcall big2_contentTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_entityValueTok@080024f8", "node_type": "function", "name": "big2_entityValueTok", "entry": "080024f8", "is_isr": false, "signature": "int __stdcall big2_entityValueTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_getAtts@08002640", "node_type": "function", "name": "big2_getAtts", "entry": "08002640", "is_isr": false, "signature": "int __stdcall big2_getAtts(ENCODING * enc, char * ptr, int attsMax, ATTRIBUTE * atts)"}
+{"node_id": "func:big2_isPublicId@080025cc", "node_type": "function", "name": "big2_isPublicId", "entry": "080025cc", "is_isr": false, "signature": "int __stdcall big2_isPublicId(ENCODING * enc, char * ptr, char * end, char * * badPtr)"}
+{"node_id": "func:big2_nameLength@0800294c", "node_type": "function", "name": "big2_nameLength", "entry": "0800294c", "is_isr": false, "signature": "int __stdcall big2_nameLength(ENCODING * enc, char * ptr)"}
+{"node_id": "func:big2_nameMatchesAscii@08002924", "node_type": "function", "name": "big2_nameMatchesAscii", "entry": "08002924", "is_isr": false, "signature": "int __stdcall big2_nameMatchesAscii(ENCODING * enc, char * ptr1, char * end1, char * ptr2)"}
+{"node_id": "func:big2_predefinedEntityName@0800279e", "node_type": "function", "name": "big2_predefinedEntityName", "entry": "0800279e", "is_isr": false, "signature": "int __stdcall big2_predefinedEntityName(ENCODING * enc, char * ptr, char * end)"}
+{"node_id": "func:big2_prologTok@0800629c", "node_type": "function", "name": "big2_prologTok", "entry": "0800629c", "is_isr": false, "signature": "int __stdcall big2_prologTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_sameName@08002860", "node_type": "function", "name": "big2_sameName", "entry": "08002860", "is_isr": false, "signature": "int __stdcall big2_sameName(ENCODING * enc, char * ptr1, char * ptr2)"}
+{"node_id": "func:big2_scanComment", "node_type": "function", "name": "big2_scanComment"}
+{"node_id": "func:big2_scanComment@080047b4", "node_type": "function", "name": "big2_scanComment", "entry": "080047b4", "is_isr": false, "signature": "int __stdcall big2_scanComment(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_scanLit", "node_type": "function", "name": "big2_scanLit"}
+{"node_id": "func:big2_scanLit@08002370", "node_type": "function", "name": "big2_scanLit", "entry": "08002370", "is_isr": false, "signature": "int __stdcall big2_scanLit(int open, ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_scanPercent", "node_type": "function", "name": "big2_scanPercent"}
+{"node_id": "func:big2_scanPercent@080021e8", "node_type": "function", "name": "big2_scanPercent", "entry": "080021e8", "is_isr": false, "signature": "int __stdcall big2_scanPercent(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_scanPi", "node_type": "function", "name": "big2_scanPi"}
+{"node_id": "func:big2_scanPi@0800489c", "node_type": "function", "name": "big2_scanPi", "entry": "0800489c", "is_isr": false, "signature": "int __stdcall big2_scanPi(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_scanRef", "node_type": "function", "name": "big2_scanRef"}
+{"node_id": "func:big2_scanRef@08001fbc", "node_type": "function", "name": "big2_scanRef", "entry": "08001fbc", "is_isr": false, "signature": "int __stdcall big2_scanRef(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:big2_skipS@08002996", "node_type": "function", "name": "big2_skipS", "entry": "08002996", "is_isr": false, "signature": "char * __stdcall big2_skipS(ENCODING * enc, char * ptr)"}
+{"node_id": "func:big2_toUtf16@0800123c", "node_type": "function", "name": "big2_toUtf16", "entry": "0800123c", "is_isr": false, "signature": "void __stdcall big2_toUtf16(ENCODING * enc, char * * fromP, char * fromLim, ushort * * toP, ushort * toLim)"}
+{"node_id": "func:big2_toUtf8@0800110c", "node_type": "function", "name": "big2_toUtf8", "entry": "0800110c", "is_isr": false, "signature": "void __stdcall big2_toUtf8(ENCODING * enc, char * * fromP, char * fromLim, char * * toP, char * toLim)"}
+{"node_id": "func:big2_updatePosition@080029c8", "node_type": "function", "name": "big2_updatePosition", "entry": "080029c8", "is_isr": false, "signature": "void __stdcall big2_updatePosition(ENCODING * enc, char * ptr, char * end, POSITION * pos)"}
+{"node_id": "func:build_node", "node_type": "function", "name": "build_node"}
+{"node_id": "func:build_node@08007e2a", "node_type": "function", "name": "build_node", "entry": "08007e2a", "is_isr": false, "signature": "void __stdcall build_node(XML_Parser.conflict parser, int src_node, XML_Content * dest, XML_Content * * contpos, XML_Char * * strpos)"}
+{"node_id": "func:cdataSectionProcessor@08009f88", "node_type": "function", "name": "cdataSectionProcessor", "entry": "08009f88", "is_isr": false, "signature": "XML_Error __stdcall cdataSectionProcessor(XML_Parser.conflict parser, char * start, char * end, char * * endPtr)"}
+{"node_id": "func:checkCharRefNumber", "node_type": "function", "name": "checkCharRefNumber"}
+{"node_id": "func:checkCharRefNumber@08002ae4", "node_type": "function", "name": "checkCharRefNumber", "entry": "08002ae4", "is_isr": false, "signature": "int __stdcall checkCharRefNumber(int result)"}
+{"node_id": "func:close@0800d6ac", "node_type": "function", "name": "close", "entry": "0800d6ac", "is_isr": false, "signature": "undefined __stdcall close(void)"}
+{"node_id": "func:contentProcessor", "node_type": "function", "name": "contentProcessor"}
+{"node_id": "func:contentProcessor@08009f1c", "node_type": "function", "name": "contentProcessor", "entry": "08009f1c", "is_isr": false, "signature": "XML_Error __stdcall contentProcessor(XML_Parser.conflict parser, char * start, char * end, char * * endPtr)"}
+{"node_id": "func:declClose@08007a54", "node_type": "function", "name": "declClose", "entry": "08007a54", "is_isr": false, "signature": "int __stdcall declClose(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:defineAttribute", "node_type": "function", "name": "defineAttribute"}
+{"node_id": "func:defineAttribute@080083b0", "node_type": "function", "name": "defineAttribute", "entry": "080083b0", "is_isr": false, "signature": "int __stdcall defineAttribute(ELEMENT_TYPE * type, ATTRIBUTE_ID * attId, XML_Bool isCdata, XML_Bool isId, XML_Char * value, XML_Parser.conflict parser)"}
+{"node_id": "func:deregister_tm_clones", "node_type": "function", "name": "deregister_tm_clones"}
+{"node_id": "func:deregister_tm_clones@0800013c", "node_type": "function", "name": "deregister_tm_clones", "entry": "0800013c", "is_isr": false, "signature": "undefined deregister_tm_clones(void)"}
+{"node_id": "func:destroyBindings", "node_type": "function", "name": "destroyBindings"}
+{"node_id": "func:destroyBindings@08008394", "node_type": "function", "name": "destroyBindings", "entry": "08008394", "is_isr": false, "signature": "void __stdcall destroyBindings(BINDING * bindings, XML_Parser.conflict parser)"}
+{"node_id": "func:div", "node_type": "function", "name": "div"}
+{"node_id": "func:div@08011fc4", "node_type": "function", "name": "div", "entry": "08011fc4", "is_isr": false, "signature": "div_t.conflict __stdcall div(div_t.conflict * __return_storage_ptr__, int num, int denom)"}
+{"node_id": "func:doCdataSection", "node_type": "function", "name": "doCdataSection"}
+{"node_id": "func:doCdataSection@08007b36", "node_type": "function", "name": "doCdataSection", "entry": "08007b36", "is_isr": false, "signature": "XML_Error __stdcall doCdataSection(XML_Parser.conflict parser, ENCODING * enc, char * * startPtr, char * end, char * * nextPtr, XML_Bool haveMore)"}
+{"node_id": "func:doContent", "node_type": "function", "name": "doContent"}
+{"node_id": "func:doContent@08009510", "node_type": "function", "name": "doContent", "entry": "08009510", "is_isr": false, "signature": "XML_Error __stdcall doContent(XML_Parser.conflict parser, int startTagLevel, ENCODING * enc, char * s, char * end, char * * nextPtr, XML_Bool haveMore)"}
+{"node_id": "func:doctype0@08006ecc", "node_type": "function", "name": "doctype0", "entry": "08006ecc", "is_isr": false, "signature": "int __stdcall doctype0(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:doctype1@08006ef8", "node_type": "function", "name": "doctype1", "entry": "08006ef8", "is_isr": false, "signature": "int __stdcall doctype1(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:doctype2@08006f84", "node_type": "function", "name": "doctype2", "entry": "08006f84", "is_isr": false, "signature": "int __stdcall doctype2(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:doctype3@08006fac", "node_type": "function", "name": "doctype3", "entry": "08006fac", "is_isr": false, "signature": "int __stdcall doctype3(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:doctype4@08006fd4", "node_type": "function", "name": "doctype4", "entry": "08006fd4", "is_isr": false, "signature": "int __stdcall doctype4(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:doctype5@0800700c", "node_type": "function", "name": "doctype5", "entry": "0800700c", "is_isr": false, "signature": "int __stdcall doctype5(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element0@08007758", "node_type": "function", "name": "element0", "entry": "08007758", "is_isr": false, "signature": "int __stdcall element0(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element1@08007784", "node_type": "function", "name": "element1", "entry": "08007784", "is_isr": false, "signature": "int __stdcall element1(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element2@0800780c", "node_type": "function", "name": "element2", "entry": "0800780c", "is_isr": false, "signature": "int __stdcall element2(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element3@080078a0", "node_type": "function", "name": "element3", "entry": "080078a0", "is_isr": false, "signature": "int __stdcall element3(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element4@080078ec", "node_type": "function", "name": "element4", "entry": "080078ec", "is_isr": false, "signature": "int __stdcall element4(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element5@08007918", "node_type": "function", "name": "element5", "entry": "08007918", "is_isr": false, "signature": "int __stdcall element5(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element6@08007950", "node_type": "function", "name": "element6", "entry": "08007950", "is_isr": false, "signature": "int __stdcall element6(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:element7@080079b0", "node_type": "function", "name": "element7", "entry": "080079b0", "is_isr": false, "signature": "int __stdcall element7(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:end@0800b738", "node_type": "function", "name": "end", "entry": "0800b738", "is_isr": false, "signature": "void __stdcall end(void * data, char * el)"}
+{"node_id": "func:entity0@08007128", "node_type": "function", "name": "entity0", "entry": "08007128", "is_isr": false, "signature": "int __stdcall entity0(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity10@0800738c", "node_type": "function", "name": "entity10", "entry": "0800738c", "is_isr": false, "signature": "int __stdcall entity10(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity1@0800715c", "node_type": "function", "name": "entity1", "entry": "0800715c", "is_isr": false, "signature": "int __stdcall entity1(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity2@08007184", "node_type": "function", "name": "entity2", "entry": "08007184", "is_isr": false, "signature": "int __stdcall entity2(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity3@080071fc", "node_type": "function", "name": "entity3", "entry": "080071fc", "is_isr": false, "signature": "int __stdcall entity3(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity4@08007224", "node_type": "function", "name": "entity4", "entry": "08007224", "is_isr": false, "signature": "int __stdcall entity4(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity5@0800724c", "node_type": "function", "name": "entity5", "entry": "0800724c", "is_isr": false, "signature": "int __stdcall entity5(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity6@08007298", "node_type": "function", "name": "entity6", "entry": "08007298", "is_isr": false, "signature": "int __stdcall entity6(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity7@080072c4", "node_type": "function", "name": "entity7", "entry": "080072c4", "is_isr": false, "signature": "int __stdcall entity7(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity8@0800733c", "node_type": "function", "name": "entity8", "entry": "0800733c", "is_isr": false, "signature": "int __stdcall entity8(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:entity9@08007364", "node_type": "function", "name": "entity9", "entry": "08007364", "is_isr": false, "signature": "int __stdcall entity9(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:epilogProcessor", "node_type": "function", "name": "epilogProcessor"}
+{"node_id": "func:epilogProcessor@080086f0", "node_type": "function", "name": "epilogProcessor", "entry": "080086f0", "is_isr": false, "signature": "XML_Error __stdcall epilogProcessor(XML_Parser.conflict parser, char * s, char * end, char * * nextPtr)"}
+{"node_id": "func:error", "node_type": "function", "name": "error"}
+{"node_id": "func:error@08007a78", "node_type": "function", "name": "error", "entry": "08007a78", "is_isr": false, "signature": "int __stdcall error(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:error@0800d820", "node_type": "function", "name": "error", "entry": "0800d820", "is_isr": false, "signature": "undefined error(void)"}
+{"node_id": "func:errorProcessor@08007a88", "node_type": "function", "name": "errorProcessor", "entry": "08007a88", "is_isr": false, "signature": "XML_Error __stdcall errorProcessor(XML_Parser.conflict parser, char * s, char * end, char * * nextPtr)"}
+{"node_id": "func:exists", "node_type": "function", "name": "exists"}
+{"node_id": "func:exists@0800d5c8", "node_type": "function", "name": "exists", "entry": "0800d5c8", "is_isr": false, "signature": "undefined __thiscall exists(FilePath * this)"}
+{"node_id": "func:exit", "node_type": "function", "name": "exit"}
+{"node_id": "func:exit@0800df28", "node_type": "function", "name": "exit", "entry": "0800df28", "is_isr": false, "signature": "noreturn void __stdcall exit(int code)"}
+{"node_id": "func:externalEntityContentProcessor", "node_type": "function", "name": "externalEntityContentProcessor"}
+{"node_id": "func:externalEntityContentProcessor@08009f52", "node_type": "function", "name": "externalEntityContentProcessor", "entry": "08009f52", "is_isr": false, "signature": "XML_Error __stdcall externalEntityContentProcessor(XML_Parser.conflict parser, char * start, char * end, char * * endPtr)"}
+{"node_id": "func:fclose", "node_type": "function", "name": "fclose"}
+{"node_id": "func:fclose@0800dff4", "node_type": "function", "name": "fclose", "entry": "0800dff4", "is_isr": false, "signature": "int __stdcall fclose(FILE.conflict * fp)"}
+{"node_id": "func:ferror", "node_type": "function", "name": "ferror"}
+{"node_id": "func:ferror@0800e004", "node_type": "function", "name": "ferror", "entry": "0800e004", "is_isr": false, "signature": "int __stdcall ferror(FILE.conflict * fp)"}
+{"node_id": "func:fflush", "node_type": "function", "name": "fflush"}
+{"node_id": "func:fflush@0800e1a8", "node_type": "function", "name": "fflush", "entry": "0800e1a8", "is_isr": false, "signature": "int __stdcall fflush(FILE.conflict * fp)"}
+{"node_id": "func:fgetc@0800e224", "node_type": "function", "name": "fgetc", "entry": "0800e224", "is_isr": false, "signature": "int __stdcall fgetc(FILE.conflict * fp)"}
+{"node_id": "func:file", "node_type": "function", "name": "file"}
+{"node_id": "func:file@0800d5a8", "node_type": "function", "name": "file", "entry": "0800d5a8", "is_isr": false, "signature": "undefined __thiscall file(FilePath * this)"}
+{"node_id": "func:fileName", "node_type": "function", "name": "fileName"}
+{"node_id": "func:fileName@0800d570", "node_type": "function", "name": "fileName", "entry": "0800d570", "is_isr": false, "signature": "undefined __thiscall fileName(FilePath * this)"}
+{"node_id": "func:fileSystem", "node_type": "function", "name": "fileSystem"}
+{"node_id": "func:fileSystem@0800d574", "node_type": "function", "name": "fileSystem", "entry": "0800d574", "is_isr": false, "signature": "undefined __thiscall fileSystem(FilePath * this)"}
+{"node_id": "func:flen@0800bad0", "node_type": "function", "name": "flen", "entry": "0800bad0", "is_isr": false, "signature": "undefined __thiscall flen(FileHandle * this)"}
+{"node_id": "func:flen@0800d714", "node_type": "function", "name": "flen", "entry": "0800d714", "is_isr": false, "signature": "undefined __stdcall flen(void)"}
+{"node_id": "func:fopen", "node_type": "function", "name": "fopen"}
+{"node_id": "func:fopen@0800e434", "node_type": "function", "name": "fopen", "entry": "0800e434", "is_isr": false, "signature": "FILE.conflict * __stdcall fopen(char * file, char * mode)"}
+{"node_id": "func:fputs", "node_type": "function", "name": "fputs"}
+{"node_id": "func:fputs@0800e4f0", "node_type": "function", "name": "fputs", "entry": "0800e4f0", "is_isr": false, "signature": "int __stdcall fputs(char * s, FILE.conflict * fp)"}
+{"node_id": "func:frame_dummy", "node_type": "function", "name": "frame_dummy"}
+{"node_id": "func:frame_dummy@080001a8", "node_type": "function", "name": "frame_dummy", "entry": "080001a8", "is_isr": false, "signature": "undefined frame_dummy(void)"}
+{"node_id": "func:free", "node_type": "function", "name": "free"}
+{"node_id": "func:free@0800e978", "node_type": "function", "name": "free", "entry": "0800e978", "is_isr": false, "signature": "void __stdcall free(void * aptr)"}
+{"node_id": "func:fsync@0800d710", "node_type": "function", "name": "fsync", "entry": "0800d710", "is_isr": false, "signature": "undefined __stdcall fsync(void)"}
+{"node_id": "func:getAttributeId", "node_type": "function", "name": "getAttributeId"}
+{"node_id": "func:getAttributeId@08008a7c", "node_type": "function", "name": "getAttributeId", "entry": "08008a7c", "is_isr": false, "signature": "ATTRIBUTE_ID * __stdcall getAttributeId(XML_Parser.conflict parser, ENCODING * enc, char * start, char * end)"}
+{"node_id": "func:getElementType", "node_type": "function", "name": "getElementType"}
+{"node_id": "func:getElementType@08008e84", "node_type": "function", "name": "getElementType", "entry": "08008e84", "is_isr": false, "signature": "ELEMENT_TYPE * __stdcall getElementType(XML_Parser.conflict parser, ENCODING * enc, char * ptr, char * end)"}
+{"node_id": "func:getEncodingIndex", "node_type": "function", "name": "getEncodingIndex"}
+{"node_id": "func:getEncodingIndex@08002d90", "node_type": "function", "name": "getEncodingIndex", "entry": "08002d90", "is_isr": false, "signature": "int __stdcall getEncodingIndex(char * name)"}
+{"node_id": "func:getPathType", "node_type": "function", "name": "getPathType"}
+{"node_id": "func:getPathType@0800dee0", "node_type": "function", "name": "getPathType", "entry": "0800dee0", "is_isr": false, "signature": "undefined __thiscall getPathType(FileBase * this)"}
+{"node_id": "func:getc", "node_type": "function", "name": "getc"}
+{"node_id": "func:getc@0800d780", "node_type": "function", "name": "getc", "entry": "0800d780", "is_isr": false, "signature": "undefined __thiscall getc(Stream * this)"}
+{"node_id": "func:gmtime_r", "node_type": "function", "name": "gmtime_r"}
+{"node_id": "func:gmtime_r@080133b4", "node_type": "function", "name": "gmtime_r", "entry": "080133b4", "is_isr": false, "signature": "tm * __stdcall gmtime_r(time_t * tim_p, tm * res)"}
+{"node_id": "func:gpio_dir", "node_type": "function", "name": "gpio_dir"}
+{"node_id": "func:gpio_dir@0800da08", "node_type": "function", "name": "gpio_dir", "entry": "0800da08", "is_isr": false, "signature": "undefined gpio_dir(void)"}
+{"node_id": "func:gpio_init", "node_type": "function", "name": "gpio_init"}
+{"node_id": "func:gpio_init@0800d9d0", "node_type": "function", "name": "gpio_init", "entry": "0800d9d0", "is_isr": false, "signature": "undefined gpio_init(void)"}
+{"node_id": "func:gpio_init_out", "node_type": "function", "name": "gpio_init_out"}
+{"node_id": "func:gpio_init_out@0800d7d8", "node_type": "function", "name": "gpio_init_out", "entry": "0800d7d8", "is_isr": false, "signature": "undefined gpio_init_out(void)"}
+{"node_id": "func:gpio_mode", "node_type": "function", "name": "gpio_mode"}
+{"node_id": "func:gpio_mode@0800da00", "node_type": "function", "name": "gpio_mode", "entry": "0800da00", "is_isr": false, "signature": "undefined gpio_mode(void)"}
+{"node_id": "func:gpio_set", "node_type": "function", "name": "gpio_set"}
+{"node_id": "func:gpio_set@0800d9a0", "node_type": "function", "name": "gpio_set", "entry": "0800d9a0", "is_isr": false, "signature": "undefined gpio_set(void)"}
+{"node_id": "func:handleUnknownEncoding", "node_type": "function", "name": "handleUnknownEncoding"}
+{"node_id": "func:handleUnknownEncoding@08007ec0", "node_type": "function", "name": "handleUnknownEncoding", "entry": "08007ec0", "is_isr": false, "signature": "XML_Error __stdcall handleUnknownEncoding(XML_Parser.conflict parser, XML_Char * encodingName)"}
+{"node_id": "func:hashTableDestroy", "node_type": "function", "name": "hashTableDestroy"}
+{"node_id": "func:hashTableDestroy@08007cf0", "node_type": "function", "name": "hashTableDestroy", "entry": "08007cf0", "is_isr": false, "signature": "void __stdcall hashTableDestroy(HASH_TABLE * table)"}
+{"node_id": "func:hashTableIterNext", "node_type": "function", "name": "hashTableIterNext"}
+{"node_id": "func:hashTableIterNext@08007d16", "node_type": "function", "name": "hashTableIterNext", "entry": "08007d16", "is_isr": false, "signature": "NAMED * __stdcall hashTableIterNext(HASH_TABLE_ITER * iter)"}
+{"node_id": "func:initScan", "node_type": "function", "name": "initScan"}
+{"node_id": "func:initScan@08005568", "node_type": "function", "name": "initScan", "entry": "08005568", "is_isr": false, "signature": "int __stdcall initScan(ENCODING * * encodingTable, INIT_ENCODING * enc, int state, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:initScanContent@08005684", "node_type": "function", "name": "initScanContent", "entry": "08005684", "is_isr": false, "signature": "int __stdcall initScanContent(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:initScanProlog@0800569a", "node_type": "function", "name": "initScanProlog", "entry": "0800569a", "is_isr": false, "signature": "int __stdcall initScanProlog(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:initUpdatePosition@08002a8c", "node_type": "function", "name": "initUpdatePosition", "entry": "08002a8c", "is_isr": false, "signature": "void __stdcall initUpdatePosition(ENCODING * enc, char * ptr, char * end, POSITION * pos)"}
+{"node_id": "func:init_serial", "node_type": "function", "name": "init_serial"}
+{"node_id": "func:init_serial@0800bb04", "node_type": "function", "name": "init_serial", "entry": "0800bb04", "is_isr": false, "signature": "undefined init_serial(void)"}
+{"node_id": "func:init_uart", "node_type": "function", "name": "init_uart"}
+{"node_id": "func:init_uart@0800d34c", "node_type": "function", "name": "init_uart", "entry": "0800d34c", "is_isr": false, "signature": "undefined init_uart(void)"}
+{"node_id": "func:initializeEncoding", "node_type": "function", "name": "initializeEncoding"}
+{"node_id": "func:initializeEncoding@08008446", "node_type": "function", "name": "initializeEncoding", "entry": "08008446", "is_isr": false, "signature": "XML_Error __stdcall initializeEncoding(XML_Parser.conflict parser)"}
+{"node_id": "func:internalEntityProcessor@08009ff0", "node_type": "function", "name": "internalEntityProcessor", "entry": "08009ff0", "is_isr": false, "signature": "XML_Error __stdcall internalEntityProcessor(XML_Parser.conflict parser, char * s, char * end, char * * nextPtr)"}
+{"node_id": "func:internalSubset@08007034", "node_type": "function", "name": "internalSubset", "entry": "08007034", "is_isr": false, "signature": "int __stdcall internalSubset(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:isFile", "node_type": "function", "name": "isFile"}
+{"node_id": "func:isFile@0800d594", "node_type": "function", "name": "isFile", "entry": "0800d594", "is_isr": false, "signature": "undefined __thiscall isFile(FilePath * this)"}
+{"node_id": "func:isNever@08000248", "node_type": "function", "name": "isNever", "entry": "08000248", "is_isr": false, "signature": "int __stdcall isNever(ENCODING * enc, char * p)"}
+{"node_id": "func:isSpace", "node_type": "function", "name": "isSpace"}
+{"node_id": "func:isSpace@08002ac4", "node_type": "function", "name": "isSpace", "entry": "08002ac4", "is_isr": false, "signature": "int __stdcall isSpace(int c)"}
+{"node_id": "func:isatty@0800d70c", "node_type": "function", "name": "isatty", "entry": "0800d70c", "is_isr": false, "signature": "undefined __stdcall isatty(void)"}
+{"node_id": "func:latin1_toUtf16@08000f28", "node_type": "function", "name": "latin1_toUtf16", "entry": "08000f28", "is_isr": false, "signature": "void __stdcall latin1_toUtf16(ENCODING * enc, char * * fromP, char * fromLim, ushort * * toP, ushort * toLim)"}
+{"node_id": "func:latin1_toUtf8@08000ed2", "node_type": "function", "name": "latin1_toUtf8", "entry": "08000ed2", "is_isr": false, "signature": "void __stdcall latin1_toUtf8(ENCODING * enc, char * * fromP, char * fromLim, char * * toP, char * toLim)"}
+{"node_id": "func:lflush@080103e4", "node_type": "function", "name": "lflush", "entry": "080103e4", "is_isr": false, "signature": "int __stdcall lflush(FILE.conflict * fp)"}
+{"node_id": "func:little2_attributeValueTok@08001848", "node_type": "function", "name": "little2_attributeValueTok", "entry": "08001848", "is_isr": false, "signature": "int __stdcall little2_attributeValueTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_cdataSectionTok@08001282", "node_type": "function", "name": "little2_cdataSectionTok", "entry": "08001282", "is_isr": false, "signature": "int __stdcall little2_cdataSectionTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_charRefNumber@08002c10", "node_type": "function", "name": "little2_charRefNumber", "entry": "08002c10", "is_isr": false, "signature": "int __stdcall little2_charRefNumber(ENCODING * enc, char * ptr)"}
+{"node_id": "func:little2_checkPiTarget", "node_type": "function", "name": "little2_checkPiTarget"}
+{"node_id": "func:little2_checkPiTarget@08003b74", "node_type": "function", "name": "little2_checkPiTarget", "entry": "08003b74", "is_isr": false, "signature": "int __stdcall little2_checkPiTarget(ENCODING * enc, char * ptr, char * end, int * tokPtr)"}
+{"node_id": "func:little2_contentTok@08003e20", "node_type": "function", "name": "little2_contentTok", "entry": "08003e20", "is_isr": false, "signature": "int __stdcall little2_contentTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_entityValueTok@08001914", "node_type": "function", "name": "little2_entityValueTok", "entry": "08001914", "is_isr": false, "signature": "int __stdcall little2_entityValueTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_getAtts@08001a64", "node_type": "function", "name": "little2_getAtts", "entry": "08001a64", "is_isr": false, "signature": "int __stdcall little2_getAtts(ENCODING * enc, char * ptr, int attsMax, ATTRIBUTE * atts)"}
+{"node_id": "func:little2_isPublicId@080019e8", "node_type": "function", "name": "little2_isPublicId", "entry": "080019e8", "is_isr": false, "signature": "int __stdcall little2_isPublicId(ENCODING * enc, char * ptr, char * end, char * * badPtr)"}
+{"node_id": "func:little2_nameLength@08001d70", "node_type": "function", "name": "little2_nameLength", "entry": "08001d70", "is_isr": false, "signature": "int __stdcall little2_nameLength(ENCODING * enc, char * ptr)"}
+{"node_id": "func:little2_nameMatchesAscii@08001d48", "node_type": "function", "name": "little2_nameMatchesAscii", "entry": "08001d48", "is_isr": false, "signature": "int __stdcall little2_nameMatchesAscii(ENCODING * enc, char * ptr1, char * end1, char * ptr2)"}
+{"node_id": "func:little2_predefinedEntityName@08001bc2", "node_type": "function", "name": "little2_predefinedEntityName", "entry": "08001bc2", "is_isr": false, "signature": "int __stdcall little2_predefinedEntityName(ENCODING * enc, char * ptr, char * end)"}
+{"node_id": "func:little2_prologTok@08005c68", "node_type": "function", "name": "little2_prologTok", "entry": "08005c68", "is_isr": false, "signature": "int __stdcall little2_prologTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_sameName@08001c84", "node_type": "function", "name": "little2_sameName", "entry": "08001c84", "is_isr": false, "signature": "int __stdcall little2_sameName(ENCODING * enc, char * ptr1, char * ptr2)"}
+{"node_id": "func:little2_scanComment", "node_type": "function", "name": "little2_scanComment"}
+{"node_id": "func:little2_scanComment@08003ad4", "node_type": "function", "name": "little2_scanComment", "entry": "08003ad4", "is_isr": false, "signature": "int __stdcall little2_scanComment(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_scanLit", "node_type": "function", "name": "little2_scanLit"}
+{"node_id": "func:little2_scanLit@0800178c", "node_type": "function", "name": "little2_scanLit", "entry": "0800178c", "is_isr": false, "signature": "int __stdcall little2_scanLit(int open, ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_scanPercent", "node_type": "function", "name": "little2_scanPercent"}
+{"node_id": "func:little2_scanPercent@08001604", "node_type": "function", "name": "little2_scanPercent", "entry": "08001604", "is_isr": false, "signature": "int __stdcall little2_scanPercent(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_scanPi", "node_type": "function", "name": "little2_scanPi"}
+{"node_id": "func:little2_scanPi@08003bbc", "node_type": "function", "name": "little2_scanPi", "entry": "08003bbc", "is_isr": false, "signature": "int __stdcall little2_scanPi(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_scanRef", "node_type": "function", "name": "little2_scanRef"}
+{"node_id": "func:little2_scanRef@080013c0", "node_type": "function", "name": "little2_scanRef", "entry": "080013c0", "is_isr": false, "signature": "int __stdcall little2_scanRef(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:little2_skipS@08001dba", "node_type": "function", "name": "little2_skipS", "entry": "08001dba", "is_isr": false, "signature": "char * __stdcall little2_skipS(ENCODING * enc, char * ptr)"}
+{"node_id": "func:little2_toUtf16@080010c6", "node_type": "function", "name": "little2_toUtf16", "entry": "080010c6", "is_isr": false, "signature": "void __stdcall little2_toUtf16(ENCODING * enc, char * * fromP, char * fromLim, ushort * * toP, ushort * toLim)"}
+{"node_id": "func:little2_toUtf8@08000f96", "node_type": "function", "name": "little2_toUtf8", "entry": "08000f96", "is_isr": false, "signature": "void __stdcall little2_toUtf8(ENCODING * enc, char * * fromP, char * fromLim, char * * toP, char * toLim)"}
+{"node_id": "func:little2_updatePosition@08001df2", "node_type": "function", "name": "little2_updatePosition", "entry": "08001df2", "is_isr": false, "signature": "void __stdcall little2_updatePosition(ENCODING * enc, char * ptr, char * end, POSITION * pos)"}
+{"node_id": "func:localtime", "node_type": "function", "name": "localtime"}
+{"node_id": "func:localtime@0800e6e0", "node_type": "function", "name": "localtime", "entry": "0800e6e0", "is_isr": false, "signature": "tm * __stdcall localtime(time_t * tim_p)"}
+{"node_id": "func:localtime_r", "node_type": "function", "name": "localtime_r"}
+{"node_id": "func:localtime_r@0800e704", "node_type": "function", "name": "localtime_r", "entry": "0800e704", "is_isr": false, "signature": "tm * __stdcall localtime_r(time_t * tim_p, tm * res)"}
+{"node_id": "func:lookup", "node_type": "function", "name": "lookup"}
+{"node_id": "func:lookup@080087e8", "node_type": "function", "name": "lookup", "entry": "080087e8", "is_isr": false, "signature": "NAMED * __stdcall lookup(XML_Parser.conflict parser, HASH_TABLE * table, KEY name, size_t createSize)"}
+{"node_id": "func:lookup@0800dea4", "node_type": "function", "name": "lookup", "entry": "0800dea4", "is_isr": false, "signature": "undefined __stdcall lookup(char * param_1, uint param_2)"}
+{"node_id": "func:lseek@0800d708", "node_type": "function", "name": "lseek", "entry": "0800d708", "is_isr": false, "signature": "undefined __stdcall lseek(long param_1, int param_2)"}
+{"node_id": "func:main", "node_type": "function", "name": "main"}
+{"node_id": "func:main@0800b908", "node_type": "function", "name": "main", "entry": "0800b908", "is_isr": false, "signature": "int main(void)"}
+{"node_id": "func:malloc", "node_type": "function", "name": "malloc"}
+{"node_id": "func:malloc@0800e968", "node_type": "function", "name": "malloc", "entry": "0800e968", "is_isr": false, "signature": "void * __stdcall malloc(size_t nbytes)"}
+{"node_id": "func:match", "node_type": "function", "name": "match"}
+{"node_id": "func:match@080108d4", "node_type": "function", "name": "match", "entry": "080108d4", "is_isr": false, "signature": "int __stdcall match(char * * sp, char * t)"}
+{"node_id": "func:mbed_assert_internal", "node_type": "function", "name": "mbed_assert_internal"}
+{"node_id": "func:mbed_assert_internal@0800d7c0", "node_type": "function", "name": "mbed_assert_internal", "entry": "0800d7c0", "is_isr": false, "signature": "undefined mbed_assert_internal(void)"}
+{"node_id": "func:mbed_die", "node_type": "function", "name": "mbed_die"}
+{"node_id": "func:mbed_die@0800b984", "node_type": "function", "name": "mbed_die", "entry": "0800b984", "is_isr": false, "signature": "undefined mbed_die(void)"}
+{"node_id": "func:mbed_getc", "node_type": "function", "name": "mbed_getc"}
+{"node_id": "func:mbed_getc@0800bdd0", "node_type": "function", "name": "mbed_getc", "entry": "0800bdd0", "is_isr": false, "signature": "undefined __thiscall mbed_getc(mbed * this, __sFILE.conflict * param_1)"}
+{"node_id": "func:mbed_main", "node_type": "function", "name": "mbed_main"}
+{"node_id": "func:mbed_main@0800bd64", "node_type": "function", "name": "mbed_main", "entry": "0800bd64", "is_isr": false, "signature": "undefined mbed_main(void)"}
+{"node_id": "func:mbed_sdk_init", "node_type": "function", "name": "mbed_sdk_init"}
+{"node_id": "func:mbed_sdk_init@0800bacc", "node_type": "function", "name": "mbed_sdk_init", "entry": "0800bacc", "is_isr": false, "signature": "undefined mbed_sdk_init(void)"}
+{"node_id": "func:mbed_set_unbuffered_stream", "node_type": "function", "name": "mbed_set_unbuffered_stream"}
+{"node_id": "func:mbed_set_unbuffered_stream@0800bdc8", "node_type": "function", "name": "mbed_set_unbuffered_stream", "entry": "0800bdc8", "is_isr": false, "signature": "undefined __thiscall mbed_set_unbuffered_stream(mbed * this, __sFILE.conflict * param_1)"}
+{"node_id": "func:memchr", "node_type": "function", "name": "memchr"}
+{"node_id": "func:memchr@0800e988", "node_type": "function", "name": "memchr", "entry": "0800e988", "is_isr": false, "signature": "void * __stdcall memchr(void * src_void, int c, size_t length)"}
+{"node_id": "func:memcmp", "node_type": "function", "name": "memcmp"}
+{"node_id": "func:memcmp@0800e9a4", "node_type": "function", "name": "memcmp", "entry": "0800e9a4", "is_isr": false, "signature": "int __stdcall memcmp(void * m1, void * m2, size_t n)"}
+{"node_id": "func:memcpy", "node_type": "function", "name": "memcpy"}
+{"node_id": "func:memcpy@0800e9c4", "node_type": "function", "name": "memcpy", "entry": "0800e9c4", "is_isr": false, "signature": "void * __stdcall memcpy(void * dst0, void * src0, size_t len0)"}
+{"node_id": "func:memmove", "node_type": "function", "name": "memmove"}
+{"node_id": "func:memmove@0800e9da", "node_type": "function", "name": "memmove", "entry": "0800e9da", "is_isr": false, "signature": "void * __stdcall memmove(void * dst_void, void * src_void, size_t length)"}
+{"node_id": "func:memset", "node_type": "function", "name": "memset"}
+{"node_id": "func:memset@0800ea10", "node_type": "function", "name": "memset", "entry": "0800ea10", "is_isr": false, "signature": "void * __stdcall memset(void * m, int c, size_t n)"}
+{"node_id": "func:mktime", "node_type": "function", "name": "mktime"}
+{"node_id": "func:mktime@0800ebcc", "node_type": "function", "name": "mktime", "entry": "0800ebcc", "is_isr": false, "signature": "time_t __stdcall mktime(tm * tim_p)"}
+{"node_id": "func:nanf", "node_type": "function", "name": "nanf"}
+{"node_id": "func:nanf@08010750", "node_type": "function", "name": "nanf", "entry": "08010750", "is_isr": false, "signature": "float __stdcall nanf(char * unused)"}
+{"node_id": "func:nextScaffoldPart", "node_type": "function", "name": "nextScaffoldPart"}
+{"node_id": "func:nextScaffoldPart@08007d7a", "node_type": "function", "name": "nextScaffoldPart", "entry": "08007d7a", "is_isr": false, "signature": "int __stdcall nextScaffoldPart(XML_Parser.conflict parser)"}
+{"node_id": "func:normal_attributeValueTok@080008f4", "node_type": "function", "name": "normal_attributeValueTok", "entry": "080008f4", "is_isr": false, "signature": "int __stdcall normal_attributeValueTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_cdataSectionTok@08000390", "node_type": "function", "name": "normal_cdataSectionTok", "entry": "08000390", "is_isr": false, "signature": "int __stdcall normal_cdataSectionTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_charRefNumber@08002b24", "node_type": "function", "name": "normal_charRefNumber", "entry": "08002b24", "is_isr": false, "signature": "int __stdcall normal_charRefNumber(ENCODING * enc, char * ptr)"}
+{"node_id": "func:normal_checkPiTarget", "node_type": "function", "name": "normal_checkPiTarget"}
+{"node_id": "func:normal_checkPiTarget@08002edc", "node_type": "function", "name": "normal_checkPiTarget", "entry": "08002edc", "is_isr": false, "signature": "int __stdcall normal_checkPiTarget(ENCODING * enc, char * ptr, char * end, int * tokPtr)"}
+{"node_id": "func:normal_contentTok@0800317c", "node_type": "function", "name": "normal_contentTok", "entry": "0800317c", "is_isr": false, "signature": "int __stdcall normal_contentTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_entityValueTok@0800098e", "node_type": "function", "name": "normal_entityValueTok", "entry": "0800098e", "is_isr": false, "signature": "int __stdcall normal_entityValueTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_getAtts@08000a80", "node_type": "function", "name": "normal_getAtts", "entry": "08000a80", "is_isr": false, "signature": "int __stdcall normal_getAtts(ENCODING * enc, char * ptr, int attsMax, ATTRIBUTE * atts)"}
+{"node_id": "func:normal_isPublicId@08000a2c", "node_type": "function", "name": "normal_isPublicId", "entry": "08000a2c", "is_isr": false, "signature": "int __stdcall normal_isPublicId(ENCODING * enc, char * ptr, char * end, char * * badPtr)"}
+{"node_id": "func:normal_nameLength@08000d16", "node_type": "function", "name": "normal_nameLength", "entry": "08000d16", "is_isr": false, "signature": "int __stdcall normal_nameLength(ENCODING * enc, char * ptr)"}
+{"node_id": "func:normal_nameMatchesAscii@08000cf0", "node_type": "function", "name": "normal_nameMatchesAscii", "entry": "08000cf0", "is_isr": false, "signature": "int __stdcall normal_nameMatchesAscii(ENCODING * enc, char * ptr1, char * end1, char * ptr2)"}
+{"node_id": "func:normal_predefinedEntityName@08000bd4", "node_type": "function", "name": "normal_predefinedEntityName", "entry": "08000bd4", "is_isr": false, "signature": "int __stdcall normal_predefinedEntityName(ENCODING * enc, char * ptr, char * end)"}
+{"node_id": "func:normal_prologTok@080056b0", "node_type": "function", "name": "normal_prologTok", "entry": "080056b0", "is_isr": false, "signature": "int __stdcall normal_prologTok(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_sameName@08000c54", "node_type": "function", "name": "normal_sameName", "entry": "08000c54", "is_isr": false, "signature": "int __stdcall normal_sameName(ENCODING * enc, char * ptr1, char * ptr2)"}
+{"node_id": "func:normal_scanComment", "node_type": "function", "name": "normal_scanComment"}
+{"node_id": "func:normal_scanComment@08002e2c", "node_type": "function", "name": "normal_scanComment", "entry": "08002e2c", "is_isr": false, "signature": "int __stdcall normal_scanComment(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_scanLit", "node_type": "function", "name": "normal_scanLit"}
+{"node_id": "func:normal_scanLit@08000824", "node_type": "function", "name": "normal_scanLit", "entry": "08000824", "is_isr": false, "signature": "int __stdcall normal_scanLit(int open, ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_scanPercent", "node_type": "function", "name": "normal_scanPercent"}
+{"node_id": "func:normal_scanPercent@080006cc", "node_type": "function", "name": "normal_scanPercent", "entry": "080006cc", "is_isr": false, "signature": "int __stdcall normal_scanPercent(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_scanPi", "node_type": "function", "name": "normal_scanPi"}
+{"node_id": "func:normal_scanPi@08002f1c", "node_type": "function", "name": "normal_scanPi", "entry": "08002f1c", "is_isr": false, "signature": "int __stdcall normal_scanPi(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_scanRef", "node_type": "function", "name": "normal_scanRef"}
+{"node_id": "func:normal_scanRef@080004fc", "node_type": "function", "name": "normal_scanRef", "entry": "080004fc", "is_isr": false, "signature": "int __stdcall normal_scanRef(ENCODING * enc, char * ptr, char * end, char * * nextTokPtr)"}
+{"node_id": "func:normal_skipS@08000d54", "node_type": "function", "name": "normal_skipS", "entry": "08000d54", "is_isr": false, "signature": "char * __stdcall normal_skipS(ENCODING * enc, char * ptr)"}
+{"node_id": "func:normal_updatePosition", "node_type": "function", "name": "normal_updatePosition"}
+{"node_id": "func:normal_updatePosition@08000d7c", "node_type": "function", "name": "normal_updatePosition", "entry": "08000d7c", "is_isr": false, "signature": "void __stdcall normal_updatePosition(ENCODING * enc, char * ptr, char * end, POSITION * pos)"}
+{"node_id": "func:normalizeLines", "node_type": "function", "name": "normalizeLines"}
+{"node_id": "func:normalizeLines@08007a8e", "node_type": "function", "name": "normalizeLines", "entry": "08007a8e", "is_isr": false, "signature": "void __stdcall normalizeLines(XML_Char * s)"}
+{"node_id": "func:normalizePublicId", "node_type": "function", "name": "normalizePublicId"}
+{"node_id": "func:normalizePublicId@08007c9c", "node_type": "function", "name": "normalizePublicId", "entry": "08007c9c", "is_isr": false, "signature": "void __stdcall normalizePublicId(XML_Char * publicId)"}
+{"node_id": "func:notation0@080073b4", "node_type": "function", "name": "notation0", "entry": "080073b4", "is_isr": false, "signature": "int __stdcall notation0(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:notation1@080073dc", "node_type": "function", "name": "notation1", "entry": "080073dc", "is_isr": false, "signature": "int __stdcall notation1(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:notation2@0800743c", "node_type": "function", "name": "notation2", "entry": "0800743c", "is_isr": false, "signature": "int __stdcall notation2(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:notation3@08007464", "node_type": "function", "name": "notation3", "entry": "08007464", "is_isr": false, "signature": "int __stdcall notation3(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:notation4@08007490", "node_type": "function", "name": "notation4", "entry": "08007490", "is_isr": false, "signature": "int __stdcall notation4(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:operator_delete", "node_type": "function", "name": "operator_delete"}
+{"node_id": "func:operator_delete@0800dee4", "node_type": "function", "name": "operator_delete", "entry": "0800dee4", "is_isr": false, "signature": "void __stdcall operator_delete(void * ptr)"}
+{"node_id": "func:parse", "node_type": "function", "name": "parse"}
+{"node_id": "func:parse@0800b838", "node_type": "function", "name": "parse", "entry": "0800b838", "is_isr": false, "signature": "int parse(void)"}
+{"node_id": "func:parsePseudoAttribute", "node_type": "function", "name": "parsePseudoAttribute"}
+{"node_id": "func:parsePseudoAttribute@08005444", "node_type": "function", "name": "parsePseudoAttribute", "entry": "08005444", "is_isr": false, "signature": "int __stdcall parsePseudoAttribute(ENCODING * enc, char * ptr, char * end, char * * namePtr, char * * nameEndPtr, char * * valPtr, char * * nextTokPtr)"}
+{"node_id": "func:parserCreate@0800b210", "node_type": "function", "name": "parserCreate", "entry": "0800b210", "is_isr": false, "signature": "XML_Parser.conflict __stdcall parserCreate(XML_Char * encodingName, XML_Memory_Handling_Suite * memsuite, XML_Char * nameSep, DTD * dtd)"}
+{"node_id": "func:parserInit", "node_type": "function", "name": "parserInit"}
+{"node_id": "func:parserInit@08008298", "node_type": "function", "name": "parserInit", "entry": "08008298", "is_isr": false, "signature": "void __stdcall parserInit(XML_Parser.conflict parser, XML_Char * encodingName)"}
+{"node_id": "func:pin_function", "node_type": "function", "name": "pin_function"}
+{"node_id": "func:pin_function@0800dac8", "node_type": "function", "name": "pin_function", "entry": "0800dac8", "is_isr": false, "signature": "undefined pin_function(void)"}
+{"node_id": "func:pin_mode", "node_type": "function", "name": "pin_mode"}
+{"node_id": "func:pin_mode@0800db24", "node_type": "function", "name": "pin_mode", "entry": "0800db24", "is_isr": false, "signature": "undefined pin_mode(void)"}
+{"node_id": "func:pinmap_merge", "node_type": "function", "name": "pinmap_merge"}
+{"node_id": "func:pinmap_merge@0800d888", "node_type": "function", "name": "pinmap_merge", "entry": "0800d888", "is_isr": false, "signature": "undefined pinmap_merge(void)"}
+{"node_id": "func:pinmap_peripheral", "node_type": "function", "name": "pinmap_peripheral"}
+{"node_id": "func:pinmap_peripheral@0800d8ac", "node_type": "function", "name": "pinmap_peripheral", "entry": "0800d8ac", "is_isr": false, "signature": "undefined pinmap_peripheral(void)"}
+{"node_id": "func:pinmap_pinout", "node_type": "function", "name": "pinmap_pinout"}
+{"node_id": "func:pinmap_pinout@0800d844", "node_type": "function", "name": "pinmap_pinout", "entry": "0800d844", "is_isr": false, "signature": "undefined pinmap_pinout(void)"}
+{"node_id": "func:poolAppend", "node_type": "function", "name": "poolAppend"}
+{"node_id": "func:poolAppend@08008094", "node_type": "function", "name": "poolAppend", "entry": "08008094", "is_isr": false, "signature": "XML_Char * __stdcall poolAppend(STRING_POOL * pool, ENCODING * enc, char * ptr, char * end)"}
+{"node_id": "func:poolClear", "node_type": "function", "name": "poolClear"}
+{"node_id": "func:poolClear@08007d30", "node_type": "function", "name": "poolClear", "entry": "08007d30", "is_isr": false, "signature": "void __stdcall poolClear(STRING_POOL * pool)"}
+{"node_id": "func:poolCopyString", "node_type": "function", "name": "poolCopyString"}
+{"node_id": "func:poolCopyString@08008264", "node_type": "function", "name": "poolCopyString", "entry": "08008264", "is_isr": false, "signature": "XML_Char * __stdcall poolCopyString(STRING_POOL * pool, XML_Char * s)"}
+{"node_id": "func:poolDestroy", "node_type": "function", "name": "poolDestroy"}
+{"node_id": "func:poolDestroy@08007d54", "node_type": "function", "name": "poolDestroy", "entry": "08007d54", "is_isr": false, "signature": "void __stdcall poolDestroy(STRING_POOL * pool)"}
+{"node_id": "func:poolGrow", "node_type": "function", "name": "poolGrow"}
+{"node_id": "func:poolGrow@08007fb4", "node_type": "function", "name": "poolGrow", "entry": "08007fb4", "is_isr": false, "signature": "XML_Bool __stdcall poolGrow(STRING_POOL * pool)"}
+{"node_id": "func:poolStoreString", "node_type": "function", "name": "poolStoreString"}
+{"node_id": "func:poolStoreString@080080d0", "node_type": "function", "name": "poolStoreString", "entry": "080080d0", "is_isr": false, "signature": "XML_Char * __stdcall poolStoreString(STRING_POOL * pool, ENCODING * enc, char * ptr, char * end)"}
+{"node_id": "func:printf", "node_type": "function", "name": "printf"}
+{"node_id": "func:printf@0800d794", "node_type": "function", "name": "printf", "entry": "0800d794", "is_isr": false, "signature": "undefined __stdcall printf(char * param_1, ...)"}
+{"node_id": "func:printf@080101dc", "node_type": "function", "name": "printf", "entry": "080101dc", "is_isr": false, "signature": "int __stdcall printf(char * fmt, ...)"}
+{"node_id": "func:processXmlDecl", "node_type": "function", "name": "processXmlDecl"}
+{"node_id": "func:processXmlDecl@08008100", "node_type": "function", "name": "processXmlDecl", "entry": "08008100", "is_isr": false, "signature": "XML_Error __stdcall processXmlDecl(XML_Parser.conflict parser, int isGeneralTextEntity, char * s, char * next)"}
+{"node_id": "func:prolog0@08006db0", "node_type": "function", "name": "prolog0", "entry": "08006db0", "is_isr": false, "signature": "int __stdcall prolog0(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:prolog1@08006e30", "node_type": "function", "name": "prolog1", "entry": "08006e30", "is_isr": false, "signature": "int __stdcall prolog1(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:prolog2@08006e98", "node_type": "function", "name": "prolog2", "entry": "08006e98", "is_isr": false, "signature": "int __stdcall prolog2(PROLOG_STATE * state, int tok, char * ptr, char * end, ENCODING * enc)"}
+{"node_id": "func:prologInitProcessor@0800aed4", "node_type": "function", "name": "prologInitProcessor", "entry": "0800aed4", "is_isr": false, "signature": "XML_Error __stdcall prologInitProcessor(XML_Parser.conflict parser, char * s, char * end, char * * nextPtr)"}
+{"node_id": "func:prologProcessor", "node_type": "function", "name": "prologProcessor"}
+{"node_id": "func:prologProcessor@0800a09c", "node_type": "function", "name": "prologProcessor", "entry": "0800a09c", "is_isr": false, "signature": "XML_Error __stdcall prologProcessor(XML_Parser.conflict parser, char * s, char * end, char * * nextPtr)"}
+{"node_id": "func:puts", "node_type": "function", "name": "puts"}
+{"node_id": "func:puts@080102fc", "node_type": "function", "name": "puts", "entry": "080102fc", "is_isr": false, "signature": "int __stdcall puts(char * s)"}
+{"node_id": "func:quorem", "node_type": "function", "name": "quorem"}
+{"node_id": "func:quorem@08011fec", "node_type": "function", "name": "quorem", "entry": "08011fec", "is_isr": false, "signature": "int __stdcall quorem(_Bigint * b, _Bigint * S)"}
+{"node_id": "func:rand", "node_type": "function", "name": "rand"}
+{"node_id": "func:rand@0801035c", "node_type": "function", "name": "rand", "entry": "0801035c", "is_isr": false, "signature": "int rand(void)"}
+{"node_id": "func:read@0800d6dc", "node_type": "function", "name": "read", "entry": "0800d6dc", "is_isr": false, "signature": "undefined __thiscall read(Stream * this, void * param_1, uint param_2)"}
+{"node_id": "func:realloc@080103d0", "node_type": "function", "name": "realloc", "entry": "080103d0", "is_isr": false, "signature": "void * __stdcall realloc(void * ap, size_t nbytes)"}
+{"node_id": "func:register_tm_clones", "node_type": "function", "name": "register_tm_clones"}
+{"node_id": "func:register_tm_clones@0800015c", "node_type": "function", "name": "register_tm_clones", "entry": "0800015c", "is_isr": false, "signature": "undefined register_tm_clones(void)"}
+{"node_id": "func:reportComment", "node_type": "function", "name": "reportComment"}
+{"node_id": "func:reportComment@080086a4", "node_type": "function", "name": "reportComment", "entry": "080086a4", "is_isr": false, "signature": "int __stdcall reportComment(XML_Parser.conflict parser, ENCODING * enc, char * start, char * end)"}
+{"node_id": "func:reportDefault", "node_type": "function", "name": "reportDefault"}
+{"node_id": "func:reportDefault@08007ac6", "node_type": "function", "name": "reportDefault", "entry": "08007ac6", "is_isr": false, "signature": "void __stdcall reportDefault(XML_Parser.conflict parser, ENCODING * enc, char * s, char * end)"}
+{"node_id": "func:reportProcessingInstruction", "node_type": "function", "name": "reportProcessingInstruction"}
+{"node_id": "func:reportProcessingInstruction@0800861c", "node_type": "function", "name": "reportProcessingInstruction", "entry": "0800861c", "is_isr": false, "signature": "int __stdcall reportProcessingInstruction(XML_Parser.conflict parser, ENCODING * enc, char * start, char * end)"}
+{"node_id": "func:rshift", "node_type": "function", "name": "rshift"}
+{"node_id": "func:rshift@08012d0c", "node_type": "function", "name": "rshift", "entry": "08012d0c", "is_isr": false, "signature": "void __stdcall rshift(_Bigint * b, int k)"}
+{"node_id": "func:rtc_init", "node_type": "function", "name": "rtc_init"}
+{"node_id": "func:rtc_init@0800db6c", "node_type": "function", "name": "rtc_init", "entry": "0800db6c", "is_isr": false, "signature": "undefined rtc_init(void)"}
+{"node_id": "func:rtc_isenabled", "node_type": "function", "name": "rtc_isenabled"}
+{"node_id": "func:rtc_isenabled@0800dc58", "node_type": "function", "name": "rtc_isenabled", "entry": "0800dc58", "is_isr": false, "signature": "undefined rtc_isenabled(void)"}
+{"node_id": "func:rtc_read", "node_type": "function", "name": "rtc_read"}
+{"node_id": "func:rtc_read@0800dc64", "node_type": "function", "name": "rtc_read", "entry": "0800dc64", "is_isr": false, "signature": "undefined rtc_read(void)"}
+{"node_id": "func:rtc_write", "node_type": "function", "name": "rtc_write"}
+{"node_id": "func:rtc_write@0800dcc4", "node_type": "function", "name": "rtc_write", "entry": "0800dcc4", "is_isr": false, "signature": "undefined rtc_write(void)"}
+{"node_id": "func:serial_baud", "node_type": "function", "name": "serial_baud"}
+{"node_id": "func:serial_baud@0800d4c8", "node_type": "function", "name": "serial_baud", "entry": "0800d4c8", "is_isr": false, "signature": "undefined serial_baud(void)"}
+{"node_id": "func:serial_getc", "node_type": "function", "name": "serial_getc"}
+{"node_id": "func:serial_getc@0800d4ec", "node_type": "function", "name": "serial_getc", "entry": "0800d4ec", "is_isr": false, "signature": "undefined serial_getc(void)"}
+{"node_id": "func:serial_init", "node_type": "function", "name": "serial_init"}
+{"node_id": "func:serial_init@0800d398", "node_type": "function", "name": "serial_init", "entry": "0800d398", "is_isr": false, "signature": "undefined serial_init(void)"}
+{"node_id": "func:serial_irq_handler", "node_type": "function", "name": "serial_irq_handler"}
+{"node_id": "func:serial_irq_handler@0800d4d0", "node_type": "function", "name": "serial_irq_handler", "entry": "0800d4d0", "is_isr": true, "signature": "undefined serial_irq_handler(void)"}
+{"node_id": "func:serial_putc", "node_type": "function", "name": "serial_putc"}
+{"node_id": "func:serial_putc@0800d504", "node_type": "function", "name": "serial_putc", "entry": "0800d504", "is_isr": false, "signature": "undefined serial_putc(void)"}
+{"node_id": "func:serial_read", "node_type": "function", "name": "serial_read"}
+{"node_id": "func:serial_read@0800b7ec", "node_type": "function", "name": "serial_read", "entry": "0800b7ec", "is_isr": false, "signature": "int __stdcall serial_read(char * buf, int n)"}
+{"node_id": "func:setContext", "node_type": "function", "name": "setContext"}
+{"node_id": "func:setContext@0800af04", "node_type": "function", "name": "setContext", "entry": "0800af04", "is_isr": false, "signature": "XML_Bool __stdcall setContext(XML_Parser.conflict parser, XML_Char * context)"}
+{"node_id": "func:setElementTypePrefix", "node_type": "function", "name": "setElementTypePrefix"}
+{"node_id": "func:setElementTypePrefix@080089ec", "node_type": "function", "name": "setElementTypePrefix", "entry": "080089ec", "is_isr": false, "signature": "int __stdcall setElementTypePrefix(XML_Parser.conflict parser, ELEMENT_TYPE * elementType)"}
+{"node_id": "func:setbuf", "node_type": "function", "name": "setbuf"}
+{"node_id": "func:setbuf@0801062e", "node_type": "function", "name": "setbuf", "entry": "0801062e", "is_isr": false, "signature": "void __stdcall setbuf(FILE.conflict * fp, char * buf)"}
+{"node_id": "func:setvbuf", "node_type": "function", "name": "setvbuf"}
+{"node_id": "func:setvbuf@08010640", "node_type": "function", "name": "setvbuf", "entry": "08010640", "is_isr": false, "signature": "int __stdcall setvbuf(FILE.conflict * fp, char * buf, int mode, size_t size)"}
+{"node_id": "func:sprintf", "node_type": "function", "name": "sprintf"}
+{"node_id": "func:sprintf@08010758", "node_type": "function", "name": "sprintf", "entry": "08010758", "is_isr": false, "signature": "int __stdcall sprintf(char * str, char * fmt, ...)"}
+{"node_id": "func:srand", "node_type": "function", "name": "srand"}
+{"node_id": "func:srand@0801030c", "node_type": "function", "name": "srand", "entry": "0801030c", "is_isr": false, "signature": "void __stdcall srand(uint seed)"}
+{"node_id": "func:sscanf", "node_type": "function", "name": "sscanf"}
+{"node_id": "func:sscanf@080107a0", "node_type": "function", "name": "sscanf", "entry": "080107a0", "is_isr": false, "signature": "int __stdcall sscanf(char * str, char * fmt, ...)"}
+{"node_id": "func:start@0800b748", "node_type": "function", "name": "start", "entry": "0800b748", "is_isr": false, "signature": "void __stdcall start(void * data, char * el, char * * attr)"}
+{"node_id": "func:startParsing", "node_type": "function", "name": "startParsing"}
+{"node_id": "func:startParsing@0800b09c", "node_type": "function", "name": "startParsing", "entry": "0800b09c", "is_isr": false, "signature": "XML_Bool __stdcall startParsing(XML_Parser.conflict parser)"}
+{"node_id": "func:std", "node_type": "function", "name": "std"}
+{"node_id": "func:std@0800e240", "node_type": "function", "name": "std", "entry": "0800e240", "is_isr": false, "signature": "void __stdcall std(FILE.conflict * ptr, int flags, int file, _reent.conflict * data)"}
+{"node_id": "func:storeAttributeValue", "node_type": "function", "name": "storeAttributeValue"}
+{"node_id": "func:storeAttributeValue@08008e36", "node_type": "function", "name": "storeAttributeValue", "entry": "08008e36", "is_isr": false, "signature": "XML_Error __stdcall storeAttributeValue(XML_Parser.conflict parser, ENCODING * enc, XML_Bool isCdata, char * ptr, char * end, STRING_POOL * pool)"}
+{"node_id": "func:storeAtts", "node_type": "function", "name": "storeAtts"}
+{"node_id": "func:storeAtts@08008ed0", "node_type": "function", "name": "storeAtts", "entry": "08008ed0", "is_isr": false, "signature": "XML_Error __stdcall storeAtts(XML_Parser.conflict parser, ENCODING * enc, char * attStr, TAG_NAME * tagNamePtr, BINDING * * bindingsPtr)"}
+{"node_id": "func:storeRawNames", "node_type": "function", "name": "storeRawNames"}
+{"node_id": "func:storeRawNames@08007f58", "node_type": "function", "name": "storeRawNames", "entry": "08007f58", "is_isr": false, "signature": "XML_Bool __stdcall storeRawNames(XML_Parser.conflict parser)"}
+{"node_id": "func:strcmp", "node_type": "function", "name": "strcmp"}
+{"node_id": "func:strcmp@0801087e", "node_type": "function", "name": "strcmp", "entry": "0801087e", "is_isr": false, "signature": "int __stdcall strcmp(char * __s1, char * __s2)"}
+{"node_id": "func:strcpy", "node_type": "function", "name": "strcpy"}
+{"node_id": "func:strcpy@08014380", "node_type": "function", "name": "strcpy", "entry": "08014380", "is_isr": false, "signature": "char * __stdcall strcpy(char * dst, char * src)"}
+{"node_id": "func:streqci", "node_type": "function", "name": "streqci"}
+{"node_id": "func:streqci@08002a56", "node_type": "function", "name": "streqci", "entry": "08002a56", "is_isr": false, "signature": "int __stdcall streqci(char * s1, char * s2)"}
+{"node_id": "func:strlen", "node_type": "function", "name": "strlen"}
+{"node_id": "func:strlen@08010892", "node_type": "function", "name": "strlen", "entry": "08010892", "is_isr": false, "signature": "size_t __stdcall strlen(char * str)"}
+{"node_id": "func:strncmp", "node_type": "function", "name": "strncmp"}
+{"node_id": "func:strncmp@080108a2", "node_type": "function", "name": "strncmp", "entry": "080108a2", "is_isr": false, "signature": "int __stdcall strncmp(char * s1, char * s2, size_t n)"}
+{"node_id": "func:strtoul", "node_type": "function", "name": "strtoul"}
+{"node_id": "func:strtoul@08011784", "node_type": "function", "name": "strtoul", "entry": "08011784", "is_isr": false, "signature": "ulong __stdcall strtoul(char * s, char * * ptr, int base)"}
+{"node_id": "func:sulp", "node_type": "function", "name": "sulp"}
+{"node_id": "func:sulp@080108fa", "node_type": "function", "name": "sulp", "entry": "080108fa", "is_isr": false, "signature": "double __stdcall sulp(U x, int scale)"}
+{"node_id": "func:ticker_irq_handler", "node_type": "function", "name": "ticker_irq_handler"}
+{"node_id": "func:ticker_irq_handler@0800d930", "node_type": "function", "name": "ticker_irq_handler", "entry": "0800d930", "is_isr": true, "signature": "undefined ticker_irq_handler(void)"}
+{"node_id": "func:time", "node_type": "function", "name": "time"}
+{"node_id": "func:time@0800d8e4", "node_type": "function", "name": "time", "entry": "0800d8e4", "is_isr": false, "signature": "time_t __stdcall time(time_t * __timer)"}
+{"node_id": "func:timer_irq_handler@0800b9e0", "node_type": "function", "name": "timer_irq_handler", "entry": "0800b9e0", "is_isr": true, "signature": "undefined timer_irq_handler(void)"}
+{"node_id": "func:toAscii", "node_type": "function", "name": "toAscii"}
+{"node_id": "func:toAscii@08002a98", "node_type": "function", "name": "toAscii", "entry": "08002a98", "is_isr": false, "signature": "int __stdcall toAscii(ENCODING * enc, char * ptr, char * end)"}
+{"node_id": "func:unicode_byte_type", "node_type": "function", "name": "unicode_byte_type"}
+{"node_id": "func:unicode_byte_type@08000f6c", "node_type": "function", "name": "unicode_byte_type", "entry": "08000f6c", "is_isr": false, "signature": "int __stdcall unicode_byte_type(char hi, char lo)"}
+{"node_id": "func:unknown_isInvalid@08002d18", "node_type": "function", "name": "unknown_isInvalid", "entry": "08002d18", "is_isr": false, "signature": "int __stdcall unknown_isInvalid(ENCODING * enc, char * p)"}
+{"node_id": "func:unknown_isName@08002c98", "node_type": "function", "name": "unknown_isName", "entry": "08002c98", "is_isr": false, "signature": "int __stdcall unknown_isName(ENCODING * enc, char * p)"}
+{"node_id": "func:unknown_isNmstrt@08002cd8", "node_type": "function", "name": "unknown_isNmstrt", "entry": "08002cd8", "is_isr": false, "signature": "int __stdcall unknown_isNmstrt(ENCODING * enc, char * p)"}
+{"node_id": "func:unknown_toUtf16@08002d36", "node_type": "function", "name": "unknown_toUtf16", "entry": "08002d36", "is_isr": false, "signature": "void __stdcall unknown_toUtf16(ENCODING * enc, char * * fromP, char * fromLim, ushort * * toP, ushort * toLim)"}
+{"node_id": "func:unknown_toUtf8@08006934", "node_type": "function", "name": "unknown_toUtf8", "entry": "08006934", "is_isr": false, "signature": "void __stdcall unknown_toUtf8(ENCODING * enc, char * * fromP, char * fromLim, char * * toP, char * toLim)"}
+{"node_id": "func:us_ticker_clear_interrupt@0800ddb4", "node_type": "function", "name": "us_ticker_clear_interrupt", "entry": "0800ddb4", "is_isr": false, "signature": "undefined us_ticker_clear_interrupt(void)"}
+{"node_id": "func:us_ticker_disable_interrupt@0800dda0", "node_type": "function", "name": "us_ticker_disable_interrupt", "entry": "0800dda0", "is_isr": false, "signature": "undefined us_ticker_disable_interrupt(void)"}
+{"node_id": "func:us_ticker_init@0800dd34", "node_type": "function", "name": "us_ticker_init", "entry": "0800dd34", "is_isr": false, "signature": "undefined us_ticker_init(void)"}
+{"node_id": "func:us_ticker_irq_handler", "node_type": "function", "name": "us_ticker_irq_handler"}
+{"node_id": "func:us_ticker_irq_handler@0800d924", "node_type": "function", "name": "us_ticker_irq_handler", "entry": "0800d924", "is_isr": true, "signature": "undefined us_ticker_irq_handler(void)"}
+{"node_id": "func:us_ticker_read", "node_type": "function", "name": "us_ticker_read"}
+{"node_id": "func:us_ticker_read@0800dd5c", "node_type": "function", "name": "us_ticker_read", "entry": "0800dd5c", "is_isr": false, "signature": "undefined us_ticker_read(void)"}
+{"node_id": "func:us_ticker_set_interrupt@0800dd8c", "node_type": "function", "name": "us_ticker_set_interrupt", "entry": "0800dd8c", "is_isr": false, "signature": "undefined us_ticker_set_interrupt(void)"}
+{"node_id": "func:utf8_isInvalid2@08002dc0", "node_type": "function", "name": "utf8_isInvalid2", "entry": "08002dc0", "is_isr": false, "signature": "int __stdcall utf8_isInvalid2(ENCODING * enc, char * p)"}
+{"node_id": "func:utf8_isInvalid3@0800033c", "node_type": "function", "name": "utf8_isInvalid3", "entry": "0800033c", "is_isr": false, "signature": "int __stdcall utf8_isInvalid3(ENCODING * enc, char * p)"}
+{"node_id": "func:utf8_isInvalid4@08002dde", "node_type": "function", "name": "utf8_isInvalid4", "entry": "08002dde", "is_isr": false, "signature": "int __stdcall utf8_isInvalid4(ENCODING * enc, char * p)"}
+{"node_id": "func:utf8_isName2@0800024c", "node_type": "function", "name": "utf8_isName2", "entry": "0800024c", "is_isr": false, "signature": "int __stdcall utf8_isName2(ENCODING * enc, char * p)"}
+{"node_id": "func:utf8_isName3@08000284", "node_type": "function", "name": "utf8_isName3", "entry": "08000284", "is_isr": false, "signature": "int __stdcall utf8_isName3(ENCODING * enc, char * p)"}
+{"node_id": "func:utf8_isNmstrt2@080002c4", "node_type": "function", "name": "utf8_isNmstrt2", "entry": "080002c4", "is_isr": false, "signature": "int __stdcall utf8_isNmstrt2(ENCODING * enc, char * p)"}
+{"node_id": "func:utf8_isNmstrt3@080002fc", "node_type": "function", "name": "utf8_isNmstrt3", "entry": "080002fc", "is_isr": false, "signature": "int __stdcall utf8_isNmstrt3(ENCODING * enc, char * p)"}
+{"node_id": "func:utf8_toUtf16@08000e24", "node_type": "function", "name": "utf8_toUtf16", "entry": "08000e24", "is_isr": false, "signature": "void __stdcall utf8_toUtf16(ENCODING * enc, char * * fromP, char * fromLim, ushort * * toP, ushort * toLim)"}
+{"node_id": "func:utf8_toUtf8@08000de4", "node_type": "function", "name": "utf8_toUtf8", "entry": "08000de4", "is_isr": false, "signature": "void __stdcall utf8_toUtf8(ENCODING * enc, char * * fromP, char * fromLim, char * * toP, char * toLim)"}
+{"node_id": "func:validate_structure", "node_type": "function", "name": "validate_structure"}
+{"node_id": "func:validate_structure@0800ea20", "node_type": "function", "name": "validate_structure", "entry": "0800ea20", "is_isr": false, "signature": "void __stdcall validate_structure(tm * tim_p)"}
+{"node_id": "func:vfprintf", "node_type": "function", "name": "vfprintf"}
+{"node_id": "func:vfprintf@0800f258", "node_type": "function", "name": "vfprintf", "entry": "0800f258", "is_isr": false, "signature": "int __stdcall vfprintf(FILE.conflict * fp, char * fmt0, va_list ap)"}
+{"node_id": "func:wait_ms", "node_type": "function", "name": "wait_ms"}
+{"node_id": "func:wait_ms@0800d994", "node_type": "function", "name": "wait_ms", "entry": "0800d994", "is_isr": false, "signature": "undefined wait_ms(void)"}
+{"node_id": "func:wait_us", "node_type": "function", "name": "wait_us"}
+{"node_id": "func:wait_us@0800d97c", "node_type": "function", "name": "wait_us", "entry": "0800d97c", "is_isr": false, "signature": "undefined wait_us(void)"}
+{"node_id": "func:write@0800d6b0", "node_type": "function", "name": "write", "entry": "0800d6b0", "is_isr": false, "signature": "undefined __thiscall write(Stream * this, void * param_1, uint param_2)"}
+{"node_id": "func:~FileBase", "node_type": "function", "name": "~FileBase"}
+{"node_id": "func:~FileBase@0800de10", "node_type": "function", "name": "~FileBase", "entry": "0800de10", "is_isr": false, "signature": "undefined __thiscall ~FileBase(FileBase * this)"}
+{"node_id": "func:~FileBase@0800de40", "node_type": "function", "name": "~FileBase", "entry": "0800de40", "is_isr": false, "signature": "undefined __thiscall ~FileBase(FileBase * this)"}
+{"node_id": "func:~FileHandle", "node_type": "function", "name": "~FileHandle"}
+{"node_id": "func:~FileHandle@0800bb14", "node_type": "function", "name": "~FileHandle", "entry": "0800bb14", "is_isr": false, "signature": "undefined __thiscall ~FileHandle(FileHandle * this)"}
+{"node_id": "func:~FileLike", "node_type": "function", "name": "~FileLike"}
+{"node_id": "func:~FileLike@0800ddec", "node_type": "function", "name": "~FileLike", "entry": "0800ddec", "is_isr": false, "signature": "undefined __thiscall ~FileLike(FileLike * this)"}
+{"node_id": "func:~Serial", "node_type": "function", "name": "~Serial"}
+{"node_id": "func:~Serial@0800b7ac", "node_type": "function", "name": "~Serial", "entry": "0800b7ac", "is_isr": false, "signature": "void * __thiscall ~Serial(Serial * this, int __in_chrg)"}
+{"node_id": "func:~Serial@0800b7d0", "node_type": "function", "name": "~Serial", "entry": "0800b7d0", "is_isr": false, "signature": "undefined __thiscall ~Serial(Serial * this)"}
+{"node_id": "func:~Serial@0800b7d8", "node_type": "function", "name": "~Serial", "entry": "0800b7d8", "is_isr": false, "signature": "undefined __thiscall ~Serial(Serial * this)"}
+{"node_id": "func:~Serial@0800b920", "node_type": "function", "name": "~Serial", "entry": "0800b920", "is_isr": false, "signature": "void * __thiscall ~Serial(Serial * this, int __in_chrg)"}
+{"node_id": "func:~Serial@0800b932", "node_type": "function", "name": "~Serial", "entry": "0800b932", "is_isr": false, "signature": "undefined __thiscall ~Serial(Serial * this)"}
+{"node_id": "func:~Serial@0800b938", "node_type": "function", "name": "~Serial", "entry": "0800b938", "is_isr": false, "signature": "undefined __thiscall ~Serial(Serial * this)"}
+{"node_id": "func:~SerialBase@0800b734", "node_type": "function", "name": "~SerialBase", "entry": "0800b734", "is_isr": false, "signature": "void * __thiscall ~SerialBase(SerialBase * this, int __in_chrg)"}
+{"node_id": "func:~SerialBase@0800b7e0", "node_type": "function", "name": "~SerialBase", "entry": "0800b7e0", "is_isr": false, "signature": "void * __thiscall ~SerialBase(SerialBase * this, int __in_chrg)"}
+{"node_id": "func:~Stream", "node_type": "function", "name": "~Stream"}
+{"node_id": "func:~Stream@0800d75c", "node_type": "function", "name": "~Stream", "entry": "0800d75c", "is_isr": false, "signature": "undefined __thiscall ~Stream(Stream * this)"}
+{"node_id": "mmio:0X40000C0C", "node_type": "mmio", "address_hex": "0x40000C0C", "address": 1073744908}
+{"node_id": "mmio:0X40000C24", "node_type": "mmio", "address_hex": "0x40000C24", "address": 1073744932}
+{"node_id": "mmio:0X40000C38", "node_type": "mmio", "address_hex": "0x40000C38", "address": 1073744952}
+{"node_id": "mmio:0X4000280C", "node_type": "mmio", "address_hex": "0x4000280C", "address": 1073752076}
+{"node_id": "mmio:0X40007000", "node_type": "mmio", "address_hex": "0x40007000", "address": 1073770496}
+{"node_id": "mmio:0X40007004", "node_type": "mmio", "address_hex": "0x40007004", "address": 1073770500}
+{"node_id": "mmio:0X40010400", "node_type": "mmio", "address_hex": "0x40010400", "address": 1073808384}
+{"node_id": "mmio:0X40010404", "node_type": "mmio", "address_hex": "0x40010404", "address": 1073808388}
+{"node_id": "mmio:0X40010408", "node_type": "mmio", "address_hex": "0x40010408", "address": 1073808392}
+{"node_id": "mmio:0X4001040C", "node_type": "mmio", "address_hex": "0x4001040C", "address": 1073808396}
+{"node_id": "mmio:0X40023800", "node_type": "mmio", "address_hex": "0x40023800", "address": 1073887232}
+{"node_id": "mmio:0X40023802", "node_type": "mmio", "address_hex": "0x40023802", "address": 1073887234}
+{"node_id": "mmio:0X40023804", "node_type": "mmio", "address_hex": "0x40023804", "address": 1073887236}
+{"node_id": "mmio:0X40023808", "node_type": "mmio", "address_hex": "0x40023808", "address": 1073887240}
+{"node_id": "mmio:0X4002380C", "node_type": "mmio", "address_hex": "0x4002380C", "address": 1073887244}
+{"node_id": "mmio:0X40023818", "node_type": "mmio", "address_hex": "0x40023818", "address": 1073887256}
+{"node_id": "mmio:0X4002381C", "node_type": "mmio", "address_hex": "0x4002381C", "address": 1073887260}
+{"node_id": "mmio:0X40023820", "node_type": "mmio", "address_hex": "0x40023820", "address": 1073887264}
+{"node_id": "mmio:0X40023824", "node_type": "mmio", "address_hex": "0x40023824", "address": 1073887268}
+{"node_id": "mmio:0X40023834", "node_type": "mmio", "address_hex": "0x40023834", "address": 1073887284}
+{"node_id": "mmio:0X40023C00", "node_type": "mmio", "address_hex": "0x40023C00", "address": 1073888256}
+{"node_id": "mmio:0XE000E104", "node_type": "mmio", "address_hex": "0xE000E104", "address": 3758153988}
+{"node_id": "mmio:0XE000ED08", "node_type": "mmio", "address_hex": "0xE000ED08", "address": 3758157064}
+{"node_id": "mmio:0XE000ED0C", "node_type": "mmio", "address_hex": "0xE000ED0C", "address": 3758157068}

@@ -1,0 +1,155 @@
+--- a/extractor/pdf_register_extractor.py
++++ b/extractor/pdf_register_extractor.py
+@@ -46,20 +46,97 @@
+     return "\n".join(lines)
+ 
+ 
+-def _build_name_patterns(base_u: str, reg_u: str) -> List[re.Pattern]:
+-    pats = []
+-    toks = [reg_u]
+-    if base_u:
+-        toks += [f"{base_u}_{reg_u}", f"{base_u}{reg_u}", f"{base_u} {reg_u}"]
+-        toks += [f"{base_u}0_{reg_u}", f"{base_u}1_{reg_u}", f"{base_u}X_{reg_u}"]
+-    for tok in toks:
+-        pats.append(re.compile(rf"\b{re.escape(tok)}\b", re.IGNORECASE))
++def _derive_base_variants(peripheral_keyword: str, template_instance: Optional[str]) -> List[str]:
++    """Build likely base-name variants that may appear in the manual.
++
++    SVD instance names often include digits (SPI1/I2C1/UART4), while manuals
++    may use a generic base (SPI/I2C) or even an alias (UART<->USART for STM32).
++    """
++
++    raw = [template_instance or "", peripheral_keyword or ""]
++    bases: List[str] = []
++    for x in raw:
++        x = str(x or "").strip()
++        if not x:
++            continue
++        bases.append(x.upper())
++        bases.append(re.sub(r"\d+$", "", x.upper()))
++
++    # Common STM32 naming mismatch
++    if (peripheral_keyword or "").strip().upper() == "UART":
++        bases.append("USART")
++    if (peripheral_keyword or "").strip().upper() == "USART":
++        bases.append("UART")
++
++    out: List[str] = []
++    seen = set()
++    for b in bases:
++        b = b.strip().upper()
++        if not b or b in seen:
++            continue
++        seen.add(b)
++        out.append(b)
++    return out
++
++
++def _token_patterns(token: str) -> List[re.Pattern]:
++    """Return patterns that tolerate common PDF text-join artifacts.
++
++    pdfplumber sometimes returns tokens glued to following words
++    (e.g. USART_CR2register), which breaks strict \b...\b matching.
++    """
++
++    tok = (token or "").strip()
++    if not tok:
++        return []
++    esc = re.escape(tok)
++    pats = [re.compile(rf"\b{esc}\b", re.IGNORECASE)]
++
++    # Allow the token to be immediately followed by letters (glued headings)
++    if len(tok) >= 4 or "_" in tok or any(c.isdigit() for c in tok):
++        pats.append(re.compile(rf"\b{esc}(?=[A-Za-z])", re.IGNORECASE))
+     return pats
+ 
+ 
+-def _title_score(line_u: str, base_u: str, reg_u: str) -> int:
++def _build_name_patterns(base_variants_u: List[str], reg_u: str) -> List[re.Pattern]:
++    pats: List[re.Pattern] = []
++
++    # 1) exact register name, as a standalone token
++    pats += _token_patterns(reg_u)
++
++    # 2) allow matches like USART_CR2 / SPI_CR1 (suffix after underscore)
++    #    ("CR2" inside "USART_CR2" has no word-boundary on the left because '_' is a word char)
++    pats.append(re.compile(rf"(?<=_)\s*{re.escape(reg_u)}\b", re.IGNORECASE))
++    pats.append(re.compile(rf"(?<=_)\s*{re.escape(reg_u)}(?=[A-Za-z])", re.IGNORECASE))
++
++    # 3) instance/peripheral-prefixed tokens
++    for base_u in base_variants_u or []:
++        if not base_u:
++            continue
++        toks = [
++            f"{base_u}_{reg_u}",
++            f"{base_u}{reg_u}",
++            f"{base_u} {reg_u}",
++            f"{base_u}0_{reg_u}",
++            f"{base_u}1_{reg_u}",
++            f"{base_u}X_{reg_u}",
++        ]
++        for tok in toks:
++            pats += _token_patterns(tok)
++
++    uniq: List[re.Pattern] = []
++    seen = set()
++    for p in pats:
++        if p.pattern in seen:
++            continue
++        seen.add(p.pattern)
++        uniq.append(p)
++    return uniq
++
++
++def _title_score(line_u: str, base_variants_u: List[str], reg_u: str) -> int:
+     score = 0
+-    if any(p.search(line_u) for p in _build_name_patterns(base_u, reg_u)):
++    if any(p.search(line_u) for p in _build_name_patterns(base_variants_u, reg_u)):
+         score += 5
+     if "REGISTER" in line_u:
+         score += 2
+@@ -84,14 +161,15 @@
+     i = 0
+     while i < len(lines):
+         ln = lines[i]
+-        m = re.match(r"^([A-Z][A-Z0-9_]{1,63})\b\s*[:-]?\s*(.*)$", ln.upper())
++        # Tolerate common manual formatting: "Bit15SWRST: ..." or "Bit 15 SWRST: ..."
++        m = re.match(r"^(?:BIT\s*\d+)?\s*([A-Z][A-Z0-9_]{1,63})\b\s*[:-]?\s*(.*)$", ln.upper())
+         if m and m.group(1) in fields_u:
+             fname = fields_u[m.group(1)]
+             buf = [ln]
+             j = i + 1
+             while j < len(lines):
+                 nxt = lines[j]
+-                m2 = re.match(r"^([A-Z][A-Z0-9_]{1,63})\b\s*[:-]?", nxt.upper())
++                m2 = re.match(r"^(?:BIT\s*\d+)?\s*([A-Z][A-Z0-9_]{1,63})\b\s*[:-]?", nxt.upper())
+                 if m2 and m2.group(1) in fields_u:
+                     break
+                 if "REGISTER" in nxt.upper() and len(nxt) < 100:
+@@ -113,7 +191,7 @@
+     base_address: Optional[int] = None,
+     template_instance: Optional[str] = None,
+ ) -> Dict[str, Any]:
+-    base_u = str(template_instance or peripheral_keyword or "").strip().upper()
++    base_variants_u = _derive_base_variants(peripheral_keyword, template_instance)
+     lines = _iter_lines(pages)
+     line_texts_u = [ln.upper() for _, ln in lines]
+ 
+@@ -126,7 +204,7 @@
+     anchors: List[Tuple[int, str, int]] = []
+     for idx, u in enumerate(line_texts_u):
+         for reg_u in reg_names:
+-            score = _title_score(u, base_u, reg_u)
++            score = _title_score(u, base_variants_u, reg_u)
+             if score >= 5:
+                 anchors.append((idx, reg_u, score))
+ 
+@@ -153,7 +231,7 @@
+             for j in range(idx + 1, min(len(lines), idx + 60)):
+                 u = line_texts_u[j]
+                 if any(
+-                    _title_score(u, base_u, other) >= 5
++                    _title_score(u, base_variants_u, other) >= 5
+                     for other in reg_names
+                     if other != reg_u
+                 ):
