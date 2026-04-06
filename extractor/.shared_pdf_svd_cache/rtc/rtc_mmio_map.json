@@ -1,0 +1,1349 @@
+{
+  "schema": "mmio_map_v1",
+  "peripheral": "RTC",
+  "template_instance": "RTC",
+  "baseAddress": 1073991680,
+  "baseAddress_hex": "0x4003D000",
+  "instances": [
+    {
+      "name": "RTC",
+      "baseAddress": 1073991680,
+      "baseAddress_hex": "0x4003D000",
+      "description": "Secure Real Time Clock"
+    }
+  ],
+  "mmio_ranges": [
+    {
+      "name": "RTC",
+      "start": 1073991680,
+      "start_hex": "0x4003D000",
+      "end": 1073993735,
+      "end_hex": "0x4003D807"
+    }
+  ],
+  "status_register_candidates": [
+    "SR",
+    "IER"
+  ],
+  "registers": [
+    {
+      "name": "TSR",
+      "addressOffset": 0,
+      "addressOffset_hex": "0x00000000",
+      "absoluteAddress": 1073991680,
+      "absoluteAddress_hex": "0x4003D000",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "RTC Time Seconds Register",
+      "pdf_description": "4003_D000 RTCTimeSecondsRegister(RTC_TSR) 32 R/W 0000_0000h 44.2.1/1135\n\n44.2.1 RTCTimeSecondsRegister(RTC_TSR)\nAddress:4003_D000hbase+0hoffset=4003_D000h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthe\ntimecounterisdisabled,theTSRcanbereadorwritten.WritingtotheTSRwhenthetimecounteris\ndisabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135\nRegisterdefinition\n\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthe\ntimecounterisdisabled,theTSRcanbereadorwritten.WritingtotheTSRwhenthetimecounteris\ndisabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135\nRegisterdefinition",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TSR",
+          "bitOffset": 0,
+          "bitWidth": 32,
+          "bitRange": "[31:0]",
+          "mask": 4294967295,
+          "mask_hex": "0xFFFFFFFF",
+          "svd_access": "read-write",
+          "svd_description": "Time Seconds Register",
+          "pdf_description": "TSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "TPR",
+      "addressOffset": 4,
+      "addressOffset_hex": "0x00000004",
+      "absoluteAddress": 1073991684,
+      "absoluteAddress_hex": "0x4003D004",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "RTC Time Prescaler Register",
+      "pdf_description": "4003_D004 RTCTimePrescalerRegister(RTC_TPR) 32 R/W 0000_0000h 44.2.2/1136\n\n44.2.2 RTCTimePrescalerRegister(RTC_TPR)\nAddress:4003_D000hbase+4hoffset=4003_D004h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0\nTPR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TPRfielddescriptions\nField Description\n31–16 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n15–0 TimePrescalerRegister\nWhenthetimecounterisenabled,theTPRisreadonlyandincrementsevery32.768kHzclockcycle.The\ntimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthetimecounterisdisabled,the\n\nTPR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TPRfielddescriptions\nField Description\n31–16 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n15–0 TimePrescalerRegister\nWhenthetimecounterisenabled,theTPRisreadonlyandincrementsevery32.768kHzclockcycle.The\ntimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthetimecounterisdisabled,the",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TPR",
+          "bitOffset": 0,
+          "bitWidth": 16,
+          "bitRange": "[15:0]",
+          "mask": 65535,
+          "mask_hex": "0x0000FFFF",
+          "svd_access": "read-write",
+          "svd_description": "Time Prescaler Register",
+          "pdf_description": "TPR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TPRfielddescriptions\nField Description\n31–16 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "TAR",
+      "addressOffset": 8,
+      "addressOffset_hex": "0x00000008",
+      "absoluteAddress": 1073991688,
+      "absoluteAddress_hex": "0x4003D008",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "RTC Time Alarm Register",
+      "pdf_description": "4003_D008 RTCTimeAlarmRegister(RTC_TAR) 32 R/W 0000_0000h 44.2.3/1136\n\n44.2.3 RTCTimeAlarmRegister(RTC_TAR)\nAddress:4003_D000hbase+8hoffset=4003_D008h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister\n\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TAR",
+          "bitOffset": 0,
+          "bitWidth": 32,
+          "bitRange": "[31:0]",
+          "mask": 4294967295,
+          "mask_hex": "0xFFFFFFFF",
+          "svd_access": "read-write",
+          "svd_description": "Time Alarm Register",
+          "pdf_description": "TAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "TCR",
+      "addressOffset": 12,
+      "addressOffset_hex": "0x0000000C",
+      "absoluteAddress": 1073991692,
+      "absoluteAddress_hex": "0x4003D00C",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "RTC Time Compensation Register",
+      "pdf_description": "4003_D00C RTCTimeCompensationRegister(RTC_TCR) 32 R/W 0000_0000h 44.2.4/1136\n\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR CIC TCV\nCIR TCR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1136 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_TCRfielddescriptions\nField Description\n31–24 CompensationIntervalCounter\nCIC\nCurrentvalueofthecompensationintervalcounter.Ifthecompensationintervalcounterequalszerothen\nitisloadedwiththecontentsoftheCIR.IftheCICdoesnotequalzerothenitisdecrementedoncea\nsecond.\n23–16 TimeCompensationValue\nTCV\nCurrentvalueusedbythecompensationlogicforthepresentsecondinterval.Updatedonceasecondif\ntheCICequals0withthecontentsoftheTCRfield.IftheCICdoesnotequalzerothenitisloadedwith\nzero(compensationisnotenabledforthatsecondincrement).\n15–8 CompensationIntervalRegister\nCIR\nConfiguresthecompensationintervalinsecondsfrom1to256tocontrolhowfrequentlytheTCRshould\nadjustthenumberof32.768kHzcyclesineachsecond.Thevaluewrittenshouldbeonelessthanthe\nnumberofseconds.Forexample,writezerotoconfigureforacompensationintervalofonesecond.This\nregisterisdoublebufferedandwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n7–0 TimeCompensationRegister\nTCR\nConfiguresthenumberof32.768kHzclockcyclesineachsecond.Thisregisterisdoublebufferedand\nwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n80h TimePrescalerRegisteroverflowsevery32896clockcycles.\n......\nFFh TimePrescalerRegisteroverflowsevery32769clockcycles.\n00h TimePrescalerRegisteroverflowsevery32768clockcycles.\n01h TimePrescalerRegisteroverflowsevery32767clockcycles.\n7Fh TimePrescalerRegisteroverflowsevery32641clockcycles.\nFreescaleSemiconductor,Inc. 1137\nRegisterdefinition\n\nCIR TCR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1136 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_TCRfielddescriptions\nField Description\n31–24 CompensationIntervalCounter\nCIC\nCurrentvalueofthecompensationintervalcounter.Ifthecompensationintervalcounterequalszerothen\nitisloadedwiththecontentsoftheCIR.IftheCICdoesnotequalzerothenitisdecrementedoncea\nsecond.\n23–16 TimeCompensationValue\nTCV\nCurrentvalueusedbythecompensationlogicforthepresentsecondinterval.Updatedonceasecondif\ntheCICequals0withthecontentsoftheTCRfield.IftheCICdoesnotequalzerothenitisloadedwith\nzero(compensationisnotenabledforthatsecondincrement).\n15–8 CompensationIntervalRegister\nCIR\nConfiguresthecompensationintervalinsecondsfrom1to256tocontrolhowfrequentlytheTCRshould\nadjustthenumberof32.768kHzcyclesineachsecond.Thevaluewrittenshouldbeonelessthanthe\nnumberofseconds.Forexample,writezerotoconfigureforacompensationintervalofonesecond.This\nregisterisdoublebufferedandwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n7–0 TimeCompensationRegister\nTCR\nConfiguresthenumberof32.768kHzclockcyclesineachsecond.Thisregisterisdoublebufferedand\nwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n80h TimePrescalerRegisteroverflowsevery32896clockcycles.\n......\nFFh TimePrescalerRegisteroverflowsevery32769clockcycles.\n00h TimePrescalerRegisteroverflowsevery32768clockcycles.\n01h TimePrescalerRegisteroverflowsevery32767clockcycles.\n7Fh TimePrescalerRegisteroverflowsevery32641clockcycles.\nFreescaleSemiconductor,Inc. 1137\nRegisterdefinition",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TCR",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "bitRange": "[7:0]",
+          "mask": 255,
+          "mask_hex": "0x000000FF",
+          "svd_access": "read-write",
+          "svd_description": "Time Compensation Register",
+          "pdf_description": "TCR",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "10000000",
+              "description": "Time Prescaler Register overflows every 32896 clock cycles.",
+              "value": null
+            },
+            {
+              "name": "11111111",
+              "description": "Time Prescaler Register overflows every 32769 clock cycles.",
+              "value": null
+            },
+            {
+              "name": "0",
+              "description": "Time Prescaler Register overflows every 32768 clock cycles.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time Prescaler Register overflows every 32767 clock cycles.",
+              "value": null
+            },
+            {
+              "name": "1111111",
+              "description": "Time Prescaler Register overflows every 32641 clock cycles.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CIR",
+          "bitOffset": 8,
+          "bitWidth": 8,
+          "bitRange": "[15:8]",
+          "mask": 65280,
+          "mask_hex": "0x0000FF00",
+          "svd_access": "read-write",
+          "svd_description": "Compensation Interval Register",
+          "pdf_description": "CIR\nConfiguresthecompensationintervalinsecondsfrom1to256tocontrolhowfrequentlytheTCRshould\nadjustthenumberof32.768kHzcyclesineachsecond.Thevaluewrittenshouldbeonelessthanthe\nnumberofseconds.Forexample,writezerotoconfigureforacompensationintervalofonesecond.This",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        },
+        {
+          "name": "TCV",
+          "bitOffset": 16,
+          "bitWidth": 8,
+          "bitRange": "[23:16]",
+          "mask": 16711680,
+          "mask_hex": "0x00FF0000",
+          "svd_access": "read-only",
+          "svd_description": "Time Compensation Value",
+          "pdf_description": "TCV\nCurrentvalueusedbythecompensationlogicforthepresentsecondinterval.Updatedonceasecondif\ntheCICequals0withthecontentsoftheTCRfield.IftheCICdoesnotequalzerothenitisloadedwith\nzero(compensationisnotenabledforthatsecondincrement).",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        },
+        {
+          "name": "CIC",
+          "bitOffset": 24,
+          "bitWidth": 8,
+          "bitRange": "[31:24]",
+          "mask": 4278190080,
+          "mask_hex": "0xFF000000",
+          "svd_access": "read-only",
+          "svd_description": "Compensation Interval Counter",
+          "pdf_description": "CIC\nCurrentvalueofthecompensationintervalcounter.Ifthecompensationintervalcounterequalszerothen\nitisloadedwiththecontentsoftheCIR.IftheCICdoesnotequalzerothenitisdecrementedoncea\nsecond.\n23–16 TimeCompensationValue",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "CR",
+      "addressOffset": 16,
+      "addressOffset_hex": "0x00000010",
+      "absoluteAddress": 1073991696,
+      "absoluteAddress_hex": "0x4003D010",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "RTC Control Register",
+      "pdf_description": "4003_D010 RTCControlRegister(RTC_CR) 32 R/W 0000_0000h 44.2.5/1138\n\n44.2.5 RTCControlRegister(RTC_CR)\nAddress:4003_D000hbase+10hoffset=4003_D010h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nd\ne\nv\nR 0 er 0\ns\nR P O E\n6\nSC2P SC4P SC8P K C WPS UM SUP WPE SWR\n1\nC L S\nS C O\nW 0\nRTC_CRfielddescriptions\nField Description\n31–15 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n14 Thisfieldisreserved.\nReserved Itmustalwaysbewrittento0.\n13 Oscillator2pFLoadConfigure\nSC2P\n0 Disabletheload.\n\nRTC_CRfielddescriptions\nField Description\n31–15 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n14 Thisfieldisreserved.\nReserved Itmustalwaysbewrittento0.\n13 Oscillator2pFLoadConfigure\nSC2P\n0 Disabletheload.\n1 Enabletheadditionalload.\n12 Oscillator4pFLoadConfigure\nSC4P\n11 Oscillator8pFLoadConfigure\nSC8P\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1138 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_CRfielddescriptions(continued)\n10 Oscillator16pFLoadConfigure\nSC16P\n9 ClockOutput\nCLKO",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "SWR",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-write",
+          "svd_description": "Software Reset",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No effect.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Resets all RTC registers except for the SWR bit and the RTC_WAR and RTC_RAR registers . The SWR bit is cleared by VBAT POR and by software explicitly clearing it.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "WPE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-write",
+          "svd_description": "Wakeup Pin Enable",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Wakeup pin is disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Wakeup pin is enabled and wakeup pin asserts if the RTC interrupt asserts or the wakeup pin is turned on.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SUP",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-write",
+          "svd_description": "Supervisor Access",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Non-supervisor mode write accesses are not supported and generate a bus error.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Non-supervisor mode write accesses are supported.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "UM",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "read-write",
+          "svd_description": "Update Mode",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Registers cannot be written when locked.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Registers can be written when locked under limited conditions.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "WPS",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Wakeup Pin Select",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Wakeup pin asserts (active low, open drain) if the RTC interrupt asserts or the wakeup pin is turned on.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Wakeup pin instead outputs the RTC 32kHz clock, provided the wakeup pin is turned on and the 32kHz clock is output to other peripherals.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "OSCE",
+          "bitOffset": 8,
+          "bitWidth": 1,
+          "bitRange": "[8:8]",
+          "mask": 256,
+          "mask_hex": "0x00000100",
+          "svd_access": "read-write",
+          "svd_description": "Oscillator Enable",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "32.768 kHz oscillator is disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "32.768 kHz oscillator is enabled. After setting this bit, wait the oscillator startup time before enabling the time counter to allow the 32.768 kHz clock time to stabilize.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CLKO",
+          "bitOffset": 9,
+          "bitWidth": 1,
+          "bitRange": "[9:9]",
+          "mask": 512,
+          "mask_hex": "0x00000200",
+          "svd_access": "read-write",
+          "svd_description": "Clock Output",
+          "pdf_description": "CLKO",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The 32 kHz clock is output to other peripherals.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The 32 kHz clock is not output to other peripherals.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SC16P",
+          "bitOffset": 10,
+          "bitWidth": 1,
+          "bitRange": "[10:10]",
+          "mask": 1024,
+          "mask_hex": "0x00000400",
+          "svd_access": "read-write",
+          "svd_description": "Oscillator 16pF Load Configure",
+          "pdf_description": "SC16P\n9 ClockOutput",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Disable the load.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Enable the additional load.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SC8P",
+          "bitOffset": 11,
+          "bitWidth": 1,
+          "bitRange": "[11:11]",
+          "mask": 2048,
+          "mask_hex": "0x00000800",
+          "svd_access": "read-write",
+          "svd_description": "Oscillator 8pF Load Configure",
+          "pdf_description": "SC8P\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1138 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_CRfielddescriptions(continued)\n10 Oscillator16pFLoadConfigure",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Disable the load.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Enable the additional load.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SC4P",
+          "bitOffset": 12,
+          "bitWidth": 1,
+          "bitRange": "[12:12]",
+          "mask": 4096,
+          "mask_hex": "0x00001000",
+          "svd_access": "read-write",
+          "svd_description": "Oscillator 4pF Load Configure",
+          "pdf_description": "SC4P\n11 Oscillator8pFLoadConfigure",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Disable the load.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Enable the additional load.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SC2P",
+          "bitOffset": 13,
+          "bitWidth": 1,
+          "bitRange": "[13:13]",
+          "mask": 8192,
+          "mask_hex": "0x00002000",
+          "svd_access": "read-write",
+          "svd_description": "Oscillator 2pF Load Configure",
+          "pdf_description": "SC2P\n0 Disabletheload.\n1 Enabletheadditionalload.\n12 Oscillator4pFLoadConfigure",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Disable the load.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Enable the additional load.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SR",
+      "addressOffset": 20,
+      "addressOffset_hex": "0x00000014",
+      "absoluteAddress": 1073991700,
+      "absoluteAddress_hex": "0x4003D014",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 1,
+      "resetValue_hex": "0x00000001",
+      "svd_access": "read-write",
+      "svd_description": "RTC Status Register",
+      "pdf_description": "4003_D014 RTCStatusRegister(RTC_SR) 32 R/W 0000_0001h 44.2.6/1140\n\n44.2.6 RTCStatusRegister(RTC_SR)\nAddress:4003_D000hbase+14hoffset=4003_D014h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0 0 TAF TOF TIF\nTCE\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\nRTC_SRfielddescriptions\nField Description\n31–5 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n4 TimeCounterEnable\nWhentimecounterisdisabledtheTSRregisterandTPRregisterarewriteable,butdonotincrement.\nWhentimecounterisenabledtheTSRregisterandTPRregisterarenotwriteable,butincrement.\n0 Timecounterisdisabled.\n1 Timecounterisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmFlag\nTAF\n\nRTC_SRfielddescriptions\nField Description\n31–5 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n4 TimeCounterEnable\nTCE\nWhentimecounterisdisabledtheTSRregisterandTPRregisterarewriteable,butdonotincrement.\nWhentimecounterisenabledtheTSRregisterandTPRregisterarenotwriteable,butincrement.\n0 Timecounterisdisabled.\n1 Timecounterisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmFlag\nTAF",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TIF",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-only",
+          "svd_description": "Time Invalid Flag",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time is valid.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time is invalid and time counter is read as zero.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TOF",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-only",
+          "svd_description": "Time Overflow Flag",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time overflow has not occurred.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time overflow has occurred and time counter is read as zero.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TAF",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-only",
+          "svd_description": "Time Alarm Flag",
+          "pdf_description": "TAF",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time alarm has not occurred.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time alarm has occurred.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TCE",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Time Counter Enable",
+          "pdf_description": "TCE",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time counter is disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time counter is enabled.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LR",
+      "addressOffset": 24,
+      "addressOffset_hex": "0x00000018",
+      "absoluteAddress": 1073991704,
+      "absoluteAddress_hex": "0x4003D018",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 255,
+      "resetValue_hex": "0x000000FF",
+      "svd_access": "read-write",
+      "svd_description": "RTC Lock Register",
+      "pdf_description": "4003_D018 RTCLockRegister(RTC_LR) 32 R/W 0000_00FFh 44.2.7/1141\n\n44.2.7 RTCLockRegister(RTC_LR)\nAddress:4003_D000hbase+18hoffset=4003_D018h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0 1 1\nLRL SRL CRL TCL\nReset 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1\nRTC_LRfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue1.\n6 LockRegisterLock\nLRL\nAfterbeingcleared,thisbitcanbesetonlybyVBATPORorsoftwarereset.\n0 LockRegisterislockedandwritesareignored.\n1 LockRegisterisnotlockedandwritescompleteasnormal.\n5 StatusRegisterLock\nSRL\n0 StatusRegisterislockedandwritesareignored.\n1 StatusRegisterisnotlockedandwritescompleteasnormal.\n4 ControlRegisterLock\nCRL\nAfterbeingcleared,thisbitcanonlybesetbyVBATPOR.\n0 ControlRegisterislockedandwritesareignored.\n1 ControlRegisterisnotlockedandwritescompleteasnormal.\n3 TimeCompensationLock\nTCL\n0 TimeCompensationRegisterislockedandwritesareignored.\n1 TimeCompensationRegisterisnotlockedandwritescompleteasnormal.\n2–0 Thisfieldisreserved.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1141\nRegisterdefinition\n\nRTC_LRfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue1.\n6 LockRegisterLock\nLRL\nAfterbeingcleared,thisbitcanbesetonlybyVBATPORorsoftwarereset.\n0 LockRegisterislockedandwritesareignored.\n1 LockRegisterisnotlockedandwritescompleteasnormal.\n5 StatusRegisterLock\nSRL\n0 StatusRegisterislockedandwritesareignored.\n1 StatusRegisterisnotlockedandwritescompleteasnormal.\n4 ControlRegisterLock\nCRL\nAfterbeingcleared,thisbitcanonlybesetbyVBATPOR.\n0 ControlRegisterislockedandwritesareignored.\n1 ControlRegisterisnotlockedandwritescompleteasnormal.\n3 TimeCompensationLock\nTCL\n0 TimeCompensationRegisterislockedandwritesareignored.\n1 TimeCompensationRegisterisnotlockedandwritescompleteasnormal.\n2–0 Thisfieldisreserved.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1141\nRegisterdefinition",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TCL",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "read-write",
+          "svd_description": "Time Compensation Lock",
+          "pdf_description": "TCL",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time Compensation Register is locked and writes are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time Compensation Register is not locked and writes complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CRL",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Control Register Lock",
+          "pdf_description": "CRL\nAfterbeingcleared,thisbitcanonlybesetbyVBATPOR.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Control Register is locked and writes are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Control Register is not locked and writes complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SRL",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "read-write",
+          "svd_description": "Status Register Lock",
+          "pdf_description": "SRL",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Status Register is locked and writes are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Status Register is not locked and writes complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LRL",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "read-write",
+          "svd_description": "Lock Register Lock",
+          "pdf_description": "LRL\nAfterbeingcleared,thisbitcanbesetonlybyVBATPORorsoftwarereset.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Lock Register is locked and writes are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Lock Register is not locked and writes complete as normal.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IER",
+      "addressOffset": 28,
+      "addressOffset_hex": "0x0000001C",
+      "absoluteAddress": 1073991708,
+      "absoluteAddress_hex": "0x4003D01C",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 7,
+      "resetValue_hex": "0x00000007",
+      "svd_access": "read-write",
+      "svd_description": "RTC Interrupt Enable Register",
+      "pdf_description": "4003_D01C RTCInterruptEnableRegister(RTC_IER) 32 R/W 0000_0007h 44.2.8/1142\n\n44.2.8 RTCInterruptEnableRegister(RTC_IER)\nAddress:4003_D000hbase+1Choffset=4003_D01Ch\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0 d\nN e\nO v\nReserved TSIE er TAIE TOIE TIIE\nP\nW s\nW e\nR\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1\nRTC_IERfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 WakeupPinOn\nWPON\nThewakeuppinisoptionalandnotavailableonalldevices.Wheneverthewakeuppinisenabledandthis\nbitisset,thewakeuppinwillassert.\n0 Noeffect.\n1 Ifthewakeuppinisenabled,thenthewakeuppinwillassert.\n6–5 Thisfieldisreserved.\nReserved\n4 TimeSecondsInterruptEnable\nTSIE\nThesecondsinterruptisanedge-sensitiveinterruptwithadedicatedinterruptvector.Itisgeneratedonce\nasecondandrequiresnosoftwareoverhead(thereisnocorrespondingstatusflagtoclear).\n0 Secondsinterruptisdisabled.\n1 Secondsinterruptisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmInterruptEnable\nTAIE\n0 Timealarmflagdoesnotgenerateaninterrupt.\n1 Timealarmflagdoesgenerateaninterrupt.\n1 TimeOverflowInterruptEnable\nTOIE\n0 Timeoverflowflagdoesnotgenerateaninterrupt.\n1 Timeoverflowflagdoesgenerateaninterrupt.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1142 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_IERfielddescriptions(continued)\n0 TimeInvalidInterruptEnable\nTIIE\n0 Timeinvalidflagdoesnotgenerateaninterrupt.\n1 Timeinvalidflagdoesgenerateaninterrupt.\n\nRTC_IERfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 WakeupPinOn\nWPON\nThewakeuppinisoptionalandnotavailableonalldevices.Wheneverthewakeuppinisenabledandthis\nbitisset,thewakeuppinwillassert.\n0 Noeffect.\n1 Ifthewakeuppinisenabled,thenthewakeuppinwillassert.\n6–5 Thisfieldisreserved.\nReserved\n4 TimeSecondsInterruptEnable\nTSIE\nThesecondsinterruptisanedge-sensitiveinterruptwithadedicatedinterruptvector.Itisgeneratedonce\nasecondandrequiresnosoftwareoverhead(thereisnocorrespondingstatusflagtoclear).\n0 Secondsinterruptisdisabled.\n1 Secondsinterruptisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmInterruptEnable\nTAIE\n0 Timealarmflagdoesnotgenerateaninterrupt.\n1 Timealarmflagdoesgenerateaninterrupt.\n1 TimeOverflowInterruptEnable\nTOIE\n0 Timeoverflowflagdoesnotgenerateaninterrupt.\n1 Timeoverflowflagdoesgenerateaninterrupt.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1142 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_IERfielddescriptions(continued)\n0 TimeInvalidInterruptEnable\nTIIE\n0 Timeinvalidflagdoesnotgenerateaninterrupt.\n1 Timeinvalidflagdoesgenerateaninterrupt.",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TIIE",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-write",
+          "svd_description": "Time Invalid Interrupt Enable",
+          "pdf_description": "TIIE\n0 Timeinvalidflagdoesnotgenerateaninterrupt.\n1 Timeinvalidflagdoesgenerateaninterrupt.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time invalid flag does not generate an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time invalid flag does generate an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TOIE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-write",
+          "svd_description": "Time Overflow Interrupt Enable",
+          "pdf_description": "TOIE\n0 Timeoverflowflagdoesnotgenerateaninterrupt.\n1 Timeoverflowflagdoesgenerateaninterrupt.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1142 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_IERfielddescriptions(continued)\n0 TimeInvalidInterruptEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time overflow flag does not generate an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time overflow flag does generate an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TAIE",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-write",
+          "svd_description": "Time Alarm Interrupt Enable",
+          "pdf_description": "TAIE\n0 Timealarmflagdoesnotgenerateaninterrupt.\n1 Timealarmflagdoesgenerateaninterrupt.\n1 TimeOverflowInterruptEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Time alarm flag does not generate an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Time alarm flag does generate an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TSIE",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Time Seconds Interrupt Enable",
+          "pdf_description": "TSIE\nThesecondsinterruptisanedge-sensitiveinterruptwithadedicatedinterruptvector.Itisgeneratedonce\nasecondandrequiresnosoftwareoverhead(thereisnocorrespondingstatusflagtoclear).\n0 Secondsinterruptisdisabled.\n1 Secondsinterruptisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmInterruptEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Seconds interrupt is disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Seconds interrupt is enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "WPON",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "read-write",
+          "svd_description": "Wakeup Pin On",
+          "pdf_description": "WPON\nThewakeuppinisoptionalandnotavailableonalldevices.Wheneverthewakeuppinisenabledandthis\nbitisset,thewakeuppinwillassert.\n0 Noeffect.\n1 Ifthewakeuppinisenabled,thenthewakeuppinwillassert.\n6–5 Thisfieldisreserved.\nReserved\n4 TimeSecondsInterruptEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No effect.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "If the wakeup pin is enabled, then the wakeup pin will assert.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WAR",
+      "addressOffset": 2048,
+      "addressOffset_hex": "0x00000800",
+      "absoluteAddress": 1073993728,
+      "absoluteAddress_hex": "0x4003D800",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 255,
+      "resetValue_hex": "0x000000FF",
+      "svd_access": "read-write",
+      "svd_description": "RTC Write Access Register",
+      "pdf_description": "4003_D800 RTCWriteAccessRegister(RTC_WAR) 32 R/W 0000_00FFh 44.2.9/1143\n44.2.10/\n\n1 ResetsallRTCregistersexceptfortheSWRbitandtheRTC_WARandRTC_RARregisters.The\nSWRbitisclearedbyVBATPORandbysoftwareexplicitlyclearingit.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1139\nRegisterdefinition\n\n44.2.9 RTCWriteAccessRegister(RTC_WAR)\nAddress:4003_D000hbase+800hoffset=4003_D800h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nW W W W\nIERW LRW SRW CRW R R R R\nC A P S\nW T T T T\nReset 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1\nRTC_WARfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 InterruptEnableRegisterWrite\nIERW\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.\n0 WritestotheInteruptEnableRegisterareignored.\n1 WritestotheInterruptEnableRegistercompleteasnormal.\n6 LockRegisterWrite\nLRW\n0 WritestotheLockRegisterareignored.\n1 WritestotheLockRegistercompleteasnormal.\n5 StatusRegisterWrite\nSRW",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TSRW",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-write",
+          "svd_description": "Time Seconds Register Write",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Time Seconds Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Time Seconds Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TPRW",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-write",
+          "svd_description": "Time Prescaler Register Write",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Time Prescaler Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Time Prescaler Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TARW",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-write",
+          "svd_description": "Time Alarm Register Write",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Time Alarm Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Time Alarm Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TCRW",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "read-write",
+          "svd_description": "Time Compensation Register Write",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Time Compensation Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Time Compensation Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CRW",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Control Register Write",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Control Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Control Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SRW",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "read-write",
+          "svd_description": "Status Register Write",
+          "pdf_description": "SRW",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Status Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Status Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LRW",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "read-write",
+          "svd_description": "Lock Register Write",
+          "pdf_description": "LRW",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Lock Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Lock Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "IERW",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "read-write",
+          "svd_description": "Interrupt Enable Register Write",
+          "pdf_description": "IERW\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Writes to the Interupt Enable Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Writes to the Interrupt Enable Register complete as normal.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RAR",
+      "addressOffset": 2052,
+      "addressOffset_hex": "0x00000804",
+      "absoluteAddress": 1073993732,
+      "absoluteAddress_hex": "0x4003D804",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 255,
+      "resetValue_hex": "0x000000FF",
+      "svd_access": "read-write",
+      "svd_description": "RTC Read Access Register",
+      "pdf_description": "4003_D804 RTCReadAccessRegister(RTC_RAR) 32 R/W 0000_00FFh\n1144\n\n1 ResetsallRTCregistersexceptfortheSWRbitandtheRTC_WARandRTC_RARregisters.The\nSWRbitisclearedbyVBATPORandbysoftwareexplicitlyclearingit.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1139\nRegisterdefinition\n\n44.2.10 RTCReadAccessRegister(RTC_RAR)\nAddress:4003_D000hbase+804hoffset=4003_D804h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nIERR LRR SRR CRR TCRRTARRTPRRTSRR\nReset 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1144 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_RARfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 InterruptEnableRegisterRead\nIERR\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.\n0 ReadstotheInterruptEnableRegisterareignored.\n1 ReadstotheInterruptEnableRegistercompleteasnormal.\n6 LockRegisterRead\nLRR\n0 ReadstotheLockRegisterareignored.\n1 ReadstotheLockRegistercompleteasnormal.\n5 StatusRegisterRead\nSRR",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "TSRR",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-write",
+          "svd_description": "Time Seconds Register Read",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Time Seconds Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Time Seconds Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TPRR",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-write",
+          "svd_description": "Time Prescaler Register Read",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Time Pprescaler Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Time Prescaler Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TARR",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-write",
+          "svd_description": "Time Alarm Register Read",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Time Alarm Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Time Alarm Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TCRR",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "read-write",
+          "svd_description": "Time Compensation Register Read",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Time Compensation Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Time Compensation Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CRR",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Control Register Read",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Control Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Control Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "SRR",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "read-write",
+          "svd_description": "Status Register Read",
+          "pdf_description": "SRR",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Status Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Status Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LRR",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "read-write",
+          "svd_description": "Lock Register Read",
+          "pdf_description": "LRR",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Lock Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Lock Register complete as normal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "IERR",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "read-write",
+          "svd_description": "Interrupt Enable Register Read",
+          "pdf_description": "IERR\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Reads to the Interrupt Enable Register are ignored.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Reads to the Interrupt Enable Register complete as normal.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reg_by_addr_hex": {
+    "0x4003D000": {
+      "name": "TSR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000000",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D004": {
+      "name": "TPR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000004",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D008": {
+      "name": "TAR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000008",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D00C": {
+      "name": "TCR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x0000000C",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D010": {
+      "name": "CR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000010",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D014": {
+      "name": "SR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000014",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D018": {
+      "name": "LR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000018",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D01C": {
+      "name": "IER",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x0000001C",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D800": {
+      "name": "WAR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000800",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x4003D804": {
+      "name": "RAR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000804",
+      "documentation_status": "documented_in_pdf"
+    }
+  }
+}

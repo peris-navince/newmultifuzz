@@ -1,0 +1,4781 @@
+{
+  "schema": "mmio_map_v1",
+  "peripheral": "GPIOB",
+  "template_instance": "GPIOB",
+  "baseAddress": 1074786368,
+  "baseAddress_hex": "0x400FF040",
+  "instances": [
+    {
+      "name": "GPIOB",
+      "baseAddress": 1074786368,
+      "baseAddress_hex": "0x400FF040",
+      "description": "General Purpose Input/Output"
+    }
+  ],
+  "mmio_ranges": [
+    {
+      "name": "GPIOB",
+      "start": 1074786368,
+      "start_hex": "0x400FF040",
+      "end": 1074786391,
+      "end_hex": "0x400FF057"
+    }
+  ],
+  "status_register_candidates": [],
+  "registers": [
+    {
+      "name": "PDOR",
+      "addressOffset": 0,
+      "addressOffset_hex": "0x00000000",
+      "absoluteAddress": 1074786368,
+      "absoluteAddress_hex": "0x400FF040",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "Port Data Output Register",
+      "pdf_description": "400F_F000 PortDataOutputRegister(GPIOA_PDOR) 32 R/W 0000_0000h 55.2.1/1761\nW\n\n400F_F040 PortDataOutputRegister(GPIOB_PDOR) 32 R/W 0000_0000h 55.2.1/1761\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1759\nMemorymapandregisterdefinition\nGPIOmemorymap(continued)\nAbsolute\nWidth Section/\naddress Registername Access Resetvalue\n(inbits) page\n(hex)\nW\n\n400F_F080 PortDataOutputRegister(GPIOC_PDOR) 32 R/W 0000_0000h 55.2.1/1761\nW",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "PDO0",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO1",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO2",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO3",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO4",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO5",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO6",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO7",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO8",
+          "bitOffset": 8,
+          "bitWidth": 1,
+          "bitRange": "[8:8]",
+          "mask": 256,
+          "mask_hex": "0x00000100",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO9",
+          "bitOffset": 9,
+          "bitWidth": 1,
+          "bitRange": "[9:9]",
+          "mask": 512,
+          "mask_hex": "0x00000200",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO10",
+          "bitOffset": 10,
+          "bitWidth": 1,
+          "bitRange": "[10:10]",
+          "mask": 1024,
+          "mask_hex": "0x00000400",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO11",
+          "bitOffset": 11,
+          "bitWidth": 1,
+          "bitRange": "[11:11]",
+          "mask": 2048,
+          "mask_hex": "0x00000800",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO12",
+          "bitOffset": 12,
+          "bitWidth": 1,
+          "bitRange": "[12:12]",
+          "mask": 4096,
+          "mask_hex": "0x00001000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO13",
+          "bitOffset": 13,
+          "bitWidth": 1,
+          "bitRange": "[13:13]",
+          "mask": 8192,
+          "mask_hex": "0x00002000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO14",
+          "bitOffset": 14,
+          "bitWidth": 1,
+          "bitRange": "[14:14]",
+          "mask": 16384,
+          "mask_hex": "0x00004000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO15",
+          "bitOffset": 15,
+          "bitWidth": 1,
+          "bitRange": "[15:15]",
+          "mask": 32768,
+          "mask_hex": "0x00008000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO16",
+          "bitOffset": 16,
+          "bitWidth": 1,
+          "bitRange": "[16:16]",
+          "mask": 65536,
+          "mask_hex": "0x00010000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO17",
+          "bitOffset": 17,
+          "bitWidth": 1,
+          "bitRange": "[17:17]",
+          "mask": 131072,
+          "mask_hex": "0x00020000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO18",
+          "bitOffset": 18,
+          "bitWidth": 1,
+          "bitRange": "[18:18]",
+          "mask": 262144,
+          "mask_hex": "0x00040000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO19",
+          "bitOffset": 19,
+          "bitWidth": 1,
+          "bitRange": "[19:19]",
+          "mask": 524288,
+          "mask_hex": "0x00080000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO20",
+          "bitOffset": 20,
+          "bitWidth": 1,
+          "bitRange": "[20:20]",
+          "mask": 1048576,
+          "mask_hex": "0x00100000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO21",
+          "bitOffset": 21,
+          "bitWidth": 1,
+          "bitRange": "[21:21]",
+          "mask": 2097152,
+          "mask_hex": "0x00200000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO22",
+          "bitOffset": 22,
+          "bitWidth": 1,
+          "bitRange": "[22:22]",
+          "mask": 4194304,
+          "mask_hex": "0x00400000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO23",
+          "bitOffset": 23,
+          "bitWidth": 1,
+          "bitRange": "[23:23]",
+          "mask": 8388608,
+          "mask_hex": "0x00800000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO24",
+          "bitOffset": 24,
+          "bitWidth": 1,
+          "bitRange": "[24:24]",
+          "mask": 16777216,
+          "mask_hex": "0x01000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO25",
+          "bitOffset": 25,
+          "bitWidth": 1,
+          "bitRange": "[25:25]",
+          "mask": 33554432,
+          "mask_hex": "0x02000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO26",
+          "bitOffset": 26,
+          "bitWidth": 1,
+          "bitRange": "[26:26]",
+          "mask": 67108864,
+          "mask_hex": "0x04000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO27",
+          "bitOffset": 27,
+          "bitWidth": 1,
+          "bitRange": "[27:27]",
+          "mask": 134217728,
+          "mask_hex": "0x08000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO28",
+          "bitOffset": 28,
+          "bitWidth": 1,
+          "bitRange": "[28:28]",
+          "mask": 268435456,
+          "mask_hex": "0x10000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO29",
+          "bitOffset": 29,
+          "bitWidth": 1,
+          "bitRange": "[29:29]",
+          "mask": 536870912,
+          "mask_hex": "0x20000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO30",
+          "bitOffset": 30,
+          "bitWidth": 1,
+          "bitRange": "[30:30]",
+          "mask": 1073741824,
+          "mask_hex": "0x40000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDO31",
+          "bitOffset": 31,
+          "bitWidth": 1,
+          "bitRange": "[31:31]",
+          "mask": 2147483648,
+          "mask_hex": "0x80000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Logic level 0 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Logic level 1 is driven on pin, provided pin is configured for general-purpose output.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PSOR",
+      "addressOffset": 4,
+      "addressOffset_hex": "0x00000004",
+      "absoluteAddress": 1074786372,
+      "absoluteAddress_hex": "0x400FF044",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "write-only",
+      "svd_description": "Port Set Output Register",
+      "pdf_description": "400F_F004 PortSetOutputRegister(GPIOA_PSOR) 32 (always 0000_0000h 55.2.2/1761\nreads0)\nW\n\n400F_F044 PortSetOutputRegister(GPIOB_PSOR) 32 (always 0000_0000h 55.2.2/1761\nreads0)\nW\n\n400F_F084 PortSetOutputRegister(GPIOC_PSOR) 32 (always 0000_0000h 55.2.2/1761\nreads0)\nW",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "PTSO0",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO1",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO2",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO3",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO4",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO5",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO6",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO7",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO8",
+          "bitOffset": 8,
+          "bitWidth": 1,
+          "bitRange": "[8:8]",
+          "mask": 256,
+          "mask_hex": "0x00000100",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO9",
+          "bitOffset": 9,
+          "bitWidth": 1,
+          "bitRange": "[9:9]",
+          "mask": 512,
+          "mask_hex": "0x00000200",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO10",
+          "bitOffset": 10,
+          "bitWidth": 1,
+          "bitRange": "[10:10]",
+          "mask": 1024,
+          "mask_hex": "0x00000400",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO11",
+          "bitOffset": 11,
+          "bitWidth": 1,
+          "bitRange": "[11:11]",
+          "mask": 2048,
+          "mask_hex": "0x00000800",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO12",
+          "bitOffset": 12,
+          "bitWidth": 1,
+          "bitRange": "[12:12]",
+          "mask": 4096,
+          "mask_hex": "0x00001000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO13",
+          "bitOffset": 13,
+          "bitWidth": 1,
+          "bitRange": "[13:13]",
+          "mask": 8192,
+          "mask_hex": "0x00002000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO14",
+          "bitOffset": 14,
+          "bitWidth": 1,
+          "bitRange": "[14:14]",
+          "mask": 16384,
+          "mask_hex": "0x00004000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO15",
+          "bitOffset": 15,
+          "bitWidth": 1,
+          "bitRange": "[15:15]",
+          "mask": 32768,
+          "mask_hex": "0x00008000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO16",
+          "bitOffset": 16,
+          "bitWidth": 1,
+          "bitRange": "[16:16]",
+          "mask": 65536,
+          "mask_hex": "0x00010000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO17",
+          "bitOffset": 17,
+          "bitWidth": 1,
+          "bitRange": "[17:17]",
+          "mask": 131072,
+          "mask_hex": "0x00020000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO18",
+          "bitOffset": 18,
+          "bitWidth": 1,
+          "bitRange": "[18:18]",
+          "mask": 262144,
+          "mask_hex": "0x00040000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO19",
+          "bitOffset": 19,
+          "bitWidth": 1,
+          "bitRange": "[19:19]",
+          "mask": 524288,
+          "mask_hex": "0x00080000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO20",
+          "bitOffset": 20,
+          "bitWidth": 1,
+          "bitRange": "[20:20]",
+          "mask": 1048576,
+          "mask_hex": "0x00100000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO21",
+          "bitOffset": 21,
+          "bitWidth": 1,
+          "bitRange": "[21:21]",
+          "mask": 2097152,
+          "mask_hex": "0x00200000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO22",
+          "bitOffset": 22,
+          "bitWidth": 1,
+          "bitRange": "[22:22]",
+          "mask": 4194304,
+          "mask_hex": "0x00400000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO23",
+          "bitOffset": 23,
+          "bitWidth": 1,
+          "bitRange": "[23:23]",
+          "mask": 8388608,
+          "mask_hex": "0x00800000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO24",
+          "bitOffset": 24,
+          "bitWidth": 1,
+          "bitRange": "[24:24]",
+          "mask": 16777216,
+          "mask_hex": "0x01000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO25",
+          "bitOffset": 25,
+          "bitWidth": 1,
+          "bitRange": "[25:25]",
+          "mask": 33554432,
+          "mask_hex": "0x02000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO26",
+          "bitOffset": 26,
+          "bitWidth": 1,
+          "bitRange": "[26:26]",
+          "mask": 67108864,
+          "mask_hex": "0x04000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO27",
+          "bitOffset": 27,
+          "bitWidth": 1,
+          "bitRange": "[27:27]",
+          "mask": 134217728,
+          "mask_hex": "0x08000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO28",
+          "bitOffset": 28,
+          "bitWidth": 1,
+          "bitRange": "[28:28]",
+          "mask": 268435456,
+          "mask_hex": "0x10000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO29",
+          "bitOffset": 29,
+          "bitWidth": 1,
+          "bitRange": "[29:29]",
+          "mask": 536870912,
+          "mask_hex": "0x20000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO30",
+          "bitOffset": 30,
+          "bitWidth": 1,
+          "bitRange": "[30:30]",
+          "mask": 1073741824,
+          "mask_hex": "0x40000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTSO31",
+          "bitOffset": 31,
+          "bitWidth": 1,
+          "bitRange": "[31:31]",
+          "mask": 2147483648,
+          "mask_hex": "0x80000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Set Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to logic 1.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PCOR",
+      "addressOffset": 8,
+      "addressOffset_hex": "0x00000008",
+      "absoluteAddress": 1074786376,
+      "absoluteAddress_hex": "0x400FF048",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "write-only",
+      "svd_description": "Port Clear Output Register",
+      "pdf_description": "400F_F008 PortClearOutputRegister(GPIOA_PCOR) 32 (always 0000_0000h 55.2.3/1762\nreads0)\nW\n\n400F_F048 PortClearOutputRegister(GPIOB_PCOR) 32 (always 0000_0000h 55.2.3/1762\nreads0)\nW\n\n400F_F088 PortClearOutputRegister(GPIOC_PCOR) 32 (always 0000_0000h 55.2.3/1762\nreads0)\nW",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "PTCO0",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO1",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO2",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO3",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO4",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO5",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO6",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO7",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO8",
+          "bitOffset": 8,
+          "bitWidth": 1,
+          "bitRange": "[8:8]",
+          "mask": 256,
+          "mask_hex": "0x00000100",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO9",
+          "bitOffset": 9,
+          "bitWidth": 1,
+          "bitRange": "[9:9]",
+          "mask": 512,
+          "mask_hex": "0x00000200",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO10",
+          "bitOffset": 10,
+          "bitWidth": 1,
+          "bitRange": "[10:10]",
+          "mask": 1024,
+          "mask_hex": "0x00000400",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO11",
+          "bitOffset": 11,
+          "bitWidth": 1,
+          "bitRange": "[11:11]",
+          "mask": 2048,
+          "mask_hex": "0x00000800",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO12",
+          "bitOffset": 12,
+          "bitWidth": 1,
+          "bitRange": "[12:12]",
+          "mask": 4096,
+          "mask_hex": "0x00001000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO13",
+          "bitOffset": 13,
+          "bitWidth": 1,
+          "bitRange": "[13:13]",
+          "mask": 8192,
+          "mask_hex": "0x00002000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO14",
+          "bitOffset": 14,
+          "bitWidth": 1,
+          "bitRange": "[14:14]",
+          "mask": 16384,
+          "mask_hex": "0x00004000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO15",
+          "bitOffset": 15,
+          "bitWidth": 1,
+          "bitRange": "[15:15]",
+          "mask": 32768,
+          "mask_hex": "0x00008000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO16",
+          "bitOffset": 16,
+          "bitWidth": 1,
+          "bitRange": "[16:16]",
+          "mask": 65536,
+          "mask_hex": "0x00010000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO17",
+          "bitOffset": 17,
+          "bitWidth": 1,
+          "bitRange": "[17:17]",
+          "mask": 131072,
+          "mask_hex": "0x00020000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO18",
+          "bitOffset": 18,
+          "bitWidth": 1,
+          "bitRange": "[18:18]",
+          "mask": 262144,
+          "mask_hex": "0x00040000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO19",
+          "bitOffset": 19,
+          "bitWidth": 1,
+          "bitRange": "[19:19]",
+          "mask": 524288,
+          "mask_hex": "0x00080000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO20",
+          "bitOffset": 20,
+          "bitWidth": 1,
+          "bitRange": "[20:20]",
+          "mask": 1048576,
+          "mask_hex": "0x00100000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO21",
+          "bitOffset": 21,
+          "bitWidth": 1,
+          "bitRange": "[21:21]",
+          "mask": 2097152,
+          "mask_hex": "0x00200000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO22",
+          "bitOffset": 22,
+          "bitWidth": 1,
+          "bitRange": "[22:22]",
+          "mask": 4194304,
+          "mask_hex": "0x00400000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO23",
+          "bitOffset": 23,
+          "bitWidth": 1,
+          "bitRange": "[23:23]",
+          "mask": 8388608,
+          "mask_hex": "0x00800000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO24",
+          "bitOffset": 24,
+          "bitWidth": 1,
+          "bitRange": "[24:24]",
+          "mask": 16777216,
+          "mask_hex": "0x01000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO25",
+          "bitOffset": 25,
+          "bitWidth": 1,
+          "bitRange": "[25:25]",
+          "mask": 33554432,
+          "mask_hex": "0x02000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO26",
+          "bitOffset": 26,
+          "bitWidth": 1,
+          "bitRange": "[26:26]",
+          "mask": 67108864,
+          "mask_hex": "0x04000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO27",
+          "bitOffset": 27,
+          "bitWidth": 1,
+          "bitRange": "[27:27]",
+          "mask": 134217728,
+          "mask_hex": "0x08000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO28",
+          "bitOffset": 28,
+          "bitWidth": 1,
+          "bitRange": "[28:28]",
+          "mask": 268435456,
+          "mask_hex": "0x10000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO29",
+          "bitOffset": 29,
+          "bitWidth": 1,
+          "bitRange": "[29:29]",
+          "mask": 536870912,
+          "mask_hex": "0x20000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO30",
+          "bitOffset": 30,
+          "bitWidth": 1,
+          "bitRange": "[30:30]",
+          "mask": 1073741824,
+          "mask_hex": "0x40000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTCO31",
+          "bitOffset": 31,
+          "bitWidth": 1,
+          "bitRange": "[31:31]",
+          "mask": 2147483648,
+          "mask_hex": "0x80000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Clear Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is cleared to logic 0.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PTOR",
+      "addressOffset": 12,
+      "addressOffset_hex": "0x0000000C",
+      "absoluteAddress": 1074786380,
+      "absoluteAddress_hex": "0x400FF04C",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "write-only",
+      "svd_description": "Port Toggle Output Register",
+      "pdf_description": "400F_F00C PortToggleOutputRegister(GPIOA_PTOR) 32 (always 0000_0000h 55.2.4/1762\nreads0)\n\n400F_F04C PortToggleOutputRegister(GPIOB_PTOR) 32 (always 0000_0000h 55.2.4/1762\nreads0)\n\n400F_F08C PortToggleOutputRegister(GPIOC_PTOR) 32 (always 0000_0000h 55.2.4/1762\nreads0)",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "PTTO0",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO1",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO2",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO3",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO4",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO5",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO6",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO7",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO8",
+          "bitOffset": 8,
+          "bitWidth": 1,
+          "bitRange": "[8:8]",
+          "mask": 256,
+          "mask_hex": "0x00000100",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO9",
+          "bitOffset": 9,
+          "bitWidth": 1,
+          "bitRange": "[9:9]",
+          "mask": 512,
+          "mask_hex": "0x00000200",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO10",
+          "bitOffset": 10,
+          "bitWidth": 1,
+          "bitRange": "[10:10]",
+          "mask": 1024,
+          "mask_hex": "0x00000400",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO11",
+          "bitOffset": 11,
+          "bitWidth": 1,
+          "bitRange": "[11:11]",
+          "mask": 2048,
+          "mask_hex": "0x00000800",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO12",
+          "bitOffset": 12,
+          "bitWidth": 1,
+          "bitRange": "[12:12]",
+          "mask": 4096,
+          "mask_hex": "0x00001000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO13",
+          "bitOffset": 13,
+          "bitWidth": 1,
+          "bitRange": "[13:13]",
+          "mask": 8192,
+          "mask_hex": "0x00002000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO14",
+          "bitOffset": 14,
+          "bitWidth": 1,
+          "bitRange": "[14:14]",
+          "mask": 16384,
+          "mask_hex": "0x00004000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO15",
+          "bitOffset": 15,
+          "bitWidth": 1,
+          "bitRange": "[15:15]",
+          "mask": 32768,
+          "mask_hex": "0x00008000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO16",
+          "bitOffset": 16,
+          "bitWidth": 1,
+          "bitRange": "[16:16]",
+          "mask": 65536,
+          "mask_hex": "0x00010000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO17",
+          "bitOffset": 17,
+          "bitWidth": 1,
+          "bitRange": "[17:17]",
+          "mask": 131072,
+          "mask_hex": "0x00020000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO18",
+          "bitOffset": 18,
+          "bitWidth": 1,
+          "bitRange": "[18:18]",
+          "mask": 262144,
+          "mask_hex": "0x00040000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO19",
+          "bitOffset": 19,
+          "bitWidth": 1,
+          "bitRange": "[19:19]",
+          "mask": 524288,
+          "mask_hex": "0x00080000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO20",
+          "bitOffset": 20,
+          "bitWidth": 1,
+          "bitRange": "[20:20]",
+          "mask": 1048576,
+          "mask_hex": "0x00100000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO21",
+          "bitOffset": 21,
+          "bitWidth": 1,
+          "bitRange": "[21:21]",
+          "mask": 2097152,
+          "mask_hex": "0x00200000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO22",
+          "bitOffset": 22,
+          "bitWidth": 1,
+          "bitRange": "[22:22]",
+          "mask": 4194304,
+          "mask_hex": "0x00400000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO23",
+          "bitOffset": 23,
+          "bitWidth": 1,
+          "bitRange": "[23:23]",
+          "mask": 8388608,
+          "mask_hex": "0x00800000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO24",
+          "bitOffset": 24,
+          "bitWidth": 1,
+          "bitRange": "[24:24]",
+          "mask": 16777216,
+          "mask_hex": "0x01000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO25",
+          "bitOffset": 25,
+          "bitWidth": 1,
+          "bitRange": "[25:25]",
+          "mask": 33554432,
+          "mask_hex": "0x02000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO26",
+          "bitOffset": 26,
+          "bitWidth": 1,
+          "bitRange": "[26:26]",
+          "mask": 67108864,
+          "mask_hex": "0x04000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO27",
+          "bitOffset": 27,
+          "bitWidth": 1,
+          "bitRange": "[27:27]",
+          "mask": 134217728,
+          "mask_hex": "0x08000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO28",
+          "bitOffset": 28,
+          "bitWidth": 1,
+          "bitRange": "[28:28]",
+          "mask": 268435456,
+          "mask_hex": "0x10000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO29",
+          "bitOffset": 29,
+          "bitWidth": 1,
+          "bitRange": "[29:29]",
+          "mask": 536870912,
+          "mask_hex": "0x20000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO30",
+          "bitOffset": 30,
+          "bitWidth": 1,
+          "bitRange": "[30:30]",
+          "mask": 1073741824,
+          "mask_hex": "0x40000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PTTO31",
+          "bitOffset": 31,
+          "bitWidth": 1,
+          "bitRange": "[31:31]",
+          "mask": 2147483648,
+          "mask_hex": "0x80000000",
+          "svd_access": "write-only",
+          "svd_description": "Port Toggle Output",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Corresponding bit in PDORn does not change.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Corresponding bit in PDORn is set to the inverse of its existing logic state.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PDIR",
+      "addressOffset": 16,
+      "addressOffset_hex": "0x00000010",
+      "absoluteAddress": 1074786384,
+      "absoluteAddress_hex": "0x400FF050",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-only",
+      "svd_description": "Port Data Input Register",
+      "pdf_description": "400F_F010 PortDataInputRegister(GPIOA_PDIR) 32 R 0000_0000h 55.2.5/1763\n\n400F_F050 PortDataInputRegister(GPIOB_PDIR) 32 R 0000_0000h 55.2.5/1763\n\n400F_F090 PortDataInputRegister(GPIOC_PDIR) 32 R 0000_0000h 55.2.5/1763",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "PDI0",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI1",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI2",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI3",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI4",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI5",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI6",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI7",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI8",
+          "bitOffset": 8,
+          "bitWidth": 1,
+          "bitRange": "[8:8]",
+          "mask": 256,
+          "mask_hex": "0x00000100",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI9",
+          "bitOffset": 9,
+          "bitWidth": 1,
+          "bitRange": "[9:9]",
+          "mask": 512,
+          "mask_hex": "0x00000200",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI10",
+          "bitOffset": 10,
+          "bitWidth": 1,
+          "bitRange": "[10:10]",
+          "mask": 1024,
+          "mask_hex": "0x00000400",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI11",
+          "bitOffset": 11,
+          "bitWidth": 1,
+          "bitRange": "[11:11]",
+          "mask": 2048,
+          "mask_hex": "0x00000800",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI12",
+          "bitOffset": 12,
+          "bitWidth": 1,
+          "bitRange": "[12:12]",
+          "mask": 4096,
+          "mask_hex": "0x00001000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI13",
+          "bitOffset": 13,
+          "bitWidth": 1,
+          "bitRange": "[13:13]",
+          "mask": 8192,
+          "mask_hex": "0x00002000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI14",
+          "bitOffset": 14,
+          "bitWidth": 1,
+          "bitRange": "[14:14]",
+          "mask": 16384,
+          "mask_hex": "0x00004000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI15",
+          "bitOffset": 15,
+          "bitWidth": 1,
+          "bitRange": "[15:15]",
+          "mask": 32768,
+          "mask_hex": "0x00008000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI16",
+          "bitOffset": 16,
+          "bitWidth": 1,
+          "bitRange": "[16:16]",
+          "mask": 65536,
+          "mask_hex": "0x00010000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI17",
+          "bitOffset": 17,
+          "bitWidth": 1,
+          "bitRange": "[17:17]",
+          "mask": 131072,
+          "mask_hex": "0x00020000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI18",
+          "bitOffset": 18,
+          "bitWidth": 1,
+          "bitRange": "[18:18]",
+          "mask": 262144,
+          "mask_hex": "0x00040000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI19",
+          "bitOffset": 19,
+          "bitWidth": 1,
+          "bitRange": "[19:19]",
+          "mask": 524288,
+          "mask_hex": "0x00080000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI20",
+          "bitOffset": 20,
+          "bitWidth": 1,
+          "bitRange": "[20:20]",
+          "mask": 1048576,
+          "mask_hex": "0x00100000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI21",
+          "bitOffset": 21,
+          "bitWidth": 1,
+          "bitRange": "[21:21]",
+          "mask": 2097152,
+          "mask_hex": "0x00200000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI22",
+          "bitOffset": 22,
+          "bitWidth": 1,
+          "bitRange": "[22:22]",
+          "mask": 4194304,
+          "mask_hex": "0x00400000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI23",
+          "bitOffset": 23,
+          "bitWidth": 1,
+          "bitRange": "[23:23]",
+          "mask": 8388608,
+          "mask_hex": "0x00800000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI24",
+          "bitOffset": 24,
+          "bitWidth": 1,
+          "bitRange": "[24:24]",
+          "mask": 16777216,
+          "mask_hex": "0x01000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI25",
+          "bitOffset": 25,
+          "bitWidth": 1,
+          "bitRange": "[25:25]",
+          "mask": 33554432,
+          "mask_hex": "0x02000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI26",
+          "bitOffset": 26,
+          "bitWidth": 1,
+          "bitRange": "[26:26]",
+          "mask": 67108864,
+          "mask_hex": "0x04000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI27",
+          "bitOffset": 27,
+          "bitWidth": 1,
+          "bitRange": "[27:27]",
+          "mask": 134217728,
+          "mask_hex": "0x08000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI28",
+          "bitOffset": 28,
+          "bitWidth": 1,
+          "bitRange": "[28:28]",
+          "mask": 268435456,
+          "mask_hex": "0x10000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI29",
+          "bitOffset": 29,
+          "bitWidth": 1,
+          "bitRange": "[29:29]",
+          "mask": 536870912,
+          "mask_hex": "0x20000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI30",
+          "bitOffset": 30,
+          "bitWidth": 1,
+          "bitRange": "[30:30]",
+          "mask": 1073741824,
+          "mask_hex": "0x40000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDI31",
+          "bitOffset": 31,
+          "bitWidth": 1,
+          "bitRange": "[31:31]",
+          "mask": 2147483648,
+          "mask_hex": "0x80000000",
+          "svd_access": "read-only",
+          "svd_description": "Port Data Input",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin logic level is logic 0, or is not configured for use by digital function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin logic level is logic 1.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PDDR",
+      "addressOffset": 20,
+      "addressOffset_hex": "0x00000014",
+      "absoluteAddress": 1074786388,
+      "absoluteAddress_hex": "0x400FF054",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "Port Data Direction Register",
+      "pdf_description": "400F_F014 PortDataDirectionRegister(GPIOA_PDDR) 32 R/W 0000_0000h 55.2.6/1763\n\n400F_F054 PortDataDirectionRegister(GPIOB_PDDR) 32 R/W 0000_0000h 55.2.6/1763\n\n400F_F094 PortDataDirectionRegister(GPIOC_PDDR) 32 R/W 0000_0000h 55.2.6/1763",
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "PDD0",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "mask": 1,
+          "mask_hex": "0x00000001",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD1",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "mask": 2,
+          "mask_hex": "0x00000002",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD2",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "mask": 4,
+          "mask_hex": "0x00000004",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD3",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "mask": 8,
+          "mask_hex": "0x00000008",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD4",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "mask": 16,
+          "mask_hex": "0x00000010",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD5",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "mask": 32,
+          "mask_hex": "0x00000020",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD6",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "mask": 64,
+          "mask_hex": "0x00000040",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD7",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "mask": 128,
+          "mask_hex": "0x00000080",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD8",
+          "bitOffset": 8,
+          "bitWidth": 1,
+          "bitRange": "[8:8]",
+          "mask": 256,
+          "mask_hex": "0x00000100",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD9",
+          "bitOffset": 9,
+          "bitWidth": 1,
+          "bitRange": "[9:9]",
+          "mask": 512,
+          "mask_hex": "0x00000200",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD10",
+          "bitOffset": 10,
+          "bitWidth": 1,
+          "bitRange": "[10:10]",
+          "mask": 1024,
+          "mask_hex": "0x00000400",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD11",
+          "bitOffset": 11,
+          "bitWidth": 1,
+          "bitRange": "[11:11]",
+          "mask": 2048,
+          "mask_hex": "0x00000800",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD12",
+          "bitOffset": 12,
+          "bitWidth": 1,
+          "bitRange": "[12:12]",
+          "mask": 4096,
+          "mask_hex": "0x00001000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD13",
+          "bitOffset": 13,
+          "bitWidth": 1,
+          "bitRange": "[13:13]",
+          "mask": 8192,
+          "mask_hex": "0x00002000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD14",
+          "bitOffset": 14,
+          "bitWidth": 1,
+          "bitRange": "[14:14]",
+          "mask": 16384,
+          "mask_hex": "0x00004000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD15",
+          "bitOffset": 15,
+          "bitWidth": 1,
+          "bitRange": "[15:15]",
+          "mask": 32768,
+          "mask_hex": "0x00008000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD16",
+          "bitOffset": 16,
+          "bitWidth": 1,
+          "bitRange": "[16:16]",
+          "mask": 65536,
+          "mask_hex": "0x00010000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD17",
+          "bitOffset": 17,
+          "bitWidth": 1,
+          "bitRange": "[17:17]",
+          "mask": 131072,
+          "mask_hex": "0x00020000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD18",
+          "bitOffset": 18,
+          "bitWidth": 1,
+          "bitRange": "[18:18]",
+          "mask": 262144,
+          "mask_hex": "0x00040000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD19",
+          "bitOffset": 19,
+          "bitWidth": 1,
+          "bitRange": "[19:19]",
+          "mask": 524288,
+          "mask_hex": "0x00080000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD20",
+          "bitOffset": 20,
+          "bitWidth": 1,
+          "bitRange": "[20:20]",
+          "mask": 1048576,
+          "mask_hex": "0x00100000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD21",
+          "bitOffset": 21,
+          "bitWidth": 1,
+          "bitRange": "[21:21]",
+          "mask": 2097152,
+          "mask_hex": "0x00200000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD22",
+          "bitOffset": 22,
+          "bitWidth": 1,
+          "bitRange": "[22:22]",
+          "mask": 4194304,
+          "mask_hex": "0x00400000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD23",
+          "bitOffset": 23,
+          "bitWidth": 1,
+          "bitRange": "[23:23]",
+          "mask": 8388608,
+          "mask_hex": "0x00800000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD24",
+          "bitOffset": 24,
+          "bitWidth": 1,
+          "bitRange": "[24:24]",
+          "mask": 16777216,
+          "mask_hex": "0x01000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD25",
+          "bitOffset": 25,
+          "bitWidth": 1,
+          "bitRange": "[25:25]",
+          "mask": 33554432,
+          "mask_hex": "0x02000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD26",
+          "bitOffset": 26,
+          "bitWidth": 1,
+          "bitRange": "[26:26]",
+          "mask": 67108864,
+          "mask_hex": "0x04000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD27",
+          "bitOffset": 27,
+          "bitWidth": 1,
+          "bitRange": "[27:27]",
+          "mask": 134217728,
+          "mask_hex": "0x08000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD28",
+          "bitOffset": 28,
+          "bitWidth": 1,
+          "bitRange": "[28:28]",
+          "mask": 268435456,
+          "mask_hex": "0x10000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD29",
+          "bitOffset": 29,
+          "bitWidth": 1,
+          "bitRange": "[29:29]",
+          "mask": 536870912,
+          "mask_hex": "0x20000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD30",
+          "bitOffset": 30,
+          "bitWidth": 1,
+          "bitRange": "[30:30]",
+          "mask": 1073741824,
+          "mask_hex": "0x40000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PDD31",
+          "bitOffset": 31,
+          "bitWidth": 1,
+          "bitRange": "[31:31]",
+          "mask": 2147483648,
+          "mask_hex": "0x80000000",
+          "svd_access": "read-write",
+          "svd_description": "Port Data Direction",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Pin is configured as general-purpose input, for the GPIO function.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Pin is configured as general-purpose output, for the GPIO function.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reg_by_addr_hex": {
+    "0x400FF040": {
+      "name": "PDOR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000000",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x400FF044": {
+      "name": "PSOR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000004",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x400FF048": {
+      "name": "PCOR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000008",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x400FF04C": {
+      "name": "PTOR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x0000000C",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x400FF050": {
+      "name": "PDIR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000010",
+      "documentation_status": "documented_in_pdf"
+    },
+    "0x400FF054": {
+      "name": "PDDR",
+      "size_bits": 32,
+      "size_bytes": 4,
+      "addressOffset_hex": "0x00000014",
+      "documentation_status": "documented_in_pdf"
+    }
+  }
+}

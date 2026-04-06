@@ -1,0 +1,948 @@
+{
+  "schema": "relation_edges_v2",
+  "peripheral": "MCG",
+  "template_instance": "MCG",
+  "relation_mode": "hybrid",
+  "llm": {
+    "attempted": true,
+    "used": false,
+    "error": "missing API key in env var OPENAI_API_KEY"
+  },
+  "edges": [
+    {
+      "edge_id": "e_f2f_000001",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "C3",
+        "register_addr_hex": "0x40064002",
+        "field": "SCTRIM",
+        "field_id": "MCG:C3.SCTRIM"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "IREFSTEN",
+        "field_id": "MCG:C1.IREFSTEN"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "modes.C3[SCTRIM]:C4[SCFTRIM](ifC2[IRCS]=0)bitsalsoaffectthe\nMCGOUTCLKfrequencyiftheMCGisinFEImode.\nAdditionally,thisclockcanbeenabledinStopmodebysettingC1[IRCLKEN]and\nC1[IREFSTEN],otherwisethisclockisdisabledinStopmode."
+        }
+      ],
+      "notes": [
+        "matched_variants=['IREFSTEN']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000002",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "C3",
+        "register_addr_hex": "0x40064002",
+        "field": "SCTRIM",
+        "field_id": "MCG:C3.SCTRIM"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "IRCLKEN",
+        "field_id": "MCG:C1.IRCLKEN"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "modes.C3[SCTRIM]:C4[SCFTRIM](ifC2[IRCS]=0)bitsalsoaffectthe\nMCGOUTCLKfrequencyiftheMCGisinFEImode.\nAdditionally,thisclockcanbeenabledinStopmodebysettingC1[IRCLKEN]and\nC1[IREFSTEN],otherwisethisclockisdisabledinStopmode."
+        }
+      ],
+      "notes": [
+        "matched_variants=['IRCLKEN']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000003",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "C3",
+        "register_addr_hex": "0x40064002",
+        "field": "SCTRIM",
+        "field_id": "MCG:C3.SCTRIM"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C2",
+        "register_addr_hex": "0x40064001",
+        "field": "IRCS",
+        "field_id": "MCG:C2.IRCS"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "modes.C3[SCTRIM]:C4[SCFTRIM](ifC2[IRCS]=0)bitsalsoaffectthe\nMCGOUTCLKfrequencyiftheMCGisinFEImode.\nAdditionally,thisclockcanbeenabledinStopmodebysettingC1[IRCLKEN]and\nC1[IREFSTEN],otherwisethisclockisdisabledinStopmode."
+        }
+      ],
+      "notes": [
+        "matched_variants=['IRCS']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000004",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "C3",
+        "register_addr_hex": "0x40064002",
+        "field": "SCTRIM",
+        "field_id": "MCG:C3.SCTRIM"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C4",
+        "register_addr_hex": "0x40064003",
+        "field": "SCFTRIM",
+        "field_id": "MCG:C4.SCFTRIM"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "modes.C3[SCTRIM]:C4[SCFTRIM](ifC2[IRCS]=0)bitsalsoaffectthe\nMCGOUTCLKfrequencyiftheMCGisinFEImode.\nAdditionally,thisclockcanbeenabledinStopmodebysettingC1[IRCLKEN]and\nC1[IREFSTEN],otherwisethisclockisdisabledinStopmode."
+        }
+      ],
+      "notes": [
+        "matched_variants=['SCFTRIM']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000005",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "C3",
+        "register_addr_hex": "0x40064002",
+        "field": "SCTRIM",
+        "field_id": "MCG:C3.SCTRIM"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "",
+        "field_id": "MCG:C1."
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "modes.C3[SCTRIM]:C4[SCFTRIM](ifC2[IRCS]=0)bitsalsoaffectthe\nMCGOUTCLKfrequencyiftheMCGisinFEImode.\nAdditionally,thisclockcanbeenabledinStopmodebysettingC1[IRCLKEN]and\nC1[IREFSTEN],otherwisethisclockisdisabledinStopmode."
+        }
+      ],
+      "notes": [
+        "matched_variants=['C1']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000006",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "C3",
+        "register_addr_hex": "0x40064002",
+        "field": "SCTRIM",
+        "field_id": "MCG:C3.SCTRIM"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C4",
+        "register_addr_hex": "0x40064003",
+        "field": "",
+        "field_id": "MCG:C4."
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "modes.C3[SCTRIM]:C4[SCFTRIM](ifC2[IRCS]=0)bitsalsoaffectthe\nMCGOUTCLKfrequencyiftheMCGisinFEImode.\nAdditionally,thisclockcanbeenabledinStopmodebysettingC1[IRCLKEN]and\nC1[IREFSTEN],otherwisethisclockisdisabledinStopmode."
+        }
+      ],
+      "notes": [
+        "matched_variants=['C4']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000007",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "C5",
+        "register_addr_hex": "0x40064004",
+        "field": "PLLCLKEN0",
+        "field_id": "MCG:C5.PLLCLKEN0"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C5",
+        "register_addr_hex": "0x40064004",
+        "field": "PRDIV0",
+        "field_id": "MCG:C5.PRDIV0"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "reg_fuzzy",
+          "page": 583,
+          "text": "PLLCLKEN0\nEnablesthePLLindependentofPLLSandenablesthePLLclockforuseasMCGPLLCLK.(PRDIV0\nneedstobeprogrammedtothecorrectdividertogenerateaPLLreferenceclockintherangeof2-4MHz\nrangepriortosettingthePLLCLKEN0bit).SettingPLLCLKEN0willenabletheexternaloscillatorifnot"
+        }
+      ],
+      "notes": [
+        "matched_variants=['PRDIV0']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000009",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "CLKST",
+        "field_id": "MCG:S.CLKST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "CLKS",
+        "field_id": "MCG:C1.CLKS"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 597,
+          "text": "C1[CLKS]andS[CLKST]willautomaticallybesetto\n2’b10.\n•IfenteringNormalStopmodewhentheMCGisinPEE\nmodewithPLLSTEN=0,theMCGwillresettoPBEclock"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "MCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe\nconfiguredto2’b10ifenteringfromPEEmodeorto2’b01ifenteringfromPEImode,\nC5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['CLKS']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000010",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "CLKST",
+        "field_id": "MCG:S.CLKST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "",
+        "field_id": "MCG:C1."
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 597,
+          "text": "C1[CLKS]andS[CLKST]willautomaticallybesetto\n2’b10.\n•IfenteringNormalStopmodewhentheMCGisinPEE\nmodewithPLLSTEN=0,theMCGwillresettoPBEclock"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "MCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe\nconfiguredto2’b10ifenteringfromPEEmodeorto2’b01ifenteringfromPEImode,\nC5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['C1']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000012",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "CLKST",
+        "field_id": "MCG:S.CLKST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C5",
+        "register_addr_hex": "0x40064004",
+        "field": "PLLSTEN0",
+        "field_id": "MCG:C5.PLLSTEN0"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "MCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe\nconfiguredto2’b10ifenteringfromPEEmodeorto2’b01ifenteringfromPEImode,\nC5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['PLLSTEN0']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000014",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "CLKST",
+        "field_id": "MCG:S.CLKST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C5",
+        "register_addr_hex": "0x40064004",
+        "field": "",
+        "field_id": "MCG:C5."
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "MCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe\nconfiguredto2’b10ifenteringfromPEEmodeorto2’b01ifenteringfromPEImode,\nC5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['C5']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000015",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "IREFSTEN",
+        "field_id": "MCG:C1.IREFSTEN"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 584,
+          "text": "IREFSTEN\nControlswhetherornottheinternalreferenceclockremainsenabledwhentheMCGentersStopmode.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "• C1[IREFSTEN]=1\nNOTE: • InVLPSStopMode,theMCGIRCLKcanbeprogrammedtostayenabledand\ncontinuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "continuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)\nNOTE: • WhenenteringLowPowerStopmodes(LLSorVLPS)fromPEEmode,onexitthe\nMCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['IREFSTEN']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000017",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "IRCLKEN",
+        "field_id": "MCG:C1.IRCLKEN"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "• C1[IREFSTEN]=1\nNOTE: • InVLPSStopMode,theMCGIRCLKcanbeprogrammedtostayenabledand\ncontinuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "continuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)\nNOTE: • WhenenteringLowPowerStopmodes(LLSorVLPS)fromPEEmode,onexitthe\nMCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['IRCLKEN']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000018",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C2",
+        "register_addr_hex": "0x40064001",
+        "field": "IRCS",
+        "field_id": "MCG:C2.IRCS"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "• C1[IREFSTEN]=1\nNOTE: • InVLPSStopMode,theMCGIRCLKcanbeprogrammedtostayenabledand\ncontinuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "continuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)\nNOTE: • WhenenteringLowPowerStopmodes(LLSorVLPS)fromPEEmode,onexitthe\nMCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['IRCS']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000019",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "",
+        "field_id": "MCG:C1."
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "• C1[IREFSTEN]=1\nNOTE: • InVLPSStopMode,theMCGIRCLKcanbeprogrammedtostayenabledand\ncontinuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "continuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)\nNOTE: • WhenenteringLowPowerStopmodes(LLSorVLPS)fromPEEmode,onexitthe\nMCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "referenceclocksisshownbyS[IREFST].Whenswitchingbetweenengagedinternaland\nengagedexternalmodes,theFLLwillbeginlockingagainaftertheswitchiscompleted.\nC1[CLKS]canalsobechangedatanytime,buttheactualswitchtothenewlyselected\nclockisshownbyS[CLKST].Ifthenewlyselectedclockisnotavailable,theprevious"
+        }
+      ],
+      "notes": [
+        "matched_variants=['C1']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000020",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C2",
+        "register_addr_hex": "0x40064001",
+        "field": "",
+        "field_id": "MCG:C2."
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "• C1[IREFSTEN]=1\nNOTE: • InVLPSStopMode,theMCGIRCLKcanbeprogrammedtostayenabledand\ncontinuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "continuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)\nNOTE: • WhenenteringLowPowerStopmodes(LLSorVLPS)fromPEEmode,onexitthe\nMCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['C2']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000023",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "CLKS",
+        "field_id": "MCG:C1.CLKS"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "continuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)\nNOTE: • WhenenteringLowPowerStopmodes(LLSorVLPS)fromPEEmode,onexitthe\nMCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "referenceclocksisshownbyS[IREFST].Whenswitchingbetweenengagedinternaland\nengagedexternalmodes,theFLLwillbeginlockingagainaftertheswitchiscompleted.\nC1[CLKS]canalsobechangedatanytime,buttheactualswitchtothenewlyselected\nclockisshownbyS[CLKST].Ifthenewlyselectedclockisnotavailable,theprevious"
+        }
+      ],
+      "notes": [
+        "matched_variants=['CLKS']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000025",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "CLKST",
+        "field_id": "MCG:S.CLKST"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "continuerunningifC1[IRCLKEN]=1,C1[IREFSTEN]=1,andFastIRCclockis\nselected(C2[IRCS]=1)\nNOTE: • WhenenteringLowPowerStopmodes(LLSorVLPS)fromPEEmode,onexitthe\nMCGclockmodeisforcedtoPBEclockmode.C1[CLKS]andS[CLKST]willbe"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "referenceclocksisshownbyS[IREFST].Whenswitchingbetweenengagedinternaland\nengagedexternalmodes,theFLLwillbeginlockingagainaftertheswitchiscompleted.\nC1[CLKS]canalsobechangedatanytime,buttheactualswitchtothenewlyselected\nclockisshownbyS[CLKST].Ifthenewlyselectedclockisnotavailable,theprevious"
+        },
+        {
+          "source": "fuzzy",
+          "page": 605,
+          "text": "• IfinFEEmode,checktomakesureS[IREFST]isclearedbeforemovingon.\n• IfinFBEmode,checktomakesureS[IREFST]isclearedandS[CLKST]bits\nhavechangedto2'b10indicatingtheexternalreferenceclockhasbeen\nappropriatelyselected.AlthoughtheFLLisbypassed,itisstilloninFBEmode."
+        }
+      ],
+      "notes": [
+        "matched_variants=['CLKST']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000031",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "IREFSTEN",
+        "field_id": "MCG:C1.IREFSTEN"
+      },
+      "relation": "disables",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "C1[IREFSTEN],otherwisethisclockisdisabledinStopmode.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 601"
+        }
+      ],
+      "notes": [
+        "matched_variants=['IREFSTEN']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000032",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "IREFST",
+        "field_id": "MCG:S.IREFST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "",
+        "field_id": "MCG:C1."
+      },
+      "relation": "disables",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 601,
+          "text": "C1[IREFSTEN],otherwisethisclockisdisabledinStopmode.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 601"
+        }
+      ],
+      "notes": [
+        "matched_variants=['C1']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000034",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "PLLST",
+        "field_id": "MCG:S.PLLST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C5",
+        "register_addr_hex": "0x40064004",
+        "field": "PLLSTEN0",
+        "field_id": "MCG:C5.PLLSTEN0"
+      },
+      "relation": "enables",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 588,
+          "text": "5 PLLStopEnable\nPLLSTEN0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014"
+        }
+      ],
+      "notes": [
+        "matched_variants=['PLLSTEN0']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000035",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "PLLST",
+        "field_id": "MCG:S.PLLST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C5",
+        "register_addr_hex": "0x40064004",
+        "field": "PLLSTEN0",
+        "field_id": "MCG:C5.PLLSTEN0"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 589,
+          "text": "PLLSTEN0=1.Allotherpowermodes,PLLSTEN0bithasnoaffectanddoesnotenablethePLLClock\ntorunifitiswrittento1.\n0 MCGPLLCLKisdisabledinanyoftheStopmodes.\n1"
+        },
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "C5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS].\n• WhenenteringNormalStopmodefromPEEmodeandifC5[PLLSTEN]=0,onexit\ntheMCGclockmodeisforcedtoPBEmode,theC1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['PLLSTEN0']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000036",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "PLLST",
+        "field_id": "MCG:S.PLLST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "CLKS",
+        "field_id": "MCG:C1.CLKS"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "C5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS].\n• WhenenteringNormalStopmodefromPEEmodeandifC5[PLLSTEN]=0,onexit\ntheMCGclockmodeisforcedtoPBEmode,theC1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['CLKS']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000038",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "PLLST",
+        "field_id": "MCG:S.PLLST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "CLKST",
+        "field_id": "MCG:S.CLKST"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "C5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS].\n• WhenenteringNormalStopmodefromPEEmodeandifC5[PLLSTEN]=0,onexit\ntheMCGclockmodeisforcedtoPBEmode,theC1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['CLKST']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000039",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "PLLST",
+        "field_id": "MCG:S.PLLST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C5",
+        "register_addr_hex": "0x40064004",
+        "field": "",
+        "field_id": "MCG:C5."
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 600,
+          "text": "C5[PLLSTEN0]willbeforceto1'b0andS[LOCK]bitwillbeclearedwithoutsetting\nS[LOLS].\n• WhenenteringNormalStopmodefromPEEmodeandifC5[PLLSTEN]=0,onexit\ntheMCGclockmodeisforcedtoPBEmode,theC1[CLKS]andS[CLKST]willbe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['C5']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000040",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "S",
+        "register_addr_hex": "0x40064006",
+        "field": "PLLST",
+        "field_id": "MCG:S.PLLST"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C1",
+        "register_addr_hex": "0x40064000",
+        "field": "",
+        "field_id": "MCG:C1."
+      },
+      "relation": "clears",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 612,
+          "text": "d.FBE:LoopuntilS[PLLST]iscleared,indicatingthatthecurrentsourceforthe\nPLLSclockistheFLL.\n3. Next,FBEmodetransitionsintoFBImode:\na.C1=0x54"
+        }
+      ],
+      "notes": [
+        "matched_variants=['C1']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000041",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "SC",
+        "register_addr_hex": "0x40064008",
+        "field": "ATMF",
+        "field_id": "MCG:SC.ATMF"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C3",
+        "register_addr_hex": "0x40064002",
+        "field": "",
+        "field_id": "MCG:C3."
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 603,
+          "text": "C3,C4,orATCorifStopmodeisentered.Ifanabortoccurs,ATC[ATMF]failflagis\nasserted.\nTheATMmachineusesthebusclockastheexternalreferenceclocktoperformtheIRC\nauto-trim.Therefore,itisrequiredthattheMCGisconfiguredinaclockmodewherethe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['C3']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000042",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "SC",
+        "register_addr_hex": "0x40064008",
+        "field": "ATMF",
+        "field_id": "MCG:SC.ATMF"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "C4",
+        "register_addr_hex": "0x40064003",
+        "field": "",
+        "field_id": "MCG:C4."
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 603,
+          "text": "C3,C4,orATCorifStopmodeisentered.Ifanabortoccurs,ATC[ATMF]failflagis\nasserted.\nTheATMmachineusesthebusclockastheexternalreferenceclocktoperformtheIRC\nauto-trim.Therefore,itisrequiredthattheMCGisconfiguredinaclockmodewherethe"
+        }
+      ],
+      "notes": [
+        "matched_variants=['C4']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000043",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "MCG",
+        "register": "SC",
+        "register_addr_hex": "0x40064008",
+        "field": "ATMS",
+        "field_id": "MCG:SC.ATMS"
+      },
+      "dst": {
+        "peripheral": "MCG",
+        "register": "SC",
+        "register_addr_hex": "0x40064008",
+        "field": "ATME",
+        "field_id": "MCG:SC.ATME"
+      },
+      "relation": "gates",
+      "confidence": 0.81,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 603,
+          "text": "IRCandATC[ATMS]=1selectsthe4MHzIRC).If4MHzIRCisselectedfortheATM,\nadivideby128isenabledtodividedownthe4MHzIRCtoarangeof31.250kHz.\nWhenMCGATMisenabledbywritingATC[ATME]bitto1,TheATMmachinewill\nstartautotrimmingtheselectedIRCclock.Duringtheautotrimprocess,ATC[ATME]"
+        }
+      ],
+      "notes": [
+        "matched_variants=['ATME']"
+      ]
+    }
+  ]
+}

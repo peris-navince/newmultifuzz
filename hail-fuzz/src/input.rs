@@ -9,7 +9,7 @@ use hashbrown::HashMap;
 use icicle_cortexm::{mmio::FuzzwareMmioHandler, CortexmTarget};
 use icicle_vm::cpu::mem::{IoMemory, MemError, MemResult};
 
-use crate::{debugging::trace::IoTracerAny, strategy_runtime};
+use crate::{debugging::trace::IoTracerAny, fixed_trial, strategy_runtime};
 
 pub type MultiStreamMmio = FuzzwareMmioHandler<MultiStream>;
 pub type CortexmMultiStream = CortexmTarget<MultiStreamMmio>;
@@ -378,6 +378,7 @@ impl MultiStream {
 
     pub fn seek_to_start(&mut self) {
         reset_uart_oneshot_state();
+        fixed_trial::on_execution_reset();
         strategy_runtime::on_execution_reset();
         self.streams.values_mut().for_each(|x| x.cursor = 0);
     }
@@ -432,6 +433,14 @@ mod legacy {
 
 impl IoMemory for MultiStream {
     fn read(&mut self, addr: u64, buf: &mut [u8]) -> MemResult<()> {
+        // Fixed-point trial capture must trigger on the targeted MMIO read even when this stream
+        // has no backing bytes for the address. Otherwise the access exits as ReadWatch before the
+        // trial controller sees it, and the sweep loop incorrectly concludes that the trial point
+        // was never reached.
+        if fixed_trial::on_mmio_read(addr) {
+            return Err(MemError::ReadWatch);
+        }
+
         let data = self.next_bytes(addr, buf.len()).ok_or(MemError::ReadWatch)?;
         buf.copy_from_slice(data);
         maybe_apply_uart_oneshot(addr, buf);

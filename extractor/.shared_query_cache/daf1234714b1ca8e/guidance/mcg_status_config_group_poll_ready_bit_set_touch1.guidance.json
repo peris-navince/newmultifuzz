@@ -1,0 +1,21 @@
+{
+  "schema": "mf_runtime_strategy_v1",
+  "plan_name": "mcg_status_config_group_poll_ready_bit_set_touch1",
+  "rationale": "Polling-like anchor MCG.S: set a top-ranked status bit on first touch.",
+  "actions": [
+    {
+      "type": "mmio_bit_update",
+      "addr": "0X40064006",
+      "width": 1,
+      "set_bits": [
+        6
+      ],
+      "trigger": {
+        "kind": "on_first_touch",
+        "addr": "0X40064006",
+        "access": "read"
+      },
+      "activate_stage": "mcg_status_config_group_ready_t1"
+    }
+  ]
+}

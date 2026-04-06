@@ -1,0 +1,268 @@
+{
+  "BDH": {
+    "register_pdf_description": "4006_A000 UARTBaudRateRegisters:High(UART0_BDH) 8 R/W 00h 52.3.1/1541\n\n4006_B000 UARTBaudRateRegisters:High(UART1_BDH) 8 R/W 00h 52.3.1/1541\n\n4006_C000 UARTBaudRateRegisters:High(UART2_BDH) 8 R/W 00h 52.3.1/1541",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "BDL": {
+    "register_pdf_description": "4006_A001 UARTBaudRateRegisters:Low(UART0_BDL) 8 R/W 04h 52.3.2/1542\n\n4006_B001 UARTBaudRateRegisters:Low(UART1_BDL) 8 R/W 04h 52.3.2/1542\n\n4006_C001 UARTBaudRateRegisters:Low(UART2_BDL) 8 R/W 04h 52.3.2/1542",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "C1": {
+    "register_pdf_description": "4006_A002 UARTControlRegister1(UART0_C1) 8 R/W 00h 52.3.3/1543\n\n4006_B002 UARTControlRegister1(UART1_C1) 8 R/W 00h 52.3.3/1543\n\n4006_C002 UARTControlRegister1(UART2_C1) 8 R/W 00h 52.3.3/1543",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "C2": {
+    "register_pdf_description": "4006_A003 UARTControlRegister2(UART0_C2) 8 R/W 00h 52.3.4/1544\n\n4006_B003 UARTControlRegister2(UART1_C2) 8 R/W 00h 52.3.4/1544\n\n4006_C003 UARTControlRegister2(UART2_C2) 8 R/W 00h 52.3.4/1544",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "S1": {
+    "register_pdf_description": "4006_A004 UARTStatusRegister1(UART0_S1) 8 R C0h 52.3.5/1546\n\n4006_B004 UARTStatusRegister1(UART1_S1) 8 R C0h 52.3.5/1546\n\n4006_C004 UARTStatusRegister1(UART2_S1) 8 R C0h 52.3.5/1546",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "S2": {
+    "register_pdf_description": "4006_A005 UARTStatusRegister2(UART0_S2) 8 R/W 00h 52.3.6/1549\n\n4006_B005 UARTStatusRegister2(UART1_S2) 8 R/W 00h 52.3.6/1549\n\n4006_C005 UARTStatusRegister2(UART2_S2) 8 R/W 00h 52.3.6/1549",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "C3": {
+    "register_pdf_description": "4006_A006 UARTControlRegister3(UART0_C3) 8 R/W 00h 52.3.7/1551\n\n4006_B006 UARTControlRegister3(UART1_C3) 8 R/W 00h 52.3.7/1551\n\n4006_C006 UARTControlRegister3(UART2_C3) 8 R/W 00h 52.3.7/1551",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "D": {
+    "register_pdf_description": "4006_A007 UARTDataRegister(UART0_D) 8 R/W 00h 52.3.8/1552\n\n4006_B007 UARTDataRegister(UART1_D) 8 R/W 00h 52.3.8/1552\n\n4006_C007 UARTDataRegister(UART2_D) 8 R/W 00h 52.3.8/1552",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "MA1": {
+    "register_pdf_description": "4006_A008 UARTMatchAddressRegisters1(UART0_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/\n\n4006_B008 UARTMatchAddressRegisters1(UART1_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/\n\n4006_C008 UARTMatchAddressRegisters1(UART2_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "MA2": {
+    "register_pdf_description": "4006_A009 UARTMatchAddressRegisters2(UART0_MA2) 8 R/W 00h\n1554\n52.3.11/\n\n4006_B009 UARTMatchAddressRegisters2(UART1_MA2) 8 R/W 00h\n1554\n52.3.11/\n\n4006_C009 UARTMatchAddressRegisters2(UART2_MA2) 8 R/W 00h\n1554\n52.3.11/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "C4": {
+    "register_pdf_description": "4006_A00A UARTControlRegister4(UART0_C4) 8 R/W 00h\n1554\n52.3.12/\n\n4006_B00A UARTControlRegister4(UART1_C4) 8 R/W 00h\n1554\n52.3.12/\n\n4006_C00A UARTControlRegister4(UART2_C4) 8 R/W 00h\n1554\n52.3.12/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "C5": {
+    "register_pdf_description": "4006_A00B UARTControlRegister5(UART0_C5) 8 R/W 00h\n1555\n52.3.13/\n\n4006_B00B UARTControlRegister5(UART1_C5) 8 R/W 00h\n1555\n52.3.13/\n\n4006_C00B UARTControlRegister5(UART2_C5) 8 R/W 00h\n1555\n52.3.13/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "ED": {
+    "register_pdf_description": "4006_A00C UARTExtendedDataRegister(UART0_ED) 8 R 00h\n1557\n52.3.14/\n\n4006_B00C UARTExtendedDataRegister(UART1_ED) 8 R 00h\n1557\n52.3.14/\n\n4006_C00C UARTExtendedDataRegister(UART2_ED) 8 R 00h\n1557\n52.3.14/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "MODEM": {
+    "register_pdf_description": "4006_A00D UARTModemRegister(UART0_MODEM) 8 R/W 00h\n1558\n52.3.15/\n\n4006_B00D UARTModemRegister(UART1_MODEM) 8 R/W 00h\n1558\n52.3.15/\n\n4006_C00D UARTModemRegister(UART2_MODEM) 8 R/W 00h\n1558\n52.3.15/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "IR": {
+    "register_pdf_description": "4006_A00E UARTInfraredRegister(UART0_IR) 8 R/W 00h\n1559\n52.3.16/\n\n4006_B00E UARTInfraredRegister(UART1_IR) 8 R/W 00h\n1559\n52.3.16/\n\n4006_C00E UARTInfraredRegister(UART2_IR) 8 R/W 00h\n1559\n52.3.16/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "PFIFO": {
+    "register_pdf_description": "4006_A010 UARTFIFOParameters(UART0_PFIFO) 8 R/W Seesection\n1560\n52.3.17/\n\n4006_B010 UARTFIFOParameters(UART1_PFIFO) 8 R/W Seesection\n1560\n52.3.17/\n\n4006_C010 UARTFIFOParameters(UART2_PFIFO) 8 R/W Seesection\n1560\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1536 FreescaleSemiconductor,Inc.",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "CFIFO": {
+    "register_pdf_description": "4006_A011 UARTFIFOControlRegister(UART0_CFIFO) 8 R/W 00h\n1561\n52.3.18/\n\n4006_B011 UARTFIFOControlRegister(UART1_CFIFO) 8 R/W 00h\n1561\n52.3.18/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535
+    ]
+  },
+  "SFIFO": {
+    "register_pdf_description": "4006_A012 UARTFIFOStatusRegister(UART0_SFIFO) 8 R/W C0h\n1562\n52.3.19/\n\n4006_B012 UARTFIFOStatusRegister(UART1_SFIFO) 8 R/W C0h\n1562\n52.3.19/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535
+    ]
+  },
+  "TWFIFO": {
+    "register_pdf_description": "4006_A013 UARTFIFOTransmitWatermark(UART0_TWFIFO) 8 R/W 00h\n1563\n52.3.20/\n\n4006_B013 UARTFIFOTransmitWatermark(UART1_TWFIFO) 8 R/W 00h\n1563\n52.3.20/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535
+    ]
+  },
+  "TCFIFO": {
+    "register_pdf_description": "4006_A014 UARTFIFOTransmitCount(UART0_TCFIFO) 8 R 00h\n1564\n52.3.21/\n\n4006_B014 UARTFIFOTransmitCount(UART1_TCFIFO) 8 R 00h\n1564\n52.3.21/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535
+    ]
+  },
+  "RWFIFO": {
+    "register_pdf_description": "4006_A015 UARTFIFOReceiveWatermark(UART0_RWFIFO) 8 R/W 01h\n1564\n52.3.22/\n\n4006_B015 UARTFIFOReceiveWatermark(UART1_RWFIFO) 8 R/W 01h\n1564\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1535\nMemorymapandregisters\nUARTmemorymap(continued)\nAbsolute\nWidth Section/\naddress Registername Access Resetvalue\n(inbits) page\n(hex)\n52.3.22/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "RCFIFO": {
+    "register_pdf_description": "4006_A016 UARTFIFOReceiveCount(UART0_RCFIFO) 8 R 00h\n1565\n52.3.23/\n\n4006_B016 UARTFIFOReceiveCount(UART1_RCFIFO) 8 R 00h\n1565\n52.3.23/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1536
+    ]
+  },
+  "C7816": {
+    "register_pdf_description": "4006_A018 UART7816ControlRegister(UART0_C7816) 8 R/W 00h\n1565\n52.3.24/\n\n4006_B018 UART7816ControlRegister(UART1_C7816) 8 R/W 00h\n1565\n52.3.24/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1536
+    ]
+  },
+  "IE7816": {
+    "register_pdf_description": "4006_A019 UART7816InterruptEnableRegister(UART0_IE7816) 8 R/W 00h\n1567\n52.3.25/\n\n4006_B019 UART7816InterruptEnableRegister(UART1_IE7816) 8 R/W 00h\n1567\n52.3.25/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1536
+    ]
+  },
+  "IS7816": {
+    "register_pdf_description": "4006_A01A UART7816InterruptStatusRegister(UART0_IS7816) 8 R/W 00h\n1568\n52.3.26/\n\n4006_B01A UART7816InterruptStatusRegister(UART1_IS7816) 8 R/W 00h\n1568\n52.3.26/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1536
+    ]
+  },
+  "WP7816T0": {
+    "register_pdf_description": "4006_A01B UART7816WaitParameterRegister(UART0_WP7816T0) 8 R/W 0Ah\n1569\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1534 FreescaleSemiconductor,Inc.\nChapter52UniversalAsynchronousReceiver/Transmitter(UART)\nUARTmemorymap(continued)\nAbsolute\nWidth Section/\naddress Registername Access Resetvalue\n(inbits) page\n(hex)\n52.3.27/\n\n4006_B01B UART7816WaitParameterRegister(UART1_WP7816T0) 8 R/W 0Ah\n1569\n52.3.27/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1534,
+      1535,
+      1536
+    ]
+  },
+  "WP7816T1": {
+    "register_pdf_description": "4006_A01B UART7816WaitParameterRegister(UART0_WP7816T1) 8 R/W 0Ah\n1570\n52.3.28/\n\n4006_B01B UART7816WaitParameterRegister(UART1_WP7816T1) 8 R/W 0Ah\n1570\n52.3.28/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1535,
+      1536
+    ]
+  },
+  "WN7816": {
+    "register_pdf_description": "4006_A01C UART7816WaitNRegister(UART0_WN7816) 8 R/W 00h\n1570\n52.3.29/\n\n4006_B01C UART7816WaitNRegister(UART1_WN7816) 8 R/W 00h\n1570\n52.3.29/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1535,
+      1536
+    ]
+  },
+  "WF7816": {
+    "register_pdf_description": "4006_A01D UART7816WaitFDRegister(UART0_WF7816) 8 R/W 01h\n1571\n52.3.30/\n\n4006_B01D UART7816WaitFDRegister(UART1_WF7816) 8 R/W 01h\n1571\n52.3.30/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1535,
+      1536
+    ]
+  },
+  "ET7816": {
+    "register_pdf_description": "4006_A01E UART7816ErrorThresholdRegister(UART0_ET7816) 8 R/W 00h\n1571\n52.3.31/\n\n4006_B01E UART7816ErrorThresholdRegister(UART1_ET7816) 8 R/W 00h\n1571\n52.3.31/",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1535,
+      1536
+    ]
+  },
+  "TL7816": {
+    "register_pdf_description": "4006_A01F UART7816TransmitLengthRegister(UART0_TL7816) 8 R/W 00h\n1572\n\n4006_B01F UART7816TransmitLengthRegister(UART1_TL7816) 8 R/W 00h\n1572",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1535,
+      1536
+    ]
+  }
+}

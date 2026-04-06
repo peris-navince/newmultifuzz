@@ -1,0 +1,20 @@
+{
+  "schema": "mf_runtime_strategy_v1",
+  "plan_name": "uart0_status_data_group_poll_ready_bit_set_after_reads",
+  "rationale": "Polling-like anchor UART0.S1: set a top-ranked status bit after a small global-read budget.",
+  "actions": [
+    {
+      "type": "mmio_bit_update",
+      "addr": "0X4006A004",
+      "width": 1,
+      "set_bits": [
+        5
+      ],
+      "trigger": {
+        "kind": "after_global_reads",
+        "value": 192
+      },
+      "activate_stage": "uart0_status_data_group_ready_after_reads"
+    }
+  ]
+}

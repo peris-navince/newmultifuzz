@@ -1,0 +1,21 @@
+{
+  "schema": "mf_runtime_guidance_index_v1",
+  "compiled": [
+    {
+      "candidate_id": "uart0_status_data_group_poll_ready_bit_set_touch1",
+      "guidance_path": "/home/MultiFuzz/workdir/console_staged_recovery/round_1/parent_0_seed/guidance/uart0_status_data_group_poll_ready_bit_set_touch1.guidance.json"
+    },
+    {
+      "candidate_id": "uart0_status_data_group_poll_ready_bit_set_touch2",
+      "guidance_path": "/home/MultiFuzz/workdir/console_staged_recovery/round_1/parent_0_seed/guidance/uart0_status_data_group_poll_ready_bit_set_touch2.guidance.json"
+    },
+    {
+      "candidate_id": "uart0_status_data_group_poll_busy_bit_clear_touch2",
+      "guidance_path": "/home/MultiFuzz/workdir/console_staged_recovery/round_1/parent_0_seed/guidance/uart0_status_data_group_poll_busy_bit_clear_touch2.guidance.json"
+    },
+    {
+      "candidate_id": "uart0_status_data_group_poll_ready_bit_set_after_reads",
+      "guidance_path": "/home/MultiFuzz/workdir/console_staged_recovery/round_1/parent_0_seed/guidance/uart0_status_data_group_poll_ready_bit_set_after_reads.guidance.json"
+    }
+  ]
+}

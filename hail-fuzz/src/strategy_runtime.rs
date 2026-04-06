@@ -1,17 +1,18 @@
 use std::{
     collections::{BTreeSet, HashMap},
     fs,
-    path::PathBuf,
+    path::{Path, PathBuf},
     sync::{Mutex, OnceLock},
 };
 
+use anyhow::{Context, Result};
 use serde::Serialize;
 
 use crate::strategy_schema::{
     bytes_to_value, mask_match, value_to_bytes, AccessKind, ActionSpec, GuidanceFile, TriggerSpec,
 };
 
-static ENGINE: OnceLock<Option<Mutex<StrategyEngine>>> = OnceLock::new();
+static ENGINE: OnceLock<Mutex<Option<StrategyEngine>>> = OnceLock::new();
 
 #[derive(Debug, Default, Clone)]
 struct UartRuntimeState {
@@ -81,7 +82,7 @@ struct ActionSummary {
 }
 
 #[derive(Debug, Clone, Serialize)]
-struct EngineSummary {
+pub struct EngineSummary {
     plan_name: String,
     exec_counter: u64,
     global_reads: u64,
@@ -111,21 +112,36 @@ fn default_summary_out(guidance_path: &PathBuf) -> Option<PathBuf> {
     Some(guidance_path.with_extension("runtime_summary.json"))
 }
 
-fn load_engine() -> Option<Mutex<StrategyEngine>> {
-    let path = std::env::var_os("MF_MMIO_GUIDANCE_FILE")?;
-    let path = PathBuf::from(path);
-    let text = fs::read_to_string(&path).ok()?;
-    let guidance: GuidanceFile = match serde_json::from_str(&text) {
-        Ok(v) => v,
-        Err(e) => {
-            eprintln!("[strategy-runtime] failed to parse guidance {}: {e}", path.display());
-            return None;
-        }
-    };
-    if let Err(e) = guidance.validate() {
-        eprintln!("[strategy-runtime] invalid guidance {}: {e:#}", path.display());
-        return None;
+fn engine_cell() -> &'static Mutex<Option<StrategyEngine>> {
+    ENGINE.get_or_init(|| Mutex::new(None))
+}
+
+fn build_engine_from_guidance(
+    guidance: GuidanceFile,
+    summary_out: Option<PathBuf>,
+) -> StrategyEngine {
+    StrategyEngine {
+        guidance: guidance.clone(),
+        summary_out,
+        exec_counter: 0,
+        global_reads: 0,
+        global_writes: 0,
+        read_touches: HashMap::new(),
+        write_touches: HashMap::new(),
+        active_stages: BTreeSet::new(),
+        actions: guidance.actions.into_iter().map(ActionRuntime::new).collect(),
+        write_observations: Vec::new(),
     }
+}
+
+fn build_engine_from_path(path: &Path, summary_out: Option<PathBuf>) -> Result<StrategyEngine> {
+    let text = fs::read_to_string(path)
+        .with_context(|| format!("failed to read guidance {}", path.display()))?;
+    let guidance: GuidanceFile = serde_json::from_str(&text)
+        .with_context(|| format!("failed to parse guidance {}", path.display()))?;
+    guidance
+        .validate()
+        .with_context(|| format!("invalid guidance {}", path.display()))?;
 
     eprintln!(
         "[strategy-runtime] loaded guidance: path={} plan={} actions={}",
@@ -137,37 +153,60 @@ fn load_engine() -> Option<Mutex<StrategyEngine>> {
         eprintln!("[strategy-runtime] action[{idx}] type={}", action.kind_name());
     }
 
-    Some(Mutex::new(StrategyEngine {
-        guidance: guidance.clone(),
-        summary_out: default_summary_out(&path),
-        exec_counter: 0,
-        global_reads: 0,
-        global_writes: 0,
-        read_touches: HashMap::new(),
-        write_touches: HashMap::new(),
-        active_stages: BTreeSet::new(),
-        actions: guidance.actions.into_iter().map(ActionRuntime::new).collect(),
-        write_observations: Vec::new(),
-    }))
+    Ok(build_engine_from_guidance(guidance, summary_out))
+}
+
+fn ensure_engine_loaded_from_env() {
+    let mut guard = engine_cell().lock().unwrap();
+    if guard.is_some() {
+        return;
+    }
+    let Some(path) = std::env::var_os("MF_MMIO_GUIDANCE_FILE") else {
+        return;
+    };
+    let path = PathBuf::from(path);
+    let summary_out = default_summary_out(&path);
+    match build_engine_from_path(&path, summary_out) {
+        Ok(engine) => *guard = Some(engine),
+        Err(e) => eprintln!("[strategy-runtime] {e:#}"),
+    }
 }
 
 fn with_engine<F>(f: F)
 where
     F: FnOnce(&mut StrategyEngine),
 {
-    let Some(engine) = ENGINE.get_or_init(load_engine).as_ref() else {
+    ensure_engine_loaded_from_env();
+    let Ok(mut guard) = engine_cell().lock() else {
         return;
     };
-    let Ok(mut st) = engine.lock() else {
+    let Some(st) = guard.as_mut() else {
         return;
     };
-    f(&mut st);
+    f(st);
 }
 
-fn write_summary(st: &StrategyEngine) {
-    let Some(path) = st.summary_out.as_ref() else {
-        return;
+pub fn clear_guidance() {
+    let mut guard = engine_cell().lock().unwrap();
+    *guard = None;
+}
+
+pub fn load_guidance_from_file(path: &Path, summary_out: Option<PathBuf>) -> Result<()> {
+    let engine = build_engine_from_path(path, summary_out)?;
+    let mut guard = engine_cell().lock().unwrap();
+    *guard = Some(engine);
+    Ok(())
+}
+
+pub fn snapshot_summary() -> Option<EngineSummary> {
+    ensure_engine_loaded_from_env();
+    let Ok(guard) = engine_cell().lock() else {
+        return None;
     };
+    guard.as_ref().map(engine_summary)
+}
+
+fn engine_summary(st: &StrategyEngine) -> EngineSummary {
     let mut read_touches: Vec<_> = st
         .read_touches
         .iter()
@@ -180,7 +219,7 @@ fn write_summary(st: &StrategyEngine) {
         .map(|(k, v)| (addr_hex(*k), *v))
         .collect();
     write_touches.sort_by(|a, b| a.0.cmp(&b.0));
-    let summary = EngineSummary {
+    EngineSummary {
         plan_name: st.guidance.plan_name.clone(),
         exec_counter: st.exec_counter,
         global_reads: st.global_reads,
@@ -202,7 +241,14 @@ fn write_summary(st: &StrategyEngine) {
                 uart_armed: a.uart.armed,
             })
             .collect(),
+    }
+}
+
+fn write_summary(st: &StrategyEngine) {
+    let Some(path) = st.summary_out.as_ref() else {
+        return;
     };
+    let summary = engine_summary(st);
     if let Some(parent) = path.parent() {
         let _ = fs::create_dir_all(parent);
     }

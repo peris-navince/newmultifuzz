@@ -1,0 +1,24 @@
+{
+  "schema": "mf_runtime_strategy_v1",
+  "plan_name": "uart0_status_data_group_status_then_data_touch2",
+  "rationale": "Use UART status/data pairing for UART0: pulse the status anchor and open a short data window on D.",
+  "actions": [
+    {
+      "type": "uart_handshake_once",
+      "s1_addr": "0X4006A004",
+      "d_addr": "0X4006A007",
+      "s1_value": "0xC0",
+      "data_bytes": [
+        "0x41"
+      ],
+      "d_window_accesses": 4,
+      "trigger": {
+        "kind": "on_nth_touch",
+        "addr": "0X4006A004",
+        "n": 2,
+        "access": "read"
+      },
+      "activate_stage": "uart0_status_data_group_uart_data"
+    }
+  ]
+}

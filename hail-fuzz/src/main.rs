@@ -2,6 +2,7 @@ mod config;
 mod coverage;
 mod debug_alloc;
 mod debugging;
+mod fixed_trial;
 mod dictionary;
 mod extension;
 mod havoc;
@@ -25,7 +26,7 @@ use std::{
     time::Duration,
 };
 
-use anyhow::Context;
+use anyhow::{bail, Context};
 use hashbrown::{HashMap, HashSet};
 use icicle_cortexm::{config::FirmwareConfig, genconfig, CortexmTarget};
 use icicle_fuzzing::{
@@ -37,6 +38,7 @@ use icicle_vm::{
     Vm, VmExit,
 };
 use rand::{rngs::SmallRng, seq::SliceRandom, Rng, SeedableRng};
+use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::{
     config::{Config, DebugSettings},
@@ -50,6 +52,91 @@ use crate::{
     mutations::random_input,
     queue::{CorpusStore, CoverageQueue, GlobalQueue, GlobalRef, InputId, InputQueue, InputSource},
 };
+
+
+
+fn de_u64_auto<'de, D>(deserializer: D) -> Result<u64, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    #[derive(Deserialize)]
+    #[serde(untagged)]
+    enum Repr {
+        Int(u64),
+        Str(String),
+    }
+
+    match Repr::deserialize(deserializer)? {
+        Repr::Int(v) => Ok(v),
+        Repr::Str(s) => parse_u64_with_prefix(&s)
+            .ok_or_else(|| serde::de::Error::custom(format!("invalid integer: {s}"))),
+    }
+}
+
+#[derive(Debug, Deserialize)]
+struct FixedSweepTrialSpec {
+    #[serde(deserialize_with = "de_u64_auto")]
+    addr: u64,
+    #[serde(default = "default_trial_touch", deserialize_with = "de_u64_auto")]
+    nth_touch: u64,
+}
+
+fn default_trial_touch() -> u64 {
+    1
+}
+
+#[derive(Debug, Deserialize)]
+struct FixedSweepCandidateSpec {
+    id: String,
+    #[serde(default)]
+    guidance_path: Option<PathBuf>,
+}
+
+#[derive(Debug, Deserialize)]
+struct FixedSweepManifest {
+    schema: String,
+    input_path: PathBuf,
+    trial: FixedSweepTrialSpec,
+    #[serde(default = "default_continue_delta", deserialize_with = "de_u64_auto")]
+    continue_icount_delta: u64,
+    #[serde(default)]
+    summary_out: Option<PathBuf>,
+    candidates: Vec<FixedSweepCandidateSpec>,
+}
+
+fn default_continue_delta() -> u64 {
+    200_000
+}
+
+#[derive(Debug, Serialize)]
+struct FixedSweepTrialSummary {
+    addr: String,
+    nth_touch: u64,
+    trial_pc: u64,
+    trial_icount: u64,
+}
+
+#[derive(Debug, Serialize)]
+struct FixedSweepCandidateResult {
+    id: String,
+    guidance_path: Option<String>,
+    exit: String,
+    exit_pc: u64,
+    icount: u64,
+    new_coverage: bool,
+    new_bits: usize,
+    coverage_bits: u64,
+    guidance_summary: Option<crate::strategy_runtime::EngineSummary>,
+}
+
+#[derive(Debug, Serialize)]
+struct FixedSweepSummary {
+    schema: String,
+    manifest_path: String,
+    input_path: String,
+    trial: FixedSweepTrialSummary,
+    results: Vec<FixedSweepCandidateResult>,
+}
 
 fn main() {
     let logger = tracing_subscriber::fmt().with_env_filter(
@@ -174,6 +261,10 @@ fn run() -> anyhow::Result<()> {
     let config =
         Config { fuzzer: fuzzer_config, workdir, firmware: firmware_config, interrupt_flag };
 
+    if let Some(path) = std::env::var_os("MF_FIXED_SWEEP_MANIFEST") {
+        return run_fixed_sweep(config, path.as_ref());
+    }
+
     if let Ok(path) = std::env::var("REPLAY") {
         return debugging::replay(config, &path);
     }
@@ -244,6 +335,108 @@ fn run() -> anyhow::Result<()> {
         Ok(())
     })?;
 
+    Ok(())
+}
+
+
+fn run_fixed_sweep(config: Config, manifest_path: &Path) -> anyhow::Result<()> {
+    let manifest_text = std::fs::read_to_string(manifest_path)
+        .with_context(|| format!("failed to read fixed sweep manifest: {}", manifest_path.display()))?;
+    let manifest: FixedSweepManifest = serde_json::from_str(&manifest_text)
+        .with_context(|| format!("failed to parse fixed sweep manifest: {}", manifest_path.display()))?;
+    if manifest.schema != "mf_fixedpoint_sweep_v1" {
+        bail!("unsupported fixed sweep schema: {}", manifest.schema);
+    }
+    if manifest.candidates.is_empty() {
+        bail!("fixed sweep manifest must contain at least one candidate");
+    }
+
+    let workdir = config.workdir.clone();
+    let _workdir_lock = config::init_workdir(&config).with_context(|| {
+        format!("Failed to initialize working directory at: {}", config.workdir.display())
+    })?;
+
+    let global_queue = Arc::new(GlobalQueue::init(1));
+    let monitor = Arc::new(std::sync::Mutex::new(Monitor::new()));
+    let global = GlobalRef::new(0, global_queue, Some(monitor));
+    let mut fuzzer = Fuzzer::new(config, global)?;
+
+    let input = MultiStream::from_path(&manifest.input_path)
+        .with_context(|| format!("failed to load input: {}", manifest.input_path.display()))?;
+
+    fixed_trial::arm(manifest.trial.addr, manifest.trial.nth_touch);
+    crate::strategy_runtime::clear_guidance();
+    fuzzer.state.reset();
+    fuzzer.state.input = input.clone();
+    Snapshot::restore_initial(&mut fuzzer);
+    fuzzer.reset_input_cursor()?;
+    fuzzer.write_input_to_target()?;
+    let exit = fuzzer.execute().ok_or_else(|| anyhow::format_err!("trial capture interrupted"))?;
+    let Some(hit) = fixed_trial::take_hit() else {
+        bail!("trial point not reached before exit: {exit:?}");
+    };
+    let trial_snapshot = Snapshot::capture(&mut fuzzer);
+    let trial_pc = fuzzer.vm.cpu.read_pc();
+    let trial_icount = fuzzer.vm.cpu.icount();
+
+    let mut results = Vec::with_capacity(manifest.candidates.len());
+    for candidate in &manifest.candidates {
+        trial_snapshot.restore(&mut fuzzer);
+        fuzzer.state.reset();
+        fuzzer.state.input = input.clone();
+        fixed_trial::disable();
+        crate::strategy_runtime::clear_guidance();
+        if let Some(path) = candidate.guidance_path.as_ref() {
+            crate::strategy_runtime::load_guidance_from_file(path, None).with_context(|| {
+                format!("failed to load guidance for candidate {} from {}", candidate.id, path.display())
+            })?;
+        }
+        crate::strategy_runtime::on_execution_reset();
+
+        let exit_limit = trial_icount.saturating_add(manifest.continue_icount_delta);
+        let exit = fuzzer
+            .execute_with_limit(exit_limit)
+            .ok_or_else(|| anyhow::format_err!("candidate execution interrupted: {}", candidate.id))?;
+        fuzzer.check_exit_state(exit)?;
+
+        results.push(FixedSweepCandidateResult {
+            id: candidate.id.clone(),
+            guidance_path: candidate
+                .guidance_path
+                .as_ref()
+                .map(|x| x.display().to_string()),
+            exit: format!("{exit:?}"),
+            exit_pc: fuzzer.vm.cpu.read_pc(),
+            icount: fuzzer.vm.cpu.icount(),
+            new_coverage: fuzzer.state.new_coverage,
+            new_bits: fuzzer.state.new_bits.len(),
+            coverage_bits: fuzzer.state.coverage_bits,
+            guidance_summary: crate::strategy_runtime::snapshot_summary(),
+        });
+    }
+
+    let summary = FixedSweepSummary {
+        schema: "mf_fixedpoint_sweep_summary_v1".to_string(),
+        manifest_path: manifest_path.display().to_string(),
+        input_path: manifest.input_path.display().to_string(),
+        trial: FixedSweepTrialSummary {
+            addr: format!("0x{:08X}", hit.addr),
+            nth_touch: hit.nth_touch,
+            trial_pc,
+            trial_icount,
+        },
+        results,
+    };
+
+    let out_path = manifest
+        .summary_out
+        .clone()
+        .unwrap_or_else(|| workdir.join("fixed_sweep_summary.json"));
+    if let Some(parent) = out_path.parent() {
+        std::fs::create_dir_all(parent)?;
+    }
+    std::fs::write(&out_path, serde_json::to_string_pretty(&summary)?)?;
+    eprintln!("[fixed-sweep] summary written: {}", out_path.display());
     Ok(())
 }
 

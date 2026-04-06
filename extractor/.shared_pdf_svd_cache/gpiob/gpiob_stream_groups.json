@@ -1,0 +1,5 @@
+{
+  "schema": "stream_groups_v2",
+  "stream_key_policy": "mmio_or_symbolic",
+  "groups": []
+}

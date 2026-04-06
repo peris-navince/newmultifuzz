@@ -1,0 +1,131 @@
+{
+  "TSR": {
+    "register_pdf_description": "4003_D000 RTCTimeSecondsRegister(RTC_TSR) 32 R/W 0000_0000h 44.2.1/1135\n\n44.2.1 RTCTimeSecondsRegister(RTC_TSR)\nAddress:4003_D000hbase+0hoffset=4003_D000h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthe\ntimecounterisdisabled,theTSRcanbereadorwritten.WritingtotheTSRwhenthetimecounteris\ndisabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135\nRegisterdefinition\n\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthe\ntimecounterisdisabled,theTSRcanbereadorwritten.WritingtotheTSRwhenthetimecounteris\ndisabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135\nRegisterdefinition",
+    "field_pdf_descriptions": {
+      "TSR": "TSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description"
+    },
+    "source_pages": [
+      1135,
+      1136
+    ]
+  },
+  "TPR": {
+    "register_pdf_description": "4003_D004 RTCTimePrescalerRegister(RTC_TPR) 32 R/W 0000_0000h 44.2.2/1136\n\n44.2.2 RTCTimePrescalerRegister(RTC_TPR)\nAddress:4003_D000hbase+4hoffset=4003_D004h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0\nTPR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TPRfielddescriptions\nField Description\n31–16 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n15–0 TimePrescalerRegister\nWhenthetimecounterisenabled,theTPRisreadonlyandincrementsevery32.768kHzclockcycle.The\ntimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthetimecounterisdisabled,the\n\nTPR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TPRfielddescriptions\nField Description\n31–16 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n15–0 TimePrescalerRegister\nWhenthetimecounterisenabled,theTPRisreadonlyandincrementsevery32.768kHzclockcycle.The\ntimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthetimecounterisdisabled,the",
+    "field_pdf_descriptions": {
+      "TPR": "TPR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TPRfielddescriptions\nField Description\n31–16 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0."
+    },
+    "source_pages": [
+      1135,
+      1136
+    ]
+  },
+  "TAR": {
+    "register_pdf_description": "4003_D008 RTCTimeAlarmRegister(RTC_TAR) 32 R/W 0000_0000h 44.2.3/1136\n\n44.2.3 RTCTimeAlarmRegister(RTC_TAR)\nAddress:4003_D000hbase+8hoffset=4003_D008h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister\n\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister",
+    "field_pdf_descriptions": {
+      "TAR": "TAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description"
+    },
+    "source_pages": [
+      1135,
+      1136
+    ]
+  },
+  "TCR": {
+    "register_pdf_description": "4003_D00C RTCTimeCompensationRegister(RTC_TCR) 32 R/W 0000_0000h 44.2.4/1136\n\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR CIC TCV\nCIR TCR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1136 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_TCRfielddescriptions\nField Description\n31–24 CompensationIntervalCounter\nCIC\nCurrentvalueofthecompensationintervalcounter.Ifthecompensationintervalcounterequalszerothen\nitisloadedwiththecontentsoftheCIR.IftheCICdoesnotequalzerothenitisdecrementedoncea\nsecond.\n23–16 TimeCompensationValue\nTCV\nCurrentvalueusedbythecompensationlogicforthepresentsecondinterval.Updatedonceasecondif\ntheCICequals0withthecontentsoftheTCRfield.IftheCICdoesnotequalzerothenitisloadedwith\nzero(compensationisnotenabledforthatsecondincrement).\n15–8 CompensationIntervalRegister\nCIR\nConfiguresthecompensationintervalinsecondsfrom1to256tocontrolhowfrequentlytheTCRshould\nadjustthenumberof32.768kHzcyclesineachsecond.Thevaluewrittenshouldbeonelessthanthe\nnumberofseconds.Forexample,writezerotoconfigureforacompensationintervalofonesecond.This\nregisterisdoublebufferedandwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n7–0 TimeCompensationRegister\nTCR\nConfiguresthenumberof32.768kHzclockcyclesineachsecond.Thisregisterisdoublebufferedand\nwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n80h TimePrescalerRegisteroverflowsevery32896clockcycles.\n......\nFFh TimePrescalerRegisteroverflowsevery32769clockcycles.\n00h TimePrescalerRegisteroverflowsevery32768clockcycles.\n01h TimePrescalerRegisteroverflowsevery32767clockcycles.\n7Fh TimePrescalerRegisteroverflowsevery32641clockcycles.\nFreescaleSemiconductor,Inc. 1137\nRegisterdefinition\n\nCIR TCR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1136 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_TCRfielddescriptions\nField Description\n31–24 CompensationIntervalCounter\nCIC\nCurrentvalueofthecompensationintervalcounter.Ifthecompensationintervalcounterequalszerothen\nitisloadedwiththecontentsoftheCIR.IftheCICdoesnotequalzerothenitisdecrementedoncea\nsecond.\n23–16 TimeCompensationValue\nTCV\nCurrentvalueusedbythecompensationlogicforthepresentsecondinterval.Updatedonceasecondif\ntheCICequals0withthecontentsoftheTCRfield.IftheCICdoesnotequalzerothenitisloadedwith\nzero(compensationisnotenabledforthatsecondincrement).\n15–8 CompensationIntervalRegister\nCIR\nConfiguresthecompensationintervalinsecondsfrom1to256tocontrolhowfrequentlytheTCRshould\nadjustthenumberof32.768kHzcyclesineachsecond.Thevaluewrittenshouldbeonelessthanthe\nnumberofseconds.Forexample,writezerotoconfigureforacompensationintervalofonesecond.This\nregisterisdoublebufferedandwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n7–0 TimeCompensationRegister\nTCR\nConfiguresthenumberof32.768kHzclockcyclesineachsecond.Thisregisterisdoublebufferedand\nwritesdonottakeaffectuntiltheendofthecurrentcompensationinterval.\n80h TimePrescalerRegisteroverflowsevery32896clockcycles.\n......\nFFh TimePrescalerRegisteroverflowsevery32769clockcycles.\n00h TimePrescalerRegisteroverflowsevery32768clockcycles.\n01h TimePrescalerRegisteroverflowsevery32767clockcycles.\n7Fh TimePrescalerRegisteroverflowsevery32641clockcycles.\nFreescaleSemiconductor,Inc. 1137\nRegisterdefinition",
+    "field_pdf_descriptions": {
+      "CIR": "CIR\nConfiguresthecompensationintervalinsecondsfrom1to256tocontrolhowfrequentlytheTCRshould\nadjustthenumberof32.768kHzcyclesineachsecond.Thevaluewrittenshouldbeonelessthanthe\nnumberofseconds.Forexample,writezerotoconfigureforacompensationintervalofonesecond.This",
+      "CIC": "CIC\nCurrentvalueofthecompensationintervalcounter.Ifthecompensationintervalcounterequalszerothen\nitisloadedwiththecontentsoftheCIR.IftheCICdoesnotequalzerothenitisdecrementedoncea\nsecond.\n23–16 TimeCompensationValue",
+      "TCV": "TCV\nCurrentvalueusedbythecompensationlogicforthepresentsecondinterval.Updatedonceasecondif\ntheCICequals0withthecontentsoftheTCRfield.IftheCICdoesnotequalzerothenitisloadedwith\nzero(compensationisnotenabledforthatsecondincrement).",
+      "TCR": "TCR"
+    },
+    "source_pages": [
+      1135,
+      1136,
+      1137,
+      1138
+    ]
+  },
+  "CR": {
+    "register_pdf_description": "4003_D010 RTCControlRegister(RTC_CR) 32 R/W 0000_0000h 44.2.5/1138\n\n44.2.5 RTCControlRegister(RTC_CR)\nAddress:4003_D000hbase+10hoffset=4003_D010h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nd\ne\nv\nR 0 er 0\ns\nR P O E\n6\nSC2P SC4P SC8P K C WPS UM SUP WPE SWR\n1\nC L S\nS C O\nW 0\nRTC_CRfielddescriptions\nField Description\n31–15 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n14 Thisfieldisreserved.\nReserved Itmustalwaysbewrittento0.\n13 Oscillator2pFLoadConfigure\nSC2P\n0 Disabletheload.\n\nRTC_CRfielddescriptions\nField Description\n31–15 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n14 Thisfieldisreserved.\nReserved Itmustalwaysbewrittento0.\n13 Oscillator2pFLoadConfigure\nSC2P\n0 Disabletheload.\n1 Enabletheadditionalload.\n12 Oscillator4pFLoadConfigure\nSC4P\n11 Oscillator8pFLoadConfigure\nSC8P\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1138 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_CRfielddescriptions(continued)\n10 Oscillator16pFLoadConfigure\nSC16P\n9 ClockOutput\nCLKO",
+    "field_pdf_descriptions": {
+      "SC2P": "SC2P\n0 Disabletheload.\n1 Enabletheadditionalload.\n12 Oscillator4pFLoadConfigure",
+      "SC4P": "SC4P\n11 Oscillator8pFLoadConfigure",
+      "SC8P": "SC8P\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1138 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_CRfielddescriptions(continued)\n10 Oscillator16pFLoadConfigure",
+      "SC16P": "SC16P\n9 ClockOutput",
+      "CLKO": "CLKO"
+    },
+    "source_pages": [
+      1135,
+      1138,
+      1139
+    ]
+  },
+  "SR": {
+    "register_pdf_description": "4003_D014 RTCStatusRegister(RTC_SR) 32 R/W 0000_0001h 44.2.6/1140\n\n44.2.6 RTCStatusRegister(RTC_SR)\nAddress:4003_D000hbase+14hoffset=4003_D014h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0 0 TAF TOF TIF\nTCE\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\nRTC_SRfielddescriptions\nField Description\n31–5 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n4 TimeCounterEnable\nWhentimecounterisdisabledtheTSRregisterandTPRregisterarewriteable,butdonotincrement.\nWhentimecounterisenabledtheTSRregisterandTPRregisterarenotwriteable,butincrement.\n0 Timecounterisdisabled.\n1 Timecounterisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmFlag\nTAF\n\nRTC_SRfielddescriptions\nField Description\n31–5 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n4 TimeCounterEnable\nTCE\nWhentimecounterisdisabledtheTSRregisterandTPRregisterarewriteable,butdonotincrement.\nWhentimecounterisenabledtheTSRregisterandTPRregisterarenotwriteable,butincrement.\n0 Timecounterisdisabled.\n1 Timecounterisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmFlag\nTAF",
+    "field_pdf_descriptions": {
+      "TCE": "TCE",
+      "TAF": "TAF"
+    },
+    "source_pages": [
+      1135,
+      1140
+    ]
+  },
+  "LR": {
+    "register_pdf_description": "4003_D018 RTCLockRegister(RTC_LR) 32 R/W 0000_00FFh 44.2.7/1141\n\n44.2.7 RTCLockRegister(RTC_LR)\nAddress:4003_D000hbase+18hoffset=4003_D018h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0 1 1\nLRL SRL CRL TCL\nReset 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1\nRTC_LRfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue1.\n6 LockRegisterLock\nLRL\nAfterbeingcleared,thisbitcanbesetonlybyVBATPORorsoftwarereset.\n0 LockRegisterislockedandwritesareignored.\n1 LockRegisterisnotlockedandwritescompleteasnormal.\n5 StatusRegisterLock\nSRL\n0 StatusRegisterislockedandwritesareignored.\n1 StatusRegisterisnotlockedandwritescompleteasnormal.\n4 ControlRegisterLock\nCRL\nAfterbeingcleared,thisbitcanonlybesetbyVBATPOR.\n0 ControlRegisterislockedandwritesareignored.\n1 ControlRegisterisnotlockedandwritescompleteasnormal.\n3 TimeCompensationLock\nTCL\n0 TimeCompensationRegisterislockedandwritesareignored.\n1 TimeCompensationRegisterisnotlockedandwritescompleteasnormal.\n2–0 Thisfieldisreserved.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1141\nRegisterdefinition\n\nRTC_LRfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue1.\n6 LockRegisterLock\nLRL\nAfterbeingcleared,thisbitcanbesetonlybyVBATPORorsoftwarereset.\n0 LockRegisterislockedandwritesareignored.\n1 LockRegisterisnotlockedandwritescompleteasnormal.\n5 StatusRegisterLock\nSRL\n0 StatusRegisterislockedandwritesareignored.\n1 StatusRegisterisnotlockedandwritescompleteasnormal.\n4 ControlRegisterLock\nCRL\nAfterbeingcleared,thisbitcanonlybesetbyVBATPOR.\n0 ControlRegisterislockedandwritesareignored.\n1 ControlRegisterisnotlockedandwritescompleteasnormal.\n3 TimeCompensationLock\nTCL\n0 TimeCompensationRegisterislockedandwritesareignored.\n1 TimeCompensationRegisterisnotlockedandwritescompleteasnormal.\n2–0 Thisfieldisreserved.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1141\nRegisterdefinition",
+    "field_pdf_descriptions": {
+      "LRL": "LRL\nAfterbeingcleared,thisbitcanbesetonlybyVBATPORorsoftwarereset.",
+      "SRL": "SRL",
+      "CRL": "CRL\nAfterbeingcleared,thisbitcanonlybesetbyVBATPOR.",
+      "TCL": "TCL"
+    },
+    "source_pages": [
+      1135,
+      1141,
+      1142
+    ]
+  },
+  "IER": {
+    "register_pdf_description": "4003_D01C RTCInterruptEnableRegister(RTC_IER) 32 R/W 0000_0007h 44.2.8/1142\n\n44.2.8 RTCInterruptEnableRegister(RTC_IER)\nAddress:4003_D000hbase+1Choffset=4003_D01Ch\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR 0 d\nN e\nO v\nReserved TSIE er TAIE TOIE TIIE\nP\nW s\nW e\nR\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1\nRTC_IERfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 WakeupPinOn\nWPON\nThewakeuppinisoptionalandnotavailableonalldevices.Wheneverthewakeuppinisenabledandthis\nbitisset,thewakeuppinwillassert.\n0 Noeffect.\n1 Ifthewakeuppinisenabled,thenthewakeuppinwillassert.\n6–5 Thisfieldisreserved.\nReserved\n4 TimeSecondsInterruptEnable\nTSIE\nThesecondsinterruptisanedge-sensitiveinterruptwithadedicatedinterruptvector.Itisgeneratedonce\nasecondandrequiresnosoftwareoverhead(thereisnocorrespondingstatusflagtoclear).\n0 Secondsinterruptisdisabled.\n1 Secondsinterruptisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmInterruptEnable\nTAIE\n0 Timealarmflagdoesnotgenerateaninterrupt.\n1 Timealarmflagdoesgenerateaninterrupt.\n1 TimeOverflowInterruptEnable\nTOIE\n0 Timeoverflowflagdoesnotgenerateaninterrupt.\n1 Timeoverflowflagdoesgenerateaninterrupt.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1142 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_IERfielddescriptions(continued)\n0 TimeInvalidInterruptEnable\nTIIE\n0 Timeinvalidflagdoesnotgenerateaninterrupt.\n1 Timeinvalidflagdoesgenerateaninterrupt.\n\nRTC_IERfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 WakeupPinOn\nWPON\nThewakeuppinisoptionalandnotavailableonalldevices.Wheneverthewakeuppinisenabledandthis\nbitisset,thewakeuppinwillassert.\n0 Noeffect.\n1 Ifthewakeuppinisenabled,thenthewakeuppinwillassert.\n6–5 Thisfieldisreserved.\nReserved\n4 TimeSecondsInterruptEnable\nTSIE\nThesecondsinterruptisanedge-sensitiveinterruptwithadedicatedinterruptvector.Itisgeneratedonce\nasecondandrequiresnosoftwareoverhead(thereisnocorrespondingstatusflagtoclear).\n0 Secondsinterruptisdisabled.\n1 Secondsinterruptisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmInterruptEnable\nTAIE\n0 Timealarmflagdoesnotgenerateaninterrupt.\n1 Timealarmflagdoesgenerateaninterrupt.\n1 TimeOverflowInterruptEnable\nTOIE\n0 Timeoverflowflagdoesnotgenerateaninterrupt.\n1 Timeoverflowflagdoesgenerateaninterrupt.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1142 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_IERfielddescriptions(continued)\n0 TimeInvalidInterruptEnable\nTIIE\n0 Timeinvalidflagdoesnotgenerateaninterrupt.\n1 Timeinvalidflagdoesgenerateaninterrupt.",
+    "field_pdf_descriptions": {
+      "WPON": "WPON\nThewakeuppinisoptionalandnotavailableonalldevices.Wheneverthewakeuppinisenabledandthis\nbitisset,thewakeuppinwillassert.\n0 Noeffect.\n1 Ifthewakeuppinisenabled,thenthewakeuppinwillassert.\n6–5 Thisfieldisreserved.\nReserved\n4 TimeSecondsInterruptEnable",
+      "TSIE": "TSIE\nThesecondsinterruptisanedge-sensitiveinterruptwithadedicatedinterruptvector.Itisgeneratedonce\nasecondandrequiresnosoftwareoverhead(thereisnocorrespondingstatusflagtoclear).\n0 Secondsinterruptisdisabled.\n1 Secondsinterruptisenabled.\n3 Thisfieldisreserved.\n2 TimeAlarmInterruptEnable",
+      "TAIE": "TAIE\n0 Timealarmflagdoesnotgenerateaninterrupt.\n1 Timealarmflagdoesgenerateaninterrupt.\n1 TimeOverflowInterruptEnable",
+      "TOIE": "TOIE\n0 Timeoverflowflagdoesnotgenerateaninterrupt.\n1 Timeoverflowflagdoesgenerateaninterrupt.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1142 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_IERfielddescriptions(continued)\n0 TimeInvalidInterruptEnable",
+      "TIIE": "TIIE\n0 Timeinvalidflagdoesnotgenerateaninterrupt.\n1 Timeinvalidflagdoesgenerateaninterrupt."
+    },
+    "source_pages": [
+      1135,
+      1142,
+      1143
+    ]
+  },
+  "WAR": {
+    "register_pdf_description": "4003_D800 RTCWriteAccessRegister(RTC_WAR) 32 R/W 0000_00FFh 44.2.9/1143\n44.2.10/\n\n1 ResetsallRTCregistersexceptfortheSWRbitandtheRTC_WARandRTC_RARregisters.The\nSWRbitisclearedbyVBATPORandbysoftwareexplicitlyclearingit.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1139\nRegisterdefinition\n\n44.2.9 RTCWriteAccessRegister(RTC_WAR)\nAddress:4003_D000hbase+800hoffset=4003_D800h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nW W W W\nIERW LRW SRW CRW R R R R\nC A P S\nW T T T T\nReset 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1\nRTC_WARfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 InterruptEnableRegisterWrite\nIERW\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.\n0 WritestotheInteruptEnableRegisterareignored.\n1 WritestotheInterruptEnableRegistercompleteasnormal.\n6 LockRegisterWrite\nLRW\n0 WritestotheLockRegisterareignored.\n1 WritestotheLockRegistercompleteasnormal.\n5 StatusRegisterWrite\nSRW",
+    "field_pdf_descriptions": {
+      "IERW": "IERW\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.",
+      "LRW": "LRW",
+      "SRW": "SRW"
+    },
+    "source_pages": [
+      1135,
+      1139,
+      1140,
+      1143
+    ]
+  },
+  "RAR": {
+    "register_pdf_description": "4003_D804 RTCReadAccessRegister(RTC_RAR) 32 R/W 0000_00FFh\n1144\n\n1 ResetsallRTCregistersexceptfortheSWRbitandtheRTC_WARandRTC_RARregisters.The\nSWRbitisclearedbyVBATPORandbysoftwareexplicitlyclearingit.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1139\nRegisterdefinition\n\n44.2.10 RTCReadAccessRegister(RTC_RAR)\nAddress:4003_D000hbase+804hoffset=4003_D804h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16\nR 0\nW\nReset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nBit 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nIERR LRR SRR CRR TCRRTARRTPRRTSRR\nReset 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1144 FreescaleSemiconductor,Inc.\nChapter44RealTimeClock(RTC)\nRTC_RARfielddescriptions\nField Description\n31–8 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n7 InterruptEnableRegisterRead\nIERR\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.\n0 ReadstotheInterruptEnableRegisterareignored.\n1 ReadstotheInterruptEnableRegistercompleteasnormal.\n6 LockRegisterRead\nLRR\n0 ReadstotheLockRegisterareignored.\n1 ReadstotheLockRegistercompleteasnormal.\n5 StatusRegisterRead\nSRR",
+    "field_pdf_descriptions": {
+      "IERR": "IERR\nAfterbeingcleared,thisbitissetonlybysystemreset.ItisnotaffectedbyVBATPORorsoftwarereset.",
+      "LRR": "LRR",
+      "SRR": "SRR"
+    },
+    "source_pages": [
+      1135,
+      1139,
+      1140,
+      1144,
+      1145
+    ]
+  }
+}

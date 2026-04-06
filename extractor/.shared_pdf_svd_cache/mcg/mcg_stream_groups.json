@@ -1,0 +1,594 @@
+{
+  "schema": "stream_groups_v2",
+  "stream_key_policy": "mmio_or_symbolic",
+  "groups": [
+    {
+      "group_id": "g_000001",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064002",
+          "peripheral": "MCG",
+          "register": "C3",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064000",
+          "peripheral": "MCG",
+          "register": "C1",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000001",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:C3.SCTRIM",
+          "dst_field": "MCG:C1.IREFSTEN",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000002",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:C3.SCTRIM",
+          "dst_field": "MCG:C1.IRCLKEN",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000005",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:C3.SCTRIM",
+          "dst_field": "MCG:C1.",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        }
+      ],
+      "confidence": 0.81,
+      "notes": []
+    },
+    {
+      "group_id": "g_000002",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064002",
+          "peripheral": "MCG",
+          "register": "C3",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064001",
+          "peripheral": "MCG",
+          "register": "C2",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000003",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:C3.SCTRIM",
+          "dst_field": "MCG:C2.IRCS",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        }
+      ],
+      "confidence": 0.81,
+      "notes": []
+    },
+    {
+      "group_id": "g_000003",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064002",
+          "peripheral": "MCG",
+          "register": "C3",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064003",
+          "peripheral": "MCG",
+          "register": "C4",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000004",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:C3.SCTRIM",
+          "dst_field": "MCG:C4.SCFTRIM",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000006",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:C3.SCTRIM",
+          "dst_field": "MCG:C4.",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        }
+      ],
+      "confidence": 0.81,
+      "notes": []
+    },
+    {
+      "group_id": "g_000004",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064004",
+          "peripheral": "MCG",
+          "register": "C5",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064004",
+          "peripheral": "MCG",
+          "register": "C5",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000007",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:C5.PLLCLKEN0",
+          "dst_field": "MCG:C5.PRDIV0",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            583
+          ]
+        }
+      ],
+      "confidence": 0.81,
+      "notes": []
+    },
+    {
+      "group_id": "g_000005",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064006",
+          "peripheral": "MCG",
+          "register": "S",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064000",
+          "peripheral": "MCG",
+          "register": "C1",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000009",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.CLKST",
+          "dst_field": "MCG:C1.CLKS",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            597,
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000010",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.CLKST",
+          "dst_field": "MCG:C1.",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            597,
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000015",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C1.IREFSTEN",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            584,
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000017",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C1.IRCLKEN",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000019",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C1.",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000023",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C1.CLKS",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000031",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C1.IREFSTEN",
+          "relation": "disables",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000032",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C1.",
+          "relation": "disables",
+          "confidence": 0.81,
+          "evidence_pages": [
+            601
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000036",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.PLLST",
+          "dst_field": "MCG:C1.CLKS",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000040",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.PLLST",
+          "dst_field": "MCG:C1.",
+          "relation": "clears",
+          "confidence": 0.73,
+          "evidence_pages": [
+            612
+          ]
+        }
+      ],
+      "confidence": 0.77,
+      "notes": []
+    },
+    {
+      "group_id": "g_000006",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064006",
+          "peripheral": "MCG",
+          "register": "S",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064004",
+          "peripheral": "MCG",
+          "register": "C5",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000012",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.CLKST",
+          "dst_field": "MCG:C5.PLLSTEN0",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000014",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.CLKST",
+          "dst_field": "MCG:C5.",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000034",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.PLLST",
+          "dst_field": "MCG:C5.PLLSTEN0",
+          "relation": "enables",
+          "confidence": 0.75,
+          "evidence_pages": [
+            588
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000035",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.PLLST",
+          "dst_field": "MCG:C5.PLLSTEN0",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            589,
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000039",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.PLLST",
+          "dst_field": "MCG:C5.",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            600
+          ]
+        }
+      ],
+      "confidence": 0.75,
+      "notes": []
+    },
+    {
+      "group_id": "g_000007",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064006",
+          "peripheral": "MCG",
+          "register": "S",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064001",
+          "peripheral": "MCG",
+          "register": "C2",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000018",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C2.IRCS",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            600
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000020",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:C2.",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            600
+          ]
+        }
+      ],
+      "confidence": 0.81,
+      "notes": []
+    },
+    {
+      "group_id": "g_000008",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064006",
+          "peripheral": "MCG",
+          "register": "S",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064006",
+          "peripheral": "MCG",
+          "register": "S",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000025",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.IREFST",
+          "dst_field": "MCG:S.CLKST",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            600,
+            605
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000038",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:S.PLLST",
+          "dst_field": "MCG:S.CLKST",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            600
+          ]
+        }
+      ],
+      "confidence": 0.73,
+      "notes": []
+    },
+    {
+      "group_id": "g_000009",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064008",
+          "peripheral": "MCG",
+          "register": "SC",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064002",
+          "peripheral": "MCG",
+          "register": "C3",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000041",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:SC.ATMF",
+          "dst_field": "MCG:C3.",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            603
+          ]
+        }
+      ],
+      "confidence": 0.73,
+      "notes": []
+    },
+    {
+      "group_id": "g_000010",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064008",
+          "peripheral": "MCG",
+          "register": "SC",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064003",
+          "peripheral": "MCG",
+          "register": "C4",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000042",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:SC.ATMF",
+          "dst_field": "MCG:C4.",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            603
+          ]
+        }
+      ],
+      "confidence": 0.73,
+      "notes": []
+    },
+    {
+      "group_id": "g_000011",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x40064008",
+          "peripheral": "MCG",
+          "register": "SC",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x40064008",
+          "peripheral": "MCG",
+          "register": "SC",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000043",
+          "edge_type": "field_to_field",
+          "src_field": "MCG:SC.ATMS",
+          "dst_field": "MCG:SC.ATME",
+          "relation": "gates",
+          "confidence": 0.81,
+          "evidence_pages": [
+            603
+          ]
+        }
+      ],
+      "confidence": 0.81,
+      "notes": []
+    }
+  ]
+}

@@ -1,0 +1,2476 @@
+{
+  "target": "UART0",
+  "template": "UART0",
+  "template_description": "Serial Communication Interface",
+  "template_baseAddress": 1074176000,
+  "template_baseAddress_hex": "0x4006A000",
+  "matched_instances": [
+    "UART0"
+  ],
+  "instances": [
+    {
+      "name": "UART0",
+      "description": "Serial Communication Interface",
+      "baseAddress": 1074176000,
+      "baseAddress_hex": "0x4006A000"
+    }
+  ],
+  "register_names": [
+    "BDH",
+    "BDL",
+    "C1",
+    "C2",
+    "S1",
+    "S2",
+    "C3",
+    "D",
+    "MA1",
+    "MA2",
+    "C4",
+    "C5",
+    "ED",
+    "MODEM",
+    "IR",
+    "PFIFO",
+    "CFIFO",
+    "SFIFO",
+    "TWFIFO",
+    "TCFIFO",
+    "RWFIFO",
+    "RCFIFO",
+    "C7816",
+    "IE7816",
+    "IS7816",
+    "WP7816T0",
+    "WP7816T1",
+    "WN7816",
+    "WF7816",
+    "ET7816",
+    "TL7816"
+  ],
+  "field_names": [
+    "ANACK",
+    "BRFA",
+    "BRK13",
+    "BWI",
+    "BWT",
+    "BWTE",
+    "CWI",
+    "CWT",
+    "CWTE",
+    "FE",
+    "FEIE",
+    "GTFD",
+    "GTN",
+    "GTV",
+    "GTVE",
+    "IDLE",
+    "ILDMAS",
+    "ILIE",
+    "ILT",
+    "INIT",
+    "INITD",
+    "INITDE",
+    "IREN",
+    "ISO_7816E",
+    "LBKDDMAS",
+    "LBKDE",
+    "LBKDIE",
+    "LBKDIF",
+    "LOOPS",
+    "M",
+    "M10",
+    "MA",
+    "MAEN1",
+    "MAEN2",
+    "MSBF",
+    "NEIE",
+    "NF",
+    "NOISY",
+    "ONACK",
+    "OR",
+    "ORIE",
+    "PARITYE",
+    "PE",
+    "PEIE",
+    "PF",
+    "PT",
+    "R8",
+    "RAF",
+    "RDMAS",
+    "RDRF",
+    "RE",
+    "RIE",
+    "RSRC",
+    "RT",
+    "RWU",
+    "RWUID",
+    "RXCOUNT",
+    "RXEDGIE",
+    "RXEDGIF",
+    "RXEMPT",
+    "RXFE",
+    "RXFIFOSIZE",
+    "RXFLUSH",
+    "RXINV",
+    "RXOF",
+    "RXOFE",
+    "RXRTSE",
+    "RXT",
+    "RXTE",
+    "RXTHRESHOLD",
+    "RXUF",
+    "RXUFE",
+    "RXWATER",
+    "SBK",
+    "SBNS",
+    "SBR",
+    "T8",
+    "TC",
+    "TCDMAS",
+    "TCIE",
+    "TDMAS",
+    "TDRE",
+    "TE",
+    "TIE",
+    "TLEN",
+    "TNP",
+    "TTYPE",
+    "TXCOUNT",
+    "TXCTSE",
+    "TXDIR",
+    "TXEMPT",
+    "TXFE",
+    "TXFIFOSIZE",
+    "TXFLUSH",
+    "TXINV",
+    "TXOF",
+    "TXOFE",
+    "TXRTSE",
+    "TXRTSPOL",
+    "TXT",
+    "TXTE",
+    "TXTHRESHOLD",
+    "TXWATER",
+    "UARTSWAI",
+    "WAKE",
+    "WI",
+    "WT",
+    "WTE"
+  ],
+  "registers": [
+    {
+      "name": "BDH",
+      "description": "UART Baud Rate Registers: High",
+      "addressOffset": 0,
+      "addressOffset_hex": "0x00000000",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "SBR",
+          "bitOffset": 0,
+          "bitWidth": 5,
+          "access": "read-write",
+          "description": "UART Baud Rate Bits",
+          "enumeratedValues": []
+        },
+        {
+          "name": "SBNS",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Stop Bit Number Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Data frame consists of a single stop bit.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Data frame consists of two stop bits.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXEDGIE",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "RxD Input Active Edge Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Hardware interrupts from RXEDGIF disabled using polling.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "RXEDGIF interrupt request enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LBKDIE",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "LIN Break Detect Interrupt or DMA Request Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "LBKDIF interrupt and DMA transfer requests disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "LBKDIF interrupt or DMA transfer requests enabled.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BDL",
+      "description": "UART Baud Rate Registers: Low",
+      "addressOffset": 1,
+      "addressOffset_hex": "0x00000001",
+      "size": 8,
+      "resetValue": 4,
+      "resetValue_hex": "0x00000004",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "SBR",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "UART Baud Rate Bits",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "C1",
+      "description": "UART Control Register 1",
+      "addressOffset": 2,
+      "addressOffset_hex": "0x00000002",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "PT",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Parity Type",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Even parity.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Odd parity.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Parity Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Parity function disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Parity function enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ILT",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Idle Line Type Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Idle character bit count starts after start bit.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Idle character bit count starts after stop bit.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "WAKE",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Wakeup Method Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Idle line wakeup.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Address mark wakeup.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "M",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "9-bit or 8-bit Mode Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Normal-start + 8 data bits (MSB/LSB first as determined by MSBF) + stop.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Use-start + 9 data bits (MSB/LSB first as determined by MSBF) + stop.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RSRC",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Source Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Selects internal loop back mode. The receiver input is internally connected to transmitter output.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Single wire UART mode where the receiver input is connected to the transmit pin input signal.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "UARTSWAI",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "UART Stops in Wait Mode",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "UART clock continues to run in Wait mode.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "UART clock freezes while CPU is in Wait mode.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LOOPS",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Loop Mode Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Normal operation.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Loop mode where transmitter output is internally connected to receiver input. The receiver input is determined by RSRC.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C2",
+      "description": "UART Control Register 2",
+      "addressOffset": 3,
+      "addressOffset_hex": "0x00000003",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "SBK",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Send Break",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Normal transmitter operation.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Queue break characters to be sent.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RWU",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Wakeup Control",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Normal operation.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "RWU enables the wakeup function and inhibits further receiver interrupt requests. Normally, hardware wakes the receiver by automatically clearing RWU.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RE",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Receiver off.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Receiver on.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TE",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Transmitter off.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Transmitter on.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ILIE",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Idle Line Interrupt DMA Transfer Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "IDLE interrupt requests disabled. and DMA transfer",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "IDLE interrupt requests enabled. or DMA transfer",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RIE",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Full Interrupt or DMA Transfer Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "RDRF interrupt and DMA transfer requests disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "RDRF interrupt or DMA transfer requests enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TCIE",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmission Complete Interrupt or DMA Transfer Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "TC interrupt and DMA transfer requests disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "TC interrupt or DMA transfer requests enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TIE",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter Interrupt or DMA Transfer Enable.",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "TDRE interrupt and DMA transfer requests disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "TDRE interrupt or DMA transfer requests enabled.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "S1",
+      "description": "UART Status Register 1",
+      "addressOffset": 4,
+      "addressOffset_hex": "0x00000004",
+      "size": 8,
+      "resetValue": 192,
+      "resetValue_hex": "0x000000C0",
+      "access": "read-only",
+      "fields": [
+        {
+          "name": "PF",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Parity Error Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No parity error detected since the last time this flag was cleared. If the receive buffer has a depth greater than 1, then there may be data in the receive buffer what was received with a parity error.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "At least one dataword was received with a parity error since the last time this flag was cleared.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "FE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Framing Error Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No framing error detected.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Framing error.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "NF",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Noise Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No noise detected since the last time this flag was cleared. If the receive buffer has a depth greater than 1 then there may be data in the receiver buffer that was received with noise.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "At least one dataword was received with noise detected since the last time the flag was cleared.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "OR",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Receiver Overrun Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No overrun has occurred since the last time the flag was cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Overrun has occurred or the overrun flag has not been cleared since the last overrun occurred.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "IDLE",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Idle Line Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Receiver input is either active now or has never become active since the IDLE flag was last cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Receiver input has become idle or the flag has not been cleared since it last asserted.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RDRF",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Receive Data Register Full Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The number of datawords in the receive buffer is less than the number indicated by RXWATER.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The number of datawords in the receive buffer is equal to or greater than the number indicated by RXWATER at some point in time since this flag was last cleared.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TC",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Transmit Complete Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Transmitter active (sending data, a preamble, or a break).",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Transmitter idle (transmission activity complete).",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TDRE",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Transmit Data Register Empty Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The amount of data in the transmit buffer is greater than the value indicated by TWFIFO[TXWATER].",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The amount of data in the transmit buffer is less than or equal to the value indicated by TWFIFO[TXWATER] at some point in time since the flag has been cleared.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "S2",
+      "description": "UART Status Register 2",
+      "addressOffset": 5,
+      "addressOffset_hex": "0x00000005",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RAF",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Receiver Active Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "UART receiver idle/inactive waiting for a start bit.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "UART receiver active, RxD input not idle.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LBKDE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "LIN Break Detection Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Break character detection is disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Break character is detected at length of 11 bit times if C1[M] = 0 or 12 bits time if C1[M] = 1.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "BRK13",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Break Transmit Character Length",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Break character is 10, 11, or 12 bits long.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Break character is 13 or 14 bits long.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RWUID",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receive Wakeup Idle Detect",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "S1[IDLE] is not set upon detection of an idle character.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "S1[IDLE] is set upon detection of an idle character.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXINV",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receive Data Inversion",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Receive data is not inverted.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Receive data is inverted.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "MSBF",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Most Significant Bit First",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "LSB (bit0) is the first bit that is transmitted following the start bit. Further, the first bit received after the start bit is identified as bit0.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "MSB (bit8, bit7 or bit6) is the first bit that is transmitted following the start bit, depending on the setting of C1[M] and C1[PE]. Further, the first bit received after the start bit is identified as bit8, bit7, or bit6, depending on the setting of C1[M] and C1[PE].",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXEDGIF",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "RxD Pin Active Edge Interrupt Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No active edge on the receive pin has occurred.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "An active edge on the receive pin has occurred.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LBKDIF",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "LIN Break Detect Interrupt Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No LIN break character detected.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "LIN break character detected.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C3",
+      "description": "UART Control Register 3",
+      "addressOffset": 6,
+      "addressOffset_hex": "0x00000006",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "PEIE",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Parity Error Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "PF interrupt requests are disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "PF interrupt requests are enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "FEIE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Framing Error Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "FE interrupt requests are disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "FE interrupt requests are enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "NEIE",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Noise Error Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "NF interrupt requests are disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "NF interrupt requests are enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ORIE",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Overrun Error Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "OR interrupts are disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "OR interrupt requests are enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXINV",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmit Data Inversion.",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Transmit data is not inverted.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Transmit data is inverted.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXDIR",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter Pin Data Direction in Single-Wire mode",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "TXD pin is an input in single wire mode.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "TXD pin is an output in single wire mode.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "T8",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmit Bit 8",
+          "enumeratedValues": []
+        },
+        {
+          "name": "R8",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Received Bit 8",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "D",
+      "description": "UART Data Register",
+      "addressOffset": 7,
+      "addressOffset_hex": "0x00000007",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RT",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Reads return the contents of the read-only receive data register and writes go to the write-only transmit data register",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "MA1",
+      "description": "UART Match Address Registers 1",
+      "addressOffset": 8,
+      "addressOffset_hex": "0x00000008",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "MA",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Match Address",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "MA2",
+      "description": "UART Match Address Registers 2",
+      "addressOffset": 9,
+      "addressOffset_hex": "0x00000009",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "MA",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Match Address",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "C4",
+      "description": "UART Control Register 4",
+      "addressOffset": 10,
+      "addressOffset_hex": "0x0000000A",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "BRFA",
+          "bitOffset": 0,
+          "bitWidth": 5,
+          "access": "read-write",
+          "description": "Baud Rate Fine Adjust",
+          "enumeratedValues": []
+        },
+        {
+          "name": "M10",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "10-bit Mode select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The parity bit is the ninth bit in the serial transmission.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The parity bit is the tenth bit in the serial transmission.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "MAEN2",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Match Address Mode Enable 2",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "All data received is transferred to the data buffer if MAEN1 is cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "All data received with the most significant bit cleared, is discarded. All data received with the most significant bit set, is compared with contents of MA2 register. If no match occurs, the data is discarded. If a match occurs, data is transferred to the data buffer. This field must be cleared when C7816[ISO7816E] is set/enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "MAEN1",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Match Address Mode Enable 1",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "All data received is transferred to the data buffer if MAEN2 is cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "All data received with the most significant bit cleared, is discarded. All data received with the most significant bit set, is compared with contents of MA1 register. If no match occurs, the data is discarded. If match occurs, data is transferred to the data buffer. This field must be cleared when C7816[ISO7816E] is set/enabled.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C5",
+      "description": "UART Control Register 5",
+      "addressOffset": 11,
+      "addressOffset_hex": "0x0000000B",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "LBKDDMAS",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "LIN Break Detect DMA Select Bit",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "If BDH[LBKDIE] and S2[LBKDIF] are set, the LBKDIF interrupt signal is asserted to request an interrupt service.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "If BDH[LBKDIE] and S2[LBKDIF] are set, the LBKDIF DMA request signal is asserted to request a DMA transfer.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ILDMAS",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Idle Line DMA Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "If C2[ILIE] and S1[IDLE] are set, the IDLE interrupt request signal is asserted to request an interrupt service.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "If C2[ILIE] and S1[IDLE] are set, the IDLE DMA request signal is asserted to request a DMA transfer.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RDMAS",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Full DMA Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "If C2[RIE] and S1[RDRF] are set, the RDFR interrupt request signal is asserted to request an interrupt service.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "If C2[RIE] and S1[RDRF] are set, the RDRF DMA request signal is asserted to request a DMA transfer.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TCDMAS",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmission Complete DMA Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "If C2[TCIE] is set and the S1[TC] flag is set, the TC interrupt request signal is asserted to request an interrupt service.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "If C2[TCIE] is set and the S1[TC] flag is set, the TC DMA request signal is asserted to request a DMA transfer.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TDMAS",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter DMA Select",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "If C2[TIE] is set and the S1[TDRE] flag is set, the TDRE interrupt request signal is asserted to request interrupt service.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "If C2[TIE] is set and the S1[TDRE] flag is set, the TDRE DMA request signal is asserted to request a DMA transfer.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ED",
+      "description": "UART Extended Data Register",
+      "addressOffset": 12,
+      "addressOffset_hex": "0x0000000C",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-only",
+      "fields": [
+        {
+          "name": "PARITYE",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "The current received dataword contained in D and C3[R8] was received with a parity error.",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The dataword was received without a parity error.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The dataword was received with a parity error.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "NOISY",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "The current received dataword contained in D and C3[R8] was received with noise.",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The dataword was received without noise.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The data was received with noise.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MODEM",
+      "description": "UART Modem Register",
+      "addressOffset": 13,
+      "addressOffset_hex": "0x0000000D",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "TXCTSE",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter clear-to-send enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "CTS has no effect on the transmitter.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Enables clear-to-send operation. The transmitter checks the state of CTS each time it is ready to send a character. If CTS is asserted, the character is sent. If CTS is deasserted, the signal TXD remains in the mark state and transmission is delayed until CTS is asserted. Changes in CTS as a character is being sent do not affect its transmission.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXRTSE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter request-to-send enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The transmitter has no effect on RTS.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "When a character is placed into an empty transmitter data buffer , RTS asserts one bit time before the start bit is transmitted. RTS deasserts one bit time after all characters in the transmitter data buffer and shift register are completely sent, including the last stop bit. (FIFO) (FIFO)",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXRTSPOL",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter request-to-send polarity",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Transmitter RTS is active low.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Transmitter RTS is active high.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXRTSE",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver request-to-send enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The receiver has no effect on RTS.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "RTS is deasserted if the number of characters in the receiver data register (FIFO) is equal to or greater than RWFIFO[RXWATER]. RTS is asserted when the number of characters in the receiver data register (FIFO) is less than RWFIFO[RXWATER].",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IR",
+      "description": "UART Infrared Register",
+      "addressOffset": 14,
+      "addressOffset_hex": "0x0000000E",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "TNP",
+          "bitOffset": 0,
+          "bitWidth": 2,
+          "access": "read-write",
+          "description": "Transmitter narrow pulse",
+          "enumeratedValues": [
+            {
+              "name": "00",
+              "description": "3/16.",
+              "value": null
+            },
+            {
+              "name": "01",
+              "description": "1/16.",
+              "value": null
+            },
+            {
+              "name": "10",
+              "description": "1/32.",
+              "value": null
+            },
+            {
+              "name": "11",
+              "description": "1/4.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "IREN",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Infrared enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "IR disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "IR enabled.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PFIFO",
+      "description": "UART FIFO Parameters",
+      "addressOffset": 16,
+      "addressOffset_hex": "0x00000010",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RXFIFOSIZE",
+          "bitOffset": 0,
+          "bitWidth": 3,
+          "access": "read-only",
+          "description": "Receive FIFO. Buffer Depth",
+          "enumeratedValues": [
+            {
+              "name": "000",
+              "description": "Receive FIFO/Buffer depth = 1 dataword.",
+              "value": null
+            },
+            {
+              "name": "001",
+              "description": "Receive FIFO/Buffer depth = 4 datawords.",
+              "value": null
+            },
+            {
+              "name": "010",
+              "description": "Receive FIFO/Buffer depth = 8 datawords.",
+              "value": null
+            },
+            {
+              "name": "011",
+              "description": "Receive FIFO/Buffer depth = 16 datawords.",
+              "value": null
+            },
+            {
+              "name": "100",
+              "description": "Receive FIFO/Buffer depth = 32 datawords.",
+              "value": null
+            },
+            {
+              "name": "101",
+              "description": "Receive FIFO/Buffer depth = 64 datawords.",
+              "value": null
+            },
+            {
+              "name": "110",
+              "description": "Receive FIFO/Buffer depth = 128 datawords.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXFE",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receive FIFO Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Receive FIFO is not enabled. Buffer is depth 1. (Legacy support)",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Receive FIFO is enabled. Buffer is depth indicted by RXFIFOSIZE.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXFIFOSIZE",
+          "bitOffset": 4,
+          "bitWidth": 3,
+          "access": "read-only",
+          "description": "Transmit FIFO. Buffer Depth",
+          "enumeratedValues": [
+            {
+              "name": "000",
+              "description": "Transmit FIFO/Buffer depth = 1 dataword.",
+              "value": null
+            },
+            {
+              "name": "001",
+              "description": "Transmit FIFO/Buffer depth = 4 datawords.",
+              "value": null
+            },
+            {
+              "name": "010",
+              "description": "Transmit FIFO/Buffer depth = 8 datawords.",
+              "value": null
+            },
+            {
+              "name": "011",
+              "description": "Transmit FIFO/Buffer depth = 16 datawords.",
+              "value": null
+            },
+            {
+              "name": "100",
+              "description": "Transmit FIFO/Buffer depth = 32 datawords.",
+              "value": null
+            },
+            {
+              "name": "101",
+              "description": "Transmit FIFO/Buffer depth = 64 datawords.",
+              "value": null
+            },
+            {
+              "name": "110",
+              "description": "Transmit FIFO/Buffer depth = 128 datawords.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXFE",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmit FIFO Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Transmit FIFO is not enabled. Buffer is depth 1. (Legacy support).",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Transmit FIFO is enabled. Buffer is depth indicated by TXFIFOSIZE.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CFIFO",
+      "description": "UART FIFO Control Register",
+      "addressOffset": 17,
+      "addressOffset_hex": "0x00000011",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RXUFE",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receive FIFO Underflow Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "RXUF flag does not generate an interrupt to the host.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "RXUF flag generates an interrupt to the host.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXOFE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmit FIFO Overflow Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "TXOF flag does not generate an interrupt to the host.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "TXOF flag generates an interrupt to the host.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXOFE",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receive FIFO Overflow Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "RXOF flag does not generate an interrupt to the host.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "RXOF flag generates an interrupt to the host.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXFLUSH",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "write-only",
+          "description": "Receive FIFO/Buffer Flush",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No flush operation occurs.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "All data in the receive FIFO/buffer is cleared out.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXFLUSH",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "write-only",
+          "description": "Transmit FIFO/Buffer Flush",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No flush operation occurs.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "All data in the transmit FIFO/Buffer is cleared out.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SFIFO",
+      "description": "UART FIFO Status Register",
+      "addressOffset": 18,
+      "addressOffset_hex": "0x00000012",
+      "size": 8,
+      "resetValue": 192,
+      "resetValue_hex": "0x000000C0",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RXUF",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Buffer Underflow Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No receive buffer underflow has occurred since the last time the flag was cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "At least one receive buffer underflow has occurred since the last time the flag was cleared.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXOF",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmitter Buffer Overflow Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No transmit buffer overflow has occurred since the last time the flag was cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "At least one transmit buffer overflow has occurred since the last time the flag was cleared.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXOF",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receiver Buffer Overflow Flag",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No receive buffer overflow has occurred since the last time the flag was cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "At least one receive buffer overflow has occurred since the last time the flag was cleared.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RXEMPT",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Receive Buffer/FIFO Empty",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Receive buffer is not empty.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Receive buffer is empty.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXEMPT",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-only",
+          "description": "Transmit Buffer/FIFO Empty",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Transmit buffer is not empty.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Transmit buffer is empty.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TWFIFO",
+      "description": "UART FIFO Transmit Watermark",
+      "addressOffset": 19,
+      "addressOffset_hex": "0x00000013",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "TXWATER",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Transmit Watermark",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "TCFIFO",
+      "description": "UART FIFO Transmit Count",
+      "addressOffset": 20,
+      "addressOffset_hex": "0x00000014",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-only",
+      "fields": [
+        {
+          "name": "TXCOUNT",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-only",
+          "description": "Transmit Counter",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "RWFIFO",
+      "description": "UART FIFO Receive Watermark",
+      "addressOffset": 21,
+      "addressOffset_hex": "0x00000015",
+      "size": 8,
+      "resetValue": 1,
+      "resetValue_hex": "0x00000001",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RXWATER",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Receive Watermark",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "RCFIFO",
+      "description": "UART FIFO Receive Count",
+      "addressOffset": 22,
+      "addressOffset_hex": "0x00000016",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-only",
+      "fields": [
+        {
+          "name": "RXCOUNT",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-only",
+          "description": "Receive Counter",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "C7816",
+      "description": "UART 7816 Control Register",
+      "addressOffset": 24,
+      "addressOffset_hex": "0x00000018",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "ISO_7816E",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "ISO-7816 Functionality Enabled",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "ISO-7816 functionality is turned off/not enabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "ISO-7816 functionality is turned on/enabled.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TTYPE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transfer Type",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "T = 0 per the ISO-7816 specification.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "T = 1 per the ISO-7816 specification.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "INIT",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Detect Initial Character",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Normal operating mode. Receiver does not seek to identify initial character.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Receiver searches for initial character.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ANACK",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Generate NACK on Error",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No NACK is automatically generated.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "A NACK is automatically generated if a parity error is detected or if an invalid initial character is detected.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ONACK",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Generate NACK on Overflow",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The received data does not generate a NACK when the receipt of the data results in an overflow event.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "If the receiver buffer overflows, a NACK is automatically sent on a received character.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IE7816",
+      "description": "UART 7816 Interrupt Enable Register",
+      "addressOffset": 25,
+      "addressOffset_hex": "0x00000019",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RXTE",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receive Threshold Exceeded Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The assertion of IS7816[RXT] does not result in the generation of an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The assertion of IS7816[RXT] results in the generation of an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXTE",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmit Threshold Exceeded Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The assertion of IS7816[TXT] does not result in the generation of an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The assertion of IS7816[TXT] results in the generation of an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "GTVE",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Guard Timer Violated Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The assertion of IS7816[GTV] does not result in the generation of an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The assertion of IS7816[GTV] results in the generation of an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "INITDE",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Initial Character Detected Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The assertion of IS7816[INITD] does not result in the generation of an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The assertion of IS7816[INITD] results in the generation of an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "BWTE",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Block Wait Timer Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The assertion of IS7816[BWT] does not result in the generation of an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The assertion of IS7816[BWT] results in the generation of an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CWTE",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Character Wait Timer Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The assertion of IS7816[CWT] does not result in the generation of an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The assertion of IS7816[CWT] results in the generation of an interrupt.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "WTE",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Wait Timer Interrupt Enable",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The assertion of IS7816[WT] does not result in the generation of an interrupt.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The assertion of IS7816[WT] results in the generation of an interrupt.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IS7816",
+      "description": "UART 7816 Interrupt Status Register",
+      "addressOffset": 26,
+      "addressOffset_hex": "0x0000001A",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RXT",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Receive Threshold Exceeded Interrupt",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The number of consecutive NACKS generated as a result of parity errors and buffer overruns is less than or equal to the value in ET7816[RXTHRESHOLD].",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The number of consecutive NACKS generated as a result of parity errors and buffer overruns is greater than the value in ET7816[RXTHRESHOLD].",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "TXT",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Transmit Threshold Exceeded Interrupt",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "The number of retries and corresponding NACKS does not exceed the value in ET7816[TXTHRESHOLD].",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The number of retries and corresponding NACKS exceeds the value in ET7816[TXTHRESHOLD].",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "GTV",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Guard Timer Violated Interrupt",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "A guard time (GT, CGT, or BGT) has not been violated.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "A guard time (GT, CGT, or BGT) has been violated.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "INITD",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Initial Character Detected Interrupt",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "A valid initial character has not been received.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "A valid initial character has been received.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "BWT",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Block Wait Timer Interrupt",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Block wait time (BWT) has not been violated.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Block wait time (BWT) has been violated.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CWT",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Character Wait Timer Interrupt",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Character wait time (CWT) has not been violated.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Character wait time (CWT) has been violated.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "WT",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "access": "read-write",
+          "description": "Wait Timer Interrupt",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Wait time (WT) has not been violated.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Wait time (WT) has been violated.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WP7816T0",
+      "description": "UART 7816 Wait Parameter Register",
+      "addressOffset": 27,
+      "addressOffset_hex": "0x0000001B",
+      "size": 8,
+      "resetValue": 10,
+      "resetValue_hex": "0x0000000A",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "WI",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Wait Time Integer (C7816[TTYPE] = 0)",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "WP7816T1",
+      "description": "UART 7816 Wait Parameter Register",
+      "addressOffset": 27,
+      "addressOffset_hex": "0x0000001B",
+      "size": 8,
+      "resetValue": 10,
+      "resetValue_hex": "0x0000000A",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "BWI",
+          "bitOffset": 0,
+          "bitWidth": 4,
+          "access": "read-write",
+          "description": "Block Wait Time Integer(C7816[TTYPE] = 1)",
+          "enumeratedValues": []
+        },
+        {
+          "name": "CWI",
+          "bitOffset": 4,
+          "bitWidth": 4,
+          "access": "read-write",
+          "description": "Character Wait Time Integer (C7816[TTYPE] = 1)",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "WN7816",
+      "description": "UART 7816 Wait N Register",
+      "addressOffset": 28,
+      "addressOffset_hex": "0x0000001C",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "GTN",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Guard Band N",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "WF7816",
+      "description": "UART 7816 Wait FD Register",
+      "addressOffset": 29,
+      "addressOffset_hex": "0x0000001D",
+      "size": 8,
+      "resetValue": 1,
+      "resetValue_hex": "0x00000001",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "GTFD",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "FD Multiplier",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "ET7816",
+      "description": "UART 7816 Error Threshold Register",
+      "addressOffset": 30,
+      "addressOffset_hex": "0x0000001E",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "RXTHRESHOLD",
+          "bitOffset": 0,
+          "bitWidth": 4,
+          "access": "read-write",
+          "description": "Receive NACK Threshold",
+          "enumeratedValues": []
+        },
+        {
+          "name": "TXTHRESHOLD",
+          "bitOffset": 4,
+          "bitWidth": 4,
+          "access": "read-write",
+          "description": "Transmit NACK Threshold",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "TXT asserts on the first NACK that is received.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "TXT asserts on the second NACK that is received.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TL7816",
+      "description": "UART 7816 Transmit Length Register",
+      "addressOffset": 31,
+      "addressOffset_hex": "0x0000001F",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "access": "read-write",
+      "fields": [
+        {
+          "name": "TLEN",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "access": "read-write",
+          "description": "Transmit Length",
+          "enumeratedValues": []
+        }
+      ]
+    }
+  ]
+}

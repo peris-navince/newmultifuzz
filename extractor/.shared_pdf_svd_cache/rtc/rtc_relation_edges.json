@@ -1,0 +1,868 @@
+{
+  "schema": "relation_edges_v2",
+  "peripheral": "RTC",
+  "template_instance": "RTC",
+  "relation_mode": "hybrid",
+  "llm": {
+    "attempted": true,
+    "used": false,
+    "error": "missing API key in env var OPENAI_API_KEY"
+  },
+  "edges": [
+    {
+      "edge_id": "e_f2f_000001",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TSR",
+        "register_addr_hex": "0x4003D000",
+        "field": "TSR",
+        "field_id": "RTC:TSR.TSR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "TAR",
+        "register_addr_hex": "0x4003D008",
+        "field": "TAR",
+        "field_id": "RTC:TAR.TAR"
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1140,
+          "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TAR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000002",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TSR",
+        "register_addr_hex": "0x4003D000",
+        "field": "TSR",
+        "field_id": "RTC:TSR.TSR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TAF",
+        "field_id": "RTC:SR.TAF"
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1148,
+          "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TAF']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000003",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TSR",
+        "register_addr_hex": "0x4003D000",
+        "field": "TSR",
+        "field_id": "RTC:TSR.TSR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "TAR",
+        "register_addr_hex": "0x4003D008",
+        "field": "",
+        "field_id": "RTC:TAR."
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1140,
+          "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TAR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000007",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TSR",
+        "register_addr_hex": "0x4003D000",
+        "field": "TSR",
+        "field_id": "RTC:TSR.TSR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "",
+        "field_id": "RTC:SR."
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1148,
+          "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+        }
+      ],
+      "notes": [
+        "matched_variants=['SR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000008",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TAR",
+        "register_addr_hex": "0x4003D008",
+        "field": "TAR",
+        "field_id": "RTC:TAR.TAR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "TSR",
+        "register_addr_hex": "0x4003D000",
+        "field": "TSR",
+        "field_id": "RTC:TSR.TSR"
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1140,
+          "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+        },
+        {
+          "source": "fuzzy",
+          "page": 1148,
+          "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TSR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000009",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TAR",
+        "register_addr_hex": "0x4003D008",
+        "field": "TAR",
+        "field_id": "RTC:TAR.TAR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TAF",
+        "field_id": "RTC:SR.TAF"
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1148,
+          "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TAF']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000010",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TAR",
+        "register_addr_hex": "0x4003D008",
+        "field": "TAR",
+        "field_id": "RTC:TAR.TAR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "TSR",
+        "register_addr_hex": "0x4003D000",
+        "field": "",
+        "field_id": "RTC:TSR."
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1136,
+          "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1140,
+          "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+        },
+        {
+          "source": "fuzzy",
+          "page": 1148,
+          "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TSR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000018",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TAR",
+        "register_addr_hex": "0x4003D008",
+        "field": "TAR",
+        "field_id": "RTC:TAR.TAR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "IER",
+        "register_addr_hex": "0x4003D01C",
+        "field": "TAIE",
+        "field_id": "RTC:IER.TAIE"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1148,
+          "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TAIE']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000020",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "TAR",
+        "register_addr_hex": "0x4003D008",
+        "field": "TAR",
+        "field_id": "RTC:TAR.TAR"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "",
+        "field_id": "RTC:SR."
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1148,
+          "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+        }
+      ],
+      "notes": [
+        "matched_variants=['SR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000021",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "SUP",
+        "field_id": "RTC:CR.SUP"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "WPE",
+        "field_id": "RTC:CR.WPE"
+      },
+      "relation": "enables",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1139,
+          "text": "1 Non-supervisormodewriteaccessesaresupported.\n1 WakeupPinEnable\nWPE\nThewakeuppinisoptionalandnotavailableonalldevices."
+        }
+      ],
+      "notes": [
+        "matched_variants=['WPE']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000022",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "UM",
+        "field_id": "RTC:CR.UM"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TIF",
+        "field_id": "RTC:SR.TIF"
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1139,
+          "text": "UM\nAllowsSR[TCE]tobewrittenevenwhentheStatusRegisterislocked.Whenset,theSR[TCE]canalways\nbewritteniftheSR[TIF]orSR[TOF]aresetoriftheSR[TCE]isclear.\n0 Registerscannotbewrittenwhenlocked."
+        },
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "canbewrittenonlywhenLR[SRL]isset.WhenCR[UM]isset,SR[TCE]canalsobe\nwrittenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When"
+        }
+      ],
+      "notes": [
+        "matched_variants=['TIF']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000023",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "UM",
+        "field_id": "RTC:CR.UM"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TOF",
+        "field_id": "RTC:SR.TOF"
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1139,
+          "text": "UM\nAllowsSR[TCE]tobewrittenevenwhentheStatusRegisterislocked.Whenset,theSR[TCE]canalways\nbewritteniftheSR[TIF]orSR[TOF]aresetoriftheSR[TCE]isclear.\n0 Registerscannotbewrittenwhenlocked."
+        },
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "canbewrittenonlywhenLR[SRL]isset.WhenCR[UM]isset,SR[TCE]canalsobe\nwrittenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When"
+        }
+      ],
+      "notes": [
+        "matched_variants=['TOF']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000024",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "UM",
+        "field_id": "RTC:CR.UM"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TCE",
+        "field_id": "RTC:SR.TCE"
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1139,
+          "text": "UM\nAllowsSR[TCE]tobewrittenevenwhentheStatusRegisterislocked.Whenset,theSR[TCE]canalways\nbewritteniftheSR[TIF]orSR[TOF]aresetoriftheSR[TCE]isclear.\n0 Registerscannotbewrittenwhenlocked."
+        },
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "canbewrittenonlywhenLR[SRL]isset.WhenCR[UM]isset,SR[TCE]canalsobe\nwrittenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When"
+        }
+      ],
+      "notes": [
+        "matched_variants=['TCE']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000028",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "UM",
+        "field_id": "RTC:CR.UM"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "LR",
+        "register_addr_hex": "0x4003D018",
+        "field": "SRL",
+        "field_id": "RTC:LR.SRL"
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "canbewrittenonlywhenLR[SRL]isset.WhenCR[UM]isset,SR[TCE]canalsobe\nwrittenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When"
+        }
+      ],
+      "notes": [
+        "matched_variants=['SRL']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000029",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "UM",
+        "field_id": "RTC:CR.UM"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "",
+        "field_id": "RTC:SR."
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "canbewrittenonlywhenLR[SRL]isset.WhenCR[UM]isset,SR[TCE]canalsobe\nwrittenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When"
+        }
+      ],
+      "notes": [
+        "matched_variants=['SR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000030",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TIF",
+        "field_id": "RTC:SR.TIF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TOF",
+        "field_id": "RTC:SR.TOF"
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1135,
+          "text": "disabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1135,
+          "text": "recommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1147,
+          "text": "ThetimeprescalerregisterincrementsprovidedSR[TCE]isset,SR[TIF]isclear,\nSR[TOF]isclear,andthe32.768kHzclocksourceispresent.Afterenablingthe\noscillator,waittheoscillatorstartuptimebeforesettingSR[TCE]toallowtimeforthe\noscillatorclockoutputtostabilize."
+        },
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TOF']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000033",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TIF",
+        "field_id": "RTC:SR.TIF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TCE",
+        "field_id": "RTC:SR.TCE"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1147,
+          "text": "ThetimeprescalerregisterincrementsprovidedSR[TCE]isset,SR[TIF]isclear,\nSR[TOF]isclear,andthe32.768kHzclocksourceispresent.Afterenablingthe\noscillator,waittheoscillatorstartuptimebeforesettingSR[TCE]toallowtimeforthe\noscillatorclockoutputtostabilize."
+        },
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TCE']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000036",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TIF",
+        "field_id": "RTC:SR.TIF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "LR",
+        "register_addr_hex": "0x4003D018",
+        "field": "SRL",
+        "field_id": "RTC:LR.SRL"
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['SRL']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000037",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TIF",
+        "field_id": "RTC:SR.TIF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "",
+        "field_id": "RTC:CR."
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['CR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000038",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TIF",
+        "field_id": "RTC:SR.TIF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "LR",
+        "register_addr_hex": "0x4003D018",
+        "field": "",
+        "field_id": "RTC:LR."
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['LR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000039",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TOF",
+        "field_id": "RTC:SR.TOF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TIF",
+        "field_id": "RTC:SR.TIF"
+      },
+      "relation": "gates",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1135,
+          "text": "disabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1135,
+          "text": "recommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TIF']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000041",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TOF",
+        "field_id": "RTC:SR.TOF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TCE",
+        "field_id": "RTC:SR.TCE"
+      },
+      "relation": "gates",
+      "confidence": 0.73,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1147,
+          "text": "SR[TOF]isclear,andthe32.768kHzclocksourceispresent.Afterenablingthe\noscillator,waittheoscillatorstartuptimebeforesettingSR[TCE]toallowtimeforthe\noscillatorclockoutputtostabilize.\nIfthetimesecondsregisteroverflowsthentheSR[TOF]willsetandthetimeprescaler"
+        },
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['TCE']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000044",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TOF",
+        "field_id": "RTC:SR.TOF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "LR",
+        "register_addr_hex": "0x4003D018",
+        "field": "SRL",
+        "field_id": "RTC:LR.SRL"
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['SRL']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000045",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TOF",
+        "field_id": "RTC:SR.TOF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "CR",
+        "register_addr_hex": "0x4003D010",
+        "field": "",
+        "field_id": "RTC:CR."
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['CR']"
+      ]
+    },
+    {
+      "edge_id": "e_f2f_000046",
+      "edge_type": "field_to_field",
+      "src": {
+        "peripheral": "RTC",
+        "register": "SR",
+        "register_addr_hex": "0x4003D014",
+        "field": "TOF",
+        "field_id": "RTC:SR.TOF"
+      },
+      "dst": {
+        "peripheral": "RTC",
+        "register": "LR",
+        "register_addr_hex": "0x4003D018",
+        "field": "",
+        "field_id": "RTC:LR."
+      },
+      "relation": "gates",
+      "confidence": 0.67,
+      "evidence": [
+        {
+          "source": "fuzzy",
+          "page": 1149,
+          "text": "writtenwhenSR[TCE]isclearorwhenSR[TIF]orSR[TOF]areset.Thisallowsthe\ntimesecondsandprescalerregisterstobeinitializedwhenevertimeisinvalidated,while\npreventingthetimesecondsandprescalerregistersfrombeingchangedonthefly.When\nLR[SRL]isset,CR[UM]hasnoeffectonSR[TCE]."
+        }
+      ],
+      "notes": [
+        "matched_variants=['LR']"
+      ]
+    }
+  ]
+}

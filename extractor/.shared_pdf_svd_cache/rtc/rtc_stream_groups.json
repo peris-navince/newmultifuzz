@@ -1,0 +1,561 @@
+{
+  "schema": "stream_groups_v2",
+  "stream_key_policy": "mmio_or_symbolic",
+  "groups": [
+    {
+      "group_id": "g_000001",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D000",
+          "peripheral": "RTC",
+          "register": "TSR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D008",
+          "peripheral": "RTC",
+          "register": "TAR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000001",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TSR.TSR",
+          "dst_field": "RTC:TAR.TAR",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1136,
+            1140
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000003",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TSR.TSR",
+          "dst_field": "RTC:TAR.",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1136,
+            1140
+          ]
+        }
+      ],
+      "confidence": 0.75,
+      "notes": []
+    },
+    {
+      "group_id": "g_000002",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D000",
+          "peripheral": "RTC",
+          "register": "TSR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D014",
+          "peripheral": "RTC",
+          "register": "SR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000002",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TSR.TSR",
+          "dst_field": "RTC:SR.TAF",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1136,
+            1148
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000007",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TSR.TSR",
+          "dst_field": "RTC:SR.",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1148
+          ]
+        }
+      ],
+      "confidence": 0.71,
+      "notes": []
+    },
+    {
+      "group_id": "g_000003",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D008",
+          "peripheral": "RTC",
+          "register": "TAR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D000",
+          "peripheral": "RTC",
+          "register": "TSR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000008",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TAR.TAR",
+          "dst_field": "RTC:TSR.TSR",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1136,
+            1140,
+            1148
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000010",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TAR.TAR",
+          "dst_field": "RTC:TSR.",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1136,
+            1140,
+            1148
+          ]
+        }
+      ],
+      "confidence": 0.75,
+      "notes": []
+    },
+    {
+      "group_id": "g_000004",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D008",
+          "peripheral": "RTC",
+          "register": "TAR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D014",
+          "peripheral": "RTC",
+          "register": "SR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000009",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TAR.TAR",
+          "dst_field": "RTC:SR.TAF",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1136,
+            1148
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000020",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TAR.TAR",
+          "dst_field": "RTC:SR.",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            1148
+          ]
+        }
+      ],
+      "confidence": 0.74,
+      "notes": []
+    },
+    {
+      "group_id": "g_000005",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D008",
+          "peripheral": "RTC",
+          "register": "TAR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D01C",
+          "peripheral": "RTC",
+          "register": "IER",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000018",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:TAR.TAR",
+          "dst_field": "RTC:IER.TAIE",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            1148
+          ]
+        }
+      ],
+      "confidence": 0.73,
+      "notes": []
+    },
+    {
+      "group_id": "g_000006",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D010",
+          "peripheral": "RTC",
+          "register": "CR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D010",
+          "peripheral": "RTC",
+          "register": "CR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000021",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:CR.SUP",
+          "dst_field": "RTC:CR.WPE",
+          "relation": "enables",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1139
+          ]
+        }
+      ],
+      "confidence": 0.75,
+      "notes": []
+    },
+    {
+      "group_id": "g_000007",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D010",
+          "peripheral": "RTC",
+          "register": "CR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D014",
+          "peripheral": "RTC",
+          "register": "SR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000022",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:CR.UM",
+          "dst_field": "RTC:SR.TIF",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1139,
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000023",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:CR.UM",
+          "dst_field": "RTC:SR.TOF",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1139,
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000024",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:CR.UM",
+          "dst_field": "RTC:SR.TCE",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1139,
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000029",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:CR.UM",
+          "dst_field": "RTC:SR.",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        }
+      ],
+      "confidence": 0.67,
+      "notes": []
+    },
+    {
+      "group_id": "g_000008",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D010",
+          "peripheral": "RTC",
+          "register": "CR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D018",
+          "peripheral": "RTC",
+          "register": "LR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000028",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:CR.UM",
+          "dst_field": "RTC:LR.SRL",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        }
+      ],
+      "confidence": 0.67,
+      "notes": []
+    },
+    {
+      "group_id": "g_000009",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D014",
+          "peripheral": "RTC",
+          "register": "SR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D014",
+          "peripheral": "RTC",
+          "register": "SR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000030",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TIF",
+          "dst_field": "RTC:SR.TOF",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1135,
+            1147,
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000033",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TIF",
+          "dst_field": "RTC:SR.TCE",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            1147,
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000039",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TOF",
+          "dst_field": "RTC:SR.TIF",
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence_pages": [
+            1135,
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000041",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TOF",
+          "dst_field": "RTC:SR.TCE",
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence_pages": [
+            1147,
+            1149
+          ]
+        }
+      ],
+      "confidence": 0.74,
+      "notes": []
+    },
+    {
+      "group_id": "g_000010",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D014",
+          "peripheral": "RTC",
+          "register": "SR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D018",
+          "peripheral": "RTC",
+          "register": "LR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000036",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TIF",
+          "dst_field": "RTC:LR.SRL",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000038",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TIF",
+          "dst_field": "RTC:LR.",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000044",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TOF",
+          "dst_field": "RTC:LR.SRL",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000046",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TOF",
+          "dst_field": "RTC:LR.",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        }
+      ],
+      "confidence": 0.67,
+      "notes": []
+    },
+    {
+      "group_id": "g_000011",
+      "group_subtype": "field_relation_group",
+      "members": [
+        {
+          "stream_key": "0x4003D014",
+          "peripheral": "RTC",
+          "register": "SR",
+          "role_in_group": "source_register",
+          "documentation_status": "documented_in_pdf"
+        },
+        {
+          "stream_key": "0x4003D010",
+          "peripheral": "RTC",
+          "register": "CR",
+          "role_in_group": "target_register",
+          "documentation_status": "documented_in_pdf"
+        }
+      ],
+      "reason_edges": [
+        {
+          "edge_id": "e_f2f_000037",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TIF",
+          "dst_field": "RTC:CR.",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        },
+        {
+          "edge_id": "e_f2f_000045",
+          "edge_type": "field_to_field",
+          "src_field": "RTC:SR.TOF",
+          "dst_field": "RTC:CR.",
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence_pages": [
+            1149
+          ]
+        }
+      ],
+      "confidence": 0.67,
+      "notes": []
+    }
+  ]
+}

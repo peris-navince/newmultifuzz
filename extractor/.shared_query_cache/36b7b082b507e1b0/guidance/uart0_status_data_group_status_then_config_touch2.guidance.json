@@ -1,0 +1,22 @@
+{
+  "schema": "mf_runtime_strategy_v1",
+  "plan_name": "uart0_status_data_group_status_then_config_touch2",
+  "rationale": "Use the polling/status anchor for UART0 and stage a follow-up path for companion PFIFO.",
+  "actions": [
+    {
+      "type": "mmio_bit_update",
+      "addr": "0X4006A004",
+      "width": 1,
+      "set_bits": [
+        5
+      ],
+      "trigger": {
+        "kind": "on_nth_touch",
+        "addr": "0X4006A004",
+        "n": 2,
+        "access": "read"
+      },
+      "activate_stage": "uart0_status_data_group_pfifo_follow"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "tool_version": "manual_pdf_svd_extractor_v2_debug",
+  "pdf": "/home/MultiFuzz/extractor/text/K64.pdf",
+  "svd": "/home/MultiFuzz/extractor/svd/NXP/NXP-FRDM-K64F/MK64F12.xml",
+  "peripheral": "UART0",
+  "matched_instances": [
+    "UART0"
+  ],
+  "template_instance": "UART0",
+  "controller_peripherals_found": [
+    "DMA",
+    "DMAMUX",
+    "GPIOA",
+    "NVIC",
+    "PMC"
+  ],
+  "ranges": [
+    {
+      "start_page": 1534,
+      "end_page": 1535,
+      "count": 31
+    }
+  ],
+  "relation_mode": "hybrid",
+  "llm_model": "gpt-5",
+  "artifacts": {
+    "selected_pages": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0/uart0_selected_pages.json",
+    "register_pdf_descriptions": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0/uart0_register_pdf_descriptions.json",
+    "register_merged": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0/uart0_register_merged.json",
+    "mmio_map": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0/uart0_mmio_map.json",
+    "relation_edges": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0/uart0_relation_edges.json",
+    "stream_groups": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0/uart0_stream_groups.json",
+    "chunk_outputs": [
+      "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0/uart0_chunks.jsonl"
+    ]
+  }
+}

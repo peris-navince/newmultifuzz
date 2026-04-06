@@ -1,0 +1,12 @@
+{
+  "schema": "relation_edges_v2",
+  "peripheral": "UART0",
+  "template_instance": "UART0",
+  "relation_mode": "hybrid",
+  "llm": {
+    "attempted": true,
+    "used": false,
+    "error": "missing API key in env var OPENAI_API_KEY"
+  },
+  "edges": []
+}

@@ -1,0 +1,1555 @@
+{
+  "keyword": "MCG",
+  "template_instance": "MCG",
+  "baseAddress": 1074151424,
+  "baseAddress_hex": "0x40064000",
+  "instances": [
+    {
+      "name": "MCG",
+      "baseAddress": 1074151424,
+      "baseAddress_hex": "0x40064000",
+      "description": "Multipurpose Clock Generator module"
+    }
+  ],
+  "registers": [
+    {
+      "name": "C1",
+      "addressOffset": 0,
+      "addressOffset_hex": "0x00000000",
+      "absoluteAddress": 1074151424,
+      "absoluteAddress_hex": "0x40064000",
+      "size": 8,
+      "resetValue": 4,
+      "resetValue_hex": "0x00000004",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 1 Register",
+      "pdf_description": "4006_4000 MCGControl1Register(MCG_C1) 8 R/W 04h 25.3.1/584\n\n25.3.1 MCGControl1Register(MCG_C1)\nAddress:4006_4000hbase+0hoffset=4006_4000h\nBit 7 6 5 4 3 2 1 0\nRead\nCLKS FRDIV IREFS IRCLKEN IREFSTEN\nWrite\nReset 0 0 0 0 0 1 0 0\nMCG_C1fielddescriptions\nField Description\n7–6 ClockSourceSelect\nCLKS\nSelectstheclocksourceforMCGOUTCLK.\n00 Encoding0—OutputofFLLorPLLisselected(dependsonPLLScontrolbit).\n01 Encoding1—Internalreferenceclockisselected.\n10 Encoding2—Externalreferenceclockisselected.\n11 Encoding3—Reserved.\n5–3 FLLExternalReferenceDivider\nFRDIV\nSelectstheamounttodividedowntheexternalreferenceclockfortheFLL.Theresultingfrequencymust\nbeintherange31.25kHzto39.0625kHz(ThisisrequiredwhenFLL/DCOistheclocksourcefor\nMCGOUTCLK.InFBEmode,itisnotrequiredtomeetthisrange,butitisrecommendedinthecases\nwhentryingtoenteraFLLmodefromFBE).\n000 IfRANGE=0orOSCSEL=1,DivideFactoris1;forallotherRANGEvalues,DivideFactoris32.\n001 IfRANGE=0orOSCSEL=1,DivideFactoris2;forallotherRANGEvalues,DivideFactoris64.\n010 IfRANGE=0orOSCSEL=1,DivideFactoris4;forallotherRANGEvalues,DivideFactoris128.\n011 IfRANGE=0orOSCSEL=1,DivideFactoris8;forallotherRANGEvalues,DivideFactoris256.\n100 IfRANGE=0orOSCSEL=1,DivideFactoris16;forallotherRANGEvalues,DivideFactoris512.\n101 IfRANGE=0orOSCSEL=1,DivideFactoris32;forallotherRANGEvalues,DivideFactoris\n1024.\n110 IfRANGE=0orOSCSEL=1,DivideFactoris64;forallotherRANGEvalues,DivideFactoris\n1280.\n111 IfRANGE=0orOSCSEL=1,DivideFactoris128;forallotherRANGEvalues,DivideFactoris\n1536.\n2 InternalReferenceSelect\nIREFS\nSelectsthereferenceclocksourcefortheFLL.\n0 Externalreferenceclockisselected.\n1 Theslowinternalreferenceclockisselected.\n1 InternalReferenceClockEnable\nIRCLKEN\nEnablestheinternalreferenceclockforuseasMCGIRCLK.\n0 MCGIRCLKinactive.\n1 MCGIRCLKactive.\n0 InternalReferenceStopEnable\nIREFSTEN\nControlswhetherornottheinternalreferenceclockremainsenabledwhentheMCGentersStopmode.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n584 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nMCG_C1fielddescriptions(continued)\n0 InternalreferenceclockisdisabledinStopmode.\n1 InternalreferenceclockisenabledinStopmodeifIRCLKENissetorifMCGisinFEI,FBI,orBLPI\nmodesbeforeenteringStopmode.\n\nMCG_C1fielddescriptions\nField Description\n7–6 ClockSourceSelect\nCLKS\nSelectstheclocksourceforMCGOUTCLK.\n00 Encoding0—OutputofFLLorPLLisselected(dependsonPLLScontrolbit).\n01 Encoding1—Internalreferenceclockisselected.\n10 Encoding2—Externalreferenceclockisselected.\n11 Encoding3—Reserved.\n5–3 FLLExternalReferenceDivider\nFRDIV\nSelectstheamounttodividedowntheexternalreferenceclockfortheFLL.Theresultingfrequencymust\nbeintherange31.25kHzto39.0625kHz(ThisisrequiredwhenFLL/DCOistheclocksourcefor\nMCGOUTCLK.InFBEmode,itisnotrequiredtomeetthisrange,butitisrecommendedinthecases\nwhentryingtoenteraFLLmodefromFBE).\n000 IfRANGE=0orOSCSEL=1,DivideFactoris1;forallotherRANGEvalues,DivideFactoris32.\n001 IfRANGE=0orOSCSEL=1,DivideFactoris2;forallotherRANGEvalues,DivideFactoris64.\n010 IfRANGE=0orOSCSEL=1,DivideFactoris4;forallotherRANGEvalues,DivideFactoris128.\n011 IfRANGE=0orOSCSEL=1,DivideFactoris8;forallotherRANGEvalues,DivideFactoris256.\n100 IfRANGE=0orOSCSEL=1,DivideFactoris16;forallotherRANGEvalues,DivideFactoris512.\n101 IfRANGE=0orOSCSEL=1,DivideFactoris32;forallotherRANGEvalues,DivideFactoris\n1024.\n110 IfRANGE=0orOSCSEL=1,DivideFactoris64;forallotherRANGEvalues,DivideFactoris\n1280.\n111 IfRANGE=0orOSCSEL=1,DivideFactoris128;forallotherRANGEvalues,DivideFactoris\n1536.\n2 InternalReferenceSelect\nIREFS\nSelectsthereferenceclocksourcefortheFLL.\n0 Externalreferenceclockisselected.\n1 Theslowinternalreferenceclockisselected.\n1 InternalReferenceClockEnable\nIRCLKEN\nEnablestheinternalreferenceclockforuseasMCGIRCLK.\n0 MCGIRCLKinactive.\n1 MCGIRCLKactive.\n0 InternalReferenceStopEnable\nIREFSTEN\nControlswhetherornottheinternalreferenceclockremainsenabledwhentheMCGentersStopmode.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n584 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nMCG_C1fielddescriptions(continued)\n0 InternalreferenceclockisdisabledinStopmode.\n1 InternalreferenceclockisenabledinStopmodeifIRCLKENissetorifMCGisinFEI,FBI,orBLPI\nmodesbeforeenteringStopmode.",
+      "source_pages": [
+        583,
+        584,
+        585
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "IREFSTEN",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "svd_access": "read-write",
+          "svd_description": "Internal Reference Stop Enable",
+          "pdf_description": "IREFSTEN\nControlswhetherornottheinternalreferenceclockremainsenabledwhentheMCGentersStopmode.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n584 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nMCG_C1fielddescriptions(continued)\n0 InternalreferenceclockisdisabledinStopmode.\n1 InternalreferenceclockisenabledinStopmodeifIRCLKENissetorifMCGisinFEI,FBI,orBLPI\nmodesbeforeenteringStopmode.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Internal reference clock is disabled in Stop mode.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Internal reference clock is enabled in Stop mode if IRCLKEN is set or if MCG is in FEI, FBI, or BLPI modes before entering Stop mode.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "IRCLKEN",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "svd_access": "read-write",
+          "svd_description": "Internal Reference Clock Enable",
+          "pdf_description": "IRCLKEN\nEnablestheinternalreferenceclockforuseasMCGIRCLK.\n0 MCGIRCLKinactive.\n1 MCGIRCLKactive.\n0 InternalReferenceStopEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "MCGIRCLK inactive.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "MCGIRCLK active.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "IREFS",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "svd_access": "read-write",
+          "svd_description": "Internal Reference Select",
+          "pdf_description": "IREFS\nSelectsthereferenceclocksourcefortheFLL.\n0 Externalreferenceclockisselected.\n1 Theslowinternalreferenceclockisselected.\n1 InternalReferenceClockEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "External reference clock is selected.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "The slow internal reference clock is selected.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "FRDIV",
+          "bitOffset": 3,
+          "bitWidth": 3,
+          "bitRange": "[5:3]",
+          "svd_access": "read-write",
+          "svd_description": "FLL External Reference Divider",
+          "pdf_description": "FRDIV\nSelectstheamounttodividedowntheexternalreferenceclockfortheFLL.Theresultingfrequencymust\nbeintherange31.25kHzto39.0625kHz(ThisisrequiredwhenFLL/DCOistheclocksourcefor\nMCGOUTCLK.InFBEmode,itisnotrequiredtomeetthisrange,butitisrecommendedinthecases\nwhentryingtoenteraFLLmodefromFBE).\n000 IfRANGE=0orOSCSEL=1,DivideFactoris1;forallotherRANGEvalues,DivideFactoris32.\n001 IfRANGE=0orOSCSEL=1,DivideFactoris2;forallotherRANGEvalues,DivideFactoris64.\n010 IfRANGE=0orOSCSEL=1,DivideFactoris4;forallotherRANGEvalues,DivideFactoris128.\n011 IfRANGE=0orOSCSEL=1,DivideFactoris8;forallotherRANGEvalues,DivideFactoris256.\n100 IfRANGE=0orOSCSEL=1,DivideFactoris16;forallotherRANGEvalues,DivideFactoris512.\n101 IfRANGE=0orOSCSEL=1,DivideFactoris32;forallotherRANGEvalues,DivideFactoris\n1024.\n110 IfRANGE=0orOSCSEL=1,DivideFactoris64;forallotherRANGEvalues,DivideFactoris\n1280.\n111 IfRANGE=0orOSCSEL=1,DivideFactoris128;forallotherRANGEvalues,DivideFactoris\n1536.\n2 InternalReferenceSelect",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "000",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 1; for all other RANGE values, Divide Factor is 32.",
+              "value": null
+            },
+            {
+              "name": "001",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 2; for all other RANGE values, Divide Factor is 64.",
+              "value": null
+            },
+            {
+              "name": "010",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 4; for all other RANGE values, Divide Factor is 128.",
+              "value": null
+            },
+            {
+              "name": "011",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 8; for all other RANGE values, Divide Factor is 256.",
+              "value": null
+            },
+            {
+              "name": "100",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 16; for all other RANGE values, Divide Factor is 512.",
+              "value": null
+            },
+            {
+              "name": "101",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 32; for all other RANGE values, Divide Factor is 1024.",
+              "value": null
+            },
+            {
+              "name": "110",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 64; for all other RANGE values, Divide Factor is 1280 .",
+              "value": null
+            },
+            {
+              "name": "111",
+              "description": "If RANGE = 0 or OSCSEL=1 , Divide Factor is 128; for all other RANGE values, Divide Factor is 1536 .",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CLKS",
+          "bitOffset": 6,
+          "bitWidth": 2,
+          "bitRange": "[7:6]",
+          "svd_access": "read-write",
+          "svd_description": "Clock Source Select",
+          "pdf_description": "CLKS\nSelectstheclocksourceforMCGOUTCLK.\n00 Encoding0—OutputofFLLorPLLisselected(dependsonPLLScontrolbit).\n01 Encoding1—Internalreferenceclockisselected.\n10 Encoding2—Externalreferenceclockisselected.\n11 Encoding3—Reserved.\n5–3 FLLExternalReferenceDivider",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "00",
+              "description": "Encoding 0 - Output of FLL or PLL is selected (depends on PLLS control bit).",
+              "value": null
+            },
+            {
+              "name": "01",
+              "description": "Encoding 1 - Internal reference clock is selected.",
+              "value": null
+            },
+            {
+              "name": "10",
+              "description": "Encoding 2 - External reference clock is selected.",
+              "value": null
+            },
+            {
+              "name": "11",
+              "description": "Encoding 3 - Reserved.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C2",
+      "addressOffset": 1,
+      "addressOffset_hex": "0x00000001",
+      "absoluteAddress": 1074151425,
+      "absoluteAddress_hex": "0x40064001",
+      "size": 8,
+      "resetValue": 128,
+      "resetValue_hex": "0x00000080",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 2 Register",
+      "pdf_description": "4006_4001 MCGControl2Register(MCG_C2) 8 R/W 80h 25.3.2/585\n\n25.3.2 MCGControl2Register(MCG_C2)\nAddress:4006_4000hbase+1hoffset=4006_4001h\nBit 7 6 5 4 3 2 1 0\nRead\nLOCRE0 FCFTRIM RANGE HGO EREFS LP IRCS\nWrite\nReset 1 0 0 0 0 0 0 0\nMCG_C2fielddescriptions\nField Description\n7 LossofClockResetEnable\nLOCRE0\nDetermineswhetheraninterruptoraresetrequestismadefollowingalossofOSC0externalreference\nclock.TheLOCRE0onlyhasanaffectwhenCME0isset.\n0 InterruptrequestisgeneratedonalossofOSC0externalreferenceclock.\n1 GeneratearesetrequestonalossofOSC0externalreferenceclock.\n6 FastInternalReferenceClockFineTrim\nFCFTRIM\nFCFTRIMcontrolsthesmallestadjustmentofthefastinternalreferenceclockfrequency.Setting\nFCFTRIMincreasestheperiodandclearingFCFTRIMdecreasestheperiodbythesmallestamount\npossible.IfanFCFTRIMvaluestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopy\nthatvaluefromthenonvolatilememorylocationtothisbit.\n5–4 FrequencyRangeSelect\nRANGE\nSelectsthefrequencyrangeforthecrystaloscillatororexternalclocksource.SeetheOscillator(OSC)\nchapterformoredetailsandthedevicedatasheetforthefrequencyrangesused.\n00 Encoding0—Lowfrequencyrangeselectedforthecrystaloscillator.\n01 Encoding1—Highfrequencyrangeselectedforthecrystaloscillator.\n1X Encoding2—Veryhighfrequencyrangeselectedforthecrystaloscillator.\n3 HighGainOscillatorSelect\nHGO\nControlsthecrystaloscillatormodeofoperation.SeetheOscillator(OSC)chapterformoredetails.\n0 Configurecrystaloscillatorforlow-poweroperation.\n1 Configurecrystaloscillatorforhigh-gainoperation.\n2 ExternalReferenceSelect\nEREFS\nSelectsthesourcefortheexternalreferenceclock.SeetheOscillator(OSC)chapterformoredetails.\n0 Externalreferenceclockrequested.\n1 Oscillatorrequested.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 585\nMemoryMap/RegisterDefinition\nMCG_C2fielddescriptions(continued)\n1 LowPowerSelect\nLP\nControlswhethertheFLLorPLLisdisabledinBLPIandBLPEmodes.InFBEorPBEmodes,settingthis\nbitto1willtransitiontheMCGintoBLPEmode;inFBImode,settingthisbitto1willtransitiontheMCG\nintoBLPImode.InanyotherMCGmode,LPbithasnoaffect.\n0 FLLorPLLisnotdisabledinbypassmodes.\n1 FLLorPLLisdisabledinbypassmodes(lowerpower)\n0 InternalReferenceClockSelect\nIRCS\nSelectsbetweenthefastorslowinternalreferenceclocksource.\n0 Slowinternalreferenceclockselected.\n1 Fastinternalreferenceclockselected.\n\nMCG_C2fielddescriptions\nField Description\n7 LossofClockResetEnable\nLOCRE0\nDetermineswhetheraninterruptoraresetrequestismadefollowingalossofOSC0externalreference\nclock.TheLOCRE0onlyhasanaffectwhenCME0isset.\n0 InterruptrequestisgeneratedonalossofOSC0externalreferenceclock.\n1 GeneratearesetrequestonalossofOSC0externalreferenceclock.\n6 FastInternalReferenceClockFineTrim\nFCFTRIM\nFCFTRIMcontrolsthesmallestadjustmentofthefastinternalreferenceclockfrequency.Setting\nFCFTRIMincreasestheperiodandclearingFCFTRIMdecreasestheperiodbythesmallestamount\npossible.IfanFCFTRIMvaluestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopy\nthatvaluefromthenonvolatilememorylocationtothisbit.\n5–4 FrequencyRangeSelect\nRANGE\nSelectsthefrequencyrangeforthecrystaloscillatororexternalclocksource.SeetheOscillator(OSC)\nchapterformoredetailsandthedevicedatasheetforthefrequencyrangesused.\n00 Encoding0—Lowfrequencyrangeselectedforthecrystaloscillator.\n01 Encoding1—Highfrequencyrangeselectedforthecrystaloscillator.\n1X Encoding2—Veryhighfrequencyrangeselectedforthecrystaloscillator.\n3 HighGainOscillatorSelect\nHGO\nControlsthecrystaloscillatormodeofoperation.SeetheOscillator(OSC)chapterformoredetails.\n0 Configurecrystaloscillatorforlow-poweroperation.\n1 Configurecrystaloscillatorforhigh-gainoperation.\n2 ExternalReferenceSelect\nEREFS\nSelectsthesourcefortheexternalreferenceclock.SeetheOscillator(OSC)chapterformoredetails.\n0 Externalreferenceclockrequested.\n1 Oscillatorrequested.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 585\nMemoryMap/RegisterDefinition\nMCG_C2fielddescriptions(continued)\n1 LowPowerSelect\nLP\nControlswhethertheFLLorPLLisdisabledinBLPIandBLPEmodes.InFBEorPBEmodes,settingthis\nbitto1willtransitiontheMCGintoBLPEmode;inFBImode,settingthisbitto1willtransitiontheMCG\nintoBLPImode.InanyotherMCGmode,LPbithasnoaffect.\n0 FLLorPLLisnotdisabledinbypassmodes.\n1 FLLorPLLisdisabledinbypassmodes(lowerpower)\n0 InternalReferenceClockSelect\nIRCS\nSelectsbetweenthefastorslowinternalreferenceclocksource.\n0 Slowinternalreferenceclockselected.\n1 Fastinternalreferenceclockselected.",
+      "source_pages": [
+        583,
+        585,
+        586
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "IRCS",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "svd_access": "read-write",
+          "svd_description": "Internal Reference Clock Select",
+          "pdf_description": "IRCS\nSelectsbetweenthefastorslowinternalreferenceclocksource.\n0 Slowinternalreferenceclockselected.\n1 Fastinternalreferenceclockselected.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Slow internal reference clock selected.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Fast internal reference clock selected.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LP",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "svd_access": "read-write",
+          "svd_description": "Low Power Select",
+          "pdf_description": "LP\nControlswhethertheFLLorPLLisdisabledinBLPIandBLPEmodes.InFBEorPBEmodes,settingthis\nbitto1willtransitiontheMCGintoBLPEmode;inFBImode,settingthisbitto1willtransitiontheMCG\nintoBLPImode.InanyotherMCGmode,LPbithasnoaffect.\n0 FLLorPLLisnotdisabledinbypassmodes.\n1 FLLorPLLisdisabledinbypassmodes(lowerpower)\n0 InternalReferenceClockSelect",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "FLL or PLL is not disabled in bypass modes.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "FLL or PLL is disabled in bypass modes (lower power)",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "EREFS",
+          "bitOffset": 2,
+          "bitWidth": 1,
+          "bitRange": "[2:2]",
+          "svd_access": "read-write",
+          "svd_description": "External Reference Select",
+          "pdf_description": "EREFS\nSelectsthesourcefortheexternalreferenceclock.SeetheOscillator(OSC)chapterformoredetails.\n0 Externalreferenceclockrequested.\n1 Oscillatorrequested.\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 585",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "External reference clock requested.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Oscillator requested.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "HGO",
+          "bitOffset": 3,
+          "bitWidth": 1,
+          "bitRange": "[3:3]",
+          "svd_access": "read-write",
+          "svd_description": "High Gain Oscillator Select",
+          "pdf_description": "HGO\nControlsthecrystaloscillatormodeofoperation.SeetheOscillator(OSC)chapterformoredetails.\n0 Configurecrystaloscillatorforlow-poweroperation.\n1 Configurecrystaloscillatorforhigh-gainoperation.\n2 ExternalReferenceSelect",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Configure crystal oscillator for low-power operation.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Configure crystal oscillator for high-gain operation.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "RANGE",
+          "bitOffset": 4,
+          "bitWidth": 2,
+          "bitRange": "[5:4]",
+          "svd_access": "read-write",
+          "svd_description": "Frequency Range Select",
+          "pdf_description": "RANGE\nSelectsthefrequencyrangeforthecrystaloscillatororexternalclocksource.SeetheOscillator(OSC)\nchapterformoredetailsandthedevicedatasheetforthefrequencyrangesused.\n00 Encoding0—Lowfrequencyrangeselectedforthecrystaloscillator.\n01 Encoding1—Highfrequencyrangeselectedforthecrystaloscillator.\n1X Encoding2—Veryhighfrequencyrangeselectedforthecrystaloscillator.\n3 HighGainOscillatorSelect",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "00",
+              "description": "Encoding 0 - Low frequency range selected for the crystal oscillator .",
+              "value": null
+            },
+            {
+              "name": "01",
+              "description": "Encoding 1 - High frequency range selected for the crystal oscillator .",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "FCFTRIM",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "svd_access": "read-write",
+          "svd_description": "Fast Internal Reference Clock Fine Trim",
+          "pdf_description": "FCFTRIM\nFCFTRIMcontrolsthesmallestadjustmentofthefastinternalreferenceclockfrequency.Setting\nFCFTRIMincreasestheperiodandclearingFCFTRIMdecreasestheperiodbythesmallestamount\npossible.IfanFCFTRIMvaluestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopy\nthatvaluefromthenonvolatilememorylocationtothisbit.\n5–4 FrequencyRangeSelect",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        },
+        {
+          "name": "LOCRE0",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "svd_access": "read-write",
+          "svd_description": "Loss of Clock Reset Enable",
+          "pdf_description": "LOCRE0\nDetermineswhetheraninterruptoraresetrequestismadefollowingalossofOSC0externalreference\nclock.TheLOCRE0onlyhasanaffectwhenCME0isset.\n0 InterruptrequestisgeneratedonalossofOSC0externalreferenceclock.\n1 GeneratearesetrequestonalossofOSC0externalreferenceclock.\n6 FastInternalReferenceClockFineTrim",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Interrupt request is generated on a loss of OSC0 external reference clock.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Generate a reset request on a loss of OSC0 external reference clock.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C3",
+      "addressOffset": 2,
+      "addressOffset_hex": "0x00000002",
+      "absoluteAddress": 1074151426,
+      "absoluteAddress_hex": "0x40064002",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 3 Register",
+      "pdf_description": "4006_4002 MCGControl3Register(MCG_C3) 8 R/W Undefined 25.3.3/586\n\n25.3.3 MCGControl3Register(MCG_C3)\nAddress:4006_4000hbase+2hoffset=4006_4002h\nBit 7 6 5 4 3 2 1 0\nRead\nSCTRIM\nWrite\nReset x* x* x* x* x* x* x* x*\n*Notes:\n• x=Undefinedatreset.\nMCG_C3fielddescriptions\nField Description\n7–0 SlowInternalReferenceClockTrimSetting\nSCTRIM1controlstheslowinternalreferenceclockfrequencybycontrollingtheslowinternalreference\nclockperiod.TheSCTRIMbitsarebinaryweighted,thatis,bit1adjuststwiceasmuchasbit0.Increasing\nthebinaryvalueincreasestheperiod,anddecreasingthevaluedecreasestheperiod.\nAnadditionalfinetrimbitisavailableinC4registerastheSCFTRIMbit.Uponreset,thisvalueisloaded\nwithafactorytrimvalue.\nIfanSCTRIMvaluestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopythatvalue\nfromthenonvolatilememorylocationtothisregister.\n1.AvalueforSCTRIMisloadedduringresetfromafactoryprogrammedlocation.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n586 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\n\nMCG_C3fielddescriptions\nField Description\n7–0 SlowInternalReferenceClockTrimSetting\nSCTRIM\nSCTRIM1controlstheslowinternalreferenceclockfrequencybycontrollingtheslowinternalreference\nclockperiod.TheSCTRIMbitsarebinaryweighted,thatis,bit1adjuststwiceasmuchasbit0.Increasing\nthebinaryvalueincreasestheperiod,anddecreasingthevaluedecreasestheperiod.\nAnadditionalfinetrimbitisavailableinC4registerastheSCFTRIMbit.Uponreset,thisvalueisloaded\nwithafactorytrimvalue.\nIfanSCTRIMvaluestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopythatvalue\nfromthenonvolatilememorylocationtothisregister.\n1.AvalueforSCTRIMisloadedduringresetfromafactoryprogrammedlocation.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n586 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)",
+      "source_pages": [
+        583,
+        586,
+        587
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "SCTRIM",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "bitRange": "[7:0]",
+          "svd_access": "read-write",
+          "svd_description": "Slow Internal Reference Clock Trim Setting",
+          "pdf_description": "SCTRIM\nSCTRIM1controlstheslowinternalreferenceclockfrequencybycontrollingtheslowinternalreference\nclockperiod.TheSCTRIMbitsarebinaryweighted,thatis,bit1adjuststwiceasmuchasbit0.Increasing\nthebinaryvalueincreasestheperiod,anddecreasingthevaluedecreasestheperiod.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "C4",
+      "addressOffset": 3,
+      "addressOffset_hex": "0x00000003",
+      "absoluteAddress": 1074151427,
+      "absoluteAddress_hex": "0x40064003",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 4 Register",
+      "pdf_description": "4006_4003 MCGControl4Register(MCG_C4) 8 R/W Undefined 25.3.4/587\n\n25.3.4 MCGControl4Register(MCG_C4)\nNOTE\nResetvaluesforDRSTandDMX32bitsare0.\nAddress:4006_4000hbase+3hoffset=4006_4003h\nBit 7 6 5 4 3 2 1 0\nRead\nDMX32 DRST_DRS FCTRIM SCFTRIM\nWrite\nReset 0 0 0 x* x* x* x* x*\n*Notes:\n• x=Undefinedatreset.\n• AvalueforFCTRIMisloadedduringresetfromafactoryprogrammedlocation.x=Undefinedatreset.\nMCG_C4fielddescriptions\nField Description\n7 DCOMaximumFrequencywith32.768kHzReference\nDMX32\nTheDMX32bitcontrolswhethertheDCOfrequencyrangeisnarrowedtoitsmaximumfrequencywitha\n32.768kHzreference.\nThefollowingtableidentifiessettingsfortheDCOfrequencyrange.\nNOTE: Thesystemclocksderivedfromthissourceshouldnotexceedtheirspecifiedmaximums.\nDRST_DRS DMX32 ReferenceRange FLLFactor DCORange\n00 0 31.25–39.0625kHz 640 20–25MHz\n1 32.768kHz 732 24MHz\n01 0 31.25–39.0625kHz 1280 40–50MHz\n1 32.768kHz 1464 48MHz\n10 0 31.25–39.0625kHz 1920 60–75MHz\n1 32.768kHz 2197 72MHz\n11 0 31.25–39.0625kHz 2560 80–100MHz\n1 32.768kHz 2929 96MHz\n0 DCOhasadefaultrangeof25%.\n\nMCG_C4fielddescriptions\nField Description\n7 DCOMaximumFrequencywith32.768kHzReference\nDMX32\nTheDMX32bitcontrolswhethertheDCOfrequencyrangeisnarrowedtoitsmaximumfrequencywitha\n32.768kHzreference.\nThefollowingtableidentifiessettingsfortheDCOfrequencyrange.\nNOTE: Thesystemclocksderivedfromthissourceshouldnotexceedtheirspecifiedmaximums.\nDRST_DRS DMX32 ReferenceRange FLLFactor DCORange\n00 0 31.25–39.0625kHz 640 20–25MHz\n1 32.768kHz 732 24MHz\n01 0 31.25–39.0625kHz 1280 40–50MHz\n1 32.768kHz 1464 48MHz\n10 0 31.25–39.0625kHz 1920 60–75MHz\n1 32.768kHz 2197 72MHz\n11 0 31.25–39.0625kHz 2560 80–100MHz\n1 32.768kHz 2929 96MHz\n0 DCOhasadefaultrangeof25%.\n1 DCOisfine-tunedformaximumfrequencywith32.768kHzreference.\n6–5 DCORangeSelect\nDRST_DRS\nTheDRSbitsselectthefrequencyrangefortheFLLoutput,DCOOUT.WhentheLPbitisset,writesto\ntheDRSbitsareignored.TheDRSTreadfieldindicatesthecurrentfrequencyrangeforDCOOUT.The\nDRSTfielddoesnotupdateimmediatelyafterawritetotheDRSfieldduetointernalsynchronization\nbetweenclockdomains.SeetheDCOFrequencyRangetableformoredetails.\n00 Encoding0—Lowrange(resetdefault).\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 587\nMemoryMap/RegisterDefinition\nMCG_C4fielddescriptions(continued)\n01 Encoding1—Midrange.\n10 Encoding2—Mid-highrange.\n11 Encoding3—Highrange.\n4–1 FastInternalReferenceClockTrimSetting\nFCTRIM\nFCTRIM1controlsthefastinternalreferenceclockfrequencybycontrollingthefastinternalreference\nclockperiod.TheFCTRIMbitsarebinaryweighted,thatis,bit1adjuststwiceasmuchasbit0.Increasing\nthebinaryvalueincreasestheperiod,anddecreasingthevaluedecreasestheperiod.\nIfanFCTRIM[3:0]valuestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopythat\nvaluefromthenonvolatilememorylocationtothisregister.\n0 SlowInternalReferenceClockFineTrim\nSCFTRIM\nSCFTRIM2controlsthesmallestadjustmentoftheslowinternalreferenceclockfrequency.Setting\nSCFTRIMincreasestheperiodandclearingSCFTRIMdecreasestheperiodbythesmallestamount\npossible.\nIfanSCFTRIMvaluestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopythatvalue\nfromthenonvolatilememorylocationtothisbit.\n1.AvalueforFCTRIMisloadedduringresetfromafactoryprogrammedlocation.\n2.AvalueforSCFTRIMisloadedduringresetfromafactoryprogrammedlocation.",
+      "source_pages": [
+        583,
+        587,
+        588
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "SCFTRIM",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "svd_access": "read-write",
+          "svd_description": "Slow Internal Reference Clock Fine Trim",
+          "pdf_description": "SCFTRIM\nSCFTRIM2controlsthesmallestadjustmentoftheslowinternalreferenceclockfrequency.Setting\nSCFTRIMincreasestheperiodandclearingSCFTRIMdecreasestheperiodbythesmallestamount\npossible.\nIfanSCFTRIMvaluestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopythatvalue\nfromthenonvolatilememorylocationtothisbit.\n1.AvalueforFCTRIMisloadedduringresetfromafactoryprogrammedlocation.\n2.AvalueforSCFTRIMisloadedduringresetfromafactoryprogrammedlocation.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        },
+        {
+          "name": "FCTRIM",
+          "bitOffset": 1,
+          "bitWidth": 4,
+          "bitRange": "[4:1]",
+          "svd_access": "read-write",
+          "svd_description": "Fast Internal Reference Clock Trim Setting",
+          "pdf_description": "FCTRIM\nFCTRIM1controlsthefastinternalreferenceclockfrequencybycontrollingthefastinternalreference\nclockperiod.TheFCTRIMbitsarebinaryweighted,thatis,bit1adjuststwiceasmuchasbit0.Increasing\nthebinaryvalueincreasestheperiod,anddecreasingthevaluedecreasestheperiod.\nIfanFCTRIM[3:0]valuestoredinnonvolatilememoryistobeused,itisyourresponsibilitytocopythat",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        },
+        {
+          "name": "DRST_DRS",
+          "bitOffset": 5,
+          "bitWidth": 2,
+          "bitRange": "[6:5]",
+          "svd_access": "read-write",
+          "svd_description": "DCO Range Select",
+          "pdf_description": "DRST_DRS\nTheDRSbitsselectthefrequencyrangefortheFLLoutput,DCOOUT.WhentheLPbitisset,writesto\ntheDRSbitsareignored.TheDRSTreadfieldindicatesthecurrentfrequencyrangeforDCOOUT.The\nDRSTfielddoesnotupdateimmediatelyafterawritetotheDRSfieldduetointernalsynchronization\nbetweenclockdomains.SeetheDCOFrequencyRangetableformoredetails.\n00 Encoding0—Lowrange(resetdefault).\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 587",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "00",
+              "description": "Encoding 0 - Low range (reset default).",
+              "value": null
+            },
+            {
+              "name": "01",
+              "description": "Encoding 1 - Mid range.",
+              "value": null
+            },
+            {
+              "name": "10",
+              "description": "Encoding 2 - Mid-high range.",
+              "value": null
+            },
+            {
+              "name": "11",
+              "description": "Encoding 3 - High range.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "DMX32",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "svd_access": "read-write",
+          "svd_description": "DCO Maximum Frequency with 32.768 kHz Reference",
+          "pdf_description": "DMX32\nTheDMX32bitcontrolswhethertheDCOfrequencyrangeisnarrowedtoitsmaximumfrequencywitha\n32.768kHzreference.\nThefollowingtableidentifiessettingsfortheDCOfrequencyrange.\nNOTE: Thesystemclocksderivedfromthissourceshouldnotexceedtheirspecifiedmaximums.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "DCO has a default range of 25%.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "DCO is fine-tuned for maximum frequency with 32.768 kHz reference.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C5",
+      "addressOffset": 4,
+      "addressOffset_hex": "0x00000004",
+      "absoluteAddress": 1074151428,
+      "absoluteAddress_hex": "0x40064004",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 5 Register",
+      "pdf_description": "4006_4004 MCGControl5Register(MCG_C5) 8 R/W 00h 25.3.5/588\n\n25.3.5 MCGControl5Register(MCG_C5)\nAddress:4006_4000hbase+4hoffset=4006_4004h\nBit 7 6 5 4 3 2 1 0\nRead 0\nPLLCLKEN0 PLLSTEN0 PRDIV0\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_C5fielddescriptions\nField Description\n7 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n6 PLLClockEnable\nPLLCLKEN0\nEnablesthePLLindependentofPLLSandenablesthePLLclockforuseasMCGPLLCLK.(PRDIV0\nneedstobeprogrammedtothecorrectdividertogenerateaPLLreferenceclockintherangeof2-4MHz\nrangepriortosettingthePLLCLKEN0bit).SettingPLLCLKEN0willenabletheexternaloscillatorifnot\nalreadyenabled.WheneverthePLLisbeingenabledbymeansofthePLLCLKEN0bit,andtheexternal\noscillatorisbeingusedasthereferenceclock,theOSCINIT0bitshouldbecheckedtomakesureitisset.\n0 MCGPLLCLKisinactive.\n1\nMCGPLLCLKisactive.\n5 PLLStopEnable\nPLLSTEN0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n588 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nMCG_C5fielddescriptions(continued)\nEnablesthePLLClockduringNormalStop.InLowPowerStopmode,thePLLclockgetsdisabledevenif\nPLLSTEN0=1.Allotherpowermodes,PLLSTEN0bithasnoaffectanddoesnotenablethePLLClock\ntorunifitiswrittento1.\n0 MCGPLLCLKisdisabledinanyoftheStopmodes.\nMCGPLLCLKisenabledifsystemisinNormalStopmode.\n4–0 PLLExternalReferenceDivider\nPRDIV0\nSelectstheamounttodividedowntheexternalreferenceclockforthePLL.Theresultingfrequencymust\nbeintherangeof2MHzto4MHz.AfterthePLLisenabled(bysettingeitherPLLCLKEN0orPLLS),the\nPRDIV0valuemustnotbechangedwhenLOCK0iszero.\nTable25-7. PLLExternalReferenceDivideFactor\nPRDIV Divide PRDIV Divide PRDIV Divide PRDIV Divide\n0 Factor 0 Factor 0 Factor 0 Factor\n00000 1 01000 9 10000 17 11000 25\n00001 2 01001 10 10001 18 11001 Reserve\nd\n00010 3 01010 11 10010 19 11010 Reserve\n00011 4 01011 12 10011 20 11011 Reserve\n00100 5 01100 13 10100 21 11100 Reserve\n00101 6 01101 14 10101 22 11101 Reserve\n00110 7 01110 15 10110 23 11110 Reserve\n00111 8 01111 16 10111 24 11111 Reserve\n\nMCG_C5fielddescriptions\nField Description\n7 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n6 PLLClockEnable\nPLLCLKEN0\nEnablesthePLLindependentofPLLSandenablesthePLLclockforuseasMCGPLLCLK.(PRDIV0\nneedstobeprogrammedtothecorrectdividertogenerateaPLLreferenceclockintherangeof2-4MHz\nrangepriortosettingthePLLCLKEN0bit).SettingPLLCLKEN0willenabletheexternaloscillatorifnot\nalreadyenabled.WheneverthePLLisbeingenabledbymeansofthePLLCLKEN0bit,andtheexternal\noscillatorisbeingusedasthereferenceclock,theOSCINIT0bitshouldbecheckedtomakesureitisset.\n0 MCGPLLCLKisinactive.\n1\nMCGPLLCLKisactive.\n5 PLLStopEnable\nPLLSTEN0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n588 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nMCG_C5fielddescriptions(continued)\nEnablesthePLLClockduringNormalStop.InLowPowerStopmode,thePLLclockgetsdisabledevenif\nPLLSTEN0=1.Allotherpowermodes,PLLSTEN0bithasnoaffectanddoesnotenablethePLLClock\ntorunifitiswrittento1.\n0 MCGPLLCLKisdisabledinanyoftheStopmodes.\nMCGPLLCLKisenabledifsystemisinNormalStopmode.\n4–0 PLLExternalReferenceDivider\nPRDIV0\nSelectstheamounttodividedowntheexternalreferenceclockforthePLL.Theresultingfrequencymust\nbeintherangeof2MHzto4MHz.AfterthePLLisenabled(bysettingeitherPLLCLKEN0orPLLS),the\nPRDIV0valuemustnotbechangedwhenLOCK0iszero.\nTable25-7. PLLExternalReferenceDivideFactor\nPRDIV Divide PRDIV Divide PRDIV Divide PRDIV Divide\n0 Factor 0 Factor 0 Factor 0 Factor\n00000 1 01000 9 10000 17 11000 25\n00001 2 01001 10 10001 18 11001 Reserve\nd\n00010 3 01010 11 10010 19 11010 Reserve\n00011 4 01011 12 10011 20 11011 Reserve\n00100 5 01100 13 10100 21 11100 Reserve\n00101 6 01101 14 10101 22 11101 Reserve\n00110 7 01110 15 10110 23 11110 Reserve\n00111 8 01111 16 10111 24 11111 Reserve",
+      "source_pages": [
+        583,
+        588,
+        589
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "PRDIV0",
+          "bitOffset": 0,
+          "bitWidth": 5,
+          "bitRange": "[4:0]",
+          "svd_access": "read-write",
+          "svd_description": "PLL External Reference Divider",
+          "pdf_description": "PRDIV0\nSelectstheamounttodividedowntheexternalreferenceclockforthePLL.Theresultingfrequencymust\nbeintherangeof2MHzto4MHz.AfterthePLLisenabled(bysettingeitherPLLCLKEN0orPLLS),the\nPRDIV0valuemustnotbechangedwhenLOCK0iszero.\nTable25-7. PLLExternalReferenceDivideFactor\nPRDIV Divide PRDIV Divide PRDIV Divide PRDIV Divide\n0 Factor 0 Factor 0 Factor 0 Factor\n00000 1 01000 9 10000 17 11000 25\n00001 2 01001 10 10001 18 11001 Reserve\nd\n00010 3 01010 11 10010 19 11010 Reserve\n00011 4 01011 12 10011 20 11011 Reserve\n00100 5 01100 13 10100 21 11100 Reserve\n00101 6 01101 14 10101 22 11101 Reserve\n00110 7 01110 15 10110 23 11110 Reserve\n00111 8 01111 16 10111 24 11111 Reserve",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Divide Factor is 1",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Divide Factor is 2",
+              "value": null
+            },
+            {
+              "name": "2",
+              "description": "Divide Factor is 3",
+              "value": null
+            },
+            {
+              "name": "3",
+              "description": "Divide Factor is 4",
+              "value": null
+            },
+            {
+              "name": "4",
+              "description": "Divide Factor is 5",
+              "value": null
+            },
+            {
+              "name": "5",
+              "description": "Divide Factor is 6",
+              "value": null
+            },
+            {
+              "name": "6",
+              "description": "Divide Factor is 7",
+              "value": null
+            },
+            {
+              "name": "7",
+              "description": "Divide Factor is 8",
+              "value": null
+            },
+            {
+              "name": "8",
+              "description": "Divide Factor is 9",
+              "value": null
+            },
+            {
+              "name": "9",
+              "description": "Divide Factor is 10",
+              "value": null
+            },
+            {
+              "name": "10",
+              "description": "Divide Factor is 11",
+              "value": null
+            },
+            {
+              "name": "11",
+              "description": "Divide Factor is 12",
+              "value": null
+            },
+            {
+              "name": "12",
+              "description": "Divide Factor is 13",
+              "value": null
+            },
+            {
+              "name": "13",
+              "description": "Divide Factor is 14",
+              "value": null
+            },
+            {
+              "name": "14",
+              "description": "Divide Factor is 15",
+              "value": null
+            },
+            {
+              "name": "15",
+              "description": "Divide Factor is 16",
+              "value": null
+            },
+            {
+              "name": "16",
+              "description": "Divide Factor is 17",
+              "value": null
+            },
+            {
+              "name": "17",
+              "description": "Divide Factor is 18",
+              "value": null
+            },
+            {
+              "name": "18",
+              "description": "Divide Factor is 19",
+              "value": null
+            },
+            {
+              "name": "19",
+              "description": "Divide Factor is 20",
+              "value": null
+            },
+            {
+              "name": "20",
+              "description": "Divide Factor is 21",
+              "value": null
+            },
+            {
+              "name": "21",
+              "description": "Divide Factor is 22",
+              "value": null
+            },
+            {
+              "name": "22",
+              "description": "Divide Factor is 23",
+              "value": null
+            },
+            {
+              "name": "23",
+              "description": "Divide Factor is 24",
+              "value": null
+            },
+            {
+              "name": "24",
+              "description": "Divide Factor is 25",
+              "value": null
+            },
+            {
+              "name": "25",
+              "description": "Divide Factor is 26",
+              "value": null
+            },
+            {
+              "name": "26",
+              "description": "Divide Factor is 27",
+              "value": null
+            },
+            {
+              "name": "27",
+              "description": "Divide Factor is 28",
+              "value": null
+            },
+            {
+              "name": "28",
+              "description": "Divide Factor is 29",
+              "value": null
+            },
+            {
+              "name": "29",
+              "description": "Divide Factor is 30",
+              "value": null
+            },
+            {
+              "name": "30",
+              "description": "Divide Factor is 31",
+              "value": null
+            },
+            {
+              "name": "31",
+              "description": "Divide Factor is 32",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PLLSTEN0",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "svd_access": "read-write",
+          "svd_description": "PLL Stop Enable",
+          "pdf_description": "PLLSTEN0=1.Allotherpowermodes,PLLSTEN0bithasnoaffectanddoesnotenablethePLLClock\ntorunifitiswrittento1.\n0 MCGPLLCLKisdisabledinanyoftheStopmodes.\nMCGPLLCLKisenabledifsystemisinNormalStopmode.\n4–0 PLLExternalReferenceDivider",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "MCGPLLCLK is disabled in any of the Stop modes.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "MCGPLLCLK is enabled if system is in Normal Stop mode.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PLLCLKEN0",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "svd_access": "read-write",
+          "svd_description": "PLL Clock Enable",
+          "pdf_description": "PLLCLKEN0\nEnablesthePLLindependentofPLLSandenablesthePLLclockforuseasMCGPLLCLK.(PRDIV0\nneedstobeprogrammedtothecorrectdividertogenerateaPLLreferenceclockintherangeof2-4MHz\nrangepriortosettingthePLLCLKEN0bit).SettingPLLCLKEN0willenabletheexternaloscillatorifnot\nalreadyenabled.WheneverthePLLisbeingenabledbymeansofthePLLCLKEN0bit,andtheexternal\noscillatorisbeingusedasthereferenceclock,theOSCINIT0bitshouldbecheckedtomakesureitisset.\n0 MCGPLLCLKisinactive.\n1\nMCGPLLCLKisactive.\n5 PLLStopEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "MCGPLLCLK is inactive.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "MCGPLLCLK is active.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C6",
+      "addressOffset": 5,
+      "addressOffset_hex": "0x00000005",
+      "absoluteAddress": 1074151429,
+      "absoluteAddress_hex": "0x40064005",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 6 Register",
+      "pdf_description": "4006_4005 MCGControl6Register(MCG_C6) 8 R/W 00h 25.3.6/589\n\n25.3.6 MCGControl6Register(MCG_C6)\nAddress:4006_4000hbase+5hoffset=4006_4005h\nBit 7 6 5 4 3 2 1 0\nRead\nLOLIE0 PLLS CME0 VDIV0\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_C6fielddescriptions\nField Description\n7 LossofLockInterrruptEnable\nLOLIE0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 589\nMemoryMap/RegisterDefinition\nMCG_C6fielddescriptions(continued)\nDeterminesifaninterruptrequestismadefollowingalossoflockindication.Thisbitonlyhasaneffect\nwhenLOLS0isset.\n0 Nointerruptrequestisgeneratedonlossoflock.\n1 Generateaninterruptrequestonlossoflock.\n6 PLLSelect\nPLLS\nControlswhetherthePLLorFLLoutputisselectedastheMCGsourcewhenCLKS[1:0]=00.IfthePLLS\nbitisclearedandPLLCLKEN0isnotset,thePLLisdisabledinallmodes.IfthePLLSisset,theFLLis\ndisabledinallmodes.\n0 FLLisselected.\n1\nPLLisselected(PRDIV0needtobeprogrammedtothecorrectdividertogenerateaPLLreference\nclockintherangeof2–4MHzpriortosettingthePLLSbit).\n\nMCG_C6fielddescriptions\nField Description\n7 LossofLockInterrruptEnable\nLOLIE0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 589\nMemoryMap/RegisterDefinition\nMCG_C6fielddescriptions(continued)\nDeterminesifaninterruptrequestismadefollowingalossoflockindication.Thisbitonlyhasaneffect\nwhenLOLS0isset.\n0 Nointerruptrequestisgeneratedonlossoflock.\n1 Generateaninterruptrequestonlossoflock.\n6 PLLSelect\nPLLS\nControlswhetherthePLLorFLLoutputisselectedastheMCGsourcewhenCLKS[1:0]=00.IfthePLLS\nbitisclearedandPLLCLKEN0isnotset,thePLLisdisabledinallmodes.IfthePLLSisset,theFLLis\ndisabledinallmodes.\n0 FLLisselected.\n1\nPLLisselected(PRDIV0needtobeprogrammedtothecorrectdividertogenerateaPLLreference\nclockintherangeof2–4MHzpriortosettingthePLLSbit).\n5 ClockMonitorEnable\nCME0\nEnablesthelossofclockmonitoringcircuitfortheOSC0externalreferencemuxselect.TheLOCRE0bit\nwilldetermineifainterruptoraresetrequestisgeneratedfollowingalossofOSC0indication.TheCME0\nbitmustonlybesettoalogic1whentheMCGisinanoperationalmodethatusestheexternalclock\n(FEE,FBE,PEE,PBE,orBLPE).WhenevertheCME0bitissettoalogic1,thevalueoftheRANGE0\nbitsintheC2registershouldnotbechanged.CME0bitshouldbesettoalogic0beforetheMCGenters\nanyStopmode.Otherwise,aresetrequestmayoccurwhileinStopmode.CME0shouldalsobesettoa\nlogic0beforeenteringVLPRorVLPWpowermodesiftheMCGisinBLPEmode.\n0 ExternalclockmonitorisdisabledforOSC0.\n1 ExternalclockmonitorisenabledforOSC0.\n4–0 VCO0Divider\nVDIV0\nSelectstheamounttodividetheVCOoutputofthePLL.TheVDIV0bitsestablishthemultiplicationfactor\n(M)appliedtothereferenceclockfrequency.AfterthePLLisenabled(bysettingeitherPLLCLKEN0or\nPLLS),theVDIV0valuemustnotbechangedwhenLOCK0iszero.\nTable25-9. PLLVCODivideFactor\nVDIV0 Multiply VDIV0 Multiply VDIV0 Multiply VDIV0 Multiply\nFactor Factor Factor Factor\n00000 24 01000 32 10000 40 11000 48\n00001 25 01001 33 10001 41 11001 49\n00010 26 01010 34 10010 42 11010 50\n00011 27 01011 35 10011 43 11011 51\n00100 28 01100 36 10100 44 11100 52\n00101 29 01101 37 10101 45 11101 53\n00110 30 01110 38 10110 46 11110 54\n00111 31 01111 39 10111 47 11111 55\n590 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)",
+      "source_pages": [
+        583,
+        589,
+        590,
+        591
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "VDIV0",
+          "bitOffset": 0,
+          "bitWidth": 5,
+          "bitRange": "[4:0]",
+          "svd_access": "read-write",
+          "svd_description": "VCO 0 Divider",
+          "pdf_description": "VDIV0 Multiply VDIV0 Multiply VDIV0 Multiply VDIV0 Multiply\nFactor Factor Factor Factor\n00000 24 01000 32 10000 40 11000 48\n00001 25 01001 33 10001 41 11001 49\n00010 26 01010 34 10010 42 11010 50\n00011 27 01011 35 10011 43 11011 51\n00100 28 01100 36 10100 44 11100 52\n00101 29 01101 37 10101 45 11101 53\n00110 30 01110 38 10110 46 11110 54\n00111 31 01111 39 10111 47 11111 55\n590 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Multiply Factor is 24",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Multiply Factor is 25",
+              "value": null
+            },
+            {
+              "name": "2",
+              "description": "Multiply Factor is 26",
+              "value": null
+            },
+            {
+              "name": "3",
+              "description": "Multiply Factor is 27",
+              "value": null
+            },
+            {
+              "name": "4",
+              "description": "Multiply Factor is 28",
+              "value": null
+            },
+            {
+              "name": "5",
+              "description": "Multiply Factor is 29",
+              "value": null
+            },
+            {
+              "name": "6",
+              "description": "Multiply Factor is 30",
+              "value": null
+            },
+            {
+              "name": "7",
+              "description": "Multiply Factor is 31",
+              "value": null
+            },
+            {
+              "name": "8",
+              "description": "Multiply Factor is 32",
+              "value": null
+            },
+            {
+              "name": "9",
+              "description": "Multiply Factor is 33",
+              "value": null
+            },
+            {
+              "name": "10",
+              "description": "Multiply Factor is 34",
+              "value": null
+            },
+            {
+              "name": "11",
+              "description": "Multiply Factor is 35",
+              "value": null
+            },
+            {
+              "name": "12",
+              "description": "Multiply Factor is 36",
+              "value": null
+            },
+            {
+              "name": "13",
+              "description": "Multiply Factor is 37",
+              "value": null
+            },
+            {
+              "name": "14",
+              "description": "Multiply Factor is 38",
+              "value": null
+            },
+            {
+              "name": "15",
+              "description": "Multiply Factor is 39",
+              "value": null
+            },
+            {
+              "name": "16",
+              "description": "Multiply Factor is 40",
+              "value": null
+            },
+            {
+              "name": "17",
+              "description": "Multiply Factor is 41",
+              "value": null
+            },
+            {
+              "name": "18",
+              "description": "Multiply Factor is 42",
+              "value": null
+            },
+            {
+              "name": "19",
+              "description": "Multiply Factor is 43",
+              "value": null
+            },
+            {
+              "name": "20",
+              "description": "Multiply Factor is 44",
+              "value": null
+            },
+            {
+              "name": "21",
+              "description": "Multiply Factor is 45",
+              "value": null
+            },
+            {
+              "name": "22",
+              "description": "Multiply Factor is 46",
+              "value": null
+            },
+            {
+              "name": "23",
+              "description": "Multiply Factor is 47",
+              "value": null
+            },
+            {
+              "name": "24",
+              "description": "Multiply Factor is 48",
+              "value": null
+            },
+            {
+              "name": "25",
+              "description": "Multiply Factor is 49",
+              "value": null
+            },
+            {
+              "name": "26",
+              "description": "Multiply Factor is 50",
+              "value": null
+            },
+            {
+              "name": "27",
+              "description": "Multiply Factor is 51",
+              "value": null
+            },
+            {
+              "name": "28",
+              "description": "Multiply Factor is 52",
+              "value": null
+            },
+            {
+              "name": "29",
+              "description": "Multiply Factor is 53",
+              "value": null
+            },
+            {
+              "name": "30",
+              "description": "Multiply Factor is 54",
+              "value": null
+            },
+            {
+              "name": "31",
+              "description": "Multiply Factor is 55",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CME0",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "svd_access": "read-write",
+          "svd_description": "Clock Monitor Enable",
+          "pdf_description": "CME0\nEnablesthelossofclockmonitoringcircuitfortheOSC0externalreferencemuxselect.TheLOCRE0bit\nwilldetermineifainterruptoraresetrequestisgeneratedfollowingalossofOSC0indication.TheCME0\nbitmustonlybesettoalogic1whentheMCGisinanoperationalmodethatusestheexternalclock\n(FEE,FBE,PEE,PBE,orBLPE).WhenevertheCME0bitissettoalogic1,thevalueoftheRANGE0",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "External clock monitor is disabled for OSC0.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "External clock monitor is enabled for OSC0.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PLLS",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "svd_access": "read-write",
+          "svd_description": "PLL Select",
+          "pdf_description": "PLLS),theVDIV0valuemustnotbechangedwhenLOCK0iszero.\nTable25-9. PLLVCODivideFactor",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "FLL is selected.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "PLL is selected (PRDIV 0 need to be programmed to the correct divider to generate a PLL reference clock in the range of 2-4 MHz prior to setting the PLLS bit).",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LOLIE0",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "svd_access": "read-write",
+          "svd_description": "Loss of Lock Interrrupt Enable",
+          "pdf_description": "LOLIE0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 589",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "No interrupt request is generated on loss of lock.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Generate an interrupt request on loss of lock.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "S",
+      "addressOffset": 6,
+      "addressOffset_hex": "0x00000006",
+      "absoluteAddress": 1074151430,
+      "absoluteAddress_hex": "0x40064006",
+      "size": 8,
+      "resetValue": 16,
+      "resetValue_hex": "0x00000010",
+      "svd_access": "read-write",
+      "svd_description": "MCG Status Register",
+      "pdf_description": "Forthechip-specificimplementationdetailsofthismodule's\ninstances,seethechipconfigurationinformation.\nThemultipurposeclockgenerator(MCG)moduleprovidesseveralclocksourcechoices\nfortheMCU.\nThemodulecontainsafrequency-lockedloop(FLL)andaphase-lockedloop(PLL).The\nFLLiscontrollablebyeitheraninternaloranexternalreferenceclock.ThePLLis\ncontrollablebytheexternalreferenceclock.ThemodulecanselecteitheranFLLorPLL\noutputclock,orareferenceclock(internalorexternal)asasourcefortheMCUsystem\nclock.TheMCGoperatesinconjuctionwithacrystaloscillator,whichallowsanexternal\ncrystal,ceramicresonator,oranotherexternalclocksourcetoproducetheexternal\nreferenceclock.\n25.1.1 Features\nKeyfeaturesoftheMCGmoduleare:\n• Frequency-lockedloop(FLL):\n•Digitally-controlledoscillator(DCO)\n•DCOfrequencyrangeisprogrammableforuptofourdifferentfrequencyranges.\n•OptiontoprogramandmaximizeDCOoutputfrequencyforalowfrequency\nexternalreferenceclocksource.\n•OptiontopreventFLLfromresettingitscurrentlockedfrequencywhen\nswitchingclockmodesifFLLreferencefrequencyisnotchanged.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 579\nIntroduction\n• InternalorexternalreferenceclockcanbeusedastheFLLsource.\n• Canbeusedasaclocksourceforotheron-chipperipherals.\n•Phase-lockedloop(PLL):\n• Voltage-controlledoscillator(VCO)\n• ExternalreferenceclockisusedasthePLLsource.\n• ModuloVCOfrequencydivider\n• Phase/Frequencydetector\n\n4006_4006 MCGStatusRegister(MCG_S) 8 R 10h 25.3.7/591\n\n4006_4008 MCGStatusandControlRegister(MCG_SC) 8 R/W 02h 25.3.8/592\nMCGAutoTrimCompareValueHighRegister\n4006_400A 8 R/W 00h 25.3.9/594",
+      "source_pages": [
+        579,
+        580,
+        583
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "IRCST",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "svd_access": "read-only",
+          "svd_description": "Internal Reference Clock Status",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Source of internal reference clock is the slow clock (32 kHz IRC).",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Source of internal reference clock is the fast clock (4 MHz IRC).",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "OSCINIT0",
+          "bitOffset": 1,
+          "bitWidth": 1,
+          "bitRange": "[1:1]",
+          "svd_access": "read-only",
+          "svd_description": "OSC Initialization",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        },
+        {
+          "name": "CLKST",
+          "bitOffset": 2,
+          "bitWidth": 2,
+          "bitRange": "[3:2]",
+          "svd_access": "read-only",
+          "svd_description": "Clock Mode Status",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "00",
+              "description": "Encoding 0 - Output of the FLL is selected (reset default).",
+              "value": null
+            },
+            {
+              "name": "01",
+              "description": "Encoding 1 - Internal reference clock is selected.",
+              "value": null
+            },
+            {
+              "name": "10",
+              "description": "Encoding 2 - External reference clock is selected.",
+              "value": null
+            },
+            {
+              "name": "11",
+              "description": "Encoding 3 - Output of the PLL is selected.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "IREFST",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "svd_access": "read-only",
+          "svd_description": "Internal Reference Status",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Source of FLL reference clock is the external reference clock.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Source of FLL reference clock is the internal reference clock.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "PLLST",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "svd_access": "read-only",
+          "svd_description": "PLL Select Status",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Source of PLLS clock is FLL clock.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Source of PLLS clock is PLL output clock.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LOCK0",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "svd_access": "read-only",
+          "svd_description": "Lock Status",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "PLL is currently unlocked.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "PLL is currently locked.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LOLS0",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "svd_access": "read-write",
+          "svd_description": "Loss of Lock Status",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "PLL has not lost lock since LOLS 0 was last cleared.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "PLL has lost lock since LOLS 0 was last cleared.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SC",
+      "addressOffset": 8,
+      "addressOffset_hex": "0x00000008",
+      "absoluteAddress": 1074151432,
+      "absoluteAddress_hex": "0x40064008",
+      "size": 8,
+      "resetValue": 2,
+      "resetValue_hex": "0x00000002",
+      "svd_access": "read-write",
+      "svd_description": "MCG Status and Control Register",
+      "pdf_description": "4006_4008 MCGStatusandControlRegister(MCG_SC) 8 R/W 02h 25.3.8/592\nMCGAutoTrimCompareValueHighRegister\n4006_400A 8 R/W 00h 25.3.9/594\n\n25.3.8 MCGStatusandControlRegister(MCG_SC)\nAddress:4006_4000hbase+8hoffset=4006_4008h\nBit 7 6 5 4 3 2 1 0\nRead ATMF LOCS0\nATME ATMS FLTPRSRV FCRDIV\nWrite\nReset 0 0 0 0 0 0 1 0\n\nMCG_SCfielddescriptions\nField Description\n7 AutomaticTrimMachineEnable\nATME\nEnablestheAutoTrimMachinetostartautomaticallytrimmingtheselectedInternalReferenceClock.\nNOTE: ATMEdeassertsaftertheAutoTrimMachinehascompletedtrimmingalltrimbitsoftheIRCS\nclockselectedbytheATMSbit.",
+      "source_pages": [
+        583,
+        592
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "LOCS0",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "svd_access": "read-write",
+          "svd_description": "OSC0 Loss of Clock Status",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Loss of OSC0 has not occurred.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Loss of OSC0 has occurred.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "FCRDIV",
+          "bitOffset": 1,
+          "bitWidth": 3,
+          "bitRange": "[3:1]",
+          "svd_access": "read-write",
+          "svd_description": "Fast Clock Internal Reference Divider",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "000",
+              "description": "Divide Factor is 1",
+              "value": null
+            },
+            {
+              "name": "001",
+              "description": "Divide Factor is 2.",
+              "value": null
+            },
+            {
+              "name": "010",
+              "description": "Divide Factor is 4.",
+              "value": null
+            },
+            {
+              "name": "011",
+              "description": "Divide Factor is 8.",
+              "value": null
+            },
+            {
+              "name": "100",
+              "description": "Divide Factor is 16",
+              "value": null
+            },
+            {
+              "name": "101",
+              "description": "Divide Factor is 32",
+              "value": null
+            },
+            {
+              "name": "110",
+              "description": "Divide Factor is 64",
+              "value": null
+            },
+            {
+              "name": "111",
+              "description": "Divide Factor is 128.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "FLTPRSRV",
+          "bitOffset": 4,
+          "bitWidth": 1,
+          "bitRange": "[4:4]",
+          "svd_access": "read-write",
+          "svd_description": "FLL Filter Preserve Enable",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "FLL filter and FLL frequency will reset on changes to currect clock mode.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Fll filter and FLL frequency retain their previous values during new clock mode change.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ATMF",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "svd_access": "read-write",
+          "svd_description": "Automatic Trim Machine Fail Flag",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Automatic Trim Machine completed normally.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Automatic Trim Machine failed.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ATMS",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "svd_access": "read-write",
+          "svd_description": "Automatic Trim Machine Select",
+          "pdf_description": "",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "32 kHz Internal Reference Clock selected.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "4 MHz Internal Reference Clock selected.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "ATME",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "svd_access": "read-write",
+          "svd_description": "Automatic Trim Machine Enable",
+          "pdf_description": "ATME\nEnablestheAutoTrimMachinetostartautomaticallytrimmingtheselectedInternalReferenceClock.\nNOTE: ATMEdeassertsaftertheAutoTrimMachinehascompletedtrimmingalltrimbitsoftheIRCS\nclockselectedbytheATMSbit.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Auto Trim Machine disabled.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Auto Trim Machine enabled.",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ATCVH",
+      "addressOffset": 10,
+      "addressOffset_hex": "0x0000000A",
+      "absoluteAddress": 1074151434,
+      "absoluteAddress_hex": "0x4006400A",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "MCG Auto Trim Compare Value High Register",
+      "pdf_description": "(MCG_ATCVH)\nMCGAutoTrimCompareValueLowRegister 25.3.10/\n4006_400B 8 R/W 00h\n\n25.3.9 MCGAutoTrimCompareValueHighRegister(MCG_ATCVH)\nAddress:4006_4000hbase+Ahoffset=4006_400Ah\nBit 7 6 5 4 3 2 1 0\nRead\nATCVH\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_ATCVHfielddescriptions\nField Description\n7–0 ATMCompareValueHigh\nValuesareusedbyAutoTrimMachinetocompareandadjustInternalReferencetrimvaluesduringATM\nSARconversion.\n\nATCVH\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_ATCVHfielddescriptions\nField Description\n7–0 ATMCompareValueHigh\nValuesareusedbyAutoTrimMachinetocompareandadjustInternalReferencetrimvaluesduringATM\nSARconversion.",
+      "source_pages": [
+        583,
+        594
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "ATCVH",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "bitRange": "[7:0]",
+          "svd_access": "read-write",
+          "svd_description": "ATM Compare Value High",
+          "pdf_description": "ATCVH\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_ATCVHfielddescriptions\nField Description\n7–0 ATMCompareValueHigh\nValuesareusedbyAutoTrimMachinetocompareandadjustInternalReferencetrimvaluesduringATM\nSARconversion.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "ATCVL",
+      "addressOffset": 11,
+      "addressOffset_hex": "0x0000000B",
+      "absoluteAddress": 1074151435,
+      "absoluteAddress_hex": "0x4006400B",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "MCG Auto Trim Compare Value Low Register",
+      "pdf_description": "(MCG_ATCVL) 594\n25.3.11/\n\n25.3.10 MCGAutoTrimCompareValueLowRegister(MCG_ATCVL)\nAddress:4006_4000hbase+Bhoffset=4006_400Bh\nBit 7 6 5 4 3 2 1 0\nRead\nATCVL\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_ATCVLfielddescriptions\nField Description\n7–0 ATMCompareValueLow\nValuesareusedbyAutoTrimMachinetocompareandadjustInternalReferencetrimvaluesduringATM\nSARconversion.\n\nATCVL\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_ATCVLfielddescriptions\nField Description\n7–0 ATMCompareValueLow\nValuesareusedbyAutoTrimMachinetocompareandadjustInternalReferencetrimvaluesduringATM\nSARconversion.",
+      "source_pages": [
+        583,
+        594
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "ATCVL",
+          "bitOffset": 0,
+          "bitWidth": 8,
+          "bitRange": "[7:0]",
+          "svd_access": "read-write",
+          "svd_description": "ATM Compare Value Low",
+          "pdf_description": "ATCVL\nWrite\nReset 0 0 0 0 0 0 0 0\nMCG_ATCVLfielddescriptions\nField Description\n7–0 ATMCompareValueLow\nValuesareusedbyAutoTrimMachinetocompareandadjustInternalReferencetrimvaluesduringATM\nSARconversion.",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": []
+        }
+      ]
+    },
+    {
+      "name": "C7",
+      "addressOffset": 12,
+      "addressOffset_hex": "0x0000000C",
+      "absoluteAddress": 1074151436,
+      "absoluteAddress_hex": "0x4006400C",
+      "size": 8,
+      "resetValue": 0,
+      "resetValue_hex": "0x00000000",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 7 Register",
+      "pdf_description": "4006_400C MCGControl7Register(MCG_C7) 8 R/W 00h\n594\n25.3.12/\n\n25.3.11 MCGControl7Register(MCG_C7)\nAddress:4006_4000hbase+Choffset=4006_400Ch\nBit 7 6 5 4 3 2 1 0\nRead 0 0\nOSCSEL\nWrite\nReset 0 0 0 0 0 0 0 0\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n594 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nMCG_C7fielddescriptions\nField Description\n7–6 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n5–2 Reserved\nReserved\nThisfieldisreserved.\nThisread-onlyfieldisreservedandalwayshasthevalue0.\n1–0 MCGOSCClockSelect\nSelectstheMCGFLLexternalreferenceclock\n00 SelectsOscillator(OSCCLK0).\n01 Selects32kHzRTCOscillator.\n10 SelectsOscillator(OSCCLK1).\n11 RESERVED\n\nMCG_C7fielddescriptions\nField Description\n7–6 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n5–2 Reserved\nReserved\nThisfieldisreserved.\nThisread-onlyfieldisreservedandalwayshasthevalue0.\n1–0 MCGOSCClockSelect\nOSCSEL\nSelectstheMCGFLLexternalreferenceclock\n00 SelectsOscillator(OSCCLK0).\n01 Selects32kHzRTCOscillator.\n10 SelectsOscillator(OSCCLK1).\n11 RESERVED",
+      "source_pages": [
+        583,
+        594,
+        595
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "OSCSEL",
+          "bitOffset": 0,
+          "bitWidth": 2,
+          "bitRange": "[1:0]",
+          "svd_access": "read-write",
+          "svd_description": "MCG OSC Clock Select",
+          "pdf_description": "OSCSEL\nSelectstheMCGFLLexternalreferenceclock\n00 SelectsOscillator(OSCCLK0).\n01 Selects32kHzRTCOscillator.\n10 SelectsOscillator(OSCCLK1).\n11 RESERVED",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "00",
+              "description": "Selects Oscillator (OSCCLK0).",
+              "value": null
+            },
+            {
+              "name": "01",
+              "description": "Selects 32 kHz RTC Oscillator.",
+              "value": null
+            },
+            {
+              "name": "10",
+              "description": "Selects Oscillator (OSCCLK1).",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C8",
+      "addressOffset": 13,
+      "addressOffset_hex": "0x0000000D",
+      "absoluteAddress": 1074151437,
+      "absoluteAddress_hex": "0x4006400D",
+      "size": 8,
+      "resetValue": 128,
+      "resetValue_hex": "0x00000080",
+      "svd_access": "read-write",
+      "svd_description": "MCG Control 8 Register",
+      "pdf_description": "4006_400D MCGControl8Register(MCG_C8) 8 R/W 80h\n595\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 583\nMemoryMap/RegisterDefinition\n\n25.3.12 MCGControl8Register(MCG_C8)\nAddress:4006_4000hbase+Dhoffset=4006_400Dh\nBit 7 6 5 4 3 2 1 0\nRead 0 LOCS1\nLOCRE1 LOLRE CME1\nWrite\nReset 1 0 0 0 0 0 0 0\nMCG_C8fielddescriptions\nField Description\n7 LossofClockResetEnable\nLOCRE1\nDeterminesifainterruptoraresetrequestismadefollowingalossofRTCexternalreferenceclock.The\nLOCRE1onlyhasanaffectwhenCME1isset.\n0 InterruptrequestisgeneratedonalossofRTCexternalreferenceclock.\n1 GeneratearesetrequestonalossofRTCexternalreferenceclock\n6 PLLLossofLockResetEnable\nLOLRE\nDeterminesifaninterruptoraresetrequestismadefollowingaPLLlossoflock.\n0 InterruptrequestisgeneratedonaPLLlossoflockindication.ThePLLlossoflockinterruptenablebit\nmustalsobesettogeneratetheinterruptrequest.\n1 GeneratearesetrequestonaPLLlossoflockindication.\n5 ClockMonitorEnable1\nCME1\nEnablesthelossofclockmonitoringcircuitfortheoutputoftheRTCexternalreferenceclock.The\nLOCRE1bitwilldeterminewhetheraninterruptoraresetrequestisgeneratedfollowingalossofRTC\nclockindication.TheCME1bitshouldbesettoalogic1whentheMCGisinanoperationalmodethat\nusestheRTCasitsexternalreferenceclockoriftheRTCisoperational.CME1bitmustbesettoalogic0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 595\n\nMCG_C8fielddescriptions\nField Description\n7 LossofClockResetEnable\nLOCRE1\nDeterminesifainterruptoraresetrequestismadefollowingalossofRTCexternalreferenceclock.The\nLOCRE1onlyhasanaffectwhenCME1isset.\n0 InterruptrequestisgeneratedonalossofRTCexternalreferenceclock.\n1 GeneratearesetrequestonalossofRTCexternalreferenceclock\n6 PLLLossofLockResetEnable\nLOLRE\nDeterminesifaninterruptoraresetrequestismadefollowingaPLLlossoflock.\n0 InterruptrequestisgeneratedonaPLLlossoflockindication.ThePLLlossoflockinterruptenablebit\nmustalsobesettogeneratetheinterruptrequest.\n1 GeneratearesetrequestonaPLLlossoflockindication.\n5 ClockMonitorEnable1\nCME1\nEnablesthelossofclockmonitoringcircuitfortheoutputoftheRTCexternalreferenceclock.The\nLOCRE1bitwilldeterminewhetheraninterruptoraresetrequestisgeneratedfollowingalossofRTC\nclockindication.TheCME1bitshouldbesettoalogic1whentheMCGisinanoperationalmodethat\nusestheRTCasitsexternalreferenceclockoriftheRTCisoperational.CME1bitmustbesettoalogic0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 595\nFunctionaldescription\nMCG_C8fielddescriptions(continued)\nbeforetheMCGentersanyStopmode.Otherwise,aresetrequestmayoccurwheninStopmode.CME1\nshouldalsobesettoalogic0beforeenteringVLPRorVLPWpowermodes.\n0 ExternalclockmonitorisdisabledforRTCclock.\n1 ExternalclockmonitorisenabledforRTCclock.\n4–1 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n0 RTCLossofClockStatus\nLOCS1\nThisbitindicateswhenalossofclockhasoccurred.Thisbitisclearedbywritingalogic1toitwhenset.\n0 LossofRTChasnotoccur.\n1 LossofRTChasoccur\n25.4 Functionaldescription\n25.4.1 MCGmodestatediagram\nTheninestatesoftheMCGareshowninthefollowingfigureandaredescribedinTable\n25-16.ThearrowsindicatethepermittedMCGmodetransitions.\nReset FEI FEE\nFBI FBE\nBLPI BLPE\nPBE\nPEE\nReturnstothestatethatwasactivebefore\nEnteredfromanystatewhen\ntheMCUenteredStopmode,unlessa\ntheMCUentersStopmode Stop\nresetoccurswhileinStopmode.\nFigure25-14.MCGmodestatediagram\n596 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nNOTE\n•DuringexitsfromLLSorVLPSwhentheMCGisinPEE\nmode,theMCGwillresettoPBEclockmodeandthe",
+      "source_pages": [
+        583,
+        584,
+        595,
+        596,
+        597
+      ],
+      "documentation_status": "documented_in_pdf",
+      "fields": [
+        {
+          "name": "LOCS1",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "bitRange": "[0:0]",
+          "svd_access": "read-write",
+          "svd_description": "RTC Loss of Clock Status",
+          "pdf_description": "LOCS1\nThisbitindicateswhenalossofclockhasoccurred.Thisbitisclearedbywritingalogic1toitwhenset.\n0 LossofRTChasnotoccur.\n1 LossofRTChasoccur\n25.4 Functionaldescription\n25.4.1 MCGmodestatediagram\nTheninestatesoftheMCGareshowninthefollowingfigureandaredescribedinTable\n25-16.ThearrowsindicatethepermittedMCGmodetransitions.\nReset FEI FEE\nFBI FBE\nBLPI BLPE\nPBE\nPEE\nReturnstothestatethatwasactivebefore\nEnteredfromanystatewhen\ntheMCUenteredStopmode,unlessa\ntheMCUentersStopmode Stop\nresetoccurswhileinStopmode.\nFigure25-14.MCGmodestatediagram\n596 FreescaleSemiconductor,Inc.\nChapter25MultipurposeClockGenerator(MCG)\nNOTE\n•DuringexitsfromLLSorVLPSwhentheMCGisinPEE\nmode,theMCGwillresettoPBEclockmodeandthe",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Loss of RTC has not occur.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Loss of RTC has occur",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "CME1",
+          "bitOffset": 5,
+          "bitWidth": 1,
+          "bitRange": "[5:5]",
+          "svd_access": "read-write",
+          "svd_description": "Clock Monitor Enable1",
+          "pdf_description": "CME1\nEnablesthelossofclockmonitoringcircuitfortheoutputoftheRTCexternalreferenceclock.The\nLOCRE1bitwilldeterminewhetheraninterruptoraresetrequestisgeneratedfollowingalossofRTC\nclockindication.TheCME1bitshouldbesettoalogic1whentheMCGisinanoperationalmodethat\nusestheRTCasitsexternalreferenceclockoriftheRTCisoperational.CME1bitmustbesettoalogic0\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 595\nFunctionaldescription\nMCG_C8fielddescriptions(continued)\nbeforetheMCGentersanyStopmode.Otherwise,aresetrequestmayoccurwheninStopmode.CME1\nshouldalsobesettoalogic0beforeenteringVLPRorVLPWpowermodes.\n0 ExternalclockmonitorisdisabledforRTCclock.\n1 ExternalclockmonitorisenabledforRTCclock.\n4–1 Thisfieldisreserved.\nReserved Thisread-onlyfieldisreservedandalwayshasthevalue0.\n0 RTCLossofClockStatus",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "External clock monitor is disabled for RTC clock.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "External clock monitor is enabled for RTC clock.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LOLRE",
+          "bitOffset": 6,
+          "bitWidth": 1,
+          "bitRange": "[6:6]",
+          "svd_access": "read-write",
+          "svd_description": "PLL Loss of Lock Reset Enable",
+          "pdf_description": "LOLRE\nDeterminesifaninterruptoraresetrequestismadefollowingaPLLlossoflock.\n0 InterruptrequestisgeneratedonaPLLlossoflockindication.ThePLLlossoflockinterruptenablebit\nmustalsobesettogeneratetheinterruptrequest.\n1 GeneratearesetrequestonaPLLlossoflockindication.\n5 ClockMonitorEnable1",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Interrupt request is generated on a PLL loss of lock indication. The PLL loss of lock interrupt enable bit must also be set to generate the interrupt request.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Generate a reset request on a PLL loss of lock indication.",
+              "value": null
+            }
+          ]
+        },
+        {
+          "name": "LOCRE1",
+          "bitOffset": 7,
+          "bitWidth": 1,
+          "bitRange": "[7:7]",
+          "svd_access": "read-write",
+          "svd_description": "Loss of Clock Reset Enable",
+          "pdf_description": "LOCRE1\nDeterminesifainterruptoraresetrequestismadefollowingalossofRTCexternalreferenceclock.The\nLOCRE1onlyhasanaffectwhenCME1isset.\n0 InterruptrequestisgeneratedonalossofRTCexternalreferenceclock.\n1 GeneratearesetrequestonalossofRTCexternalreferenceclock\n6 PLLLossofLockResetEnable",
+          "documentation_status": "documented_in_pdf",
+          "enumeratedValues": [
+            {
+              "name": "0",
+              "description": "Interrupt request is generated on a loss of RTC external reference clock.",
+              "value": null
+            },
+            {
+              "name": "1",
+              "description": "Generate a reset request on a loss of RTC external reference clock",
+              "value": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tool_version": "manual_pdf_svd_extractor_v2_debug"
+}

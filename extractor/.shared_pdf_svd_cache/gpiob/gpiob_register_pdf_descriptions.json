@@ -1,0 +1,50 @@
+{
+  "PDOR": {
+    "register_pdf_description": "400F_F000 PortDataOutputRegister(GPIOA_PDOR) 32 R/W 0000_0000h 55.2.1/1761\nW\n\n400F_F040 PortDataOutputRegister(GPIOB_PDOR) 32 R/W 0000_0000h 55.2.1/1761\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1759\nMemorymapandregisterdefinition\nGPIOmemorymap(continued)\nAbsolute\nWidth Section/\naddress Registername Access Resetvalue\n(inbits) page\n(hex)\nW\n\n400F_F080 PortDataOutputRegister(GPIOC_PDOR) 32 R/W 0000_0000h 55.2.1/1761\nW",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1759,
+      1760
+    ]
+  },
+  "PSOR": {
+    "register_pdf_description": "400F_F004 PortSetOutputRegister(GPIOA_PSOR) 32 (always 0000_0000h 55.2.2/1761\nreads0)\nW\n\n400F_F044 PortSetOutputRegister(GPIOB_PSOR) 32 (always 0000_0000h 55.2.2/1761\nreads0)\nW\n\n400F_F084 PortSetOutputRegister(GPIOC_PSOR) 32 (always 0000_0000h 55.2.2/1761\nreads0)\nW",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1759,
+      1760
+    ]
+  },
+  "PCOR": {
+    "register_pdf_description": "400F_F008 PortClearOutputRegister(GPIOA_PCOR) 32 (always 0000_0000h 55.2.3/1762\nreads0)\nW\n\n400F_F048 PortClearOutputRegister(GPIOB_PCOR) 32 (always 0000_0000h 55.2.3/1762\nreads0)\nW\n\n400F_F088 PortClearOutputRegister(GPIOC_PCOR) 32 (always 0000_0000h 55.2.3/1762\nreads0)\nW",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1759,
+      1760
+    ]
+  },
+  "PTOR": {
+    "register_pdf_description": "400F_F00C PortToggleOutputRegister(GPIOA_PTOR) 32 (always 0000_0000h 55.2.4/1762\nreads0)\n\n400F_F04C PortToggleOutputRegister(GPIOB_PTOR) 32 (always 0000_0000h 55.2.4/1762\nreads0)\n\n400F_F08C PortToggleOutputRegister(GPIOC_PTOR) 32 (always 0000_0000h 55.2.4/1762\nreads0)",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1759,
+      1760
+    ]
+  },
+  "PDIR": {
+    "register_pdf_description": "400F_F010 PortDataInputRegister(GPIOA_PDIR) 32 R 0000_0000h 55.2.5/1763\n\n400F_F050 PortDataInputRegister(GPIOB_PDIR) 32 R 0000_0000h 55.2.5/1763\n\n400F_F090 PortDataInputRegister(GPIOC_PDIR) 32 R 0000_0000h 55.2.5/1763",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1759,
+      1760
+    ]
+  },
+  "PDDR": {
+    "register_pdf_description": "400F_F014 PortDataDirectionRegister(GPIOA_PDDR) 32 R/W 0000_0000h 55.2.6/1763\n\n400F_F054 PortDataDirectionRegister(GPIOB_PDDR) 32 R/W 0000_0000h 55.2.6/1763\n\n400F_F094 PortDataDirectionRegister(GPIOC_PDDR) 32 R/W 0000_0000h 55.2.6/1763",
+    "field_pdf_descriptions": {},
+    "source_pages": [
+      1759,
+      1760
+    ]
+  }
+}
