@@ -40,6 +40,21 @@ def _default_shared_query_cache_root() -> Path:
     return _default_extractor_dir() / ".shared_query_cache"
 
 
+def _default_repo_root() -> Path:
+    return _default_extractor_dir().parent
+
+
+def _default_ghidra_src() -> str:
+    candidates = [
+        _default_repo_root() / "tools" / "ghidra",
+        _default_repo_root() / "ghidra",
+    ]
+    for path in candidates:
+        if path.exists():
+            return str(path.resolve())
+    return str(candidates[0].resolve())
+
+
 def _parse_env_overrides(items: Optional[List[str]]) -> Dict[str, str]:
     out: Dict[str, str] = {}
     for item in items or []:
@@ -151,6 +166,63 @@ def _extract_import_summary(run_log: str) -> Dict[str, Any]:
     }
 
 
+def _run_root_from_workdir(workdir: str) -> Path:
+    return Path(_abs(workdir)).parent
+
+
+def _default_trace_paths(workdir: str, basename: str = "replay_trace") -> Dict[str, str]:
+    run_root = _run_root_from_workdir(workdir)
+    return {
+        "trace_out": str((run_root / f"{basename}.json").resolve()),
+        "trace_text_out": str((run_root / f"{basename}.log").resolve()),
+        "trace_meta_out": str((run_root / f"{basename}.meta.json").resolve()),
+    }
+
+
+def _resolve_trace_paths(
+    *,
+    workdir: str,
+    dump_trace: bool,
+    trace_out: Optional[str],
+    trace_text_out: Optional[str],
+    trace_meta_out: Optional[str],
+    trace_basename: str = "replay_trace",
+) -> Dict[str, Optional[str]]:
+    defaults = _default_trace_paths(workdir, basename=trace_basename)
+    enabled = bool(dump_trace or trace_out or trace_text_out or trace_meta_out)
+    if not enabled:
+        return {
+            "enabled": False,
+            "trace_out": None,
+            "trace_text_out": None,
+            "trace_meta_out": None,
+        }
+
+    resolved_trace_out = _abs(trace_out) if trace_out else defaults["trace_out"]
+    resolved_trace_text_out = _abs(trace_text_out) if trace_text_out else defaults["trace_text_out"]
+    resolved_trace_meta_out = _abs(trace_meta_out) if trace_meta_out else defaults["trace_meta_out"]
+
+    return {
+        "enabled": True,
+        "trace_out": resolved_trace_out,
+        "trace_text_out": resolved_trace_text_out,
+        "trace_meta_out": resolved_trace_meta_out,
+    }
+
+
+def _trace_file_info(run_root: str, basename: str = "replay_trace") -> Dict[str, Any]:
+    run_root_abs = _abs(run_root)
+    trace_json = os.path.join(run_root_abs, f"{basename}.json")
+    trace_text = os.path.join(run_root_abs, f"{basename}.log")
+    trace_meta = os.path.join(run_root_abs, f"{basename}.meta.json")
+    return {
+        "trace_json": trace_json if os.path.exists(trace_json) else None,
+        "trace_text": trace_text if os.path.exists(trace_text) else None,
+        "trace_meta_path": trace_meta if os.path.exists(trace_meta) else None,
+        "trace_meta": _maybe_json(trace_meta),
+    }
+
+
 def run_hail_fuzz(
     *,
     manifest_path: str,
@@ -165,6 +237,11 @@ def run_hail_fuzz(
     import_dir: Optional[str] = None,
     fuzzer_bin: Optional[str] = None,
     setenv: Optional[List[str]] = None,
+    dump_trace: bool = False,
+    trace_out: Optional[str] = None,
+    trace_text_out: Optional[str] = None,
+    trace_meta_out: Optional[str] = None,
+    trace_basename: str = "replay_trace",
 ) -> Dict[str, Any]:
     env = os.environ.copy()
     env["GHIDRA_SRC"] = _abs(ghidra_src)
@@ -191,6 +268,32 @@ def run_hail_fuzz(
     else:
         env.pop("MF_IMPORT_DIR", None)
 
+    trace_paths = _resolve_trace_paths(
+        workdir=workdir,
+        dump_trace=dump_trace,
+        trace_out=trace_out,
+        trace_text_out=trace_text_out,
+        trace_meta_out=trace_meta_out,
+        trace_basename=trace_basename,
+    )
+    trace_env_keys = {
+        "MF_EXEC_TRACE_OUT": trace_paths["trace_out"],
+        "MF_EXEC_TRACE_TEXT_OUT": trace_paths["trace_text_out"],
+        "MF_EXEC_TRACE_META_OUT": trace_paths["trace_meta_out"],
+        # Generic aliases so downstream executor/fuzzer code can adopt either naming style.
+        "MF_TRACE_OUT": trace_paths["trace_out"],
+        "MF_TRACE_TEXT_OUT": trace_paths["trace_text_out"],
+        "MF_TRACE_META_OUT": trace_paths["trace_meta_out"],
+        "MF_RUNTIME_TRACE_OUT": trace_paths["trace_out"],
+        "MF_RUNTIME_TRACE_TEXT_OUT": trace_paths["trace_text_out"],
+        "MF_RUNTIME_TRACE_META_OUT": trace_paths["trace_meta_out"],
+    }
+    for k, v in trace_env_keys.items():
+        if v:
+            env[k] = v
+        else:
+            env.pop(k, None)
+
     for k, v in _parse_env_overrides(setenv).items():
         env[k] = v
 
@@ -207,6 +310,14 @@ def run_hail_fuzz(
         "import_dir": _abs(import_dir) if import_dir else None,
         "fuzzer_bin": resolved_bin,
         "run_summary": summarize_run_log(run_log),
+        "trace_enabled": bool(trace_paths["enabled"]),
+        "trace_out": trace_paths["trace_out"],
+        "trace_text_out": trace_paths["trace_text_out"],
+        "trace_meta_out": trace_paths["trace_meta_out"],
+        "trace_json_exists": bool(trace_paths["trace_out"] and os.path.exists(trace_paths["trace_out"])),
+        "trace_text_exists": bool(trace_paths["trace_text_out"] and os.path.exists(trace_paths["trace_text_out"])),
+        "trace_meta_exists": bool(trace_paths["trace_meta_out"] and os.path.exists(trace_paths["trace_meta_out"])),
+        "trace_meta": _maybe_json(trace_paths["trace_meta_out"]) if trace_paths["trace_meta_out"] else None,
         **_extract_import_summary(run_log),
     }
 
@@ -278,6 +389,7 @@ def _queue_dir(workdir: str) -> str:
 def _checkpoint_from_run(checkpoint_id: str, run_root: str, *, parent_checkpoint_id: Optional[str] = None, score: Optional[float] = None) -> Dict[str, Any]:
     run_root_abs = _abs(run_root)
     obs = os.path.join(run_root_abs, "observer")
+    trace_info = _trace_file_info(run_root_abs)
     return {
         "checkpoint_id": checkpoint_id,
         "parent_checkpoint_id": parent_checkpoint_id,
@@ -292,6 +404,7 @@ def _checkpoint_from_run(checkpoint_id: str, run_root: str, *, parent_checkpoint
         "latest_window_interesting_streams": _maybe_json(os.path.join(obs, "latest_window_interesting_streams.json")),
         "guidance_runtime_summary": _maybe_json(os.path.join(run_root_abs, "guidance_runtime_summary.json")),
         "score": score,
+        **trace_info,
     }
 
 
@@ -340,6 +453,7 @@ def _score_candidate(parent_checkpoint: Dict[str, Any], report: Dict[str, Any]) 
 def _candidate_report(candidate_id: str, run_root: str, *, parent_checkpoint: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     run_log = os.path.join(run_root, "run.log")
     obs = os.path.join(run_root, "observer")
+    trace_info = _trace_file_info(run_root)
     report = {
         "candidate_id": candidate_id,
         "run_root": _abs(run_root),
@@ -349,6 +463,7 @@ def _candidate_report(candidate_id: str, run_root: str, *, parent_checkpoint: Op
         "latest_window_discovered_streams": _maybe_json(os.path.join(obs, "latest_window_discovered_streams.json")),
         "latest_window_interesting_streams": _maybe_json(os.path.join(obs, "latest_window_interesting_streams.json")),
         **_extract_import_summary(run_log),
+        **trace_info,
     }
     if parent_checkpoint is not None:
         report["score_breakdown"] = _score_candidate(parent_checkpoint, report)
@@ -973,6 +1088,11 @@ def auto_loop(args):
         import_dir=None,
         fuzzer_bin=fuzzer_bin,
         setenv=args.setenv,
+        dump_trace=bool(getattr(args, "dump_trace", False)),
+        trace_out=str((baseline_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".json")),
+        trace_text_out=str((baseline_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".log")),
+        trace_meta_out=str((baseline_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".meta.json")),
+        trace_basename=str(getattr(args, "trace_basename", "replay_trace")),
     )
 
     build_evidence_pack(
@@ -1031,6 +1151,11 @@ def auto_loop(args):
             import_dir=None,
             fuzzer_bin=fuzzer_bin,
             setenv=args.setenv,
+            dump_trace=bool(getattr(args, "dump_trace", False)),
+            trace_out=str((run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".json")),
+            trace_text_out=str((run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".log")),
+            trace_meta_out=str((run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".meta.json")),
+            trace_basename=str(getattr(args, "trace_basename", "replay_trace")),
         )
 
         candidate_reports.append(_candidate_report(candidate_id, str(run_root)))
@@ -1080,6 +1205,11 @@ def staged_loop(args):
         import_dir=None,
         fuzzer_bin=fuzzer_bin,
         setenv=args.setenv,
+        dump_trace=bool(getattr(args, "dump_trace", False)),
+        trace_out=str((initial_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".json")),
+        trace_text_out=str((initial_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".log")),
+        trace_meta_out=str((initial_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".meta.json")),
+        trace_basename=str(getattr(args, "trace_basename", "replay_trace")),
     )
 
     beam: List[Dict[str, Any]] = [_checkpoint_from_run("seed", str(initial_root), parent_checkpoint_id=None, score=None)]
@@ -1153,6 +1283,11 @@ def staged_loop(args):
                 import_dir=parent_cp["queue_dir"],
                 fuzzer_bin=fuzzer_bin,
                 setenv=args.setenv,
+                dump_trace=bool(getattr(args, "dump_trace", False)),
+                trace_out=str((control_run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".json")),
+                trace_text_out=str((control_run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".log")),
+                trace_meta_out=str((control_run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".meta.json")),
+                trace_basename=str(getattr(args, "trace_basename", "replay_trace")),
             )
             control_report = _candidate_report("control", str(control_run_root), parent_checkpoint=parent_cp)
             _attach_candidate_eval(control_report, meta=_control_meta(), control_report=None)
@@ -1195,6 +1330,11 @@ def staged_loop(args):
                     import_dir=parent_cp["queue_dir"],
                     fuzzer_bin=fuzzer_bin,
                     setenv=args.setenv,
+                    dump_trace=bool(getattr(args, "dump_trace", False)),
+                    trace_out=str((candidate_run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".json")),
+                    trace_text_out=str((candidate_run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".log")),
+                    trace_meta_out=str((candidate_run_root / str(getattr(args, "trace_basename", "replay_trace"))).with_suffix(".meta.json")),
+                    trace_basename=str(getattr(args, "trace_basename", "replay_trace")),
                 )
 
                 report = _candidate_report(candidate_id, str(candidate_run_root), parent_checkpoint=parent_cp)
@@ -1296,7 +1436,7 @@ def main():
     s6.add_argument("--fuzzer-manifest", required=True)
     s6.add_argument("--fuzzer-bin")
     s6.add_argument("--firmware-config", required=True)
-    s6.add_argument("--ghidra-src", required=True)
+    s6.add_argument("--ghidra-src", default=_default_ghidra_src(), help="Path to Ghidra install (default: repository tools/ghidra)")
     s6.add_argument("--workdir", required=True)
     s6.add_argument("--run-log", required=True)
     s6.add_argument("--run-for", default="300s")
@@ -1304,13 +1444,18 @@ def main():
     s6.add_argument("--guidance-file")
     s6.add_argument("--guidance-summary-out")
     s6.add_argument("--import-dir")
+    s6.add_argument("--dump-trace", action="store_true", help="Request executor/fuzzer trace export and auto-place files next to the run root")
+    s6.add_argument("--trace-out", help="Explicit JSON trace output path; defaults to <run_root>/replay_trace.json when --dump-trace is set")
+    s6.add_argument("--trace-text-out", help="Optional plain-text trace output path; defaults to <run_root>/replay_trace.log when tracing is enabled")
+    s6.add_argument("--trace-meta-out", help="Optional JSON metadata output path; defaults to <run_root>/replay_trace.meta.json when tracing is enabled")
+    s6.add_argument("--trace-basename", default="replay_trace", help="Basename for auto-generated trace files when tracing is enabled")
     s6.add_argument("--setenv", action="append")
 
     s7 = sub.add_parser("auto-loop")
     s7.add_argument("--fuzzer-manifest", required=True)
     s7.add_argument("--fuzzer-bin")
     s7.add_argument("--firmware-config", required=True)
-    s7.add_argument("--ghidra-src", required=True)
+    s7.add_argument("--ghidra-src", default=_default_ghidra_src(), help="Path to Ghidra install (default: repository tools/ghidra)")
     s7.add_argument("--pdf", required=True)
     s7.add_argument("--svd", required=True)
     s7.add_argument("--board", required=True)
@@ -1327,13 +1472,15 @@ def main():
     s7.add_argument("--max-candidates", type=int, default=4)
     s7.add_argument("--default-after-reads", type=int, default=192)
     s7.add_argument("--setenv", action="append")
+    s7.add_argument("--dump-trace", action="store_true", help="Emit per-run replay traces under each auto-loop run root")
+    s7.add_argument("--trace-basename", default="replay_trace")
     s7.add_argument("--shared-cache-root")
 
     s8 = sub.add_parser("staged-loop")
     s8.add_argument("--fuzzer-manifest", required=True)
     s8.add_argument("--fuzzer-bin")
     s8.add_argument("--firmware-config", required=True)
-    s8.add_argument("--ghidra-src", required=True)
+    s8.add_argument("--ghidra-src", default=_default_ghidra_src(), help="Path to Ghidra install (default: repository tools/ghidra)")
     s8.add_argument("--pdf", required=True)
     s8.add_argument("--svd", required=True)
     s8.add_argument("--board", required=True)
@@ -1355,6 +1502,8 @@ def main():
     s8.add_argument("--allow-aggressive", action="store_true")
     s8.add_argument("--max-weak-per-parent", type=int, default=1)
     s8.add_argument("--setenv", action="append")
+    s8.add_argument("--dump-trace", action="store_true", help="Emit per-run replay traces under each staged-loop run root")
+    s8.add_argument("--trace-basename", default="replay_trace")
     s8.add_argument("--shared-cache-root")
     s8.add_argument("--shared-query-cache-root")
 
@@ -1384,7 +1533,7 @@ def main():
     s12.add_argument("--fuzzer-manifest", required=True)
     s12.add_argument("--fuzzer-bin")
     s12.add_argument("--firmware-config", required=True)
-    s12.add_argument("--ghidra-src", required=True)
+    s12.add_argument("--ghidra-src", default=_default_ghidra_src(), help="Path to Ghidra install (default: repository tools/ghidra)")
     s12.add_argument("--workdir", required=True)
     s12.add_argument("--run-log", required=True)
     s12.add_argument("--setenv", action="append")
@@ -1478,6 +1627,11 @@ def main():
             import_dir=args.import_dir,
             fuzzer_bin=args.fuzzer_bin,
             setenv=args.setenv,
+            dump_trace=bool(args.dump_trace),
+            trace_out=args.trace_out,
+            trace_text_out=args.trace_text_out,
+            trace_meta_out=args.trace_meta_out,
+            trace_basename=args.trace_basename,
         )
         save_json(
             os.path.join(str(Path(args.workdir).resolve().parent), "run_fuzz_summary.json"),

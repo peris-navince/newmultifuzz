@@ -1,0 +1,347 @@
+{
+  "schema": "stuck_report_v2",
+  "seed_path": "/home/MultiFuzz/workdir/manual_uart_handshake_once_t4_20.guidance.json",
+  "stop_reason": "unknown",
+  "trace_event_count": 14204,
+  "tail_window": 256,
+  "selected_exec_index": 164,
+  "last_pc": "0x00001F8C",
+  "last_pc_function": "gpio_init_port",
+  "dominant_loop_functions": [
+    {
+      "function": "uart_write",
+      "repeat_blocks": 95,
+      "repeat_edges": 37,
+      "longest_run": 56,
+      "loop_score": 207
+    },
+    {
+      "function": "_mutex_lock",
+      "repeat_blocks": 63,
+      "repeat_edges": 37,
+      "longest_run": 61,
+      "loop_score": 185
+    },
+    {
+      "function": "bit_set32",
+      "repeat_blocks": 62,
+      "repeat_edges": 37,
+      "longest_run": 11,
+      "loop_score": 84
+    },
+    {
+      "function": "gpio_init_port",
+      "repeat_blocks": 23,
+      "repeat_edges": 37,
+      "longest_run": 2,
+      "loop_score": 27
+    },
+    {
+      "function": "NVIC_EnableIRQ",
+      "repeat_blocks": 4,
+      "repeat_edges": 37,
+      "longest_run": 4,
+      "loop_score": 12
+    },
+    {
+      "function": "thread_create",
+      "repeat_blocks": 3,
+      "repeat_edges": 37,
+      "longest_run": 1,
+      "loop_score": 5
+    },
+    {
+      "function": "rtt_set_alarm",
+      "repeat_blocks": 3,
+      "repeat_edges": 37,
+      "longest_run": 2,
+      "loop_score": 7
+    },
+    {
+      "function": "uart_stdio_write",
+      "repeat_blocks": 3,
+      "repeat_edges": 37,
+      "longest_run": 1,
+      "loop_score": 5
+    }
+  ],
+  "dominant_loop_blocks": [
+    {
+      "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:56:0",
+      "count": 15
+    },
+    {
+      "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+      "count": 15
+    },
+    {
+      "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1706:0",
+      "count": 15
+    },
+    {
+      "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+      "count": 15
+    },
+    {
+      "block": "bitband_addr at /home/bo/test/RIOT/cpu/cortexm_common/include/bit.h:63:0",
+      "count": 13
+    },
+    {
+      "block": "pin_num at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:133:0",
+      "count": 10
+    },
+    {
+      "block": "gpio_init_port at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:235:0",
+      "count": 9
+    },
+    {
+      "block": "bit_clear8 at /home/bo/test/RIOT/cpu/cortexm_common/include/bit.h:184:0",
+      "count": 7
+    },
+    {
+      "block": "bit_clear8 at /home/bo/test/RIOT/cpu/cortexm_common/include/bit.h:185:0",
+      "count": 7
+    },
+    {
+      "block": "port at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:118:0",
+      "count": 7
+    },
+    {
+      "block": "kinetis_mcg_set_mode at /home/bo/test/RIOT/cpu/kinetis/periph/mcg.c:377:0",
+      "count": 6
+    },
+    {
+      "block": "gpio_init at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:188:0",
+      "count": 6
+    }
+  ],
+  "tail_mmio": {
+    "addresses": [
+      {
+        "address_hex": "0x4006A004",
+        "count": 167
+      },
+      {
+        "address_hex": "0x40064006",
+        "count": 15
+      },
+      {
+        "address_hex": "0x40064000",
+        "count": 11
+      },
+      {
+        "address_hex": "0x4003D014",
+        "count": 6
+      },
+      {
+        "address_hex": "0x400FF054",
+        "count": 5
+      },
+      {
+        "address_hex": "0x4006A003",
+        "count": 4
+      },
+      {
+        "address_hex": "0x4006A010",
+        "count": 4
+      },
+      {
+        "address_hex": "0x4006A007",
+        "count": 4
+      },
+      {
+        "address_hex": "0x40064001",
+        "count": 4
+      },
+      {
+        "address_hex": "0x40064003",
+        "count": 4
+      },
+      {
+        "address_hex": "0x4004803C",
+        "count": 3
+      },
+      {
+        "address_hex": "0x4004A058",
+        "count": 3
+      }
+    ],
+    "offsets": []
+  },
+  "candidate_stuck_functions": [
+    {
+      "function": "uart_write",
+      "dynamic_score": 207,
+      "static_anchor_score": 549,
+      "mmio_bonus": 0,
+      "combined_score": 963,
+      "repeat_blocks": 95,
+      "longest_run": 56,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=549",
+        "rel_hot_offsets=['0x00000004', '0x00000007']"
+      ]
+    },
+    {
+      "function": "irq_handler_uart",
+      "dynamic_score": 0,
+      "static_anchor_score": 584,
+      "mmio_bonus": 0,
+      "combined_score": 584,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=584",
+        "rel_hot_offsets=['0x00000004', '0x00000007']"
+      ]
+    },
+    {
+      "function": "_mutex_lock",
+      "dynamic_score": 185,
+      "static_anchor_score": 0,
+      "mmio_bonus": 0,
+      "combined_score": 370,
+      "repeat_blocks": 63,
+      "longest_run": 61,
+      "evidence": [
+        "dominant_loop_function"
+      ]
+    },
+    {
+      "function": "uart_stdio_write",
+      "dynamic_score": 5,
+      "static_anchor_score": 268,
+      "mmio_bonus": 0,
+      "combined_score": 278,
+      "repeat_blocks": 3,
+      "longest_run": 1,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=268"
+      ]
+    },
+    {
+      "function": "uart_init",
+      "dynamic_score": 0,
+      "static_anchor_score": 215,
+      "mmio_bonus": 0,
+      "combined_score": 215,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=215"
+      ]
+    },
+    {
+      "function": "gpio_init_port",
+      "dynamic_score": 107,
+      "static_anchor_score": 0,
+      "mmio_bonus": 0,
+      "combined_score": 214,
+      "repeat_blocks": 23,
+      "longest_run": 2,
+      "evidence": [
+        "last_pc_in_function",
+        "dominant_loop_function"
+      ]
+    },
+    {
+      "function": "_rtc_handler",
+      "dynamic_score": 0,
+      "static_anchor_score": 187,
+      "mmio_bonus": 0,
+      "combined_score": 187,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=187",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "bit_set32",
+      "dynamic_score": 84,
+      "static_anchor_score": 0,
+      "mmio_bonus": 0,
+      "combined_score": 168,
+      "repeat_blocks": 62,
+      "longest_run": 11,
+      "evidence": [
+        "dominant_loop_function"
+      ]
+    },
+    {
+      "function": "NVIC_EnableIRQ",
+      "dynamic_score": 12,
+      "static_anchor_score": 117,
+      "mmio_bonus": 0,
+      "combined_score": 141,
+      "repeat_blocks": 4,
+      "longest_run": 4,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=117"
+      ]
+    },
+    {
+      "function": "sched_set_status",
+      "dynamic_score": 0,
+      "static_anchor_score": 134,
+      "mmio_bonus": 0,
+      "combined_score": 134,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=134",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "sched_run",
+      "dynamic_score": 0,
+      "static_anchor_score": 126,
+      "mmio_bonus": 0,
+      "combined_score": 126,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=126",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "std.isra.0",
+      "dynamic_score": 0,
+      "static_anchor_score": 115,
+      "mmio_bonus": 0,
+      "combined_score": 115,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=115",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    }
+  ],
+  "likely_blocking_offsets": [
+    "0x00000004",
+    "0x00000007"
+  ],
+  "likely_blocking_registers": [
+    {
+      "peripheral": "UART0",
+      "register": "S1",
+      "absoluteAddress_hex": "0x4006A004",
+      "addressOffset_hex": "0x00000004"
+    },
+    {
+      "peripheral": "UART0",
+      "register": "D",
+      "absoluteAddress_hex": "0x4006A007",
+      "addressOffset_hex": "0x00000007"
+    }
+  ],
+  "trace_divergence": null,
+  "still_ambiguous": false
+}

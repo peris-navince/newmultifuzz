@@ -22,8 +22,13 @@ workdir/
 *.tar
 *.tar.gz
 *.7z
-tools/ghidra/
 
 # optional: local binaries / test artifacts
 *.bin
-*.elf
+
+hail-fuzz/workdir/
+extractor/__pycache__/
+extractor/.shared_pdf_svd_cache/
+extractor/.shared_query_cache/
+manual_seeds_console/
+manual_runs_console/

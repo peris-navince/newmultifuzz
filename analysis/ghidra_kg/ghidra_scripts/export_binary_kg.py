@@ -540,6 +540,230 @@ def resolve_const_varnode(vn, depth=0, seen=None, trace=None):
     return None
 
 
+def _best_symbolic_name(vn, defop=None):
+    if vn is None:
+        return None
+    try:
+        high = vn.getHigh()
+        if high is not None:
+            nm = safe_str(high.getName())
+            if nm and nm != 'null':
+                return nm
+    except Exception:
+        pass
+    try:
+        if defop is not None:
+            m = safe_str(defop.getMnemonic())
+            if m:
+                return m + '(' + safe_str(vn) + ')'
+    except Exception:
+        pass
+    try:
+        return safe_str(vn)
+    except Exception:
+        return None
+
+
+def make_addr_expr(absolute=None, base_expr=None, offset=0, notes=None):
+    return {
+        'absolute': absolute,
+        'base_expr': base_expr,
+        'offset': int(offset or 0),
+        'notes': list(notes or []),
+    }
+
+
+def add_offset_to_expr(expr, delta):
+    if expr is None:
+        return None
+    out = dict(expr)
+    if out.get('absolute') is not None:
+        out['absolute'] = (int(out['absolute']) + int(delta)) & 0xFFFFFFFF
+    else:
+        out['offset'] = int(out.get('offset') or 0) + int(delta)
+    return out
+
+
+def combine_add_expr(a, b):
+    if a is None or b is None:
+        return None
+    a_abs = a.get('absolute')
+    b_abs = b.get('absolute')
+    a_base = a.get('base_expr')
+    b_base = b.get('base_expr')
+    a_off = int(a.get('offset') or 0)
+    b_off = int(b.get('offset') or 0)
+
+    if a_abs is not None and b_abs is not None and a_base is None and b_base is None:
+        return make_addr_expr(absolute=((int(a_abs) + int(b_abs)) & 0xFFFFFFFF), notes=a.get('notes', []) + b.get('notes', []))
+
+    if a_base is not None and b_base is None and b_abs is not None:
+        return make_addr_expr(base_expr=a_base, offset=a_off + int(b_abs) + b_off, notes=a.get('notes', []) + b.get('notes', []))
+
+    if b_base is not None and a_base is None and a_abs is not None:
+        return make_addr_expr(base_expr=b_base, offset=b_off + int(a_abs) + a_off, notes=a.get('notes', []) + b.get('notes', []))
+
+    if a_base is not None and b_base is None and b_abs is None and b_off != 0:
+        return make_addr_expr(base_expr=a_base, offset=a_off + b_off, notes=a.get('notes', []) + b.get('notes', []))
+
+    if b_base is not None and a_base is None and a_abs is None and a_off != 0:
+        return make_addr_expr(base_expr=b_base, offset=b_off + a_off, notes=a.get('notes', []) + b.get('notes', []))
+
+    return None
+
+
+def combine_sub_expr(a, b):
+    if a is None or b is None:
+        return None
+    a_abs = a.get('absolute')
+    b_abs = b.get('absolute')
+    a_base = a.get('base_expr')
+    b_base = b.get('base_expr')
+    a_off = int(a.get('offset') or 0)
+    b_off = int(b.get('offset') or 0)
+
+    if a_abs is not None and b_abs is not None and a_base is None and b_base is None:
+        return make_addr_expr(absolute=((int(a_abs) - int(b_abs)) & 0xFFFFFFFF), notes=a.get('notes', []) + b.get('notes', []))
+
+    if a_base is not None and b_base is None and b_abs is not None:
+        return make_addr_expr(base_expr=a_base, offset=a_off - (int(b_abs) + b_off), notes=a.get('notes', []) + b.get('notes', []))
+
+    return None
+
+
+def resolve_addr_expr(vn, depth=0, seen=None, trace=None):
+    if vn is None or depth > 12:
+        if trace is not None:
+            limit_append(trace, {'depth': depth, 'event': 'addr-expr-stop', 'reason': 'none-or-depth'}, 60)
+        return None
+
+    if seen is None:
+        seen = set()
+
+    try:
+        key = (safe_str(vn.getAddress()), int(vn.getOffset()), int(vn.getSize()))
+    except Exception:
+        key = ('id', id(vn))
+    if key in seen:
+        if trace is not None:
+            limit_append(trace, {'depth': depth, 'event': 'addr-expr-cycle', 'varnode': describe_varnode(vn)}, 60)
+        return None
+    seen.add(key)
+
+    try:
+        if vn.isConstant():
+            val = int(vn.getOffset())
+            if trace is not None:
+                limit_append(trace, {'depth': depth, 'event': 'addr-expr-constant', 'value_hex': fmt_hex(val)}, 60)
+            return make_addr_expr(absolute=val)
+    except Exception:
+        pass
+
+    direct_addr = try_direct_varnode_address(vn, trace=trace)
+    if direct_addr is not None:
+        return make_addr_expr(absolute=direct_addr)
+
+    try:
+        defop = vn.getDef()
+    except Exception:
+        defop = None
+
+    if defop is None:
+        base_name = _best_symbolic_name(vn, None)
+        if trace is not None:
+            limit_append(trace, {'depth': depth, 'event': 'addr-expr-symbolic-leaf', 'base_expr': base_name}, 60)
+        return make_addr_expr(base_expr=base_name, offset=0, notes=['symbolic_leaf'])
+
+    opc = defop.getOpcode()
+    try:
+        mnemonic = defop.getMnemonic()
+    except Exception:
+        mnemonic = str(opc)
+    if trace is not None:
+        limit_append(trace, {'depth': depth, 'event': 'addr-expr-def', 'opcode': safe_str(mnemonic), 'op': safe_str(defop)}, 60)
+
+    def child(i):
+        try:
+            return resolve_addr_expr(defop.getInput(i), depth + 1, seen, trace)
+        except Exception:
+            return None
+
+    # pass-through / cast-like
+    if opc in (PcodeOp.COPY, PcodeOp.CAST, PcodeOp.INT_ZEXT, PcodeOp.INT_SEXT, PcodeOp.SUBPIECE):
+        return child(0)
+
+    if opc in (PcodeOp.INT_ADD, PcodeOp.PTRSUB):
+        return combine_add_expr(child(0), child(1))
+
+    if opc == PcodeOp.INT_SUB:
+        return combine_sub_expr(child(0), child(1))
+
+    if opc == PcodeOp.PTRADD:
+        base = child(0)
+        idx = resolve_const_varnode(defop.getInput(1), depth + 1, set(seen), trace)
+        stride = resolve_const_varnode(defop.getInput(2), depth + 1, set(seen), trace)
+        if base is not None and idx is not None and stride is not None:
+            return add_offset_to_expr(base, int(idx) * int(stride))
+        return base
+
+    if opc == PcodeOp.MULTIEQUAL:
+        vals = []
+        for i in range(defop.getNumInputs()):
+            v = child(i)
+            if v is None:
+                return None
+            vals.append(json.dumps({'a': v.get('absolute'), 'b': v.get('base_expr'), 'o': v.get('offset')}, sort_keys=True))
+        if vals and len(set(vals)) == 1:
+            return child(0)
+        return None
+
+    if opc == PcodeOp.INDIRECT:
+        base_name = _best_symbolic_name(vn, defop)
+        return make_addr_expr(base_expr=base_name, offset=0, notes=['indirect'])
+
+    if opc == PcodeOp.LOAD:
+        # Loading a pointer from memory/table often yields the runtime peripheral base.
+        base_name = _best_symbolic_name(vn, defop)
+        return make_addr_expr(base_expr=base_name, offset=0, notes=['loaded_pointer'])
+
+    base_name = _best_symbolic_name(vn, defop)
+    return make_addr_expr(base_expr=base_name, offset=0, notes=['fallback_symbolic'])
+
+
+def infer_access_width_bits(op):
+    try:
+        if op.getOpcode() == PcodeOp.LOAD:
+            out = op.getOutput()
+            if out is not None:
+                return int(out.getSize()) * 8
+        if op.getOpcode() == PcodeOp.STORE:
+            data_vn = op.getInput(2)
+            if data_vn is not None:
+                return int(data_vn.getSize()) * 8
+    except Exception:
+        pass
+    return None
+
+
+def classify_relative_candidate(expr, max_abs_offset=0x1000):
+    if expr is None:
+        return None
+    if expr.get('absolute') is not None:
+        return None
+    base_expr = expr.get('base_expr')
+    if not base_expr:
+        return None
+    offset = int(expr.get('offset') or 0)
+    if abs(offset) > max_abs_offset:
+        return None
+    return {
+        'base_expr': base_expr,
+        'offset': offset,
+        'offset_hex': fmt_hex(offset & 0xFFFFFFFF),
+        'notes': list(expr.get('notes') or []),
+    }
+
+
 class MMIOCollector(object):
     def __init__(self, listing, ref_manager):
         self.listing = listing
@@ -557,6 +781,8 @@ class MMIOCollector(object):
             "mmio_address_counter": Counter(),
             "sample_mmio_hits": [],
             "sample_unresolved_ssa": [],
+            "sample_relative_hits": [],
+            "relative_offset_counter": Counter(),
             "log_lines": [],
         }
 
@@ -614,6 +840,57 @@ class MMIOCollector(object):
             })
         return True
 
+    def _get_or_create_relative_hit(self, hit_map, insn_addr, insn_text, kind, base_expr, offset):
+        key = (insn_addr, kind, safe_str(base_expr), int(offset))
+        if key not in hit_map:
+            hit_map[key] = {
+                "instruction_address": insn_addr,
+                "instruction_text": insn_text,
+                "kind": kind,
+                "base_expr": safe_str(base_expr),
+                "offset": int(offset),
+                "offset_hex": fmt_hex(int(offset) & 0xFFFFFFFF),
+                "evidence": [],
+            }
+        return hit_map[key]
+
+    def _add_relative_evidence(self, relative_hit_map, func_debug, insn_addr, insn_text, kind,
+                               base_expr, offset, source, confidence, resolver, extra=None):
+        if base_expr is None:
+            return False
+        item = self._get_or_create_relative_hit(relative_hit_map, insn_addr, insn_text, kind, base_expr, offset)
+        ev_key = (source, resolver, safe_str(base_expr), int(offset))
+        seen = item.setdefault("_seen_evidence", set())
+        if ev_key in seen:
+            return False
+        seen.add(ev_key)
+
+        ev = {
+            "source": source,
+            "confidence": confidence,
+            "resolver": resolver,
+        }
+        if extra:
+            for k, v in extra.items():
+                if v is not None:
+                    ev[k] = v
+        item["evidence"].append(ev)
+
+        self.aggregate_debug["access_sources"][source] += 1
+        self.aggregate_debug["relative_offset_counter"][fmt_hex(int(offset) & 0xFFFFFFFF)] += 1
+        if len(self.aggregate_debug["sample_relative_hits"]) < 20:
+            self.aggregate_debug["sample_relative_hits"].append({
+                "function": func_debug["name"],
+                "instruction_address": insn_addr,
+                "instruction_text": insn_text,
+                "kind": kind,
+                "base_expr": safe_str(base_expr),
+                "offset_hex": fmt_hex(int(offset) & 0xFFFFFFFF),
+                "source": source,
+                "resolver": resolver,
+            })
+        return True
+
     def collect_from_references(self, func, hit_map, func_debug):
         stats = func_debug["reference"]
         it = self.listing.getInstructions(func.getBody(), True)
@@ -656,7 +933,7 @@ class MMIOCollector(object):
                 ):
                     stats["hits_added"] += 1
 
-    def collect_from_highfunction_ssa(self, func, high_func, hit_map, func_debug):
+    def collect_from_highfunction_ssa(self, func, high_func, hit_map, relative_hit_map, func_debug):
         stats = func_debug["ssa"]
         if high_func is None:
             stats["skipped_no_high_function"] += 1
@@ -700,6 +977,40 @@ class MMIOCollector(object):
             trace = []
             addr_val = resolve_const_varnode(addr_vn, trace=trace)
             if addr_val is None:
+                expr = resolve_addr_expr(addr_vn, trace=list(trace))
+                rel = classify_relative_candidate(expr)
+                if rel is not None:
+                    stats["relative_addr_resolved"] += 1
+                    extra = {
+                        "pcode_op": safe_str(op),
+                        "pcode_opcode": safe_str(op.getMnemonic()),
+                        "width_bits": infer_access_width_bits(op),
+                        "notes": rel.get("notes"),
+                    }
+                    if self._add_relative_evidence(
+                        relative_hit_map=relative_hit_map,
+                        func_debug=func_debug,
+                        insn_addr=insn_addr,
+                        insn_text=insn_text,
+                        kind=kind,
+                        base_expr=rel.get("base_expr"),
+                        offset=rel.get("offset"),
+                        source="pcode_relative",
+                        confidence="medium",
+                        resolver="highfunction_relative_addr_expr",
+                        extra=extra,
+                    ):
+                        stats["relative_hits_added"] += 1
+                        limit_append(stats["resolved_relative_samples"], {
+                            "instruction_address": insn_addr,
+                            "instruction_text": insn_text,
+                            "opcode": safe_str(op.getMnemonic()),
+                            "base_expr": rel.get("base_expr"),
+                            "offset_hex": rel.get("offset_hex"),
+                            "trace": trace[:10],
+                        }, 12)
+                    continue
+
                 category = classify_non_mmio_unresolved(addr_vn)
                 if category:
                     stats["pruned_" + category] += 1
@@ -806,6 +1117,15 @@ class MMIOCollector(object):
         out.sort(key=lambda x: (x.get("instruction_address") or "", x.get("address") or 0, x.get("kind") or ""))
         return out
 
+    def finalize_relative_hits(self, hit_map):
+        out = []
+        for item in hit_map.values():
+            item.pop("_seen_evidence", None)
+            item["sources"] = sorted(list(set(ev.get("source") for ev in item.get("evidence", []) if ev.get("source"))))
+            out.append(item)
+        out.sort(key=lambda x: (x.get("instruction_address") or "", x.get("base_expr") or "", x.get("offset") or 0, x.get("kind") or ""))
+        return out
+
     def aggregate_function_debug(self, func_debug):
         self.aggregate_debug["functions_processed"] += 1
         if func_debug["decompile"]["completed"]:
@@ -813,12 +1133,14 @@ class MMIOCollector(object):
         else:
             self.aggregate_debug["decompile_failure"] += 1
 
-        if func_debug["mmio_summary"]["unique_accesses"] > 0:
+        if func_debug["mmio_summary"]["unique_accesses"] > 0 or func_debug["mmio_summary"].get("unique_relative_accesses", 0) > 0:
             self.aggregate_debug["functions_with_mmio"] += 1
             limit_append(self.aggregate_debug["top_mmio_functions"], {
                 "name": func_debug["name"],
                 "unique_accesses": func_debug["mmio_summary"]["unique_accesses"],
+                "unique_relative_accesses": func_debug["mmio_summary"].get("unique_relative_accesses", 0),
                 "sources": func_debug["mmio_summary"]["sources"],
+                "relative_sources": func_debug["mmio_summary"].get("relative_sources", {}),
             }, 40)
 
         for domain in ("reference", "ssa", "fallback"):
@@ -827,12 +1149,14 @@ class MMIOCollector(object):
                     self.aggregate_debug[domain][k] += v
 
         self.log(
-            "[DEBUG][mmio] func=%s refs_added=%d ssa_added=%d fallback_added=%d unique=%d resolved_ssa=%d unresolved_ssa=%d" % (
+            "[DEBUG][mmio] func=%s refs_added=%d ssa_added=%d rel_added=%d fallback_added=%d unique=%d unique_rel=%d resolved_ssa=%d unresolved_ssa=%d" % (
                 func_debug["name"],
                 func_debug["reference"].get("hits_added", 0),
                 func_debug["ssa"].get("hits_added", 0),
+                func_debug["ssa"].get("relative_hits_added", 0),
                 func_debug["fallback"].get("hits_added", 0),
                 func_debug["mmio_summary"].get("unique_accesses", 0),
+                func_debug["mmio_summary"].get("unique_relative_accesses", 0),
                 func_debug["ssa"].get("addr_resolved", 0),
                 func_debug["ssa"].get("addr_unresolved", 0),
             )
@@ -885,6 +1209,7 @@ def make_default_func_debug(func):
     ssa_stats = defaultdict(int)
     ssa_stats["unresolved_samples"] = []
     ssa_stats["resolved_mmio_samples"] = []
+    ssa_stats["resolved_relative_samples"] = []
     reference_stats = defaultdict(int)
     fallback_stats = defaultdict(int)
     return {
@@ -977,6 +1302,7 @@ def main():
                 func_debug["decompile"]["high_function_available"] = bool(decomp["high_function"] is not None)
 
                 hit_map = {}
+                relative_hit_map = {}
 
                 try:
                     collector.collect_from_references(func, hit_map, func_debug)
@@ -985,7 +1311,7 @@ def main():
                     collector.log("[DEBUG][stage-error] func=%s stage=reference error=%s" % (func.getName(), safe_str(e)))
 
                 try:
-                    collector.collect_from_highfunction_ssa(func, decomp["high_function"], hit_map, func_debug)
+                    collector.collect_from_highfunction_ssa(func, decomp["high_function"], hit_map, relative_hit_map, func_debug)
                 except Exception as e:
                     func_debug["stage_errors"]["ssa"] = safe_str(e)
                     collector.log("[DEBUG][stage-error] func=%s stage=ssa error=%s" % (func.getName(), safe_str(e)))
@@ -997,6 +1323,7 @@ def main():
                     collector.log("[DEBUG][stage-error] func=%s stage=fallback error=%s" % (func.getName(), safe_str(e)))
 
                 mmio_accesses = collector.finalize_hits(hit_map)
+                relative_mmio_accesses = collector.finalize_relative_hits(relative_hit_map)
 
                 source_counter = Counter()
                 for item in mmio_accesses:
@@ -1004,9 +1331,17 @@ def main():
                         src = ev.get("source")
                         if src:
                             source_counter[src] += 1
+                relative_source_counter = Counter()
+                for item in relative_mmio_accesses:
+                    for ev in item.get("evidence", []):
+                        src = ev.get("source")
+                        if src:
+                            relative_source_counter[src] += 1
 
                 func_debug["mmio_summary"]["unique_accesses"] = len(mmio_accesses)
                 func_debug["mmio_summary"]["sources"] = dict(source_counter)
+                func_debug["mmio_summary"]["unique_relative_accesses"] = len(relative_mmio_accesses)
+                func_debug["mmio_summary"]["relative_sources"] = dict(relative_source_counter)
 
                 entry = func.getEntryPoint()
                 item = {
@@ -1018,6 +1353,7 @@ def main():
                     "calls": collect_calls(func),
                     "disassembly": collect_disassembly(func, 120),
                     "mmio_accesses": mmio_accesses,
+                    "relative_mmio_accesses": relative_mmio_accesses,
                     "decompile": decomp["c"],
                 }
                 out["functions"].append(item)
@@ -1043,6 +1379,7 @@ def main():
                     "calls": collect_calls(func),
                     "disassembly": collect_disassembly(func, 120),
                     "mmio_accesses": [],
+                    "relative_mmio_accesses": [],
                     "decompile": "",
                 })
 
@@ -1077,6 +1414,7 @@ def main():
     collector.aggregate_debug["fallback"] = dict(collector.aggregate_debug["fallback"])
     collector.aggregate_debug["access_sources"] = dict(collector.aggregate_debug["access_sources"])
     collector.aggregate_debug["mmio_address_counter"] = dict(collector.aggregate_debug["mmio_address_counter"].most_common(50))
+    collector.aggregate_debug["relative_offset_counter"] = dict(collector.aggregate_debug["relative_offset_counter"].most_common(50))
     debug_out["aggregate"] = collector.aggregate_debug
 
     write_json(out_json, out)

@@ -1,0 +1,359 @@
+{
+  "schema": "stuck_report_v2",
+  "seed_path": "/home/MultiFuzz/workdir/manual_rtc_probe_t4_20.guidance.json",
+  "stop_reason": "unknown",
+  "trace_event_count": 18895,
+  "tail_window": 256,
+  "selected_exec_index": 163,
+  "last_pc": "0x00001636",
+  "last_pc_function": "__swhatbuf_r",
+  "dominant_loop_functions": [
+    {
+      "function": "core_panic",
+      "repeat_blocks": 139,
+      "repeat_edges": 6,
+      "longest_run": 139,
+      "loop_score": 417
+    },
+    {
+      "function": "rtt_poweroff",
+      "repeat_blocks": 20,
+      "repeat_edges": 6,
+      "longest_run": 14,
+      "loop_score": 48
+    },
+    {
+      "function": "_rtc_usage",
+      "repeat_blocks": 18,
+      "repeat_edges": 6,
+      "longest_run": 14,
+      "loop_score": 46
+    },
+    {
+      "function": "__smakebuf_r",
+      "repeat_blocks": 11,
+      "repeat_edges": 6,
+      "longest_run": 11,
+      "loop_score": 33
+    },
+    {
+      "function": "__swhatbuf_r",
+      "repeat_blocks": 10,
+      "repeat_edges": 6,
+      "longest_run": 7,
+      "loop_score": 24
+    },
+    {
+      "function": "_lseek_r",
+      "repeat_blocks": 10,
+      "repeat_edges": 6,
+      "longest_run": 10,
+      "loop_score": 30
+    },
+    {
+      "function": "periph_init",
+      "repeat_blocks": 8,
+      "repeat_edges": 6,
+      "longest_run": 3,
+      "loop_score": 14
+    },
+    {
+      "function": "puts",
+      "repeat_blocks": 7,
+      "repeat_edges": 6,
+      "longest_run": 6,
+      "loop_score": 19
+    },
+    {
+      "function": "isr_porte",
+      "repeat_blocks": 6,
+      "repeat_edges": 6,
+      "longest_run": 6,
+      "loop_score": 18
+    },
+    {
+      "function": "mktime",
+      "repeat_blocks": 5,
+      "repeat_edges": 6,
+      "longest_run": 3,
+      "loop_score": 11
+    },
+    {
+      "function": "sched_run",
+      "repeat_blocks": 5,
+      "repeat_edges": 6,
+      "longest_run": 4,
+      "loop_score": 13
+    },
+    {
+      "function": "context_restore",
+      "repeat_blocks": 3,
+      "repeat_edges": 6,
+      "longest_run": 1,
+      "loop_score": 5
+    }
+  ],
+  "dominant_loop_blocks": [
+    {
+      "block": "idle_thread at /home/bo/test/RIOT/core/kernel_init.c:67:0",
+      "count": 139
+    },
+    {
+      "block": "__sputc_r at /home/bo/iot/toolchains/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/stdio.h:689:0",
+      "count": 4
+    },
+    {
+      "block": "tsrb_get at /home/bo/test/RIOT/sys/tsrb/tsrb.c:45:0",
+      "count": 3
+    },
+    {
+      "block": "__sputc_r at /home/bo/iot/toolchains/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/stdio.h:690:0",
+      "count": 2
+    },
+    {
+      "block": "__sputc_r at /home/bo/iot/toolchains/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/stdio.h:693:0",
+      "count": 2
+    },
+    {
+      "block": "_putchar at /home/bo/test/RIOT/sys/shell/shell.c:41:0",
+      "count": 2
+    },
+    {
+      "block": "uart_write at /home/bo/test/RIOT/cpu/kinetis/periph/uart.c:240:0",
+      "count": 2
+    },
+    {
+      "block": "uart_write at /home/bo/test/RIOT/cpu/kinetis/periph/uart.c:241:0",
+      "count": 2
+    },
+    {
+      "block": "readline at /home/bo/test/RIOT/sys/shell/shell.c:229:0",
+      "count": 2
+    },
+    {
+      "block": "isrpipe_read at /home/bo/test/RIOT/sys/isrpipe/isrpipe.c:47:0",
+      "count": 2
+    },
+    {
+      "block": "isr_svc at /home/bo/test/RIOT/cpu/cortexm_common/thread_arch.c:334:0",
+      "count": 2
+    },
+    {
+      "block": "print_prompt at /home/bo/test/RIOT/sys/shell/shell.c:275:0",
+      "count": 1
+    }
+  ],
+  "tail_mmio": {
+    "addresses": [
+      {
+        "address_hex": "0x4006A004",
+        "count": 201
+      },
+      {
+        "address_hex": "0x4006A007",
+        "count": 7
+      },
+      {
+        "address_hex": "0x40064006",
+        "count": 7
+      },
+      {
+        "address_hex": "0x40064000",
+        "count": 5
+      },
+      {
+        "address_hex": "0x4006A003",
+        "count": 4
+      },
+      {
+        "address_hex": "0x4006A010",
+        "count": 4
+      },
+      {
+        "address_hex": "0x400FF054",
+        "count": 3
+      },
+      {
+        "address_hex": "0x4004D068",
+        "count": 2
+      },
+      {
+        "address_hex": "0x400FF114",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4004A054",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4004A040",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4004A044",
+        "count": 2
+      }
+    ],
+    "offsets": []
+  },
+  "candidate_stuck_functions": [
+    {
+      "function": "core_panic",
+      "dynamic_score": 417,
+      "static_anchor_score": 31,
+      "mmio_bonus": 0,
+      "combined_score": 865,
+      "repeat_blocks": 139,
+      "longest_run": 139,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=31"
+      ]
+    },
+    {
+      "function": "rtt_poweroff",
+      "dynamic_score": 48,
+      "static_anchor_score": 578,
+      "mmio_bonus": 0,
+      "combined_score": 674,
+      "repeat_blocks": 20,
+      "longest_run": 14,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=578",
+        "hot_abs_addresses=['0x4003D014', '0x4003D014']"
+      ]
+    },
+    {
+      "function": "_rtc_usage",
+      "dynamic_score": 46,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 304,
+      "repeat_blocks": 18,
+      "longest_run": 14,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_handler",
+      "dynamic_score": 0,
+      "static_anchor_score": 264,
+      "mmio_bonus": 0,
+      "combined_score": 264,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=264"
+      ]
+    },
+    {
+      "function": "_rtc_settime",
+      "dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_setalarm",
+      "dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_gettime",
+      "dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_getalarm",
+      "dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_lseek_r",
+      "dynamic_score": 30,
+      "static_anchor_score": 142,
+      "mmio_bonus": 0,
+      "combined_score": 202,
+      "repeat_blocks": 10,
+      "longest_run": 10,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=142",
+        "rel_hot_offsets=['0x00000000']"
+      ]
+    },
+    {
+      "function": "sched_run",
+      "dynamic_score": 13,
+      "static_anchor_score": 118,
+      "mmio_bonus": 0,
+      "combined_score": 144,
+      "repeat_blocks": 5,
+      "longest_run": 4,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=118",
+        "rel_hot_offsets=['0x00000000']"
+      ]
+    },
+    {
+      "function": "_fstat_r",
+      "dynamic_score": 0,
+      "static_anchor_score": 142,
+      "mmio_bonus": 0,
+      "combined_score": 142,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=142",
+        "rel_hot_offsets=['0x00000000']"
+      ]
+    },
+    {
+      "function": "_strtol_l.isra.0",
+      "dynamic_score": 0,
+      "static_anchor_score": 127,
+      "mmio_bonus": 0,
+      "combined_score": 127,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=127",
+        "rel_hot_offsets=['0x00000000']"
+      ]
+    }
+  ],
+  "likely_blocking_offsets": [],
+  "likely_blocking_registers": [],
+  "trace_divergence": null,
+  "still_ambiguous": false
+}

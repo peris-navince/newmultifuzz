@@ -21,6 +21,7 @@ mod strategy_runtime;
 
 use std::{
     any::Any,
+    collections::VecDeque,
     path::{Path, PathBuf},
     sync::Arc,
     time::Duration,
@@ -138,6 +139,374 @@ struct FixedSweepSummary {
     results: Vec<FixedSweepCandidateResult>,
 }
 
+
+
+
+#[derive(Debug, Clone, Serialize)]
+struct ExecTraceEventRow {
+    step: u64,
+    event_type: String,
+    pc: Option<String>,
+    sp: Option<String>,
+    icount: Option<u64>,
+    fuzz_offset: Option<u32>,
+    last_read: Option<String>,
+    last_value: Option<String>,
+    function: Option<String>,
+    block: Option<String>,
+    mmio_addr: Option<String>,
+    mmio_value: Option<String>,
+    mmio_size: Option<u8>,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct ExecTraceRecord {
+    exec_index: u64,
+    input_id: Option<u64>,
+    stage: String,
+    exit: String,
+    exit_pc: String,
+    instructions: u64,
+    event_count: usize,
+    block_event_count: usize,
+    mmio_read_count: usize,
+    events: Vec<ExecTraceEventRow>,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct ExecTraceMeta {
+    schema: String,
+    workdir: String,
+    track_path_forced: bool,
+    total_recorded_execs: usize,
+    max_execs_kept: usize,
+    max_blocks_per_exec: usize,
+    trace_json: Option<String>,
+    trace_text: Option<String>,
+    latest_exec_index: Option<u64>,
+    latest_event_count: usize,
+    latest_block_event_count: usize,
+    latest_mmio_read_count: usize,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct ExecTraceFile {
+    schema: String,
+    workdir: String,
+    total_recorded_execs: usize,
+    latest_exec: Option<ExecTraceRecord>,
+    recent_execs: Vec<ExecTraceRecord>,
+    events: Vec<ExecTraceEventRow>,
+}
+
+struct SessionTraceRecorder {
+    json_out: Option<PathBuf>,
+    text_out: Option<PathBuf>,
+    meta_out: Option<PathBuf>,
+    workdir: PathBuf,
+    max_execs: usize,
+    max_blocks: usize,
+    symbolize: bool,
+    track_path_forced: bool,
+    total_recorded_execs: usize,
+    recent_execs: VecDeque<ExecTraceRecord>,
+}
+
+impl SessionTraceRecorder {
+    fn trace_requested_from_env() -> bool {
+        Self::first_env_path(&[
+            "MF_EXEC_TRACE_OUT",
+            "MF_TRACE_OUT",
+            "MF_RUNTIME_TRACE_OUT",
+            "MF_EXEC_TRACE_TEXT_OUT",
+            "MF_TRACE_TEXT_OUT",
+            "MF_RUNTIME_TRACE_TEXT_OUT",
+            "MF_EXEC_TRACE_META_OUT",
+            "MF_TRACE_META_OUT",
+            "MF_RUNTIME_TRACE_META_OUT",
+        ])
+        .is_some()
+    }
+
+    fn first_env_path(keys: &[&str]) -> Option<PathBuf> {
+        for key in keys {
+            if let Some(value) = std::env::var_os(key) {
+                if !value.is_empty() {
+                    let path = PathBuf::from(value);
+                    if !path.as_os_str().is_empty() {
+                        return Some(path);
+                    }
+                }
+            }
+        }
+        None
+    }
+
+    fn parse_usize_env(keys: &[&str], default: usize) -> usize {
+        for key in keys {
+            if let Ok(v) = std::env::var(key) {
+                if let Ok(parsed) = v.trim().parse::<usize>() {
+                    return parsed;
+                }
+            }
+        }
+        default
+    }
+
+    fn parse_bool_env(keys: &[&str], default: bool) -> bool {
+        for key in keys {
+            if let Ok(v) = std::env::var(key) {
+                match v.trim().to_ascii_lowercase().as_str() {
+                    "1" | "true" | "yes" | "y" | "on" => return true,
+                    "0" | "false" | "no" | "n" | "off" => return false,
+                    _ => {}
+                }
+            }
+        }
+        default
+    }
+
+    fn from_env(workdir: &Path) -> Option<Self> {
+        if !Self::trace_requested_from_env() {
+            return None;
+        }
+
+        let json_out = Self::first_env_path(&["MF_EXEC_TRACE_OUT", "MF_TRACE_OUT", "MF_RUNTIME_TRACE_OUT"])
+            .or_else(|| Some(workdir.join("replay_trace.json")));
+        let text_out = Self::first_env_path(&[
+            "MF_EXEC_TRACE_TEXT_OUT",
+            "MF_TRACE_TEXT_OUT",
+            "MF_RUNTIME_TRACE_TEXT_OUT",
+        ])
+        .or_else(|| Some(workdir.join("replay_trace.log")));
+        let meta_out = Self::first_env_path(&[
+            "MF_EXEC_TRACE_META_OUT",
+            "MF_TRACE_META_OUT",
+            "MF_RUNTIME_TRACE_META_OUT",
+        ])
+        .or_else(|| Some(workdir.join("replay_trace.meta.json")));
+
+        Some(Self {
+            json_out,
+            text_out,
+            meta_out,
+            workdir: workdir.to_path_buf(),
+            max_execs: Self::parse_usize_env(&["MF_TRACE_MAX_EXECS", "MF_EXEC_TRACE_MAX_EXECS"], 8).max(1),
+            max_blocks: Self::parse_usize_env(&["MF_TRACE_MAX_BLOCKS", "MF_EXEC_TRACE_MAX_BLOCKS"], 4096).max(64),
+            symbolize: Self::parse_bool_env(&["MF_TRACE_SYMBOLIZE", "MF_EXEC_TRACE_SYMBOLIZE"], true),
+            track_path_forced: Self::parse_bool_env(&["MF_TRACE_TRACK_PATH_FORCED"], false),
+            total_recorded_execs: 0,
+            recent_execs: VecDeque::new(),
+        })
+    }
+
+    fn maybe_symbolize(vm: &mut Vm, pc: u64) -> (Option<String>, Option<String>) {
+        let location = vm
+            .env
+            .symbolize_addr(&mut vm.cpu, pc)
+            .unwrap_or(icicle_vm::cpu::debug_info::SourceLocation::default());
+        let rendered = format!("{location}").trim().to_string();
+        if rendered.is_empty() {
+            return (None, None);
+        }
+        let mut func = rendered
+            .split_whitespace()
+            .next()
+            .unwrap_or("")
+            .split('+')
+            .next()
+            .unwrap_or("")
+            .trim_matches(|c: char| matches!(c, '[' | ']' | '(' | ')' | ','))
+            .to_string();
+        if func.is_empty() || func.starts_with("0x") {
+            func.clear();
+        }
+        (if func.is_empty() { None } else { Some(func) }, Some(rendered))
+    }
+
+    fn ensure_parent(path: &Path) {
+        if let Some(parent) = path.parent() {
+            let _ = std::fs::create_dir_all(parent);
+        }
+    }
+
+    fn record_execution(
+        &mut self,
+        vm: &mut Vm,
+        tracer: PathTracerRef,
+        exec_index: u64,
+        input_id: Option<usize>,
+        stage: Stage,
+        exit: VmExit,
+        exit_pc: u64,
+        instructions: u64,
+    ) {
+        let blocks = tracer.get_last_blocks(vm);
+        let mmio_reads = tracer.get_mmio_reads(vm);
+
+        let total_blocks = blocks.len();
+        let keep_from = total_blocks.saturating_sub(self.max_blocks);
+        let trimmed_blocks = &blocks[keep_from..];
+
+        let mut events = Vec::with_capacity(trimmed_blocks.len() + mmio_reads.len());
+        let mut step = 0u64;
+        for entry in trimmed_blocks {
+            let (function, block) = if self.symbolize {
+                Self::maybe_symbolize(vm, entry.pc)
+            } else {
+                (None, None)
+            };
+            events.push(ExecTraceEventRow {
+                step,
+                event_type: "exec".to_string(),
+                pc: Some(format!("0x{:08X}", entry.pc)),
+                sp: Some(format!("0x{:08X}", entry.sp)),
+                icount: Some(entry.icount),
+                fuzz_offset: Some(entry.fuzz_offset),
+                last_read: Some(format!("0x{:08X}", entry.last_read)),
+                last_value: Some(format!("0x{:08X}", entry.last_value)),
+                function,
+                block,
+                mmio_addr: None,
+                mmio_value: None,
+                mmio_size: None,
+            });
+            step += 1;
+        }
+
+        for &(addr, value, size) in &mmio_reads {
+            events.push(ExecTraceEventRow {
+                step,
+                event_type: "mmio_read".to_string(),
+                pc: None,
+                sp: None,
+                icount: None,
+                fuzz_offset: None,
+                last_read: None,
+                last_value: None,
+                function: None,
+                block: None,
+                mmio_addr: Some(format!("0x{:08X}", addr)),
+                mmio_value: Some(format!("0x{:X}", value)),
+                mmio_size: Some(size),
+            });
+            step += 1;
+        }
+
+        let record = ExecTraceRecord {
+            exec_index,
+            input_id: input_id.map(|x| x as u64),
+            stage: format!("{:?}", stage),
+            exit: format!("{:?}", exit),
+            exit_pc: format!("0x{:08X}", exit_pc),
+            instructions,
+            event_count: events.len(),
+            block_event_count: trimmed_blocks.len(),
+            mmio_read_count: mmio_reads.len(),
+            events,
+        };
+
+        self.total_recorded_execs += 1;
+        self.recent_execs.push_back(record);
+        while self.recent_execs.len() > self.max_execs {
+            self.recent_execs.pop_front();
+        }
+        self.flush();
+    }
+
+    fn latest_exec(&self) -> Option<&ExecTraceRecord> {
+        self.recent_execs.back()
+    }
+
+    fn flush(&self) {
+        let latest = self.latest_exec().cloned();
+        if let Some(path) = &self.json_out {
+            Self::ensure_parent(path);
+            let payload = ExecTraceFile {
+                schema: "mf_exec_trace_v1".to_string(),
+                workdir: self.workdir.display().to_string(),
+                total_recorded_execs: self.total_recorded_execs,
+                latest_exec: latest.clone(),
+                recent_execs: self.recent_execs.iter().cloned().collect(),
+                events: latest.as_ref().map(|x| x.events.clone()).unwrap_or_default(),
+            };
+            if let Ok(bytes) = serde_json::to_vec_pretty(&payload) {
+                let _ = std::fs::write(path, bytes);
+            }
+        }
+
+        if let Some(path) = &self.text_out {
+            Self::ensure_parent(path);
+            let mut out = String::new();
+            if let Some(latest) = &latest {
+                out.push_str(&format!(
+                    "exec={} stage={} exit={} exit_pc={} instructions={}\\n",
+                    latest.exec_index, latest.stage, latest.exit, latest.exit_pc, latest.instructions
+                ));
+                for ev in &latest.events {
+                    match ev.event_type.as_str() {
+                        "exec" => {
+                            out.push_str(&format!(
+                                "step={} pc={} icount={} function={} block={} last_read={} last_value={}\\n",
+                                ev.step,
+                                ev.pc.as_deref().unwrap_or(""),
+                                ev.icount.unwrap_or(0),
+                                ev.function.as_deref().unwrap_or(""),
+                                ev.block.as_deref().unwrap_or(""),
+                                ev.last_read.as_deref().unwrap_or(""),
+                                ev.last_value.as_deref().unwrap_or(""),
+                            ));
+                        }
+                        "mmio_read" => {
+                            out.push_str(&format!(
+                                "step={} mmio=read addr={} value={} size={}\\n",
+                                ev.step,
+                                ev.mmio_addr.as_deref().unwrap_or(""),
+                                ev.mmio_value.as_deref().unwrap_or(""),
+                                ev.mmio_size.unwrap_or(0),
+                            ));
+                        }
+                        _ => {}
+                    }
+                }
+            }
+            let _ = std::fs::write(path, out);
+        }
+
+        if let Some(path) = &self.meta_out {
+            Self::ensure_parent(path);
+            let latest = self.latest_exec();
+            let payload = ExecTraceMeta {
+                schema: "mf_exec_trace_meta_v1".to_string(),
+                workdir: self.workdir.display().to_string(),
+                track_path_forced: self.track_path_forced,
+                total_recorded_execs: self.total_recorded_execs,
+                max_execs_kept: self.max_execs,
+                max_blocks_per_exec: self.max_blocks,
+                trace_json: self.json_out.as_ref().map(|x| x.display().to_string()),
+                trace_text: self.text_out.as_ref().map(|x| x.display().to_string()),
+                latest_exec_index: latest.map(|x| x.exec_index),
+                latest_event_count: latest.map(|x| x.event_count).unwrap_or(0),
+                latest_block_event_count: latest.map(|x| x.block_event_count).unwrap_or(0),
+                latest_mmio_read_count: latest.map(|x| x.mmio_read_count).unwrap_or(0),
+            };
+            if let Ok(bytes) = serde_json::to_vec_pretty(&payload) {
+                let _ = std::fs::write(path, bytes);
+            }
+        }
+    }
+}
+
+fn default_ghidra_src() -> PathBuf {
+    let candidates = [PathBuf::from("./tools/ghidra"), PathBuf::from("./ghidra")];
+    for path in candidates {
+        if path.exists() {
+            return path;
+        }
+    }
+    PathBuf::from("./tools/ghidra")
+}
+
 fn main() {
     let logger = tracing_subscriber::fmt().with_env_filter(
         tracing_subscriber::EnvFilter::from_env("ICICLE_LOG")
@@ -224,13 +593,23 @@ fn run() -> anyhow::Result<()> {
     }
 
     if std::env::var_os("GHIDRA_SRC").is_none() {
+        let ghidra_src = default_ghidra_src();
         // Safety: There are no other threads running yet.
         unsafe {
-            std::env::set_var("GHIDRA_SRC", "./ghidra");
+            std::env::set_var("GHIDRA_SRC", ghidra_src);
         }
     }
 
     let mut fuzzer_config = FuzzConfig::load().expect("Invalid config");
+
+    let trace_requested = SessionTraceRecorder::trace_requested_from_env();
+    if trace_requested && !fuzzer_config.track_path {
+        tracing::info!("forcing track_path because runtime trace dumping was requested");
+        fuzzer_config.track_path = true;
+        unsafe {
+            std::env::set_var("MF_TRACE_TRACK_PATH_FORCED", "1");
+        }
+    }
 
     // Icicle implements a shadow stack to catch return address corruption which is enabled by
     // default. However, this results in false positives crashes for firmware that implements
@@ -543,6 +922,10 @@ fn fuzzing_loop(mut fuzzer: Fuzzer, run_for: Option<Duration>) -> anyhow::Result
         }
     }
 
+    if let Some(recorder) = fuzzer.exec_trace.as_ref() {
+        recorder.flush();
+    }
+
     if fuzzer.global.is_main_instance() {
         eprintln!("Fuzzing stopped, saving data");
         fuzzer.corpus.maybe_save(&fuzzer.workdir)?;
@@ -744,6 +1127,8 @@ pub(crate) struct Fuzzer {
     pub global: GlobalRef,
     /// A reference to (optional) tracing instrumentation used for diagnosing fuzzing bugs.
     pub path_tracer: Option<PathTracerRef>,
+    /// Session-level execution trace dumper used by the closed-loop pipeline.
+    pub exec_trace: Option<SessionTraceRecorder>,
     /// A reference to CmpLog instrumentation.
     pub cmplog: Option<CmpLog2Ref>,
     /// The blocks seen by the fuzzer with the number of executions and input ID corresponding to
@@ -787,9 +1172,14 @@ impl Fuzzer {
         icicle_fuzzing::add_debug_instrumentation(&mut vm);
 
         let mut path_tracer = None;
-        if config.fuzzer.track_path {
+        if config.fuzzer.track_path && global.is_main_instance() {
             path_tracer = Some(trace::add_path_tracer(&mut vm, target.mmio_handler.unwrap())?);
         }
+        let exec_trace = if global.is_main_instance() {
+            SessionTraceRecorder::from_env(&config.workdir)
+        } else {
+            None
+        };
 
         let mut cmplog = None;
         if features.cmplog {
@@ -868,6 +1258,7 @@ impl Fuzzer {
             config: config.fuzzer,
             global,
             path_tracer,
+            exec_trace,
             cmplog,
             seen_blocks: BlockCoverageTracker::new(),
             crash_coverage_bits: HashSet::new(),
@@ -905,6 +1296,9 @@ impl Fuzzer {
 
         let old_limit = self.vm.icount_limit;
         self.vm.icount_limit = limit;
+        if let Some(tracer) = self.path_tracer {
+            tracer.clear(&mut self.vm);
+        }
         if let Some(cmplog) = self.cmplog {
             cmplog.clear_data(&mut self.vm.cpu);
         }
@@ -916,6 +1310,19 @@ impl Fuzzer {
         self.state.instructions = self.vm.cpu.icount();
         self.state.exit = exit;
         self.state.exit_address = self.vm.cpu.read_pc();
+
+        if let (Some(recorder), Some(tracer)) = (self.exec_trace.as_mut(), self.path_tracer) {
+            recorder.record_execution(
+                &mut self.vm,
+                tracer,
+                self.execs,
+                self.input_id,
+                self.stage,
+                exit,
+                self.state.exit_address,
+                self.state.instructions,
+            );
+        }
 
         if matches!(exit, VmExit::Interrupted) {
             return None;

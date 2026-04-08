@@ -126,7 +126,7 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--closed-loop-py", default="/home/MultiFuzz/extractor/closed_loop.py")
     ap.add_argument("--fuzzer-manifest", default="/home/MultiFuzz/hail-fuzz/Cargo.toml")
     ap.add_argument("--firmware-config", default="/home/MultiFuzz/benchmarks/P2IM/Console/config.yml")
-    ap.add_argument("--ghidra-src", default="/home/MultiFuzz/ghidra")
+    ap.add_argument("--ghidra-src", default="/home/MultiFuzz/tools/ghidra")
     ap.add_argument("--input-dir", required=True, help="Directory containing new *.bin seeds")
     ap.add_argument("--out-root", required=True)
     ap.add_argument("--run-for", default="5s", help="Per-seed triage time budget")

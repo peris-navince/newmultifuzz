@@ -1,0 +1,1335 @@
+{
+  "schema": "contract_bundle_v1",
+  "build_info": {
+    "generator": "build_contract_bundle.py",
+    "program_name": "Console.elf",
+    "executable_path": "/home/MultiFuzz/benchmarks/P2IM/Console/Console.elf",
+    "language_id": "ARM:LE:32:v8",
+    "compiler_spec": "default",
+    "image_base": "00000000"
+  },
+  "hot_mmio": [
+    "0x4006A004",
+    "0x4006A007"
+  ],
+  "program_context": {
+    "anchor_function_names": [],
+    "selected_function_names": [],
+    "call_depth": 2,
+    "call_edges": [],
+    "functions": []
+  },
+  "mmio_context": [
+    {
+      "address_hex": "0x4006A004",
+      "address": 1074176004,
+      "program_accessors": [],
+      "document_matches": [
+        {
+          "cache_dir": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0",
+          "peripheral": "UART0",
+          "register": {
+            "name": "S1",
+            "absoluteAddress_hex": "0x4006A004",
+            "addressOffset_hex": "0x00000004",
+            "size_bits": 8,
+            "size_bytes": 1,
+            "svd_access": "read-only",
+            "svd_description": "UART Status Register 1",
+            "pdf_description": "4006_A004 UARTStatusRegister1(UART0_S1) 8 R C0h 52.3.5/1546\n\n4006_B004 UARTStatusRegister1(UART1_S1) 8 R C0h 52.3.5/1546\n\n4006_C004 UARTStatusRegister1(UART2_S1) 8 R C0h 52.3.5/1546",
+            "documentation_status": "documented_in_pdf",
+            "fields": [
+              {
+                "name": "PF",
+                "bitOffset": 0,
+                "bitWidth": 1,
+                "bitRange": "[0:0]",
+                "mask_hex": "0x01",
+                "svd_access": "read-only",
+                "svd_description": "Parity Error Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              },
+              {
+                "name": "FE",
+                "bitOffset": 1,
+                "bitWidth": 1,
+                "bitRange": "[1:1]",
+                "mask_hex": "0x02",
+                "svd_access": "read-only",
+                "svd_description": "Framing Error Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              },
+              {
+                "name": "NF",
+                "bitOffset": 2,
+                "bitWidth": 1,
+                "bitRange": "[2:2]",
+                "mask_hex": "0x04",
+                "svd_access": "read-only",
+                "svd_description": "Noise Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              },
+              {
+                "name": "OR",
+                "bitOffset": 3,
+                "bitWidth": 1,
+                "bitRange": "[3:3]",
+                "mask_hex": "0x08",
+                "svd_access": "read-only",
+                "svd_description": "Receiver Overrun Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              },
+              {
+                "name": "IDLE",
+                "bitOffset": 4,
+                "bitWidth": 1,
+                "bitRange": "[4:4]",
+                "mask_hex": "0x10",
+                "svd_access": "read-only",
+                "svd_description": "Idle Line Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              },
+              {
+                "name": "RDRF",
+                "bitOffset": 5,
+                "bitWidth": 1,
+                "bitRange": "[5:5]",
+                "mask_hex": "0x20",
+                "svd_access": "read-only",
+                "svd_description": "Receive Data Register Full Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              },
+              {
+                "name": "TC",
+                "bitOffset": 6,
+                "bitWidth": 1,
+                "bitRange": "[6:6]",
+                "mask_hex": "0x40",
+                "svd_access": "read-only",
+                "svd_description": "Transmit Complete Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              },
+              {
+                "name": "TDRE",
+                "bitOffset": 7,
+                "bitWidth": 1,
+                "bitRange": "[7:7]",
+                "mask_hex": "0x80",
+                "svd_access": "read-only",
+                "svd_description": "Transmit Data Register Empty Flag",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              }
+            ]
+          },
+          "mmio_map_summary": {
+            "baseAddress_hex": "0x4006A000",
+            "template_instance": "UART0",
+            "status_register_candidates": []
+          },
+          "svd_meta_summary": {
+            "template": "UART0",
+            "template_description": "Serial Communication Interface",
+            "matched_instances": [
+              "UART0"
+            ]
+          },
+          "pdf_chunk_matches": [
+            {
+              "score": 19,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "S1",
+              "absoluteAddress_hex": "0x4006A004",
+              "svd_description": "UART Status Register 1",
+              "pdf_description": "4006_A004 UARTStatusRegister1(UART0_S1) 8 R C0h 52.3.5/1546\n\n4006_B004 UARTStatusRegister1(UART1_S1) 8 R C0h 52.3.5/1546\n\n4006_C004 UARTStatusRegister1(UART2_S1) 8 R C0h 52.3.5/1546",
+              "fields": [
+                {
+                  "name": "PF",
+                  "bitRange": "[0:0]",
+                  "svd_description": "Parity Error Flag",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "FE",
+                  "bitRange": "[1:1]",
+                  "svd_description": "Framing Error Flag",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "NF",
+                  "bitRange": "[2:2]",
+                  "svd_description": "Noise Flag",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "OR",
+                  "bitRange": "[3:3]",
+                  "svd_description": "Receiver Overrun Flag",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "IDLE",
+                  "bitRange": "[4:4]",
+                  "svd_description": "Idle Line Flag",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RDRF",
+                  "bitRange": "[5:5]",
+                  "svd_description": "Receive Data Register Full Flag",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TC",
+                  "bitRange": "[6:6]",
+                  "svd_description": "Transmit Complete Flag",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TDRE",
+                  "bitRange": "[7:7]",
+                  "svd_description": "Transmit Data Register Empty Flag",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 4,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "C2",
+              "absoluteAddress_hex": "0x4006A003",
+              "svd_description": "UART Control Register 2",
+              "pdf_description": "4006_A003 UARTControlRegister2(UART0_C2) 8 R/W 00h 52.3.4/1544\n\n4006_B003 UARTControlRegister2(UART1_C2) 8 R/W 00h 52.3.4/1544\n\n4006_C003 UARTControlRegister2(UART2_C2) 8 R/W 00h 52.3.4/1544",
+              "fields": [
+                {
+                  "name": "SBK",
+                  "bitRange": "[0:0]",
+                  "svd_description": "Send Break",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RWU",
+                  "bitRange": "[1:1]",
+                  "svd_description": "Receiver Wakeup Control",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RE",
+                  "bitRange": "[2:2]",
+                  "svd_description": "Receiver Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TE",
+                  "bitRange": "[3:3]",
+                  "svd_description": "Transmitter Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "ILIE",
+                  "bitRange": "[4:4]",
+                  "svd_description": "Idle Line Interrupt DMA Transfer Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RIE",
+                  "bitRange": "[5:5]",
+                  "svd_description": "Receiver Full Interrupt or DMA Transfer Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TCIE",
+                  "bitRange": "[6:6]",
+                  "svd_description": "Transmission Complete Interrupt or DMA Transfer Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TIE",
+                  "bitRange": "[7:7]",
+                  "svd_description": "Transmitter Interrupt or DMA Transfer Enable.",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 4,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "MA1",
+              "absoluteAddress_hex": "0x4006A008",
+              "svd_description": "UART Match Address Registers 1",
+              "pdf_description": "4006_A008 UARTMatchAddressRegisters1(UART0_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/\n\n4006_B008 UARTMatchAddressRegisters1(UART1_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/\n\n4006_C008 UARTMatchAddressRegisters1(UART2_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/",
+              "fields": [
+                {
+                  "name": "MA",
+                  "bitRange": "[7:0]",
+                  "svd_description": "Match Address",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 3,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "C1",
+              "absoluteAddress_hex": "0x4006A002",
+              "svd_description": "UART Control Register 1",
+              "pdf_description": "4006_A002 UARTControlRegister1(UART0_C1) 8 R/W 00h 52.3.3/1543\n\n4006_B002 UARTControlRegister1(UART1_C1) 8 R/W 00h 52.3.3/1543\n\n4006_C002 UARTControlRegister1(UART2_C1) 8 R/W 00h 52.3.3/1543",
+              "fields": [
+                {
+                  "name": "PT",
+                  "bitRange": "[0:0]",
+                  "svd_description": "Parity Type",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "PE",
+                  "bitRange": "[1:1]",
+                  "svd_description": "Parity Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "ILT",
+                  "bitRange": "[2:2]",
+                  "svd_description": "Idle Line Type Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "WAKE",
+                  "bitRange": "[3:3]",
+                  "svd_description": "Receiver Wakeup Method Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "M",
+                  "bitRange": "[4:4]",
+                  "svd_description": "9-bit or 8-bit Mode Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RSRC",
+                  "bitRange": "[5:5]",
+                  "svd_description": "Receiver Source Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "UARTSWAI",
+                  "bitRange": "[6:6]",
+                  "svd_description": "UART Stops in Wait Mode",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "LOOPS",
+                  "bitRange": "[7:7]",
+                  "svd_description": "Loop Mode Select",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 3,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "C3",
+              "absoluteAddress_hex": "0x4006A006",
+              "svd_description": "UART Control Register 3",
+              "pdf_description": "4006_A006 UARTControlRegister3(UART0_C3) 8 R/W 00h 52.3.7/1551\n\n4006_B006 UARTControlRegister3(UART1_C3) 8 R/W 00h 52.3.7/1551\n\n4006_C006 UARTControlRegister3(UART2_C3) 8 R/W 00h 52.3.7/1551",
+              "fields": [
+                {
+                  "name": "PEIE",
+                  "bitRange": "[0:0]",
+                  "svd_description": "Parity Error Interrupt Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "FEIE",
+                  "bitRange": "[1:1]",
+                  "svd_description": "Framing Error Interrupt Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "NEIE",
+                  "bitRange": "[2:2]",
+                  "svd_description": "Noise Error Interrupt Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "ORIE",
+                  "bitRange": "[3:3]",
+                  "svd_description": "Overrun Error Interrupt Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TXINV",
+                  "bitRange": "[4:4]",
+                  "svd_description": "Transmit Data Inversion.",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TXDIR",
+                  "bitRange": "[5:5]",
+                  "svd_description": "Transmitter Pin Data Direction in Single-Wire mode",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "T8",
+                  "bitRange": "[6:6]",
+                  "svd_description": "Transmit Bit 8",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "R8",
+                  "bitRange": "[7:7]",
+                  "svd_description": "Received Bit 8",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 3,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "PFIFO",
+              "absoluteAddress_hex": "0x4006A010",
+              "svd_description": "UART FIFO Parameters",
+              "pdf_description": "4006_A010 UARTFIFOParameters(UART0_PFIFO) 8 R/W Seesection\n1560\n52.3.17/\n\n4006_B010 UARTFIFOParameters(UART1_PFIFO) 8 R/W Seesection\n1560\n52.3.17/\n\n4006_C010 UARTFIFOParameters(UART2_PFIFO) 8 R/W Seesection\n1560\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1536 FreescaleSemiconductor,Inc.",
+              "fields": [
+                {
+                  "name": "RXFIFOSIZE",
+                  "bitRange": "[2:0]",
+                  "svd_description": "Receive FIFO. Buffer Depth",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RXFE",
+                  "bitRange": "[3:3]",
+                  "svd_description": "Receive FIFO Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TXFIFOSIZE",
+                  "bitRange": "[6:4]",
+                  "svd_description": "Transmit FIFO. Buffer Depth",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TXFE",
+                  "bitRange": "[7:7]",
+                  "svd_description": "Transmit FIFO Enable",
+                  "pdf_description": ""
+                }
+              ]
+            }
+          ],
+          "relation_edge_matches": []
+        }
+      ]
+    },
+    {
+      "address_hex": "0x4006A007",
+      "address": 1074176007,
+      "program_accessors": [],
+      "document_matches": [
+        {
+          "cache_dir": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0",
+          "peripheral": "UART0",
+          "register": {
+            "name": "D",
+            "absoluteAddress_hex": "0x4006A007",
+            "addressOffset_hex": "0x00000007",
+            "size_bits": 8,
+            "size_bytes": 1,
+            "svd_access": "read-write",
+            "svd_description": "UART Data Register",
+            "pdf_description": "4006_A007 UARTDataRegister(UART0_D) 8 R/W 00h 52.3.8/1552\n\n4006_B007 UARTDataRegister(UART1_D) 8 R/W 00h 52.3.8/1552\n\n4006_C007 UARTDataRegister(UART2_D) 8 R/W 00h 52.3.8/1552",
+            "documentation_status": "documented_in_pdf",
+            "fields": [
+              {
+                "name": "RT",
+                "bitOffset": 0,
+                "bitWidth": 8,
+                "bitRange": "[7:0]",
+                "mask_hex": "0xFF",
+                "svd_access": "read-write",
+                "svd_description": "Reads return the contents of the read-only receive data register and writes go to the write-only transmit data register",
+                "pdf_description": "",
+                "documentation_status": "documented_in_pdf"
+              }
+            ]
+          },
+          "mmio_map_summary": {
+            "baseAddress_hex": "0x4006A000",
+            "template_instance": "UART0",
+            "status_register_candidates": []
+          },
+          "svd_meta_summary": {
+            "template": "UART0",
+            "template_description": "Serial Communication Interface",
+            "matched_instances": [
+              "UART0"
+            ]
+          },
+          "pdf_chunk_matches": [
+            {
+              "score": 12,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "D",
+              "absoluteAddress_hex": "0x4006A007",
+              "svd_description": "UART Data Register",
+              "pdf_description": "4006_A007 UARTDataRegister(UART0_D) 8 R/W 00h 52.3.8/1552\n\n4006_B007 UARTDataRegister(UART1_D) 8 R/W 00h 52.3.8/1552\n\n4006_C007 UARTDataRegister(UART2_D) 8 R/W 00h 52.3.8/1552",
+              "fields": [
+                {
+                  "name": "RT",
+                  "bitRange": "[7:0]",
+                  "svd_description": "Reads return the contents of the read-only receive data register and writes go to the write-only transmit data register",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 4,
+              "chunk_type": "overview",
+              "peripheral": "UART0",
+              "template_instance": "UART0",
+              "register_count": 31,
+              "edge_count": 0
+            },
+            {
+              "score": 4,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "BDH",
+              "absoluteAddress_hex": "0x4006A000",
+              "svd_description": "UART Baud Rate Registers: High",
+              "pdf_description": "4006_A000 UARTBaudRateRegisters:High(UART0_BDH) 8 R/W 00h 52.3.1/1541\n\n4006_B000 UARTBaudRateRegisters:High(UART1_BDH) 8 R/W 00h 52.3.1/1541\n\n4006_C000 UARTBaudRateRegisters:High(UART2_BDH) 8 R/W 00h 52.3.1/1541",
+              "fields": [
+                {
+                  "name": "SBR",
+                  "bitRange": "[4:0]",
+                  "svd_description": "UART Baud Rate Bits",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "SBNS",
+                  "bitRange": "[5:5]",
+                  "svd_description": "Stop Bit Number Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RXEDGIE",
+                  "bitRange": "[6:6]",
+                  "svd_description": "RxD Input Active Edge Interrupt Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "LBKDIE",
+                  "bitRange": "[7:7]",
+                  "svd_description": "LIN Break Detect Interrupt or DMA Request Enable",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 4,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "BDL",
+              "absoluteAddress_hex": "0x4006A001",
+              "svd_description": "UART Baud Rate Registers: Low",
+              "pdf_description": "4006_A001 UARTBaudRateRegisters:Low(UART0_BDL) 8 R/W 04h 52.3.2/1542\n\n4006_B001 UARTBaudRateRegisters:Low(UART1_BDL) 8 R/W 04h 52.3.2/1542\n\n4006_C001 UARTBaudRateRegisters:Low(UART2_BDL) 8 R/W 04h 52.3.2/1542",
+              "fields": [
+                {
+                  "name": "SBR",
+                  "bitRange": "[7:0]",
+                  "svd_description": "UART Baud Rate Bits",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 4,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "C1",
+              "absoluteAddress_hex": "0x4006A002",
+              "svd_description": "UART Control Register 1",
+              "pdf_description": "4006_A002 UARTControlRegister1(UART0_C1) 8 R/W 00h 52.3.3/1543\n\n4006_B002 UARTControlRegister1(UART1_C1) 8 R/W 00h 52.3.3/1543\n\n4006_C002 UARTControlRegister1(UART2_C1) 8 R/W 00h 52.3.3/1543",
+              "fields": [
+                {
+                  "name": "PT",
+                  "bitRange": "[0:0]",
+                  "svd_description": "Parity Type",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "PE",
+                  "bitRange": "[1:1]",
+                  "svd_description": "Parity Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "ILT",
+                  "bitRange": "[2:2]",
+                  "svd_description": "Idle Line Type Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "WAKE",
+                  "bitRange": "[3:3]",
+                  "svd_description": "Receiver Wakeup Method Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "M",
+                  "bitRange": "[4:4]",
+                  "svd_description": "9-bit or 8-bit Mode Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RSRC",
+                  "bitRange": "[5:5]",
+                  "svd_description": "Receiver Source Select",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "UARTSWAI",
+                  "bitRange": "[6:6]",
+                  "svd_description": "UART Stops in Wait Mode",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "LOOPS",
+                  "bitRange": "[7:7]",
+                  "svd_description": "Loop Mode Select",
+                  "pdf_description": ""
+                }
+              ]
+            },
+            {
+              "score": 4,
+              "chunk_type": "register",
+              "peripheral": "UART0",
+              "register": "C2",
+              "absoluteAddress_hex": "0x4006A003",
+              "svd_description": "UART Control Register 2",
+              "pdf_description": "4006_A003 UARTControlRegister2(UART0_C2) 8 R/W 00h 52.3.4/1544\n\n4006_B003 UARTControlRegister2(UART1_C2) 8 R/W 00h 52.3.4/1544\n\n4006_C003 UARTControlRegister2(UART2_C2) 8 R/W 00h 52.3.4/1544",
+              "fields": [
+                {
+                  "name": "SBK",
+                  "bitRange": "[0:0]",
+                  "svd_description": "Send Break",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RWU",
+                  "bitRange": "[1:1]",
+                  "svd_description": "Receiver Wakeup Control",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RE",
+                  "bitRange": "[2:2]",
+                  "svd_description": "Receiver Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TE",
+                  "bitRange": "[3:3]",
+                  "svd_description": "Transmitter Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "ILIE",
+                  "bitRange": "[4:4]",
+                  "svd_description": "Idle Line Interrupt DMA Transfer Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "RIE",
+                  "bitRange": "[5:5]",
+                  "svd_description": "Receiver Full Interrupt or DMA Transfer Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TCIE",
+                  "bitRange": "[6:6]",
+                  "svd_description": "Transmission Complete Interrupt or DMA Transfer Enable",
+                  "pdf_description": ""
+                },
+                {
+                  "name": "TIE",
+                  "bitRange": "[7:7]",
+                  "svd_description": "Transmitter Interrupt or DMA Transfer Enable.",
+                  "pdf_description": ""
+                }
+              ]
+            }
+          ],
+          "relation_edge_matches": []
+        }
+      ]
+    }
+  ],
+  "document_context": {
+    "cache_root": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache",
+    "matched_peripheral_registers": [
+      {
+        "cache_dir": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0",
+        "peripheral": "UART0",
+        "register": {
+          "name": "S1",
+          "absoluteAddress_hex": "0x4006A004",
+          "addressOffset_hex": "0x00000004",
+          "size_bits": 8,
+          "size_bytes": 1,
+          "svd_access": "read-only",
+          "svd_description": "UART Status Register 1",
+          "pdf_description": "4006_A004 UARTStatusRegister1(UART0_S1) 8 R C0h 52.3.5/1546\n\n4006_B004 UARTStatusRegister1(UART1_S1) 8 R C0h 52.3.5/1546\n\n4006_C004 UARTStatusRegister1(UART2_S1) 8 R C0h 52.3.5/1546",
+          "documentation_status": "documented_in_pdf",
+          "fields": [
+            {
+              "name": "PF",
+              "bitOffset": 0,
+              "bitWidth": 1,
+              "bitRange": "[0:0]",
+              "mask_hex": "0x01",
+              "svd_access": "read-only",
+              "svd_description": "Parity Error Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            },
+            {
+              "name": "FE",
+              "bitOffset": 1,
+              "bitWidth": 1,
+              "bitRange": "[1:1]",
+              "mask_hex": "0x02",
+              "svd_access": "read-only",
+              "svd_description": "Framing Error Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            },
+            {
+              "name": "NF",
+              "bitOffset": 2,
+              "bitWidth": 1,
+              "bitRange": "[2:2]",
+              "mask_hex": "0x04",
+              "svd_access": "read-only",
+              "svd_description": "Noise Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            },
+            {
+              "name": "OR",
+              "bitOffset": 3,
+              "bitWidth": 1,
+              "bitRange": "[3:3]",
+              "mask_hex": "0x08",
+              "svd_access": "read-only",
+              "svd_description": "Receiver Overrun Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            },
+            {
+              "name": "IDLE",
+              "bitOffset": 4,
+              "bitWidth": 1,
+              "bitRange": "[4:4]",
+              "mask_hex": "0x10",
+              "svd_access": "read-only",
+              "svd_description": "Idle Line Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            },
+            {
+              "name": "RDRF",
+              "bitOffset": 5,
+              "bitWidth": 1,
+              "bitRange": "[5:5]",
+              "mask_hex": "0x20",
+              "svd_access": "read-only",
+              "svd_description": "Receive Data Register Full Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            },
+            {
+              "name": "TC",
+              "bitOffset": 6,
+              "bitWidth": 1,
+              "bitRange": "[6:6]",
+              "mask_hex": "0x40",
+              "svd_access": "read-only",
+              "svd_description": "Transmit Complete Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            },
+            {
+              "name": "TDRE",
+              "bitOffset": 7,
+              "bitWidth": 1,
+              "bitRange": "[7:7]",
+              "mask_hex": "0x80",
+              "svd_access": "read-only",
+              "svd_description": "Transmit Data Register Empty Flag",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            }
+          ]
+        },
+        "mmio_map_summary": {
+          "baseAddress_hex": "0x4006A000",
+          "template_instance": "UART0",
+          "status_register_candidates": []
+        },
+        "svd_meta_summary": {
+          "template": "UART0",
+          "template_description": "Serial Communication Interface",
+          "matched_instances": [
+            "UART0"
+          ]
+        },
+        "pdf_chunk_matches": [
+          {
+            "score": 19,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "S1",
+            "absoluteAddress_hex": "0x4006A004",
+            "svd_description": "UART Status Register 1",
+            "pdf_description": "4006_A004 UARTStatusRegister1(UART0_S1) 8 R C0h 52.3.5/1546\n\n4006_B004 UARTStatusRegister1(UART1_S1) 8 R C0h 52.3.5/1546\n\n4006_C004 UARTStatusRegister1(UART2_S1) 8 R C0h 52.3.5/1546",
+            "fields": [
+              {
+                "name": "PF",
+                "bitRange": "[0:0]",
+                "svd_description": "Parity Error Flag",
+                "pdf_description": ""
+              },
+              {
+                "name": "FE",
+                "bitRange": "[1:1]",
+                "svd_description": "Framing Error Flag",
+                "pdf_description": ""
+              },
+              {
+                "name": "NF",
+                "bitRange": "[2:2]",
+                "svd_description": "Noise Flag",
+                "pdf_description": ""
+              },
+              {
+                "name": "OR",
+                "bitRange": "[3:3]",
+                "svd_description": "Receiver Overrun Flag",
+                "pdf_description": ""
+              },
+              {
+                "name": "IDLE",
+                "bitRange": "[4:4]",
+                "svd_description": "Idle Line Flag",
+                "pdf_description": ""
+              },
+              {
+                "name": "RDRF",
+                "bitRange": "[5:5]",
+                "svd_description": "Receive Data Register Full Flag",
+                "pdf_description": ""
+              },
+              {
+                "name": "TC",
+                "bitRange": "[6:6]",
+                "svd_description": "Transmit Complete Flag",
+                "pdf_description": ""
+              },
+              {
+                "name": "TDRE",
+                "bitRange": "[7:7]",
+                "svd_description": "Transmit Data Register Empty Flag",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 4,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "C2",
+            "absoluteAddress_hex": "0x4006A003",
+            "svd_description": "UART Control Register 2",
+            "pdf_description": "4006_A003 UARTControlRegister2(UART0_C2) 8 R/W 00h 52.3.4/1544\n\n4006_B003 UARTControlRegister2(UART1_C2) 8 R/W 00h 52.3.4/1544\n\n4006_C003 UARTControlRegister2(UART2_C2) 8 R/W 00h 52.3.4/1544",
+            "fields": [
+              {
+                "name": "SBK",
+                "bitRange": "[0:0]",
+                "svd_description": "Send Break",
+                "pdf_description": ""
+              },
+              {
+                "name": "RWU",
+                "bitRange": "[1:1]",
+                "svd_description": "Receiver Wakeup Control",
+                "pdf_description": ""
+              },
+              {
+                "name": "RE",
+                "bitRange": "[2:2]",
+                "svd_description": "Receiver Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TE",
+                "bitRange": "[3:3]",
+                "svd_description": "Transmitter Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "ILIE",
+                "bitRange": "[4:4]",
+                "svd_description": "Idle Line Interrupt DMA Transfer Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "RIE",
+                "bitRange": "[5:5]",
+                "svd_description": "Receiver Full Interrupt or DMA Transfer Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TCIE",
+                "bitRange": "[6:6]",
+                "svd_description": "Transmission Complete Interrupt or DMA Transfer Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TIE",
+                "bitRange": "[7:7]",
+                "svd_description": "Transmitter Interrupt or DMA Transfer Enable.",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 4,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "MA1",
+            "absoluteAddress_hex": "0x4006A008",
+            "svd_description": "UART Match Address Registers 1",
+            "pdf_description": "4006_A008 UARTMatchAddressRegisters1(UART0_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/\n\n4006_B008 UARTMatchAddressRegisters1(UART1_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/\n\n4006_C008 UARTMatchAddressRegisters1(UART2_MA1) 8 R/W 00h 52.3.9/1554\n52.3.10/",
+            "fields": [
+              {
+                "name": "MA",
+                "bitRange": "[7:0]",
+                "svd_description": "Match Address",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 3,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "C1",
+            "absoluteAddress_hex": "0x4006A002",
+            "svd_description": "UART Control Register 1",
+            "pdf_description": "4006_A002 UARTControlRegister1(UART0_C1) 8 R/W 00h 52.3.3/1543\n\n4006_B002 UARTControlRegister1(UART1_C1) 8 R/W 00h 52.3.3/1543\n\n4006_C002 UARTControlRegister1(UART2_C1) 8 R/W 00h 52.3.3/1543",
+            "fields": [
+              {
+                "name": "PT",
+                "bitRange": "[0:0]",
+                "svd_description": "Parity Type",
+                "pdf_description": ""
+              },
+              {
+                "name": "PE",
+                "bitRange": "[1:1]",
+                "svd_description": "Parity Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "ILT",
+                "bitRange": "[2:2]",
+                "svd_description": "Idle Line Type Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "WAKE",
+                "bitRange": "[3:3]",
+                "svd_description": "Receiver Wakeup Method Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "M",
+                "bitRange": "[4:4]",
+                "svd_description": "9-bit or 8-bit Mode Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "RSRC",
+                "bitRange": "[5:5]",
+                "svd_description": "Receiver Source Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "UARTSWAI",
+                "bitRange": "[6:6]",
+                "svd_description": "UART Stops in Wait Mode",
+                "pdf_description": ""
+              },
+              {
+                "name": "LOOPS",
+                "bitRange": "[7:7]",
+                "svd_description": "Loop Mode Select",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 3,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "C3",
+            "absoluteAddress_hex": "0x4006A006",
+            "svd_description": "UART Control Register 3",
+            "pdf_description": "4006_A006 UARTControlRegister3(UART0_C3) 8 R/W 00h 52.3.7/1551\n\n4006_B006 UARTControlRegister3(UART1_C3) 8 R/W 00h 52.3.7/1551\n\n4006_C006 UARTControlRegister3(UART2_C3) 8 R/W 00h 52.3.7/1551",
+            "fields": [
+              {
+                "name": "PEIE",
+                "bitRange": "[0:0]",
+                "svd_description": "Parity Error Interrupt Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "FEIE",
+                "bitRange": "[1:1]",
+                "svd_description": "Framing Error Interrupt Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "NEIE",
+                "bitRange": "[2:2]",
+                "svd_description": "Noise Error Interrupt Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "ORIE",
+                "bitRange": "[3:3]",
+                "svd_description": "Overrun Error Interrupt Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TXINV",
+                "bitRange": "[4:4]",
+                "svd_description": "Transmit Data Inversion.",
+                "pdf_description": ""
+              },
+              {
+                "name": "TXDIR",
+                "bitRange": "[5:5]",
+                "svd_description": "Transmitter Pin Data Direction in Single-Wire mode",
+                "pdf_description": ""
+              },
+              {
+                "name": "T8",
+                "bitRange": "[6:6]",
+                "svd_description": "Transmit Bit 8",
+                "pdf_description": ""
+              },
+              {
+                "name": "R8",
+                "bitRange": "[7:7]",
+                "svd_description": "Received Bit 8",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 3,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "PFIFO",
+            "absoluteAddress_hex": "0x4006A010",
+            "svd_description": "UART FIFO Parameters",
+            "pdf_description": "4006_A010 UARTFIFOParameters(UART0_PFIFO) 8 R/W Seesection\n1560\n52.3.17/\n\n4006_B010 UARTFIFOParameters(UART1_PFIFO) 8 R/W Seesection\n1560\n52.3.17/\n\n4006_C010 UARTFIFOParameters(UART2_PFIFO) 8 R/W Seesection\n1560\nTablecontinuesonthenextpage...\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1536 FreescaleSemiconductor,Inc.",
+            "fields": [
+              {
+                "name": "RXFIFOSIZE",
+                "bitRange": "[2:0]",
+                "svd_description": "Receive FIFO. Buffer Depth",
+                "pdf_description": ""
+              },
+              {
+                "name": "RXFE",
+                "bitRange": "[3:3]",
+                "svd_description": "Receive FIFO Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TXFIFOSIZE",
+                "bitRange": "[6:4]",
+                "svd_description": "Transmit FIFO. Buffer Depth",
+                "pdf_description": ""
+              },
+              {
+                "name": "TXFE",
+                "bitRange": "[7:7]",
+                "svd_description": "Transmit FIFO Enable",
+                "pdf_description": ""
+              }
+            ]
+          }
+        ],
+        "relation_edge_matches": []
+      },
+      {
+        "cache_dir": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/uart0",
+        "peripheral": "UART0",
+        "register": {
+          "name": "D",
+          "absoluteAddress_hex": "0x4006A007",
+          "addressOffset_hex": "0x00000007",
+          "size_bits": 8,
+          "size_bytes": 1,
+          "svd_access": "read-write",
+          "svd_description": "UART Data Register",
+          "pdf_description": "4006_A007 UARTDataRegister(UART0_D) 8 R/W 00h 52.3.8/1552\n\n4006_B007 UARTDataRegister(UART1_D) 8 R/W 00h 52.3.8/1552\n\n4006_C007 UARTDataRegister(UART2_D) 8 R/W 00h 52.3.8/1552",
+          "documentation_status": "documented_in_pdf",
+          "fields": [
+            {
+              "name": "RT",
+              "bitOffset": 0,
+              "bitWidth": 8,
+              "bitRange": "[7:0]",
+              "mask_hex": "0xFF",
+              "svd_access": "read-write",
+              "svd_description": "Reads return the contents of the read-only receive data register and writes go to the write-only transmit data register",
+              "pdf_description": "",
+              "documentation_status": "documented_in_pdf"
+            }
+          ]
+        },
+        "mmio_map_summary": {
+          "baseAddress_hex": "0x4006A000",
+          "template_instance": "UART0",
+          "status_register_candidates": []
+        },
+        "svd_meta_summary": {
+          "template": "UART0",
+          "template_description": "Serial Communication Interface",
+          "matched_instances": [
+            "UART0"
+          ]
+        },
+        "pdf_chunk_matches": [
+          {
+            "score": 12,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "D",
+            "absoluteAddress_hex": "0x4006A007",
+            "svd_description": "UART Data Register",
+            "pdf_description": "4006_A007 UARTDataRegister(UART0_D) 8 R/W 00h 52.3.8/1552\n\n4006_B007 UARTDataRegister(UART1_D) 8 R/W 00h 52.3.8/1552\n\n4006_C007 UARTDataRegister(UART2_D) 8 R/W 00h 52.3.8/1552",
+            "fields": [
+              {
+                "name": "RT",
+                "bitRange": "[7:0]",
+                "svd_description": "Reads return the contents of the read-only receive data register and writes go to the write-only transmit data register",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 4,
+            "chunk_type": "overview",
+            "peripheral": "UART0",
+            "template_instance": "UART0",
+            "register_count": 31,
+            "edge_count": 0
+          },
+          {
+            "score": 4,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "BDH",
+            "absoluteAddress_hex": "0x4006A000",
+            "svd_description": "UART Baud Rate Registers: High",
+            "pdf_description": "4006_A000 UARTBaudRateRegisters:High(UART0_BDH) 8 R/W 00h 52.3.1/1541\n\n4006_B000 UARTBaudRateRegisters:High(UART1_BDH) 8 R/W 00h 52.3.1/1541\n\n4006_C000 UARTBaudRateRegisters:High(UART2_BDH) 8 R/W 00h 52.3.1/1541",
+            "fields": [
+              {
+                "name": "SBR",
+                "bitRange": "[4:0]",
+                "svd_description": "UART Baud Rate Bits",
+                "pdf_description": ""
+              },
+              {
+                "name": "SBNS",
+                "bitRange": "[5:5]",
+                "svd_description": "Stop Bit Number Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "RXEDGIE",
+                "bitRange": "[6:6]",
+                "svd_description": "RxD Input Active Edge Interrupt Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "LBKDIE",
+                "bitRange": "[7:7]",
+                "svd_description": "LIN Break Detect Interrupt or DMA Request Enable",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 4,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "BDL",
+            "absoluteAddress_hex": "0x4006A001",
+            "svd_description": "UART Baud Rate Registers: Low",
+            "pdf_description": "4006_A001 UARTBaudRateRegisters:Low(UART0_BDL) 8 R/W 04h 52.3.2/1542\n\n4006_B001 UARTBaudRateRegisters:Low(UART1_BDL) 8 R/W 04h 52.3.2/1542\n\n4006_C001 UARTBaudRateRegisters:Low(UART2_BDL) 8 R/W 04h 52.3.2/1542",
+            "fields": [
+              {
+                "name": "SBR",
+                "bitRange": "[7:0]",
+                "svd_description": "UART Baud Rate Bits",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 4,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "C1",
+            "absoluteAddress_hex": "0x4006A002",
+            "svd_description": "UART Control Register 1",
+            "pdf_description": "4006_A002 UARTControlRegister1(UART0_C1) 8 R/W 00h 52.3.3/1543\n\n4006_B002 UARTControlRegister1(UART1_C1) 8 R/W 00h 52.3.3/1543\n\n4006_C002 UARTControlRegister1(UART2_C1) 8 R/W 00h 52.3.3/1543",
+            "fields": [
+              {
+                "name": "PT",
+                "bitRange": "[0:0]",
+                "svd_description": "Parity Type",
+                "pdf_description": ""
+              },
+              {
+                "name": "PE",
+                "bitRange": "[1:1]",
+                "svd_description": "Parity Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "ILT",
+                "bitRange": "[2:2]",
+                "svd_description": "Idle Line Type Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "WAKE",
+                "bitRange": "[3:3]",
+                "svd_description": "Receiver Wakeup Method Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "M",
+                "bitRange": "[4:4]",
+                "svd_description": "9-bit or 8-bit Mode Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "RSRC",
+                "bitRange": "[5:5]",
+                "svd_description": "Receiver Source Select",
+                "pdf_description": ""
+              },
+              {
+                "name": "UARTSWAI",
+                "bitRange": "[6:6]",
+                "svd_description": "UART Stops in Wait Mode",
+                "pdf_description": ""
+              },
+              {
+                "name": "LOOPS",
+                "bitRange": "[7:7]",
+                "svd_description": "Loop Mode Select",
+                "pdf_description": ""
+              }
+            ]
+          },
+          {
+            "score": 4,
+            "chunk_type": "register",
+            "peripheral": "UART0",
+            "register": "C2",
+            "absoluteAddress_hex": "0x4006A003",
+            "svd_description": "UART Control Register 2",
+            "pdf_description": "4006_A003 UARTControlRegister2(UART0_C2) 8 R/W 00h 52.3.4/1544\n\n4006_B003 UARTControlRegister2(UART1_C2) 8 R/W 00h 52.3.4/1544\n\n4006_C003 UARTControlRegister2(UART2_C2) 8 R/W 00h 52.3.4/1544",
+            "fields": [
+              {
+                "name": "SBK",
+                "bitRange": "[0:0]",
+                "svd_description": "Send Break",
+                "pdf_description": ""
+              },
+              {
+                "name": "RWU",
+                "bitRange": "[1:1]",
+                "svd_description": "Receiver Wakeup Control",
+                "pdf_description": ""
+              },
+              {
+                "name": "RE",
+                "bitRange": "[2:2]",
+                "svd_description": "Receiver Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TE",
+                "bitRange": "[3:3]",
+                "svd_description": "Transmitter Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "ILIE",
+                "bitRange": "[4:4]",
+                "svd_description": "Idle Line Interrupt DMA Transfer Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "RIE",
+                "bitRange": "[5:5]",
+                "svd_description": "Receiver Full Interrupt or DMA Transfer Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TCIE",
+                "bitRange": "[6:6]",
+                "svd_description": "Transmission Complete Interrupt or DMA Transfer Enable",
+                "pdf_description": ""
+              },
+              {
+                "name": "TIE",
+                "bitRange": "[7:7]",
+                "svd_description": "Transmitter Interrupt or DMA Transfer Enable.",
+                "pdf_description": ""
+              }
+            ]
+          }
+        ],
+        "relation_edge_matches": []
+      }
+    ]
+  }
+}

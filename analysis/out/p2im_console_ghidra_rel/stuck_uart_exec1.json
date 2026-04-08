@@ -1,0 +1,376 @@
+{
+  "schema": "stuck_report_v2",
+  "seed_path": "/home/MultiFuzz/workdir/manual_uart_handshake_once_t4_20.guidance.json",
+  "stop_reason": "unknown",
+  "trace_event_count": 13884,
+  "tail_window": 256,
+  "selected_exec_index": 159,
+  "last_pc": "0x000014B4",
+  "last_pc_function": "uart_init_uart",
+  "dominant_loop_functions": [
+    {
+      "function": "bit_set32",
+      "repeat_blocks": 122,
+      "repeat_edges": 46,
+      "longest_run": 11,
+      "loop_score": 144
+    },
+    {
+      "function": "gpio_init_port",
+      "repeat_blocks": 58,
+      "repeat_edges": 46,
+      "longest_run": 2,
+      "loop_score": 62
+    },
+    {
+      "function": "uart_write",
+      "repeat_blocks": 42,
+      "repeat_edges": 46,
+      "longest_run": 36,
+      "loop_score": 114
+    },
+    {
+      "function": "uart_stdio_write",
+      "repeat_blocks": 7,
+      "repeat_edges": 46,
+      "longest_run": 1,
+      "loop_score": 9
+    },
+    {
+      "function": "uart_init",
+      "repeat_blocks": 5,
+      "repeat_edges": 46,
+      "longest_run": 2,
+      "loop_score": 9
+    },
+    {
+      "function": "uart_init_pins",
+      "repeat_blocks": 5,
+      "repeat_edges": 46,
+      "longest_run": 2,
+      "loop_score": 9
+    },
+    {
+      "function": "NVIC_EnableIRQ",
+      "repeat_blocks": 4,
+      "repeat_edges": 46,
+      "longest_run": 4,
+      "loop_score": 12
+    },
+    {
+      "function": "rtt_set_alarm",
+      "repeat_blocks": 2,
+      "repeat_edges": 46,
+      "longest_run": 2,
+      "loop_score": 6
+    },
+    {
+      "function": "thread_create",
+      "repeat_blocks": 2,
+      "repeat_edges": 46,
+      "longest_run": 1,
+      "loop_score": 4
+    },
+    {
+      "function": "_mutex_lock",
+      "repeat_blocks": 2,
+      "repeat_edges": 46,
+      "longest_run": 1,
+      "loop_score": 4
+    },
+    {
+      "function": "__sinit",
+      "repeat_blocks": 2,
+      "repeat_edges": 46,
+      "longest_run": 2,
+      "loop_score": 6
+    },
+    {
+      "function": "mutex_unlock",
+      "repeat_blocks": 1,
+      "repeat_edges": 46,
+      "longest_run": 1,
+      "loop_score": 3
+    }
+  ],
+  "dominant_loop_blocks": [
+    {
+      "block": "pin_num at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:133:0",
+      "count": 23
+    },
+    {
+      "block": "gpio_init_port at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:235:0",
+      "count": 15
+    },
+    {
+      "block": "port at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:118:0",
+      "count": 13
+    },
+    {
+      "block": "gpio_init_port at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:240:0",
+      "count": 12
+    },
+    {
+      "block": "gpio_init_port at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:237:0",
+      "count": 10
+    },
+    {
+      "block": "bitband_addr at /home/bo/test/RIOT/cpu/cortexm_common/include/bit.h:63:0",
+      "count": 9
+    },
+    {
+      "block": "port_num at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:128:0",
+      "count": 9
+    },
+    {
+      "block": "gpio_init at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:188:0",
+      "count": 9
+    },
+    {
+      "block": "gpio_init at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:195:0",
+      "count": 9
+    },
+    {
+      "block": "bit_set32 at /home/bo/test/RIOT/cpu/cortexm_common/include/bit.h:84:0",
+      "count": 6
+    },
+    {
+      "block": "bit_set32 at /home/bo/test/RIOT/cpu/cortexm_common/include/bit.h:85:0",
+      "count": 6
+    },
+    {
+      "block": "gpio at /home/bo/test/RIOT/cpu/kinetis/periph/gpio.c:123:0",
+      "count": 6
+    }
+  ],
+  "tail_mmio": {
+    "addresses": [
+      {
+        "address_hex": "0x4006A004",
+        "count": 162
+      },
+      {
+        "address_hex": "0x40064006",
+        "count": 47
+      },
+      {
+        "address_hex": "0x40064000",
+        "count": 6
+      },
+      {
+        "address_hex": "0x4003D014",
+        "count": 4
+      },
+      {
+        "address_hex": "0x400FF054",
+        "count": 4
+      },
+      {
+        "address_hex": "0x4006A007",
+        "count": 4
+      },
+      {
+        "address_hex": "0x4004803C",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4004A058",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4004D068",
+        "count": 2
+      },
+      {
+        "address_hex": "0x400FF114",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4004A054",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4004A040",
+        "count": 2
+      }
+    ],
+    "offsets": []
+  },
+  "candidate_stuck_functions": [
+    {
+      "function": "uart_write",
+      "dynamic_score": 114,
+      "static_anchor_score": 549,
+      "mmio_bonus": 0,
+      "combined_score": 777,
+      "repeat_blocks": 42,
+      "longest_run": 36,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=549",
+        "rel_hot_offsets=['0x00000004', '0x00000007']"
+      ]
+    },
+    {
+      "function": "irq_handler_uart",
+      "dynamic_score": 0,
+      "static_anchor_score": 584,
+      "mmio_bonus": 0,
+      "combined_score": 584,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=584",
+        "rel_hot_offsets=['0x00000004', '0x00000007']"
+      ]
+    },
+    {
+      "function": "uart_init_uart",
+      "dynamic_score": 80,
+      "static_anchor_score": 246,
+      "mmio_bonus": 0,
+      "combined_score": 406,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "last_pc_in_function",
+        "static_anchor_score=246"
+      ]
+    },
+    {
+      "function": "bit_set32",
+      "dynamic_score": 144,
+      "static_anchor_score": 0,
+      "mmio_bonus": 0,
+      "combined_score": 288,
+      "repeat_blocks": 122,
+      "longest_run": 11,
+      "evidence": [
+        "dominant_loop_function"
+      ]
+    },
+    {
+      "function": "uart_stdio_write",
+      "dynamic_score": 9,
+      "static_anchor_score": 268,
+      "mmio_bonus": 0,
+      "combined_score": 286,
+      "repeat_blocks": 7,
+      "longest_run": 1,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=268"
+      ]
+    },
+    {
+      "function": "uart_init_pins",
+      "dynamic_score": 9,
+      "static_anchor_score": 215,
+      "mmio_bonus": 0,
+      "combined_score": 233,
+      "repeat_blocks": 5,
+      "longest_run": 2,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=215"
+      ]
+    },
+    {
+      "function": "uart_init",
+      "dynamic_score": 9,
+      "static_anchor_score": 215,
+      "mmio_bonus": 0,
+      "combined_score": 233,
+      "repeat_blocks": 5,
+      "longest_run": 2,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=215"
+      ]
+    },
+    {
+      "function": "_rtc_handler",
+      "dynamic_score": 0,
+      "static_anchor_score": 187,
+      "mmio_bonus": 0,
+      "combined_score": 187,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=187",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "NVIC_EnableIRQ",
+      "dynamic_score": 12,
+      "static_anchor_score": 117,
+      "mmio_bonus": 0,
+      "combined_score": 141,
+      "repeat_blocks": 4,
+      "longest_run": 4,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=117"
+      ]
+    },
+    {
+      "function": "sched_set_status",
+      "dynamic_score": 0,
+      "static_anchor_score": 134,
+      "mmio_bonus": 0,
+      "combined_score": 134,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=134",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "sched_run",
+      "dynamic_score": 0,
+      "static_anchor_score": 126,
+      "mmio_bonus": 0,
+      "combined_score": 126,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=126",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "gpio_init_port",
+      "dynamic_score": 62,
+      "static_anchor_score": 0,
+      "mmio_bonus": 0,
+      "combined_score": 124,
+      "repeat_blocks": 58,
+      "longest_run": 2,
+      "evidence": [
+        "dominant_loop_function"
+      ]
+    }
+  ],
+  "likely_blocking_offsets": [
+    "0x00000004",
+    "0x00000007"
+  ],
+  "likely_blocking_registers": [
+    {
+      "peripheral": "UART0",
+      "register": "S1",
+      "absoluteAddress_hex": "0x4006A004",
+      "addressOffset_hex": "0x00000004"
+    },
+    {
+      "peripheral": "UART0",
+      "register": "D",
+      "absoluteAddress_hex": "0x4006A007",
+      "addressOffset_hex": "0x00000007"
+    }
+  ],
+  "trace_divergence": null,
+  "still_ambiguous": false
+}

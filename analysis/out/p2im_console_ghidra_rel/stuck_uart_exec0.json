@@ -1,0 +1,363 @@
+{
+  "schema": "stuck_report_v2",
+  "seed_path": "/home/MultiFuzz/workdir/manual_uart_handshake_once_t4_20.guidance.json",
+  "stop_reason": "unknown",
+  "trace_event_count": 17139,
+  "tail_window": 256,
+  "selected_exec_index": 158,
+  "last_pc": "0x00001614",
+  "last_pc_function": "irq_handler_uart",
+  "dominant_loop_functions": [
+    {
+      "function": "iprintf",
+      "repeat_blocks": 147,
+      "repeat_edges": 7,
+      "longest_run": 102,
+      "loop_score": 351
+    },
+    {
+      "function": "uart_write",
+      "repeat_blocks": 69,
+      "repeat_edges": 7,
+      "longest_run": 69,
+      "loop_score": 207
+    },
+    {
+      "function": "_rtc_usage",
+      "repeat_blocks": 17,
+      "repeat_edges": 7,
+      "longest_run": 12,
+      "loop_score": 41
+    },
+    {
+      "function": "strncmp",
+      "repeat_blocks": 14,
+      "repeat_edges": 7,
+      "longest_run": 12,
+      "loop_score": 38
+    },
+    {
+      "function": "__swrite",
+      "repeat_blocks": 2,
+      "repeat_edges": 7,
+      "longest_run": 2,
+      "loop_score": 6
+    },
+    {
+      "function": "_write_r",
+      "repeat_blocks": 2,
+      "repeat_edges": 7,
+      "longest_run": 1,
+      "loop_score": 4
+    },
+    {
+      "function": "uart_stdio_write",
+      "repeat_blocks": 2,
+      "repeat_edges": 7,
+      "longest_run": 1,
+      "loop_score": 4
+    },
+    {
+      "function": "puts",
+      "repeat_blocks": 1,
+      "repeat_edges": 7,
+      "longest_run": 1,
+      "loop_score": 3
+    },
+    {
+      "function": "isr_uart0_rx_tx",
+      "repeat_blocks": 1,
+      "repeat_edges": 7,
+      "longest_run": 1,
+      "loop_score": 3
+    },
+    {
+      "function": "irq_handler_uart",
+      "repeat_blocks": 1,
+      "repeat_edges": 7,
+      "longest_run": 1,
+      "loop_score": 3
+    }
+  ],
+  "dominant_loop_blocks": [
+    {
+      "block": "uart_write at /home/bo/test/RIOT/cpu/kinetis/periph/uart.c:240:0",
+      "count": 33
+    },
+    {
+      "block": "uart_write at /home/bo/test/RIOT/cpu/kinetis/periph/uart.c:241:0",
+      "count": 33
+    },
+    {
+      "block": "_puts_r+0x30",
+      "count": 27
+    },
+    {
+      "block": "_puts_r+0x78",
+      "count": 27
+    },
+    {
+      "block": "_puts_r+0x7c",
+      "count": 27
+    },
+    {
+      "block": "_puts_r+0x82",
+      "count": 27
+    },
+    {
+      "block": "_puts_r+0x86",
+      "count": 26
+    },
+    {
+      "block": "_puts_r+0x3c",
+      "count": 1
+    },
+    {
+      "block": "_puts_r+0x40",
+      "count": 1
+    },
+    {
+      "block": "__swbuf_r",
+      "count": 1
+    },
+    {
+      "block": "__swbuf_r+0xa",
+      "count": 1
+    },
+    {
+      "block": "__swbuf_r+0x12",
+      "count": 1
+    }
+  ],
+  "tail_mmio": {
+    "addresses": [
+      {
+        "address_hex": "0x4006A004",
+        "count": 208
+      },
+      {
+        "address_hex": "0x40064006",
+        "count": 7
+      },
+      {
+        "address_hex": "0x4006A007",
+        "count": 5
+      },
+      {
+        "address_hex": "0x40064000",
+        "count": 5
+      },
+      {
+        "address_hex": "0x40064001",
+        "count": 3
+      },
+      {
+        "address_hex": "0x40048038",
+        "count": 2
+      },
+      {
+        "address_hex": "0x40049048",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4007E000",
+        "count": 2
+      },
+      {
+        "address_hex": "0x40064005",
+        "count": 2
+      },
+      {
+        "address_hex": "0x40064003",
+        "count": 2
+      },
+      {
+        "address_hex": "0x4003D014",
+        "count": 2
+      },
+      {
+        "address_hex": "0x400FF054",
+        "count": 2
+      }
+    ],
+    "offsets": []
+  },
+  "candidate_stuck_functions": [
+    {
+      "function": "uart_write",
+      "dynamic_score": 207,
+      "static_anchor_score": 549,
+      "mmio_bonus": 0,
+      "combined_score": 963,
+      "repeat_blocks": 69,
+      "longest_run": 69,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=549",
+        "rel_hot_offsets=['0x00000004', '0x00000007']"
+      ]
+    },
+    {
+      "function": "irq_handler_uart",
+      "dynamic_score": 83,
+      "static_anchor_score": 584,
+      "mmio_bonus": 0,
+      "combined_score": 750,
+      "repeat_blocks": 1,
+      "longest_run": 1,
+      "evidence": [
+        "last_pc_in_function",
+        "dominant_loop_function",
+        "static_anchor_score=584",
+        "rel_hot_offsets=['0x00000004', '0x00000007']"
+      ]
+    },
+    {
+      "function": "iprintf",
+      "dynamic_score": 351,
+      "static_anchor_score": 0,
+      "mmio_bonus": 0,
+      "combined_score": 702,
+      "repeat_blocks": 147,
+      "longest_run": 102,
+      "evidence": [
+        "dominant_loop_function"
+      ]
+    },
+    {
+      "function": "uart_stdio_write",
+      "dynamic_score": 4,
+      "static_anchor_score": 268,
+      "mmio_bonus": 0,
+      "combined_score": 276,
+      "repeat_blocks": 2,
+      "longest_run": 1,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=268"
+      ]
+    },
+    {
+      "function": "isr_uart0_rx_tx",
+      "dynamic_score": 3,
+      "static_anchor_score": 251,
+      "mmio_bonus": 0,
+      "combined_score": 257,
+      "repeat_blocks": 1,
+      "longest_run": 1,
+      "evidence": [
+        "dominant_loop_function",
+        "static_anchor_score=251"
+      ]
+    },
+    {
+      "function": "uart_init",
+      "dynamic_score": 0,
+      "static_anchor_score": 215,
+      "mmio_bonus": 0,
+      "combined_score": 215,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=215"
+      ]
+    },
+    {
+      "function": "_rtc_handler",
+      "dynamic_score": 0,
+      "static_anchor_score": 187,
+      "mmio_bonus": 0,
+      "combined_score": 187,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=187",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "sched_set_status",
+      "dynamic_score": 0,
+      "static_anchor_score": 134,
+      "mmio_bonus": 0,
+      "combined_score": 134,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=134",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "sched_run",
+      "dynamic_score": 0,
+      "static_anchor_score": 126,
+      "mmio_bonus": 0,
+      "combined_score": 126,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=126",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "NVIC_EnableIRQ",
+      "dynamic_score": 0,
+      "static_anchor_score": 117,
+      "mmio_bonus": 0,
+      "combined_score": 117,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=117"
+      ]
+    },
+    {
+      "function": "std.isra.0",
+      "dynamic_score": 0,
+      "static_anchor_score": 115,
+      "mmio_bonus": 0,
+      "combined_score": 115,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=115",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    },
+    {
+      "function": "sched_switch",
+      "dynamic_score": 0,
+      "static_anchor_score": 115,
+      "mmio_bonus": 0,
+      "combined_score": 115,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "evidence": [
+        "static_anchor_score=115",
+        "rel_hot_offsets=['0x00000004']"
+      ]
+    }
+  ],
+  "likely_blocking_offsets": [
+    "0x00000004",
+    "0x00000007"
+  ],
+  "likely_blocking_registers": [
+    {
+      "peripheral": "UART0",
+      "register": "S1",
+      "absoluteAddress_hex": "0x4006A004",
+      "addressOffset_hex": "0x00000004"
+    },
+    {
+      "peripheral": "UART0",
+      "register": "D",
+      "absoluteAddress_hex": "0x4006A007",
+      "addressOffset_hex": "0x00000007"
+    }
+  ],
+  "trace_divergence": null,
+  "still_ambiguous": false
+}

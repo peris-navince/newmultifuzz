@@ -1,7 +1,4 @@
-use std::{
-    io::Read,
-    sync::{Mutex, OnceLock},
-};
+use std::io::Read;
 
 use anyhow::Context;
 use hashbrown::HashMap;
@@ -56,172 +53,6 @@ impl StreamData {
 }
 
 pub type StreamKey = u64;
-
-#[derive(Debug, Clone)]
-struct UartOneShotConfig {
-    s1_addr: u64,
-    d_addr: u64,
-    trigger_reads: u32,
-    s1_value: u8,
-    data_bytes: Vec<u8>,
-    max_events: u32,
-    d_window_accesses: u32,
-}
-
-#[derive(Debug, Default, Clone)]
-struct UartOneShotState {
-    s1_reads_since_event: u32,
-    await_d_window_remaining: u32,
-    data_pos: usize,
-    events_fired: u32,
-}
-
-static UART_ONESHOT_CFG: OnceLock<Option<UartOneShotConfig>> = OnceLock::new();
-static UART_ONESHOT_STATE: OnceLock<Mutex<UartOneShotState>> = OnceLock::new();
-
-fn parse_int_auto(s: &str) -> Option<u64> {
-    let s = s.trim();
-    if let Some(x) = s.strip_prefix("0x").or_else(|| s.strip_prefix("0X")) {
-        u64::from_str_radix(x, 16).ok()
-    }
-    else {
-        s.parse::<u64>().ok()
-    }
-}
-
-fn parse_hex_bytes(s: &str) -> Option<Vec<u8>> {
-    let s = s.trim();
-    if s.is_empty() || s.len() % 2 != 0 {
-        return None;
-    }
-
-    let mut out = Vec::with_capacity(s.len() / 2);
-    let bytes = s.as_bytes();
-    let mut i = 0;
-    while i < bytes.len() {
-        let part = std::str::from_utf8(&bytes[i..i + 2]).ok()?;
-        let b = u8::from_str_radix(part, 16).ok()?;
-        out.push(b);
-        i += 2;
-    }
-    Some(out)
-}
-
-fn uart_oneshot_cfg() -> Option<&'static UartOneShotConfig> {
-    UART_ONESHOT_CFG
-        .get_or_init(|| {
-            let spec = match std::env::var("MF_UART_ONESHOT") {
-                Ok(v) => v,
-                Err(_) => return None,
-            };
-
-            let mut parts = spec.split(':').map(str::trim);
-            let Some(s1_s) = parts.next() else { return None };
-            let Some(d_s) = parts.next() else { return None };
-            let Some(trigger_s) = parts.next() else { return None };
-            let Some(s1v_s) = parts.next() else { return None };
-            let Some(data_s) = parts.next() else { return None };
-            let max_s = parts.next();
-
-            let s1_addr = parse_int_auto(s1_s)?;
-            let d_addr = parse_int_auto(d_s)?;
-            let trigger_reads = parse_int_auto(trigger_s)? as u32;
-            let s1_value = parse_int_auto(s1v_s)? as u8;
-            let data_bytes = parse_hex_bytes(data_s)?;
-            if data_bytes.is_empty() {
-                return None;
-            }
-
-            let max_events = if let Some(x) = max_s {
-                parse_int_auto(x)? as u32
-            }
-            else {
-                data_bytes.len() as u32
-            };
-
-            let cfg = UartOneShotConfig {
-                s1_addr,
-                d_addr,
-                trigger_reads,
-                s1_value,
-                data_bytes,
-                max_events,
-                d_window_accesses: 4,
-            };
-
-            eprintln!(
-                "[uart-oneshot] legacy shim enabled: s1={:#010x} d={:#010x} trigger_reads={} s1_value={:#04x} data_len={} max_events={} d_window_accesses={}",
-                cfg.s1_addr,
-                cfg.d_addr,
-                cfg.trigger_reads,
-                cfg.s1_value,
-                cfg.data_bytes.len(),
-                cfg.max_events,
-                cfg.d_window_accesses,
-            );
-
-            Some(cfg)
-        })
-        .as_ref()
-}
-
-fn uart_oneshot_state() -> &'static Mutex<UartOneShotState> {
-    UART_ONESHOT_STATE.get_or_init(|| Mutex::new(UartOneShotState::default()))
-}
-
-fn reset_uart_oneshot_state() {
-    if uart_oneshot_cfg().is_none() {
-        return;
-    }
-    let mut st = uart_oneshot_state().lock().unwrap();
-    *st = UartOneShotState::default();
-}
-
-fn maybe_apply_uart_oneshot(addr: StreamKey, buf: &mut [u8]) {
-    let Some(cfg) = uart_oneshot_cfg() else { return };
-    let mut st = uart_oneshot_state().lock().unwrap();
-
-    // If a short D-consume window is open, only a D read may consume the event.
-    if st.await_d_window_remaining > 0 {
-        if addr == cfg.d_addr {
-            if st.events_fired < cfg.max_events && st.data_pos < cfg.data_bytes.len() {
-                let byte = cfg.data_bytes[st.data_pos];
-                if !buf.is_empty() {
-                    buf[0] = byte;
-                    for b in buf.iter_mut().skip(1) {
-                        *b = 0;
-                    }
-                }
-                st.data_pos += 1;
-                st.events_fired += 1;
-            }
-            st.await_d_window_remaining = 0;
-            st.s1_reads_since_event = 0;
-            return;
-        }
-
-        st.await_d_window_remaining -= 1;
-        if st.await_d_window_remaining == 0 {
-            st.s1_reads_since_event = 0;
-        }
-        return;
-    }
-
-    if st.events_fired >= cfg.max_events || st.data_pos >= cfg.data_bytes.len() {
-        return;
-    }
-
-    if addr == cfg.s1_addr {
-        st.s1_reads_since_event = st.s1_reads_since_event.saturating_add(1);
-        if st.s1_reads_since_event >= cfg.trigger_reads {
-            for b in buf.iter_mut() {
-                *b = cfg.s1_value;
-            }
-            st.await_d_window_remaining = cfg.d_window_accesses;
-            st.s1_reads_since_event = 0;
-        }
-    }
-}
 
 const VERSION: u8 = 1;
 const FILE_HEADER: [u8; 4] = [b'm', b'u', b'l', VERSION];
@@ -377,7 +208,6 @@ impl MultiStream {
     }
 
     pub fn seek_to_start(&mut self) {
-        reset_uart_oneshot_state();
         fixed_trial::on_execution_reset();
         strategy_runtime::on_execution_reset();
         self.streams.values_mut().for_each(|x| x.cursor = 0);
@@ -443,7 +273,6 @@ impl IoMemory for MultiStream {
 
         let data = self.next_bytes(addr, buf.len()).ok_or(MemError::ReadWatch)?;
         buf.copy_from_slice(data);
-        maybe_apply_uart_oneshot(addr, buf);
         strategy_runtime::on_mmio_read(addr, buf);
         if let Some(tracer) = self.tracer.as_mut() {
             tracer.read(addr, buf);
