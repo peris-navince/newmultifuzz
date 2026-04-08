@@ -1,0 +1,72 @@
+{
+  "id": "resp_071ca769b73ef6bf0069d619a1b60881a08cbbf27aa61c46c6",
+  "object": "response",
+  "created_at": 1775638945,
+  "status": "completed",
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1775638949,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 6000,
+  "max_tool_calls": null,
+  "model": "gpt-5.4-2026-03-05",
+  "output": [
+    {
+      "id": "msg_071ca769b73ef6bf0069d619a2dd9081a085f86a15eb469f93",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "{\"likely_blocking_condition\":\"RTC alarm wait: TSR must reach TAR\",\"likely_constraint\":\"Set RTC.TSR and RTC.TAR so TAR==TSR or TAR==TSR+1\",\"seed_hypothesis\":\"Seed MMIO writes: RTC.TSR=1, RTC.TAR=1; alt RTC.TSR=1, RTC.TAR=2\",\"confidence\":\"0.76\",\"reasoning_evidence_refs\":[\"blocking_offsets 0x0,0x8\",\"regs RTC.TSR RTC.TAR\",\"relation TAR equals TSR\",\"writing TAR clears TAF\",\"rtc/rtt init+alarm anchors\",\"uart loop likely downstream print\"]}"
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "none",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": true,
+  "temperature": 0.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 24538,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 135,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 24673
+  },
+  "user": null,
+  "metadata": {}
+}

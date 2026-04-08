@@ -8,6 +8,7 @@ import re
 import shlex
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -221,6 +222,798 @@ def _trace_file_info(run_root: str, basename: str = "replay_trace") -> Dict[str,
         "trace_meta_path": trace_meta if os.path.exists(trace_meta) else None,
         "trace_meta": _maybe_json(trace_meta),
     }
+
+
+def _default_analysis_dir() -> Path:
+    return _default_repo_root() / "analysis"
+
+
+def _default_stuck_dir() -> Path:
+    return _default_analysis_dir() / "stuck_attribution"
+
+
+def _run_python_tool(script_path: str, args: List[str], *, env: Optional[Dict[str, str]] = None) -> subprocess.CompletedProcess:
+    cmd = [sys.executable, _abs(script_path), *args]
+    info(f"python tool :: {' '.join(shlex.quote(x) for x in cmd)}")
+    proc = subprocess.run(
+        cmd,
+        text=True,
+        capture_output=True,
+        env=env or os.environ.copy(),
+        check=False,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(
+            f"python tool failed ({proc.returncode}): {script_path}\nSTDOUT:\n{proc.stdout}\nSTDERR:\n{proc.stderr}"
+        )
+    return proc
+
+
+def _run_llm_fallback_pipeline(args):
+    out_root = Path(args.out_root).expanduser().resolve()
+    _ensure_dir(str(out_root))
+
+    fuzzer_bin = _abs(args.fuzzer_bin) if getattr(args, 'fuzzer_bin', None) else ensure_fuzzer_binary(args.fuzzer_manifest)
+    run_root = out_root / 'run'
+    _ensure_dir(str(run_root))
+
+    run_log = run_root / 'run.log'
+    workdir = run_root / 'workdir'
+    observer_dir = run_root / 'observer'
+    guidance_summary_out = run_root / 'guidance_runtime_summary.json'
+    trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+    trace_json = run_root / f'{trace_base}.json'
+    trace_text = run_root / f'{trace_base}.log'
+    trace_meta = run_root / f'{trace_base}.meta.json'
+
+    run_result = run_hail_fuzz(
+        manifest_path=args.fuzzer_manifest,
+        firmware_config=args.firmware_config,
+        ghidra_src=args.ghidra_src,
+        workdir=str(workdir),
+        run_log=str(run_log),
+        run_for=args.run_for,
+        observer_dir=str(observer_dir),
+        guidance_file=args.guidance_file,
+        guidance_summary_out=str(guidance_summary_out),
+        import_dir=args.import_dir,
+        fuzzer_bin=fuzzer_bin,
+        setenv=args.setenv,
+        dump_trace=True,
+        trace_out=str(trace_json),
+        trace_text_out=str(trace_text),
+        trace_meta_out=str(trace_meta),
+        trace_basename=trace_base,
+    )
+
+    if not trace_json.exists():
+        raise RuntimeError(f"trace export missing after run-fuzz: {trace_json}")
+
+    stuck_dir = _default_stuck_dir()
+    find_script = str(stuck_dir / 'find_stuck_functions.py')
+    package_script = str(stuck_dir / 'package_llm_fallback.py')
+    llm_script = str(stuck_dir / 'run_llm_fallback.py')
+
+    stuck_report = out_root / 'stuck_report.json'
+    llm_bundle_json = out_root / 'llm_fallback_bundle.json'
+    llm_bundle_text = out_root / 'llm_fallback_prompt.txt'
+    llm_answer_json = out_root / 'llm_answer.json'
+    llm_answer_text = out_root / 'llm_answer.txt'
+    llm_answer_raw = out_root / 'llm_answer.raw.json'
+
+    find_args = [
+        '--contract-bundle', _abs(args.contract_bundle),
+        '--trace-json', str(trace_json),
+        '--use-recent-exec', str(args.use_recent_exec),
+        '--seed-path', _abs(args.guidance_file),
+        '--out', str(stuck_report),
+    ]
+    if args.baseline_trace_json:
+        find_args.extend(['--baseline-trace-json', _abs(args.baseline_trace_json)])
+    if args.baseline_use_recent_exec:
+        find_args.extend(['--baseline-use-recent-exec', str(args.baseline_use_recent_exec)])
+    _run_python_tool(find_script, find_args)
+    stuck_data = load_json(str(stuck_report))
+
+    package_args = [
+        '--contract-bundle', _abs(args.contract_bundle),
+        '--stuck-report', str(stuck_report),
+        '--manual-trace-json', str(trace_json),
+        '--manual-seed', _abs(args.guidance_file),
+        '--out', str(llm_bundle_json),
+        '--out-text', str(llm_bundle_text),
+    ]
+    if args.baseline_trace_json:
+        package_args.extend(['--baseline-trace-json', _abs(args.baseline_trace_json)])
+    if args.baseline_seed:
+        package_args.extend(['--baseline-seed', str(args.baseline_seed)])
+    _run_python_tool(package_script, package_args)
+
+    llm_invoked = False
+    llm_result: Optional[Dict[str, Any]] = None
+    if (not getattr(args, 'skip_llm', False)) and (bool(getattr(args, 'force_llm', False)) or bool(stuck_data.get('still_ambiguous'))):
+        llm_args = [
+            '--prompt-text', str(llm_bundle_text),
+            '--bundle-json', str(llm_bundle_json),
+            '--out-json', str(llm_answer_json),
+            '--out-text', str(llm_answer_text),
+            '--out-raw-response', str(llm_answer_raw),
+            '--max-output-tokens', str(int(args.llm_max_output_tokens)),
+            '--max-attempts', str(int(args.llm_max_attempts)),
+            '--reasoning-effort', str(args.llm_reasoning_effort),
+        ]
+        if getattr(args, 'llm_model', None):
+            llm_args.extend(['--model', str(args.llm_model)])
+        _run_python_tool(llm_script, llm_args)
+        llm_invoked = True
+        llm_result = _maybe_json(str(llm_answer_json))
+
+    summary = {
+        'schema': 'mf_llm_fallback_pipeline_v1',
+        'out_root': str(out_root),
+        'run': run_result,
+        'contract_bundle': _abs(args.contract_bundle),
+        'guidance_file': _abs(args.guidance_file),
+        'trace_json': str(trace_json),
+        'trace_text': str(trace_text),
+        'trace_meta': _maybe_json(str(trace_meta)),
+        'stuck_report_path': str(stuck_report),
+        'stuck_report': stuck_data,
+        'llm_bundle_json': str(llm_bundle_json),
+        'llm_bundle_text': str(llm_bundle_text),
+        'llm_invoked': llm_invoked,
+        'llm_answer_json': str(llm_answer_json) if llm_invoked else None,
+        'llm_answer_text': str(llm_answer_text) if llm_invoked else None,
+        'llm_answer_raw': str(llm_answer_raw) if llm_invoked else None,
+        'llm_result': llm_result,
+    }
+    save_json(str(out_root / 'llm_fallback_pipeline_summary.json'), summary)
+    info(f"llm-fallback-pipeline summary written: {out_root / 'llm_fallback_pipeline_summary.json'}")
+
+
+
+def _safe_id(s: str) -> str:
+    return re.sub(r"[^A-Za-z0-9_]+", "_", str(s or "")).strip("_") or "item"
+
+
+def _normalize_hex(v: Any) -> Optional[str]:
+    if v is None:
+        return None
+    s = str(v).strip()
+    if not s:
+        return None
+    try:
+        if s.lower().startswith('0x'):
+            return f"0x{int(s,16):08X}"
+        return f"0x{int(s,10):08X}"
+    except Exception:
+        return None
+
+
+def _u32_hex(v: int) -> str:
+    return f"0x{int(v) & 0xFFFFFFFF:08X}"
+
+
+def _int_from_any(v: Any) -> Optional[int]:
+    if v is None:
+        return None
+    try:
+        s = str(v).strip()
+        if s.lower().startswith('0x'):
+            return int(s, 16)
+        return int(s, 10)
+    except Exception:
+        return None
+
+
+def _load_contract_bundle(path: str) -> Dict[str, Any]:
+    data = load_json(_abs(path))
+    if 'program_context' not in data or 'document_context' not in data:
+        raise ValueError(f"{path} does not look like a contract bundle")
+    return data
+
+
+def _bundle_target_hints(bundle: Dict[str, Any], extra: Optional[List[str]] = None) -> List[str]:
+    hints: List[str] = []
+    for spec in bundle.get('hot_peripheral_specs', []) or []:
+        p = str(spec.get('peripheral') or '').strip().lower()
+        if p and p not in hints:
+            hints.append(p)
+    for reg in bundle.get('document_context', {}).get('matched_peripheral_registers', []) or []:
+        periph = str(reg.get('peripheral') or '').strip().lower()
+        rname = str((reg.get('register') or {}).get('name') or '').strip().lower()
+        for x in [periph, rname]:
+            if x and x not in hints:
+                hints.append(x)
+    for x in extra or []:
+        y = str(x).strip().lower()
+        if y and y not in hints:
+            hints.append(y)
+    return hints
+
+
+def _bundle_register_catalog(bundle: Dict[str, Any]) -> List[Dict[str, Any]]:
+    out: List[Dict[str, Any]] = []
+    seen = set()
+    for item in bundle.get('document_context', {}).get('matched_peripheral_registers', []) or []:
+        reg = item.get('register') or {}
+        periph = str(item.get('peripheral') or '').strip()
+        rname = str(reg.get('name') or '').strip()
+        addr = _normalize_hex(reg.get('absoluteAddress_hex') or reg.get('absoluteAddress'))
+        off = _normalize_hex(reg.get('addressOffset_hex') or reg.get('addressOffset'))
+        if not periph or not rname or not addr:
+            continue
+        key = (periph.upper(), rname.upper(), addr)
+        if key in seen:
+            continue
+        seen.add(key)
+        width = reg.get('size_bytes') or max(1, int((reg.get('size_bits') or 32) // 8))
+        out.append({
+            'peripheral': periph,
+            'register': rname,
+            'full_name': f"{periph}.{rname}",
+            'absolute_addr_hex': addr,
+            'offset_hex': off,
+            'width': int(width),
+            'svd_description': reg.get('svd_description'),
+            'pdf_description': reg.get('pdf_description'),
+            'fields': reg.get('fields') or [],
+        })
+    return out
+
+
+def _catalog_lookup(catalog: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    out: Dict[str, Dict[str, Any]] = {}
+    for reg in catalog:
+        for key in [
+            reg['register'].upper(),
+            reg['full_name'].upper(),
+            f"{reg['peripheral'].upper()}.{reg['register'].upper()}",
+        ]:
+            out.setdefault(key, reg)
+    return out
+
+
+def _read_seq_action(*, action_id: str, addr_hex: str, width: int, values: List[int], trigger: Dict[str, Any], activate_stage: Optional[str] = None, notes: str = "") -> Dict[str, Any]:
+    action = {
+        'type': 'mmio_read_sequence',
+        'id': action_id,
+        'addr': addr_hex,
+        'width': int(width),
+        'values': [_u32_hex(v) for v in values],
+        'trigger': trigger,
+        'notes': notes,
+    }
+    if activate_stage:
+        action['activate_stage'] = activate_stage
+    return action
+
+
+def _write_observe_action(*, action_id: str, addr_hex: str, notes: str = "") -> Dict[str, Any]:
+    return {
+        'type': 'mmio_write_observe',
+        'id': action_id,
+        'addr': addr_hex,
+        'trigger': {'kind': 'after_write', 'addr': addr_hex},
+        'notes': notes,
+    }
+
+
+def _bit_update_action(*, action_id: str, addr_hex: str, width: int, set_bits: List[int], clear_bits: List[int], trigger: Dict[str, Any], activate_stage: Optional[str] = None, notes: str = "") -> Dict[str, Any]:
+    action = {
+        'type': 'mmio_bit_update',
+        'id': action_id,
+        'addr': addr_hex,
+        'width': int(width),
+        'set_bits': list(set_bits),
+        'clear_bits': list(clear_bits),
+        'trigger': trigger,
+        'notes': notes,
+    }
+    if activate_stage:
+        action['activate_stage'] = activate_stage
+    return action
+
+
+def _write_then_read_gate_action(*, action_id: str, write_addr_hex: str, read_addr_hex: str, width: int, read_value: int, mask: int = 1, value: int = 1, activate_stage: Optional[str] = None, notes: str = "") -> Dict[str, Any]:
+    action = {
+        'type': 'mmio_write_then_read_gate',
+        'id': action_id,
+        'write_addr': write_addr_hex,
+        'write_mask': _u32_hex(mask),
+        'write_value': _u32_hex(value),
+        'read_addr': read_addr_hex,
+        'width': int(width),
+        'read_value': _u32_hex(read_value),
+        'trigger': {
+            'kind': 'after_write_value',
+            'addr': write_addr_hex,
+            'mask': _u32_hex(mask),
+            'value': _u32_hex(value),
+        },
+        'notes': notes,
+    }
+    if activate_stage:
+        action['activate_stage'] = activate_stage
+    return action
+
+
+def _pick_reg(catalog_lookup: Dict[str, Dict[str, Any]], *names: str) -> Optional[Dict[str, Any]]:
+    for name in names:
+        if not name:
+            continue
+        reg = catalog_lookup.get(str(name).upper())
+        if reg:
+            return reg
+    return None
+
+
+def _synthesize_generic_probe_guidance(*, contract_bundle_path: str, out_path: str, plan_name: str, peripheral_hints: Optional[List[str]] = None) -> Dict[str, Any]:
+    bundle = _load_contract_bundle(contract_bundle_path)
+    hints = _bundle_target_hints(bundle, peripheral_hints)
+    catalog = _bundle_register_catalog(bundle)
+    lookup = _catalog_lookup(catalog)
+    actions: List[Dict[str, Any]] = []
+    rationale_bits: List[str] = []
+
+    tsr = _pick_reg(lookup, 'TSR')
+    tar = _pick_reg(lookup, 'TAR')
+    sr = _pick_reg(lookup, 'SR')
+    ier = _pick_reg(lookup, 'IER')
+
+    if tsr and tar:
+        actions.append(_read_seq_action(
+            action_id='probe_tsr_progression',
+            addr_hex=tsr['absolute_addr_hex'],
+            width=tsr['width'],
+            values=[1, 1, 2, 2],
+            trigger={'kind': 'on_first_touch', 'addr': tsr['absolute_addr_hex'], 'access': 'read'},
+            activate_stage='tsr_seen',
+            notes='Auto probe: drive TSR progression from contract-bundle register evidence.',
+        ))
+        actions.append(_read_seq_action(
+            action_id='probe_tar_progression',
+            addr_hex=tar['absolute_addr_hex'],
+            width=tar['width'],
+            values=[1, 2, 2, 3],
+            trigger={'kind': 'when_stage_active', 'stage': 'tsr_seen'},
+            activate_stage='tar_seen',
+            notes='Auto probe: drive TAR progression to expose TAR/TSR relation.',
+        ))
+        rationale_bits.append('TSR/TAR progression seeded from contract-bundle register matches')
+        if sr:
+            actions.append(_bit_update_action(
+                action_id='probe_sr_ready',
+                addr_hex=sr['absolute_addr_hex'],
+                width=sr['width'],
+                set_bits=[4],
+                clear_bits=[0],
+                trigger={'kind': 'on_first_touch', 'addr': sr['absolute_addr_hex'], 'access': 'read'},
+                activate_stage='sr_seen',
+                notes='Auto probe: set a ready/alarm-style status bit on SR first touch.',
+            ))
+            rationale_bits.append('SR first-touch bit update added')
+        if ier and sr:
+            actions.append(_write_observe_action(
+                action_id='probe_ier_write_observe',
+                addr_hex=ier['absolute_addr_hex'],
+                notes='Auto probe: observe IER writes to correlate interrupt-enable paths.',
+            ))
+            actions.append(_write_then_read_gate_action(
+                action_id='probe_ier_then_sr_gate',
+                write_addr_hex=ier['absolute_addr_hex'],
+                read_addr_hex=sr['absolute_addr_hex'],
+                width=sr['width'],
+                read_value=0x10,
+                activate_stage='irq_enable_seen',
+                notes='Auto probe: if firmware enables IER low bit, force a ready-like SR value on the next read.',
+            ))
+            rationale_bits.append('IER->SR gate added')
+    if not actions:
+        for idx, reg in enumerate(catalog[:4]):
+            rname = reg['register'].upper()
+            aid = _safe_id(f"probe_{reg['full_name']}")
+            if rname.endswith('SR') or 'STATUS' in rname:
+                actions.append(_bit_update_action(
+                    action_id=aid,
+                    addr_hex=reg['absolute_addr_hex'],
+                    width=reg['width'],
+                    set_bits=[4],
+                    clear_bits=[0],
+                    trigger={'kind': 'on_first_touch', 'addr': reg['absolute_addr_hex'], 'access': 'read'},
+                    activate_stage=f'seen_{idx}',
+                    notes=f'Auto probe for {reg["full_name"]}: status-style first-touch bit update.',
+                ))
+            elif rname.endswith('CR') or rname.endswith('IER') or 'CTRL' in rname or 'CFG' in rname:
+                actions.append(_write_observe_action(
+                    action_id=aid,
+                    addr_hex=reg['absolute_addr_hex'],
+                    notes=f'Auto probe for {reg["full_name"]}: observe writes.',
+                ))
+            else:
+                actions.append(_read_seq_action(
+                    action_id=aid,
+                    addr_hex=reg['absolute_addr_hex'],
+                    width=reg['width'],
+                    values=[1, 1, 2, 2],
+                    trigger={'kind': 'on_first_touch', 'addr': reg['absolute_addr_hex'], 'access': 'read'},
+                    activate_stage=f'seen_{idx}',
+                    notes=f'Auto probe for {reg["full_name"]}: generic progression sequence.',
+                ))
+        rationale_bits.append('generic register probe synthesized from contract-bundle register catalog')
+
+    guidance = {
+        'schema': 'mf_runtime_strategy_v1',
+        'plan_name': plan_name,
+        'rationale': '; '.join(rationale_bits) or 'Auto-synthesized probe guidance from contract bundle.',
+        'target_hints': hints,
+        'actions': actions,
+    }
+    save_json(out_path, guidance)
+    return guidance
+
+
+_ASSIGNMENT_RE = re.compile(r'(?:\b([A-Za-z0-9_]+)\.)?([A-Za-z0-9_]+)\s*=\s*(0x[0-9A-Fa-f]+|\d+)')
+
+
+def _parse_llm_assignments(parsed_json: Dict[str, Any]) -> Dict[str, List[int]]:
+    text_parts = []
+    for key in ['seed_hypothesis', 'likely_constraint', 'likely_blocking_condition']:
+        v = parsed_json.get(key)
+        if isinstance(v, str) and v.strip():
+            text_parts.append(v)
+    text = '\n'.join(text_parts)
+    out: Dict[str, List[int]] = {}
+    for m in _ASSIGNMENT_RE.finditer(text):
+        periph, reg, val_s = m.groups()
+        reg_key = f"{periph}.{reg}" if periph else reg
+        val = _int_from_any(val_s)
+        if val is None:
+            continue
+        out.setdefault(reg_key.upper(), [])
+        if val not in out[reg_key.upper()]:
+            out[reg_key.upper()].append(val)
+    return out
+
+
+def _pick_regs_from_offsets(catalog: List[Dict[str, Any]], offsets: List[str]) -> List[Dict[str, Any]]:
+    norm_offsets = {_normalize_hex(x) for x in offsets if _normalize_hex(x)}
+    out: List[Dict[str, Any]] = []
+    for reg in catalog:
+        if reg.get('offset_hex') in norm_offsets:
+            out.append(reg)
+    return out
+
+
+def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_bundle_json_path: str, contract_bundle_path: str, out_path: str, plan_name: str) -> Dict[str, Any]:
+    llm_answer = load_json(_abs(llm_answer_json_path))
+    parsed = llm_answer.get('parsed_json') or {}
+    fallback_bundle = load_json(_abs(fallback_bundle_json_path))
+    contract_bundle = _load_contract_bundle(contract_bundle_path)
+    catalog = _bundle_register_catalog(contract_bundle)
+    lookup = _catalog_lookup(catalog)
+    assignments = _parse_llm_assignments(parsed)
+
+    actions: List[Dict[str, Any]] = []
+    rationale_bits: List[str] = []
+
+    matched_regs: List[Dict[str, Any]] = []
+    for reg_key, vals in assignments.items():
+        reg = lookup.get(reg_key.upper()) or lookup.get(reg_key.split('.')[-1].upper())
+        if not reg:
+            continue
+        matched_regs.append(reg)
+        seq = list(vals)[:4]
+        while len(seq) < 4:
+            seq.append(seq[-1])
+        actions.append(_read_seq_action(
+            action_id=_safe_id(f'llm_{reg["full_name"]}'),
+            addr_hex=reg['absolute_addr_hex'],
+            width=reg['width'],
+            values=seq,
+            trigger={'kind': 'on_first_touch', 'addr': reg['absolute_addr_hex'], 'access': 'read'},
+            activate_stage=_safe_id(f'seen_{reg["register"]}'),
+            notes=f'LLM-synthesized from seed_hypothesis for {reg["full_name"]}.',
+        ))
+        rationale_bits.append(f"LLM assignment {reg_key}={seq}")
+
+    if not actions:
+        likely_offsets = fallback_bundle.get('likely_blocking_offsets') or []
+        offset_regs = _pick_regs_from_offsets(catalog, likely_offsets)
+        for reg in offset_regs[:3]:
+            actions.append(_read_seq_action(
+                action_id=_safe_id(f'llm_offset_{reg["full_name"]}'),
+                addr_hex=reg['absolute_addr_hex'],
+                width=reg['width'],
+                values=[1, 1, 2, 2],
+                trigger={'kind': 'on_first_touch', 'addr': reg['absolute_addr_hex'], 'access': 'read'},
+                activate_stage=_safe_id(f'seen_{reg["register"]}'),
+                notes=f'LLM fallback synthesized from likely_blocking_offsets for {reg["full_name"]}.',
+            ))
+        if offset_regs:
+            rationale_bits.append(f"offset-derived probe for {','.join(r['register'] for r in offset_regs[:3])}")
+
+    # RTC-specific but evidence-driven: if both TSR and TAR appear, add a TAR/TSR relation probe.
+    tsr = _pick_reg(lookup, 'TSR')
+    tar = _pick_reg(lookup, 'TAR')
+    sr = _pick_reg(lookup, 'SR')
+    ier = _pick_reg(lookup, 'IER')
+    parsed_text = ' '.join(str(parsed.get(k) or '') for k in ['likely_blocking_condition', 'likely_constraint', 'seed_hypothesis']).upper()
+    if tsr and tar and ('TAR' in parsed_text and 'TSR' in parsed_text):
+        have_tsr = any(a.get('addr') == tsr['absolute_addr_hex'] for a in actions)
+        have_tar = any(a.get('addr') == tar['absolute_addr_hex'] for a in actions)
+        if not have_tsr:
+            actions.append(_read_seq_action(
+                action_id='llm_tsr_progression',
+                addr_hex=tsr['absolute_addr_hex'],
+                width=tsr['width'],
+                values=[1, 1, 2, 2],
+                trigger={'kind': 'on_first_touch', 'addr': tsr['absolute_addr_hex'], 'access': 'read'},
+                activate_stage='tsr_seen',
+                notes='LLM relation probe for TSR.',
+            ))
+        if not have_tar:
+            actions.append(_read_seq_action(
+                action_id='llm_tar_progression',
+                addr_hex=tar['absolute_addr_hex'],
+                width=tar['width'],
+                values=[1, 2, 2, 3],
+                trigger={'kind': 'on_first_touch', 'addr': tar['absolute_addr_hex'], 'access': 'read'},
+                activate_stage='tar_seen',
+                notes='LLM relation probe for TAR.',
+            ))
+        if sr and not any(a.get('addr') == sr['absolute_addr_hex'] and a.get('type') == 'mmio_bit_update' for a in actions):
+            actions.append(_bit_update_action(
+                action_id='llm_sr_taf_ready',
+                addr_hex=sr['absolute_addr_hex'],
+                width=sr['width'],
+                set_bits=[4],
+                clear_bits=[0],
+                trigger={'kind': 'on_first_touch', 'addr': sr['absolute_addr_hex'], 'access': 'read'},
+                activate_stage='sr_seen',
+                notes='LLM relation probe: set a ready/alarm-style SR bit.',
+            ))
+        if ier and sr and ('ALARM' in parsed_text or 'TAF' in parsed_text or 'TAIE' in parsed_text):
+            actions.append(_write_observe_action(
+                action_id='llm_ier_write_observe',
+                addr_hex=ier['absolute_addr_hex'],
+                notes='LLM relation probe: observe IER writes.',
+            ))
+            actions.append(_write_then_read_gate_action(
+                action_id='llm_ier_then_sr_gate',
+                write_addr_hex=ier['absolute_addr_hex'],
+                read_addr_hex=sr['absolute_addr_hex'],
+                width=sr['width'],
+                read_value=0x10,
+                activate_stage='irq_enable_seen',
+                notes='LLM relation probe: on IER enable, force a ready-like SR read.',
+            ))
+        rationale_bits.append('TSR/TAR/SR/IER relation probe synthesized from LLM answer')
+
+    if not actions:
+        raise RuntimeError('failed to synthesize any runtime actions from the LLM answer')
+
+    guidance = {
+        'schema': 'mf_runtime_strategy_v1',
+        'plan_name': plan_name,
+        'rationale': '; '.join(rationale_bits) or 'LLM-synthesized runtime strategy.',
+        'llm_source': {
+            'response_id': llm_answer.get('response_id'),
+            'model': llm_answer.get('model'),
+            'parsed_json': parsed,
+        },
+        'actions': actions,
+    }
+    save_json(out_path, guidance)
+    return guidance
+
+
+def _coverage_from_run_summary(run_summary: Optional[Dict[str, Any]]) -> int:
+    return int((run_summary or {}).get('last_cov') or 0)
+
+
+def _run_adaptive_mmio_loop(args):
+    out_root = Path(args.out_root).expanduser().resolve()
+    _ensure_dir(str(out_root))
+    fuzzer_bin = _abs(args.fuzzer_bin) if getattr(args, 'fuzzer_bin', None) else ensure_fuzzer_binary(args.fuzzer_manifest)
+
+    # 1) establish a plateau frontier queue to import from
+    if getattr(args, 'import_dir', None):
+        current_import_dir = _abs(args.import_dir)
+        baseline_summary = {'import_dir': current_import_dir, 'reused_existing_import_dir': True}
+    else:
+        seed_root = out_root / 'round_0_seed'
+        _ensure_dir(str(seed_root))
+        baseline_run = run_hail_fuzz(
+            manifest_path=args.fuzzer_manifest,
+            firmware_config=args.firmware_config,
+            ghidra_src=args.ghidra_src,
+            workdir=str(seed_root / 'workdir'),
+            run_log=str(seed_root / 'run.log'),
+            run_for=args.initial_run_for,
+            observer_dir=str(seed_root / 'observer'),
+            guidance_file=None,
+            guidance_summary_out=None,
+            import_dir=None,
+            fuzzer_bin=fuzzer_bin,
+            setenv=args.setenv,
+            dump_trace=bool(getattr(args, 'dump_trace', False)),
+            trace_basename=str(getattr(args, 'trace_basename', 'replay_trace')),
+        )
+        current_import_dir = str(seed_root / 'workdir' / 'queue')
+        baseline_summary = baseline_run
+
+    # 2) get an initial probe guidance, either provided or synthesized from the contract bundle
+    if getattr(args, 'guidance_file', None):
+        current_guidance_file = _abs(args.guidance_file)
+        initial_guidance_kind = 'provided'
+    else:
+        current_guidance_file = str(out_root / 'auto_probe.guidance.json')
+        _synthesize_generic_probe_guidance(
+            contract_bundle_path=args.contract_bundle,
+            out_path=current_guidance_file,
+            plan_name=str(getattr(args, 'probe_plan_name', 'auto_mmio_probe')),
+            peripheral_hints=getattr(args, 'peripheral_hint', None),
+        )
+        initial_guidance_kind = 'synthesized_from_contract_bundle'
+
+    cycle_reports: List[Dict[str, Any]] = []
+    final_queue_dir = current_import_dir
+    final_guidance_file = current_guidance_file
+
+    for cycle_idx in range(1, int(getattr(args, 'max_llm_cycles', 1)) + 1):
+        cycle_root = out_root / f'cycle_{cycle_idx}'
+        _ensure_dir(str(cycle_root))
+        trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+
+        probe_root = cycle_root / 'probe'
+        probe_run = run_hail_fuzz(
+            manifest_path=args.fuzzer_manifest,
+            firmware_config=args.firmware_config,
+            ghidra_src=args.ghidra_src,
+            workdir=str(probe_root / 'workdir'),
+            run_log=str(probe_root / 'run.log'),
+            run_for=args.probe_run_for,
+            observer_dir=str(probe_root / 'observer'),
+            guidance_file=current_guidance_file,
+            guidance_summary_out=str(probe_root / 'guidance_runtime_summary.json'),
+            import_dir=current_import_dir,
+            fuzzer_bin=fuzzer_bin,
+            setenv=args.setenv,
+            dump_trace=True,
+            trace_out=str(probe_root / f'{trace_base}.json'),
+            trace_text_out=str(probe_root / f'{trace_base}.log'),
+            trace_meta_out=str(probe_root / f'{trace_base}.meta.json'),
+            trace_basename=trace_base,
+        )
+        probe_trace_json = str(probe_root / f'{trace_base}.json')
+
+        stuck_dir = _default_stuck_dir()
+        find_script = str(stuck_dir / 'find_stuck_functions.py')
+        package_script = str(stuck_dir / 'package_llm_fallback.py')
+        llm_script = str(stuck_dir / 'run_llm_fallback.py')
+
+        stuck_report = cycle_root / 'stuck_report.json'
+        llm_bundle_json = cycle_root / 'llm_fallback_bundle.json'
+        llm_bundle_text = cycle_root / 'llm_fallback_prompt.txt'
+        llm_answer_json = cycle_root / 'llm_answer.json'
+        llm_answer_text = cycle_root / 'llm_answer.txt'
+        llm_answer_raw = cycle_root / 'llm_answer.raw.json'
+        llm_seed_guidance = cycle_root / 'llm_seed.guidance.json'
+
+        _run_python_tool(find_script, [
+            '--contract-bundle', _abs(args.contract_bundle),
+            '--trace-json', probe_trace_json,
+            '--use-recent-exec', str(args.use_recent_exec),
+            '--seed-path', current_guidance_file,
+            '--out', str(stuck_report),
+        ])
+        stuck_data = load_json(str(stuck_report))
+
+        _run_python_tool(package_script, [
+            '--contract-bundle', _abs(args.contract_bundle),
+            '--stuck-report', str(stuck_report),
+            '--manual-trace-json', probe_trace_json,
+            '--manual-seed', current_guidance_file,
+            '--out', str(llm_bundle_json),
+            '--out-text', str(llm_bundle_text),
+        ])
+
+        llm_invoked = False
+        llm_result = None
+        synthesized_guidance = None
+        next_guidance_file = None
+
+        should_call_llm = (not bool(getattr(args, 'skip_llm', False))) and (bool(getattr(args, 'force_llm', False)) or bool(stuck_data.get('still_ambiguous', True)))
+        if should_call_llm:
+            llm_args = [
+                '--prompt-text', str(llm_bundle_text),
+                '--bundle-json', str(llm_bundle_json),
+                '--out-json', str(llm_answer_json),
+                '--out-text', str(llm_answer_text),
+                '--out-raw-response', str(llm_answer_raw),
+                '--max-output-tokens', str(int(args.llm_max_output_tokens)),
+                '--max-attempts', str(int(args.llm_max_attempts)),
+                '--reasoning-effort', str(args.llm_reasoning_effort),
+            ]
+            if getattr(args, 'llm_model', None):
+                llm_args.extend(['--model', str(args.llm_model)])
+            _run_python_tool(llm_script, llm_args)
+            llm_invoked = True
+            llm_result = _maybe_json(str(llm_answer_json))
+            if llm_result and llm_result.get('parsed_json'):
+                synthesized_guidance = _synthesize_guidance_from_llm_answer(
+                    llm_answer_json_path=str(llm_answer_json),
+                    fallback_bundle_json_path=str(llm_bundle_json),
+                    contract_bundle_path=args.contract_bundle,
+                    out_path=str(llm_seed_guidance),
+                    plan_name=f"{getattr(args, 'llm_seed_plan_name', 'llm_seed')}_cycle_{cycle_idx}",
+                )
+                next_guidance_file = str(llm_seed_guidance)
+
+        if not next_guidance_file:
+            next_guidance_file = current_guidance_file
+
+        followup_root = cycle_root / 'followup'
+        followup_run = run_hail_fuzz(
+            manifest_path=args.fuzzer_manifest,
+            firmware_config=args.firmware_config,
+            ghidra_src=args.ghidra_src,
+            workdir=str(followup_root / 'workdir'),
+            run_log=str(followup_root / 'run.log'),
+            run_for=args.followup_run_for,
+            observer_dir=str(followup_root / 'observer'),
+            guidance_file=next_guidance_file,
+            guidance_summary_out=str(followup_root / 'guidance_runtime_summary.json'),
+            import_dir=str(probe_root / 'workdir' / 'queue'),
+            fuzzer_bin=fuzzer_bin,
+            setenv=args.setenv,
+            dump_trace=bool(getattr(args, 'dump_followup_trace', False)),
+            trace_basename=trace_base,
+        )
+
+        cycle_report = {
+            'cycle_index': cycle_idx,
+            'input_import_dir': current_import_dir,
+            'input_guidance_file': current_guidance_file,
+            'probe_run': probe_run,
+            'stuck_report_path': str(stuck_report),
+            'stuck_report': stuck_data,
+            'llm_bundle_json': str(llm_bundle_json),
+            'llm_bundle_text': str(llm_bundle_text),
+            'llm_invoked': llm_invoked,
+            'llm_answer_json': str(llm_answer_json) if llm_invoked else None,
+            'llm_answer_text': str(llm_answer_text) if llm_invoked else None,
+            'llm_answer_raw': str(llm_answer_raw) if llm_invoked else None,
+            'llm_result': llm_result,
+            'generated_guidance_file': str(llm_seed_guidance) if synthesized_guidance else None,
+            'generated_guidance': synthesized_guidance,
+            'followup_run': followup_run,
+            'coverage_delta_probe_vs_input': _coverage_from_run_summary(probe_run.get('run_summary')) - int((baseline_summary.get('run_summary') or {}).get('last_cov') or 0) if cycle_idx == 1 else _coverage_from_run_summary(probe_run.get('run_summary')) - _coverage_from_run_summary(cycle_reports[-1]['followup_run'].get('run_summary')),
+            'coverage_delta_followup_vs_probe': _coverage_from_run_summary(followup_run.get('run_summary')) - _coverage_from_run_summary(probe_run.get('run_summary')),
+        }
+        cycle_reports.append(cycle_report)
+
+        current_import_dir = str(followup_root / 'workdir' / 'queue')
+        final_queue_dir = current_import_dir
+        current_guidance_file = next_guidance_file
+        final_guidance_file = current_guidance_file
+
+        if (not llm_invoked) and (not bool(getattr(args, 'force_llm', False))):
+            break
+
+    summary = {
+        'schema': 'mf_adaptive_mmio_loop_v1',
+        'contract_bundle': _abs(args.contract_bundle),
+        'initial_guidance_kind': initial_guidance_kind,
+        'initial_guidance_file': current_guidance_file if initial_guidance_kind == 'provided' else str(out_root / 'auto_probe.guidance.json'),
+        'baseline_summary': baseline_summary,
+        'cycles': cycle_reports,
+        'final_queue_dir': final_queue_dir,
+        'final_guidance_file': final_guidance_file,
+    }
+    save_json(str(out_root / 'adaptive_mmio_loop_summary.json'), summary)
+    info(f"adaptive-mmio-loop summary written: {out_root / 'adaptive_mmio_loop_summary.json'}")
 
 
 def run_hail_fuzz(
@@ -1507,6 +2300,57 @@ def main():
     s8.add_argument("--shared-cache-root")
     s8.add_argument("--shared-query-cache-root")
 
+    s14 = sub.add_parser("adaptive-mmio-loop")
+    s14.add_argument("--fuzzer-manifest", required=True)
+    s14.add_argument("--fuzzer-bin")
+    s14.add_argument("--firmware-config", required=True)
+    s14.add_argument("--ghidra-src", default=_default_ghidra_src(), help="Path to Ghidra install (default: repository tools/ghidra)")
+    s14.add_argument("--contract-bundle", required=True)
+    s14.add_argument("--out-root", required=True)
+    s14.add_argument("--import-dir")
+    s14.add_argument("--guidance-file")
+    s14.add_argument("--peripheral-hint", action="append")
+    s14.add_argument("--initial-run-for", default="30s")
+    s14.add_argument("--probe-run-for", default="30s")
+    s14.add_argument("--followup-run-for", default="60s")
+    s14.add_argument("--use-recent-exec", default="latest")
+    s14.add_argument("--max-llm-cycles", type=int, default=1)
+    s14.add_argument("--setenv", action="append")
+    s14.add_argument("--trace-basename", default="replay_trace")
+    s14.add_argument("--dump-trace", action="store_true", help="Emit traces for the baseline seed run if one is created")
+    s14.add_argument("--dump-followup-trace", action="store_true", help="Emit traces for followup runs after LLM seed reinjection")
+    s14.add_argument("--skip-llm", action="store_true")
+    s14.add_argument("--force-llm", action="store_true")
+    s14.add_argument("--llm-model")
+    s14.add_argument("--llm-max-output-tokens", type=int, default=6000)
+    s14.add_argument("--llm-max-attempts", type=int, default=2)
+    s14.add_argument("--llm-reasoning-effort", default=os.environ.get("OPENAI_REASONING_EFFORT", "none"))
+    s14.add_argument("--probe-plan-name", default="auto_mmio_probe")
+    s14.add_argument("--llm-seed-plan-name", default="llm_seed")
+
+    s13 = sub.add_parser("llm-fallback-pipeline")
+    s13.add_argument("--fuzzer-manifest", required=True)
+    s13.add_argument("--fuzzer-bin")
+    s13.add_argument("--firmware-config", required=True)
+    s13.add_argument("--ghidra-src", default=_default_ghidra_src(), help="Path to Ghidra install (default: repository tools/ghidra)")
+    s13.add_argument("--contract-bundle", required=True)
+    s13.add_argument("--guidance-file", required=True)
+    s13.add_argument("--import-dir", required=True)
+    s13.add_argument("--out-root", required=True)
+    s13.add_argument("--run-for", default="30s")
+    s13.add_argument("--use-recent-exec", default="latest")
+    s13.add_argument("--baseline-trace-json")
+    s13.add_argument("--baseline-use-recent-exec")
+    s13.add_argument("--baseline-seed")
+    s13.add_argument("--setenv", action="append")
+    s13.add_argument("--trace-basename", default="replay_trace")
+    s13.add_argument("--skip-llm", action="store_true")
+    s13.add_argument("--force-llm", action="store_true")
+    s13.add_argument("--llm-model")
+    s13.add_argument("--llm-max-output-tokens", type=int, default=6000)
+    s13.add_argument("--llm-max-attempts", type=int, default=2)
+    s13.add_argument("--llm-reasoning-effort", default=os.environ.get("OPENAI_REASONING_EFFORT", "none"))
+
     s9 = sub.add_parser("fixedpoint-prompt")
     s9.add_argument("--task-context", required=True)
     s9.add_argument("--out", required=True)
@@ -1642,6 +2486,10 @@ def main():
         auto_loop(args)
     elif args.cmd == "staged-loop":
         staged_loop(args)
+    elif args.cmd == "llm-fallback-pipeline":
+        _run_llm_fallback_pipeline(args)
+    elif args.cmd == "adaptive-mmio-loop":
+        _run_adaptive_mmio_loop(args)
 
 
 if __name__ == "__main__":

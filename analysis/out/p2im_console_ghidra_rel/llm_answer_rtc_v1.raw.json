@@ -1,0 +1,64 @@
+{
+  "id": "resp_04105794aed5a7720069d6162532e481a0853e53c2a7c0a921",
+  "object": "response",
+  "created_at": 1775638053,
+  "status": "incomplete",
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": null,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": {
+    "reason": "max_output_tokens"
+  },
+  "instructions": null,
+  "max_output_tokens": 1600,
+  "max_tool_calls": null,
+  "model": "gpt-5-2025-08-07",
+  "output": [
+    {
+      "id": "rs_04105794aed5a7720069d616270b8c81a082b5fbfb168b379c",
+      "type": "reasoning",
+      "summary": []
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 24511,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1600,
+    "output_tokens_details": {
+      "reasoning_tokens": 1600
+    },
+    "total_tokens": 26111
+  },
+  "user": null,
+  "metadata": {}
+}

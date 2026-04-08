@@ -1,0 +1,8 @@
+{
+  "model": "gpt-5",
+  "request_max_output_tokens": 1600,
+  "response_id": "resp_04105794aed5a7720069d6162532e481a0853e53c2a7c0a921",
+  "status": "incomplete",
+  "parsed_json": null,
+  "raw_output_text": ""
+}

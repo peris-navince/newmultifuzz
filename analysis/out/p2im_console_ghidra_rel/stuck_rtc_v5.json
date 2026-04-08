@@ -1,6 +1,6 @@
 {
   "schema": "stuck_report_v6",
-  "seed_path": "/home/MultiFuzz/workdir/manual_rtc_probe_t4_20.guidance.json",
+  "seed_path": "/home/wgh/Multifuzz/workdir/manual_rtc_probe_t4_20.guidance.json",
   "target_peripheral": "RTC",
   "target_abs_addrs": [
     "0X4003D000",
@@ -19,10 +19,10 @@
     "rtt"
   ],
   "stop_reason": "unknown",
-  "trace_event_count": 18244,
+  "trace_event_count": 24530,
   "tail_window": 256,
-  "selected_exec_index": 165,
-  "last_pc": "0x000015DE",
+  "selected_exec_index": 125,
+  "last_pc": "0x000015E0",
   "last_pc_function": "uart_write",
   "dominant_loop_functions": [
     {
@@ -43,67 +43,7 @@
     "addresses": [
       {
         "address_hex": "0x4006A004",
-        "count": 167
-      },
-      {
-        "address_hex": "0x40064006",
-        "count": 34
-      },
-      {
-        "address_hex": "0x40064000",
-        "count": 11
-      },
-      {
-        "address_hex": "0x4006A007",
-        "count": 4
-      },
-      {
-        "address_hex": "0x40064001",
-        "count": 4
-      },
-      {
-        "address_hex": "0x40064003",
-        "count": 4
-      },
-      {
-        "address_hex": "0x4003D014",
-        "count": 4
-      },
-      {
-        "address_hex": "0x40048038",
-        "count": 2
-      },
-      {
-        "address_hex": "0x40049048",
-        "count": 2
-      },
-      {
-        "address_hex": "0x4007E000",
-        "count": 2
-      },
-      {
-        "address_hex": "0x40064005",
-        "count": 2
-      },
-      {
-        "address_hex": "0x40064008",
-        "count": 2
-      },
-      {
-        "address_hex": "0x4003D010",
-        "count": 2
-      },
-      {
-        "address_hex": "0x40047000",
-        "count": 2
-      },
-      {
-        "address_hex": "0x4004803C",
-        "count": 2
-      },
-      {
-        "address_hex": "0x400FF054",
-        "count": 2
+        "count": 256
       }
     ],
     "offsets": []

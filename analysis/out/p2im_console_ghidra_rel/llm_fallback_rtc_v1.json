@@ -1,0 +1,2261 @@
+{
+  "schema": "llm_fallback_bundle_v1",
+  "target_seed": "/home/wgh/Multifuzz/workdir/manual_rtc_probe_t4_20.guidance.json",
+  "baseline_seed": null,
+  "stop_reason": "unknown",
+  "last_pc": "0x000015E0",
+  "last_pc_function": "uart_write",
+  "still_ambiguous": true,
+  "top_static_candidates": [
+    {
+      "function": "rtt_set_counter",
+      "peripheral": "RTC",
+      "final_score": 1248,
+      "score_float": 1247.914292112821,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=6",
+        "span_hot_hits=6",
+        "name_alias_hits=['rtt']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000014']"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": false,
+      "name_alias_hits": [
+        "rtt"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 6,
+        "span_hot_hits": 6,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000014"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 6.152382,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D000",
+        "0x4003D014",
+        "0x4003D014",
+        "0x4003D000",
+        "0x4003D014",
+        "0x4003D014"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "rtt_set_counter"
+      ]
+    },
+    {
+      "function": "isr_rtc",
+      "peripheral": "RTC",
+      "final_score": 1165,
+      "score_float": 1164.6564443207928,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=5",
+        "span_hot_hits=5",
+        "name_alias_hits=['rtc']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000008', '0x00000014', '0x0000001C']",
+        "isr_bonus"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": true,
+      "name_alias_hits": [
+        "rtc"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 5,
+        "span_hot_hits": 5,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014",
+          "0x0000001C"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 14.359407,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D000",
+        "0x4003D014",
+        "0x4003D01C",
+        "0x4003D01C",
+        "0x4003D014"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "isr_rtc",
+        "rtc",
+        "rtt"
+      ]
+    },
+    {
+      "function": "rtt_set_alarm",
+      "peripheral": "RTC",
+      "final_score": 1130,
+      "score_float": 1129.6564443207928,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=5",
+        "span_hot_hits=5",
+        "name_alias_hits=['rtt']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000008', '0x00000014', '0x0000001C']"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": false,
+      "name_alias_hits": [
+        "rtt"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 5,
+        "span_hot_hits": 5,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014",
+          "0x0000001C"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 14.359407,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D01C",
+        "0x4003D01C",
+        "0x4003D008",
+        "0x4003D01C",
+        "0x4003D01C"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "rtt_set_alarm"
+      ]
+    },
+    {
+      "function": "rtt_init",
+      "peripheral": "RTC",
+      "final_score": 985,
+      "score_float": 984.6564443207927,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=4",
+        "span_hot_hits=7",
+        "name_alias_hits=['rtt']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000008', '0x00000014', '0x0000001C']"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": false,
+      "name_alias_hits": [
+        "rtt"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 4,
+        "span_hot_hits": 7,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014",
+          "0x0000001C"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 14.359407,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D014",
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D01C"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "rtt_init"
+      ]
+    },
+    {
+      "function": "rtt_clear_alarm",
+      "peripheral": "RTC",
+      "final_score": 771,
+      "score_float": 771.2920326021278,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=3",
+        "span_hot_hits=3",
+        "name_alias_hits=['rtt']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000008', '0x0000001C']"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": false,
+      "name_alias_hits": [
+        "rtt"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 3,
+        "span_hot_hits": 3,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000008",
+          "0x0000001C"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 10.465339,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D01C",
+        "0x4003D01C",
+        "0x4003D008"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "rtt_clear_alarm"
+      ]
+    },
+    {
+      "function": "rtt_get_counter",
+      "peripheral": "RTC",
+      "final_score": 763,
+      "score_float": 763.3614975622339,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=3",
+        "span_hot_hits=3",
+        "name_alias_hits=['rtt']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000008', '0x00000014']"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": false,
+      "name_alias_hits": [
+        "rtt"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 3,
+        "span_hot_hits": 3,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 9.143583,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D000",
+        "0x4003D000",
+        "0x4003D000"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "rtt_get_counter"
+      ]
+    },
+    {
+      "function": "rtt_poweron",
+      "peripheral": "RTC",
+      "final_score": 578,
+      "score_float": 577.914292112821,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=2",
+        "span_hot_hits=2",
+        "name_alias_hits=['rtt']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000014']"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": false,
+      "name_alias_hits": [
+        "rtt"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 2,
+        "span_hot_hits": 2,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000014"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 6.152382,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D014",
+        "0x4003D014"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "rtt_poweron"
+      ]
+    },
+    {
+      "function": "rtt_poweroff",
+      "peripheral": "RTC",
+      "final_score": 578,
+      "score_float": 577.914292112821,
+      "is_anchor": true,
+      "reasons": [
+        "abs_hot_hits=2",
+        "span_hot_hits=2",
+        "name_alias_hits=['rtt']",
+        "text_alias_hits=['rtc', 'rtt']",
+        "text_offset_hits=['0x00000000', '0x00000014']"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": false,
+      "name_alias_hits": [
+        "rtt"
+      ],
+      "match_stats": {
+        "abs_hot_hits": 2,
+        "span_hot_hits": 2,
+        "rel_hot_offset_hits": 0,
+        "rel_hot_offsets": [],
+        "rel_offset_counts": {},
+        "rel_span_hits": 0,
+        "text_alias_hits": [
+          "rtc",
+          "rtt"
+        ],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000014"
+        ],
+        "weighted_rel_hit_score": 0,
+        "raw_weighted_rel_hit_score": 0,
+        "weighted_rel_unique_score": 0,
+        "weighted_text_offset_score": 6.152382,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {},
+      "abs_hot_addresses": [
+        "0x4003D014",
+        "0x4003D014"
+      ],
+      "rel_hot_offsets": [],
+      "matched_keywords": [
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "rtt_poweroff"
+      ]
+    },
+    {
+      "function": "hard_fault_handler",
+      "peripheral": "RTC",
+      "final_score": 491,
+      "score_float": 490.8322584143478,
+      "is_anchor": true,
+      "reasons": [
+        "rel_hot_offset_hits=3",
+        "multi_hot_offsets=['0x00000000', '0x00000008', '0x00000014']",
+        "offset_rarity_score=9.144",
+        "text_offset_hits=['0x00000000', '0x00000008', '0x00000014', '0x0000001C']",
+        "isr_bonus"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": true,
+      "name_alias_hits": [],
+      "match_stats": {
+        "abs_hot_hits": 0,
+        "span_hot_hits": 0,
+        "rel_hot_offset_hits": 3,
+        "rel_hot_offsets": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014"
+        ],
+        "rel_offset_counts": {
+          "0x00000000": 1,
+          "0x00000008": 1,
+          "0x00000014": 1
+        },
+        "rel_span_hits": 0,
+        "text_alias_hits": [],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014",
+          "0x0000001C"
+        ],
+        "weighted_rel_hit_score": 6.337849,
+        "raw_weighted_rel_hit_score": 12.794241,
+        "weighted_rel_unique_score": 9.143583,
+        "weighted_text_offset_score": 14.359407,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {
+        "0x00000000": {
+          "df": 76,
+          "idf": 2.258313,
+          "count": 1,
+          "registers": [
+            "TSR"
+          ]
+        },
+        "0x00000008": {
+          "df": 36,
+          "idf": 2.991201,
+          "count": 1,
+          "registers": [
+            "TAR"
+          ]
+        },
+        "0x00000014": {
+          "df": 14,
+          "idf": 3.894069,
+          "count": 1,
+          "registers": [
+            "SR"
+          ]
+        }
+      },
+      "abs_hot_addresses": [],
+      "rel_hot_offsets": [
+        "0x00000000",
+        "0x00000008",
+        "0x00000014"
+      ],
+      "matched_keywords": [
+        "0x00000000",
+        "0x00000008",
+        "0x00000014",
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "hard_fault_handler",
+        "rtc",
+        "rtt"
+      ]
+    },
+    {
+      "function": "std.isra.0",
+      "peripheral": "RTC",
+      "final_score": 460,
+      "score_float": 459.5373116557889,
+      "is_anchor": true,
+      "reasons": [
+        "rel_hot_offset_hits=3",
+        "multi_hot_offsets=['0x00000000', '0x00000008', '0x00000014']",
+        "offset_rarity_score=9.144",
+        "text_offset_hits=['0x00000000', '0x00000008', '0x00000014']",
+        "isr_bonus"
+      ],
+      "callgraph_distance": 0,
+      "is_isr": true,
+      "name_alias_hits": [],
+      "match_stats": {
+        "abs_hot_hits": 0,
+        "span_hot_hits": 0,
+        "rel_hot_offset_hits": 3,
+        "rel_hot_offsets": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014"
+        ],
+        "rel_offset_counts": {
+          "0x00000000": 1,
+          "0x00000008": 1,
+          "0x00000014": 1
+        },
+        "rel_span_hits": 0,
+        "text_alias_hits": [],
+        "text_offset_hits": [
+          "0x00000000",
+          "0x00000008",
+          "0x00000014"
+        ],
+        "weighted_rel_hit_score": 6.337849,
+        "raw_weighted_rel_hit_score": 12.794241,
+        "weighted_rel_unique_score": 9.143583,
+        "weighted_text_offset_score": 9.143583,
+        "text_offset_scored": true,
+        "identity_signal": true,
+        "libc_hard_gate": false
+      },
+      "offset_rarity_stats": {
+        "0x00000000": {
+          "df": 76,
+          "idf": 2.258313,
+          "count": 1,
+          "registers": [
+            "TSR"
+          ]
+        },
+        "0x00000008": {
+          "df": 36,
+          "idf": 2.991201,
+          "count": 1,
+          "registers": [
+            "TAR"
+          ]
+        },
+        "0x00000014": {
+          "df": 14,
+          "idf": 3.894069,
+          "count": 1,
+          "registers": [
+            "SR"
+          ]
+        }
+      },
+      "abs_hot_addresses": [],
+      "rel_hot_offsets": [
+        "0x00000000",
+        "0x00000008",
+        "0x00000014"
+      ],
+      "matched_keywords": [
+        "0x00000000",
+        "0x00000008",
+        "0x00000014",
+        "0x4003D000",
+        "0x4003D008",
+        "0x4003D014",
+        "0x4003D01C",
+        "IER",
+        "SR",
+        "TAR",
+        "TSR",
+        "rtc",
+        "rtt",
+        "std.isra.0"
+      ]
+    }
+  ],
+  "top_dynamic_candidates": [
+    {
+      "function": "cib_init",
+      "dynamic_score": 0,
+      "raw_dynamic_score": 0,
+      "static_anchor_score": 344,
+      "mmio_bonus": 0,
+      "combined_score": 344,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": true,
+      "target_peripheral_consistent": true,
+      "evidence": [
+        "target_rel_match=['0X00000000', '0X00000008']",
+        "strong_peripheral_signal",
+        "static_anchor_score=344",
+        "rel_hot_offsets=['0x00000000', '0x00000008']"
+      ]
+    },
+    {
+      "function": "_rtc_handler",
+      "dynamic_score": 0,
+      "raw_dynamic_score": 0,
+      "static_anchor_score": 264,
+      "mmio_bonus": 0,
+      "combined_score": 264,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": true,
+      "target_peripheral_consistent": true,
+      "evidence": [
+        "target_name_alias",
+        "strong_peripheral_signal",
+        "static_anchor_score=264"
+      ]
+    },
+    {
+      "function": "_rtc_usage",
+      "dynamic_score": 0,
+      "raw_dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": true,
+      "target_peripheral_consistent": true,
+      "evidence": [
+        "target_name_alias",
+        "strong_peripheral_signal",
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_settime",
+      "dynamic_score": 0,
+      "raw_dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": true,
+      "target_peripheral_consistent": true,
+      "evidence": [
+        "target_name_alias",
+        "strong_peripheral_signal",
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_setalarm",
+      "dynamic_score": 0,
+      "raw_dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": true,
+      "target_peripheral_consistent": true,
+      "evidence": [
+        "target_name_alias",
+        "strong_peripheral_signal",
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_gettime",
+      "dynamic_score": 0,
+      "raw_dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": true,
+      "target_peripheral_consistent": true,
+      "evidence": [
+        "target_name_alias",
+        "strong_peripheral_signal",
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "_rtc_getalarm",
+      "dynamic_score": 0,
+      "raw_dynamic_score": 0,
+      "static_anchor_score": 212,
+      "mmio_bonus": 0,
+      "combined_score": 212,
+      "repeat_blocks": 0,
+      "longest_run": 0,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": true,
+      "target_peripheral_consistent": true,
+      "evidence": [
+        "target_name_alias",
+        "strong_peripheral_signal",
+        "static_anchor_score=212"
+      ]
+    },
+    {
+      "function": "uart_write",
+      "dynamic_score": 768,
+      "raw_dynamic_score": 848,
+      "static_anchor_score": 52,
+      "mmio_bonus": 0,
+      "combined_score": 1408,
+      "repeat_blocks": 256,
+      "longest_run": 256,
+      "common_helper_noise": false,
+      "strong_peripheral_signal": false,
+      "target_peripheral_consistent": false,
+      "evidence": [
+        "last_pc_in_function",
+        "dominant_loop_function",
+        "target_rel_match=['0X00000000']",
+        "cross_peripheral_last_pc_penalty",
+        "target_peripheral_mismatch",
+        "target_peripheral_penalty=180",
+        "static_anchor_score=52",
+        "rel_hot_offsets=['0x00000000']"
+      ]
+    }
+  ],
+  "dominant_loop_functions": [
+    {
+      "function": "uart_write",
+      "repeat_blocks": 256,
+      "repeat_edges": 1,
+      "longest_run": 256,
+      "loop_score": 768
+    }
+  ],
+  "dominant_loop_blocks": [
+    {
+      "block": "uart_write",
+      "count": 256
+    }
+  ],
+  "tail_mmio": {
+    "addresses": [
+      {
+        "address_hex": "0x4006A004",
+        "count": 256
+      }
+    ],
+    "offsets": []
+  },
+  "likely_blocking_offsets": [
+    "0x00000000",
+    "0x00000008"
+  ],
+  "likely_blocking_registers": [
+    {
+      "peripheral": "RTC",
+      "register": "TSR",
+      "absoluteAddress_hex": "0X4003D000",
+      "addressOffset_hex": "0X00000000"
+    },
+    {
+      "peripheral": "RTC",
+      "register": "TAR",
+      "absoluteAddress_hex": "0X4003D008",
+      "addressOffset_hex": "0X00000008"
+    }
+  ],
+  "matched_register_docs": [
+    {
+      "cache_dir": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/rtc",
+      "peripheral": "RTC",
+      "register": {
+        "name": "TSR",
+        "absoluteAddress_hex": "0x4003D000",
+        "addressOffset_hex": "0x00000000",
+        "size_bits": 32,
+        "size_bytes": 4,
+        "svd_access": "read-write",
+        "svd_description": "RTC Time Seconds Register",
+        "pdf_description": "4003_D000 RTCTimeSecondsRegister(RTC_TSR) 32 R/W 0000_0000h 44.2.1/1135\n\n44.2.1 RTCTimeSecondsRegister(RTC_TSR)\nAddress:4003_D000hbase+0hoffset=4003_D000h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthe\ntimecounterisdisabled,theTSRcanbereadorwritten.WritingtotheTSRwhenthetimecounteris\ndisabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135\nRegisterdefinition\n\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthe\ntimecounterisdisabled,theTSRcanbereadorwritten.WritingtotheTSRwhenthetimecounteris\ndisabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135\nRegisterdefinition",
+        "documentation_status": "documented_in_pdf",
+        "fields": [
+          {
+            "name": "TSR",
+            "bitOffset": 0,
+            "bitWidth": 32,
+            "bitRange": "[31:0]",
+            "mask_hex": "0xFFFFFFFF",
+            "svd_access": "read-write",
+            "svd_description": "Time Seconds Register",
+            "pdf_description": "TSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description",
+            "documentation_status": "documented_in_pdf"
+          }
+        ]
+      },
+      "mmio_map_summary": {
+        "baseAddress_hex": "0x4003D000",
+        "template_instance": "RTC",
+        "status_register_candidates": [
+          "SR",
+          "IER"
+        ]
+      },
+      "svd_meta_summary": {
+        "template": "RTC",
+        "template_description": "Secure Real Time Clock",
+        "matched_instances": [
+          "RTC"
+        ]
+      },
+      "peripheral_span_summary": [
+        {
+          "peripheral": "RTC",
+          "base_address_hex": "0x4003D000",
+          "min_reg_addr_hex": "0x4003D000",
+          "max_reg_end_hex": "0x4003D808",
+          "register_count": 10
+        }
+      ],
+      "pdf_chunk_matches": [
+        {
+          "score": 12,
+          "chunk_type": "register",
+          "peripheral": "RTC",
+          "register": "TSR",
+          "absoluteAddress_hex": "0x4003D000",
+          "svd_description": "RTC Time Seconds Register",
+          "pdf_description": "4003_D000 RTCTimeSecondsRegister(RTC_TSR) 32 R/W 0000_0000h 44.2.1/1135\n\n44.2.1 RTCTimeSecondsRegister(RTC_TSR)\nAddress:4003_D000hbase+0hoffset=4003_D000h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]orSR[TIF]areset.Whenthe\ntimecounterisdisabled,theTSRcanbereadorwritten.WritingtotheTSRwhenthetimecounteris\ndisabledwillcleartheSR[TOF]and/ortheSR[TIF].WritingtoTSRwithzeroissupported,butnot\nrecommendedbecauseTSRwillreadaszerowhenSR[TIF]orSR[TOF]areset(indicatingthetimeis\ninvalid).\nK64Sub-FamilyReferenceManual,Rev.2,January2014\nFreescaleSemiconductor,Inc. 1135\nRegisterdefinition\n\nTSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description\n31–0 TimeSecondsRegister\nWhenthetimecounterisenabled,theTSRisreadonlyandincrementsonceasecondprovidedSR[TOF]\norSR[TIF]arenotset.ThetimecounterwillreadaszerowhenSR[TOF]o\n...[truncated]",
+          "fields": [
+            {
+              "name": "TSR",
+              "bitRange": "[31:0]",
+              "svd_description": "Time Seconds Register",
+              "pdf_description": "TSR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TSRfielddescriptions\nField Description"
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "TAF",
+            "field_id": "RTC:SR.TAF"
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "",
+            "field_id": "RTC:TAR."
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "",
+            "field_id": "RTC:SR."
+          },
+          "confidence": 0.67,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ]
+        }
+      ],
+      "relation_edge_matches": [
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000001",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000002",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "TAF",
+            "field_id": "RTC:SR.TAF"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAF']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000003",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "",
+            "field_id": "RTC:TAR."
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000007",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "",
+            "field_id": "RTC:SR."
+          },
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+            }
+          ],
+          "notes": [
+            "matched_variants=['SR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000008",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TSR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000009",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "TAF",
+            "field_id": "RTC:SR.TAF"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAF']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000010",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "",
+            "field_id": "RTC:TSR."
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TSR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000018",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "IER",
+            "register_addr_hex": "0x4003D01C",
+            "field": "TAIE",
+            "field_id": "RTC:IER.TAIE"
+          },
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAIE']"
+          ]
+        }
+      ]
+    },
+    {
+      "cache_dir": "/home/MultiFuzz/extractor/.shared_pdf_svd_cache/rtc",
+      "peripheral": "RTC",
+      "register": {
+        "name": "TAR",
+        "absoluteAddress_hex": "0x4003D008",
+        "addressOffset_hex": "0x00000008",
+        "size_bits": 32,
+        "size_bytes": 4,
+        "svd_access": "read-write",
+        "svd_description": "RTC Time Alarm Register",
+        "pdf_description": "4003_D008 RTCTimeAlarmRegister(RTC_TAR) 32 R/W 0000_0000h 44.2.3/1136\n\n44.2.3 RTCTimeAlarmRegister(RTC_TAR)\nAddress:4003_D000hbase+8hoffset=4003_D008h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister\n\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister",
+        "documentation_status": "documented_in_pdf",
+        "fields": [
+          {
+            "name": "TAR",
+            "bitOffset": 0,
+            "bitWidth": 32,
+            "bitRange": "[31:0]",
+            "mask_hex": "0xFFFFFFFF",
+            "svd_access": "read-write",
+            "svd_description": "Time Alarm Register",
+            "pdf_description": "TAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description",
+            "documentation_status": "documented_in_pdf"
+          }
+        ]
+      },
+      "mmio_map_summary": {
+        "baseAddress_hex": "0x4003D000",
+        "template_instance": "RTC",
+        "status_register_candidates": [
+          "SR",
+          "IER"
+        ]
+      },
+      "svd_meta_summary": {
+        "template": "RTC",
+        "template_description": "Secure Real Time Clock",
+        "matched_instances": [
+          "RTC"
+        ]
+      },
+      "peripheral_span_summary": [
+        {
+          "peripheral": "RTC",
+          "base_address_hex": "0x4003D000",
+          "min_reg_addr_hex": "0x4003D000",
+          "max_reg_end_hex": "0x4003D808",
+          "register_count": 10
+        }
+      ],
+      "pdf_chunk_matches": [
+        {
+          "score": 12,
+          "chunk_type": "register",
+          "peripheral": "RTC",
+          "register": "TAR",
+          "absoluteAddress_hex": "0x4003D008",
+          "svd_description": "RTC Time Alarm Register",
+          "pdf_description": "4003_D008 RTCTimeAlarmRegister(RTC_TAR) 32 R/W 0000_0000h 44.2.3/1136\n\n44.2.3 RTCTimeAlarmRegister(RTC_TAR)\nAddress:4003_D000hbase+8hoffset=4003_D008h\nBit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0\nR\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister\n\nTAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description\n31–0 TimeAlarmRegister",
+          "fields": [
+            {
+              "name": "TAR",
+              "bitRange": "[31:0]",
+              "svd_description": "Time Alarm Register",
+              "pdf_description": "TAR\nW\nReset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\nRTC_TARfielddescriptions\nField Description"
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "",
+            "field_id": "RTC:TAR."
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "TAF",
+            "field_id": "RTC:SR.TAF"
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ]
+        },
+        {
+          "score": 7,
+          "chunk_type": "relation",
+          "edge_type": "field_to_field",
+          "relation": "gates",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "",
+            "field_id": "RTC:TSR."
+          },
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ]
+        }
+      ],
+      "relation_edge_matches": [
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000001",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000002",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "TAF",
+            "field_id": "RTC:SR.TAF"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAF']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000003",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "",
+            "field_id": "RTC:TAR."
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000007",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "",
+            "field_id": "RTC:SR."
+          },
+          "relation": "gates",
+          "confidence": 0.67,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "register(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements.\nK64Sub-FamilyReferenceManual,Rev.2,January2014\n1148 FreescaleSemiconductor,Inc."
+            }
+          ],
+          "notes": [
+            "matched_variants=['SR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000008",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "TSR",
+            "field_id": "RTC:TSR.TSR"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TSR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000009",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "SR",
+            "register_addr_hex": "0x4003D014",
+            "field": "TAF",
+            "field_id": "RTC:SR.TAF"
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAF']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000010",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "TSR",
+            "register_addr_hex": "0x4003D000",
+            "field": "",
+            "field_id": "RTC:TSR."
+          },
+          "relation": "gates",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "TAR\nWhenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1136,
+              "text": "Whenthetimecounterisenabled,theSR[TAF]issetwhenevertheTAR[TAR]equalstheTSR[TSR]and\ntheTSR[TSR]increments.WritingtotheTARclearstheSR[TAF].\n44.2.4 RTCTimeCompensationRegister(RTC_TCR)\nAddress:4003_D000hbase+Choffset=4003_D00Ch"
+            },
+            {
+              "source": "fuzzy",
+              "page": 1140,
+              "text": "TimealarmflagissetwhentheTAR[TAR]equalstheTSR[TSR]andtheTSR[TSR]increments.Thisbitis\nclearedbywritingtheTARregister.\n0 Timealarmhasnotoccurred.\n1 Timealarmhasoccurred."
+            },
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TSR']"
+          ]
+        },
+        {
+          "score": 4,
+          "edge_id": "e_f2f_000018",
+          "edge_type": "field_to_field",
+          "src": {
+            "peripheral": "RTC",
+            "register": "TAR",
+            "register_addr_hex": "0x4003D008",
+            "field": "TAR",
+            "field_id": "RTC:TAR.TAR"
+          },
+          "dst": {
+            "peripheral": "RTC",
+            "register": "IER",
+            "register_addr_hex": "0x4003D01C",
+            "field": "TAIE",
+            "field_id": "RTC:IER.TAIE"
+          },
+          "relation": "gates",
+          "confidence": 0.73,
+          "evidence": [
+            {
+              "source": "fuzzy",
+              "page": 1148,
+              "text": "TheTimeAlarmregister(TAR),SR[TAF],andIER[TAIE]allowtheRTCtogeneratean\ninterruptatapredefinedtime.The32-bitTARiscomparedwiththe32-bitTimeSeconds\nregister(TSR)eachtimeitincrements.SR[TAF]willsetwhenTARequalsTSRand\nTSRincrements."
+            }
+          ],
+          "notes": [
+            "matched_variants=['TAIE']"
+          ]
+        }
+      ]
+    }
+  ],
+  "baseline_vs_manual_diff": {
+    "trace_divergence": null,
+    "baseline_trace_points": [],
+    "manual_trace_points": [
+      {
+        "pc": "0x0000126C",
+        "function": "cpu_init",
+        "block": "cpu_init at /home/bo/test/RIOT/cpu/kinetis/cpu.c:28:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002530",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:35:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024DC",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024F0",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1702:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x0000251C",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1708:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002546",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:53:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024DC",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024F0",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1702:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x0000251C",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1708:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002550",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002568",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002556",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:56:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024DC",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002508",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1706:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002562",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002556",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:56:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024DC",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002508",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1706:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002562",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002556",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:56:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024DC",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002508",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1706:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002562",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002556",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:56:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024DC",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002508",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1706:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002562",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002556",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:56:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x000024DC",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1699:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002508",
+        "function": "NVIC_SetPriority",
+        "block": "NVIC_SetPriority at /home/bo/test/RIOT/cpu/cortexm_common/include/vendor/core_cm4.h:1706:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002562",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:55:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      },
+      {
+        "pc": "0x00002556",
+        "function": "cortexm_init",
+        "block": "cortexm_init at /home/bo/test/RIOT/cpu/cortexm_common/cortexm_init.c:56:0",
+        "mmio_addr": null,
+        "mmio_offset": null
+      }
+    ]
+  },
+  "question": {
+    "infer_blocking_condition": true,
+    "infer_mmio_or_input_constraint": true,
+    "propose_seed_hypothesis": true
+  },
+  "packaging_notes": {
+    "top_static_source": "anchor_only",
+    "trace_inputs": {
+      "baseline_available": false,
+      "manual_available": true
+    }
+  }
+}

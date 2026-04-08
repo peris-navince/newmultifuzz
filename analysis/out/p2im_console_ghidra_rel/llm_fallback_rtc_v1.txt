@@ -1,0 +1,64 @@
+You are given bounded evidence for a stuck firmware replay.
+Do not re-identify the hotspot globally. Work only inside the evidence below.
+
+Tasks:
+1. Infer the most likely blocking condition.
+2. Infer the MMIO / input constraint that would satisfy it.
+3. Propose the next seed hypothesis in a concrete, testable form.
+
+stop_reason: unknown
+last_pc: 0x000015E0
+last_pc_function: uart_write
+still_ambiguous: True
+
+Top dynamic candidates:
+- cib_init: combined=344 dynamic=0 static=344 evidence=["target_rel_match=['0X00000000', '0X00000008']", 'strong_peripheral_signal', 'static_anchor_score=344', "rel_hot_offsets=['0x00000000', '0x00000008']"]
+- _rtc_handler: combined=264 dynamic=0 static=264 evidence=['target_name_alias', 'strong_peripheral_signal', 'static_anchor_score=264']
+- _rtc_usage: combined=212 dynamic=0 static=212 evidence=['target_name_alias', 'strong_peripheral_signal', 'static_anchor_score=212']
+- _rtc_settime: combined=212 dynamic=0 static=212 evidence=['target_name_alias', 'strong_peripheral_signal', 'static_anchor_score=212']
+- _rtc_setalarm: combined=212 dynamic=0 static=212 evidence=['target_name_alias', 'strong_peripheral_signal', 'static_anchor_score=212']
+
+likely_blocking_offsets: ['0x00000000', '0x00000008']
+likely_blocking_registers:
+- RTC.TSR abs=0X4003D000 off=0X00000000
+- RTC.TAR abs=0X4003D008 off=0X00000008
+
+Relevant register docs:
+- RTC.TSR abs=0x4003D000 off=0x00000000
+  desc: 4003_D000 RTCTimeSecondsRegister(RTC_TSR) 32 R/W 0000_0000h 44.2.1/1135
+
+44.2.1 RTCTimeSecondsRegister(RTC_TSR)
+Address:4003_D000hbase+0hoffset=4003_D000h
+Bit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+R
+TSR
+W
+Reset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+RTC_TSRfielddescriptions
+Field Description
+31–0 TimeSecondsRegister
+Whenthetim
+- RTC.TAR abs=0x4003D008 off=0x00000008
+  desc: 4003_D008 RTCTimeAlarmRegister(RTC_TAR) 32 R/W 0000_0000h 44.2.3/1136
+
+44.2.3 RTCTimeAlarmRegister(RTC_TAR)
+Address:4003_D000hbase+8hoffset=4003_D008h
+Bit 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+R
+TAR
+W
+Reset0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+RTC_TARfielddescriptions
+Field Description
+31–0 TimeAlarmRegister
+
+TAR
+W
+Reset0 0 
+
+Return JSON with keys:
+- likely_blocking_condition
+- likely_constraint
+- seed_hypothesis
+- confidence
+- reasoning_evidence_refs
