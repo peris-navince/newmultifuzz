@@ -685,6 +685,607 @@ def _pick_regs_from_offsets(catalog: List[Dict[str, Any]], offsets: List[str]) -
     return out
 
 
+
+
+def _touch_entries_to_map(summary: Optional[Dict[str, Any]]) -> Dict[str, int]:
+    out: Dict[str, int] = {}
+    for key in ['read_touches', 'write_touches']:
+        for item in (summary or {}).get(key, []) or []:
+            if isinstance(item, list) and len(item) >= 2:
+                addr = _normalize_hex(item[0])
+                if addr:
+                    out[addr] = out.get(addr, 0) + int(item[1] or 0)
+            elif isinstance(item, dict):
+                addr = _normalize_hex(item.get('address_hex') or item.get('addr'))
+                if addr:
+                    out[addr] = out.get(addr, 0) + int(item.get('count') or 0)
+    return out
+
+
+def _touch_profile_entries(bundle_or_profile: Optional[Any]) -> List[Dict[str, Any]]:
+    if isinstance(bundle_or_profile, dict):
+        profile = bundle_or_profile.get('trace_touch_profile') or bundle_or_profile.get('probe_trace_touch_profile') or []
+    elif isinstance(bundle_or_profile, list):
+        profile = bundle_or_profile
+    else:
+        profile = []
+    out: List[Dict[str, Any]] = []
+    for item in profile or []:
+        if not isinstance(item, dict):
+            continue
+        addr = _normalize_hex(item.get('address_hex') or item.get('addr'))
+        if not addr:
+            continue
+        widths = []
+        for w in item.get('observed_widths') or []:
+            try:
+                widths.append(int(w))
+            except Exception:
+                pass
+        dominant = item.get('dominant_width')
+        try:
+            dominant_i = int(dominant) if dominant is not None else None
+        except Exception:
+            dominant_i = None
+        out.append({
+            'address_hex': addr,
+            'count': int(item.get('count') or 0),
+            'dominant_width': dominant_i,
+            'observed_widths': sorted(set(widths)),
+            'width_counts': {str(k): int(v) for k, v in (item.get('width_counts') or {}).items()},
+        })
+    return out
+
+
+def _touch_profile_to_count_map(bundle_or_profile: Optional[Any]) -> Dict[str, int]:
+    out: Dict[str, int] = {}
+    for item in _touch_profile_entries(bundle_or_profile):
+        addr = item['address_hex']
+        out[addr] = out.get(addr, 0) + int(item.get('count') or 0)
+    return out
+
+
+def _touch_profile_to_width_map(bundle_or_profile: Optional[Any]) -> Dict[str, List[int]]:
+    out: Dict[str, List[int]] = {}
+    for item in _touch_profile_entries(bundle_or_profile):
+        widths = list(item.get('observed_widths') or [])
+        dominant = item.get('dominant_width')
+        if dominant and dominant not in widths:
+            widths.append(int(dominant))
+        if widths:
+            out[item['address_hex']] = sorted(set(int(x) for x in widths))
+    return out
+
+
+def _dominant_width_for_addr(bundle_or_profile: Optional[Any], addr: Optional[str], default: int = 4) -> int:
+    norm = _normalize_hex(addr)
+    if not norm:
+        return int(default)
+    for item in _touch_profile_entries(bundle_or_profile):
+        if item['address_hex'] == norm and item.get('dominant_width'):
+            return int(item['dominant_width'])
+    widths = _touch_profile_to_width_map(bundle_or_profile).get(norm) or []
+    if widths:
+        return int(widths[0])
+    return int(default)
+
+
+def _merge_touch_maps(*maps: Dict[str, int]) -> Dict[str, int]:
+    out: Dict[str, int] = {}
+    for mp in maps:
+        for k, v in (mp or {}).items():
+            out[k] = out.get(k, 0) + int(v or 0)
+    return out
+
+
+def _guidance_action_trigger_addr(action: Dict[str, Any]) -> Optional[str]:
+    trigger = action.get('trigger') or {}
+    kind = str(trigger.get('kind') or '').strip()
+    if kind in {'on_first_touch', 'on_nth_touch', 'after_write', 'after_write_value'}:
+        return _normalize_hex(trigger.get('addr'))
+    return None
+
+
+def _guidance_action_width_addrs(action: Dict[str, Any]) -> List[Tuple[str, int]]:
+    out: List[Tuple[str, int]] = []
+    width = action.get('width')
+    try:
+        width_i = int(width) if width is not None else None
+    except Exception:
+        width_i = None
+    if width_i:
+        for key in ['addr', 'read_addr']:
+            addr = _normalize_hex(action.get(key))
+            if addr:
+                out.append((addr, width_i))
+    return out
+
+
+def _mask_values_for_width(values: List[int], width: int) -> List[int]:
+    try:
+        w = max(1, int(width))
+    except Exception:
+        w = 4
+    mask = (1 << (8 * w)) - 1
+    return [int(v) & mask for v in values]
+
+
+def _guidance_action_identity(action: Dict[str, Any]) -> Tuple[Any, ...]:
+    trigger = json.dumps(action.get('trigger') or {}, sort_keys=True)
+    return (
+        action.get('type'),
+        action.get('addr'),
+        action.get('write_addr'),
+        action.get('read_addr'),
+        trigger,
+    )
+
+
+def _dedupe_guidance_actions(actions: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    seen_keys = set()
+    seen_ids = set()
+    deduped: List[Dict[str, Any]] = []
+    dropped: List[Dict[str, Any]] = []
+    for action in actions:
+        act = dict(action)
+        act_id = str(act.get('id') or _safe_id(str(_guidance_action_identity(act))))
+        act['id'] = act_id
+        ident = _guidance_action_identity(act)
+        if act_id in seen_ids or ident in seen_keys:
+            dropped.append({'id': act_id, 'reason': 'duplicate_action'})
+            continue
+        seen_ids.add(act_id)
+        seen_keys.add(ident)
+        deduped.append(act)
+    return deduped, {
+        'input_action_count': len(actions),
+        'output_action_count': len(deduped),
+        'dropped': dropped,
+    }
+
+
+def _preflight_guidance(guidance: Dict[str, Any], touched_addrs: Dict[str, int], observed_widths: Optional[Dict[str, List[int]]] = None) -> Dict[str, Any]:
+    actions = list(guidance.get('actions') or [])
+    trigger_addrs: List[str] = []
+    width_mismatches: List[Dict[str, Any]] = []
+    observed_widths = observed_widths or {}
+    for action in actions:
+        addr = _guidance_action_trigger_addr(action)
+        if addr:
+            trigger_addrs.append(addr)
+        for width_addr, width in _guidance_action_width_addrs(action):
+            obs = sorted(set(int(x) for x in (observed_widths.get(width_addr) or []) if x))
+            if obs and int(width) not in obs:
+                width_mismatches.append({
+                    'action_id': action.get('id'),
+                    'address_hex': width_addr,
+                    'action_width': int(width),
+                    'observed_widths': obs,
+                })
+    touched_trigger_addrs = [addr for addr in trigger_addrs if addr in touched_addrs]
+    action_count = len(actions)
+    verdict = 'preflight_ok'
+    if action_count == 0:
+        verdict = 'empty_guidance'
+    elif trigger_addrs and not touched_trigger_addrs:
+        verdict = 'untouched_trigger'
+    elif width_mismatches:
+        verdict = 'width_mismatch'
+    return {
+        'plan_name': guidance.get('plan_name'),
+        'action_count': action_count,
+        'trigger_addrs': trigger_addrs,
+        'touched_trigger_addrs': touched_trigger_addrs,
+        'touched_trigger_ratio': (len(set(touched_trigger_addrs)) / max(1, len(set(trigger_addrs)))) if trigger_addrs else 0.0,
+        'observed_widths_checked': bool(observed_widths),
+        'width_mismatches': width_mismatches,
+        'verdict': verdict,
+    }
+
+
+def _addr_int(addr: Any) -> Optional[int]:
+    norm = _normalize_hex(addr)
+    if not norm:
+        return None
+    try:
+        return int(norm, 16)
+    except Exception:
+        return None
+
+
+def _addr_page(addr: Any, page_size: int = 0x1000) -> Optional[int]:
+    value = _addr_int(addr)
+    if value is None:
+        return None
+    return value // max(1, int(page_size))
+
+
+def _status_like_register_name(name: Optional[str]) -> bool:
+    s = str(name or '').strip().upper()
+    if not s:
+        return False
+    return (
+        s.endswith('SR')
+        or s.endswith('STAT')
+        or 'STATUS' in s
+        or 'FLAG' in s
+        or s.endswith('IF')
+    )
+
+
+def _state_like_register_name(name: Optional[str]) -> bool:
+    s = str(name or '').strip().upper()
+    if not s:
+        return False
+    return (
+        _status_like_register_name(s)
+        or s in {'TSR', 'TAR'}
+        or 'TIME' in s
+        or 'COUNT' in s
+        or s.endswith('CNT')
+    )
+
+
+def _control_like_register_name(name: Optional[str]) -> bool:
+    s = str(name or '').strip().upper()
+    if not s:
+        return False
+    return (
+        s.endswith('CR')
+        or s.endswith('CCR')
+        or s.endswith('TCR')
+        or s.endswith('IER')
+        or s.endswith('IMR')
+        or 'CTRL' in s
+        or 'CFG' in s
+        or 'ENABLE' in s
+    )
+
+
+def _nearby_touched_addr(addr: Any, touched_addrs: Dict[str, int], max_distance: int = 0x20) -> Optional[str]:
+    target = _addr_int(addr)
+    if target is None:
+        return None
+    best: Optional[Tuple[int, int, str]] = None
+    for cand, count in (touched_addrs or {}).items():
+        cand_int = _addr_int(cand)
+        if cand_int is None:
+            continue
+        dist = abs(cand_int - target)
+        if dist > max(0, int(max_distance)):
+            continue
+        key = (dist, -int(count or 0), cand)
+        if best is None or key < best:
+            best = key
+    return best[2] if best else None
+
+
+def _semantic_register_candidates(fallback_bundle: Dict[str, Any]) -> List[Dict[str, Any]]:
+    out: List[Dict[str, Any]] = []
+    seen = set()
+
+    def _add(item: Dict[str, Any], source_kind: str):
+        if not isinstance(item, dict):
+            return
+        reg_obj = item.get('register')
+        if isinstance(reg_obj, dict):
+            reg_name = str(reg_obj.get('name') or '').strip()
+            addr = _normalize_hex(reg_obj.get('absoluteAddress_hex') or reg_obj.get('absoluteAddress'))
+            off = _normalize_hex(reg_obj.get('addressOffset_hex') or reg_obj.get('addressOffset'))
+        else:
+            reg_name = str(reg_obj or item.get('register') or '').strip()
+            addr = _normalize_hex(item.get('absoluteAddress_hex') or item.get('absoluteAddress'))
+            off = _normalize_hex(item.get('addressOffset_hex') or item.get('addressOffset'))
+        if not addr:
+            return
+        key = (addr, reg_name.upper(), str(item.get('peripheral') or '').upper())
+        if key in seen:
+            return
+        seen.add(key)
+        out.append({
+            'peripheral': str(item.get('peripheral') or '').strip(),
+            'register': reg_name,
+            'absolute_addr_hex': addr,
+            'offset_hex': off,
+            'touch_count': int(item.get('touch_count') or 0),
+            'source_kind': source_kind,
+        })
+
+    for item in fallback_bundle.get('target_touched_registers') or []:
+        _add(item, 'target_touched_register')
+    for item in fallback_bundle.get('likely_blocking_registers') or []:
+        _add(item, 'likely_blocking_register')
+    for item in fallback_bundle.get('matched_register_docs') or []:
+        _add(item, 'matched_register_doc')
+    return out
+
+
+def _dynamic_role_selection(*, fallback_bundle: Dict[str, Any], touched_addrs: Dict[str, int]) -> Dict[str, Any]:
+    dynamic_cluster = fallback_bundle.get('dynamic_primary_cluster') or {}
+    semantic_regs = _semantic_register_candidates(fallback_bundle)
+    scores: Dict[str, float] = {}
+    meta: Dict[str, Dict[str, Any]] = {}
+
+    def _touch_count(addr: Optional[str]) -> int:
+        return int((touched_addrs or {}).get(addr or '', 0) or 0)
+
+    def _observe(addr: Optional[str], base_score: float, reason: str, extra: Optional[Dict[str, Any]] = None):
+        norm = _normalize_hex(addr)
+        if not norm:
+            return
+        scores[norm] = float(scores.get(norm, 0.0)) + float(base_score)
+        info = meta.setdefault(norm, {
+            'address_hex': norm,
+            'touch_count': _touch_count(norm),
+            'reasons': [],
+            'semantic_registers': [],
+        })
+        info['touch_count'] = max(int(info.get('touch_count') or 0), _touch_count(norm))
+        info['reasons'].append(reason)
+        if extra:
+            if extra.get('semantic_register'):
+                info['semantic_registers'].append(dict(extra['semantic_register']))
+            info.update({k: v for k, v in extra.items() if k != 'semantic_register'})
+
+    anchor_hint = _normalize_hex(dynamic_cluster.get('anchor_address'))
+    anchor_page = _addr_page(anchor_hint)
+
+    for item in dynamic_cluster.get('addresses') or []:
+        addr = _normalize_hex(item.get('address_hex'))
+        if not addr:
+            continue
+        count = int(item.get('count') or 0)
+        score = 60.0 + min(count, 512)
+        if bool(item.get('same_page_as_anchor')):
+            score += 18.0
+        if addr == anchor_hint:
+            score += 50.0
+        _observe(addr, score, 'dynamic_cluster', {'same_page_as_anchor': bool(item.get('same_page_as_anchor'))})
+
+    for item in _touch_profile_entries(fallback_bundle):
+        addr = _normalize_hex(item.get('address_hex'))
+        if not addr:
+            continue
+        count = int(item.get('count') or 0)
+        _observe(addr, 8.0 + min(count, 128) * 0.5, 'touch_profile')
+
+    for item in (fallback_bundle.get('probe_guidance_summary') or {}).get('read_touches', []) or []:
+        addr = _normalize_hex(item.get('address_hex'))
+        if not addr:
+            continue
+        count = int(item.get('count') or 0)
+        _observe(addr, 4.0 + min(count, 128) * 0.35, 'probe_read_touch')
+
+    for item in (fallback_bundle.get('probe_guidance_summary') or {}).get('write_touches', []) or []:
+        addr = _normalize_hex(item.get('address_hex'))
+        if not addr:
+            continue
+        count = int(item.get('count') or 0)
+        _observe(addr, 14.0 + min(count, 128) * 0.5, 'probe_write_touch', {'has_write_touch': True})
+
+    for reg in semantic_regs:
+        reg_name = reg.get('register')
+        reg_addr = reg.get('absolute_addr_hex')
+        if reg_addr in touched_addrs:
+            bonus = 20.0 + min(int(reg.get('touch_count') or 0), 64) * 0.5
+            if _state_like_register_name(reg_name):
+                bonus += 8.0
+            if _control_like_register_name(reg_name):
+                bonus += 5.0
+            _observe(reg_addr, bonus, f"semantic:{reg.get('source_kind')}", {'semantic_register': reg})
+        else:
+            nearby = _nearby_touched_addr(reg_addr, touched_addrs, max_distance=0x40)
+            if nearby:
+                bonus = 10.0 if _state_like_register_name(reg_name) else 6.0
+                _observe(nearby, bonus, f"semantic_near:{reg_name}", {'semantic_register': reg, 'semantic_nearby': reg_addr})
+
+    ranked = sorted(scores.items(), key=lambda kv: (kv[1], int(meta.get(kv[0], {}).get('touch_count') or 0)), reverse=True)
+    ordered = [addr for addr, _ in ranked]
+
+    anchor = None
+    if anchor_hint and anchor_hint in scores:
+        anchor = anchor_hint
+    elif ordered:
+        anchor = ordered[0]
+
+    companion = None
+    for addr in ordered:
+        if addr == anchor:
+            continue
+        companion = addr
+        break
+
+    semantic_choice: Optional[Dict[str, Any]] = None
+    semantic_addr = None
+    for reg in semantic_regs:
+        reg_addr = reg.get('absolute_addr_hex')
+        resolved_addr = reg_addr if reg_addr in touched_addrs else _nearby_touched_addr(reg_addr, touched_addrs, max_distance=0x40)
+        if not resolved_addr:
+            continue
+        if resolved_addr in {anchor, companion}:
+            continue
+        semantic_choice = dict(reg)
+        semantic_addr = resolved_addr
+        break
+
+    if not semantic_choice:
+        anchor_page = _addr_page(anchor)
+        for addr in ordered:
+            if addr in {anchor, companion}:
+                continue
+            if anchor_page is not None and _addr_page(addr) == anchor_page:
+                semantic_addr = addr
+                break
+        if semantic_addr:
+            semantic_choice = {
+                'peripheral': '',
+                'register': 'HOTSPOT_COMPANION',
+                'absolute_addr_hex': semantic_addr,
+                'offset_hex': None,
+                'touch_count': _touch_count(semantic_addr),
+                'source_kind': 'dynamic_companion',
+            }
+
+    role_info = {
+        'anchor': anchor,
+        'companion': companion,
+        'semantic_companion': semantic_addr,
+        'semantic_register': semantic_choice,
+        'ranked': [
+            {
+                'address_hex': addr,
+                'score': float(score),
+                'touch_count': int(meta.get(addr, {}).get('touch_count') or 0),
+                'reasons': list(meta.get(addr, {}).get('reasons') or []),
+                'semantic_registers': list(meta.get(addr, {}).get('semantic_registers') or []),
+            }
+            for addr, score in ranked
+        ],
+    }
+    ordered_unique: List[str] = []
+    for addr in [anchor, companion, semantic_addr, *ordered]:
+        norm = _normalize_hex(addr)
+        if norm and norm not in ordered_unique:
+            ordered_unique.append(norm)
+    role_info['ordered_addrs'] = ordered_unique[:3]
+    return role_info
+
+
+def _pick_dynamic_trigger_addrs(*, fallback_bundle: Dict[str, Any], touched_addrs: Dict[str, int], limit: int = 3) -> List[str]:
+    roles = _dynamic_role_selection(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs)
+    ordered = list(roles.get('ordered_addrs') or [])
+    return ordered[:max(1, int(limit))]
+
+
+def _synthesize_dynamic_hotspot_guidance(*, fallback_bundle_json_path: str, out_path: str, plan_name: str) -> Dict[str, Any]:
+    fallback_bundle = load_json(_abs(fallback_bundle_json_path))
+    touched_addrs = _merge_touch_maps(_touch_entries_to_map(fallback_bundle.get('probe_guidance_summary')), _touch_profile_to_count_map(fallback_bundle))
+    role_info = _dynamic_role_selection(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs)
+    primary_addrs = list(role_info.get('ordered_addrs') or [])
+    if not primary_addrs:
+        likely_regs = fallback_bundle.get('likely_blocking_registers') or []
+        for reg in likely_regs[:3]:
+            addr = _normalize_hex(reg.get('absoluteAddress_hex'))
+            if addr:
+                primary_addrs.append(addr)
+
+    anchor_addr = _normalize_hex(role_info.get('anchor')) or (primary_addrs[0] if primary_addrs else None)
+    companion_addr = _normalize_hex(role_info.get('companion'))
+    semantic_addr = _normalize_hex(role_info.get('semantic_companion'))
+    semantic_reg = role_info.get('semantic_register') or {}
+
+    actions: List[Dict[str, Any]] = []
+    rationale_bits: List[str] = []
+    stages: Dict[str, str] = {}
+
+    def _touch_count(addr: Optional[str]) -> int:
+        return max(0, int((touched_addrs or {}).get(addr or '', 0) or 0))
+
+    def _read_trigger(addr: str) -> Dict[str, Any]:
+        touched = max(1, _touch_count(addr))
+        if touched > 1:
+            return {'kind': 'on_nth_touch', 'addr': addr, 'n': min(3, touched), 'access': 'read'}
+        return {'kind': 'on_first_touch', 'addr': addr, 'access': 'read'}
+
+    if anchor_addr:
+        actions.append(_read_seq_action(
+            action_id='dynamic_anchor',
+            addr_hex=anchor_addr,
+            width=_dominant_width_for_addr(fallback_bundle, anchor_addr, default=4),
+            values=_mask_values_for_width([1, 1, 2, 2], _dominant_width_for_addr(fallback_bundle, anchor_addr, default=4)),
+            trigger=_read_trigger(anchor_addr),
+            activate_stage='anchor_seen',
+            notes='Dynamic anchor: hottest runtime loop address selected from clustered probe touches.',
+        ))
+        stages['anchor'] = 'anchor_seen'
+        rationale_bits.append(f'anchor={anchor_addr} touches={_touch_count(anchor_addr)}')
+
+    if companion_addr and companion_addr != anchor_addr:
+        companion_trigger: Dict[str, Any]
+        if _touch_count(companion_addr) >= max(2, _touch_count(anchor_addr) // 8 if anchor_addr else 2):
+            companion_trigger = _read_trigger(companion_addr)
+        else:
+            companion_trigger = {'kind': 'when_stage_active', 'stage': stages.get('anchor', 'anchor_seen')}
+        actions.append(_read_seq_action(
+            action_id='dynamic_companion',
+            addr_hex=companion_addr,
+            width=_dominant_width_for_addr(fallback_bundle, companion_addr, default=4),
+            values=_mask_values_for_width([1, 2, 2, 3], _dominant_width_for_addr(fallback_bundle, companion_addr, default=4)),
+            trigger=companion_trigger,
+            activate_stage='companion_seen',
+            notes='Dynamic companion: second runtime hotspot gated by anchor progress or its own hot-touch cadence.',
+        ))
+        stages['companion'] = 'companion_seen'
+        rationale_bits.append(f'companion={companion_addr} touches={_touch_count(companion_addr)}')
+
+    if semantic_addr and semantic_addr not in {anchor_addr, companion_addr}:
+        semantic_name = str(semantic_reg.get('register') or '').strip()
+        semantic_stage = stages.get('companion') or stages.get('anchor')
+        semantic_trigger: Dict[str, Any]
+        if semantic_addr in touched_addrs and _touch_count(semantic_addr) > 0:
+            semantic_trigger = _read_trigger(semantic_addr)
+        elif semantic_stage:
+            semantic_trigger = {'kind': 'when_stage_active', 'stage': semantic_stage}
+        else:
+            semantic_trigger = {'kind': 'on_first_touch', 'addr': anchor_addr or semantic_addr, 'access': 'read'}
+
+        if _status_like_register_name(semantic_name):
+            actions.append(_bit_update_action(
+                action_id='dynamic_semantic_status',
+                addr_hex=semantic_addr,
+                width=_dominant_width_for_addr(fallback_bundle, semantic_addr, default=4),
+                set_bits=[4],
+                clear_bits=[0],
+                trigger=semantic_trigger,
+                activate_stage='semantic_seen',
+                notes=f'Dynamic semantic companion: status-style register {semantic_name or semantic_addr} is nudged once anchor/companion activity is observed.',
+            ))
+        else:
+            actions.append(_read_seq_action(
+                action_id='dynamic_semantic_companion',
+                addr_hex=semantic_addr,
+                width=_dominant_width_for_addr(fallback_bundle, semantic_addr, default=4),
+                values=_mask_values_for_width([0, 1, 1, 2], _dominant_width_for_addr(fallback_bundle, semantic_addr, default=4)),
+                trigger=semantic_trigger,
+                activate_stage='semantic_seen',
+                notes=f'Dynamic semantic companion synthesized from semantic/runtime overlap for {semantic_name or semantic_addr}.',
+            ))
+        rationale_bits.append(f'semantic_companion={semantic_addr} register={semantic_name or "<unknown>"}')
+
+    if len(actions) < 2:
+        for idx, addr in enumerate(primary_addrs[:3]):
+            if addr in {anchor_addr, companion_addr, semantic_addr}:
+                continue
+            actions.append(_read_seq_action(
+                action_id=f'dynamic_fallback_{idx}',
+                addr_hex=addr,
+                width=_dominant_width_for_addr(fallback_bundle, addr, default=4),
+                values=_mask_values_for_width([1, 1, 2, 2], _dominant_width_for_addr(fallback_bundle, addr, default=4)),
+                trigger={'kind': 'when_stage_active', 'stage': stages.get('anchor', 'anchor_seen')} if stages else _read_trigger(addr),
+                activate_stage=f'fallback_seen_{idx}',
+                notes='Dynamic fallback: additional hotspot retained to preserve diversity when semantic companion is unavailable.',
+            ))
+            rationale_bits.append(f'fallback_hotspot={addr}')
+            if len(actions) >= 2:
+                break
+
+    actions, dedupe_meta = _dedupe_guidance_actions(actions)
+    if not actions:
+        raise RuntimeError('failed to synthesize any dynamic-hotspot actions')
+    guidance = {
+        'schema': 'mf_runtime_strategy_v1',
+        'plan_name': plan_name,
+        'rationale': '; '.join(rationale_bits) or 'Dynamic-hotspot fallback guidance.',
+        'source_kind': 'dynamic_hotspot_fallback',
+        'source_bundle': _abs(fallback_bundle_json_path),
+        'role_selection': role_info,
+        'preflight_dedupe': dedupe_meta,
+        'actions': actions,
+    }
+    save_json(out_path, guidance)
+    return guidance
+
+
 def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_bundle_json_path: str, contract_bundle_path: str, out_path: str, plan_name: str) -> Dict[str, Any]:
     llm_answer = load_json(_abs(llm_answer_json_path))
     parsed = llm_answer.get('parsed_json') or {}
@@ -693,103 +1294,86 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
     catalog = _bundle_register_catalog(contract_bundle)
     lookup = _catalog_lookup(catalog)
     assignments = _parse_llm_assignments(parsed)
+    touched_addrs = _merge_touch_maps(_touch_entries_to_map(fallback_bundle.get('probe_guidance_summary')), _touch_profile_to_count_map(fallback_bundle))
 
     actions: List[Dict[str, Any]] = []
     rationale_bits: List[str] = []
+    used_addrs: set[str] = set()
 
-    matched_regs: List[Dict[str, Any]] = []
+    def _add_read_seq_for_reg(reg: Dict[str, Any], seq: List[int], *, trigger_addr: Optional[str] = None, note_prefix: str = 'LLM'):
+        addr = reg['absolute_addr_hex']
+        if addr in used_addrs:
+            return
+        trigger_addr = trigger_addr or addr
+        trigger_kind = 'on_nth_touch' if int(touched_addrs.get(trigger_addr) or 0) > 1 else 'on_first_touch'
+        trigger: Dict[str, Any] = {'kind': trigger_kind, 'addr': trigger_addr, 'access': 'read'}
+        if trigger_kind == 'on_nth_touch':
+            trigger['n'] = min(3, max(1, int(touched_addrs.get(trigger_addr) or 1)))
+        width = _dominant_width_for_addr(fallback_bundle, addr, default=int(reg['width']))
+        actions.append(_read_seq_action(
+            action_id=_safe_id(f'llm_{reg["full_name"]}'),
+            addr_hex=addr,
+            width=width,
+            values=_mask_values_for_width(seq, width),
+            trigger=trigger,
+            activate_stage=_safe_id(f'seen_{reg["register"]}'),
+            notes=f'{note_prefix} synthesized from bounded answer evidence for {reg["full_name"]}.',
+        ))
+        used_addrs.add(addr)
+
+    focus_regs = parsed.get('primary_focus_registers') or []
+    if isinstance(focus_regs, list):
+        for reg_key in focus_regs:
+            reg = lookup.get(str(reg_key).upper()) or lookup.get(str(reg_key).split('.')[-1].upper())
+            if reg:
+                _add_read_seq_for_reg(reg, [1, 1, 2, 2], note_prefix='LLM focus-register')
+                rationale_bits.append(f'LLM focus register {reg_key}')
+
+    touched_trigger_addrs = [
+        _normalize_hex(x) for x in (parsed.get('touched_trigger_addrs') or []) if _normalize_hex(x)
+    ]
+
     for reg_key, vals in assignments.items():
         reg = lookup.get(reg_key.upper()) or lookup.get(reg_key.split('.')[-1].upper())
         if not reg:
             continue
-        matched_regs.append(reg)
         seq = list(vals)[:4]
         while len(seq) < 4:
             seq.append(seq[-1])
-        actions.append(_read_seq_action(
-            action_id=_safe_id(f'llm_{reg["full_name"]}'),
-            addr_hex=reg['absolute_addr_hex'],
-            width=reg['width'],
-            values=seq,
-            trigger={'kind': 'on_first_touch', 'addr': reg['absolute_addr_hex'], 'access': 'read'},
-            activate_stage=_safe_id(f'seen_{reg["register"]}'),
-            notes=f'LLM-synthesized from seed_hypothesis for {reg["full_name"]}.',
-        ))
+        trigger_addr = reg['absolute_addr_hex'] if reg['absolute_addr_hex'] in touched_addrs else None
+        if not trigger_addr:
+            for cand in touched_trigger_addrs:
+                if cand == reg['absolute_addr_hex']:
+                    trigger_addr = cand
+                    break
+        _add_read_seq_for_reg(reg, seq, trigger_addr=trigger_addr, note_prefix='LLM assignment')
         rationale_bits.append(f"LLM assignment {reg_key}={seq}")
 
     if not actions:
         likely_offsets = fallback_bundle.get('likely_blocking_offsets') or []
         offset_regs = _pick_regs_from_offsets(catalog, likely_offsets)
         for reg in offset_regs[:3]:
-            actions.append(_read_seq_action(
-                action_id=_safe_id(f'llm_offset_{reg["full_name"]}'),
-                addr_hex=reg['absolute_addr_hex'],
-                width=reg['width'],
-                values=[1, 1, 2, 2],
-                trigger={'kind': 'on_first_touch', 'addr': reg['absolute_addr_hex'], 'access': 'read'},
-                activate_stage=_safe_id(f'seen_{reg["register"]}'),
-                notes=f'LLM fallback synthesized from likely_blocking_offsets for {reg["full_name"]}.',
-            ))
+            if reg['absolute_addr_hex'] in touched_addrs:
+                _add_read_seq_for_reg(reg, [1, 1, 2, 2], note_prefix='offset-derived')
         if offset_regs:
             rationale_bits.append(f"offset-derived probe for {','.join(r['register'] for r in offset_regs[:3])}")
 
-    # RTC-specific but evidence-driven: if both TSR and TAR appear, add a TAR/TSR relation probe.
-    tsr = _pick_reg(lookup, 'TSR')
-    tar = _pick_reg(lookup, 'TAR')
-    sr = _pick_reg(lookup, 'SR')
-    ier = _pick_reg(lookup, 'IER')
-    parsed_text = ' '.join(str(parsed.get(k) or '') for k in ['likely_blocking_condition', 'likely_constraint', 'seed_hypothesis']).upper()
-    if tsr and tar and ('TAR' in parsed_text and 'TSR' in parsed_text):
-        have_tsr = any(a.get('addr') == tsr['absolute_addr_hex'] for a in actions)
-        have_tar = any(a.get('addr') == tar['absolute_addr_hex'] for a in actions)
-        if not have_tsr:
+    if not actions:
+        dynamic_addrs = _pick_dynamic_trigger_addrs(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs, limit=2)
+        for idx, addr in enumerate(dynamic_addrs):
             actions.append(_read_seq_action(
-                action_id='llm_tsr_progression',
-                addr_hex=tsr['absolute_addr_hex'],
-                width=tsr['width'],
-                values=[1, 1, 2, 2],
-                trigger={'kind': 'on_first_touch', 'addr': tsr['absolute_addr_hex'], 'access': 'read'},
-                activate_stage='tsr_seen',
-                notes='LLM relation probe for TSR.',
+                action_id=f'llm_dynamic_hot_{idx}',
+                addr_hex=addr,
+                width=_dominant_width_for_addr(fallback_bundle, addr, default=4),
+                values=_mask_values_for_width([1, 1, 2, 2], _dominant_width_for_addr(fallback_bundle, addr, default=4)),
+                trigger={'kind': 'on_nth_touch', 'addr': addr, 'n': min(3, max(1, int(touched_addrs.get(addr) or 1))), 'access': 'read'},
+                activate_stage=f'dynamic_hot_{idx}',
+                notes='LLM fallback retargeted to dynamically touched hotspot address.',
             ))
-        if not have_tar:
-            actions.append(_read_seq_action(
-                action_id='llm_tar_progression',
-                addr_hex=tar['absolute_addr_hex'],
-                width=tar['width'],
-                values=[1, 2, 2, 3],
-                trigger={'kind': 'on_first_touch', 'addr': tar['absolute_addr_hex'], 'access': 'read'},
-                activate_stage='tar_seen',
-                notes='LLM relation probe for TAR.',
-            ))
-        if sr and not any(a.get('addr') == sr['absolute_addr_hex'] and a.get('type') == 'mmio_bit_update' for a in actions):
-            actions.append(_bit_update_action(
-                action_id='llm_sr_taf_ready',
-                addr_hex=sr['absolute_addr_hex'],
-                width=sr['width'],
-                set_bits=[4],
-                clear_bits=[0],
-                trigger={'kind': 'on_first_touch', 'addr': sr['absolute_addr_hex'], 'access': 'read'},
-                activate_stage='sr_seen',
-                notes='LLM relation probe: set a ready/alarm-style SR bit.',
-            ))
-        if ier and sr and ('ALARM' in parsed_text or 'TAF' in parsed_text or 'TAIE' in parsed_text):
-            actions.append(_write_observe_action(
-                action_id='llm_ier_write_observe',
-                addr_hex=ier['absolute_addr_hex'],
-                notes='LLM relation probe: observe IER writes.',
-            ))
-            actions.append(_write_then_read_gate_action(
-                action_id='llm_ier_then_sr_gate',
-                write_addr_hex=ier['absolute_addr_hex'],
-                read_addr_hex=sr['absolute_addr_hex'],
-                width=sr['width'],
-                read_value=0x10,
-                activate_stage='irq_enable_seen',
-                notes='LLM relation probe: on IER enable, force a ready-like SR read.',
-            ))
-        rationale_bits.append('TSR/TAR/SR/IER relation probe synthesized from LLM answer')
+        if dynamic_addrs:
+            rationale_bits.append('retargeted to dynamic-hotspot touched addresses')
 
+    actions, dedupe_meta = _dedupe_guidance_actions(actions)
     if not actions:
         raise RuntimeError('failed to synthesize any runtime actions from the LLM answer')
 
@@ -802,48 +1386,248 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
             'model': llm_answer.get('model'),
             'parsed_json': parsed,
         },
+        'preflight_dedupe': dedupe_meta,
         'actions': actions,
     }
     save_json(out_path, guidance)
     return guidance
 
-
 def _coverage_from_run_summary(run_summary: Optional[Dict[str, Any]]) -> int:
     return int((run_summary or {}).get('last_cov') or 0)
 
 
-def _run_adaptive_mmio_loop(args):
-    out_root = Path(args.out_root).expanduser().resolve()
-    _ensure_dir(str(out_root))
-    fuzzer_bin = _abs(args.fuzzer_bin) if getattr(args, 'fuzzer_bin', None) else ensure_fuzzer_binary(args.fuzzer_manifest)
+def _parse_duration_seconds(text: str) -> int:
+    s = str(text).strip().lower()
+    m = re.fullmatch(r"(\d+)([smhd]?)", s)
+    if not m:
+        raise ValueError(f"unsupported duration: {text}")
+    value = int(m.group(1))
+    unit = m.group(2) or 's'
+    mult = {'s':1,'m':60,'h':3600,'d':86400}[unit]
+    return value * mult
 
-    # 1) establish a plateau frontier queue to import from
-    if getattr(args, 'import_dir', None):
-        current_import_dir = _abs(args.import_dir)
-        baseline_summary = {'import_dir': current_import_dir, 'reused_existing_import_dir': True}
-    else:
-        seed_root = out_root / 'round_0_seed'
-        _ensure_dir(str(seed_root))
-        baseline_run = run_hail_fuzz(
-            manifest_path=args.fuzzer_manifest,
-            firmware_config=args.firmware_config,
-            ghidra_src=args.ghidra_src,
-            workdir=str(seed_root / 'workdir'),
-            run_log=str(seed_root / 'run.log'),
-            run_for=args.initial_run_for,
-            observer_dir=str(seed_root / 'observer'),
+
+def _format_duration_seconds(seconds: int) -> str:
+    return f"{max(1, int(seconds))}s"
+
+
+def _run_warmup_frontier(*, manifest_path: str, firmware_config: str, ghidra_src: str, out_root: str,
+                        warmup_run_for: str, warmup_restarts: int, initial_import_dir: Optional[str],
+                        fuzzer_bin: str, setenv: Optional[List[str]], trace_basename: str = 'replay_trace',
+                        dump_trace: bool = False) -> Dict[str, Any]:
+    root = Path(out_root).expanduser().resolve() / 'baseline_warmup'
+    _ensure_dir(str(root))
+
+    current_import_dir = _abs(initial_import_dir) if initial_import_dir else None
+    runs: List[Dict[str, Any]] = []
+    best_idx = 0
+    best_cov = -1
+    best_queue_dir = current_import_dir
+    best_run = None
+
+    restarts = max(1, int(warmup_restarts))
+    for idx in range(1, restarts + 1):
+        run_root = root / f'run_{idx}'
+        _ensure_dir(str(run_root))
+        run = run_hail_fuzz(
+            manifest_path=manifest_path,
+            firmware_config=firmware_config,
+            ghidra_src=ghidra_src,
+            workdir=str(run_root / 'workdir'),
+            run_log=str(run_root / 'run.log'),
+            run_for=warmup_run_for,
+            observer_dir=str(run_root / 'observer'),
             guidance_file=None,
             guidance_summary_out=None,
-            import_dir=None,
+            import_dir=current_import_dir,
+            fuzzer_bin=fuzzer_bin,
+            setenv=setenv,
+            dump_trace=dump_trace and (idx == restarts),
+            trace_basename=trace_basename,
+        )
+        save_json(str(run_root / 'run_fuzz_summary.json'), run)
+        cov = _coverage_from_run_summary(run.get('run_summary'))
+        queue_dir = _queue_dir(str(run_root / 'workdir'))
+        rec = {
+            'warmup_index': idx,
+            'run_for': warmup_run_for,
+            'import_dir': current_import_dir,
+            'queue_dir': queue_dir,
+            'run_summary': run,
+            'last_cov': cov,
+        }
+        runs.append(rec)
+        if cov > best_cov:
+            best_cov = cov
+            best_idx = idx
+            best_queue_dir = queue_dir
+            best_run = run
+        current_import_dir = queue_dir
+
+    return {
+        'mode': 'fixed_warmup_frontier',
+        'initial_import_dir': _abs(initial_import_dir) if initial_import_dir else None,
+        'warmup_run_for': warmup_run_for,
+        'warmup_restarts': restarts,
+        'best_warmup_index': best_idx,
+        'frontier_import_dir': best_queue_dir,
+        'frontier_last_cov': best_cov,
+        'frontier_run': best_run,
+        'reused_existing_import_dir': bool(initial_import_dir),
+        'warmup_runs': runs,
+    }
+
+
+
+
+def _guidance_verdict_from_preflight_and_run(preflight: Dict[str, Any], run: Optional[Dict[str, Any]]) -> str:
+    verdict = str(preflight.get('verdict') or 'preflight_ok')
+    if verdict != 'preflight_ok':
+        return verdict
+    grs = _maybe_json(run.get('guidance_summary_out')) if run else None
+    fires = _sum_action_fires(grs)
+    tail_fires = _run_tail_fire_signals(run)
+    seq_progress = _sum_sequence_progress(grs)
+    active_stage_count = _count_active_stages(grs)
+    cov = _coverage_from_run_summary((run or {}).get('run_summary')) if run else 0
+    if fires == 0 and tail_fires == 0 and seq_progress == 0 and active_stage_count == 0:
+        return 'nonfiring_guidance'
+    if cov <= 0:
+        return 'no_effect'
+    return 'effective'
+
+
+def _evaluate_followup_candidates(*, args, cycle_root: Path, probe_queue_dir: str, fuzzer_bin: str, ghidra_src: str, candidates: List[Dict[str, Any]], trace_base: str) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    candidate_reports: List[Dict[str, Any]] = []
+    for idx, cand in enumerate(candidates, start=1):
+        cand_root = cycle_root / 'candidate_portfolio' / f'{idx:02d}_{_safe_id(cand.get("name") or cand.get("source") or "candidate")}'
+        _ensure_dir(str(cand_root))
+        run = run_hail_fuzz(
+            manifest_path=args.fuzzer_manifest,
+            firmware_config=args.firmware_config,
+            ghidra_src=ghidra_src,
+            workdir=str(cand_root / 'workdir'),
+            run_log=str(cand_root / 'run.log'),
+            run_for=str(getattr(args, 'portfolio_run_for', '20s')),
+            observer_dir=str(cand_root / 'observer'),
+            guidance_file=cand.get('guidance_file'),
+            guidance_summary_out=str(cand_root / 'guidance_runtime_summary.json'),
+            import_dir=probe_queue_dir,
             fuzzer_bin=fuzzer_bin,
             setenv=args.setenv,
-            dump_trace=bool(getattr(args, 'dump_trace', False)),
-            trace_basename=str(getattr(args, 'trace_basename', 'replay_trace')),
+            dump_trace=False,
+            trace_basename=trace_base,
         )
-        current_import_dir = str(seed_root / 'workdir' / 'queue')
-        baseline_summary = baseline_run
+        save_json(str(cand_root / 'run_fuzz_summary.json'), run)
+        grs = _maybe_json(str(cand_root / 'guidance_runtime_summary.json')) or {}
+        istats = _intervention_stats(grs, run)
+        coverage = _coverage_from_run_summary(run.get('run_summary'))
+        preflight = cand.get('preflight') or {}
+        verdict = _guidance_verdict_from_preflight_and_run(preflight, run)
+        rec = {
+            'name': cand.get('name'),
+            'source': cand.get('source'),
+            'guidance_file': cand.get('guidance_file'),
+            'preflight': preflight,
+            'run': run,
+            'guidance_runtime_summary': grs,
+            'summary_action_fires': int(istats['summary_action_fires']),
+            'effective_action_fires': int(istats['effective_action_fires']),
+            'action_fires': int(istats['effective_action_fires']),
+            'tail_fire_signals': int(istats['tail_fire_signals']),
+            'sequence_progress': int(istats['sequence_progress']),
+            'active_stage_count': int(istats['active_stage_count']),
+            'touched_trigger_ratio': float(preflight.get('touched_trigger_ratio') or 0.0),
+            'coverage': coverage,
+            'hangs': _run_last_hang(run),
+            'crashes': _run_last_crash(run),
+            'verdict': verdict,
+        }
+        rec['intervention_signal'] = _candidate_has_intervention_signal(rec)
+        rec['selection_score'] = _candidate_selection_scalar(rec, args=args)
+        rec['selection_score_breakdown'] = {
+            'coverage': coverage,
+            'summary_action_fires': rec['summary_action_fires'],
+            'effective_action_fires': rec['effective_action_fires'],
+            'tail_fire_signals': rec['tail_fire_signals'],
+            'sequence_progress': rec['sequence_progress'],
+            'active_stage_count': rec['active_stage_count'],
+            'touched_trigger_ratio': rec['touched_trigger_ratio'],
+            'hangs': rec['hangs'],
+            'crashes': rec['crashes'],
+            'source': rec.get('source'),
+            'selection_score': rec['selection_score'],
+        }
+        rec['queue_dir'] = _queue_dir(run.get('workdir'))
+        if rec.get('source') == 'control' and rec.get('guidance_file'):
+            rec['control_guidance_mismatch'] = not str(rec.get('guidance_file')).endswith('auto_probe.guidance.json') and 'auto_probe' not in str(rec.get('guidance_file'))
+        candidate_reports.append(rec)
 
-    # 2) get an initial probe guidance, either provided or synthesized from the contract bundle
+    if not candidate_reports:
+        raise RuntimeError('candidate portfolio produced no runnable branches')
+
+    control_coverage = max((int(r.get('coverage') or 0) for r in candidate_reports if r.get('source') == 'control'), default=0)
+    coverage_slack = int(getattr(args, 'portfolio_intervention_coverage_slack', 160))
+
+    intervention_ready = [
+        r for r in candidate_reports
+        if r.get('source') != 'control'
+        and r.get('verdict') == 'effective'
+        and r.get('intervention_signal')
+    ]
+    intervention_within_slack = [
+        r for r in intervention_ready
+        if int(r.get('coverage') or 0) >= max(0, control_coverage - coverage_slack)
+    ]
+
+    if intervention_within_slack:
+        pool = intervention_within_slack
+        selection_policy = 'prefer_intervention_within_coverage_slack'
+    elif intervention_ready:
+        pool = intervention_ready
+        selection_policy = 'prefer_any_effective_intervention'
+    else:
+        pool = candidate_reports
+        selection_policy = 'max_selection_score'
+
+    def _rank_tuple(r: Dict[str, Any]) -> Tuple[Any, ...]:
+        return (
+            float(r.get('selection_score') or 0.0),
+            int(bool(r.get('intervention_signal'))),
+            int(r.get('tail_fire_signals') or 0),
+            int(r.get('action_fires') or 0),
+            int(r.get('sequence_progress') or 0),
+            int(r.get('active_stage_count') or 0),
+            float(r.get('touched_trigger_ratio') or 0.0),
+            int(r.get('coverage') or 0),
+            0 if r.get('source') == 'control' else 1,
+        )
+
+    best = max(pool, key=_rank_tuple)
+    best = dict(best)
+    best['selection_policy'] = selection_policy
+    best['control_coverage'] = control_coverage
+    best['coverage_slack'] = coverage_slack
+    return candidate_reports, best
+
+
+def _build_initial_adaptive_context(args, out_root: Path, fuzzer_bin: str) -> Dict[str, Any]:
+    warmup_run_for = str(getattr(args, 'warmup_run_for', None) or '600s')
+    warmup_restarts = int(getattr(args, 'warmup_restarts', 1) or 1)
+    baseline_summary = _run_warmup_frontier(
+        manifest_path=args.fuzzer_manifest,
+        firmware_config=args.firmware_config,
+        ghidra_src=args.ghidra_src,
+        out_root=str(out_root),
+        warmup_run_for=warmup_run_for,
+        warmup_restarts=warmup_restarts,
+        initial_import_dir=getattr(args, 'import_dir', None),
+        fuzzer_bin=fuzzer_bin,
+        setenv=args.setenv,
+        trace_basename=str(getattr(args, 'trace_basename', 'replay_trace')),
+        dump_trace=bool(getattr(args, 'dump_trace', False)),
+    )
+    current_import_dir = baseline_summary.get('frontier_import_dir')
     if getattr(args, 'guidance_file', None):
         current_guidance_file = _abs(args.guidance_file)
         initial_guidance_kind = 'provided'
@@ -856,165 +1640,722 @@ def _run_adaptive_mmio_loop(args):
             peripheral_hints=getattr(args, 'peripheral_hint', None),
         )
         initial_guidance_kind = 'synthesized_from_contract_bundle'
+    return {
+        'baseline_summary': baseline_summary,
+        'current_import_dir': current_import_dir,
+        'current_guidance_file': current_guidance_file,
+        'initial_guidance_kind': initial_guidance_kind,
+        'baseline_frontier_cov': int(baseline_summary.get('frontier_last_cov') or 0),
+    }
+
+
+def _run_adaptive_event_once(*, args, event_root: Path, event_index: int, current_import_dir: str,
+                             current_guidance_file: str, control_guidance_file: str, previous_cov: int, fuzzer_bin: str) -> Tuple[Dict[str, Any], str, str]:
+    _ensure_dir(str(event_root))
+    trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+
+    probe_root = event_root / 'probe'
+    probe_run = run_hail_fuzz(
+        manifest_path=args.fuzzer_manifest,
+        firmware_config=args.firmware_config,
+        ghidra_src=args.ghidra_src,
+        workdir=str(probe_root / 'workdir'),
+        run_log=str(probe_root / 'run.log'),
+        run_for=args.probe_run_for,
+        observer_dir=str(probe_root / 'observer'),
+        guidance_file=current_guidance_file,
+        guidance_summary_out=str(probe_root / 'guidance_runtime_summary.json'),
+        import_dir=current_import_dir,
+        fuzzer_bin=fuzzer_bin,
+        setenv=args.setenv,
+        dump_trace=True,
+        trace_out=str(probe_root / f'{trace_base}.json'),
+        trace_text_out=str(probe_root / f'{trace_base}.log'),
+        trace_meta_out=str(probe_root / f'{trace_base}.meta.json'),
+        trace_basename=trace_base,
+    )
+    save_json(str(probe_root / 'run_fuzz_summary.json'), probe_run)
+    probe_trace_json = str(probe_root / f'{trace_base}.json')
+
+    stuck_dir = _default_stuck_dir()
+    find_script = str(stuck_dir / 'find_stuck_functions.py')
+    package_script = str(stuck_dir / 'package_llm_fallback.py')
+    llm_script = str(stuck_dir / 'run_llm_fallback.py')
+
+    stuck_report = event_root / 'stuck_report.json'
+    llm_bundle_json = event_root / 'llm_fallback_bundle.json'
+    llm_bundle_text = event_root / 'llm_fallback_prompt.txt'
+    llm_answer_json = event_root / 'llm_answer.json'
+    llm_answer_text = event_root / 'llm_answer.txt'
+    llm_answer_raw = event_root / 'llm_answer.raw.json'
+    llm_seed_guidance = event_root / 'llm_seed.guidance.json'
+
+    _run_python_tool(find_script, [
+        '--contract-bundle', _abs(args.contract_bundle),
+        '--trace-json', probe_trace_json,
+        '--use-recent-exec', str(args.use_recent_exec),
+        '--seed-path', current_guidance_file,
+        '--out', str(stuck_report),
+    ])
+    stuck_data = load_json(str(stuck_report))
+
+    _run_python_tool(package_script, [
+        '--contract-bundle', _abs(args.contract_bundle),
+        '--stuck-report', str(stuck_report),
+        '--manual-trace-json', probe_trace_json,
+        '--manual-seed', current_guidance_file,
+        '--probe-guidance-summary', str(probe_root / 'guidance_runtime_summary.json'),
+        '--out', str(llm_bundle_json),
+        '--out-text', str(llm_bundle_text),
+    ])
+
+    llm_invoked = False
+    llm_result = None
+    synthesized_guidance = None
+    dynamic_guidance = None
+    next_guidance_file = None
+    candidate_reports: List[Dict[str, Any]] = []
+    selected_candidate: Optional[Dict[str, Any]] = None
+
+    should_call_llm = (not bool(getattr(args, 'skip_llm', False))) and (
+        bool(getattr(args, 'force_llm', False)) or bool(stuck_data.get('still_ambiguous', True))
+    )
+    if should_call_llm:
+        llm_args = [
+            '--prompt-text', str(llm_bundle_text),
+            '--bundle-json', str(llm_bundle_json),
+            '--out-json', str(llm_answer_json),
+            '--out-text', str(llm_answer_text),
+            '--out-raw-response', str(llm_answer_raw),
+            '--max-output-tokens', str(int(args.llm_max_output_tokens)),
+            '--max-attempts', str(int(args.llm_max_attempts)),
+            '--reasoning-effort', str(args.llm_reasoning_effort),
+        ]
+        if getattr(args, 'llm_model', None):
+            llm_args.extend(['--model', str(args.llm_model)])
+        _run_python_tool(llm_script, llm_args)
+        llm_invoked = True
+        llm_result = _maybe_json(str(llm_answer_json))
+        if llm_result and llm_result.get('parsed_json'):
+            synthesized_guidance = _synthesize_guidance_from_llm_answer(
+                llm_answer_json_path=str(llm_answer_json),
+                fallback_bundle_json_path=str(llm_bundle_json),
+                contract_bundle_path=args.contract_bundle,
+                out_path=str(llm_seed_guidance),
+                plan_name=f"{getattr(args, 'llm_seed_plan_name', 'llm_seed')}_cycle_{event_index}",
+            )
+
+    dynamic_guidance_path = event_root / 'dynamic_hotspot.guidance.json'
+    try:
+        dynamic_guidance = _synthesize_dynamic_hotspot_guidance(
+            fallback_bundle_json_path=str(llm_bundle_json),
+            out_path=str(dynamic_guidance_path),
+            plan_name=f"dynamic_hotspot_cycle_{event_index}",
+        )
+    except Exception as e:
+        warn(f'dynamic-hotspot guidance synthesis failed: {e}')
+        dynamic_guidance = None
+
+    probe_guidance_summary = _maybe_json(str(probe_root / 'guidance_runtime_summary.json')) or {}
+    llm_bundle_data = _maybe_json(str(llm_bundle_json)) or {}
+    touched_addrs = _merge_touch_maps(_touch_entries_to_map(probe_guidance_summary), _touch_profile_to_count_map(llm_bundle_data))
+    observed_widths = _touch_profile_to_width_map(llm_bundle_data)
+    portfolio_candidates: List[Dict[str, Any]] = []
+    canonical_control_guidance_file = _abs(control_guidance_file) if control_guidance_file else current_guidance_file
+    control_guidance = _maybe_json(canonical_control_guidance_file) if canonical_control_guidance_file and os.path.exists(canonical_control_guidance_file) else {'plan_name': 'control', 'actions': []}
+    portfolio_candidates.append({
+        'name': 'control',
+        'source': 'control',
+        'guidance_file': canonical_control_guidance_file,
+        'preflight': _preflight_guidance(control_guidance, touched_addrs, observed_widths),
+    })
+    if dynamic_guidance:
+        portfolio_candidates.append({
+            'name': 'dynamic_hotspot',
+            'source': 'dynamic_hotspot',
+            'guidance_file': str(dynamic_guidance_path),
+            'preflight': _preflight_guidance(dynamic_guidance, touched_addrs, observed_widths),
+        })
+    if synthesized_guidance:
+        portfolio_candidates.append({
+            'name': 'llm_seed',
+            'source': 'llm_seed',
+            'guidance_file': str(llm_seed_guidance),
+            'preflight': _preflight_guidance(synthesized_guidance, touched_addrs, observed_widths),
+        })
+
+    if bool(getattr(args, 'disable_candidate_portfolio', False)):
+        selected_candidate = portfolio_candidates[-1] if len(portfolio_candidates) > 1 else portfolio_candidates[0]
+        next_guidance_file = selected_candidate.get('guidance_file') or current_guidance_file
+        candidate_reports = [{
+            'name': selected_candidate.get('name'),
+            'source': selected_candidate.get('source'),
+            'preflight': selected_candidate.get('preflight'),
+            'run': None,
+            'guidance_runtime_summary': None,
+            'action_fires': 0,
+            'coverage': 0,
+            'verdict': str((selected_candidate.get('preflight') or {}).get('verdict') or 'preflight_ok')
+        }]
+        selected_candidate = candidate_reports[0]
+        followup_import_dir = str(probe_root / 'workdir' / 'queue')
+    else:
+        candidate_reports, selected_candidate = _evaluate_followup_candidates(
+            args=args,
+            cycle_root=event_root,
+            probe_queue_dir=str(probe_root / 'workdir' / 'queue'),
+            fuzzer_bin=fuzzer_bin,
+            ghidra_src=args.ghidra_src,
+            candidates=portfolio_candidates[:max(1, int(getattr(args, 'portfolio_max_candidates', 3)))],
+            trace_base=trace_base,
+        )
+        next_guidance_file = selected_candidate.get('guidance_file') or current_guidance_file
+        followup_import_dir = selected_candidate.get('run', {}).get('workdir')
+        followup_import_dir = _queue_dir(followup_import_dir) if followup_import_dir else str(probe_root / 'workdir' / 'queue')
+
+    followup_root = event_root / 'followup'
+    followup_run = run_hail_fuzz(
+        manifest_path=args.fuzzer_manifest,
+        firmware_config=args.firmware_config,
+        ghidra_src=args.ghidra_src,
+        workdir=str(followup_root / 'workdir'),
+        run_log=str(followup_root / 'run.log'),
+        run_for=args.followup_run_for,
+        observer_dir=str(followup_root / 'observer'),
+        guidance_file=next_guidance_file,
+        guidance_summary_out=str(followup_root / 'guidance_runtime_summary.json'),
+        import_dir=followup_import_dir,
+        fuzzer_bin=fuzzer_bin,
+        setenv=args.setenv,
+        dump_trace=bool(getattr(args, 'dump_followup_trace', False)),
+        trace_basename=trace_base,
+    )
+    save_json(str(followup_root / 'run_fuzz_summary.json'), followup_run)
+
+    event_report = {
+        'cycle_index': event_index,
+        'input_import_dir': current_import_dir,
+        'input_guidance_file': current_guidance_file,
+        'probe_run': probe_run,
+        'stuck_report_path': str(stuck_report),
+        'stuck_report': stuck_data,
+        'llm_bundle_json': str(llm_bundle_json),
+        'llm_bundle_text': str(llm_bundle_text),
+        'llm_invoked': llm_invoked,
+        'llm_answer_json': str(llm_answer_json) if llm_invoked else None,
+        'llm_answer_text': str(llm_answer_text) if llm_invoked else None,
+        'llm_answer_raw': str(llm_answer_raw) if llm_invoked else None,
+        'llm_result': llm_result,
+        'generated_guidance_file': str(llm_seed_guidance) if synthesized_guidance else None,
+        'generated_guidance': synthesized_guidance,
+        'dynamic_guidance_file': str(dynamic_guidance_path) if dynamic_guidance else None,
+        'dynamic_guidance': dynamic_guidance,
+        'candidate_portfolio': candidate_reports,
+        'selected_candidate': selected_candidate,
+        'followup_run': followup_run,
+        'coverage_delta_probe_vs_input': _coverage_from_run_summary(probe_run.get('run_summary')) - int(previous_cov or 0),
+        'coverage_delta_followup_vs_probe': _coverage_from_run_summary(followup_run.get('run_summary')) - _coverage_from_run_summary(probe_run.get('run_summary')),
+    }
+    next_import_dir = str(followup_root / 'workdir' / 'queue')
+    return event_report, next_import_dir, str(next_guidance_file or current_guidance_file)
+
+
+def _new_strategy_entry(*, name: str, source: str, guidance_file: str, origin: str, event_index: Optional[int] = None) -> Dict[str, Any]:
+    sid_src = f"{source}|{_abs(guidance_file) if guidance_file else ''}|{event_index or 0}|{origin}"
+    sid = f"{_safe_id(name)}_{hashlib.sha1(sid_src.encode('utf-8')).hexdigest()[:8]}"
+    return {
+        'strategy_id': sid,
+        'name': name,
+        'source': source,
+        'guidance_file': _abs(guidance_file) if guidance_file else None,
+        'origin': origin,
+        'origin_event_index': event_index,
+        'status': 'active',
+        'windows_run': 0,
+        'windows_selected': 0,
+        'cumulative_cov_delta': 0,
+        'cumulative_hang_delta': 0,
+        'cumulative_hangs': 0,
+        'cumulative_intervention_signals': 0,
+        'cumulative_action_fires': 0,
+        'cumulative_tail_fire_signals': 0,
+        'cumulative_sequence_progress': 0,
+        'sustained_positive_windows': 0,
+        'last_window_index': None,
+        'last_cov_delta': None,
+        'last_hang_delta': None,
+        'last_cov': None,
+        'last_hangs': None,
+        'last_verdict': None,
+        'last_intervention_signal': False,
+        'last_summary_action_fires': 0,
+        'last_effective_action_fires': 0,
+        'last_tail_fire_signals': 0,
+        'last_sequence_progress': 0,
+        'last_active_stage_count': 0,
+        'last_effective_intervention_stats': None,
+        'rolling_cov_deltas': [],
+        'rolling_hang_deltas': [],
+        'recent_avg_cov_delta': 0.0,
+        'recent_avg_hang_delta': 0.0,
+        'recent_positive_windows': 0,
+        'trial_windows_remaining': 0,
+        'credit': 0.0,
+    }
+
+
+def _find_strategy_entry(strategy_pool: List[Dict[str, Any]], guidance_file: Optional[str], source: Optional[str]) -> Optional[Dict[str, Any]]:
+    gf = _abs(guidance_file) if guidance_file else None
+    for entry in strategy_pool:
+        if gf and entry.get('guidance_file') == gf:
+            return entry
+    for entry in strategy_pool:
+        if source and entry.get('source') == source and source == 'control':
+            return entry
+    return None
+
+
+def _strategy_score_components(entry: Dict[str, Any], current_window: Optional[int] = None) -> Dict[str, float]:
+    recent_avg_cov = float(entry.get('recent_avg_cov_delta') or 0.0)
+    last_cov = float(entry.get('last_cov_delta') or 0.0)
+    recent_avg_hang = float(entry.get('recent_avg_hang_delta') or 0.0)
+    last_hang = float(entry.get('last_hang_delta') or 0.0)
+    recent_positive = float(entry.get('recent_positive_windows') or 0)
+    effective_action_fires = float(min(int(entry.get('last_effective_action_fires') or 0), 3))
+    sequence_progress = float(min(int(entry.get('last_sequence_progress') or 0), 2))
+    tail_fire_signals = float(min(int(entry.get('last_tail_fire_signals') or 0), 3))
+    intervention_signal = 1.0 if bool(entry.get('last_intervention_signal')) else 0.0
+    trial_windows_remaining = float(max(0, int(entry.get('trial_windows_remaining') or 0)))
+    freshness_bonus = 0.0
+    promoted_after = entry.get('last_promoted_after_window')
+    if current_window is not None and promoted_after is not None:
+        try:
+            delta = int(current_window) - int(promoted_after)
+            if 1 <= delta <= 3:
+                freshness_bonus = 12.0
+        except Exception:
+            freshness_bonus = 0.0
+    source_bias = 0.0
+    score = (
+        4.0 * recent_avg_cov
+        + 2.0 * last_cov
+        - 5.0 * max(recent_avg_hang, 0.0)
+        - 3.0 * max(last_hang, 0.0)
+        + 4.0 * recent_positive
+        + 1.5 * effective_action_fires
+        + 1.0 * sequence_progress
+        + 0.5 * tail_fire_signals
+        + 0.25 * intervention_signal
+        + freshness_bonus
+        + 8.0 * min(trial_windows_remaining, 1.0)
+        + source_bias
+    )
+    return {
+        'score': float(score),
+        'recent_avg_cov_delta': recent_avg_cov,
+        'last_cov_delta': last_cov,
+        'recent_avg_hang_delta': recent_avg_hang,
+        'last_hang_delta': last_hang,
+        'recent_positive_windows': recent_positive,
+        'sustained_positive_windows': float(entry.get('sustained_positive_windows') or 0),
+        'effective_action_fires': effective_action_fires,
+        'sequence_progress': sequence_progress,
+        'tail_fire_signals': tail_fire_signals,
+        'intervention_signal': intervention_signal,
+        'trial_windows_remaining': trial_windows_remaining,
+        'freshness_bonus': freshness_bonus,
+        'source_bias': source_bias,
+    }
+
+
+def _strategy_window_score(entry: Dict[str, Any], current_window: Optional[int] = None) -> Tuple[Any, ...]:
+    c = _strategy_score_components(entry, current_window=current_window)
+    return (
+        float(c['score']),
+        float(c['recent_avg_cov_delta']),
+        -float(max(c['recent_avg_hang_delta'], 0.0)),
+        float(c['effective_action_fires']),
+        float(c['sequence_progress']),
+        float(c['tail_fire_signals']),
+        float(c['sustained_positive_windows']),
+        float(c['last_cov_delta']),
+        -int(entry.get('windows_run') or 0),
+    )
+
+
+def _choose_strategy_for_window(strategy_pool: List[Dict[str, Any]], window_index: int, args) -> Tuple[Dict[str, Any], str]:
+    active = [s for s in strategy_pool if str(s.get('status') or 'active') == 'active']
+    controls = [s for s in active if s.get('source') == 'control']
+    interventions = [s for s in active if s.get('source') != 'control']
+    control_every = max(1, int(getattr(args, 'strategy_control_every_windows', 2) or 2))
+    if not interventions:
+        chosen = controls[0] if controls else max(active, key=lambda s: _strategy_window_score(s, current_window=window_index))
+        return chosen, 'no_intervention_available'
+    if controls and ((window_index - 1) % control_every == 0):
+        return controls[0], 'periodic_control_refresh'
+
+    trial_ready = [s for s in interventions if int(s.get('trial_windows_remaining') or 0) > 0]
+    if trial_ready:
+        def _trial_rank(entry: Dict[str, Any]) -> Tuple[Any, ...]:
+            comps = _strategy_score_components(entry, current_window=window_index)
+            return (
+                int(entry.get('trial_windows_remaining') or 0),
+                float(comps.get('freshness_bonus') or 0.0),
+                -int(entry.get('windows_run') or 0),
+                -int(entry.get('windows_selected') or 0),
+                int(entry.get('last_promoted_after_window') or -1),
+            )
+        return max(trial_ready, key=_trial_rank), 'trial_new_strategy'
+
+    chosen = max(active, key=lambda s: _strategy_window_score(s, current_window=window_index))
+    return chosen, 'best_active_strategy'
+
+
+def _strategy_pool_snapshot(strategy_pool: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    snap: List[Dict[str, Any]] = []
+    for entry in strategy_pool:
+        snap.append({
+            'strategy_id': entry.get('strategy_id'),
+            'name': entry.get('name'),
+            'source': entry.get('source'),
+            'status': entry.get('status'),
+            'credit': float(entry.get('credit') or 0.0),
+            'recent_avg_cov_delta': float(entry.get('recent_avg_cov_delta') or 0.0),
+            'recent_avg_hang_delta': float(entry.get('recent_avg_hang_delta') or 0.0),
+            'windows_run': int(entry.get('windows_run') or 0),
+            'windows_selected': int(entry.get('windows_selected') or 0),
+            'last_window_index': entry.get('last_window_index'),
+            'last_cov_delta': entry.get('last_cov_delta'),
+            'last_hang_delta': entry.get('last_hang_delta'),
+            'last_intervention_signal': bool(entry.get('last_intervention_signal')),
+            'last_effective_action_fires': int(entry.get('last_effective_action_fires') or 0),
+            'last_sequence_progress': int(entry.get('last_sequence_progress') or 0),
+        })
+    snap.sort(key=lambda x: (x['credit'], x['recent_avg_cov_delta'], -max(x['recent_avg_hang_delta'], 0.0)), reverse=True)
+    return snap
+
+
+def _strategy_candidate_scores(strategy_pool: List[Dict[str, Any]], current_window: Optional[int] = None) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    for entry in strategy_pool:
+        comps = _strategy_score_components(entry, current_window=current_window)
+        rows.append({
+            'strategy_id': entry.get('strategy_id'),
+            'name': entry.get('name'),
+            'source': entry.get('source'),
+            'status': entry.get('status'),
+            'score': float(comps['score']),
+            'components': comps,
+        })
+    rows.sort(key=lambda x: (x['score'], x['components']['recent_avg_cov_delta'], -max(x['components']['recent_avg_hang_delta'], 0.0)), reverse=True)
+    return rows
+
+
+def _update_strategy_after_window(entry: Dict[str, Any], *, window_index: int, run: Dict[str, Any], guidance_summary: Optional[Dict[str, Any]], cov_delta: int, hang_delta: int):
+    grs = guidance_summary or {}
+    istats = _intervention_stats(grs, run)
+    summary_action_fires = int(istats['summary_action_fires'])
+    effective_action_fires = int(istats['effective_action_fires'])
+    tail_fires = int(istats['tail_fire_signals'])
+    sequence_progress = int(istats['sequence_progress'])
+    active_stage_count = int(istats['active_stage_count'])
+    intervention_signal = bool(istats['intervention_signal'])
+    current_hangs = _run_last_hang(run)
+    entry['windows_run'] = int(entry.get('windows_run') or 0) + 1
+    entry['cumulative_cov_delta'] = int(entry.get('cumulative_cov_delta') or 0) + int(cov_delta)
+    entry['cumulative_hang_delta'] = int(entry.get('cumulative_hang_delta') or 0) + int(hang_delta)
+    entry['cumulative_hangs'] = int(entry.get('cumulative_hangs') or 0) + int(current_hangs)
+    entry['cumulative_intervention_signals'] = int(entry.get('cumulative_intervention_signals') or 0) + int(intervention_signal)
+    entry['cumulative_action_fires'] = int(entry.get('cumulative_action_fires') or 0) + int(effective_action_fires)
+    entry['cumulative_tail_fire_signals'] = int(entry.get('cumulative_tail_fire_signals') or 0) + int(tail_fires)
+    entry['cumulative_sequence_progress'] = int(entry.get('cumulative_sequence_progress') or 0) + int(sequence_progress)
+    entry['sustained_positive_windows'] = int(entry.get('sustained_positive_windows') or 0) + int((cov_delta > 0) and (hang_delta <= 0))
+    entry['last_window_index'] = window_index
+    entry['last_cov_delta'] = int(cov_delta)
+    entry['last_hang_delta'] = int(hang_delta)
+    entry['last_cov'] = _coverage_from_run_summary(run.get('run_summary'))
+    entry['last_hangs'] = int(current_hangs)
+    entry['last_verdict'] = _guidance_verdict_from_preflight_and_run({'verdict': 'preflight_ok'}, run)
+    entry['last_intervention_signal'] = bool(intervention_signal)
+    entry['last_summary_action_fires'] = int(summary_action_fires)
+    entry['last_effective_action_fires'] = int(effective_action_fires)
+    entry['last_tail_fire_signals'] = int(tail_fires)
+    entry['last_sequence_progress'] = int(sequence_progress)
+    entry['last_active_stage_count'] = int(active_stage_count)
+    entry['last_effective_intervention_stats'] = dict(istats)
+    rolling_cov = list(entry.get('rolling_cov_deltas') or [])[-4:] + [int(cov_delta)]
+    rolling_hang = list(entry.get('rolling_hang_deltas') or [])[-4:] + [int(hang_delta)]
+    entry['rolling_cov_deltas'] = rolling_cov
+    entry['rolling_hang_deltas'] = rolling_hang
+    entry['recent_avg_cov_delta'] = (sum(rolling_cov) / len(rolling_cov)) if rolling_cov else 0.0
+    entry['recent_avg_hang_delta'] = (sum(rolling_hang) / len(rolling_hang)) if rolling_hang else 0.0
+    entry['recent_positive_windows'] = sum(1 for c, h in zip(rolling_cov, rolling_hang) if int(c) > 0 and int(h) <= 0)
+    if int(entry.get('trial_windows_remaining') or 0) > 0:
+        entry['trial_windows_remaining'] = max(0, int(entry.get('trial_windows_remaining') or 0) - 1)
+
+    old_credit = float(entry.get('credit') or 0.0)
+    recent_avg_cov = float(entry.get('recent_avg_cov_delta') or 0.0)
+    recent_avg_hang = float(entry.get('recent_avg_hang_delta') or 0.0)
+    recent_positive = float(entry.get('recent_positive_windows') or 0)
+    window_score = (
+        4.0 * recent_avg_cov
+        + 2.0 * float(cov_delta)
+        - 5.0 * max(recent_avg_hang, 0.0)
+        - 3.0 * max(float(hang_delta), 0.0)
+        + 4.0 * recent_positive
+        + 1.5 * float(min(effective_action_fires, 3))
+        + 1.0 * float(min(sequence_progress, 2))
+        + 0.5 * float(min(tail_fires, 3))
+        + (0.25 if intervention_signal else 0.0)
+    )
+    if int(cov_delta) <= 0 and int(hang_delta) >= 0:
+        window_score -= 20.0
+    entry['credit'] = 0.6 * old_credit + window_score
+
+
+def _maybe_cool_strategy(entry: Dict[str, Any], args):
+    if entry.get('source') == 'control':
+        return
+    min_windows = max(1, int(getattr(args, 'strategy_cooldown_min_windows', 2) or 2))
+    negative_guard = int(getattr(args, 'strategy_cooldown_negative_delta', 200) or 200)
+    hang_guard = int(getattr(args, 'strategy_cooldown_hang_delta', 10) or 10)
+    if int(entry.get('windows_run') or 0) < min_windows:
+        return
+    if int(entry.get('cumulative_cov_delta') or 0) <= -negative_guard and not bool(entry.get('last_intervention_signal')):
+        entry['status'] = 'cooling'
+        return
+    if float(entry.get('recent_avg_cov_delta') or 0.0) < 0 and float(entry.get('recent_avg_hang_delta') or 0.0) >= hang_guard:
+        entry['status'] = 'cooling'
+
+
+def _register_promoted_strategy(strategy_pool: List[Dict[str, Any]], candidate: Optional[Dict[str, Any]], event_index: int, args) -> Optional[Dict[str, Any]]:
+    if not candidate:
+        return None
+    source = str(candidate.get('source') or '')
+    guidance_file = candidate.get('guidance_file')
+    if source == 'control' or not guidance_file:
+        return _find_strategy_entry(strategy_pool, guidance_file, source)
+
+    trial_windows = max(1, int(getattr(args, 'strategy_trial_windows', 1) or 1))
+    existing = _find_strategy_entry(strategy_pool, guidance_file, source)
+    if existing:
+        existing['status'] = 'active'
+        existing['last_selected_event_index'] = event_index
+        existing['trial_windows_remaining'] = max(int(existing.get('trial_windows_remaining') or 0), trial_windows)
+        return existing
+
+    entry = _new_strategy_entry(
+        name=str(candidate.get('name') or source),
+        source=source,
+        guidance_file=str(guidance_file),
+        origin='adaptive_event',
+        event_index=event_index,
+    )
+    entry['selection_policy'] = candidate.get('selection_policy')
+    entry['trial_windows_remaining'] = trial_windows
+    strategy_pool.append(entry)
+    max_size = max(2, int(getattr(args, 'strategy_pool_max_size', 4) or 4))
+    controls = [s for s in strategy_pool if s.get('source') == 'control']
+    others = [s for s in strategy_pool if s.get('source') != 'control']
+    others.sort(key=_strategy_window_score, reverse=True)
+    strategy_pool[:] = controls[:1] + others[:max_size - 1]
+    return entry
+
+
+def _should_trigger_adaptive_window(*, window_index: int, recent_cov_deltas: List[int], args) -> List[str]:
+    reasons: List[str] = []
+    period = int(getattr(args, 'adaptive_period_windows', 0) or 0)
+    if period > 0 and window_index % period == 0:
+        reasons.append('periodic_window')
+    plateau_windows = int(getattr(args, 'adaptive_plateau_windows', 0) or 0)
+    plateau_threshold = int(getattr(args, 'adaptive_plateau_delta_threshold', 0) or 0)
+    if plateau_windows > 0 and len(recent_cov_deltas) >= plateau_windows:
+        tail = recent_cov_deltas[-plateau_windows:]
+        if all(int(x) <= plateau_threshold for x in tail):
+            reasons.append('plateau_window')
+    return reasons
+
+
+def _run_adaptive_mmio_loop_single_cycle(args, out_root: Path, fuzzer_bin: str) -> Dict[str, Any]:
+    ctx = _build_initial_adaptive_context(args, out_root, fuzzer_bin)
+    baseline_summary = ctx['baseline_summary']
+    current_import_dir = ctx['current_import_dir']
+    current_guidance_file = ctx['current_guidance_file']
+    control_guidance_file = ctx['current_guidance_file']
+    initial_guidance_kind = ctx['initial_guidance_kind']
+    baseline_frontier_cov = ctx['baseline_frontier_cov']
 
     cycle_reports: List[Dict[str, Any]] = []
     final_queue_dir = current_import_dir
     final_guidance_file = current_guidance_file
+    prev_cov = baseline_frontier_cov
 
     for cycle_idx in range(1, int(getattr(args, 'max_llm_cycles', 1)) + 1):
         cycle_root = out_root / f'cycle_{cycle_idx}'
-        _ensure_dir(str(cycle_root))
-        trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
-
-        probe_root = cycle_root / 'probe'
-        probe_run = run_hail_fuzz(
-            manifest_path=args.fuzzer_manifest,
-            firmware_config=args.firmware_config,
-            ghidra_src=args.ghidra_src,
-            workdir=str(probe_root / 'workdir'),
-            run_log=str(probe_root / 'run.log'),
-            run_for=args.probe_run_for,
-            observer_dir=str(probe_root / 'observer'),
-            guidance_file=current_guidance_file,
-            guidance_summary_out=str(probe_root / 'guidance_runtime_summary.json'),
-            import_dir=current_import_dir,
+        cycle_report, current_import_dir, current_guidance_file = _run_adaptive_event_once(
+            args=args,
+            event_root=cycle_root,
+            event_index=cycle_idx,
+            current_import_dir=current_import_dir,
+            current_guidance_file=current_guidance_file,
+            control_guidance_file=current_guidance_file,
+            previous_cov=prev_cov,
             fuzzer_bin=fuzzer_bin,
-            setenv=args.setenv,
-            dump_trace=True,
-            trace_out=str(probe_root / f'{trace_base}.json'),
-            trace_text_out=str(probe_root / f'{trace_base}.log'),
-            trace_meta_out=str(probe_root / f'{trace_base}.meta.json'),
-            trace_basename=trace_base,
         )
-        probe_trace_json = str(probe_root / f'{trace_base}.json')
-
-        stuck_dir = _default_stuck_dir()
-        find_script = str(stuck_dir / 'find_stuck_functions.py')
-        package_script = str(stuck_dir / 'package_llm_fallback.py')
-        llm_script = str(stuck_dir / 'run_llm_fallback.py')
-
-        stuck_report = cycle_root / 'stuck_report.json'
-        llm_bundle_json = cycle_root / 'llm_fallback_bundle.json'
-        llm_bundle_text = cycle_root / 'llm_fallback_prompt.txt'
-        llm_answer_json = cycle_root / 'llm_answer.json'
-        llm_answer_text = cycle_root / 'llm_answer.txt'
-        llm_answer_raw = cycle_root / 'llm_answer.raw.json'
-        llm_seed_guidance = cycle_root / 'llm_seed.guidance.json'
-
-        _run_python_tool(find_script, [
-            '--contract-bundle', _abs(args.contract_bundle),
-            '--trace-json', probe_trace_json,
-            '--use-recent-exec', str(args.use_recent_exec),
-            '--seed-path', current_guidance_file,
-            '--out', str(stuck_report),
-        ])
-        stuck_data = load_json(str(stuck_report))
-
-        _run_python_tool(package_script, [
-            '--contract-bundle', _abs(args.contract_bundle),
-            '--stuck-report', str(stuck_report),
-            '--manual-trace-json', probe_trace_json,
-            '--manual-seed', current_guidance_file,
-            '--out', str(llm_bundle_json),
-            '--out-text', str(llm_bundle_text),
-        ])
-
-        llm_invoked = False
-        llm_result = None
-        synthesized_guidance = None
-        next_guidance_file = None
-
-        should_call_llm = (not bool(getattr(args, 'skip_llm', False))) and (bool(getattr(args, 'force_llm', False)) or bool(stuck_data.get('still_ambiguous', True)))
-        if should_call_llm:
-            llm_args = [
-                '--prompt-text', str(llm_bundle_text),
-                '--bundle-json', str(llm_bundle_json),
-                '--out-json', str(llm_answer_json),
-                '--out-text', str(llm_answer_text),
-                '--out-raw-response', str(llm_answer_raw),
-                '--max-output-tokens', str(int(args.llm_max_output_tokens)),
-                '--max-attempts', str(int(args.llm_max_attempts)),
-                '--reasoning-effort', str(args.llm_reasoning_effort),
-            ]
-            if getattr(args, 'llm_model', None):
-                llm_args.extend(['--model', str(args.llm_model)])
-            _run_python_tool(llm_script, llm_args)
-            llm_invoked = True
-            llm_result = _maybe_json(str(llm_answer_json))
-            if llm_result and llm_result.get('parsed_json'):
-                synthesized_guidance = _synthesize_guidance_from_llm_answer(
-                    llm_answer_json_path=str(llm_answer_json),
-                    fallback_bundle_json_path=str(llm_bundle_json),
-                    contract_bundle_path=args.contract_bundle,
-                    out_path=str(llm_seed_guidance),
-                    plan_name=f"{getattr(args, 'llm_seed_plan_name', 'llm_seed')}_cycle_{cycle_idx}",
-                )
-                next_guidance_file = str(llm_seed_guidance)
-
-        if not next_guidance_file:
-            next_guidance_file = current_guidance_file
-
-        followup_root = cycle_root / 'followup'
-        followup_run = run_hail_fuzz(
-            manifest_path=args.fuzzer_manifest,
-            firmware_config=args.firmware_config,
-            ghidra_src=args.ghidra_src,
-            workdir=str(followup_root / 'workdir'),
-            run_log=str(followup_root / 'run.log'),
-            run_for=args.followup_run_for,
-            observer_dir=str(followup_root / 'observer'),
-            guidance_file=next_guidance_file,
-            guidance_summary_out=str(followup_root / 'guidance_runtime_summary.json'),
-            import_dir=str(probe_root / 'workdir' / 'queue'),
-            fuzzer_bin=fuzzer_bin,
-            setenv=args.setenv,
-            dump_trace=bool(getattr(args, 'dump_followup_trace', False)),
-            trace_basename=trace_base,
-        )
-
-        cycle_report = {
-            'cycle_index': cycle_idx,
-            'input_import_dir': current_import_dir,
-            'input_guidance_file': current_guidance_file,
-            'probe_run': probe_run,
-            'stuck_report_path': str(stuck_report),
-            'stuck_report': stuck_data,
-            'llm_bundle_json': str(llm_bundle_json),
-            'llm_bundle_text': str(llm_bundle_text),
-            'llm_invoked': llm_invoked,
-            'llm_answer_json': str(llm_answer_json) if llm_invoked else None,
-            'llm_answer_text': str(llm_answer_text) if llm_invoked else None,
-            'llm_answer_raw': str(llm_answer_raw) if llm_invoked else None,
-            'llm_result': llm_result,
-            'generated_guidance_file': str(llm_seed_guidance) if synthesized_guidance else None,
-            'generated_guidance': synthesized_guidance,
-            'followup_run': followup_run,
-            'coverage_delta_probe_vs_input': _coverage_from_run_summary(probe_run.get('run_summary')) - int((baseline_summary.get('run_summary') or {}).get('last_cov') or 0) if cycle_idx == 1 else _coverage_from_run_summary(probe_run.get('run_summary')) - _coverage_from_run_summary(cycle_reports[-1]['followup_run'].get('run_summary')),
-            'coverage_delta_followup_vs_probe': _coverage_from_run_summary(followup_run.get('run_summary')) - _coverage_from_run_summary(probe_run.get('run_summary')),
-        }
         cycle_reports.append(cycle_report)
-
-        current_import_dir = str(followup_root / 'workdir' / 'queue')
         final_queue_dir = current_import_dir
-        current_guidance_file = next_guidance_file
         final_guidance_file = current_guidance_file
-
-        if (not llm_invoked) and (not bool(getattr(args, 'force_llm', False))):
+        prev_cov = _coverage_from_run_summary(cycle_report.get('followup_run', {}).get('run_summary'))
+        if (not cycle_report.get('llm_invoked')) and (not bool(getattr(args, 'force_llm', False))):
             break
 
-    summary = {
-        'schema': 'mf_adaptive_mmio_loop_v1',
+    return {
+        'schema': 'mf_adaptive_mmio_loop_v4',
+        'mode': 'single_cycle_adaptive',
         'contract_bundle': _abs(args.contract_bundle),
         'initial_guidance_kind': initial_guidance_kind,
-        'initial_guidance_file': current_guidance_file if initial_guidance_kind == 'provided' else str(out_root / 'auto_probe.guidance.json'),
+        'initial_guidance_file': _abs(args.guidance_file) if initial_guidance_kind == 'provided' else str(out_root / 'auto_probe.guidance.json'),
         'baseline_summary': baseline_summary,
         'cycles': cycle_reports,
         'final_queue_dir': final_queue_dir,
         'final_guidance_file': final_guidance_file,
     }
+
+
+def _run_long_horizon_main_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[str, Any]:
+    ctx = _build_initial_adaptive_context(args, out_root, fuzzer_bin)
+    baseline_summary = ctx['baseline_summary']
+    current_import_dir = ctx['current_import_dir']
+    control_guidance_file = ctx['current_guidance_file']
+    initial_guidance_kind = ctx['initial_guidance_kind']
+    baseline_frontier_cov = ctx['baseline_frontier_cov']
+
+    strategy_pool: List[Dict[str, Any]] = [
+        _new_strategy_entry(name='control', source='control', guidance_file=control_guidance_file, origin='baseline_control')
+    ]
+    window_reports: List[Dict[str, Any]] = []
+    adaptive_events: List[Dict[str, Any]] = []
+    recent_cov_deltas: List[int] = []
+    prev_cov = baseline_frontier_cov
+    prev_hang = int((baseline_summary.get('frontier_run') or {}).get('run_summary', {}).get('last_hang') or 0)
+    event_index = 0
+    last_guidance_file = control_guidance_file
+
+    total_windows = max(1, int(getattr(args, 'main_window_count', 0) or 0))
+    main_window_run_for = str(getattr(args, 'main_window_run_for', None) or args.followup_run_for or '300s')
+    trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+
+    for window_index in range(1, total_windows + 1):
+        pre_schedule_snapshot = _strategy_pool_snapshot(strategy_pool)
+        candidate_scores = _strategy_candidate_scores(strategy_pool, current_window=window_index)
+        chosen, schedule_policy = _choose_strategy_for_window(strategy_pool, window_index, args)
+        chosen['windows_selected'] = int(chosen.get('windows_selected') or 0) + 1
+        window_root = out_root / 'main_windows' / f'window_{window_index:03d}_{_safe_id(chosen.get("name") or chosen.get("source") or "strategy")}'
+        _ensure_dir(str(window_root))
+        run = run_hail_fuzz(
+            manifest_path=args.fuzzer_manifest,
+            firmware_config=args.firmware_config,
+            ghidra_src=args.ghidra_src,
+            workdir=str(window_root / 'workdir'),
+            run_log=str(window_root / 'run.log'),
+            run_for=main_window_run_for,
+            observer_dir=str(window_root / 'observer'),
+            guidance_file=chosen.get('guidance_file'),
+            guidance_summary_out=str(window_root / 'guidance_runtime_summary.json'),
+            import_dir=current_import_dir,
+            fuzzer_bin=fuzzer_bin,
+            setenv=args.setenv,
+            dump_trace=False,
+            trace_basename=trace_base,
+        )
+        save_json(str(window_root / 'run_fuzz_summary.json'), run)
+        grs = _maybe_json(str(window_root / 'guidance_runtime_summary.json')) or {}
+        cov = _coverage_from_run_summary(run.get('run_summary'))
+        cov_delta = cov - prev_cov
+        current_hang = _run_last_hang(run)
+        hang_delta = int(current_hang) - int(prev_hang)
+        prev_cov = cov
+        prev_hang = current_hang
+        current_import_dir = _queue_dir(run.get('workdir'))
+        last_guidance_file = chosen.get('guidance_file') or last_guidance_file
+        _update_strategy_after_window(chosen, window_index=window_index, run=run, guidance_summary=grs, cov_delta=cov_delta, hang_delta=hang_delta)
+        _maybe_cool_strategy(chosen, args)
+        istats = _intervention_stats(grs, run)
+        window_report = {
+            'window_index': window_index,
+            'schedule_policy': schedule_policy,
+            'selected_strategy_id': chosen.get('strategy_id'),
+            'selected_strategy_name': chosen.get('name'),
+            'selected_strategy_source': chosen.get('source'),
+            'selected_strategy_reason': schedule_policy,
+            'candidate_scores': candidate_scores,
+            'strategy_pool_snapshot': pre_schedule_snapshot,
+            'guidance_file': chosen.get('guidance_file'),
+            'selected_guidance_file': chosen.get('guidance_file'),
+            'run': run,
+            'guidance_runtime_summary': grs,
+            'coverage_delta_vs_prev_window': cov_delta,
+            'hang_delta_vs_prev_window': hang_delta,
+            'effective_intervention_stats': istats,
+            'strategy_snapshot': dict(chosen),
+        }
+        window_reports.append(window_report)
+        recent_cov_deltas.append(cov_delta)
+        max_recent = max(2, int(getattr(args, 'adaptive_plateau_windows', 0) or 0), int(getattr(args, 'adaptive_period_windows', 0) or 0), 8)
+        recent_cov_deltas = recent_cov_deltas[-max_recent:]
+
+        trigger_reasons = _should_trigger_adaptive_window(window_index=window_index, recent_cov_deltas=recent_cov_deltas, args=args)
+        if trigger_reasons:
+            event_index += 1
+            event_root = out_root / 'adaptive_events' / f'event_{event_index:03d}'
+            event_report, current_import_dir, promoted_guidance_file = _run_adaptive_event_once(
+                args=args,
+                event_root=event_root,
+                event_index=event_index,
+                current_import_dir=current_import_dir,
+                current_guidance_file=chosen.get('guidance_file') or control_guidance_file,
+                control_guidance_file=control_guidance_file,
+                previous_cov=prev_cov,
+                fuzzer_bin=fuzzer_bin,
+            )
+            event_report['triggered_after_window'] = window_index
+            event_report['trigger_reasons'] = trigger_reasons
+            adaptive_events.append(event_report)
+            promoted = _register_promoted_strategy(strategy_pool, event_report.get('selected_candidate'), event_index, args)
+            if promoted:
+                promoted['last_promoted_after_window'] = window_index
+            last_guidance_file = promoted_guidance_file or last_guidance_file
+            prev_cov = _coverage_from_run_summary(event_report.get('followup_run', {}).get('run_summary'))
+
+    return {
+        'schema': 'mf_adaptive_mmio_loop_v4',
+        'mode': 'continuous_long_horizon',
+        'contract_bundle': _abs(args.contract_bundle),
+        'initial_guidance_kind': initial_guidance_kind,
+        'initial_guidance_file': _abs(args.guidance_file) if initial_guidance_kind == 'provided' else str(out_root / 'auto_probe.guidance.json'),
+        'baseline_summary': baseline_summary,
+        'main_window_run_for': main_window_run_for,
+        'main_window_count': total_windows,
+        'adaptive_period_windows': int(getattr(args, 'adaptive_period_windows', 0) or 0),
+        'adaptive_plateau_windows': int(getattr(args, 'adaptive_plateau_windows', 0) or 0),
+        'windows': window_reports,
+        'adaptive_events': adaptive_events,
+        'strategy_pool': strategy_pool,
+        'final_queue_dir': current_import_dir,
+        'final_guidance_file': last_guidance_file,
+    }
+
+
+def _run_adaptive_mmio_loop(args):
+    out_root = Path(args.out_root).expanduser().resolve()
+    _ensure_dir(str(out_root))
+    fuzzer_bin = _abs(args.fuzzer_bin) if getattr(args, 'fuzzer_bin', None) else ensure_fuzzer_binary(args.fuzzer_manifest)
+    if int(getattr(args, 'main_window_count', 0) or 0) > 0:
+        summary = _run_long_horizon_main_loop(args, out_root, fuzzer_bin)
+    else:
+        summary = _run_adaptive_mmio_loop_single_cycle(args, out_root, fuzzer_bin)
     save_json(str(out_root / 'adaptive_mmio_loop_summary.json'), summary)
     info(f"adaptive-mmio-loop summary written: {out_root / 'adaptive_mmio_loop_summary.json'}")
-
 
 def run_hail_fuzz(
     *,
@@ -1173,6 +2514,95 @@ def _sum_action_fires(summary: Optional[Dict[str, Any]]) -> int:
     for item in (summary or {}).get("actions", []) or []:
         total += int(item.get("fire_count") or 0)
     return total
+
+
+def _sum_sequence_progress(summary: Optional[Dict[str, Any]]) -> int:
+    total = 0
+    for item in (summary or {}).get("actions", []) or []:
+        total += int(item.get("sequence_pos") or 0)
+    return total
+
+
+def _count_active_stages(summary: Optional[Dict[str, Any]]) -> int:
+    return len((summary or {}).get("active_stages") or [])
+
+
+def _run_tail_fire_signals(run: Optional[Dict[str, Any]]) -> int:
+    total = 0
+    for line in ((run or {}).get("run_summary") or {}).get("tail", []) or []:
+        if "[strategy-runtime] fire" in str(line):
+            total += 1
+    return total
+
+
+def _run_last_hang(run: Optional[Dict[str, Any]]) -> int:
+    return int(((run or {}).get("run_summary") or {}).get("last_hang") or 0)
+
+
+def _run_last_crash(run: Optional[Dict[str, Any]]) -> int:
+    return int(((run or {}).get("run_summary") or {}).get("last_crash") or 0)
+
+
+def _intervention_stats(summary: Optional[Dict[str, Any]], run: Optional[Dict[str, Any]]) -> Dict[str, int | bool]:
+    summary_action_fires = _sum_action_fires(summary)
+    tail_fire_signals = _run_tail_fire_signals(run)
+    effective_action_fires = max(int(summary_action_fires), int(tail_fire_signals))
+    sequence_progress = _sum_sequence_progress(summary)
+    active_stage_count = _count_active_stages(summary)
+    intervention_signal = bool(
+        effective_action_fires > 0
+        or sequence_progress > 0
+        or active_stage_count > 0
+    )
+    return {
+        'summary_action_fires': int(summary_action_fires),
+        'tail_fire_signals': int(tail_fire_signals),
+        'effective_action_fires': int(effective_action_fires),
+        'sequence_progress': int(sequence_progress),
+        'active_stage_count': int(active_stage_count),
+        'intervention_signal': bool(intervention_signal),
+    }
+
+
+def _candidate_has_intervention_signal(rec: Dict[str, Any]) -> bool:
+    return bool(
+        int(rec.get('effective_action_fires') or rec.get('action_fires') or 0) > 0
+        or int(rec.get('sequence_progress') or 0) > 0
+        or int(rec.get('active_stage_count') or 0) > 0
+        or int(rec.get('tail_fire_signals') or 0) > 0
+    )
+
+
+def _candidate_selection_scalar(rec: Dict[str, Any], *, args) -> float:
+    coverage = float(rec.get('coverage') or 0)
+    touched_ratio = float(rec.get('touched_trigger_ratio') or 0.0)
+    effective_fires = int(rec.get('effective_action_fires') or rec.get('action_fires') or 0)
+    tail_fires = int(rec.get('tail_fire_signals') or 0)
+    seq = int(rec.get('sequence_progress') or 0)
+    active = int(rec.get('active_stage_count') or 0)
+    non_control = 0 if rec.get('source') == 'control' else 1
+    hangs = int(rec.get('hangs') or 0)
+    crashes = int(rec.get('crashes') or 0)
+
+    fire_bonus = float(getattr(args, 'portfolio_fire_bonus', 120.0))
+    tail_fire_bonus = float(getattr(args, 'portfolio_tail_fire_bonus', 25.0))
+    sequence_bonus = float(getattr(args, 'portfolio_sequence_bonus', 90.0))
+    active_stage_bonus = float(getattr(args, 'portfolio_active_stage_bonus', 40.0))
+    touched_ratio_bonus = float(getattr(args, 'portfolio_touched_ratio_bonus', 25.0))
+    non_control_bonus = float(getattr(args, 'portfolio_non_control_bonus', 10.0))
+    hang_penalty = float(getattr(args, 'portfolio_hang_penalty', 15.0))
+    crash_penalty = float(getattr(args, 'portfolio_crash_penalty', 50.0))
+
+    score = coverage
+    score += effective_fires * fire_bonus
+    score += tail_fires * tail_fire_bonus
+    score += seq * sequence_bonus
+    score += active * active_stage_bonus
+    score += touched_ratio * touched_ratio_bonus
+    score += non_control * non_control_bonus
+    score -= hangs * hang_penalty
+    score -= crashes * crash_penalty
+    return score
 
 
 def _queue_dir(workdir: str) -> str:
@@ -2310,9 +3740,13 @@ def main():
     s14.add_argument("--import-dir")
     s14.add_argument("--guidance-file")
     s14.add_argument("--peripheral-hint", action="append")
-    s14.add_argument("--initial-run-for", default="30s")
+    s14.add_argument("--warmup-run-for", default="600s")
+    s14.add_argument("--warmup-restarts", type=int, default=1)
     s14.add_argument("--probe-run-for", default="30s")
     s14.add_argument("--followup-run-for", default="60s")
+    s14.add_argument("--portfolio-run-for", default="20s")
+    s14.add_argument("--portfolio-max-candidates", type=int, default=3)
+    s14.add_argument("--disable-candidate-portfolio", action="store_true")
     s14.add_argument("--use-recent-exec", default="latest")
     s14.add_argument("--max-llm-cycles", type=int, default=1)
     s14.add_argument("--setenv", action="append")
@@ -2327,6 +3761,17 @@ def main():
     s14.add_argument("--llm-reasoning-effort", default=os.environ.get("OPENAI_REASONING_EFFORT", "none"))
     s14.add_argument("--probe-plan-name", default="auto_mmio_probe")
     s14.add_argument("--llm-seed-plan-name", default="llm_seed")
+    s14.add_argument("--main-window-count", type=int, default=0, help="If >0, run long-horizon mode with this many main windows after warmup")
+    s14.add_argument("--main-window-run-for", default="300s")
+    s14.add_argument("--adaptive-period-windows", type=int, default=3)
+    s14.add_argument("--adaptive-plateau-windows", type=int, default=2)
+    s14.add_argument("--adaptive-plateau-delta-threshold", type=int, default=0)
+    s14.add_argument("--strategy-control-every-windows", type=int, default=2)
+    s14.add_argument("--strategy-pool-max-size", type=int, default=4)
+    s14.add_argument("--strategy-trial-windows", type=int, default=1)
+    s14.add_argument("--strategy-cooldown-min-windows", type=int, default=2)
+    s14.add_argument("--strategy-cooldown-negative-delta", type=int, default=200)
+    s14.add_argument("--portfolio-intervention-coverage-slack", type=int, default=64)
 
     s13 = sub.add_parser("llm-fallback-pipeline")
     s13.add_argument("--fuzzer-manifest", required=True)

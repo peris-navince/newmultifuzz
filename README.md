@@ -679,9 +679,30 @@ Once this loop is stable, LLM assistance can be introduced in a controlled way f
 
 在这个闭环稳定之后，再以受控方式引入 LLM 做 rerank 和受限候选扩展。
 
+
 ## Adaptive MMIO Debug + LLM Seed Reinjection / 自适应 MMIO 卡点分析与 LLM seed 回填
 
-### What this new pipeline does / 新增闭环做什么
+### Why this loop was redesigned / 为什么要重构这条闭环
+
+English
+
+The adaptive MMIO loop is no longer documented as a single-hypothesis repair path. The practical lesson from recent runs is that a bounded but wrong static hypothesis can silently dominate the pipeline even when the runtime evidence is pointing elsewhere. To improve utility and portability, the loop is now governed by four hard rules:
+
+1. **Runtime evidence is primary.** Dynamic tail hotspots, last-PC locality, and probe-touched MMIO addresses take precedence over static peripheral priors.
+2. **Hypotheses are portfolio candidates, not a single truth claim.** The loop keeps a control branch and compares multiple bounded candidates from the same imported frontier.
+3. **Every generated guidance must pass preflight.** Empty, conflicting, or untouched-trigger guidance is flagged before it is allowed to dominate the follow-up stage.
+4. **LLM output is bounded and secondary.** The LLM ranks or refines candidate families inside the evidence envelope; it does not invent unconstrained runtime behavior.
+
+中文
+
+自适应 MMIO 闭环不再被定义成“单一路径修复器”。最近几轮运行已经说明：即使动态运行证据已经指向别处，一个“边界内但方向偏了”的静态假设仍可能悄悄主导整条链路。为提高实用性与泛用性，当前闭环遵循四条硬规则：
+
+1. **运行时证据优先。** 动态 tail 热点、last-PC 定位和 probe 阶段真实 touched 的 MMIO 地址优先于静态外设先验。
+2. **假设采用候选组合而非单一结论。** 系统保留 control 分支，并从同一 imported frontier 出发比较多个受约束候选。
+3. **所有 guidance 先过 preflight。** 空 guidance、互相冲突的 guidance、或主触发地址根本未被 probe touched 的 guidance，会在 follow-up 前被标记。
+4. **LLM 是受限辅助。** LLM 只在证据边界内对候选家族做排序或细化，不直接发明无限制的 runtime 行为。
+
+### What the current adaptive loop does / 当前 adaptive loop 做什么
 
 This repository now includes a one-key orchestration command:
 
@@ -689,38 +710,43 @@ This repository now includes a one-key orchestration command:
 python3 extractor/closed_loop.py adaptive-mmio-loop ...
 ```
 
-It connects the existing MultiFuzz fuzzing workflow to the new stuck-function + LLM fallback path:
+The adaptive loop now connects the existing MultiFuzz workflow to a **dynamic-first, portfolio-based** fallback path:
 
-1. **Establish or reuse a plateau frontier queue**
+1. **Establish or reuse a warmup frontier**
    - If `--import-dir` is given, reuse the current queue/corpus frontier.
-   - Otherwise run a short baseline seed stage and use `round_0_seed/workdir/queue` as the import frontier.
+   - Then run bounded warmup and select the best warmup frontier.
 
 2. **Obtain an initial probe guidance**
    - If `--guidance-file` is provided, use it directly.
-   - Otherwise synthesize a bounded probe guidance from the contract bundle (`contract_bundle_*.json`).
+   - Otherwise synthesize a bounded probe guidance from the contract bundle.
 
 3. **Run a guided probe with trace export**
-   - Executes `run-fuzz` with `--dump-trace`-equivalent trace export.
-   - Produces `replay_trace.json/.log/.meta.json`.
+   - Produces `replay_trace.json/.log/.meta.json` and `guidance_runtime_summary.json`.
 
 4. **Run dynamic stuck attribution**
-   - Calls `analysis/stuck_attribution/find_stuck_functions.py`.
-   - Produces a bounded `stuck_report.json` with hotspot functions, last PC, target-peripheral consistency, and `still_ambiguous`.
+   - Produces `stuck_report.json` with last-PC localization, dominant loop functions, dynamic primary MMIO cluster, target-peripheral consistency, and ambiguity signals.
 
 5. **Package bounded evidence for LLM fallback**
-   - Calls `package_llm_fallback.py`.
    - Produces `llm_fallback_bundle.json` and `llm_fallback_prompt.txt`.
+   - The bundle now carries dynamic-primary evidence, probe-touched addresses, and a hypothesis-portfolio view.
 
-6. **Call the LLM only when needed (or when forced)**
-   - Calls `run_llm_fallback.py`.
-   - Produces `llm_answer.json/.txt/.raw.json`.
+6. **Synthesize bounded candidate guidance files**
+   - Control branch: reuse the current guidance.
+   - Dynamic-hotspot branch: synthesize a guidance candidate directly from probe-touched hotspot addresses.
+   - LLM branch: call the LLM only when needed, then synthesize `llm_seed.guidance.json` from the bounded answer.
 
-7. **Synthesize a new runtime seed/guidance from the LLM answer**
-   - Converts `seed_hypothesis`, `likely_constraint`, and likely blocking offsets/registers into a new `llm_seed.guidance.json`.
+7. **Preflight every candidate**
+   - Deduplicate actions.
+   - Check whether primary trigger addresses were actually touched during the probe.
+   - Flag empty or untouched-trigger guidance before candidate comparison.
 
-8. **Feed the new seed back into the original MultiFuzz pipeline and continue fuzzing**
-   - Runs a follow-up `run-fuzz` using the previous probe queue as `--import-dir` and the synthesized `llm_seed.guidance.json` as the new guidance.
-   - This is the actual “put the analyzed seed back and continue” step.
+8. **Run a short candidate portfolio tournament**
+   - All candidates start from the same probe queue.
+   - The loop records coverage, action firings, and candidate verdicts.
+   - It then selects the best candidate branch.
+
+9. **Continue fuzzing from the winning branch**
+   - The chosen candidate queue becomes the import frontier for the follow-up run.
 
 ### Main command / 主命令
 
@@ -730,11 +756,14 @@ python3 /home/wgh/Multifuzz/extractor/closed_loop.py adaptive-mmio-loop \
   --firmware-config /home/wgh/Multifuzz/benchmarks/P2IM/Console/config.yml \
   --ghidra-src /home/wgh/Multifuzz/tools/ghidra \
   --contract-bundle /home/wgh/Multifuzz/analysis/out/p2im_console_ghidra_rel/contract_bundle_rtc_v7.json \
-  --out-root /home/wgh/Multifuzz/workdir/rtc_adaptive_loop_v1 \
+  --out-root /home/wgh/Multifuzz/workdir/rtc_adaptive_loop_v3 \
   --import-dir /home/wgh/Multifuzz/workdir/console_staged_recovery/round_0_seed/workdir/queue \
-  --initial-run-for 30s \
-  --probe-run-for 30s \
+  --warmup-run-for 600s \
+  --warmup-restarts 1 \
+  --probe-run-for 60s \
+  --portfolio-run-for 20s \
   --followup-run-for 60s \
+  --portfolio-max-candidates 3 \
   --use-recent-exec latest \
   --max-llm-cycles 1 \
   --llm-max-output-tokens 6000 \
@@ -759,20 +788,36 @@ export HTTPS_PROXY=http://127.0.0.1:17890
 
 Under `--out-root`, the pipeline writes:
 
-- `round_0_seed/` (if no `--import-dir` was given)
+- `baseline_warmup/`
 - `auto_probe.guidance.json` (if no `--guidance-file` was given)
-- `cycle_1/probe/` (guided probe run + trace)
+- `cycle_1/probe/`
 - `cycle_1/stuck_report.json`
 - `cycle_1/llm_fallback_bundle.json`
 - `cycle_1/llm_fallback_prompt.txt`
-- `cycle_1/llm_answer.json/.txt/.raw.json`
-- `cycle_1/llm_seed.guidance.json`
-- `cycle_1/followup/` (the reinjected run)
+- `cycle_1/llm_answer.json/.txt/.raw.json` (if LLM was invoked)
+- `cycle_1/dynamic_hotspot.guidance.json`
+- `cycle_1/llm_seed.guidance.json` (if synthesized)
+- `cycle_1/candidate_portfolio/`
+- `cycle_1/followup/`
 - `adaptive_mmio_loop_summary.json`
+
+### Candidate verdicts / 候选 verdict
+
+The loop now distinguishes candidate failures more explicitly. Typical verdicts include:
+
+- `preflight_ok`
+- `empty_guidance`
+- `untouched_trigger`
+- `nonfiring_guidance`
+- `no_effect`
+- `effective`
+
+This makes the loop more practical: failures are no longer only “bad coverage”; they become attributable pipeline states.
 
 ### Notes / 说明
 
 - This command is not trying to prove a single exact root cause in all cases.
-- Its job is to keep the pipeline moving: shrink the candidate space, hand bounded evidence to the LLM, synthesize a next seed, and continue fuzzing from the current frontier.
-- If a probe run is already unambiguous, you may still force LLM reinjection with `--force-llm`.
-- If you already have a hand-written or manually curated probe strategy, pass it via `--guidance-file`; otherwise the pipeline will synthesize a generic probe from the contract bundle automatically.
+- Its job is to keep the pipeline moving while avoiding silent bias from one wrong hypothesis.
+- If a probe run is already unambiguous, you may still force LLM participation with `--force-llm`.
+- If you already have a hand-written or manually curated probe strategy, pass it via `--guidance-file`; otherwise the pipeline will synthesize a bounded probe automatically.
+- If you want to fall back to the previous single-branch follow-up style, pass `--disable-candidate-portfolio`.

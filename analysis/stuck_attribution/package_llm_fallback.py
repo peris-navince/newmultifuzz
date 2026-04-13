@@ -19,7 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Iterable
 
 
 def safe_read_json(path: Path) -> Any:
@@ -30,6 +30,45 @@ def safe_read_json(path: Path) -> Any:
 def read_text(path: Path) -> str:
     with open(path, "r", encoding="utf-8", errors="replace") as f:
         return f.read()
+
+
+def _normalize_hex(v: Any) -> Optional[str]:
+    if v is None:
+        return None
+    if isinstance(v, int):
+        return f"0X{v:X}"
+    s = str(v).strip()
+    if not s:
+        return None
+    try:
+        if s.lower().startswith("0x"):
+            return f"0X{int(s, 16):X}"
+        return f"0X{int(s, 10):X}"
+    except Exception:
+        return s.upper()
+
+
+def load_guidance_summary(path: Optional[Path]) -> Dict[str, Any]:
+    if path is None:
+        return {}
+    if not path.exists():
+        raise ValueError(f"guidance summary file does not exist: {path}")
+    data = safe_read_json(path)
+    if not isinstance(data, dict):
+        raise ValueError(f"{path} does not look like a guidance runtime summary")
+    return data
+
+
+def _touch_list(summary: Dict[str, Any], key: str) -> List[Dict[str, Any]]:
+    out = []
+    for item in summary.get(key, []) or []:
+        if isinstance(item, list) and len(item) >= 2:
+            out.append({"address_hex": str(item[0]).upper(), "count": int(item[1])})
+        elif isinstance(item, dict):
+            addr = str(item.get("address_hex") or item.get("addr") or "").upper().strip()
+            if addr:
+                out.append({"address_hex": addr, "count": int(item.get("count") or 0)})
+    return out
 
 
 def load_bundle(path: Path) -> Dict[str, Any]:
@@ -76,6 +115,61 @@ def load_trace_json(path: Optional[Path]) -> Any:
             except Exception:
                 return {"text_excerpt": read_text(path)[:4000], "trace_format": "text"}
         return {"events": rows, "trace_format": "jsonl"}
+
+
+def _iter_trace_events(raw: Any) -> Iterable[Dict[str, Any]]:
+    if raw is None:
+        return []
+    if isinstance(raw, dict):
+        latest = raw.get("latest_exec")
+        if isinstance(latest, dict) and isinstance(latest.get("events"), list):
+            return [x for x in latest.get("events") or [] if isinstance(x, dict)]
+        for k in TRACE_LIST_KEYS:
+            if isinstance(raw.get(k), list):
+                return [x for x in raw.get(k) or [] if isinstance(x, dict)]
+    if isinstance(raw, list):
+        return [x for x in raw if isinstance(x, dict)]
+    return []
+
+
+def _build_trace_touch_profile(raw: Any, limit: int = 32) -> List[Dict[str, Any]]:
+    stats: Dict[str, Dict[str, Any]] = {}
+    for ev in _iter_trace_events(raw):
+        candidates = []
+        mmio_addr = _normalize_hex(ev.get("mmio_addr") or ev.get("mmio_address"))
+        last_read = _normalize_hex(ev.get("last_read"))
+        if mmio_addr:
+            candidates.append(mmio_addr)
+        if last_read and last_read not in candidates:
+            candidates.append(last_read)
+        if not candidates:
+            continue
+        width = ev.get("mmio_size") or ev.get("size") or ev.get("width")
+        try:
+            width_i = int(width) if width is not None else None
+        except Exception:
+            width_i = None
+        for addr in candidates:
+            ent = stats.setdefault(addr, {"address_hex": addr, "count": 0, "width_counts": {}})
+            ent["count"] += 1
+            if width_i:
+                wc = ent["width_counts"]
+                wc[str(width_i)] = int(wc.get(str(width_i), 0)) + 1
+    ranked = sorted(stats.values(), key=lambda x: (-int(x.get("count") or 0), x.get("address_hex") or ""))
+    out: List[Dict[str, Any]] = []
+    for ent in ranked[:limit]:
+        width_counts = {str(k): int(v) for k, v in (ent.get("width_counts") or {}).items()}
+        dominant_width = None
+        if width_counts:
+            dominant_width = int(sorted(width_counts.items(), key=lambda kv: (-int(kv[1]), int(kv[0])))[0][0])
+        out.append({
+            "address_hex": ent["address_hex"],
+            "count": int(ent.get("count") or 0),
+            "dominant_width": dominant_width,
+            "observed_widths": sorted(int(k) for k in width_counts.keys()),
+            "width_counts": width_counts,
+        })
+    return out
 
 
 def extract_trace_points(raw: Any, limit: int = 32) -> List[Dict[str, Any]]:
@@ -148,6 +242,7 @@ def build_llm_fallback_bundle(
     manual_trace: Any,
     baseline_seed: Optional[str],
     manual_seed: Optional[str],
+    probe_guidance_summary: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     static_candidates = contract_bundle.get("program_context", {}).get("anchor_candidates", []) or []
     anchor_only_static = [c for c in static_candidates if c.get("is_anchor")]
@@ -159,8 +254,28 @@ def build_llm_fallback_bundle(
     baseline_points = extract_trace_points(baseline_trace)
     manual_points = extract_trace_points(manual_trace)
 
+    probe_guidance_summary = probe_guidance_summary or {}
+    read_touches = _touch_list(probe_guidance_summary, "read_touches")
+    write_touches = _touch_list(probe_guidance_summary, "write_touches")
+    trace_touch_profile = _build_trace_touch_profile(manual_trace, limit=48)
+    profile_seen = {str(x.get("address_hex") or "").upper() for x in trace_touch_profile}
+    for item in (read_touches + write_touches):
+        addr = str(item.get("address_hex") or "").upper()
+        if addr and addr not in profile_seen:
+            trace_touch_profile.append({
+                "address_hex": addr,
+                "count": int(item.get("count") or 0),
+                "dominant_width": None,
+                "observed_widths": [],
+                "width_counts": {},
+            })
+            profile_seen.add(addr)
+    touched_addrs = [x["address_hex"] for x in trace_touch_profile[:24]]
+    dynamic_primary_cluster = stuck_report.get("dynamic_primary_cluster") or {}
+    target_touched_registers = stuck_report.get("target_touched_registers") or []
+
     return {
-        "schema": "llm_fallback_bundle_v1",
+        "schema": "llm_fallback_bundle_v2",
         "target_seed": manual_seed,
         "baseline_seed": baseline_seed,
         "stop_reason": stuck_report.get("stop_reason"),
@@ -175,6 +290,25 @@ def build_llm_fallback_bundle(
         "likely_blocking_offsets": likely_offsets,
         "likely_blocking_registers": stuck_report.get("likely_blocking_registers", []),
         "matched_register_docs": docs,
+        "dynamic_primary_cluster": dynamic_primary_cluster,
+        "trace_touched_addrs": touched_addrs[:24],
+        "trace_touch_profile": trace_touch_profile[:24],
+        "probe_guidance_summary": {
+            "plan_name": probe_guidance_summary.get("plan_name"),
+            "global_reads": probe_guidance_summary.get("global_reads"),
+            "global_writes": probe_guidance_summary.get("global_writes"),
+            "read_touches": read_touches[:24],
+            "write_touches": write_touches[:24],
+        },
+        "target_touched_registers": target_touched_registers[:12],
+        "hypothesis_portfolio": {
+            "dynamic_primary": dynamic_primary_cluster,
+            "target_peripheral": {
+                "target_rel_offsets": stuck_report.get("target_rel_offsets"),
+                "target_touched_registers": target_touched_registers[:12],
+            },
+            "control_policy": "keep a control or minimal-perturbation candidate alongside any LLM-ranked branch",
+        },
         "baseline_vs_manual_diff": {
             "trace_divergence": stuck_report.get("trace_divergence"),
             "baseline_trace_points": baseline_points,
@@ -201,14 +335,34 @@ def build_prompt_text(bundle: Dict[str, Any]) -> str:
     lines.append("Do not re-identify the hotspot globally. Work only inside the evidence below.")
     lines.append("")
     lines.append("Tasks:")
-    lines.append("1. Infer the most likely blocking condition.")
-    lines.append("2. Infer the MMIO / input constraint that would satisfy it.")
-    lines.append("3. Propose the next seed hypothesis in a concrete, testable form.")
+    lines.append("1. Treat dynamic evidence as primary and static peripheral anchors as secondary.")
+    lines.append("2. Infer up to three bounded hypotheses, then choose one primary hypothesis.")
+    lines.append("3. Infer the MMIO / input constraint that would satisfy the chosen hypothesis.")
+    lines.append("4. Propose a next seed hypothesis in a concrete, testable form.")
+    lines.append("5. Only use primary trigger addresses that were actually touched in the probe trace when possible.")
     lines.append("")
     lines.append(f"stop_reason: {bundle.get('stop_reason')}")
     lines.append(f"last_pc: {bundle.get('last_pc')}")
     lines.append(f"last_pc_function: {bundle.get('last_pc_function')}")
     lines.append(f"still_ambiguous: {bundle.get('still_ambiguous')}")
+    lines.append("")
+    lines.append("Dynamic primary cluster:")
+    lines.append(f"- {bundle.get('dynamic_primary_cluster')}")
+    lines.append("")
+    lines.append("Probe-touched addresses:")
+    profile = bundle.get("trace_touch_profile") or []
+    if profile:
+        for item in profile[:16]:
+            addr = item.get("address_hex")
+            count = item.get("count")
+            dom = item.get("dominant_width")
+            if dom:
+                lines.append(f"- {addr} count={count} dominant_width={dom}")
+            else:
+                lines.append(f"- {addr} count={count}")
+    else:
+        for addr in bundle.get("trace_touched_addrs", [])[:16]:
+            lines.append(f"- {addr}")
     lines.append("")
     lines.append("Top dynamic candidates:")
     for cand in bundle.get("top_dynamic_candidates", [])[:5]:
@@ -234,6 +388,11 @@ def build_prompt_text(bundle: Dict[str, Any]) -> str:
             lines.append(f"  desc: {desc[:400]}")
     lines.append("")
     lines.append("Return JSON with keys:")
+    lines.append("- primary_hypothesis")
+    lines.append("- alternative_hypotheses")
+    lines.append("- selected_family")
+    lines.append("- primary_focus_registers")
+    lines.append("- touched_trigger_addrs")
     lines.append("- likely_blocking_condition")
     lines.append("- likely_constraint")
     lines.append("- seed_hypothesis")
@@ -250,6 +409,7 @@ def main() -> None:
     ap.add_argument("--manual-trace-json", type=Path, default=None)
     ap.add_argument("--baseline-seed", default=None)
     ap.add_argument("--manual-seed", default=None)
+    ap.add_argument("--probe-guidance-summary", type=Path, default=None)
     ap.add_argument("--out", required=True, type=Path)
     ap.add_argument("--out-text", type=Path, default=None)
     args = ap.parse_args()
@@ -259,6 +419,7 @@ def main() -> None:
     try:
         baseline_trace = load_trace_json(args.baseline_trace_json)
         manual_trace = load_trace_json(args.manual_trace_json)
+        probe_guidance_summary = load_guidance_summary(args.probe_guidance_summary)
     except ValueError as e:
         raise SystemExit(str(e))
 
@@ -269,6 +430,7 @@ def main() -> None:
         manual_trace=manual_trace,
         baseline_seed=args.baseline_seed,
         manual_seed=args.manual_seed,
+        probe_guidance_summary=probe_guidance_summary,
     )
 
     args.out.parent.mkdir(parents=True, exist_ok=True)

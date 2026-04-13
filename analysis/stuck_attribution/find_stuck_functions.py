@@ -445,6 +445,85 @@ def collect_tail_mmio(events: List[Dict[str, Any]], tail_window: int) -> Dict[st
     }
 
 
+def collect_trace_touches(events: List[Dict[str, Any]]) -> Dict[str, Any]:
+    addr_counter: Counter[str] = Counter()
+    off_counter: Counter[str] = Counter()
+    access_counter: Counter[str] = Counter()
+    for ev in events:
+        mmio = ev.get("mmio") or {}
+        addr_hex = str(mmio.get("address_hex") or "").upper().strip()
+        off_hex = str(mmio.get("offset_hex") or "").upper().strip()
+        access = str(mmio.get("access") or "").strip().lower()
+        if addr_hex:
+            addr_counter[addr_hex] += 1
+        if off_hex:
+            off_counter[off_hex] += 1
+        if access:
+            access_counter[access] += 1
+    return {
+        "addresses": [{"address_hex": a, "count": c} for a, c in addr_counter.most_common(32)],
+        "offsets": [{"offset_hex": a, "count": c} for a, c in off_counter.most_common(32)],
+        "access_kinds": [{"kind": k, "count": c} for k, c in access_counter.most_common()],
+    }
+
+
+def build_dynamic_primary_cluster(events: List[Dict[str, Any]], tail_window: int, last_pc_function: Optional[str]) -> Dict[str, Any]:
+    tail_mmio = collect_tail_mmio(events, tail_window)
+    top_addrs = tail_mmio.get("addresses") or []
+    if not top_addrs:
+        return {
+            "anchor_function": last_pc_function,
+            "anchor_address": None,
+            "addresses": [],
+            "reason": "no_tail_mmio",
+        }
+    anchor = top_addrs[0]
+    anchor_addr = str(anchor.get("address_hex") or "")
+    cluster: List[Dict[str, Any]] = []
+    anchor_int = maybe_hex_to_int(anchor_addr)
+    for item in top_addrs[:8]:
+        addr_hex = str(item.get("address_hex") or "")
+        count = int(item.get("count") or 0)
+        addr_int = maybe_hex_to_int(addr_hex)
+        same_page = bool(anchor_int is not None and addr_int is not None and (anchor_int & ~0xFF) == (addr_int & ~0xFF))
+        if item is anchor or count >= max(2, int(anchor.get("count") or 0) // 8) or same_page:
+            cluster.append({
+                "address_hex": addr_hex,
+                "count": count,
+                "same_page_as_anchor": same_page,
+            })
+    return {
+        "anchor_function": last_pc_function,
+        "anchor_address": anchor_addr,
+        "addresses": cluster,
+        "reason": "tail_mmio_cluster",
+    }
+
+
+def collect_target_touched_registers(bundle: Dict[str, Any], touches: Dict[str, Any], profile: Dict[str, Any]) -> List[Dict[str, Any]]:
+    touched_abs = {str(x.get("address_hex") or "").upper() for x in (touches.get("addresses") or []) if str(x.get("address_hex") or "").strip()}
+    matched = bundle.get("document_context", {}).get("matched_peripheral_registers", []) or []
+    out: List[Dict[str, Any]] = []
+    seen = set()
+    for doc in matched:
+        reg = doc.get("register") or {}
+        abs_hex = str(reg.get("absoluteAddress_hex") or "").upper().strip()
+        off_hex = str(reg.get("addressOffset_hex") or "").upper().strip()
+        key = (doc.get("peripheral"), reg.get("name"), abs_hex)
+        if key in seen:
+            continue
+        if abs_hex and abs_hex in touched_abs:
+            out.append({
+                "peripheral": doc.get("peripheral"),
+                "register": reg.get("name"),
+                "absoluteAddress_hex": abs_hex,
+                "addressOffset_hex": off_hex or None,
+                "touch_count": next((int(x.get("count") or 0) for x in (touches.get("addresses") or []) if str(x.get("address_hex") or "").upper() == abs_hex), 0),
+            })
+            seen.add(key)
+    return out[:16]
+
+
 def first_divergence(a: List[Dict[str, Any]], b: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     a_cf = _control_flow_events(a)
     b_cf = _control_flow_events(b)
@@ -707,7 +786,7 @@ def build_candidate_scores(bundle: Dict[str, Any], events: List[Dict[str, Any]],
             "evidence": evidence,
         })
 
-    scored.sort(key=lambda x: (x["target_peripheral_consistent"], x["combined_score"], x["dynamic_score"], x["static_anchor_score"], x["function"]), reverse=True)
+    scored.sort(key=lambda x: (x["combined_score"], x["dynamic_score"], x["target_peripheral_consistent"], x["static_anchor_score"], x["function"]), reverse=True)
     return scored
 
 
@@ -726,6 +805,8 @@ def build_stuck_report(bundle: Dict[str, Any], events: List[Dict[str, Any]], tra
 
     loop_metrics = compute_tail_loop_metrics(events, tail_window)
     tail_mmio = collect_tail_mmio(events, tail_window)
+    trace_touches = collect_trace_touches(events)
+    dynamic_primary_cluster = build_dynamic_primary_cluster(events, tail_window, last_pc_function)
     candidate_scores = build_candidate_scores(bundle, events, tail_window, last_pc_function)
 
     target_preferred_top = None
@@ -755,6 +836,7 @@ def build_stuck_report(bundle: Dict[str, Any], events: List[Dict[str, Any]], tra
                     "addressOffset_hex": off_hex or None,
                 })
 
+    target_touched_registers = collect_target_touched_registers(bundle, trace_touches, profile)
     divergence = first_divergence(events, baseline_events) if baseline_events else None
 
     still_ambiguous = False
@@ -789,9 +871,12 @@ def build_stuck_report(bundle: Dict[str, Any], events: List[Dict[str, Any]], tra
         "dominant_loop_functions": loop_metrics["dominant_loop_functions"],
         "dominant_loop_blocks": loop_metrics["dominant_loop_blocks"],
         "tail_mmio": tail_mmio,
+        "trace_touches": trace_touches,
+        "dynamic_primary_cluster": dynamic_primary_cluster,
         "candidate_stuck_functions": candidate_scores[:12],
         "likely_blocking_offsets": likely_blocking_offsets,
         "likely_blocking_registers": likely_blocking_registers,
+        "target_touched_registers": target_touched_registers,
         "trace_divergence": divergence,
         "still_ambiguous": still_ambiguous,
     }
