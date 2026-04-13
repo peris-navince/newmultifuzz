@@ -883,391 +883,249 @@ def _preflight_guidance(guidance: Dict[str, Any], touched_addrs: Dict[str, int],
     }
 
 
-def _addr_int(addr: Any) -> Optional[int]:
-    norm = _normalize_hex(addr)
-    if not norm:
-        return None
-    try:
-        return int(norm, 16)
-    except Exception:
-        return None
-
-
-def _addr_page(addr: Any, page_size: int = 0x1000) -> Optional[int]:
-    value = _addr_int(addr)
-    if value is None:
-        return None
-    return value // max(1, int(page_size))
-
-
-def _status_like_register_name(name: Optional[str]) -> bool:
-    s = str(name or '').strip().upper()
-    if not s:
-        return False
-    return (
-        s.endswith('SR')
-        or s.endswith('STAT')
-        or 'STATUS' in s
-        or 'FLAG' in s
-        or s.endswith('IF')
-    )
-
-
-def _state_like_register_name(name: Optional[str]) -> bool:
-    s = str(name or '').strip().upper()
-    if not s:
-        return False
-    return (
-        _status_like_register_name(s)
-        or s in {'TSR', 'TAR'}
-        or 'TIME' in s
-        or 'COUNT' in s
-        or s.endswith('CNT')
-    )
-
-
-def _control_like_register_name(name: Optional[str]) -> bool:
-    s = str(name or '').strip().upper()
-    if not s:
-        return False
-    return (
-        s.endswith('CR')
-        or s.endswith('CCR')
-        or s.endswith('TCR')
-        or s.endswith('IER')
-        or s.endswith('IMR')
-        or 'CTRL' in s
-        or 'CFG' in s
-        or 'ENABLE' in s
-    )
-
-
-def _nearby_touched_addr(addr: Any, touched_addrs: Dict[str, int], max_distance: int = 0x20) -> Optional[str]:
-    target = _addr_int(addr)
-    if target is None:
-        return None
-    best: Optional[Tuple[int, int, str]] = None
-    for cand, count in (touched_addrs or {}).items():
-        cand_int = _addr_int(cand)
-        if cand_int is None:
-            continue
-        dist = abs(cand_int - target)
-        if dist > max(0, int(max_distance)):
-            continue
-        key = (dist, -int(count or 0), cand)
-        if best is None or key < best:
-            best = key
-    return best[2] if best else None
-
-
-def _semantic_register_candidates(fallback_bundle: Dict[str, Any]) -> List[Dict[str, Any]]:
-    out: List[Dict[str, Any]] = []
-    seen = set()
-
-    def _add(item: Dict[str, Any], source_kind: str):
-        if not isinstance(item, dict):
-            return
-        reg_obj = item.get('register')
-        if isinstance(reg_obj, dict):
-            reg_name = str(reg_obj.get('name') or '').strip()
-            addr = _normalize_hex(reg_obj.get('absoluteAddress_hex') or reg_obj.get('absoluteAddress'))
-            off = _normalize_hex(reg_obj.get('addressOffset_hex') or reg_obj.get('addressOffset'))
-        else:
-            reg_name = str(reg_obj or item.get('register') or '').strip()
-            addr = _normalize_hex(item.get('absoluteAddress_hex') or item.get('absoluteAddress'))
-            off = _normalize_hex(item.get('addressOffset_hex') or item.get('addressOffset'))
-        if not addr:
-            return
-        key = (addr, reg_name.upper(), str(item.get('peripheral') or '').upper())
-        if key in seen:
-            return
-        seen.add(key)
-        out.append({
-            'peripheral': str(item.get('peripheral') or '').strip(),
-            'register': reg_name,
-            'absolute_addr_hex': addr,
-            'offset_hex': off,
-            'touch_count': int(item.get('touch_count') or 0),
-            'source_kind': source_kind,
-        })
-
-    for item in fallback_bundle.get('target_touched_registers') or []:
-        _add(item, 'target_touched_register')
-    for item in fallback_bundle.get('likely_blocking_registers') or []:
-        _add(item, 'likely_blocking_register')
-    for item in fallback_bundle.get('matched_register_docs') or []:
-        _add(item, 'matched_register_doc')
+def _touch_map_for_key(summary: Optional[Dict[str, Any]], key: str) -> Dict[str, int]:
+    out: Dict[str, int] = {}
+    for item in (summary or {}).get(key, []) or []:
+        if isinstance(item, list) and len(item) >= 2:
+            addr = _normalize_hex(item[0])
+            if addr:
+                out[addr] = out.get(addr, 0) + int(item[1] or 0)
+        elif isinstance(item, dict):
+            addr = _normalize_hex(item.get('address_hex') or item.get('addr'))
+            if addr:
+                out[addr] = out.get(addr, 0) + int(item.get('count') or 0)
     return out
 
 
-def _dynamic_role_selection(*, fallback_bundle: Dict[str, Any], touched_addrs: Dict[str, int]) -> Dict[str, Any]:
+def _cluster_ranked_addrs(fallback_bundle: Dict[str, Any]) -> List[str]:
+    ranked: List[str] = []
     dynamic_cluster = fallback_bundle.get('dynamic_primary_cluster') or {}
-    semantic_regs = _semantic_register_candidates(fallback_bundle)
-    scores: Dict[str, float] = {}
-    meta: Dict[str, Dict[str, Any]] = {}
+    for item in dynamic_cluster.get('addresses') or []:
+        addr = _normalize_hex(item.get('address_hex'))
+        if addr and addr not in ranked:
+            ranked.append(addr)
+    return ranked
 
-    def _touch_count(addr: Optional[str]) -> int:
-        return int((touched_addrs or {}).get(addr or '', 0) or 0)
 
-    def _observe(addr: Optional[str], base_score: float, reason: str, extra: Optional[Dict[str, Any]] = None):
+def _semantic_candidate_addrs_from_bundle(fallback_bundle: Dict[str, Any]) -> List[str]:
+    ranked: List[str] = []
+    for reg in fallback_bundle.get('likely_blocking_registers') or []:
+        addr = _normalize_hex(reg.get('absoluteAddress_hex') or reg.get('absoluteAddress'))
+        if addr and addr not in ranked:
+            ranked.append(addr)
+    for item in (fallback_bundle.get('probe_guidance_summary') or {}).get('read_touches', []) or []:
+        addr = _normalize_hex((item[0] if isinstance(item, list) and item else item.get('address_hex') if isinstance(item, dict) else None))
+        if addr and addr not in ranked:
+            ranked.append(addr)
+    return ranked
+
+
+def _addr_near_touched(addr: Optional[str], touched_addrs: Dict[str, int], max_gap: int = 0x10) -> bool:
+    target = _int_from_any(addr)
+    if target is None:
+        return False
+    for other in touched_addrs.keys():
+        other_i = _int_from_any(other)
+        if other_i is None:
+            continue
+        if abs(target - other_i) <= int(max_gap):
+            return True
+    return False
+
+
+def _pick_dynamic_role_addrs(*, fallback_bundle: Dict[str, Any], touched_addrs: Dict[str, int], limit: int = 3) -> Dict[str, Any]:
+    probe_summary = fallback_bundle.get('probe_guidance_summary') or {}
+    read_touches = _touch_map_for_key(probe_summary, 'read_touches')
+    write_touches = _touch_map_for_key(probe_summary, 'write_touches')
+    cluster_addrs = _cluster_ranked_addrs(fallback_bundle)
+    semantic_addrs = _semantic_candidate_addrs_from_bundle(fallback_bundle)
+
+    scored: Dict[str, float] = {}
+    ordered: List[str] = []
+
+    def _bump(addr: Optional[str], delta: float):
         norm = _normalize_hex(addr)
         if not norm:
             return
-        scores[norm] = float(scores.get(norm, 0.0)) + float(base_score)
-        info = meta.setdefault(norm, {
-            'address_hex': norm,
-            'touch_count': _touch_count(norm),
-            'reasons': [],
-            'semantic_registers': [],
-        })
-        info['touch_count'] = max(int(info.get('touch_count') or 0), _touch_count(norm))
-        info['reasons'].append(reason)
-        if extra:
-            if extra.get('semantic_register'):
-                info['semantic_registers'].append(dict(extra['semantic_register']))
-            info.update({k: v for k, v in extra.items() if k != 'semantic_register'})
+        if norm not in ordered:
+            ordered.append(norm)
+        scored[norm] = scored.get(norm, 0.0) + float(delta)
 
-    anchor_hint = _normalize_hex(dynamic_cluster.get('anchor_address'))
-    anchor_page = _addr_page(anchor_hint)
-
-    for item in dynamic_cluster.get('addresses') or []:
-        addr = _normalize_hex(item.get('address_hex'))
+    for idx, addr in enumerate(cluster_addrs):
+        touch = int(touched_addrs.get(addr) or 0)
+        _bump(addr, 500.0 - float(idx))
+        _bump(addr, 2.5 * float(touch))
+    for idx, item in enumerate(_touch_profile_entries(fallback_bundle)):
+        addr = item.get('address_hex')
         if not addr:
             continue
-        count = int(item.get('count') or 0)
-        score = 60.0 + min(count, 512)
-        if bool(item.get('same_page_as_anchor')):
-            score += 18.0
-        if addr == anchor_hint:
-            score += 50.0
-        _observe(addr, score, 'dynamic_cluster', {'same_page_as_anchor': bool(item.get('same_page_as_anchor'))})
+        _bump(addr, 1.75 * float(item.get('count') or 0))
+        _bump(addr, 120.0 - float(idx))
+    for addr, cnt in sorted(read_touches.items(), key=lambda kv: (-kv[1], kv[0])):
+        _bump(addr, 3.0 * float(cnt))
+    for addr, cnt in sorted(write_touches.items(), key=lambda kv: (-kv[1], kv[0])):
+        _bump(addr, 1.0 * float(cnt))
+    for idx, addr in enumerate(semantic_addrs):
+        if addr in touched_addrs or _addr_near_touched(addr, touched_addrs):
+            _bump(addr, 150.0 - float(idx))
 
-    for item in _touch_profile_entries(fallback_bundle):
-        addr = _normalize_hex(item.get('address_hex'))
-        if not addr:
-            continue
-        count = int(item.get('count') or 0)
-        _observe(addr, 8.0 + min(count, 128) * 0.5, 'touch_profile')
+    ranked = sorted(ordered, key=lambda a: (scored.get(a, 0.0), int(touched_addrs.get(a) or 0)), reverse=True)
+    ranked = [a for a in ranked if a in touched_addrs or _addr_near_touched(a, touched_addrs)]
+    if not ranked:
+        ranked = [a for a in semantic_addrs if a]
+    if not ranked:
+        return {'anchor': None, 'companion': None, 'semantic_companion': None, 'ordered': []}
 
-    for item in (fallback_bundle.get('probe_guidance_summary') or {}).get('read_touches', []) or []:
-        addr = _normalize_hex(item.get('address_hex'))
-        if not addr:
-            continue
-        count = int(item.get('count') or 0)
-        _observe(addr, 4.0 + min(count, 128) * 0.35, 'probe_read_touch')
-
-    for item in (fallback_bundle.get('probe_guidance_summary') or {}).get('write_touches', []) or []:
-        addr = _normalize_hex(item.get('address_hex'))
-        if not addr:
-            continue
-        count = int(item.get('count') or 0)
-        _observe(addr, 14.0 + min(count, 128) * 0.5, 'probe_write_touch', {'has_write_touch': True})
-
-    for reg in semantic_regs:
-        reg_name = reg.get('register')
-        reg_addr = reg.get('absolute_addr_hex')
-        if reg_addr in touched_addrs:
-            bonus = 20.0 + min(int(reg.get('touch_count') or 0), 64) * 0.5
-            if _state_like_register_name(reg_name):
-                bonus += 8.0
-            if _control_like_register_name(reg_name):
-                bonus += 5.0
-            _observe(reg_addr, bonus, f"semantic:{reg.get('source_kind')}", {'semantic_register': reg})
-        else:
-            nearby = _nearby_touched_addr(reg_addr, touched_addrs, max_distance=0x40)
-            if nearby:
-                bonus = 10.0 if _state_like_register_name(reg_name) else 6.0
-                _observe(nearby, bonus, f"semantic_near:{reg_name}", {'semantic_register': reg, 'semantic_nearby': reg_addr})
-
-    ranked = sorted(scores.items(), key=lambda kv: (kv[1], int(meta.get(kv[0], {}).get('touch_count') or 0)), reverse=True)
-    ordered = [addr for addr, _ in ranked]
-
-    anchor = None
-    if anchor_hint and anchor_hint in scores:
-        anchor = anchor_hint
-    elif ordered:
-        anchor = ordered[0]
-
+    anchor = ranked[0]
+    anchor_touch = max(1, int(touched_addrs.get(anchor) or 1))
     companion = None
-    for addr in ordered:
-        if addr == anchor:
-            continue
-        companion = addr
-        break
+    for addr in ranked[1:]:
+        cnt = int(touched_addrs.get(addr) or 0)
+        if cnt >= max(2, anchor_touch // 64) or addr in cluster_addrs:
+            companion = addr
+            break
+    if companion is None and len(ranked) > 1:
+        companion = ranked[1]
 
-    semantic_choice: Optional[Dict[str, Any]] = None
-    semantic_addr = None
-    for reg in semantic_regs:
-        reg_addr = reg.get('absolute_addr_hex')
-        resolved_addr = reg_addr if reg_addr in touched_addrs else _nearby_touched_addr(reg_addr, touched_addrs, max_distance=0x40)
-        if not resolved_addr:
+    semantic_companion = None
+    for addr in semantic_addrs:
+        if not addr or addr == anchor or addr == companion:
             continue
-        if resolved_addr in {anchor, companion}:
-            continue
-        semantic_choice = dict(reg)
-        semantic_addr = resolved_addr
-        break
-
-    if not semantic_choice:
-        anchor_page = _addr_page(anchor)
-        for addr in ordered:
-            if addr in {anchor, companion}:
-                continue
-            if anchor_page is not None and _addr_page(addr) == anchor_page:
-                semantic_addr = addr
+        if addr in touched_addrs or _addr_near_touched(addr, touched_addrs):
+            semantic_companion = addr
+            break
+    if semantic_companion is None:
+        for addr in ranked[1:]:
+            if addr not in {anchor, companion}:
+                semantic_companion = addr
                 break
-        if semantic_addr:
-            semantic_choice = {
-                'peripheral': '',
-                'register': 'HOTSPOT_COMPANION',
-                'absolute_addr_hex': semantic_addr,
-                'offset_hex': None,
-                'touch_count': _touch_count(semantic_addr),
-                'source_kind': 'dynamic_companion',
-            }
 
-    role_info = {
+    ordered_unique: List[str] = []
+    for addr in [anchor, companion, semantic_companion]:
+        if addr and addr not in ordered_unique:
+            ordered_unique.append(addr)
+
+    return {
         'anchor': anchor,
         'companion': companion,
-        'semantic_companion': semantic_addr,
-        'semantic_register': semantic_choice,
-        'ranked': [
-            {
-                'address_hex': addr,
-                'score': float(score),
-                'touch_count': int(meta.get(addr, {}).get('touch_count') or 0),
-                'reasons': list(meta.get(addr, {}).get('reasons') or []),
-                'semantic_registers': list(meta.get(addr, {}).get('semantic_registers') or []),
-            }
-            for addr, score in ranked
-        ],
+        'semantic_companion': semantic_companion,
+        'ordered': ordered_unique[:max(1, int(limit))],
+        'touch_counts': {addr: int(touched_addrs.get(addr) or 0) for addr in ordered_unique if addr},
+        'write_counts': {addr: int(write_touches.get(addr) or 0) for addr in ordered_unique if addr},
     }
-    ordered_unique: List[str] = []
-    for addr in [anchor, companion, semantic_addr, *ordered]:
-        norm = _normalize_hex(addr)
-        if norm and norm not in ordered_unique:
-            ordered_unique.append(norm)
-    role_info['ordered_addrs'] = ordered_unique[:3]
-    return role_info
 
 
 def _pick_dynamic_trigger_addrs(*, fallback_bundle: Dict[str, Any], touched_addrs: Dict[str, int], limit: int = 3) -> List[str]:
-    roles = _dynamic_role_selection(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs)
-    ordered = list(roles.get('ordered_addrs') or [])
-    return ordered[:max(1, int(limit))]
+    roles = _pick_dynamic_role_addrs(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs, limit=limit)
+    ordered = list(roles.get('ordered') or [])
+    if ordered:
+        return ordered[:limit]
+    dynamic_cluster = fallback_bundle.get('dynamic_primary_cluster') or {}
+    ranked: List[str] = []
+    for item in dynamic_cluster.get('addresses') or []:
+        addr = _normalize_hex(item.get('address_hex'))
+        if addr and addr in touched_addrs and addr not in ranked:
+            ranked.append(addr)
+    for item in _touch_profile_entries(fallback_bundle):
+        addr = _normalize_hex(item.get('address_hex'))
+        if addr and addr in touched_addrs and addr not in ranked:
+            ranked.append(addr)
+    for item in fallback_bundle.get('probe_guidance_summary', {}).get('read_touches', []) or []:
+        addr = _normalize_hex(item.get('address_hex') if isinstance(item, dict) else (item[0] if isinstance(item, list) and item else None))
+        if addr and addr not in ranked:
+            ranked.append(addr)
+    for item in fallback_bundle.get('probe_guidance_summary', {}).get('write_touches', []) or []:
+        addr = _normalize_hex(item.get('address_hex') if isinstance(item, dict) else (item[0] if isinstance(item, list) and item else None))
+        if addr and addr not in ranked:
+            ranked.append(addr)
+    return ranked[:limit]
 
 
 def _synthesize_dynamic_hotspot_guidance(*, fallback_bundle_json_path: str, out_path: str, plan_name: str) -> Dict[str, Any]:
     fallback_bundle = load_json(_abs(fallback_bundle_json_path))
-    touched_addrs = _merge_touch_maps(_touch_entries_to_map(fallback_bundle.get('probe_guidance_summary')), _touch_profile_to_count_map(fallback_bundle))
-    role_info = _dynamic_role_selection(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs)
-    primary_addrs = list(role_info.get('ordered_addrs') or [])
+    probe_summary = fallback_bundle.get('probe_guidance_summary') or {}
+    touched_addrs = _merge_touch_maps(
+        _touch_entries_to_map(probe_summary),
+        _touch_profile_to_count_map(fallback_bundle),
+    )
+    write_touches = _touch_map_for_key(probe_summary, 'write_touches')
+    roles = _pick_dynamic_role_addrs(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs, limit=3)
+    primary_addrs = list(roles.get('ordered') or [])
     if not primary_addrs:
         likely_regs = fallback_bundle.get('likely_blocking_registers') or []
         for reg in likely_regs[:3]:
             addr = _normalize_hex(reg.get('absoluteAddress_hex'))
             if addr:
                 primary_addrs.append(addr)
-
-    anchor_addr = _normalize_hex(role_info.get('anchor')) or (primary_addrs[0] if primary_addrs else None)
-    companion_addr = _normalize_hex(role_info.get('companion'))
-    semantic_addr = _normalize_hex(role_info.get('semantic_companion'))
-    semantic_reg = role_info.get('semantic_register') or {}
-
     actions: List[Dict[str, Any]] = []
     rationale_bits: List[str] = []
-    stages: Dict[str, str] = {}
 
-    def _touch_count(addr: Optional[str]) -> int:
-        return max(0, int((touched_addrs or {}).get(addr or '', 0) or 0))
-
-    def _read_trigger(addr: str) -> Dict[str, Any]:
-        touched = max(1, _touch_count(addr))
-        if touched > 1:
-            return {'kind': 'on_nth_touch', 'addr': addr, 'n': min(3, touched), 'access': 'read'}
-        return {'kind': 'on_first_touch', 'addr': addr, 'access': 'read'}
-
-    if anchor_addr:
+    if primary_addrs:
+        anchor = primary_addrs[0]
+        touched = max(1, int(touched_addrs.get(anchor) or 1))
+        width = _dominant_width_for_addr(fallback_bundle, anchor, default=4)
+        trigger = {'kind': 'on_nth_touch', 'addr': anchor, 'n': min(3, touched), 'access': 'read'} if touched > 1 else {'kind': 'on_first_touch', 'addr': anchor, 'access': 'read'}
         actions.append(_read_seq_action(
-            action_id='dynamic_anchor',
-            addr_hex=anchor_addr,
-            width=_dominant_width_for_addr(fallback_bundle, anchor_addr, default=4),
-            values=_mask_values_for_width([1, 1, 2, 2], _dominant_width_for_addr(fallback_bundle, anchor_addr, default=4)),
-            trigger=_read_trigger(anchor_addr),
-            activate_stage='anchor_seen',
-            notes='Dynamic anchor: hottest runtime loop address selected from clustered probe touches.',
+            action_id='dynamic_anchor_read',
+            addr_hex=anchor,
+            width=width,
+            values=_mask_values_for_width([1, 1, 2, 2], width),
+            trigger=trigger,
+            activate_stage='dynamic_anchor_seen',
+            notes='Dynamic-hotspot anchor synthesized from the highest-confidence runtime hotspot.',
         ))
-        stages['anchor'] = 'anchor_seen'
-        rationale_bits.append(f'anchor={anchor_addr} touches={_touch_count(anchor_addr)}')
+        rationale_bits.append(f"anchor={anchor} touches={touched}")
 
-    if companion_addr and companion_addr != anchor_addr:
-        companion_trigger: Dict[str, Any]
-        if _touch_count(companion_addr) >= max(2, _touch_count(anchor_addr) // 8 if anchor_addr else 2):
-            companion_trigger = _read_trigger(companion_addr)
-        else:
-            companion_trigger = {'kind': 'when_stage_active', 'stage': stages.get('anchor', 'anchor_seen')}
+    if len(primary_addrs) >= 2:
+        companion = primary_addrs[1]
+        touched = max(1, int(touched_addrs.get(companion) or 1))
+        width = _dominant_width_for_addr(fallback_bundle, companion, default=4)
+        trigger = {'kind': 'on_nth_touch', 'addr': companion, 'n': min(3, touched), 'access': 'read'} if touched > 1 else {'kind': 'on_first_touch', 'addr': companion, 'access': 'read'}
         actions.append(_read_seq_action(
-            action_id='dynamic_companion',
-            addr_hex=companion_addr,
-            width=_dominant_width_for_addr(fallback_bundle, companion_addr, default=4),
-            values=_mask_values_for_width([1, 2, 2, 3], _dominant_width_for_addr(fallback_bundle, companion_addr, default=4)),
-            trigger=companion_trigger,
-            activate_stage='companion_seen',
-            notes='Dynamic companion: second runtime hotspot gated by anchor progress or its own hot-touch cadence.',
+            action_id='dynamic_companion_read',
+            addr_hex=companion,
+            width=width,
+            values=_mask_values_for_width([1, 2, 2, 3], width),
+            trigger=trigger,
+            activate_stage='dynamic_companion_seen',
+            notes='Dynamic-hotspot companion synthesized from a secondary runtime hotspot.',
         ))
-        stages['companion'] = 'companion_seen'
-        rationale_bits.append(f'companion={companion_addr} touches={_touch_count(companion_addr)}')
+        rationale_bits.append(f"companion={companion} touches={touched}")
 
-    if semantic_addr and semantic_addr not in {anchor_addr, companion_addr}:
-        semantic_name = str(semantic_reg.get('register') or '').strip()
-        semantic_stage = stages.get('companion') or stages.get('anchor')
-        semantic_trigger: Dict[str, Any]
-        if semantic_addr in touched_addrs and _touch_count(semantic_addr) > 0:
-            semantic_trigger = _read_trigger(semantic_addr)
-        elif semantic_stage:
-            semantic_trigger = {'kind': 'when_stage_active', 'stage': semantic_stage}
-        else:
-            semantic_trigger = {'kind': 'on_first_touch', 'addr': anchor_addr or semantic_addr, 'access': 'read'}
-
-        if _status_like_register_name(semantic_name):
+    semantic_addr = primary_addrs[2] if len(primary_addrs) >= 3 else None
+    if semantic_addr:
+        semantic_width = _dominant_width_for_addr(fallback_bundle, semantic_addr, default=4)
+        semantic_touch = max(1, int(touched_addrs.get(semantic_addr) or 1))
+        semantic_write_addr = None
+        semantic_write_count = 0
+        for cand, cnt in write_touches.items():
+            if cnt > semantic_write_count and (cand == semantic_addr or _addr_near_touched(cand, {semantic_addr: semantic_touch}, max_gap=0x10)):
+                semantic_write_addr = cand
+                semantic_write_count = int(cnt)
+        if semantic_write_addr:
             actions.append(_bit_update_action(
-                action_id='dynamic_semantic_status',
+                action_id='dynamic_semantic_bit_update',
                 addr_hex=semantic_addr,
-                width=_dominant_width_for_addr(fallback_bundle, semantic_addr, default=4),
-                set_bits=[4],
-                clear_bits=[0],
-                trigger=semantic_trigger,
-                activate_stage='semantic_seen',
-                notes=f'Dynamic semantic companion: status-style register {semantic_name or semantic_addr} is nudged once anchor/companion activity is observed.',
+                width=semantic_width,
+                set_bits=[0],
+                clear_bits=[],
+                trigger={'kind': 'after_write', 'addr': semantic_write_addr},
+                activate_stage='dynamic_semantic_seen',
+                notes='Dynamic semantic companion gated on observed firmware writes near the same hotspot cluster.',
             ))
+            rationale_bits.append(f"semantic_companion={semantic_addr} write_evidence={semantic_write_addr}:{semantic_write_count}")
         else:
+            trigger = {'kind': 'on_nth_touch', 'addr': semantic_addr, 'n': min(3, semantic_touch), 'access': 'read'} if semantic_touch > 1 else {'kind': 'on_first_touch', 'addr': semantic_addr, 'access': 'read'}
             actions.append(_read_seq_action(
-                action_id='dynamic_semantic_companion',
+                action_id='dynamic_semantic_read',
                 addr_hex=semantic_addr,
-                width=_dominant_width_for_addr(fallback_bundle, semantic_addr, default=4),
-                values=_mask_values_for_width([0, 1, 1, 2], _dominant_width_for_addr(fallback_bundle, semantic_addr, default=4)),
-                trigger=semantic_trigger,
-                activate_stage='semantic_seen',
-                notes=f'Dynamic semantic companion synthesized from semantic/runtime overlap for {semantic_name or semantic_addr}.',
+                width=semantic_width,
+                values=_mask_values_for_width([2, 2, 3, 3], semantic_width),
+                trigger=trigger,
+                activate_stage='dynamic_semantic_seen',
+                notes='Dynamic semantic companion falls back to a read sequence when no write evidence is observed.',
             ))
-        rationale_bits.append(f'semantic_companion={semantic_addr} register={semantic_name or "<unknown>"}')
-
-    if len(actions) < 2:
-        for idx, addr in enumerate(primary_addrs[:3]):
-            if addr in {anchor_addr, companion_addr, semantic_addr}:
-                continue
-            actions.append(_read_seq_action(
-                action_id=f'dynamic_fallback_{idx}',
-                addr_hex=addr,
-                width=_dominant_width_for_addr(fallback_bundle, addr, default=4),
-                values=_mask_values_for_width([1, 1, 2, 2], _dominant_width_for_addr(fallback_bundle, addr, default=4)),
-                trigger={'kind': 'when_stage_active', 'stage': stages.get('anchor', 'anchor_seen')} if stages else _read_trigger(addr),
-                activate_stage=f'fallback_seen_{idx}',
-                notes='Dynamic fallback: additional hotspot retained to preserve diversity when semantic companion is unavailable.',
-            ))
-            rationale_bits.append(f'fallback_hotspot={addr}')
-            if len(actions) >= 2:
-                break
+            rationale_bits.append(f"semantic_companion={semantic_addr} touches={semantic_touch}")
 
     actions, dedupe_meta = _dedupe_guidance_actions(actions)
     if not actions:
@@ -1278,7 +1136,8 @@ def _synthesize_dynamic_hotspot_guidance(*, fallback_bundle_json_path: str, out_
         'rationale': '; '.join(rationale_bits) or 'Dynamic-hotspot fallback guidance.',
         'source_kind': 'dynamic_hotspot_fallback',
         'source_bundle': _abs(fallback_bundle_json_path),
-        'role_selection': role_info,
+        'dynamic_roles': roles,
+        'observed_write_addrs': write_touches,
         'preflight_dedupe': dedupe_meta,
         'actions': actions,
     }
@@ -1294,17 +1153,25 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
     catalog = _bundle_register_catalog(contract_bundle)
     lookup = _catalog_lookup(catalog)
     assignments = _parse_llm_assignments(parsed)
-    touched_addrs = _merge_touch_maps(_touch_entries_to_map(fallback_bundle.get('probe_guidance_summary')), _touch_profile_to_count_map(fallback_bundle))
+    touched_addrs = _merge_touch_maps(
+        _touch_entries_to_map(fallback_bundle.get('probe_guidance_summary')),
+        _touch_profile_to_count_map(fallback_bundle),
+    )
+    roles = _pick_dynamic_role_addrs(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs, limit=3)
 
     actions: List[Dict[str, Any]] = []
     rationale_bits: List[str] = []
     used_addrs: set[str] = set()
 
-    def _add_read_seq_for_reg(reg: Dict[str, Any], seq: List[int], *, trigger_addr: Optional[str] = None, note_prefix: str = 'LLM'):
+    def _reg_runtime_reachable(reg: Dict[str, Any]) -> bool:
+        addr = reg.get('absolute_addr_hex')
+        return bool(addr and (addr in touched_addrs or _addr_near_touched(addr, touched_addrs)))
+
+    def _add_read_seq_for_reg(reg: Dict[str, Any], seq: List[int], *, trigger_addr: Optional[str] = None, note_prefix: str = 'LLM') -> bool:
         addr = reg['absolute_addr_hex']
-        if addr in used_addrs:
-            return
-        trigger_addr = trigger_addr or addr
+        if addr in used_addrs or not _reg_runtime_reachable(reg):
+            return False
+        trigger_addr = trigger_addr if trigger_addr and (trigger_addr in touched_addrs or _addr_near_touched(trigger_addr, touched_addrs)) else addr
         trigger_kind = 'on_nth_touch' if int(touched_addrs.get(trigger_addr) or 0) > 1 else 'on_first_touch'
         trigger: Dict[str, Any] = {'kind': trigger_kind, 'addr': trigger_addr, 'access': 'read'}
         if trigger_kind == 'on_nth_touch':
@@ -1320,18 +1187,16 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
             notes=f'{note_prefix} synthesized from bounded answer evidence for {reg["full_name"]}.',
         ))
         used_addrs.add(addr)
+        return True
 
     focus_regs = parsed.get('primary_focus_registers') or []
     if isinstance(focus_regs, list):
         for reg_key in focus_regs:
             reg = lookup.get(str(reg_key).upper()) or lookup.get(str(reg_key).split('.')[-1].upper())
-            if reg:
-                _add_read_seq_for_reg(reg, [1, 1, 2, 2], note_prefix='LLM focus-register')
+            if reg and _add_read_seq_for_reg(reg, [1, 1, 2, 2], note_prefix='LLM focus-register'):
                 rationale_bits.append(f'LLM focus register {reg_key}')
 
-    touched_trigger_addrs = [
-        _normalize_hex(x) for x in (parsed.get('touched_trigger_addrs') or []) if _normalize_hex(x)
-    ]
+    touched_trigger_addrs = [_normalize_hex(x) for x in (parsed.get('touched_trigger_addrs') or []) if _normalize_hex(x)]
 
     for reg_key, vals in assignments.items():
         reg = lookup.get(reg_key.upper()) or lookup.get(reg_key.split('.')[-1].upper())
@@ -1343,24 +1208,21 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
         trigger_addr = reg['absolute_addr_hex'] if reg['absolute_addr_hex'] in touched_addrs else None
         if not trigger_addr:
             for cand in touched_trigger_addrs:
-                if cand == reg['absolute_addr_hex']:
+                if cand == reg['absolute_addr_hex'] or _addr_near_touched(reg['absolute_addr_hex'], {cand: 1}):
                     trigger_addr = cand
                     break
-        _add_read_seq_for_reg(reg, seq, trigger_addr=trigger_addr, note_prefix='LLM assignment')
-        rationale_bits.append(f"LLM assignment {reg_key}={seq}")
+        if _add_read_seq_for_reg(reg, seq, trigger_addr=trigger_addr, note_prefix='LLM assignment'):
+            rationale_bits.append(f"LLM assignment {reg_key}={seq}")
 
     if not actions:
         likely_offsets = fallback_bundle.get('likely_blocking_offsets') or []
         offset_regs = _pick_regs_from_offsets(catalog, likely_offsets)
         for reg in offset_regs[:3]:
-            if reg['absolute_addr_hex'] in touched_addrs:
-                _add_read_seq_for_reg(reg, [1, 1, 2, 2], note_prefix='offset-derived')
-        if offset_regs:
-            rationale_bits.append(f"offset-derived probe for {','.join(r['register'] for r in offset_regs[:3])}")
+            if _add_read_seq_for_reg(reg, [1, 1, 2, 2], note_prefix='offset-derived'):
+                rationale_bits.append(f"offset-derived probe for {reg['register']}")
 
     if not actions:
-        dynamic_addrs = _pick_dynamic_trigger_addrs(fallback_bundle=fallback_bundle, touched_addrs=touched_addrs, limit=2)
-        for idx, addr in enumerate(dynamic_addrs):
+        for idx, addr in enumerate(list(roles.get('ordered') or [])[:2]):
             actions.append(_read_seq_action(
                 action_id=f'llm_dynamic_hot_{idx}',
                 addr_hex=addr,
@@ -1368,10 +1230,10 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
                 values=_mask_values_for_width([1, 1, 2, 2], _dominant_width_for_addr(fallback_bundle, addr, default=4)),
                 trigger={'kind': 'on_nth_touch', 'addr': addr, 'n': min(3, max(1, int(touched_addrs.get(addr) or 1))), 'access': 'read'},
                 activate_stage=f'dynamic_hot_{idx}',
-                notes='LLM fallback retargeted to dynamically touched hotspot address.',
+                notes='LLM fallback retargeted to runtime-reachable dynamic hotspots.',
             ))
-        if dynamic_addrs:
-            rationale_bits.append('retargeted to dynamic-hotspot touched addresses')
+        if actions:
+            rationale_bits.append('retargeted to runtime-reachable dynamic hotspots')
 
     actions, dedupe_meta = _dedupe_guidance_actions(actions)
     if not actions:
@@ -1381,6 +1243,8 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
         'schema': 'mf_runtime_strategy_v1',
         'plan_name': plan_name,
         'rationale': '; '.join(rationale_bits) or 'LLM-synthesized runtime strategy.',
+        'source_kind': 'llm_semantic_assist',
+        'dynamic_roles': roles,
         'llm_source': {
             'response_id': llm_answer.get('response_id'),
             'model': llm_answer.get('model'),
@@ -1391,7 +1255,6 @@ def _synthesize_guidance_from_llm_answer(*, llm_answer_json_path: str, fallback_
     }
     save_json(out_path, guidance)
     return guidance
-
 def _coverage_from_run_summary(run_summary: Optional[Dict[str, Any]]) -> int:
     return int((run_summary or {}).get('last_cov') or 0)
 
@@ -2181,7 +2044,6 @@ def _run_adaptive_mmio_loop_single_cycle(args, out_root: Path, fuzzer_bin: str) 
     baseline_summary = ctx['baseline_summary']
     current_import_dir = ctx['current_import_dir']
     current_guidance_file = ctx['current_guidance_file']
-    control_guidance_file = ctx['current_guidance_file']
     initial_guidance_kind = ctx['initial_guidance_kind']
     baseline_frontier_cov = ctx['baseline_frontier_cov']
 
