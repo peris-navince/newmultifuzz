@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import argparse
 import os
-from typing import Any, Dict, List, Optional
+import re
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
 
 from debug_trace import debug, info, load_json, save_json, warn
 from pdf_evidence_locator import locate_register_pdf_evidence
@@ -23,6 +25,129 @@ def _int_auto(v: Any) -> Optional[int]:
     except Exception:
         return None
 
+
+
+_WINDOW_FILE_RE = re.compile(r"window_(\d+)_([a-z_]+)\.json$")
+
+
+def _load_json_if_exists(path: str) -> Optional[Any]:
+    if path and os.path.exists(path):
+        return load_json(path)
+    return None
+
+
+def _window_index_from_name(path: Path) -> int:
+    m = _WINDOW_FILE_RE.search(path.name)
+    return int(m.group(1)) if m else -1
+
+
+def _merge_width_counts(dst: Dict[str, int], src: Dict[str, Any]) -> Dict[str, int]:
+    out = dict(dst)
+    for k, v in (src or {}).items():
+        try:
+            out[str(k)] = int(out.get(str(k), 0)) + int(v or 0)
+        except Exception:
+            continue
+    return out
+
+
+def _aggregate_discovered_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    merged: Dict[str, Dict[str, Any]] = {}
+    for row in rows or []:
+        addr = str(row.get('addr') or '').upper().strip()
+        if not addr:
+            continue
+        cur = merged.setdefault(addr, {'addr': addr, 'width_counts': {}})
+        for key in ['read_count', 'total_bytes_requested', 'executions_seen', 'interesting_executions_seen']:
+            try:
+                cur[key] = int(cur.get(key, 0)) + int(row.get(key) or 0)
+            except Exception:
+                pass
+        for key, chooser in [('first_seen_order', min), ('last_seen_order', max)]:
+            try:
+                rv = int(row.get(key))
+            except Exception:
+                continue
+            if key not in cur:
+                cur[key] = rv
+            else:
+                cur[key] = chooser(int(cur[key]), rv)
+        cur['width_counts'] = _merge_width_counts(cur.get('width_counts') or {}, row.get('width_counts') or {})
+    ordered = sorted(merged.values(), key=lambda x: (int(x.get('read_count', 0)), int(x.get('executions_seen', 0)), x.get('addr', '')), reverse=True)
+    return ordered
+
+
+def _aggregate_interesting_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    merged: Dict[str, Dict[str, Any]] = {}
+    for row in rows or []:
+        addr = str(row.get('addr') or '').upper().strip()
+        if not addr:
+            continue
+        cur = merged.setdefault(addr, {'addr': addr})
+        for key in ['interesting_hit_count', 'recent_window_hit_count']:
+            try:
+                cur[key] = int(cur.get(key, 0)) + int(row.get(key) or 0)
+            except Exception:
+                pass
+    ordered = sorted(merged.values(), key=lambda x: (int(x.get('interesting_hit_count', 0)), int(x.get('recent_window_hit_count', 0)), x.get('addr', '')), reverse=True)
+    return ordered
+
+
+def _observer_windows_dir(observer_dir: str) -> Path:
+    return Path(observer_dir).resolve() / 'windows'
+
+
+def _observer_window_files(observer_dir: str, suffix: str) -> List[Path]:
+    windows_dir = _observer_windows_dir(observer_dir)
+    if not windows_dir.exists():
+        return []
+    pats = list(windows_dir.rglob(f'window_*_{suffix}.json'))
+    pats.sort(key=lambda p: (_window_index_from_name(p), p.stat().st_mtime if p.exists() else 0.0))
+    return pats
+
+
+def _derive_observer_views(observer_dir: str) -> Dict[str, Any]:
+    obs = str(Path(observer_dir).resolve())
+    latest_summary = _load_json_if_exists(os.path.join(obs, 'latest_window_summary.json'))
+    latest_discovered = _load_json_if_exists(os.path.join(obs, 'latest_window_discovered_streams.json'))
+    latest_interesting = _load_json_if_exists(os.path.join(obs, 'latest_window_interesting_streams.json'))
+    discovered = _load_json_if_exists(os.path.join(obs, 'discovered_streams.json'))
+    interesting = _load_json_if_exists(os.path.join(obs, 'interesting_streams.json'))
+
+    if latest_summary is None:
+        files = _observer_window_files(obs, 'summary')
+        if files:
+            latest_summary = load_json(str(files[-1]))
+    if latest_discovered is None:
+        files = _observer_window_files(obs, 'discovered_streams')
+        if files:
+            latest_discovered = load_json(str(files[-1]))
+    if latest_interesting is None:
+        files = _observer_window_files(obs, 'interesting_streams')
+        if files:
+            latest_interesting = load_json(str(files[-1]))
+    if discovered is None:
+        rows: List[Dict[str, Any]] = []
+        for fp in _observer_window_files(obs, 'discovered_streams'):
+            data = load_json(str(fp))
+            if isinstance(data, list):
+                rows.extend(data)
+        discovered = _aggregate_discovered_rows(rows)
+    if interesting is None:
+        rows2: List[Dict[str, Any]] = []
+        for fp in _observer_window_files(obs, 'interesting_streams'):
+            data = load_json(str(fp))
+            if isinstance(data, list):
+                rows2.extend(data)
+        interesting = _aggregate_interesting_rows(rows2)
+
+    return {
+        'latest_window_summary': latest_summary or {},
+        'latest_window_discovered_streams': latest_discovered or [],
+        'latest_window_interesting_streams': latest_interesting or [],
+        'discovered_streams': discovered or [],
+        'interesting_streams': interesting or [],
+    }
 
 def _pick_hotspots(rows: List[Dict[str, Any]], top_k: int) -> List[Dict[str, Any]]:
     ordered = sorted(
@@ -47,13 +172,14 @@ def build_evidence_pack(
     top_k: int = 8,
     force_pdf: bool = False,
 ) -> Dict[str, Any]:
-    latest_path = os.path.join(observer_dir, "latest_window_discovered_streams.json")
-    discovered_path = os.path.join(observer_dir, "discovered_streams.json")
     info(f"build_evidence_pack observer_dir={observer_dir}")
-    latest = load_json(latest_path)
-    discovered = load_json(discovered_path) if os.path.exists(discovered_path) else []
+    observer_views = _derive_observer_views(observer_dir)
+    latest = observer_views.get('latest_window_discovered_streams') or []
+    discovered = observer_views.get('discovered_streams') or []
 
     latest_hotspots = _pick_hotspots(latest, top_k=top_k)
+    if not latest_hotspots:
+        latest_hotspots = _pick_hotspots(discovered, top_k=top_k)
     all_rows_by_addr = {str(x.get("addr")): x for x in discovered}
     svd_data = parse_svd(svd_path)
 
@@ -116,6 +242,12 @@ def build_evidence_pack(
         "observer_dir": os.path.abspath(observer_dir),
         "cache_root": os.path.abspath(cache_root),
         "top_k": top_k,
+        "observer_views": {
+            "latest_window_summary": observer_views.get("latest_window_summary") or {},
+            "latest_window_discovered_count": len(latest),
+            "discovered_count": len(discovered),
+            "interesting_count": len(observer_views.get("interesting_streams") or []),
+        },
         "evidence": evidence_rows,
     }
     save_json(out_path, out)

@@ -1,0 +1,2 @@
+pyghidra
+jpype1

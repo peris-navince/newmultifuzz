@@ -1,0 +1,215 @@
+# MultiFuzz benchmark manifest (relative-path version)
+#
+# All paths are relative to the manifest location, which should live in the
+# repository root (for example: /home/wgh/Multifuzz/bench_manifest.yaml).
+#
+# mapping_confidence:
+#   exact        -> direct PDF/SVD pairing exists in current dataset
+#   provisional  -> family-level near match only; exploratory, not for claims
+#   unsupported  -> no reliable pairing yet
+#
+# enabled:
+#   true  -> include in first-pass automated batch
+#   false -> keep for visibility but skip by default
+
+version: 1
+
+# Optional: if omitted, the runner uses the directory containing this manifest
+# as the repo root.
+repo_root: .
+
+# Shared defaults used by the batch runner.
+defaults:
+  closed_loop_script: extractor/closed_loop.py
+  fuzzer_manifest: hail-fuzz/Cargo.toml
+  ghidra_src: tools/ghidra
+  use_recent_exec: latest
+  warmup_run_for: 300s
+  warmup_restarts: 1
+  main_window_count: 10
+  main_window_run_for: 120s
+  adaptive_period_windows: 3
+  adaptive_plateau_windows: 2
+  probe_run_for: 45s
+  followup_run_for: 45s
+  portfolio_run_for: 20s
+  strategy_control_every_windows: 5
+  strategy_pool_max_size: 4
+  strategy_trial_windows: 1
+  portfolio_intervention_coverage_slack: 64
+  max_llm_cycles: 1
+  llm_max_output_tokens: 4000
+  llm_max_attempts: 1
+  default_mode: adaptive-mmio-loop
+  output_root: workdir/batch_runs
+  # Current reusable seed/import directory. Override per benchmark if needed.
+  import_dir: workdir/console_staged_recovery/round_0_seed/workdir/queue
+
+benchmarks:
+  - bench_id: P2IM_Console
+    category: P2IM
+    path: benchmarks/P2IM/Console
+    enabled: true
+    mapping_confidence: exact
+    family: NXP_K64F
+    firmware_config: benchmarks/P2IM/Console/config.yml
+    elf: benchmarks/P2IM/Console/Console.elf
+    svd: extractor/svd/NXP/NXP-FRDM-K64F/MK64F12.xml
+    pdf: extractor/text/K64.pdf
+    contract_bundle: analysis/out/p2im_console_ghidra_rel/contract_bundle_rtc_v7.json
+    peripheral_targets: [RTC]
+    notes: Exact FRDM-K64F pairing; current reference benchmark.
+
+  - bench_id: P2IM_Heat_Press
+    category: P2IM
+    path: benchmarks/P2IM/Heat_Press
+    enabled: true
+    mapping_confidence: exact
+    family: ATSAM3X8E
+    firmware_config: benchmarks/P2IM/Heat_Press/config.yml
+    elf: benchmarks/P2IM/Heat_Press/Heat_Press.elf
+    svd: extractor/svd/SAM/ATSAM3X8E.svd
+    pdf: extractor/text/SAM3X-SAM3A_Datasheet.pdf
+    contract_bundle: null
+    peripheral_targets: [RTC, TIMER, GPIO]
+    notes: Exact SAM3X/3A pairing; needs contract bundle before adaptive run.
+
+  - bench_id: P2IM_Steering_Control
+    category: P2IM
+    path: benchmarks/P2IM/Steering_Control
+    enabled: true
+    mapping_confidence: exact
+    family: ATSAM3X8E
+    firmware_config: benchmarks/P2IM/Steering_Control/config.yml
+    elf: benchmarks/P2IM/Steering_Control/Steering_Control.elf
+    svd: extractor/svd/SAM/ATSAM3X8E.svd
+    pdf: extractor/text/SAM3X-SAM3A_Datasheet.pdf
+    contract_bundle: null
+    peripheral_targets: [PWM, TIMER, GPIO]
+    notes: Same SAM3X family as Heat_Press; good cross-program validation target.
+
+  - bench_id: P2IM_Drone
+    category: P2IM
+    path: benchmarks/P2IM/Drone
+    enabled: true
+    mapping_confidence: exact
+    family: STM32F103
+    firmware_config: benchmarks/P2IM/Drone/config.yml
+    elf: benchmarks/P2IM/Drone/Drone.elf
+    svd: extractor/svd/STM/STM32F103xx.svd
+    pdf: extractor/text/stm32f10.pdf
+    contract_bundle: null
+    peripheral_targets: [TIM, PWM, GPIO, I2C]
+    notes: Exact STM32F103 pairing; needs contract bundle before adaptive run.
+
+  - bench_id: P2IM_Gateway
+    category: P2IM
+    path: benchmarks/P2IM/Gateway
+    enabled: true
+    mapping_confidence: exact
+    family: STM32F103
+    firmware_config: benchmarks/P2IM/Gateway/config.yml
+    elf: benchmarks/P2IM/Gateway/Gateway.elf
+    svd: extractor/svd/STM/STM32F103xx.svd
+    pdf: extractor/text/stm32f10.pdf
+    contract_bundle: null
+    peripheral_targets: [UART, SPI, GPIO]
+    notes: Exact STM32F103 pairing; needs contract bundle.
+
+  - bench_id: P2IM_Reflow_Oven
+    category: P2IM
+    path: benchmarks/P2IM/Reflow_Oven
+    enabled: true
+    mapping_confidence: exact
+    family: STM32F103
+    firmware_config: benchmarks/P2IM/Reflow_Oven/config.yml
+    elf: benchmarks/P2IM/Reflow_Oven/Reflow_Oven.elf
+    svd: extractor/svd/STM/STM32F103xx.svd
+    pdf: extractor/text/stm32f10.pdf
+    contract_bundle: null
+    peripheral_targets: [ADC, GPIO, TIM]
+    notes: Exact STM32F103 pairing; needs contract bundle.
+
+  - bench_id: P2IM_Robot
+    category: P2IM
+    path: benchmarks/P2IM/Robot
+    enabled: true
+    mapping_confidence: exact
+    family: STM32F103
+    firmware_config: benchmarks/P2IM/Robot/config.yml
+    elf: benchmarks/P2IM/Robot/Robot.elf
+    svd: extractor/svd/STM/STM32F103xx.svd
+    pdf: extractor/text/stm32f10.pdf
+    contract_bundle: null
+    peripheral_targets: [GPIO, TIM, UART]
+    notes: Exact STM32F103 pairing; needs contract bundle.
+
+  - bench_id: P2IM_Soldering_Iron
+    category: P2IM
+    path: benchmarks/P2IM/Soldering_Iron
+    enabled: true
+    mapping_confidence: exact
+    family: STM32F103
+    firmware_config: benchmarks/P2IM/Soldering_Iron/config.yml
+    elf: benchmarks/P2IM/Soldering_Iron/Soldering_Iron.elf
+    svd: extractor/svd/STM/STM32F103xx.svd
+    pdf: extractor/text/stm32f10.pdf
+    contract_bundle: null
+    peripheral_targets: [ADC, TIM, GPIO]
+    notes: Exact STM32F103 pairing; needs contract bundle.
+
+  - bench_id: uEmu_3Dprinter
+    category: uEmu
+    path: benchmarks/uEmu/3Dprinter
+    enabled: true
+    mapping_confidence: exact
+    family: STM32F103
+    firmware_config: benchmarks/uEmu/3Dprinter/config.yml
+    elf: benchmarks/uEmu/3Dprinter/3Dprinter.elf
+    svd: extractor/svd/STM/STM32F103xx.svd
+    pdf: extractor/text/stm32f10.pdf
+    contract_bundle: null
+    peripheral_targets: [TIM, UART, GPIO]
+    notes: Exact STM32F103 pairing; needs contract bundle.
+
+  - bench_id: P2IM_PLC
+    category: P2IM
+    path: benchmarks/P2IM/PLC
+    enabled: false
+    mapping_confidence: provisional
+    family: STM32F4x
+    firmware_config: benchmarks/P2IM/PLC/config.yml
+    elf: benchmarks/P2IM/PLC/PLC.elf
+    svd: extractor/svd/STM/STM32F40x.svd
+    pdf: extractor/text/stm32f405.pdf
+    contract_bundle: null
+    peripheral_targets: [ETH, UART, GPIO]
+    notes: Family-level near match only.
+
+  - bench_id: uEmu_utasker_USB
+    category: uEmu
+    path: benchmarks/uEmu/utasker_USB
+    enabled: false
+    mapping_confidence: provisional
+    family: STM32F4x
+    firmware_config: benchmarks/uEmu/utasker_USB/config.yml
+    elf: benchmarks/uEmu/utasker_USB/utasker_USB.elf
+    svd: extractor/svd/STM/STM32F40x.svd
+    pdf: extractor/text/stm32f405.pdf
+    contract_bundle: null
+    peripheral_targets: [USB, GPIO, RCC]
+    notes: Family-level near match only.
+
+  - bench_id: uEmu_utasker_MODBUS
+    category: uEmu
+    path: benchmarks/uEmu/utasker_MODBUS
+    enabled: false
+    mapping_confidence: provisional
+    family: STM32F4x
+    firmware_config: benchmarks/uEmu/utasker_MODBUS/config.yml
+    elf: benchmarks/uEmu/utasker_MODBUS/utasker_MODBUS.elf
+    svd: extractor/svd/STM/STM32F40x.svd
+    pdf: extractor/text/stm32f405.pdf
+    contract_bundle: null
+    peripheral_targets: [UART, GPIO, RCC]
+    notes: Family-level near match only.

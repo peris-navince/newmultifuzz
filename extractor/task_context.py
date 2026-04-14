@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import os
 import re
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from debug_trace import info, load_json, save_json
@@ -47,6 +48,38 @@ def summarize_run_log(path: Optional[str]) -> Dict[str, Any]:
         summary["tail"] = lines[-5:]
     return summary
 
+
+
+def _load_optional_json(path: Optional[str]) -> Optional[Any]:
+    if path and os.path.exists(path):
+        return load_json(path)
+    return None
+
+
+def _summarize_ghidra_export(path: Optional[str], max_functions: int = 20) -> Optional[Dict[str, Any]]:
+    data = _load_optional_json(path)
+    if not isinstance(data, dict):
+        return None
+    funcs = []
+    for func in data.get('functions', []) or []:
+        mmio = list(func.get('mmio_accesses') or [])
+        if not mmio:
+            continue
+        funcs.append({
+            'name': str(func.get('name') or ''),
+            'entry': str(func.get('entry') or ''),
+            'is_isr': bool(func.get('is_isr')),
+            'mmio_access_count': len(mmio),
+            'mmio_addresses': [str(x.get('address_hex') or '') for x in mmio[:8]],
+        })
+    funcs.sort(key=lambda x: x['mmio_access_count'], reverse=True)
+    return {
+        'program_name': data.get('program_name'),
+        'executable_path': data.get('executable_path'),
+        'language_id': data.get('language_id'),
+        'function_count': len(data.get('functions') or []),
+        'top_mmio_functions': funcs[:max_functions],
+    }
 
 def _register_role(register: str) -> str:
     reg = str(register or "").strip().upper()
@@ -215,6 +248,9 @@ def build_task_context(
     mcu: str,
     benchmark: str,
     best_guidance: Optional[str] = None,
+    ghidra_summary_path: Optional[str] = None,
+    ghidra_export_path: Optional[str] = None,
+    binary_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     evidence_pack = load_json(evidence_pack_path)
     best = load_json(best_guidance) if best_guidance and os.path.exists(best_guidance) else None
@@ -236,12 +272,21 @@ def build_task_context(
         )
 
     hotspot_groups = _build_hotspot_groups(evidence_pack)
+    ghidra_summary = _load_optional_json(ghidra_summary_path)
+    ghidra_export_summary = _summarize_ghidra_export(ghidra_export_path)
 
     out = {
         "target": {
             "board": board,
             "mcu": mcu,
             "benchmark": benchmark,
+        },
+        "program_context": {
+            "binary": os.path.abspath(binary_path) if binary_path else None,
+            "ghidra_summary_path": os.path.abspath(ghidra_summary_path) if ghidra_summary_path and os.path.exists(ghidra_summary_path) else None,
+            "ghidra_export_path": os.path.abspath(ghidra_export_path) if ghidra_export_path and os.path.exists(ghidra_export_path) else None,
+            "ghidra_summary": ghidra_summary,
+            "ghidra_export_summary": ghidra_export_summary,
         },
         "runtime_problem": {
             "run_summary": run_summary,
@@ -288,6 +333,9 @@ def main():
         mcu=args.mcu,
         benchmark=args.benchmark,
         best_guidance=args.best_guidance,
+        ghidra_summary_path=args.ghidra_summary,
+        ghidra_export_path=args.ghidra_export,
+        binary_path=args.binary,
     )
 
 
