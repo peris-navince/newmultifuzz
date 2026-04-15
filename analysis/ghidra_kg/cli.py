@@ -1,169 +1,225 @@
 from __future__ import annotations
 
 import argparse
+import inspect
 import json
+import os
+import re
+import shutil
+import subprocess
+import sys
 import threading
 import time
 import traceback
 from datetime import datetime, UTC
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
-from .ghidra_export import export_with_ghidra
-from .kg_schema import GraphBuilder, function_node_id, mmio_node_id, peripheral_node_id, register_node_id
-from .kg_writer import write_graph
-from .llm_code_analyzer import analyze_functions_with_llm
-from .manual_map import ManualMMIOIndex
+# This script is meant to live at: <repo>/analysis/run_ghidra_kg.py
+# It supports both direct execution (python3 analysis/run_ghidra_kg.py)
+# and package-style imports.
+try:  # Preferred when running from <repo>/analysis/run_ghidra_kg.py
+    from ghidra_kg.ghidra_export import export_with_ghidra
+    from ghidra_kg.kg_schema import GraphBuilder, function_node_id, mmio_node_id, peripheral_node_id, register_node_id
+    from ghidra_kg.kg_writer import write_graph
+    from ghidra_kg.llm_code_analyzer import analyze_functions_with_llm
+    from ghidra_kg.manual_map import ManualMMIOIndex
+except ImportError:  # Fallback for package-relative placement
+    try:
+        from .ghidra_export import export_with_ghidra  # type: ignore
+        from .kg_schema import GraphBuilder, function_node_id, mmio_node_id, peripheral_node_id, register_node_id  # type: ignore
+        from .kg_writer import write_graph  # type: ignore
+        from .llm_code_analyzer import analyze_functions_with_llm  # type: ignore
+        from .manual_map import ManualMMIOIndex  # type: ignore
+    except ImportError:
+        here = Path(__file__).resolve().parent
+        sys.path.insert(0, str(here))
+        sys.path.insert(0, str(here / "ghidra_kg"))
+        from ghidra_export import export_with_ghidra  # type: ignore
+        from kg_schema import GraphBuilder, function_node_id, mmio_node_id, peripheral_node_id, register_node_id  # type: ignore
+        from kg_writer import write_graph  # type: ignore
+        from llm_code_analyzer import analyze_functions_with_llm  # type: ignore
+        from manual_map import ManualMMIOIndex  # type: ignore
 
 
 BATCH_SUMMARY_NAME = "batch_summary.json"
+DEFAULT_GHIDRA_TIMEOUT_SEC = 1800
 
 
-def _utc_now() -> str:
+def _now() -> str:
     return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
-def _json_dump(path: Path, data: Dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(path.suffix + ".tmp")
-    tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    tmp.replace(path)
-
-
-def _path_info(path: str | Path | None) -> Dict[str, Any]:
+def _file_info(path: str | Path | None) -> Dict[str, Any] | None:
     if not path:
-        return {"path": None, "exists": False}
-    p = Path(path).expanduser()
+        return None
+    p = Path(path).expanduser().resolve()
+    info: Dict[str, Any] = {
+        "path": str(p),
+        "exists": p.exists(),
+        "is_file": p.is_file(),
+        "is_dir": p.is_dir(),
+    }
     try:
-        rp = p.resolve()
-    except Exception:
-        rp = p
-    info: Dict[str, Any] = {"path": str(rp), "exists": rp.exists()}
-    if rp.exists():
-        info["is_file"] = rp.is_file()
-        info["is_dir"] = rp.is_dir()
-        try:
-            info["size_bytes"] = rp.stat().st_size
-        except Exception:
-            pass
+        if p.exists():
+            info["size_bytes"] = p.stat().st_size
+    except OSError as exc:
+        info["stat_error"] = f"{type(exc).__name__}: {exc}"
     return info
 
 
-def _snapshot_dir(path: Path, max_items: int = 30) -> Dict[str, Any]:
-    if not path.exists():
-        return {"path": str(path), "exists": False, "file_count": 0, "items": []}
-    items: List[Dict[str, Any]] = []
-    file_count = 0
-    try:
-        for p in sorted(path.rglob("*")):
-            if p.is_file():
-                file_count += 1
-                if len(items) < max_items:
-                    try:
-                        rel = str(p.relative_to(path))
-                    except Exception:
-                        rel = str(p)
-                    try:
-                        size = p.stat().st_size
-                    except Exception:
-                        size = None
-                    items.append({"relative_path": rel, "size_bytes": size})
-    except Exception as e:
-        return {"path": str(path), "exists": True, "error": repr(e), "file_count": file_count, "items": items}
-    return {"path": str(path), "exists": True, "file_count": file_count, "items": items}
-
-
-class DebugRun:
-    """File-backed progress logger for long Ghidra runs."""
-
-    def __init__(self, *, outdir: Path, args: argparse.Namespace, label: str = "single") -> None:
+class DebugRunLogger:
+    def __init__(self, outdir: Path, *, label: str, heartbeat_interval: int = 30, verbose: bool = False) -> None:
         self.outdir = outdir.resolve()
         self.outdir.mkdir(parents=True, exist_ok=True)
         self.label = label
-        self.started_at = time.time()
+        self.heartbeat_interval = max(1, int(heartbeat_interval or 30))
+        self.verbose = bool(verbose)
+        self.debug_log = self.outdir / "run_ghidra_kg.debug.log"
+        self.status_json = self.outdir / "run_ghidra_kg.status.json"
+        self.start = time.monotonic()
         self.stage = "init"
-        self.stage_started_at = self.started_at
-        self.extra: Dict[str, Any] = {}
-        self._lock = threading.Lock()
+        self.stage_start = self.start
         self._stop = threading.Event()
-        self._thread: threading.Thread | None = None
-        self.heartbeat_interval = max(1, int(getattr(args, "heartbeat_interval", 30) or 30))
-        self.debug_log = Path(getattr(args, "debug_log", None) or (self.outdir / "run_ghidra_kg.debug.log")).resolve()
-        self.status_json = Path(getattr(args, "status_json", None) or (self.outdir / "run_ghidra_kg.status.json")).resolve()
-        self.verbose = bool(getattr(args, "verbose", False))
-        self.args = args
+        self._lock = threading.Lock()
+        self._heartbeat_thread: Optional[threading.Thread] = None
 
-    def log(self, message: str, **fields: Any) -> None:
-        rec = {
-            "ts": _utc_now(),
+    def elapsed(self) -> float:
+        return round(time.monotonic() - self.start, 3)
+
+    def stage_elapsed(self) -> float:
+        return round(time.monotonic() - self.stage_start, 3)
+
+    def emit(self, message: str, **extra: Any) -> None:
+        rec: Dict[str, Any] = {
+            "ts": _now(),
             "label": self.label,
             "stage": self.stage,
-            "elapsed_sec": round(time.time() - self.started_at, 3),
+            "elapsed_sec": self.elapsed(),
             "message": message,
         }
-        if fields:
-            rec.update(fields)
+        rec.update(extra)
         line = json.dumps(rec, ensure_ascii=False)
-        self.debug_log.parent.mkdir(parents=True, exist_ok=True)
-        with self.debug_log.open("a", encoding="utf-8") as f:
-            f.write(line + "\n")
+        with self._lock:
+            with self.debug_log.open("a", encoding="utf-8") as f:
+                f.write(line + "\n")
+            self._write_status(extra=extra)
         if self.verbose:
             print(line, flush=True)
 
-    def set_stage(self, stage: str, **extra: Any) -> None:
-        with self._lock:
-            self.stage = stage
-            self.stage_started_at = time.time()
-            self.extra = dict(extra)
-        self.log(f"stage -> {stage}", **extra)
-        self.write_status(event="stage_change")
-
-    def write_status(self, *, event: str = "heartbeat", error: str | None = None) -> None:
-        with self._lock:
-            stage = self.stage
-            stage_started = self.stage_started_at
-            extra = dict(self.extra)
-        data: Dict[str, Any] = {
-            "event": event,
-            "timestamp": _utc_now(),
+    def _write_status(self, *, extra: Dict[str, Any] | None = None) -> None:
+        status = {
+            "ts": _now(),
             "label": self.label,
-            "stage": stage,
-            "started_at": datetime.fromtimestamp(self.started_at, UTC).isoformat().replace("+00:00", "Z"),
-            "elapsed_sec": round(time.time() - self.started_at, 3),
-            "stage_elapsed_sec": round(time.time() - stage_started, 3),
-            "outdir": str(self.outdir),
+            "stage": self.stage,
+            "elapsed_sec": self.elapsed(),
+            "stage_elapsed_sec": self.stage_elapsed(),
             "debug_log": str(self.debug_log),
-            "extra": extra,
-            "inputs": {
-                "binary": _path_info(getattr(self.args, "binary", None)),
-                "binary_root": _path_info(getattr(self.args, "binary_root", None)),
-                "ghidra_export_json": _path_info(getattr(self.args, "ghidra_export_json", None)),
-                "ghidra_home": _path_info(getattr(self.args, "ghidra_home", None)),
-                "manual_mmio_map": _path_info(getattr(self.args, "manual_mmio_map", None)),
-            },
-            "outdir_snapshot": _snapshot_dir(self.outdir, max_items=25),
+            "status_json": str(self.status_json),
         }
-        if error:
-            data["error"] = error
-        _json_dump(self.status_json, data)
+        if extra:
+            status["extra"] = extra
+        tmp = self.status_json.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(status, indent=2, ensure_ascii=False), encoding="utf-8")
+        tmp.replace(self.status_json)
 
-    def _heartbeat_loop(self) -> None:
-        while not self._stop.wait(self.heartbeat_interval):
-            self.log("heartbeat", status_json=str(self.status_json))
-            self.write_status(event="heartbeat")
+    def set_stage(self, stage: str, **extra: Any) -> None:
+        self.stage = stage
+        self.stage_start = time.monotonic()
+        self.emit(f"stage -> {stage}", **extra)
 
-    def start(self) -> None:
-        self.log("debug run started", status_json=str(self.status_json), heartbeat_interval=self.heartbeat_interval)
-        self.write_status(event="start")
-        self._thread = threading.Thread(target=self._heartbeat_loop, name="run-ghidra-kg-heartbeat", daemon=True)
-        self._thread.start()
+    def start_heartbeat(self) -> None:
+        if self._heartbeat_thread:
+            return
+        self._stop.clear()
 
-    def stop(self, *, ok: bool, error: str | None = None) -> None:
+        def _loop() -> None:
+            while not self._stop.wait(self.heartbeat_interval):
+                self.emit("heartbeat", status_json=str(self.status_json))
+
+        self._heartbeat_thread = threading.Thread(target=_loop, name="run-ghidra-kg-heartbeat", daemon=True)
+        self._heartbeat_thread.start()
+
+    def stop_heartbeat(self) -> None:
         self._stop.set()
-        if self._thread:
-            self._thread.join(timeout=2)
-        self.log("debug run finished", ok=ok, error=error)
-        self.write_status(event="finished" if ok else "error", error=error)
+        if self._heartbeat_thread:
+            self._heartbeat_thread.join(timeout=2)
+            self._heartbeat_thread = None
+
+
+def _parse_java_major(version_output: str) -> int | None:
+    # Handles both: openjdk version "21.0.10" and openjdk version "1.8.0_..."
+    m = re.search(r'version\s+"([^"]+)"', version_output)
+    if not m:
+        return None
+    version = m.group(1)
+    if version.startswith("1."):
+        parts = version.split(".")
+        if len(parts) > 1 and parts[1].isdigit():
+            return int(parts[1])
+        return None
+    first = version.split(".", 1)[0]
+    return int(first) if first.isdigit() else None
+
+
+def _run_cmd_capture(cmd: List[str], *, timeout: int = 20) -> Tuple[int, str]:
+    try:
+        proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout, check=False)
+        return proc.returncode, proc.stdout or ""
+    except FileNotFoundError as exc:
+        return 127, f"{type(exc).__name__}: {exc}"
+    except subprocess.TimeoutExpired as exc:
+        return 124, (exc.stdout or "") + f"\nTIMEOUT: {exc}"
+
+
+def _preflight_ghidra(args: argparse.Namespace, log: DebugRunLogger) -> None:
+    """Fail fast with actionable messages instead of letting pyghidraRun wait interactively."""
+    if args.ghidra_export_json:
+        log.emit("preflight skipped: using existing ghidra_export_json")
+        return
+
+    binary_info = _file_info(args.binary)
+    ghidra_home_info = _file_info(args.ghidra_home)
+    log.emit("preflight inputs", binary_info=binary_info, ghidra_home_info=ghidra_home_info, java_home=os.environ.get("JAVA_HOME"))
+
+    if args.binary and not Path(args.binary).expanduser().resolve().is_file():
+        raise RuntimeError(f"Binary does not exist or is not a file: {args.binary}")
+
+    if args.ghidra_home:
+        ghidra_home = Path(args.ghidra_home).expanduser().resolve()
+        pyghidra_run = ghidra_home / "support" / "pyghidraRun"
+        analyze_headless = ghidra_home / "support" / "analyzeHeadless"
+        if not pyghidra_run.exists():
+            raise RuntimeError(f"pyghidraRun not found: {pyghidra_run}")
+        if not analyze_headless.exists():
+            raise RuntimeError(f"analyzeHeadless not found: {analyze_headless}")
+
+    rc, java_out = _run_cmd_capture(["java", "-version"], timeout=20)
+    major = _parse_java_major(java_out)
+    log.emit("java preflight", returncode=rc, major=major, output=java_out.strip())
+    if rc != 0 or major is None or major < 21:
+        raise RuntimeError(
+            "Ghidra 12.x requires JDK 21+. Current java is not usable.\n"
+            f"Detected output:\n{java_out}\n"
+            "Fix example:\n"
+            "  export JAVA_HOME=/home/wgh/tools/jdk-21\n"
+            "  export PATH=\"$JAVA_HOME/bin:$PATH\"\n"
+            "  java -version\n"
+        )
+
+    rc, py_out = _run_cmd_capture([sys.executable, "-c", "import pyghidra, jpype; print('pyghidra ok')"], timeout=20)
+    log.emit("pyghidra preflight", returncode=rc, output=py_out.strip(), python=sys.executable)
+    if rc != 0:
+        raise RuntimeError(
+            "PyGhidra is not installed in the active Python environment.\n"
+            f"Python: {sys.executable}\n"
+            f"Import output:\n{py_out}\n"
+            "Fix example:\n"
+            "  source extractor/.venv/bin/activate\n"
+            "  pip install -r requirements-ghidra.txt\n"
+            "or:\n"
+            "  pip install pyghidra jpype1 packaging\n"
+        )
 
 
 def _add_base_graph(export_data: Dict[str, Any], graph: GraphBuilder, manual_index: ManualMMIOIndex | None) -> Dict[str, int]:
@@ -247,10 +303,13 @@ def build_argparser() -> argparse.ArgumentParser:
     p.add_argument("--max-functions", type=int, default=0, help="Optional cap on Ghidra-exported functions")
     p.add_argument("--max-candidates", type=int, default=0, help="Optional cap on LLM-analyzed candidate functions")
     p.add_argument("--fail-fast", action="store_true", help="In batch mode, stop at the first failed binary")
-    p.add_argument("--debug-log", default=None, help="Write JSONL debug/progress logs here")
-    p.add_argument("--status-json", default=None, help="Write latest progress/status JSON here")
+
+    # Hardened/debug controls.
     p.add_argument("--heartbeat-interval", type=int, default=30, help="Seconds between heartbeat status updates")
-    p.add_argument("--verbose", action="store_true", help="Also print debug JSONL records to stdout")
+    p.add_argument("--verbose", action="store_true", help="Print JSONL debug events to terminal")
+    p.add_argument("--ghidra-timeout-sec", type=int, default=DEFAULT_GHIDRA_TIMEOUT_SEC, help="Timeout for the Ghidra export subprocess")
+    p.add_argument("--print-ghidra-output", action="store_true", help="Also stream Ghidra subprocess output to terminal")
+    p.add_argument("--skip-preflight", action="store_true", help="Skip Java/PyGhidra preflight checks")
     return p
 
 
@@ -270,72 +329,105 @@ def _discover_binaries(binary_root: Path, pattern: str) -> List[Path]:
         raise SystemExit(f"--binary-root does not exist: {binary_root}")
     if not binary_root.is_dir():
         raise SystemExit(f"--binary-root is not a directory: {binary_root}")
+
     files = sorted(p.resolve() for p in binary_root.rglob(pattern) if p.is_file())
     if not files:
         raise SystemExit(f"No files matching pattern '{pattern}' found under: {binary_root}")
     return files
 
 
-def _single_export_data(args: argparse.Namespace, outdir: Path, binary: str | None, ghidra_export_json: str | None, dbg: DebugRun) -> Dict[str, Any]:
+def _call_export_with_ghidra(args: argparse.Namespace, *, binary: str, export_json: Path, outdir: Path) -> Dict[str, Any]:
+    """Call export_with_ghidra while remaining compatible with older ghidra_export.py signatures."""
+    subprocess_log = outdir / "ghidra_export.subprocess.log"
+    sig = inspect.signature(export_with_ghidra)
+    kwargs: Dict[str, Any] = {
+        "binary": binary,
+        "out_json": str(export_json),
+        "ghidra_home": args.ghidra_home,
+        "processor": args.processor,
+        "language_id": args.language_id,
+        "max_functions": args.max_functions,
+    }
+    optional = {
+        "timeout_sec": args.ghidra_timeout_sec,
+        "log_path": str(subprocess_log),
+        "print_output": bool(args.print_ghidra_output),
+        "stdin_devnull": True,
+        "noninteractive": True,
+    }
+    for key, value in optional.items():
+        if key in sig.parameters:
+            kwargs[key] = value
+    return export_with_ghidra(**kwargs)
+
+
+def _single_export_data(args: argparse.Namespace, outdir: Path, binary: str | None, ghidra_export_json: str | None, log: DebugRunLogger) -> Dict[str, Any]:
     export_json = outdir / "ghidra_export.json"
     if ghidra_export_json:
-        dbg.set_stage("load_existing_ghidra_export", ghidra_export_json=str(Path(ghidra_export_json).resolve()))
-        src = Path(ghidra_export_json).resolve()
+        src = Path(ghidra_export_json).expanduser().resolve()
+        log.emit("using existing ghidra export json", source=str(src), source_info=_file_info(src))
         export_json.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
         export_data = json.loads(export_json.read_text(encoding="utf-8"))
-        dbg.log("loaded existing ghidra export", function_count=len(export_data.get("functions") or []), export_json=str(export_json))
     else:
-        dbg.set_stage(
-            "ghidra_export",
-            binary=str(Path(binary).resolve()) if binary else None,
-            ghidra_home=str(Path(args.ghidra_home).resolve()) if args.ghidra_home else None,
-            processor=args.processor,
-            language_id=args.language_id,
-            max_functions=args.max_functions,
+        if not binary:
+            raise RuntimeError("binary is required when --ghidra-export-json is not provided")
+        bin_path = str(Path(binary).expanduser().resolve())
+        log.emit(
+            "calling export_with_ghidra",
+            binary_info=_file_info(bin_path),
+            ghidra_home_info=_file_info(args.ghidra_home),
             out_json=str(export_json),
         )
-        dbg.log("calling export_with_ghidra", binary_info=_path_info(binary), ghidra_home_info=_path_info(args.ghidra_home), out_json=str(export_json))
-        t0 = time.time()
-        export_data = export_with_ghidra(
-            binary=binary,
-            out_json=str(export_json),
-            ghidra_home=args.ghidra_home,
-            processor=args.processor,
-            language_id=args.language_id,
-            max_functions=args.max_functions,
-        )
-        dbg.log(
+        t0 = time.monotonic()
+        export_data = _call_export_with_ghidra(args, binary=bin_path, export_json=export_json, outdir=outdir)
+        log.emit(
             "export_with_ghidra returned",
-            duration_sec=round(time.time() - t0, 3),
+            duration_sec=round(time.monotonic() - t0, 3),
             function_count=len(export_data.get("functions") or []),
             ghidra_runtime=export_data.get("_ghidra_runtime"),
             ghidra_cmd=export_data.get("_ghidra_cmd"),
-            export_json_info=_path_info(export_json),
+            export_json_info=_file_info(export_json),
         )
     return export_data
 
 
 def _run_one(args: argparse.Namespace, *, binary: str | None, ghidra_export_json: str | None, outdir: Path, batch_relative_path: str | None = None) -> Dict[str, Any]:
     outdir.mkdir(parents=True, exist_ok=True)
-    dbg = DebugRun(outdir=outdir, args=args, label=batch_relative_path or (Path(binary).name if binary else "single"))
-    dbg.start()
+    label = Path(binary).name if binary else (Path(ghidra_export_json).name if ghidra_export_json else "run")
+    log = DebugRunLogger(outdir, label=label, heartbeat_interval=args.heartbeat_interval, verbose=args.verbose)
+    log.start_heartbeat()
+    log.emit("debug run started", status_json=str(log.status_json), heartbeat_interval=args.heartbeat_interval)
+
     try:
-        dbg.set_stage("start_run_one", binary=binary, ghidra_export_json=ghidra_export_json, outdir=str(outdir), batch_relative_path=batch_relative_path)
-        export_data = _single_export_data(args, outdir, binary, ghidra_export_json, dbg)
+        log.set_stage("start_run_one", binary=binary, ghidra_export_json=ghidra_export_json, outdir=str(outdir), batch_relative_path=batch_relative_path)
+        if not args.skip_preflight:
+            log.set_stage("preflight")
+            _preflight_ghidra(args, log)
 
-        dbg.set_stage("manual_index_load", manual_mmio_map=args.manual_mmio_map)
+        log.set_stage(
+            "ghidra_export",
+            binary=str(Path(binary).expanduser().resolve()) if binary else None,
+            ghidra_home=str(Path(args.ghidra_home).expanduser().resolve()) if args.ghidra_home else None,
+            processor=args.processor,
+            language_id=args.language_id,
+            max_functions=args.max_functions,
+            out_json=str(outdir / "ghidra_export.json"),
+        )
+        export_data = _single_export_data(args, outdir, binary, ghidra_export_json, log)
+
+        log.set_stage("manual_index_load", manual_mmio_map=args.manual_mmio_map)
         manual_index = ManualMMIOIndex.from_path(args.manual_mmio_map)
-        graph = GraphBuilder()
 
-        dbg.set_stage("build_base_graph", function_count=len(export_data.get("functions") or []))
-        t0 = time.time()
+        log.set_stage("build_base_graph", function_count=len(export_data.get("functions") or []))
+        graph = GraphBuilder()
+        t0 = time.monotonic()
         base_stats = _add_base_graph(export_data, graph, manual_index)
-        dbg.log("base graph built", duration_sec=round(time.time() - t0, 3), **base_stats)
+        log.emit("base graph built", duration_sec=round(time.monotonic() - t0, 3), **base_stats)
 
         llm_stats: Dict[str, Any] = {"candidate_function_count": 0, "llm_edge_count": 0, "llm_finding_count": 0}
         if args.relation_mode == "llm":
-            dbg.set_stage("llm_code_analysis", model=args.llm_model, max_candidates=args.max_candidates)
-            t0 = time.time()
+            log.set_stage("llm_code_analysis", model=args.llm_model, max_candidates=args.max_candidates)
+            t0 = time.monotonic()
             llm_stats = analyze_functions_with_llm(
                 export_data=export_data,
                 graph=graph,
@@ -345,12 +437,12 @@ def _run_one(args: argparse.Namespace, *, binary: str | None, ghidra_export_json
                 relation_mode=args.relation_mode,
                 max_candidates=args.max_candidates,
             )
-            dbg.log("llm code analysis finished", duration_sec=round(time.time() - t0, 3), **llm_stats)
+            log.emit("llm analysis finished", duration_sec=round(time.monotonic() - t0, 3), **llm_stats)
         else:
-            dbg.log("llm code analysis skipped", relation_mode=args.relation_mode)
+            log.emit("llm code analysis skipped", relation_mode=args.relation_mode)
 
         summary = {
-            "binary": str(Path(binary).resolve()) if binary else None,
+            "binary": str(Path(binary).expanduser().resolve()) if binary else None,
             "ghidra_export_json": str((outdir / "ghidra_export.json").resolve()),
             "outdir": str(outdir),
             "relation_mode": args.relation_mode,
@@ -358,23 +450,23 @@ def _run_one(args: argparse.Namespace, *, binary: str | None, ghidra_export_json
             "batch_relative_path": batch_relative_path,
             "ghidra_runtime": export_data.get("_ghidra_runtime"),
             "ghidra_cmd": export_data.get("_ghidra_cmd"),
-            "debug_log": str(dbg.debug_log),
-            "status_json": str(dbg.status_json),
+            "debug_log": str(log.debug_log),
+            "status_json": str(log.status_json),
             **base_stats,
             **llm_stats,
             "node_count": len(graph.materialize_nodes()),
             "edge_count": len(graph.materialize_edges()),
             "finding_count": len(graph.findings),
         }
-        dbg.set_stage("write_graph", node_count=summary["node_count"], edge_count=summary["edge_count"], finding_count=summary["finding_count"])
+        log.set_stage("write_graph", node_count=summary["node_count"], edge_count=summary["edge_count"], finding_count=summary["finding_count"])
         write_graph(str(outdir), graph.materialize_nodes(), graph.materialize_edges(), graph.findings, summary)
-        dbg.stop(ok=True)
+        log.emit("debug run finished", ok=True, error=None)
         return summary
-    except Exception as e:
-        err = f"{type(e).__name__}: {e}"
-        dbg.log("run failed", error=err, traceback=traceback.format_exc())
-        dbg.stop(ok=False, error=err)
+    except Exception as exc:
+        log.emit("debug run failed", ok=False, error=f"{type(exc).__name__}: {exc}", traceback=traceback.format_exc())
         raise
+    finally:
+        log.stop_heartbeat()
 
 
 def _relative_outdir_for_binary(binary_root: Path, out_root: Path, binary_path: Path) -> Tuple[Path, str]:
@@ -384,18 +476,26 @@ def _relative_outdir_for_binary(binary_root: Path, out_root: Path, binary_path: 
 
 
 def _run_batch(args: argparse.Namespace, out_root: Path) -> Dict[str, Any]:
-    binary_root = Path(args.binary_root).resolve()
+    binary_root = Path(args.binary_root).expanduser().resolve()
     binaries = _discover_binaries(binary_root, args.binary_pattern)
     out_root.mkdir(parents=True, exist_ok=True)
+
     items: List[Dict[str, Any]] = []
     success = 0
     failed = 0
+
     for idx, binary_path in enumerate(binaries, start=1):
         per_outdir, rel = _relative_outdir_for_binary(binary_root, out_root, binary_path)
         print(f"[{idx}/{len(binaries)}] {rel}", flush=True)
         try:
             summary = _run_one(args, binary=str(binary_path), ghidra_export_json=None, outdir=per_outdir, batch_relative_path=rel)
-            items.append({"status": "ok", "binary": str(binary_path), "relative_binary": rel, "outdir": str(per_outdir), "summary": summary})
+            items.append({
+                "status": "ok",
+                "binary": str(binary_path),
+                "relative_binary": rel,
+                "outdir": str(per_outdir),
+                "summary": summary,
+            })
             success += 1
         except Exception as e:
             item = {
@@ -404,14 +504,13 @@ def _run_batch(args: argparse.Namespace, out_root: Path) -> Dict[str, Any]:
                 "relative_binary": rel,
                 "outdir": str(per_outdir),
                 "error": f"{type(e).__name__}: {e}",
-                "debug_log": str((per_outdir / "run_ghidra_kg.debug.log").resolve()),
-                "status_json": str((per_outdir / "run_ghidra_kg.status.json").resolve()),
             }
             items.append(item)
             failed += 1
             print(json.dumps(item, ensure_ascii=False), flush=True)
             if args.fail_fast:
                 break
+
     batch_summary = {
         "mode": "batch",
         "binary_root": str(binary_root),
@@ -431,13 +530,22 @@ def _run_batch(args: argparse.Namespace, out_root: Path) -> Dict[str, Any]:
 def main() -> None:
     args = build_argparser().parse_args()
     _validate_args(args)
-    outdir = Path(args.outdir).resolve()
+
+    outdir = Path(args.outdir).expanduser().resolve()
+
     if args.binary_root:
         result = _run_batch(args, outdir)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return
+
     outdir.mkdir(parents=True, exist_ok=True)
-    summary = _run_one(args, binary=args.binary, ghidra_export_json=args.ghidra_export_json, outdir=outdir, batch_relative_path=None)
+    summary = _run_one(
+        args,
+        binary=args.binary,
+        ghidra_export_json=args.ghidra_export_json,
+        outdir=outdir,
+        batch_relative_path=None,
+    )
     print(json.dumps(summary, indent=2, ensure_ascii=False))
 
 

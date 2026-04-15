@@ -2,11 +2,14 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import subprocess
+import sys
 import tempfile
+import time
 from pathlib import Path
-from typing import List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 
 class GhidraExportError(RuntimeError):
@@ -15,22 +18,32 @@ class GhidraExportError(RuntimeError):
 
 def _candidate_ghidra_homes(extra_roots: Optional[List[str]] = None) -> List[Path]:
     out: List[Path] = []
-    envs = [
-        os.environ.get("GHIDRA_HOME"),
-        os.environ.get("GHIDRA_INSTALL_DIR"),
-    ]
-    for x in envs:
-        if x:
-            out.append(Path(x))
+    for name in ("GHIDRA_HOME", "GHIDRA_INSTALL_DIR"):
+        value = os.environ.get(name)
+        if value:
+            out.append(Path(value))
 
     roots = [Path.cwd(), Path(__file__).resolve().parents[2]]
     for r in extra_roots or []:
-        out.append(Path(r))
+        if r:
+            out.append(Path(r))
     for root in roots:
-        out.extend(root.glob("ghidra*"))
-        out.extend(root.glob("**/ghidra*"))
-        out.extend(root.glob("**/Ghidra*"))
-    return out
+        if root.exists():
+            out.extend(root.glob("ghidra*"))
+            out.extend(root.glob("**/ghidra*"))
+            out.extend(root.glob("**/Ghidra*"))
+    # Preserve order but remove duplicates.
+    seen: set[str] = set()
+    deduped: List[Path] = []
+    for p in out:
+        try:
+            key = str(p.resolve())
+        except Exception:
+            key = str(p)
+        if key not in seen:
+            seen.add(key)
+            deduped.append(p)
+    return deduped
 
 
 def find_analyze_headless(extra_roots: Optional[List[str]] = None) -> Path:
@@ -48,9 +61,7 @@ def find_analyze_headless(extra_roots: Optional[List[str]] = None) -> Path:
         p = home / "support" / "analyzeHeadless"
         if p.exists():
             return p
-    raise GhidraExportError(
-        "Could not find Ghidra analyzeHeadless. Set GHIDRA_HOME or pass --ghidra-home."
-    )
+    raise GhidraExportError("Could not find Ghidra support/analyzeHeadless. Set GHIDRA_HOME or pass --ghidra-home.")
 
 
 def find_pyghidra_run(extra_roots: Optional[List[str]] = None) -> Optional[Path]:
@@ -69,6 +80,77 @@ def find_pyghidra_run(extra_roots: Optional[List[str]] = None) -> Optional[Path]
         if p.exists():
             return p
     return None
+
+
+def _parse_java_major(version_text: str) -> Optional[int]:
+    # Handles both `openjdk version "21.0.10"` and legacy `1.8.0` formats.
+    m = re.search(r'version\s+"([^"]+)"', version_text)
+    if not m:
+        return None
+    version = m.group(1)
+    if version.startswith("1."):
+        parts = version.split(".")
+        if len(parts) > 1 and parts[1].isdigit():
+            return int(parts[1])
+        return None
+    first = re.split(r"[.+_-]", version)[0]
+    return int(first) if first.isdigit() else None
+
+
+def _run_java_version(env: Optional[Dict[str, str]] = None) -> Tuple[Optional[int], str, str]:
+    java = shutil.which("java", path=(env or os.environ).get("PATH")) or "java"
+    try:
+        proc = subprocess.run([java, "-version"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, env=env, timeout=15)
+        text = proc.stdout or ""
+        return _parse_java_major(text), java, text.strip()
+    except Exception as e:
+        return None, java, f"java -version failed: {type(e).__name__}: {e}"
+
+
+def _check_java21(env: Optional[Dict[str, str]], log: Optional[Path], verbose: bool) -> None:
+    major, java, text = _run_java_version(env=env)
+    _log_line(log, f"[preflight] java={java}")
+    _log_line(log, f"[preflight] java -version: {text}")
+    if verbose:
+        print(f"[preflight] java={java}", flush=True)
+        print(f"[preflight] java -version: {text}", flush=True)
+    if major is None or major < 21:
+        raise GhidraExportError(
+            "Ghidra 12.x requires JDK 21+ but the active Java is not suitable.\n"
+            f"Detected java: {java}\n"
+            f"Version output:\n{text}\n\n"
+            "Fix without root, for example:\n"
+            "  export JAVA_HOME=/home/wgh/tools/jdk-21\n"
+            "  export PATH=\"$JAVA_HOME/bin:$PATH\"\n"
+            "  java -version\n"
+        )
+
+
+def _check_pyghidra_import(log: Optional[Path], verbose: bool) -> None:
+    proc = subprocess.run(
+        [sys.executable, "-c", "import pyghidra, jpype; print('pyghidra import ok')"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=30,
+    )
+    text = (proc.stdout or "").strip()
+    _log_line(log, f"[preflight] python={sys.executable}")
+    _log_line(log, f"[preflight] pyghidra import: returncode={proc.returncode}; {text}")
+    if verbose:
+        print(f"[preflight] python={sys.executable}", flush=True)
+        print(f"[preflight] pyghidra import: returncode={proc.returncode}; {text}", flush=True)
+    if proc.returncode != 0:
+        raise GhidraExportError(
+            "PyGhidra is not installed in the active Python environment.\n"
+            f"Python: {sys.executable}\n"
+            f"Output:\n{text}\n\n"
+            "Install it explicitly instead of letting pyghidraRun ask interactively:\n"
+            "  source extractor/.venv/bin/activate\n"
+            "  pip install -r requirements-ghidra.txt\n"
+            "or:\n"
+            "  pip install pyghidra jpype1 packaging\n"
+        )
 
 
 def _build_headless_cmd(
@@ -128,6 +210,83 @@ def _choose_runtime(script_name: str, ghidra_home: Optional[str], extra_roots: l
     return "analyzeHeadless", runner
 
 
+def _log_line(log_path: Optional[Path], line: str) -> None:
+    if not log_path:
+        return
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    with log_path.open("a", encoding="utf-8") as f:
+        f.write(line.rstrip("\n") + "\n")
+
+
+def _run_ghidra_command(
+    cmd: List[str],
+    *,
+    env: Dict[str, str],
+    log_path: Path,
+    timeout_sec: int,
+    verbose: bool,
+) -> Tuple[int, str]:
+    _log_line(log_path, "[ghidra-export] CMD: " + " ".join(cmd))
+    _log_line(log_path, f"[ghidra-export] timeout_sec={timeout_sec}")
+    if verbose:
+        print("[ghidra-export] CMD: " + " ".join(cmd), flush=True)
+        print(f"[ghidra-export] stdout/stderr -> {log_path}", flush=True)
+
+    started = time.time()
+    proc = subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        stdin=subprocess.DEVNULL,
+        text=True,
+        bufsize=1,
+        env=env,
+    )
+    lines: List[str] = []
+    try:
+        assert proc.stdout is not None
+        while True:
+            if proc.poll() is not None:
+                rest = proc.stdout.read() or ""
+                if rest:
+                    for line in rest.splitlines():
+                        lines.append(line)
+                        _log_line(log_path, line)
+                        if verbose:
+                            print(line, flush=True)
+                break
+            line = proc.stdout.readline()
+            if line:
+                line = line.rstrip("\n")
+                lines.append(line)
+                _log_line(log_path, line)
+                if verbose:
+                    print(line, flush=True)
+                if "Do you wish to install PyGhidra" in line:
+                    proc.kill()
+                    raise GhidraExportError(
+                        "pyghidraRun attempted to ask an interactive question: 'Do you wish to install PyGhidra (y/n)?'.\n"
+                        "This is not allowed in the automated pipeline. Install dependencies first:\n"
+                        "  source extractor/.venv/bin/activate\n"
+                        "  pip install -r requirements-ghidra.txt\n"
+                        f"Full log: {log_path}"
+                    )
+            if time.time() - started > timeout_sec:
+                proc.kill()
+                raise GhidraExportError(
+                    f"Ghidra export timed out after {timeout_sec}s. Full stdout/stderr was written to: {log_path}"
+                )
+            if not line:
+                time.sleep(0.1)
+    finally:
+        try:
+            proc.wait(timeout=5)
+        except Exception:
+            proc.kill()
+
+    return proc.returncode or 0, "\n".join(lines)
+
+
 def export_with_ghidra(
     binary: str,
     out_json: str,
@@ -136,6 +295,10 @@ def export_with_ghidra(
     processor: Optional[str] = None,
     language_id: Optional[str] = None,
     max_functions: int = 0,
+    *,
+    timeout_sec: int = 1800,
+    log_path: str | None = None,
+    verbose: bool = False,
 ) -> dict:
     binary_path = Path(binary).resolve()
     out_json_path = Path(out_json).resolve()
@@ -148,11 +311,31 @@ def export_with_ghidra(
         raise GhidraExportError(f"Ghidra script missing: {script_dir_path / script_name}")
 
     extra_roots = [str(binary_path.parent), str(Path.cwd())]
+    if ghidra_home:
+        extra_roots.append(ghidra_home)
     runtime, runner = _choose_runtime(script_name, ghidra_home=ghidra_home, extra_roots=extra_roots)
     if not runner.exists():
         raise GhidraExportError(f"Ghidra launcher not found: {runner}")
 
     out_json_path.parent.mkdir(parents=True, exist_ok=True)
+    log = Path(log_path).resolve() if log_path else out_json_path.with_suffix(".ghidra.log")
+    # Fresh log for each run.
+    try:
+        log.unlink()
+    except FileNotFoundError:
+        pass
+
+    env = os.environ.copy()
+    # Propagate explicit Ghidra home so pyghidraRun sees the same installation.
+    if ghidra_home:
+        env["GHIDRA_HOME"] = str(Path(ghidra_home).resolve())
+
+    _log_line(log, f"[preflight] runtime={runtime}")
+    _log_line(log, f"[preflight] runner={runner}")
+    _check_java21(env=env, log=log, verbose=verbose)
+    if runtime == "pyghidra":
+        _check_pyghidra_import(log=log, verbose=verbose)
+
     project_root = Path(tempfile.mkdtemp(prefix="ghidra_kg_proj_"))
     project_name = "kgproj"
 
@@ -170,33 +353,28 @@ def export_with_ghidra(
         max_functions=max_functions,
     )
 
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    stdout = ""
     try:
-        shutil.rmtree(project_root, ignore_errors=True)
-    except Exception:
-        pass
+        returncode, stdout = _run_ghidra_command(cmd, env=env, log_path=log, timeout_sec=max(1, int(timeout_sec)), verbose=verbose)
+    finally:
+        try:
+            shutil.rmtree(project_root, ignore_errors=True)
+        except Exception:
+            pass
 
-    stdout = proc.stdout or ""
-
-    if proc.returncode != 0:
-        if runtime == "pyghidra" and "Do you wish to install PyGhidra" in stdout:
-            raise GhidraExportError(
-                "Ghidra tried to launch the Python exporter via PyGhidra, but PyGhidra is not installed "
-                "for this Ghidra user profile.\n"
-                "Create/install the Ghidra PyGhidra environment first, then rerun.\n\n"
-                f"CMD: {' '.join(cmd)}\n\n{stdout}"
-            )
-        raise GhidraExportError(f"Ghidra export failed\nCMD: {' '.join(cmd)}\n\n{stdout}")
+    if returncode != 0:
+        raise GhidraExportError(f"Ghidra export failed with return code {returncode}.\nCMD: {' '.join(cmd)}\nLog: {log}")
 
     if not out_json_path.exists():
         raise GhidraExportError(
-            f"Ghidra finished but output JSON missing: {out_json_path}\n\n"
-            f"Runtime: {runtime}\n"
-            f"CMD: {' '.join(cmd)}\n\n{stdout}"
+            f"Ghidra finished but output JSON is missing: {out_json_path}\n"
+            f"Runtime: {runtime}\nCMD: {' '.join(cmd)}\nLog: {log}"
         )
 
     data = json.loads(out_json_path.read_text(encoding="utf-8"))
     data.setdefault("_ghidra_stdout", stdout)
     data.setdefault("_ghidra_runtime", runtime)
     data.setdefault("_ghidra_cmd", cmd)
+    data.setdefault("_ghidra_log", str(log))
+    data.setdefault("_ghidra_timeout_sec", timeout_sec)
     return data

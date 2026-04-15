@@ -19,6 +19,7 @@ from fixedpoint_manifest_builder import build_fixedpoint_manifest
 from fixedpoint_selector import save_fixedpoint_prompt_bundle, save_fixedpoint_selector_plan
 from strategy_planner import build_llm_prompt_bundle, heuristic_plan, normalize_llm_plan
 from task_context import build_task_context, summarize_run_log
+from llm_strategy_layer import augment_plan_with_llm_strategies
 
 
 def _abs(path: str) -> str:
@@ -36,6 +37,7 @@ _PATH_ARG_NAMES = {
     "contract_bundle", "baseline_trace_json", "baseline_seed", "baseline_use_recent_exec",
     "binary", "ghidra_summary_json", "ghidra_export_json", "ghidra_outdir",
     "prompt_text", "bundle_json", "out_json", "out_raw_response", "prompt_bundle",
+    "llm_strategy_json",
     "selector_plan", "task_context", "llm_json", "shared_cache_root", "shared_query_cache_root",
     "trace_json", "manual_trace_json", "manual_seed", "stuck_report", "probe_guidance_summary",
     "contract_bundle", "trace_json", "seed_path", "baseline_trace_json", "baseline_seed",
@@ -2249,7 +2251,399 @@ def _configure_materialization_defaults(args):
         args.shared_query_cache_root = None
     if not hasattr(args, 'allow_aggressive'):
         args.allow_aggressive = False
+    # adaptive-mmio-loop reuses staged_loop() when no contract bundle is provided.
+    # Some staged-loop options are not part of the adaptive parser in older configs;
+    # materialization fallback must therefore supply safe defaults here instead of
+    # failing late after running Ghidra/fuzz/PDF extraction.
+    if not hasattr(args, 'max_weak_per_parent') or getattr(args, 'max_weak_per_parent', None) is None:
+        args.max_weak_per_parent = 1
 
+
+
+
+def _primary_hotspot_from_observer_views(views: Optional[Any]) -> Optional[Dict[str, Any]]:
+    if isinstance(views, dict):
+        rows = views.get('latest_window_discovered_streams') or views.get('discovered_streams') or []
+    elif isinstance(views, list):
+        rows = views
+    else:
+        rows = []
+    if rows and isinstance(rows[0], dict):
+        return dict(rows[0])
+    return None
+
+
+def _primary_hotspot_key(row: Optional[Dict[str, Any]]) -> Optional[str]:
+    if not row:
+        return None
+    addr = _normalize_hex(row.get('addr') or row.get('address_hex') or row.get('mmio_addr'))
+    if addr:
+        return addr
+    return None
+
+
+def _guidance_map_from_parent_entry(parent_entry: Dict[str, Any]) -> Dict[str, str]:
+    artifacts = parent_entry.get('artifacts') or {}
+    guidance_index_path = artifacts.get('guidance_index_path')
+    out: Dict[str, str] = {}
+    if not guidance_index_path or not os.path.exists(str(guidance_index_path)):
+        return out
+    try:
+        guidance_index = load_json(str(guidance_index_path))
+    except Exception as e:
+        warn(f"failed to load guidance index for materialized handoff: {guidance_index_path}: {e}")
+        return out
+    for item in guidance_index.get('compiled', []) or []:
+        if not isinstance(item, dict):
+            continue
+        cid = str(item.get('candidate_id') or '')
+        gpath = item.get('guidance_path')
+        if cid and gpath:
+            out[cid] = _abs(str(gpath))
+    return out
+
+
+def _materialized_candidate_short_term_class(report: Dict[str, Any], control_report: Optional[Dict[str, Any]], args) -> Tuple[str, Dict[str, Any]]:
+    sb = report.get('score_breakdown') or {}
+    cmp = report.get('compare_to_control') or {}
+    grs = report.get('guidance_runtime_summary') or {}
+    istats = _intervention_stats(grs, {'run_summary': report.get('run_summary') or {}})
+    verdict = str(report.get('verdict') or '')
+    child_cov = int(sb.get('child_cov') or (report.get('run_summary') or {}).get('last_cov') or 0)
+    child_hangs = int(sb.get('child_hangs') or (report.get('run_summary') or {}).get('last_hang') or 0)
+    ctrl_cov = 0
+    ctrl_hangs = 0
+    if control_report:
+        ctrl_sb = control_report.get('score_breakdown') or {}
+        ctrl_cov = int(ctrl_sb.get('child_cov') or (control_report.get('run_summary') or {}).get('last_cov') or 0)
+        ctrl_hangs = int(ctrl_sb.get('child_hangs') or (control_report.get('run_summary') or {}).get('last_hang') or 0)
+    child_cov_vs_control = int(cmp.get('child_cov_vs_control') if cmp.get('child_cov_vs_control') is not None else child_cov - ctrl_cov)
+    child_hangs_vs_control = int(cmp.get('child_hangs_vs_control') if cmp.get('child_hangs_vs_control') is not None else child_hangs - ctrl_hangs)
+    slack = int(getattr(args, 'portfolio_intervention_coverage_slack', 64) or 64)
+    has_signal = bool(
+        int(sb.get('fire_count') or 0) > 0
+        or int(sb.get('active_stage_count') or 0) > 0
+        or bool(istats.get('intervention_signal'))
+    )
+    meta = {
+        'verdict': verdict,
+        'child_cov': child_cov,
+        'control_cov': ctrl_cov,
+        'child_cov_vs_control': child_cov_vs_control,
+        'child_hangs': child_hangs,
+        'control_hangs': ctrl_hangs,
+        'child_hangs_vs_control': child_hangs_vs_control,
+        'coverage_slack': slack,
+        'has_intervention_signal': has_signal,
+        'intervention_stats': istats,
+        'score_breakdown': sb,
+        'compare_to_control': cmp,
+    }
+    if verdict == 'regressive' or child_hangs_vs_control > 0 or child_cov_vs_control < -slack:
+        return 'harmful_short_term', meta
+    if verdict == 'effective' or child_cov_vs_control > 0 or int(sb.get('delta_cov') or 0) > 0 or int(sb.get('new_hotspots') or 0) > 0:
+        return 'immediate_good', meta
+    if has_signal:
+        return 'weak_but_alive', meta
+    return 'no_signal', meta
+
+
+def _strategy_initial_credit(short_class: str, short_meta: Dict[str, Any]) -> float:
+    cov_vs = float(short_meta.get('child_cov_vs_control') or 0.0)
+    istats = short_meta.get('intervention_stats') or {}
+    fire = float(min(int(istats.get('effective_action_fires') or 0), 3))
+    seq = float(min(int(istats.get('sequence_progress') or 0), 2))
+    active = float(min(int(istats.get('active_stage_count') or 0), 2))
+    if short_class == 'immediate_good':
+        return 30.0 + cov_vs + 4.0 * fire + 2.0 * seq + active
+    if short_class == 'weak_but_alive':
+        return 8.0 + 2.0 * fire + 2.0 * seq + active + max(cov_vs, -10.0) * 0.1
+    if short_class == 'harmful_short_term':
+        return -50.0 + min(cov_vs, 0.0)
+    return -10.0
+
+
+def _materialized_strategy_pool_from_summary(materialized_summary: Optional[Dict[str, Any]], args) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    strategy_pool: List[Dict[str, Any]] = [
+        _new_strategy_entry(name='control', source='control', guidance_file=None, origin='materialized_control')
+    ]
+    promotion_rows: List[Dict[str, Any]] = []
+    if not isinstance(materialized_summary, dict):
+        return strategy_pool, {'promoted': [], 'skipped': [], 'reason': 'missing_materialized_summary'}
+
+    rounds = materialized_summary.get('rounds') or []
+    trial_windows = max(1, int(getattr(args, 'strategy_trial_windows', 1) or 1))
+    max_size = max(2, int(getattr(args, 'strategy_pool_max_size', 4) or 4))
+
+    for round_report in rounds:
+        for parent_entry in (round_report.get('parents') or []):
+            guidance_map = _guidance_map_from_parent_entry(parent_entry)
+            reports = parent_entry.get('candidate_reports') or []
+            control_report = next((r for r in reports if str(r.get('candidate_id') or '') == 'control'), None)
+            for report in reports:
+                if not isinstance(report, dict):
+                    continue
+                cid = str(report.get('candidate_id') or '')
+                if not cid or cid == 'control':
+                    continue
+                guidance_file = guidance_map.get(cid)
+                short_class, short_meta = _materialized_candidate_short_term_class(report, control_report, args)
+                row = {
+                    'round_index': round_report.get('round_index'),
+                    'parent_checkpoint_id': parent_entry.get('checkpoint_id'),
+                    'candidate_id': cid,
+                    'guidance_file': guidance_file,
+                    'short_term_class': short_class,
+                    'short_term_meta': short_meta,
+                    'promoted': False,
+                    'skip_reason': None,
+                }
+                if not guidance_file:
+                    row['skip_reason'] = 'missing_guidance_file'
+                    promotion_rows.append(row)
+                    continue
+                if short_class not in {'immediate_good', 'weak_but_alive'}:
+                    row['skip_reason'] = short_class
+                    promotion_rows.append(row)
+                    continue
+                entry = _new_strategy_entry(
+                    name=cid,
+                    source=f'materialized:{short_class}',
+                    guidance_file=guidance_file,
+                    origin='materialized_staged_loop',
+                    event_index=int(round_report.get('round_index') or 0),
+                )
+                if _find_strategy_entry(strategy_pool, guidance_file, entry.get('source')):
+                    row['skip_reason'] = 'duplicate_strategy'
+                    promotion_rows.append(row)
+                    continue
+                entry['trial_windows_remaining'] = trial_windows + (1 if short_class == 'immediate_good' else 0)
+                entry['credit'] = _strategy_initial_credit(short_class, short_meta)
+                entry['short_term_class'] = short_class
+                entry['short_term_verdict'] = report.get('verdict')
+                entry['short_term_meta'] = short_meta
+                entry['materialized_candidate_id'] = cid
+                entry['materialized_parent_checkpoint_id'] = parent_entry.get('checkpoint_id')
+                strategy_pool.append(entry)
+                row['promoted'] = True
+                row['strategy_id'] = entry['strategy_id']
+                promotion_rows.append(row)
+
+    controls = [s for s in strategy_pool if s.get('source') == 'control']
+    others = [s for s in strategy_pool if s.get('source') != 'control']
+    others.sort(key=lambda e: (float(e.get('credit') or 0.0), 1 if e.get('short_term_class') == 'immediate_good' else 0), reverse=True)
+    strategy_pool[:] = controls[:1] + others[:max_size - 1]
+    promoted = [r for r in promotion_rows if r.get('promoted')]
+    skipped = [r for r in promotion_rows if not r.get('promoted')]
+    return strategy_pool, {
+        'policy': 'short_term_candidate_handoff_to_long_horizon_pool',
+        'promoted': promoted,
+        'skipped': skipped,
+        'pool_size': len(strategy_pool),
+        'active_intervention_count': len([s for s in strategy_pool if s.get('source') != 'control']),
+    }
+
+
+def _queue_dir_from_materialized_summary(materialized_summary: Optional[Dict[str, Any]]) -> Optional[str]:
+    if not isinstance(materialized_summary, dict):
+        return None
+    initial_seed = materialized_summary.get('initial_seed') or {}
+    q = initial_seed.get('queue_dir')
+    if q:
+        return str(q)
+    final_beam = materialized_summary.get('final_beam') or []
+    if final_beam and isinstance(final_beam[0], dict) and final_beam[0].get('queue_dir'):
+        return str(final_beam[0].get('queue_dir'))
+    return None
+
+
+def _baseline_cov_from_materialized_summary(materialized_summary: Optional[Dict[str, Any]]) -> int:
+    if not isinstance(materialized_summary, dict):
+        return 0
+    return _coverage_from_run_summary((materialized_summary.get('initial_seed') or {}).get('run_summary'))
+
+
+def _baseline_hang_from_materialized_summary(materialized_summary: Optional[Dict[str, Any]]) -> int:
+    if not isinstance(materialized_summary, dict):
+        return 0
+    return int(((materialized_summary.get('initial_seed') or {}).get('run_summary') or {}).get('last_hang') or 0)
+
+
+def _run_materialized_stage_for_new_hotspot(args, *, event_root: Path, current_import_dir: Optional[str]) -> Dict[str, Any]:
+    stage_args = argparse.Namespace(**vars(args))
+    stage_args.out_root = str(event_root / 'materialization')
+    stage_args.import_dir = current_import_dir
+    stage_args.initial_run_for = str(getattr(args, 'probe_run_for', None) or '30s')
+    stage_args.candidate_run_for = str(getattr(args, 'portfolio_run_for', None) or getattr(args, 'followup_run_for', None) or '30s')
+    stage_args.rounds = 1
+    stage_args.beam_width = max(1, min(2, int(getattr(args, 'strategy_pool_max_size', 2) or 2)))
+    stage_args.max_weak_per_parent = max(1, int(getattr(args, 'max_weak_per_parent', 1) or 1))
+    _configure_materialization_defaults(stage_args)
+    staged_loop(stage_args)
+    summary_path = Path(stage_args.out_root) / 'report' / 'staged_loop_summary.json'
+    return {
+        'summary_path': str(summary_path),
+        'summary': _maybe_json(str(summary_path)),
+        'import_dir': current_import_dir,
+    }
+
+
+def _run_materialized_long_horizon_from_summary(args, out_root: Path, fuzzer_bin: str, materialized_summary: Dict[str, Any]) -> Dict[str, Any]:
+    strategy_pool, promotion_summary = _materialized_strategy_pool_from_summary(materialized_summary, args)
+    current_import_dir = _queue_dir_from_materialized_summary(materialized_summary)
+    if not current_import_dir:
+        raise RuntimeError('materialized long-horizon handoff failed: no seed queue_dir found in staged-loop summary')
+
+    total_windows = max(0, int(getattr(args, 'main_window_count', 0) or 0))
+    main_window_run_for = str(getattr(args, 'main_window_run_for', None) or getattr(args, 'followup_run_for', None) or '300s')
+    trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+    prev_cov = _baseline_cov_from_materialized_summary(materialized_summary)
+    prev_hang = _baseline_hang_from_materialized_summary(materialized_summary)
+    baseline_hotspot = _primary_hotspot_from_observer_views((materialized_summary.get('initial_seed') or {}).get('latest_window_discovered_streams'))
+    baseline_hotspot_key = _primary_hotspot_key(baseline_hotspot)
+
+    window_reports: List[Dict[str, Any]] = []
+    adaptive_events: List[Dict[str, Any]] = []
+    recent_cov_deltas: List[int] = []
+    event_index = 0
+
+    for window_index in range(1, total_windows + 1):
+        pre_schedule_snapshot = _strategy_pool_snapshot(strategy_pool)
+        candidate_scores = _strategy_candidate_scores(strategy_pool, current_window=window_index)
+        chosen, schedule_policy = _choose_strategy_for_window(strategy_pool, window_index, args)
+        chosen['windows_selected'] = int(chosen.get('windows_selected') or 0) + 1
+        window_root = out_root / 'materialized_long_horizon' / 'main_windows' / f'window_{window_index:03d}_{_safe_id(chosen.get("name") or chosen.get("source") or "strategy")}'
+        _ensure_dir(str(window_root))
+        run = run_hail_fuzz(
+            manifest_path=args.fuzzer_manifest,
+            firmware_config=args.firmware_config,
+            ghidra_src=args.ghidra_src,
+            workdir=str(window_root / 'workdir'),
+            run_log=str(window_root / 'run.log'),
+            run_for=main_window_run_for,
+            observer_dir=str(window_root / 'observer'),
+            guidance_file=chosen.get('guidance_file'),
+            guidance_summary_out=str(window_root / 'guidance_runtime_summary.json') if chosen.get('guidance_file') else None,
+            import_dir=current_import_dir,
+            fuzzer_bin=fuzzer_bin,
+            setenv=args.setenv,
+            dump_trace=bool(getattr(args, 'dump_trace', False)),
+            trace_out=str((window_root / trace_base).with_suffix('.json')),
+            trace_text_out=str((window_root / trace_base).with_suffix('.log')),
+            trace_meta_out=str((window_root / trace_base).with_suffix('.meta.json')),
+            trace_basename=trace_base,
+        )
+        save_json(str(window_root / 'run_fuzz_summary.json'), run)
+        grs = _maybe_json(str(window_root / 'guidance_runtime_summary.json')) or {}
+        cov = _coverage_from_run_summary(run.get('run_summary'))
+        cov_delta = int(cov) - int(prev_cov)
+        current_hang = _run_last_hang(run)
+        hang_delta = int(current_hang) - int(prev_hang)
+        prev_cov = int(cov)
+        prev_hang = int(current_hang)
+        current_import_dir = _queue_dir(run.get('workdir'))
+        _update_strategy_after_window(chosen, window_index=window_index, run=run, guidance_summary=grs, cov_delta=cov_delta, hang_delta=hang_delta)
+        _maybe_cool_strategy(chosen, args)
+        observer_views = _ensure_observer_latest_files(str(window_root / 'observer'))
+        primary_hotspot = _primary_hotspot_from_observer_views(observer_views)
+        primary_hotspot_key = _primary_hotspot_key(primary_hotspot)
+        hotspot_changed = bool(baseline_hotspot_key and primary_hotspot_key and primary_hotspot_key != baseline_hotspot_key)
+        istats = _intervention_stats(grs, run)
+        window_reports.append({
+            'window_index': window_index,
+            'schedule_policy': schedule_policy,
+            'selected_strategy_id': chosen.get('strategy_id'),
+            'selected_strategy_name': chosen.get('name'),
+            'selected_strategy_source': chosen.get('source'),
+            'selected_strategy_reason': schedule_policy,
+            'candidate_scores': candidate_scores,
+            'strategy_pool_snapshot': pre_schedule_snapshot,
+            'guidance_file': chosen.get('guidance_file'),
+            'run': run,
+            'guidance_runtime_summary': grs,
+            'coverage_delta_vs_prev_window': cov_delta,
+            'hang_delta_vs_prev_window': hang_delta,
+            'effective_intervention_stats': istats,
+            'primary_hotspot': primary_hotspot,
+            'primary_hotspot_key': primary_hotspot_key,
+            'baseline_primary_hotspot_key': baseline_hotspot_key,
+            'primary_hotspot_changed': hotspot_changed,
+            'strategy_snapshot': dict(chosen),
+        })
+        recent_cov_deltas.append(cov_delta)
+        max_recent = max(2, int(getattr(args, 'adaptive_plateau_windows', 0) or 0), int(getattr(args, 'adaptive_period_windows', 0) or 0), 8)
+        recent_cov_deltas = recent_cov_deltas[-max_recent:]
+
+        trigger_reasons = _should_trigger_adaptive_window(window_index=window_index, recent_cov_deltas=recent_cov_deltas, args=args)
+        if hotspot_changed and 'primary_hotspot_changed' not in trigger_reasons:
+            trigger_reasons.append('primary_hotspot_changed')
+        if trigger_reasons:
+            event_index += 1
+            event_root = out_root / 'materialized_long_horizon' / 'adaptive_events' / f'event_{event_index:03d}'
+            event_record: Dict[str, Any] = {
+                'event_index': event_index,
+                'triggered_after_window': window_index,
+                'trigger_reasons': trigger_reasons,
+                'primary_hotspot': primary_hotspot,
+                'primary_hotspot_key': primary_hotspot_key,
+                'pre_event_strategy_pool': _strategy_pool_snapshot(strategy_pool),
+            }
+            if hotspot_changed:
+                try:
+                    stage = _run_materialized_stage_for_new_hotspot(args, event_root=event_root, current_import_dir=current_import_dir)
+                    new_pool, new_promotion = _materialized_strategy_pool_from_summary(stage.get('summary'), args)
+                    existing_guidance = {s.get('guidance_file') for s in strategy_pool if s.get('guidance_file')}
+                    added: List[Dict[str, Any]] = []
+                    max_size = max(2, int(getattr(args, 'strategy_pool_max_size', 4) or 4))
+                    for entry in new_pool:
+                        if entry.get('source') == 'control':
+                            continue
+                        gf = entry.get('guidance_file')
+                        if gf and gf in existing_guidance:
+                            continue
+                        entry['origin'] = 'materialized_adaptive_event'
+                        entry['last_promoted_after_window'] = window_index
+                        strategy_pool.append(entry)
+                        added.append(entry)
+                        if gf:
+                            existing_guidance.add(gf)
+                    controls = [s for s in strategy_pool if s.get('source') == 'control']
+                    others = [s for s in strategy_pool if s.get('source') != 'control']
+                    others.sort(key=_strategy_window_score, reverse=True)
+                    strategy_pool[:] = controls[:1] + others[:max_size - 1]
+                    event_record['rematerialized'] = True
+                    event_record['materialized_stage'] = stage
+                    event_record['promotion_summary'] = new_promotion
+                    event_record['added_strategies'] = _strategy_pool_snapshot(added)
+                except Exception as e:
+                    warn(f'materialized adaptive rematerialization failed at event {event_index}: {e}')
+                    event_record['rematerialized'] = False
+                    event_record['error'] = str(e)
+            else:
+                event_record['rematerialized'] = False
+                event_record['reason'] = 'periodic_or_plateau_record_only'
+            event_record['post_event_strategy_pool'] = _strategy_pool_snapshot(strategy_pool)
+            adaptive_events.append(event_record)
+
+    final_summary = {
+        'schema': 'mf_adaptive_mmio_loop_materialized_long_horizon_v1',
+        'mode': 'materialized_fallback_with_long_horizon',
+        'materialized_stage_summary': materialized_summary,
+        'promotion_summary': promotion_summary,
+        'baseline_primary_hotspot': baseline_hotspot,
+        'baseline_primary_hotspot_key': baseline_hotspot_key,
+        'main_window_run_for': main_window_run_for,
+        'main_window_count': total_windows,
+        'adaptive_period_windows': int(getattr(args, 'adaptive_period_windows', 0) or 0),
+        'adaptive_plateau_windows': int(getattr(args, 'adaptive_plateau_windows', 0) or 0),
+        'windows': window_reports,
+        'adaptive_events': adaptive_events,
+        'strategy_pool': strategy_pool,
+        'final_strategy_pool_snapshot': _strategy_pool_snapshot(strategy_pool),
+        'final_queue_dir': current_import_dir,
+    }
+    save_json(str(out_root / 'materialized_long_horizon_summary.json'), final_summary)
+    return final_summary
 
 def _run_adaptive_mmio_loop_materialized(args, out_root: Path, fuzzer_bin: str) -> Dict[str, Any]:
     _normalize_cli_paths(args)
@@ -2263,8 +2657,8 @@ def _run_adaptive_mmio_loop_materialized(args, out_root: Path, fuzzer_bin: str) 
         staged_loop(args)
         summary_path = out_root / 'report' / 'staged_loop_summary.json'
     materialized_summary = _maybe_json(str(summary_path))
-    return {
-        'schema': 'mf_adaptive_mmio_loop_materialized_v1',
+    base_summary = {
+        'schema': 'mf_adaptive_mmio_loop_materialized_v2',
         'mode': 'materialized_fallback',
         'materialization_mode': mode,
         'contract_bundle': None,
@@ -2277,6 +2671,15 @@ def _run_adaptive_mmio_loop_materialized(args, out_root: Path, fuzzer_bin: str) 
         'summary_path': str(summary_path),
         'materialized_summary': materialized_summary,
     }
+    if mode == 'staged-loop' and int(getattr(args, 'main_window_count', 0) or 0) > 0:
+        if not isinstance(materialized_summary, dict):
+            warn('materialized long-horizon requested, but staged-loop summary is missing or invalid')
+        else:
+            long_summary = _run_materialized_long_horizon_from_summary(args, out_root, fuzzer_bin, materialized_summary)
+            base_summary['long_horizon_summary_path'] = str(out_root / 'materialized_long_horizon_summary.json')
+            base_summary['long_horizon_summary'] = long_summary
+            base_summary['mode'] = 'materialized_fallback_with_long_horizon'
+    return base_summary
 
 
 def _run_adaptive_mmio_loop(args):
@@ -2294,6 +2697,428 @@ def _run_adaptive_mmio_loop(args):
         summary = _run_adaptive_mmio_loop_materialized(args, out_root, fuzzer_bin)
     save_json(str(out_root / 'adaptive_mmio_loop_summary.json'), summary)
     info(f"adaptive-mmio-loop summary written: {out_root / 'adaptive_mmio_loop_summary.json'}")
+
+
+
+# --- PATCH: trace fallback + hail-fuzz watchdog for materialized closed loop ---
+def _mf_duration_to_seconds(value) -> Optional[float]:
+    """Parse durations such as 120s, 15m, 1h, or a plain seconds value."""
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    s = str(value).strip().lower()
+    if not s:
+        return None
+    multipliers = {
+        "ms": 0.001,
+        "s": 1.0,
+        "sec": 1.0,
+        "secs": 1.0,
+        "second": 1.0,
+        "seconds": 1.0,
+        "m": 60.0,
+        "min": 60.0,
+        "mins": 60.0,
+        "minute": 60.0,
+        "minutes": 60.0,
+        "h": 3600.0,
+        "hr": 3600.0,
+        "hrs": 3600.0,
+        "hour": 3600.0,
+        "hours": 3600.0,
+        "d": 86400.0,
+        "day": 86400.0,
+        "days": 86400.0,
+    }
+    m = re.fullmatch(r"\s*([0-9]+(?:\.[0-9]+)?)\s*([a-z]*)\s*", s)
+    if not m:
+        return None
+    number = float(m.group(1))
+    unit = m.group(2) or "s"
+    return number * multipliers.get(unit, 1.0)
+
+
+def _run_logged_hail_fuzz_with_timeout(cmd: List[str], *, cwd: Optional[str], env: Dict[str, str], log_path: str, run_for: str = "300s"):
+    """
+    Run hail-fuzz with an outer watchdog derived from RUN_FOR.
+
+    The fuzzer should still obey env['RUN_FOR']; this wrapper only prevents
+    accidental multi-hour runs when the lower layer ignores RUN_FOR or a target
+    config overrides it.
+    """
+    budget = _mf_duration_to_seconds(run_for)
+    if budget is None or budget <= 0:
+        return _run_logged(cmd, cwd=cwd, env=env, log_path=log_path)
+
+    slack = max(30.0, min(300.0, budget * 0.20))
+    timeout = budget + slack
+    log_path_s = _abs(log_path)
+    _ensure_dir(str(Path(log_path_s).parent))
+    info(f"exec cwd={cwd or os.getcwd()} timeout={timeout:.1f}s RUN_FOR={run_for} :: {' '.join(shlex.quote(str(x)) for x in cmd)}")
+
+    import signal
+
+    timed_out = False
+    rc = None
+    with open(log_path_s, "w", encoding="utf-8", errors="replace") as logf:
+        proc = subprocess.Popen(
+            cmd,
+            cwd=cwd,
+            env=env,
+            stdout=logf,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        try:
+            rc = proc.wait(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            timed_out = True
+            warn(f"hail-fuzz exceeded RUN_FOR={run_for}; sending SIGINT after {timeout:.1f}s")
+            try:
+                proc.send_signal(signal.SIGINT)
+                rc = proc.wait(timeout=45)
+            except subprocess.TimeoutExpired:
+                warn("hail-fuzz did not exit after SIGINT; terminating")
+                proc.terminate()
+                try:
+                    rc = proc.wait(timeout=15)
+                except subprocess.TimeoutExpired:
+                    warn("hail-fuzz did not terminate; killing")
+                    proc.kill()
+                    rc = proc.wait(timeout=10)
+
+    if timed_out:
+        try:
+            with open(log_path_s, "a", encoding="utf-8", errors="replace") as f:
+                f.write(f"\n[closed_loop watchdog] stopped hail-fuzz after RUN_FOR={run_for} plus slack; returncode={rc}\n")
+        except Exception:
+            pass
+        return
+
+    if rc != 0:
+        raise RuntimeError(f"command failed ({rc}), see log: {log_path}")
+
+
+def _trace_fallback_int_auto(value: Any) -> Optional[int]:
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return int(value)
+    if isinstance(value, int):
+        return value
+    if isinstance(value, float):
+        return int(value)
+    s = str(value).strip()
+    if not s:
+        return None
+    try:
+        return int(s, 0)
+    except Exception:
+        return None
+
+
+def _trace_fallback_iter_dicts(obj: Any, max_items: int = 2_000_000):
+    """Iterate dict objects in a nested JSON structure without recursion."""
+    stack = [obj]
+    seen = 0
+    while stack and seen < max_items:
+        cur = stack.pop()
+        seen += 1
+        if isinstance(cur, dict):
+            yield cur
+            for v in cur.values():
+                if isinstance(v, (dict, list)):
+                    stack.append(v)
+        elif isinstance(cur, list):
+            for v in cur:
+                if isinstance(v, (dict, list)):
+                    stack.append(v)
+
+
+def _trace_fallback_event_addr(ev: Dict[str, Any]) -> Optional[int]:
+    """Extract an MMIO address from one trace-event-like dict."""
+    for key in (
+        "mmio_addr", "mmio_address", "last_read", "read_addr", "read_address",
+        "load_addr", "load_address", "access_addr", "access_address",
+    ):
+        addr = _trace_fallback_int_auto(ev.get(key))
+        if addr is not None:
+            return addr
+
+    kind = " ".join(str(ev.get(k, "")) for k in ("kind", "type", "event", "op", "name")).lower()
+    if "mmio" in kind or "periph" in kind or "read" in kind or "load" in kind:
+        addr = _trace_fallback_int_auto(ev.get("addr") or ev.get("address"))
+        if addr is not None:
+            return addr
+    return None
+
+
+def _trace_fallback_event_width(ev: Dict[str, Any]) -> int:
+    for key in ("mmio_size", "size", "width", "bytes", "access_size"):
+        width = _trace_fallback_int_auto(ev.get(key))
+        if width is not None and width > 0:
+            if width in (8, 16, 32, 64):
+                return max(1, width // 8)
+            return int(width)
+    return 4
+
+
+
+def _trace_fallback_infer_target_hints(firmware_config: Optional[str] = None) -> List[str]:
+    """
+    Infer a small target-peripheral hint set from the benchmark path/name.
+
+    This is intentionally conservative. It is only used to rank synthesized
+    trace hotspots when the real stream observer produced no files. For P2IM
+    Console, the semantic blocker is usually UART status polling; controller
+    and pinmux registers are kept as auxiliary context rather than primary
+    evidence targets.
+    """
+    text = str(firmware_config or "").lower()
+    hints: List[str] = []
+    if "console" in text or "uart" in text or "serial" in text:
+        hints.append("uart")
+    if "i2c" in text or "twi" in text:
+        hints.append("i2c")
+    if "spi" in text:
+        hints.append("spi")
+    if "adc" in text:
+        hints.append("adc")
+    if "dac" in text:
+        hints.append("dac")
+    if "timer" in text or "tim" in text:
+        hints.append("timer")
+    if "rtc" in text:
+        hints.append("rtc")
+    if "watchdog" in text or "wdog" in text or "wwdg" in text:
+        hints.append("watchdog")
+    return hints
+
+
+def _trace_fallback_addr_family(addr_i: int) -> str:
+    """
+    Coarse Kinetis/K64 address family classification used only for fallback
+    ranking. SVD/PDF resolution remains the authoritative source later.
+    """
+    a = int(addr_i)
+    if 0x4006A000 <= a < 0x4006F000 or 0x400EA000 <= a < 0x400EC000:
+        return "uart"
+    if 0x40066000 <= a < 0x40067000 or 0x40067000 <= a < 0x40068000:
+        return "i2c"
+    if 0x4002C000 <= a < 0x4002F000:
+        return "spi"
+    if 0x4003B000 <= a < 0x4003C000:
+        return "adc"
+    if 0x400CC000 <= a < 0x400CD000:
+        return "dac"
+    if 0x40038000 <= a < 0x4003B000 or 0x400B8000 <= a < 0x400BB000:
+        return "timer"
+    if 0x4003D000 <= a < 0x4003E000:
+        return "rtc"
+
+    # Boot/config/controller families. These may be useful context, but should
+    # not become the first intervention target for a UART Console benchmark.
+    if 0x40064000 <= a < 0x40065000:
+        return "mcg"
+    if 0x40047000 <= a < 0x40049000:
+        return "sim"
+    if 0x40049000 <= a < 0x4004E000:
+        return "port"
+    if 0x400FF000 <= a < 0x40100000:
+        return "gpio"
+    if 0xE0000000 <= a < 0xE0100000:
+        return "nvic"
+    return "other"
+
+
+def _trace_fallback_family_priority(family: str, target_hints: List[str]) -> int:
+    fam = str(family or "").lower()
+    hints = {str(x).lower() for x in (target_hints or [])}
+
+    if fam in hints:
+        return 0
+
+    # Runtime data/status peripherals should come before configuration
+    # controllers even when no benchmark hint is available.
+    if fam in {"uart", "i2c", "spi", "adc", "dac", "timer", "rtc", "watchdog"}:
+        return 1
+
+    # Controller/pinmux/clock families are deliberately auxiliary. They are
+    # often hot during boot or polling, but solving them first expands the
+    # problem too early and can distract the planner from the real I/O blocker.
+    if fam in {"mcg", "sim", "port", "gpio", "nvic", "pmc", "rcc"}:
+        return 3
+
+    return 2
+
+
+def _synthesize_observer_from_trace(
+    observer_dir: str,
+    trace_json: str,
+    top_k: int = 64,
+    firmware_config: Optional[str] = None,
+    primary_limit: int = 1,
+) -> int:
+    """
+    Fallback: if stream observer produced no files, synthesize observer hotspot
+    rows from replay_trace.json so staged-loop still has MMIO hotspots.
+
+    Important policy:
+    - The *latest window* exposes only the current primary hotspot, normally one
+      register. This keeps staged-loop focused.
+    - discovered_streams.json is also kept narrow because evidence_builder
+      consumes it. Auxiliary entries are saved separately as auxiliary_hotspots.json
+      and all_ranked_hotspots.json for debugging and future rounds.
+    - Ranking is target-aware: for Console, UART hotspots are preferred over
+      MCG/PORT/SIM boot/config hotspots even if those have larger raw counts.
+    """
+    obs = Path(observer_dir).resolve()
+    trace_path = Path(trace_json).resolve()
+    if not trace_path.exists():
+        warn(f"trace fallback skipped: replay trace missing: {trace_path}")
+        return 0
+
+    try:
+        trace_data = load_json(str(trace_path))
+    except Exception as e:
+        warn(f"trace fallback failed to load {trace_path}: {e}")
+        return 0
+
+    rows: Dict[str, Dict[str, Any]] = {}
+    exec_ids_by_addr: Dict[str, set] = {}
+    order = 0
+
+    for ev in _trace_fallback_iter_dicts(trace_data):
+        addr_i = _trace_fallback_event_addr(ev)
+        if addr_i is None:
+            continue
+        if not (0x40000000 <= addr_i < 0x60000000 or 0xE0000000 <= addr_i < 0xE0100000):
+            continue
+
+        width = _trace_fallback_event_width(ev)
+        key = f"0x{addr_i:08X}"
+        family = _trace_fallback_addr_family(addr_i)
+        row = rows.setdefault(key, {
+            "addr": key,
+            "read_count": 0,
+            "width_counts": {},
+            "first_seen_order": order,
+            "last_seen_order": order,
+            "total_bytes_requested": 0,
+            "executions_seen": 0,
+            "interesting_executions_seen": 0,
+            "source": "trace_fallback",
+            "fallback_family": family,
+        })
+        row["read_count"] += 1
+        row["last_seen_order"] = order
+        row["total_bytes_requested"] += int(width)
+        row["width_counts"][str(width)] = int(row["width_counts"].get(str(width), 0)) + 1
+
+        exec_id = ev.get("exec_index") or ev.get("execution_index") or ev.get("exec_id")
+        if exec_id is not None:
+            exec_ids_by_addr.setdefault(key, set()).add(str(exec_id))
+        order += 1
+
+    for key, row in rows.items():
+        row["executions_seen"] = len(exec_ids_by_addr.get(key, set())) or (1 if row.get("read_count", 0) else 0)
+
+    if not rows:
+        warn(f"trace fallback found no MMIO hotspots in {trace_path}")
+        return 0
+
+    raw_by_count = sorted(
+        rows.values(),
+        key=lambda x: (int(x.get("read_count", 0)), int(x.get("executions_seen", 0)), str(x.get("addr", ""))),
+        reverse=True,
+    )
+    raw_rank = {str(row.get("addr")): idx + 1 for idx, row in enumerate(raw_by_count)}
+
+    target_hints = _trace_fallback_infer_target_hints(firmware_config)
+    for row in rows.values():
+        fam = str(row.get("fallback_family") or "other")
+        row["fallback_target_hints"] = target_hints
+        row["fallback_raw_read_rank"] = raw_rank.get(str(row.get("addr")), 0)
+        row["fallback_family_priority"] = _trace_fallback_family_priority(fam, target_hints)
+
+    ranked = sorted(
+        rows.values(),
+        key=lambda x: (
+            int(x.get("fallback_family_priority", 9)),
+            -int(x.get("read_count", 0)),
+            -int(x.get("executions_seen", 0)),
+            int(x.get("first_seen_order", 10**12)),
+            str(x.get("addr", "")),
+        ),
+    )[:top_k]
+
+    if not ranked:
+        warn(f"trace fallback found no ranked MMIO hotspots in {trace_path}")
+        return 0
+
+    primary_n = max(1, int(primary_limit or 1))
+    primary = [dict(x) for x in ranked[:primary_n]]
+    auxiliary = [dict(x) for x in ranked[primary_n:]]
+
+    for idx, row in enumerate(primary, start=1):
+        row["fallback_role"] = "primary"
+        row["fallback_rank"] = idx
+    for idx, row in enumerate(auxiliary, start=primary_n + 1):
+        row["fallback_role"] = "auxiliary"
+        row["fallback_rank"] = idx
+
+    discovered = primary + auxiliary
+    latest_discovered = primary
+
+    _ensure_dir(str(obs))
+    _ensure_dir(str(obs / "windows"))
+    summary = {
+        "window_index": 1,
+        "reason": "trace_fallback",
+        "snapshot_kind": "synthesized",
+        "finalized": True,
+        "window_execs": 1,
+        "window_interesting_execs": 0,
+        "window_elapsed_secs": 0,
+        "source_trace": str(trace_path),
+        "hotspot_count": len(discovered),
+        "primary_hotspot_count": len(latest_discovered),
+        "auxiliary_hotspot_count": len(auxiliary),
+        "target_hints": target_hints,
+        "primary_hotspots": latest_discovered,
+        "raw_top_hotspots": raw_by_count[:min(8, len(raw_by_count))],
+        "ranking_policy": "target_aware_primary_only_for_evidence_auxiliary_saved_separately",
+    }
+
+    # latest_window_discovered_streams is what the staged-loop should treat as
+    # the current problem. Keep it narrow: one primary hotspot by default.
+    save_json(str(obs / "latest_window_discovered_streams.json"), latest_discovered)
+
+    # Both latest_window_discovered_streams.json and discovered_streams.json
+    # are consumed by evidence_builder. Keep both narrow so this round solves
+    # only the current primary hotspot. Store the rest separately for debugging
+    # and for later rounds, but do not feed them into evidence/planner now.
+    save_json(str(obs / "discovered_streams.json"), latest_discovered)
+    save_json(str(obs / "auxiliary_hotspots.json"), auxiliary)
+    save_json(str(obs / "all_ranked_hotspots.json"), discovered)
+    save_json(str(obs / "latest_window_interesting_streams.json"), [])
+    save_json(str(obs / "interesting_streams.json"), [])
+    save_json(str(obs / "latest_window_summary.json"), summary)
+    save_json(str(obs / "windows" / "window_000001_discovered_streams.json"), latest_discovered)
+    save_json(str(obs / "windows" / "window_000001_auxiliary_hotspots.json"), auxiliary)
+    save_json(str(obs / "windows" / "window_000001_all_ranked_hotspots.json"), discovered)
+    save_json(str(obs / "windows" / "window_000001_interesting_streams.json"), [])
+    save_json(str(obs / "windows" / "window_000001_summary.json"), summary)
+
+    primary_desc = ", ".join(f"{r.get('addr')}:{r.get('fallback_family')}:{r.get('read_count')}" for r in latest_discovered)
+    info(
+        f"synthesized {len(discovered)} observer hotspot rows from trace fallback; "
+        f"primary=[{primary_desc}] auxiliary={len(auxiliary)} trace={trace_path}"
+    )
+    return len(discovered)
+
+# --- END PATCH: trace fallback + hail-fuzz watchdog for materialized closed loop ---
 
 def run_hail_fuzz(
     *,
@@ -2373,11 +3198,31 @@ def run_hail_fuzz(
     firmware_config_abs = _abs(firmware_config)
     resolved_bin = _abs(fuzzer_bin) if fuzzer_bin else ensure_fuzzer_binary(manifest_abs)
     cmd = [resolved_bin, firmware_config_abs]
-    _run_logged(cmd, cwd=str(Path(manifest_abs).resolve().parent), env=env, log_path=_abs(run_log))
+    _run_logged_hail_fuzz_with_timeout(
+        cmd,
+        cwd=str(Path(manifest_abs).resolve().parent),
+        env=env,
+        log_path=_abs(run_log),
+        run_for=run_for,
+    )
 
     if observer_dir:
         try:
-            _ensure_observer_latest_files(_abs(observer_dir))
+            observer_views = _ensure_observer_latest_files(_abs(observer_dir))
+            if not observer_views.get("latest_window_discovered_streams"):
+                trace_for_fallback = None
+                if isinstance(trace_paths, dict):
+                    trace_for_fallback = trace_paths.get("trace_out") or trace_paths.get("trace_json")
+                if trace_for_fallback:
+                    made = _synthesize_observer_from_trace(
+                        observer_dir=_abs(observer_dir),
+                        trace_json=trace_for_fallback,
+                        top_k=64,
+                        firmware_config=firmware_config_abs,
+                        primary_limit=1,
+                    )
+                    if made:
+                        _ensure_observer_latest_files(_abs(observer_dir))
         except Exception as e:
             warn(f"observer latest-file synthesis failed for {observer_dir}: {e}")
 
@@ -2918,6 +3763,12 @@ def _query_cache_sig(
     best_guidance: Optional[str],
     max_candidates: int,
     default_after_reads: int,
+    llm_strategy_enabled: bool = False,
+    llm_strategy_mode: str = 'prompt-only',
+    llm_strategy_model: Optional[str] = None,
+    llm_strategy_version: str = 'v1',
+    llm_strategy_max_candidates: int = 4,
+    llm_strategy_json: Optional[str] = None,
     ghidra_artifacts: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     return {
@@ -2935,6 +3786,12 @@ def _query_cache_sig(
         "best_guidance": best_guidance or "",
         "max_candidates": max_candidates,
         "default_after_reads": default_after_reads,
+        "llm_strategy_enabled": bool(llm_strategy_enabled),
+        "llm_strategy_mode": llm_strategy_mode,
+        "llm_strategy_model": llm_strategy_model or "",
+        "llm_strategy_version": llm_strategy_version,
+        "llm_strategy_max_candidates": int(llm_strategy_max_candidates),
+        "llm_strategy_json": llm_strategy_json or "",
     }
 
 
@@ -2959,6 +3816,12 @@ def _query_cache_variants(
     best_guidance: Optional[str],
     max_candidates: int,
     default_after_reads: int,
+    llm_strategy_enabled: bool = False,
+    llm_strategy_mode: str = 'prompt-only',
+    llm_strategy_model: Optional[str] = None,
+    llm_strategy_version: str = 'v1',
+    llm_strategy_max_candidates: int = 4,
+    llm_strategy_json: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     addrs = _canonical_hotspot_addrs(parent_checkpoint, top_k)
     if not addrs:
@@ -2978,6 +3841,12 @@ def _query_cache_variants(
         best_guidance=best_guidance,
         max_candidates=max_candidates,
         default_after_reads=default_after_reads,
+        llm_strategy_enabled=llm_strategy_enabled,
+        llm_strategy_mode=llm_strategy_mode,
+        llm_strategy_model=llm_strategy_model,
+        llm_strategy_version=llm_strategy_version,
+        llm_strategy_max_candidates=llm_strategy_max_candidates,
+        llm_strategy_json=llm_strategy_json,
     )
 
     variants: List[Dict[str, Any]] = []
@@ -3058,6 +3927,12 @@ def _find_query_cache_bundle(
     best_guidance: Optional[str],
     max_candidates: int,
     default_after_reads: int,
+    llm_strategy_enabled: bool = False,
+    llm_strategy_mode: str = 'prompt-only',
+    llm_strategy_model: Optional[str] = None,
+    llm_strategy_version: str = 'v1',
+    llm_strategy_max_candidates: int = 4,
+    llm_strategy_json: Optional[str] = None,
     ghidra_artifacts: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     variants = _query_cache_variants(
@@ -3075,6 +3950,12 @@ def _find_query_cache_bundle(
         best_guidance=best_guidance,
         max_candidates=max_candidates,
         default_after_reads=default_after_reads,
+        llm_strategy_enabled=llm_strategy_enabled,
+        llm_strategy_mode=llm_strategy_mode,
+        llm_strategy_model=llm_strategy_model,
+        llm_strategy_version=llm_strategy_version,
+        llm_strategy_max_candidates=llm_strategy_max_candidates,
+        llm_strategy_json=llm_strategy_json,
     )
     if not variants:
         warn("query bundle cache miss: no hotspot addresses available for signature")
@@ -3133,6 +4014,15 @@ def _build_round_artifacts(
     best_guidance: Optional[str],
     max_candidates: int,
     default_after_reads: int,
+    llm_strategy_enabled: bool = False,
+    llm_strategy_mode: str = 'prompt-only',
+    llm_strategy_model: Optional[str] = None,
+    llm_strategy_json: Optional[str] = None,
+    llm_strategy_max_candidates: int = 4,
+    llm_strategy_max_output_tokens: int = 4000,
+    llm_strategy_max_attempts: int = 2,
+    llm_strategy_reasoning_effort: str = 'none',
+    llm_strategy_version: str = 'v1',
     ghidra_artifacts: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     evidence_root = round_root / "evidence"
@@ -3160,6 +4050,12 @@ def _build_round_artifacts(
         best_guidance=best_guidance,
         max_candidates=max_candidates,
         default_after_reads=default_after_reads,
+        llm_strategy_enabled=llm_strategy_enabled,
+        llm_strategy_mode=llm_strategy_mode,
+        llm_strategy_model=llm_strategy_model,
+        llm_strategy_version=llm_strategy_version,
+        llm_strategy_max_candidates=llm_strategy_max_candidates,
+        llm_strategy_json=llm_strategy_json,
     )
     if cache_lookup.get("hit"):
         return _materialize_cached_bundle(
@@ -3205,6 +4101,22 @@ def _build_round_artifacts(
         default_after_reads=default_after_reads,
         llm_json=llm_json,
     )
+
+    if llm_strategy_enabled:
+        augment_plan_with_llm_strategies(
+            plan_path=str(plan_root / "plan.json"),
+            task_context_path=str(context_root / "task_context.json"),
+            evidence_pack_path=str(evidence_root / "evidence_pack.json"),
+            out_dir=str(plan_root / "llm_strategy"),
+            mode=llm_strategy_mode,
+            model=llm_strategy_model,
+            llm_json_path=llm_strategy_json,
+            max_candidates=llm_strategy_max_candidates,
+            max_output_tokens=llm_strategy_max_output_tokens,
+            max_attempts=llm_strategy_max_attempts,
+            reasoning_effort=llm_strategy_reasoning_effort,
+            strategy_version=llm_strategy_version,
+        )
 
     guidance_index = compile_plan(str(plan_root / "plan.json"), str(guidance_root))
 
@@ -3310,6 +4222,22 @@ def auto_loop(args):
         default_after_reads=args.default_after_reads,
         llm_json=args.llm_json,
     )
+
+    if getattr(args, "enable_llm_strategy", False):
+        augment_plan_with_llm_strategies(
+            plan_path=str(plan_root / "plan.json"),
+            task_context_path=str(context_root / "task_context.json"),
+            evidence_pack_path=str(evidence_root / "evidence_pack.json"),
+            out_dir=str(plan_root / "llm_strategy"),
+            mode=str(getattr(args, "llm_strategy_mode", "prompt-only") or "prompt-only"),
+            model=getattr(args, "llm_strategy_model", None),
+            llm_json_path=getattr(args, "llm_strategy_json", None),
+            max_candidates=int(getattr(args, "llm_strategy_max_candidates", 4) or 4),
+            max_output_tokens=int(getattr(args, "llm_strategy_max_output_tokens", 4000) or 4000),
+            max_attempts=int(getattr(args, "llm_strategy_max_attempts", 2) or 2),
+            reasoning_effort=str(getattr(args, "llm_strategy_reasoning_effort", "none") or "none"),
+            strategy_version=str(getattr(args, "llm_strategy_version", "v1") or "v1"),
+        )
 
     guidance_index = compile_plan(str(plan_root / "plan.json"), str(guidance_root))
 
@@ -3693,6 +4621,15 @@ def main():
     s8.add_argument("--best-guidance")
     s8.add_argument("--max-candidates", type=int, default=4)
     s8.add_argument("--default-after-reads", type=int, default=192)
+    s8.add_argument("--enable-llm-strategy", action="store_true")
+    s8.add_argument("--llm-strategy-mode", choices=["prompt-only", "api", "json-file"], default="prompt-only")
+    s8.add_argument("--llm-strategy-model")
+    s8.add_argument("--llm-strategy-json")
+    s8.add_argument("--llm-strategy-max-candidates", type=int, default=4)
+    s8.add_argument("--llm-strategy-max-output-tokens", type=int, default=4000)
+    s8.add_argument("--llm-strategy-max-attempts", type=int, default=2)
+    s8.add_argument("--llm-strategy-reasoning-effort", default=os.environ.get("OPENAI_REASONING_EFFORT", "none"))
+    s8.add_argument("--llm-strategy-version", default="v1")
     s8.add_argument("--allow-aggressive", action="store_true")
     s8.add_argument("--max-weak-per-parent", type=int, default=1)
     s8.add_argument("--setenv", action="append")
@@ -3725,12 +4662,22 @@ def main():
     s14.add_argument("--best-guidance")
     s14.add_argument("--max-candidates", type=int, default=4)
     s14.add_argument("--default-after-reads", type=int, default=192)
+    s14.add_argument("--enable-llm-strategy", action="store_true")
+    s14.add_argument("--llm-strategy-mode", choices=["prompt-only", "api", "json-file"], default="prompt-only")
+    s14.add_argument("--llm-strategy-model")
+    s14.add_argument("--llm-strategy-json")
+    s14.add_argument("--llm-strategy-max-candidates", type=int, default=4)
+    s14.add_argument("--llm-strategy-max-output-tokens", type=int, default=4000)
+    s14.add_argument("--llm-strategy-max-attempts", type=int, default=2)
+    s14.add_argument("--llm-strategy-reasoning-effort", default=os.environ.get("OPENAI_REASONING_EFFORT", "none"))
+    s14.add_argument("--llm-strategy-version", default="v1")
     s14.add_argument("--shared-cache-root")
     s14.add_argument("--shared-query-cache-root")
     s14.add_argument("--candidate-run-for")
     s14.add_argument("--rounds", type=int)
     s14.add_argument("--beam-width", type=int)
     s14.add_argument("--allow-aggressive", action="store_true")
+    s14.add_argument("--max-weak-per-parent", type=int, default=1)
     s14.add_argument("--out-root", required=True)
     s14.add_argument("--import-dir")
     s14.add_argument("--guidance-file")
