@@ -4360,6 +4360,15 @@ def staged_loop(args):
                 max_candidates=args.max_candidates,
                 default_after_reads=args.default_after_reads,
                 ghidra_artifacts=ghidra_artifacts,
+                llm_strategy_enabled=bool(getattr(args, "enable_llm_strategy", False)),
+                llm_strategy_mode=str(getattr(args, "llm_strategy_mode", "prompt-only") or "prompt-only"),
+                llm_strategy_model=getattr(args, "llm_strategy_model", None),
+                llm_strategy_json=getattr(args, "llm_strategy_json", None),
+                llm_strategy_max_candidates=int(getattr(args, "llm_strategy_max_candidates", 4) or 4),
+                llm_strategy_max_output_tokens=int(getattr(args, "llm_strategy_max_output_tokens", 4000) or 4000),
+                llm_strategy_max_attempts=int(getattr(args, "llm_strategy_max_attempts", 2) or 2),
+                llm_strategy_reasoning_effort=str(getattr(args, "llm_strategy_reasoning_effort", "none") or "none"),
+                llm_strategy_version=str(getattr(args, "llm_strategy_version", "v1") or "v1"),
             )
 
             selected_items, skipped_items = _filter_tournament_candidates(

@@ -14,46 +14,98 @@ ALLOWED_TRIGGERS = {x["name"] for x in TRIGGER_CATALOG}
 
 def _allowed_addresses(task_context: Dict[str, Any]) -> Set[str]:
     out: Set[str] = set()
-    for item in (((task_context.get("evidence_pack") or {}).get("evidence")) or []):
-        addr = str(item.get("addr") or "")
-        if addr:
-            out.add(addr.upper())
-        resolved = item.get("svd_resolution") or {}
-        ra = str(resolved.get("register_address_hex") or "")
-        if ra:
-            out.add(ra.upper())
-    for group in (((task_context.get("runtime_problem") or {}).get("hotspot_groups")) or []):
-        anchor = group.get("anchor") or {}
-        a = str(anchor.get("addr") or "")
+
+    def add_addr(v: Any) -> None:
+        a = str(v or "").strip()
         if a:
             out.add(a.upper())
+
+    # Existing evidence-based sources
+    for item in (((task_context.get("evidence_pack") or {}).get("evidence")) or []):
+        add_addr(item.get("addr"))
+        resolved = item.get("svd_resolution") or {}
+        add_addr(resolved.get("register_address_hex"))
+        add_addr(resolved.get("absoluteAddress_hex"))
+        add_addr(resolved.get("absolute_address_hex"))
+
+    # Runtime hotspot-group sources
+    for group in (((task_context.get("runtime_problem") or {}).get("hotspot_groups")) or []):
+        anchor = group.get("anchor") or {}
+        add_addr(anchor.get("addr"))
         for m in group.get("members", []) or []:
-            a = str(m.get("addr") or "")
-            if a:
-                out.add(a.upper())
+            add_addr(m.get("addr"))
+        for c in group.get("companions", []) or []:
+            add_addr(c.get("addr"))
+
+    # Best known strategy sources
     best = task_context.get("best_known_strategy") or {}
     for action in best.get("actions", []) or []:
         for key in ["addr", "read_addr", "write_addr", "s1_addr", "d_addr"]:
-            v = str(action.get(key) or "")
-            if v:
-                out.add(v.upper())
+            add_addr(action.get(key))
+
+    # New sources injected by llm_strategy_layer
+    for a in task_context.get("llm_strategy_allowed_addrs", []) or []:
+        add_addr(a)
+
+    for node in task_context.get("llm_strategy_register_nodes", []) or []:
+        if isinstance(node, dict):
+            add_addr(node.get("addr"))
+            add_addr(node.get("address_hex"))
+            add_addr(node.get("absolute_addr_hex"))
+            add_addr(node.get("absoluteAddress_hex"))
+
     return out
 
 
 def _collect_field_bits(task_context: Dict[str, Any]) -> Dict[str, Set[int]]:
     out: Dict[str, Set[int]] = {}
+
+    def add_bits(addr: Any, bits_iter) -> None:
+        addr_u = str(addr or "").upper()
+        if not addr_u:
+            return
+        bits = out.setdefault(addr_u, set())
+        for b in bits_iter or []:
+            if isinstance(b, int):
+                bits.add(int(b))
+
+    # Existing evidence-based field bits
     for item in (((task_context.get("evidence_pack") or {}).get("evidence")) or []):
         resolved = item.get("svd_resolution") or {}
         addr = str(resolved.get("register_address_hex") or item.get("addr") or "").upper()
         if not addr:
             continue
-        bits = out.setdefault(addr, set())
         for fld in resolved.get("fields", []) or []:
             bo = fld.get("bitOffset")
             bw = fld.get("bitWidth")
             if isinstance(bo, int) and isinstance(bw, int) and bw > 0:
-                for b in range(bo, bo + bw):
-                    bits.add(int(b))
+                add_bits(addr, range(bo, bo + bw))
+
+    # New llm_strategy register nodes / field candidates
+    for node in task_context.get("llm_strategy_register_nodes", []) or []:
+        if not isinstance(node, dict):
+            continue
+        addr = str(
+            node.get("addr")
+            or node.get("address_hex")
+            or node.get("absolute_addr_hex")
+            or node.get("absoluteAddress_hex")
+            or ""
+        ).upper()
+        if not addr:
+            continue
+
+        # Prefer compact field_candidates emitted by llm_strategy_layer
+        for fc in node.get("field_candidates", []) or []:
+            add_bits(addr, fc.get("bits") or [])
+
+        # Also accept full field objects if present
+        for fld in node.get("fields", []) or []:
+            bo = fld.get("bitOffset")
+            bw = fld.get("bitWidth")
+            if isinstance(bo, int) and isinstance(bw, int) and bw > 0:
+                add_bits(addr, range(bo, bo + bw))
+
     return out
 
 
@@ -385,6 +437,7 @@ def normalize_llm_plan(task_context: Dict[str, Any], llm_json_path: str) -> Dict
     allowed_addrs = _allowed_addresses(task_context)
     allowed_bits = _collect_field_bits(task_context)
     out_candidates = []
+    rejected = []
 
     for cand in raw.get("candidates", []) or []:
         candidate_errs = []
@@ -395,9 +448,18 @@ def normalize_llm_plan(task_context: Dict[str, Any], llm_json_path: str) -> Dict
                 candidate_errs.extend(errs)
                 continue
             actions.append(action)
+
         if candidate_errs:
             warn(f"candidate {cand.get('id')} rejected: {'; '.join(candidate_errs)}")
+            rejected.append(
+                {
+                    "id": cand.get("id"),
+                    "errors": candidate_errs,
+                    "actions": cand.get("actions", []),
+                }
+            )
             continue
+
         if actions:
             out_candidates.append(
                 {
@@ -409,7 +471,15 @@ def normalize_llm_plan(task_context: Dict[str, Any], llm_json_path: str) -> Dict
                 }
             )
 
-    return {"schema": "llm_strategy_choice_v1", "candidates": out_candidates}
+    return {
+        "schema": "llm_strategy_choice_v1",
+        "candidates": out_candidates,
+        "_debug": {
+            "allowed_addrs": sorted(allowed_addrs),
+            "allowed_field_bits_by_addr": {k: sorted(v) for k, v in allowed_bits.items()},
+            "rejected": rejected,
+        },
+    }
 
 
 def main():

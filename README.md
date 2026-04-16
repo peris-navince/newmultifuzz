@@ -1,823 +1,1044 @@
-Staged Evidence-Guided Fuzzing for MMIO Hotspots
-面向 MMIO 热点的分阶段证据引导模糊测试
-1. Overview / 项目概述
+# Staged and Adaptive Evidence-Guided Fuzzing for MMIO Hotspots
+# 面向 MMIO 热点的分阶段与自适应证据引导模糊测试
 
-English
+## 1. Overview / 项目概述
 
-This project extends fuzzing for MCU firmware rehosting by introducing an evidence-guided, staged strategy loop around MMIO hotspots. Instead of trying to build a global knowledge base first, the system runs baseline fuzzing, observes hotspot MMIO accesses, resolves them with SVD and PDF manual evidence, groups related hotspot registers, generates bounded strategy candidates, and evaluates them in short tournaments starting from the same checkpoint.
+### English
 
-The key idea is to avoid “from-scratch reruns with hand-written one-off tricks” and move toward a repeatable loop:
+This project extends MCU firmware rehosting fuzzing with an **evidence-grounded, staged, and now adaptive** strategy loop around MMIO hotspots.
 
-Run fuzzing until a plateau or stable hotspot region appears.
-Extract hotspot evidence from runtime, SVD, and PDF.
-Build hotspot groups rather than treating registers independently.
-Generate constrained strategy candidates.
-Start all candidates from the same prefix corpus/checkpoint.
-Run short-budget comparisons and promote the best branch(es).
-Continue to the next hotspot stage.
+The system no longer treats MMIO handling as a one-shot manual patching problem, nor as a purely static knowledge-extraction problem. Instead, it runs firmware, observes runtime MMIO bottlenecks, resolves hotspot addresses with SVD and PDF evidence, groups related registers, synthesizes bounded strategy candidates, and compares them fairly from the same imported frontier.
 
-中文
+The current design has evolved beyond the earlier “heuristic hotspot repair” pipeline in three important ways:
 
-本项目面向 MCU 固件重宿主 fuzzing，目标是在 MMIO 热点附近引入一个证据驱动、分阶段推进的策略闭环。系统不再先尝试构建全局知识库，而是先运行 baseline fuzz，观察热点 MMIO 访问，再结合 SVD 和 PDF 手册证据解析热点寄存器，将相关热点寄存器分组，生成受约束的策略候选，并从同一个 checkpoint 出发做短预算竞争。
+1. **Runtime evidence remains primary**, but the system now supports richer hotspot families and mixed hotspot clusters instead of assuming a single peripheral family will always dominate.
+2. **Candidate generation is hybrid**: heuristic candidates remain the guaranteed fallback, while an LLM strategy layer can generate bounded multi-register strategies inside an explicit whitelist derived from runtime + SVD + PDF evidence.
+3. **Evaluation is no longer only short single-round repair**: the system now supports warmup-frontier reuse, adaptive tournaments, strategy-pool style long-horizon comparison, and promotion based on measured outcomes.
 
-核心思想是避免“从零重新跑 + 手工写一次性技巧”，而转向一个可重复的闭环：
+The practical goal is not to solve all peripherals at once, but to make the loop reliable and repeatable:
 
-先跑 fuzz，直到 coverage 平台期或稳定热点出现。
-从运行时、SVD、PDF 中提取热点证据。
-不再把寄存器孤立处理，而是构造成热点组。
-生成受约束的策略候选。
-所有候选从同一个前缀 corpus / checkpoint 出发。
-进行短预算比较，选出表现最好的分支。
-继续推进到下一个热点阶段。
-2. Design Principles / 设计原则
-2.1 Evidence-first / 证据优先
+- run firmware and observe bottlenecks,
+- extract bounded evidence,
+- build hotspot groups or mixed hotspot families,
+- generate constrained strategy candidates,
+- compare them from the same imported frontier,
+- keep the branches that measurably help execution move forward.
 
-English
+### 中文
 
-The system does not let the model invent strategies from pure speculation. Strategy generation is grounded in three evidence sources:
+本项目面向 MCU 固件重宿主 fuzzing，在 MMIO 热点附近构建一个**基于证据、分阶段、并逐步演化为自适应**的策略闭环。
 
-Runtime evidence: hotspot MMIO addresses, access frequencies, and plateau behavior.
-SVD evidence: peripheral instance, register identity, fields, addresses, and register layout.
-PDF evidence: register descriptions, field semantics, ready/busy/interrupt wording, and local context.
+系统不再把 MMIO 处理看成“一次性手工修补”的问题，也不再把它仅仅视为一个纯静态知识抽取问题。当前流程会先运行固件，观察运行时 MMIO 卡点，再结合 SVD 与 PDF 手册证据解析热点地址，构造相关寄存器组，生成受约束的策略候选，并从同一 imported frontier 出发进行公平比较。
 
-中文
+相较于早期“heuristic 热点修补”版本，当前设计已经有三方面演进：
 
-系统不允许模型凭空猜策略。策略生成必须建立在三类证据上：
+1. **运行时证据仍然优先**，但系统现在能处理更复杂的热点族与混合热点簇，而不再默认只有单一外设家族主导卡点。
+2. **候选生成变为混合式**：heuristic 候选仍然是稳定保底；同时引入了 LLM strategy layer，在 runtime + SVD + PDF 推导出的显式白名单内生成受约束的多寄存器策略。
+3. **评估不再只是短时单轮修补**：系统现在支持 warmup frontier 复用、自适应 tournament、strategy-pool 风格的长时比较，以及基于实测结果的晋级。
 
-运行时证据：热点 MMIO 地址、访问频率、coverage 停滞行为。
-SVD 证据：外设实例、寄存器身份、字段、地址和寄存器布局。
-PDF 证据：寄存器说明、字段语义、ready/busy/interrupt 等描述及上下文。
-2.2 Template-constrained / 模板约束
+当前工作的目标并不是一次性覆盖所有外设，而是把以下闭环做稳定、做可复现：
 
-English
+- 运行固件并观察瓶颈，
+- 提取受约束证据，
+- 构造热点组或混合热点家族，
+- 生成受约束候选，
+- 从同一 imported frontier 公平比较，
+- 保留那些确实能推动执行向前的分支。
 
-The LLM is not allowed to invent arbitrary strategy syntax. It must choose from predefined strategy templates and parameter slots.
+---
 
-This means:
+## 2. Design Principles / 设计原则
 
-the runtime only executes structured guidance,
-the compiler only translates validated candidate structures,
-the model only chooses among allowed templates and parameters.
+### 2.1 Runtime evidence first / 运行时证据优先
 
-中文
+### English
 
-LLM 不允许自由发明策略语法，只能在预定义模板和参数槽位中进行选择。
+The system does not let static priors dominate when runtime traces say otherwise.
 
-这意味着：
+Candidate generation and evaluation are grounded in three evidence layers:
 
-runtime 只执行结构化 guidance，
-compiler 只翻译已校验的候选结构，
-模型只在允许的模板和参数中做选择。
-2.3 Group-based reasoning / 基于分组的推理
+- **Runtime evidence**: hotspot MMIO addresses, touch counts, coverage plateaus, last-PC locality, probe/followup behavior, candidate firing behavior.
+- **SVD evidence**: peripheral instance, register identity, address layout, field positions, register width, access type.
+- **PDF evidence**: register descriptions, field semantics, ready/busy wording, mode transitions, interrupt wording, local memory-map context.
 
-English
+Runtime evidence determines **what is worth trying now**. SVD and PDF evidence determine **how far the system is allowed to generalize**.
 
-Hotspots are not treated as isolated registers. A single high-frequency status register often implies related data or control registers. Therefore, strategy planning operates on hotspot groups, not just single hotspot registers.
+### 中文
 
-中文
+系统不会让静态先验在运行时证据已经指向其他方向时仍然主导决策。
 
-热点不再被视为孤立寄存器。一个高频状态寄存器通常意味着相关的数据寄存器或控制寄存器也参与了当前卡点。因此，策略规划基于热点组而不是单独的热点寄存器。
+当前候选生成与评估建立在三层证据之上：
 
-2.4 Prefix reuse / 前缀复用
+- **运行时证据**：热点 MMIO 地址、touch 次数、coverage 平台期、last-PC 局部性、probe/followup 行为、candidate 的触发情况。
+- **SVD 证据**：外设实例、寄存器身份、地址布局、字段位置、寄存器位宽、访问权限。
+- **PDF 证据**：寄存器说明、字段语义、ready/busy 表述、模式切换、中断描述、局部 memory map 上下文。
 
-English
+运行时证据决定的是**当前最值得尝试什么**；SVD 与 PDF 决定的是**系统可以在多大范围内合法泛化**。
 
-Candidates should not start from scratch. They should reuse the queue/corpus accumulated before reaching the hotspot region. Candidate evaluation must start from the same checkpoint so comparisons are fair.
+### 2.2 Bounded action space / 受约束动作空间
 
-中文
+### English
 
-候选策略不应该从零开始。它们应复用在到达热点区域之前积累下来的 queue/corpus。所有候选都应从同一个 checkpoint 出发，这样比较才公平。
+Neither heuristics nor the LLM are allowed to invent arbitrary runtime DSL syntax. All candidate strategies must eventually compile into the supported structured guidance action space.
 
-3. Current Architecture / 当前架构
-3.1 Fuzzing side (hail-fuzz) / fuzz 端
+At the current stage, supported action families include runtime primitives such as:
 
-English
+- `mmio_bit_update`
+- `mmio_read_override_once`
+- `mmio_read_sequence`
+- `mmio_write_observe`
+- stage activation + `when_stage_active`
 
-The fuzzing runtime supports:
+The system previously allowed more gate-like forms during synthesis, but the current pipeline normalizes them into more conservative primitive combinations before runtime execution when necessary.
 
-baseline fuzzing,
-MMIO stream observation,
-structured guidance loading,
-guidance runtime summary,
-prefix import via imported queue/corpus.
+### 中文
 
-Key runtime-related environment variables:
+无论是 heuristic 还是 LLM，都不允许自由发明 runtime DSL 语法。所有候选最终都必须落入 runtime 已支持的结构化 guidance 动作空间。
 
-GHIDRA_SRC
-WORKDIR
-RUN_FOR
-MF_STREAM_OBSERVER_OUT
-MF_MMIO_GUIDANCE_FILE
-MF_MMIO_GUIDANCE_SUMMARY_OUT
-MF_IMPORT_DIR
+当前支持的动作族主要包括：
 
-中文
+- `mmio_bit_update`
+- `mmio_read_override_once`
+- `mmio_read_sequence`
+- `mmio_write_observe`
+- stage 激活 + `when_stage_active`
 
-当前 fuzz runtime 支持：
+系统早期曾允许在合成阶段保留一些更像 gate 的中间形式，但当前版本在必要时会先将其归一化为更保守的 primitive 组合，再交给 runtime 执行。
 
-baseline fuzz，
-MMIO stream observer，
-结构化 guidance 加载，
-guidance runtime summary，
-通过导入 queue/corpus 复用前缀语料。
+### 2.3 Fair comparison from the same prefix / 从同一前缀公平比较
 
-关键环境变量包括：
+### English
 
-GHIDRA_SRC
-WORKDIR
-RUN_FOR
-MF_STREAM_OBSERVER_OUT
-MF_MMIO_GUIDANCE_FILE
-MF_MMIO_GUIDANCE_SUMMARY_OUT
-MF_IMPORT_DIR
-3.2 Extractor side (extractor) / 提取与规划端
+All candidates must start from the same imported queue/frontier. This is a hard requirement. Otherwise, candidate quality becomes confounded with corpus luck.
 
-English
+The system therefore preserves:
 
-The extractor side currently contains the main pipeline logic:
+- a warmup frontier,
+- per-round import reuse,
+- control branches,
+- identical per-candidate short budgets inside the same tournament.
 
-build evidence pack from observer + SVD + PDF,
-build task context,
-build hotspot groups,
-generate heuristic strategy candidates,
-compile candidates into runtime guidance,
-run staged loop and evaluate candidates.
+### 中文
 
-Main files include:
+所有候选都必须从同一个 imported queue/frontier 出发。这是硬约束。否则，候选质量会和语料随机性混在一起，无法公平比较。
 
-closed_loop.py
-evidence_builder.py
-task_context.py
-strategy_catalog.py
-strategy_planner.py
-guidance_compiler.py
-pdf_evidence_locator.py
-svd_resolver.py
+因此系统始终保留：
 
-中文
+- warmup frontier，
+- 每轮 import 复用，
+- control 分支，
+- 同一 tournament 内一致的 per-candidate 短预算。
 
-提取与规划端目前负责主要流程：
+### 2.4 Evidence-bounded LLM assistance / 受证据约束的 LLM 辅助
 
-从 observer + SVD + PDF 构建 evidence pack，
-构建 task context，
-构建 hotspot groups，
-生成 heuristic 策略候选，
-将候选编译成 runtime guidance，
-执行 staged loop 并评估候选。
+### English
 
-主要文件包括：
+The LLM is not allowed to act as an unconstrained policy generator. Its role is bounded to:
 
-closed_loop.py
-evidence_builder.py
-task_context.py
-strategy_catalog.py
-strategy_planner.py
-guidance_compiler.py
-pdf_evidence_locator.py
-svd_resolver.py
-4. Hotspot Grouping / 热点分组
-4.1 Why grouping is needed / 为什么需要分组
+- choosing candidate structures within an allowed register cluster,
+- proposing multi-register state-advancing strategies,
+- staying inside supported action/trigger families,
+- producing JSON that can be normalized and compiled.
 
-English
+Heuristics remain the guaranteed fallback. The LLM augments the candidate space; it does not replace the evidence pipeline.
 
-A hotspot is rarely just one register. For example:
+### 中文
 
-UART0.S1 may be the polling anchor,
-UART0.D may be a data companion,
-UART0.PFIFO may be a FIFO-related companion.
+LLM 不能作为无限制策略生成器。它的角色被约束为：
 
-Similarly:
+- 在允许的寄存器簇内选择候选结构，
+- 提出多寄存器、能推动状态前进的策略，
+- 严格限制在支持的 action/trigger 家族内，
+- 输出可被 normalize 和 compile 的 JSON。
 
-MCG.S may be a status anchor,
-MCG.C1/C2/C4 may be configuration companions.
+heuristic 仍然是稳定保底；LLM 的作用是扩展候选空间，而不是替代证据管线。
 
-If only one register is modeled, important dependencies are missed.
+### 2.5 Iterative stabilization / 迭代式稳定化
 
-中文
+### English
 
-热点通常不是一个单独寄存器。例如：
+The system is intentionally developed through short validation loops:
 
-UART0.S1 可能是轮询锚点，
-UART0.D 可能是数据伴随寄存器，
-UART0.PFIFO 可能是 FIFO 相关伴随寄存器。
+1. single-file unit validation,
+2. compile-time validation,
+3. short integrated smoke,
+4. repeated short-run regression,
+5. medium pilot,
+6. only then long-horizon run.
 
-类似地：
+This is deliberate: parser correctness must be solved before strategy quality, and strategy quality must be checked before long-duration evaluation.
 
-MCG.S 可能是状态锚点，
-MCG.C1/C2/C4 可能是配置伴随寄存器。
+### 中文
 
-如果只建模一个寄存器，就会丢失关键依赖关系。
+系统刻意采用短闭环逐步稳定的开发方式：
 
-4.2 Grouping sources / 分组依据
+1. 单文件单测，
+2. 编译层验证，
+3. 短时 integrated smoke，
+4. 重复短跑回归，
+5. 中等时长 pilot，
+6. 最后才进入长时 run。
 
-English
+这是有意为之的：必须先解决 parser/契约问题，再解决策略质量问题；而策略质量确认后，才适合进入长时间评估。
 
-Grouping is determined by multiple sources together:
+---
 
-Runtime co-occurrence
-registers that repeatedly appear together in hotspot windows;
-SVD structure
-same peripheral instance,
-address proximity,
-role-like names such as status/data/control/fifo;
-PDF evidence
-explicit semantic relations from manual descriptions;
-Naming heuristics
-fallback rules like S1 + D, S + C1/C2/C4, GPIOx bank groups.
+## 3. System Architecture / 系统架构
 
-中文
+## 3.1 High-level architecture / 总体结构
 
-分组由多种来源共同决定：
+### English
 
-运行时共现
-在热点窗口中反复一起出现的寄存器；
-SVD 结构
-同一外设实例，
-地址邻近，
-status/data/control/fifo 等角色化命名；
-PDF 证据
-手册中显式描述的语义关系；
-命名启发式
-如 S1 + D、S + C1/C2/C4、GPIOx bank group 等兜底规则。
-4.3 Group kinds / 分组类型
+The repository now contains four major functional layers:
 
-English
+1. **Fuzz runtime layer** (`hail-fuzz`)
+2. **Evidence extraction and context construction layer** (`extractor`)
+3. **Strategy planning layer** (heuristic + LLM bounded planning)
+4. **Tournament and adaptive orchestration layer** (`closed_loop.py`)
 
-Current group types include:
+### 中文
 
-polling_group
-status_data_group
-status_config_group
-config_group
+当前仓库整体可以分成四层：
 
-中文
+1. **fuzz runtime 层**（`hail-fuzz`）
+2. **证据提取与上下文构建层**（`extractor`）
+3. **策略规划层**（heuristic + LLM bounded planning）
+4. **tournament 与自适应调度层**（`closed_loop.py`）
 
-当前支持的分组类型包括：
+## 3.2 Fuzz runtime layer / fuzz runtime 层
 
-polling_group
-status_data_group
-status_config_group
-config_group
-5. Strategy Templates / 策略模板
-5.1 Why templates / 为什么使用模板
+### English
 
-English
+The runtime supports:
 
-Templates define the bounded action space. Instead of generating unconstrained policies, the system maps each hotspot group type to a limited set of strategy templates.
+- baseline fuzzing,
+- MMIO observer export,
+- structured guidance execution,
+- guidance runtime summary export,
+- replay trace export,
+- imported frontier reuse.
 
-This keeps the system:
+Relevant environment variables commonly include:
 
-explainable,
-compilable,
-testable,
-safe for staged iteration.
+- `GHIDRA_SRC`
+- `WORKDIR`
+- `RUN_FOR`
+- `MF_STREAM_OBSERVER_OUT`
+- `MF_MMIO_GUIDANCE_FILE`
+- `MF_MMIO_GUIDANCE_SUMMARY_OUT`
+- `MF_IMPORT_DIR`
 
-中文
+### 中文
 
-模板用于定义受约束的动作空间。系统不会让模型自由生成无限制策略，而是将每类热点组映射到有限的策略模板集合。
+当前 runtime 支持：
 
-这样系统就能保持：
+- baseline fuzz，
+- MMIO observer 导出，
+- 结构化 guidance 执行，
+- guidance runtime summary 导出，
+- replay trace 导出，
+- imported frontier 复用。
 
-可解释，
-可编译，
-可测试，
-适合分阶段迭代。
-5.2 Example templates / 示例模板
+常见环境变量包括：
 
-English
+- `GHIDRA_SRC`
+- `WORKDIR`
+- `RUN_FOR`
+- `MF_STREAM_OBSERVER_OUT`
+- `MF_MMIO_GUIDANCE_FILE`
+- `MF_MMIO_GUIDANCE_SUMMARY_OUT`
+- `MF_IMPORT_DIR`
 
-For status/data groups such as UART:
+## 3.3 Evidence and planning layer / 证据与规划层
 
-poll_ready_bit_set
-poll_busy_bit_clear
-status_then_data
-status_then_config
+### English
 
-For config groups:
+This layer is centered in `extractor/` and now includes:
 
-config_bit_toggle
-config_bit_set
-config_bit_clear
+- address resolution through SVD,
+- PDF evidence location with family/instance fallback,
+- shared PDF/SVD cache reuse,
+- evidence pack construction,
+- task context construction,
+- hotspot grouping and mixed-family handling,
+- heuristic planning,
+- LLM strategy prompt construction,
+- LLM output sanitization and normalization,
+- guidance compilation.
 
-中文
+Core files now include:
 
-对于 UART 这类状态+数据组：
+- `closed_loop.py`
+- `evidence_builder.py`
+- `task_context.py`
+- `strategy_catalog.py`
+- `strategy_planner.py`
+- `guidance_compiler.py`
+- `llm_strategy_layer.py`
+- `pdf_evidence_locator.py`
+- `svd_resolver.py`
+- `run_ghidra_kg.py`
 
-poll_ready_bit_set
-poll_busy_bit_clear
-status_then_data
-status_then_config
+### 中文
 
-对于配置组：
+这一层主要位于 `extractor/`，当前已经包括：
 
-config_bit_toggle
-config_bit_set
-config_bit_clear
-5.3 Current status / 当前状态
+- 基于 SVD 的地址解析，
+- 带 family/instance fallback 的 PDF evidence 定位，
+- shared PDF/SVD cache 复用，
+- evidence pack 构建，
+- task context 构建，
+- 热点分组与混合家族处理，
+- heuristic planning，
+- LLM strategy prompt 构建，
+- LLM 输出的 sanitize / normalize，
+- guidance compile。
 
-English
+核心文件目前包括：
 
-At the current stage, heuristic planning already generates group-based candidates. The planner no longer returns empty candidate lists for the observed UART/MCG/GPIO hotspot layout. However, template coverage is still incomplete and must grow iteratively.
+- `closed_loop.py`
+- `evidence_builder.py`
+- `task_context.py`
+- `strategy_catalog.py`
+- `strategy_planner.py`
+- `guidance_compiler.py`
+- `llm_strategy_layer.py`
+- `pdf_evidence_locator.py`
+- `svd_resolver.py`
+- `run_ghidra_kg.py`
 
-中文
+## 3.4 LLM strategy layer / LLM 策略层
 
-在当前阶段，heuristic planner 已经能够基于热点组生成候选。对于目前观察到的 UART/MCG/GPIO 热点布局，planner 不再返回空候选列表。但模板覆盖仍然不完整，需要逐步迭代扩展。
+### English
 
-6. Role of the LLM / LLM 的定位
-6.1 What the LLM should not do / LLM 不该做什么
+The LLM strategy layer is no longer just a prompt dumper. It now performs a complete bounded planning pass:
 
-English
+1. build an allowed register cluster around the current hotspot,
+2. build prompt payload and text,
+3. call the LLM (or load JSON),
+4. lint raw candidates,
+5. sanitize addresses, triggers, widths, and candidate structure,
+6. expand or downgrade unsupported helper forms into runtime-safe primitives,
+7. inject augmented register nodes into task context,
+8. normalize with the shared planner,
+9. merge normalized candidates back into the plan,
+10. emit debug artifacts for every stage.
+
+This layer is the main place where unsupported LLM outputs are turned into runtime-compatible strategies.
+
+### 中文
+
+LLM strategy layer 现在已经不是简单的 prompt 输出器，而是一个完整的受约束规划通道：
+
+1. 围绕当前热点构造 allowed register cluster，
+2. 构造 prompt payload 与 prompt text，
+3. 调用 LLM（或加载 JSON），
+4. 对 raw candidates 做 lint，
+5. 对地址、trigger、位宽与候选结构做 sanitize，
+6. 将不安全或不兼容的 helper 形式扩展/降级成 runtime-safe primitives，
+7. 把 augmented register nodes 注入 task context，
+8. 交给共享 planner 做 normalize，
+9. 把 normalized candidates 合并回 plan，
+10. 为每一步输出调试产物。
+
+这一层目前是把 LLM 输出转换为 runtime 兼容策略的关键位置。
+
+---
+
+## 4. Evidence Model / 证据模型
+
+## 4.1 Runtime evidence / 运行时证据
+
+### English
+
+Runtime evidence currently includes:
+
+- top hotspot MMIO addresses,
+- read/write counts,
+- width distributions,
+- first/last seen order,
+- last-PC locality and replay traces,
+- per-candidate runtime firing summaries,
+- plateau-like behavior across windows.
+
+### 中文
+
+当前运行时证据包括：
+
+- 顶层热点 MMIO 地址，
+- 读写次数，
+- 宽度分布，
+- first/last seen 顺序，
+- last-PC 局部性与 replay trace，
+- 每个 candidate 的 runtime firing summary，
+- 跨窗口的平台期行为。
+
+## 4.2 SVD evidence / SVD 证据
+
+### English
+
+SVD evidence provides:
+
+- peripheral instance,
+- register identity,
+- field offsets and widths,
+- register width bytes,
+- access permissions,
+- base address and layout proximity.
+
+### 中文
+
+SVD 证据提供：
+
+- 外设实例，
+- 寄存器身份，
+- 字段偏移与位宽，
+- 寄存器宽度，
+- 访问权限，
+- base address 与布局邻近性。
+
+## 4.3 PDF evidence / PDF 证据
+
+### English
+
+PDF evidence is used for:
+
+- register descriptions,
+- field semantics,
+- ready/busy/status interpretation,
+- mode-transition hints,
+- local register neighborhood,
+- evidence-backed register cluster expansion.
+
+The current system supports family fallback such as:
+
+- `UART0 -> UART`
+- family-level caches when instance-specific cache is incomplete
+
+### 中文
+
+PDF 证据主要用于：
+
+- 寄存器说明，
+- 字段语义，
+- ready/busy/status 的解释，
+- mode transition 提示，
+- 寄存器局部邻域，
+- 基于证据的寄存器簇扩展。
+
+当前系统支持 family fallback，例如：
+
+- `UART0 -> UART`
+- 当 instance-specific cache 不完整时回退到 family 级 cache
+
+## 4.4 Evidence pack / evidence pack
+
+### English
+
+`evidence_pack.json` is the main bounded evidence bundle used by later planning. It is intentionally compact but traceable. It is not a global knowledge base; it is a current-stage planning capsule.
+
+### 中文
+
+`evidence_pack.json` 是后续规划使用的核心受约束证据包。它有意保持紧凑但可追踪。它不是全局知识库，而是一个当前阶段的规划胶囊。
+
+---
+
+## 5. Hotspot Grouping and Mixed Families / 热点分组与混合热点家族
+
+## 5.1 Why grouping is still needed / 为什么仍然需要分组
+
+### English
+
+A hotspot is rarely just one register. A status register often implies control, data, or FIFO companions. Grouping remains necessary to avoid overfitting to a single polling anchor.
+
+Examples:
+
+- `UART0.S1` with `UART0.D`, `UART0.C2`, `UART0.PFIFO`, `UART0.CFIFO`
+- `MCG.S` with `MCG.C1/C2/C4/C6`
+
+### 中文
+
+热点通常不只是一个寄存器。一个状态寄存器往往隐含着控制、数据或 FIFO 伴随寄存器。因此，分组仍然是避免过拟合到单一 polling anchor 的关键。
+
+例如：
+
+- `UART0.S1` 与 `UART0.D`、`UART0.C2`、`UART0.PFIFO`、`UART0.CFIFO`
+- `MCG.S` 与 `MCG.C1/C2/C4/C6`
+
+## 5.2 Why mixed-family handling became necessary / 为什么现在需要支持混合热点家族
+
+### English
+
+Longer warmup runs revealed that the dominant bottleneck may shift away from the earlier UART-only view. In medium pilots, the hotspot frontier can contain mixed addresses from UART, MCG, PORT, and SMC-like configuration areas. The planner must therefore avoid assuming that a single family always dominates every stage.
+
+### 中文
+
+更长的 warmup 暴露出：主导瓶颈并不总是停留在早期看到的 UART-only 视角。中等时长 pilot 中，热点前沿可能同时包含 UART、MCG、PORT、SMC 等配置相关地址。因此，planner 现在必须避免默认“每个阶段都只有单一家族主导”。
+
+## 5.3 Grouping sources / 分组依据
+
+### English
+
+Grouping uses:
+
+- runtime co-occurrence,
+- SVD same-instance or same-base proximity,
+- PDF local neighborhood and manual semantics,
+- fallback naming heuristics.
+
+### 中文
+
+分组依据包括：
+
+- 运行时共现，
+- SVD 中同实例/同 base 的邻近关系，
+- PDF 局部邻域与手册语义，
+- 命名启发式兜底。
+
+## 5.4 Group kinds / 分组类型
+
+### English
+
+Current group kinds include, but are not limited to:
+
+- `polling_group`
+- `status_data_group`
+- `status_config_group`
+- `config_group`
+- mixed configuration convergence groups in longer runs
+
+### 中文
+
+当前分组类型包括但不限于：
+
+- `polling_group`
+- `status_data_group`
+- `status_config_group`
+- `config_group`
+- 在更长运行中出现的混合 configuration convergence groups
+
+---
+
+## 6. Strategy Space / 策略空间
+
+## 6.1 Heuristic strategy families / heuristic 策略家族
+
+### English
+
+Heuristic planning remains the guaranteed fallback and currently covers:
+
+- ready-bit set style polling relief,
+- busy-bit clear style polling relief,
+- config-bit set/clear/toggle,
+- bounded status/data interactions,
+- simple control/status gating.
+
+### 中文
+
+heuristic planning 仍然是稳定保底，当前覆盖：
+
+- ready-bit set 类 polling relief，
+- busy-bit clear 类 polling relief，
+- config-bit set/clear/toggle，
+- 受约束的 status/data 交互，
+- 简单 control/status gating。
+
+## 6.2 LLM strategy candidate patterns / LLM 策略候选模式
+
+### English
+
+Current LLM-generated candidates typically fall into these bounded patterns:
+
+- control enable then status-ready observation,
+- status/data receive pairing,
+- write then status-progress observation,
+- FIFO flush/enable then readiness observation,
+- configuration convergence candidates for non-UART families.
+
+### 中文
+
+当前 LLM 生成的候选通常落在这些受约束模式中：
+
+- control enable 后再观察 status-ready，
+- status/data 接收配对，
+- write 后观察 status-progress，
+- FIFO flush/enable 后观察 ready，
+- 面向非 UART 家族的 configuration convergence 候选。
+
+## 6.3 Runtime-safe normalization / runtime-safe 归一化
+
+### English
+
+A major recent evolution is that synthesis no longer trusts helper-like actions to survive unchanged. Candidate actions are normalized toward runtime-safe primitives, for example:
+
+- helper-like gates → `mmio_write_observe + mmio_read_sequence`
+- repeated overrides → bounded `mmio_read_sequence`
+- latent write-trigger chains → `activate_stage + when_stage_active`
+
+This change was necessary because the system repeatedly hit compile/runtime contract mismatches such as missing fields or parser-only helper expectations.
+
+### 中文
+
+最近一个重要演进是：合成阶段不再默认 helper-like actions 能原样进入 runtime。候选动作会被主动归一化到 runtime-safe primitive 上，例如：
+
+- helper-like gate → `mmio_write_observe + mmio_read_sequence`
+- repeated override → 有界的 `mmio_read_sequence`
+- 潜在的 write-trigger 链 → `activate_stage + when_stage_active`
+
+这一变化是必要的，因为系统之前反复遇到 compile/runtime 契约不匹配问题，例如字段缺失或 parser 只认特定 helper 形式。
+
+---
+
+## 7. LLM Strategy Layer / LLM 策略层细节
+
+## 7.1 What the LLM should not do / LLM 不该做什么
+
+### English
 
 The LLM should not:
 
-invent new runtime DSL syntax,
-produce arbitrary low-level actions,
-ignore the strategy catalog,
-directly control the fuzzing runtime.
+- invent new runtime DSL syntax,
+- introduce arbitrary peripheral addresses,
+- ignore the allowed register cluster,
+- bypass normalization,
+- bypass compile-time/runtime validation.
 
-中文
+### 中文
 
 LLM 不应该：
 
-发明新的 runtime DSL 语法，
-生成任意低层动作，
-忽略策略目录，
-直接控制 fuzz runtime。
-6.2 What the LLM should do / LLM 应该做什么
-
-English
-
-The LLM should operate inside the bounded group/template space:
-
-rank candidate templates for a hotspot group,
-choose likely fields/bits,
-choose trigger families,
-optionally expand with a small number of additional bounded candidates.
-
-The recommended integration order is:
-
-Heuristic baseline
-LLM rerank
-LLM bounded expansion
-
-中文
-
-LLM 应该在受限的 group/template 空间内工作：
-
-对某个热点组内的模板进行排序，
-选择更可能的字段/位，
-选择更合理的触发族，
-可选地补充少量受限的新候选。
-
-推荐的接入顺序是：
-
-Heuristic 保底
-LLM rerank
-LLM bounded expansion
-7. Staged Loop / 分阶段循环
-7.1 Why staged loop / 为什么要分阶段循环
-
-English
-
-A single full rerun per candidate is wasteful and unfair. The system should instead:
-
-run to a hotspot plateau,
-checkpoint the corpus,
-fork candidate branches from the same checkpoint,
-run short-budget tournaments,
-promote top branches,
-continue to the next hotspot.
-
-中文
-
-每个 candidate 都完整重跑一遍既浪费又不公平。系统应改为：
-
-先跑到热点平台期，
-保存 checkpoint，
-从同一个 checkpoint 分叉出多个候选分支，
-进行短预算竞争，
-晋级表现更好的分支，
-继续推进到下一个热点。
-7.2 Current staged-loop status / 当前 staged-loop 状态
-
-English
-
-The staged loop currently supports:
-
-seed round,
-prefix import,
-shared PDF/SVD cache,
-heuristic candidate generation,
-guidance compilation,
-candidate evaluation,
-automatic verdict extraction.
-
-It already records:
-
-imported seed count,
-coverage summary,
-parse errors,
-unsupported action errors,
-candidate verdicts such as:
-control
-invalid_guidance
-unsupported_action
-no_effect
-effective
-
-中文
-
-当前 staged loop 已支持：
-
-seed round，
-前缀导入，
-共享 PDF/SVD cache，
-heuristic 候选生成，
-guidance 编译，
-candidate 评估，
-自动 verdict 提取。
-
-它已经能自动记录：
-
-导入 seed 数量，
-coverage 摘要，
-guidance 解析错误，
-不支持动作错误，
-候选 verdict，例如：
-control
-invalid_guidance
-unsupported_action
-no_effect
-effective
-8. Current Progress / 当前进度
-Already completed / 已完成
-
-English
-
-Baseline fuzzing for the P2IM Console benchmark runs successfully.
-MMIO hotspot observation is working.
-SVD address resolution works.
-PDF evidence location has been fixed for instance/family mismatches such as:
-UART0 -> UART
-GPIOB vs GPIOA
-Hotspot grouping has been introduced.
-Group-based heuristic candidate generation works.
-Guidance compilation now validates generated guidance files.
-Staged-loop now supports:
-shared cache,
-binary execution,
-import logging,
-automated control/candidate verdicts.
-
-中文
-
-P2IM Console benchmark 的 baseline fuzz 已可稳定运行。
-MMIO 热点观察已打通。
-SVD 地址解析可用。
-PDF 证据定位已修复实例/家族不匹配问题，例如：
-UART0 -> UART
-GPIOB 与 GPIOA 区分
-已引入热点分组。
-基于分组的 heuristic 候选生成已可工作。
-guidance 编译阶段已增加文件合法性校验。
-staged-loop 已支持：
-共享 cache，
-直接执行 binary，
-import 日志，
-自动 control/candidate verdict。
-Not yet complete / 尚未完成
-
-English
-
-Template coverage is still limited.
-Cross-peripheral or richer dependency modeling is still incomplete.
-Some advanced group templates may compile but still require runtime support.
-LLM rerank/expansion is not yet integrated into the main loop.
-Scoring and promotion still need more tuning.
-
-中文
-
-模板覆盖仍然有限。
-跨外设或更丰富的依赖建模仍不完整。
-某些高级 group template 虽然能生成，但可能仍需 runtime 支持。
-LLM rerank/expansion 尚未接入主循环。
-评分和晋级策略仍需继续调优。
-9. Typical Workflow / 典型使用流程
-9.1 Baseline or staged-loop entry / 入口
-
-English
-Typical entry scripts include:
-
-closed_loop.py run-fuzz
-closed_loop.py build-evidence
-closed_loop.py build-context
-closed_loop.py plan
-closed_loop.py compile
-closed_loop.py staged-loop
-
-中文
-典型入口包括：
-
-closed_loop.py run-fuzz
-closed_loop.py build-evidence
-closed_loop.py build-context
-closed_loop.py plan
-closed_loop.py compile
-closed_loop.py staged-loop
-9.2 Example staged-loop command / 示例 staged-loop 命令
-python3 closed_loop.py staged-loop \
-  --fuzzer-manifest /home/MultiFuzz/hail-fuzz/Cargo.toml \
-  --firmware-config /home/MultiFuzz-benchmarks/benchmarks/P2IM/Console/ \
-  --ghidra-src /home/MultiFuzz/tools/ghidra \
-  --pdf /home/MultiFuzz/extractor/text/K64.pdf \
-  --svd /home/MultiFuzz/extractor/svd/NXP/NXP-FRDM-K64F/MK64F12.xml \
-  --board NXP-FRDM-K64F \
-  --mcu MK64F12 \
-  --benchmark-name P2IM-Console \
-  --out-root /tmp/console_staged_loop \
-  --initial-run-for 180s \
-  --candidate-run-for 60s \
-  --rounds 2 \
-  --beam-width 2 \
-  --top-k 8 \
-  --plan-mode heuristic \
-  --max-candidates 6 \
-  --default-after-reads 192
-10. Testing and Validation / 测试与验证
-10.1 What to validate first / 先验证什么
-
-English
-The recommended validation order is:
-
-baseline fuzz runs correctly;
-observer output is produced;
-evidence pack is non-empty;
-hotspot groups are reasonable;
-plan candidates are non-empty;
-compile produces valid guidance files;
-run-fuzz can import seeds;
-staged-loop can produce verdicts automatically.
-
-中文
-推荐的验证顺序是：
-
-baseline fuzz 能正确运行；
-observer 能产出结果；
-evidence pack 非空；
-hotspot groups 合理；
-plan candidates 非空；
-compile 能生成合法 guidance；
-run-fuzz 能导入 seeds；
-staged-loop 能自动给出 verdict。
-10.2 Practical checks / 实用检查项
-
-English
-Important artifacts to inspect:
-
-evidence_pack.json
-task_context.json
-plan.json
-guidance_index.json
-guidance_runtime_summary.json
-round_*_summary.json
-staged_loop_summary.json
-
-中文
-建议重点检查这些文件：
-
-evidence_pack.json
-task_context.json
-plan.json
-guidance_index.json
-guidance_runtime_summary.json
-round_*_summary.json
-staged_loop_summary.json
-10.3 Common failure modes / 常见失败类型
-
-English
-
-invalid_guidance: generated guidance cannot be parsed or is empty;
-unsupported_action: runtime does not support a generated action type;
-no_effect: candidate runs but produces no visible effect;
-unfair comparison: candidates do not start from the same imported prefix;
-over-narrow planner: planner returns empty candidates or only a single hotspot family.
-
-中文
-
-invalid_guidance：生成的 guidance 为空或无法解析；
-unsupported_action：runtime 不支持某个生成动作；
-no_effect：candidate 能运行但没有可见效果；
-比较不公平：候选没有从同一个前缀 checkpoint 出发；
-planner 过窄：返回空候选或只覆盖单一热点类型。
-11. Recommended Next Steps / 下一步建议
-Short term / 短期
-
-English
-
-Keep using heuristic group-based planning as the non-empty fallback.
-Improve per-group quota so strong groups do not monopolize all candidates.
-Verify runtime support for advanced templates such as status-then-data actions.
-Continue staged tournament experiments with control branches.
-
-中文
-
-继续保留基于分组的 heuristic planner 作为非空保底。
-优化 per-group quota，避免最强热点组占满全部候选。
-验证 runtime 对高级模板（如 status-then-data）的支持。
-继续在带 control 的 staged tournament 中测试候选效果。
-Mid term / 中期
-
-English
-
-Integrate LLM rerank into the group/template pipeline.
-Add bounded LLM expansion within the allowed template catalog.
-Improve scoring with hotspot migration and dependency satisfaction signals.
-Expand template coverage iteratively based on winning candidates.
-
-中文
-
-将 LLM rerank 接入 group/template 管线。
-在允许模板目录内加入受限的 LLM 扩展能力。
-用热点迁移与依赖满足信号改进评分。
-根据胜出候选逐步扩展模板覆盖。
-Long term / 长期
-
-English
-
-Support richer multi-register and cross-peripheral strategies.
-Learn reusable group-template priors from previous winning rounds.
-Move from heuristic-only staged search to evidence-grounded hybrid planning with LLM assistance.
-
-中文
-
-支持更丰富的多寄存器与跨外设策略。
-从历史优胜轮次中学习可复用的 group-template 先验。
-从纯 heuristic staged search 逐步过渡到带 LLM 辅助的证据驱动混合规划。
-12. Final Summary / 最终总结
-
-English
-
-This work is not trying to solve all peripherals or all strategies in one shot. The current system is intentionally iterative. The immediate goal is to make the loop reliable:
-
-detect hotspots,
-group related registers,
-generate bounded candidates,
-compare them fairly from the same prefix,
-and promote the better branches.
-
-Once this loop is stable, LLM assistance can be introduced in a controlled way for reranking and bounded candidate expansion.
-
-中文
-
-这项工作并不是要一次性解决所有外设、所有寄存器和所有策略。当前系统本来就是一个逐步迭代的过程。当前最重要的目标是让闭环稳定可靠：
-
-发现热点，
-对相关寄存器分组，
-生成受约束候选，
-从同一前缀公平比较，
-将表现更好的分支晋级。
-
-在这个闭环稳定之后，再以受控方式引入 LLM 做 rerank 和受限候选扩展。
-
-
-## Adaptive MMIO Debug + LLM Seed Reinjection / 自适应 MMIO 卡点分析与 LLM seed 回填
-
-### Why this loop was redesigned / 为什么要重构这条闭环
-
-English
-
-The adaptive MMIO loop is no longer documented as a single-hypothesis repair path. The practical lesson from recent runs is that a bounded but wrong static hypothesis can silently dominate the pipeline even when the runtime evidence is pointing elsewhere. To improve utility and portability, the loop is now governed by four hard rules:
-
-1. **Runtime evidence is primary.** Dynamic tail hotspots, last-PC locality, and probe-touched MMIO addresses take precedence over static peripheral priors.
-2. **Hypotheses are portfolio candidates, not a single truth claim.** The loop keeps a control branch and compares multiple bounded candidates from the same imported frontier.
-3. **Every generated guidance must pass preflight.** Empty, conflicting, or untouched-trigger guidance is flagged before it is allowed to dominate the follow-up stage.
-4. **LLM output is bounded and secondary.** The LLM ranks or refines candidate families inside the evidence envelope; it does not invent unconstrained runtime behavior.
-
-中文
-
-自适应 MMIO 闭环不再被定义成“单一路径修复器”。最近几轮运行已经说明：即使动态运行证据已经指向别处，一个“边界内但方向偏了”的静态假设仍可能悄悄主导整条链路。为提高实用性与泛用性，当前闭环遵循四条硬规则：
-
-1. **运行时证据优先。** 动态 tail 热点、last-PC 定位和 probe 阶段真实 touched 的 MMIO 地址优先于静态外设先验。
-2. **假设采用候选组合而非单一结论。** 系统保留 control 分支，并从同一 imported frontier 出发比较多个受约束候选。
-3. **所有 guidance 先过 preflight。** 空 guidance、互相冲突的 guidance、或主触发地址根本未被 probe touched 的 guidance，会在 follow-up 前被标记。
-4. **LLM 是受限辅助。** LLM 只在证据边界内对候选家族做排序或细化，不直接发明无限制的 runtime 行为。
-
-### What the current adaptive loop does / 当前 adaptive loop 做什么
-
-This repository now includes a one-key orchestration command:
+- 发明新的 runtime DSL 语法，
+- 引入任意外设地址，
+- 忽略 allowed register cluster，
+- 绕过 normalization，
+- 绕过 compile/runtime 校验。
+
+## 7.2 What the LLM should do / LLM 应该做什么
+
+### English
+
+The LLM should:
+
+- stay inside the allowed register cluster,
+- propose state-advancing multi-register candidates,
+- use supported action families only,
+- generate candidate JSON that can be sanitized and normalized,
+- complement the heuristic baseline rather than replace it.
+
+### 中文
+
+LLM 应该：
+
+- 严格限制在 allowed register cluster 内，
+- 提出能推动状态前进的多寄存器候选，
+- 只使用支持的 action 家族，
+- 输出可被 sanitize/normalize 的 candidate JSON，
+- 作为 heuristic baseline 的补充，而不是替代。
+
+## 7.3 Current LLM integration order / 当前 LLM 接入顺序
+
+### English
+
+The current order is:
+
+1. heuristic baseline planning,
+2. LLM bounded expansion,
+3. sanitize and normalization,
+4. compile to guidance,
+5. compare inside the same tournament.
+
+### 中文
+
+当前接入顺序是：
+
+1. heuristic baseline planning，
+2. LLM bounded expansion，
+3. sanitize 与 normalization，
+4. compile 为 guidance，
+5. 在同一 tournament 内比较。
+
+## 7.4 Debug artifacts emitted by the LLM layer / LLM 层调试产物
+
+### English
+
+The LLM strategy layer now emits a full artifact chain, including:
+
+- `llm_strategy_prompt.json`
+- `llm_strategy_prompt.txt`
+- `llm_strategy_raw.json`
+- `llm_strategy_raw.txt`
+- `llm_strategy_lint_raw.json`
+- `llm_strategy_lint_sanitized.json`
+- `llm_strategy_extracted.json`
+- `llm_strategy_augmented_task_context.json`
+- `llm_strategy_normalized.json`
+- `llm_strategy_rejection_debug.json`
+- `llm_strategy_merge_report.json`
+
+This makes the pipeline debuggable at raw, sanitized, normalized, and merged stages.
+
+### 中文
+
+当前 LLM strategy layer 会输出完整调试链，包括：
+
+- `llm_strategy_prompt.json`
+- `llm_strategy_prompt.txt`
+- `llm_strategy_raw.json`
+- `llm_strategy_raw.txt`
+- `llm_strategy_lint_raw.json`
+- `llm_strategy_lint_sanitized.json`
+- `llm_strategy_extracted.json`
+- `llm_strategy_augmented_task_context.json`
+- `llm_strategy_normalized.json`
+- `llm_strategy_rejection_debug.json`
+- `llm_strategy_merge_report.json`
+
+因此现在可以分别在 raw、sanitized、normalized、merged 四个层面定位问题。
+
+---
+
+## 8. Adaptive and Staged Loop / 分阶段与自适应循环
+
+## 8.1 Core loop / 核心闭环
+
+### English
+
+The current main orchestration command is:
 
 ```bash
 python3 extractor/closed_loop.py adaptive-mmio-loop ...
 ```
 
-The adaptive loop now connects the existing MultiFuzz workflow to a **dynamic-first, portfolio-based** fallback path:
+At a high level, the loop does:
 
-1. **Establish or reuse a warmup frontier**
-   - If `--import-dir` is given, reuse the current queue/corpus frontier.
-   - Then run bounded warmup and select the best warmup frontier.
+1. warmup fuzzing,
+2. observer export,
+3. evidence pack construction,
+4. task context construction,
+5. candidate planning (heuristic + optional LLM bounded expansion),
+6. guidance compile,
+7. candidate tournament from a shared imported frontier,
+8. promotion and continuation.
 
-2. **Obtain an initial probe guidance**
-   - If `--guidance-file` is provided, use it directly.
-   - Otherwise synthesize a bounded probe guidance from the contract bundle.
+### 中文
 
-3. **Run a guided probe with trace export**
-   - Produces `replay_trace.json/.log/.meta.json` and `guidance_runtime_summary.json`.
-
-4. **Run dynamic stuck attribution**
-   - Produces `stuck_report.json` with last-PC localization, dominant loop functions, dynamic primary MMIO cluster, target-peripheral consistency, and ambiguity signals.
-
-5. **Package bounded evidence for LLM fallback**
-   - Produces `llm_fallback_bundle.json` and `llm_fallback_prompt.txt`.
-   - The bundle now carries dynamic-primary evidence, probe-touched addresses, and a hypothesis-portfolio view.
-
-6. **Synthesize bounded candidate guidance files**
-   - Control branch: reuse the current guidance.
-   - Dynamic-hotspot branch: synthesize a guidance candidate directly from probe-touched hotspot addresses.
-   - LLM branch: call the LLM only when needed, then synthesize `llm_seed.guidance.json` from the bounded answer.
-
-7. **Preflight every candidate**
-   - Deduplicate actions.
-   - Check whether primary trigger addresses were actually touched during the probe.
-   - Flag empty or untouched-trigger guidance before candidate comparison.
-
-8. **Run a short candidate portfolio tournament**
-   - All candidates start from the same probe queue.
-   - The loop records coverage, action firings, and candidate verdicts.
-   - It then selects the best candidate branch.
-
-9. **Continue fuzzing from the winning branch**
-   - The chosen candidate queue becomes the import frontier for the follow-up run.
-
-### Main command / 主命令
+当前主调度命令是：
 
 ```bash
-python3 /home/wgh/Multifuzz/extractor/closed_loop.py adaptive-mmio-loop \
-  --fuzzer-manifest /home/wgh/Multifuzz/hail-fuzz/Cargo.toml \
-  --firmware-config /home/wgh/Multifuzz/benchmarks/P2IM/Console/config.yml \
-  --ghidra-src /home/wgh/Multifuzz/tools/ghidra \
-  --contract-bundle /home/wgh/Multifuzz/analysis/out/p2im_console_ghidra_rel/contract_bundle_rtc_v7.json \
-  --out-root /home/wgh/Multifuzz/workdir/rtc_adaptive_loop_v3 \
-  --import-dir /home/wgh/Multifuzz/workdir/console_staged_recovery/round_0_seed/workdir/queue \
-  --warmup-run-for 600s \
+python3 extractor/closed_loop.py adaptive-mmio-loop ...
+```
+
+高层流程如下：
+
+1. warmup fuzzing，
+2. observer 导出，
+3. evidence pack 构建，
+4. task context 构建，
+5. 候选规划（heuristic + 可选 LLM bounded expansion），
+6. guidance compile，
+7. 从共享 imported frontier 出发进行 candidate tournament，
+8. 晋级与继续推进。
+
+## 8.2 Why the loop was redesigned / 为什么这条闭环需要重构
+
+### English
+
+The system moved away from a single-hypothesis repair path because a wrong but bounded static guess could still silently dominate the pipeline. The current loop therefore keeps control branches and compares bounded candidates as a portfolio.
+
+### 中文
+
+系统之所以从“单一路径修补器”演化出来，是因为实践表明：一个方向错误但形式合法的静态假设，仍然可能悄悄主导整条链路。因此当前闭环保留 control 分支，并把受约束候选作为一个 portfolio 来比较。
+
+## 8.3 Adaptive long-horizon behavior / 自适应长视角行为
+
+### English
+
+The current codebase has evolved beyond single-round short smoke. It now supports:
+
+- longer warmup,
+- repeated windows,
+- strategy-pool style comparison,
+- hotspot migration observation,
+- promotion based on actual performance rather than only static plausibility.
+
+### 中文
+
+当前代码已经超出了单轮短 smoke 的阶段，支持：
+
+- 更长的 warmup，
+- 多个连续窗口，
+- strategy-pool 风格比较，
+- 热点迁移观察，
+- 基于实际效果而不是静态合理性的晋级。
+
+---
+
+## 9. Current Validated Status / 当前已验证状态
+
+## 9.1 What is already validated / 已验证内容
+
+### English
+
+The following are already validated in the current repository state:
+
+- baseline fuzzing for Console is runnable,
+- MMIO observer is working,
+- SVD address resolution is working,
+- shared PDF/SVD cache reuse is working,
+- heuristic candidates are non-empty,
+- LLM candidates can now be sanitized, normalized, compiled, and executed,
+- earlier parser/contract issues such as missing `repeat`, `read_value`, and `write_addr` have been eliminated in the current short smoke path,
+- v9 short smoke successfully compiled 8 guidance files and executed all candidate branches without parser failure.
+
+### 中文
+
+当前仓库状态下，已经验证通过的包括：
+
+- Console 的 baseline fuzz 可运行，
+- MMIO observer 正常工作，
+- SVD 地址解析可用，
+- shared PDF/SVD cache 复用可用，
+- heuristic 候选非空，
+- LLM 候选现在已经能完成 sanitize、normalize、compile 与 runtime 执行，
+- 早期出现过的 `repeat`、`read_value`、`write_addr` 缺失问题，在当前短 smoke 路径中已被清掉，
+- v9 短 smoke 已成功编译 8 条 guidance，并在无 parser failure 的情况下执行所有候选分支。
+
+## 9.2 What is not yet stable enough / 仍未完全稳定的部分
+
+### English
+
+The current main uncertainty is no longer parser correctness, but strategy quality under longer time budgets. Candidate quality still diverges:
+
+- some LLM candidates become effective,
+- some only weakly fire,
+- some run correctly but do not translate into coverage.
+
+Longer warmup also revealed that hotspot families may shift toward mixed MCG/UART/PORT/SMC regions, which changes the planning problem itself.
+
+### 中文
+
+当前主要不确定性已经不再是 parser 正确性，而是更长时间预算下的策略质量。候选质量仍然存在明显分化：
+
+- 有些 LLM 候选会变成 effective，
+- 有些只会触发但不涨 coverage，
+- 有些虽然运行正确但并不能转化成收益。
+
+更长的 warmup 还暴露出：热点家族可能转向 MCG/UART/PORT/SMC 混合区域，这会改变规划问题本身。
+
+---
+
+## 10. Typical Workflow / 典型使用流程
+
+## 10.1 Main entry / 主入口
+
+```bash
+python3 extractor/closed_loop.py adaptive-mmio-loop \
+  --fuzzer-manifest hail-fuzz/Cargo.toml \
+  --firmware-config benchmarks/P2IM/Console/config.yml \
+  --ghidra-src tools/ghidra \
+  --pdf extractor/text/K64.pdf \
+  --svd extractor/svd/NXP/NXP-FRDM-K64F/MK64F12.xml \
+  --board FRDM-K64F \
+  --mcu MK64F12 \
+  --benchmark-name P2IM_Console \
+  --materialization-mode staged-loop \
+  --out-root workdir/console_run \
+  --warmup-run-for 900s \
   --warmup-restarts 1 \
-  --probe-run-for 60s \
-  --portfolio-run-for 20s \
-  --followup-run-for 60s \
-  --portfolio-max-candidates 3 \
-  --use-recent-exec latest \
-  --max-llm-cycles 1 \
-  --llm-max-output-tokens 6000 \
-  --llm-max-attempts 2
+  --candidate-run-for 120s \
+  --main-window-count 12 \
+  --main-window-run-for 180s \
+  --strategy-trial-windows 2 \
+  --strategy-pool-max-size 8 \
+  --strategy-control-every-windows 5 \
+  --adaptive-period-windows 3 \
+  --adaptive-plateau-windows 2 \
+  --probe-run-for 90s \
+  --followup-run-for 120s \
+  --portfolio-run-for 90s \
+  --portfolio-intervention-coverage-slack 64 \
+  --enable-llm-strategy \
+  --llm-strategy-mode api \
+  --llm-strategy-version v9_medium_pilot \
+  --llm-strategy-max-candidates 4 \
+  --llm-strategy-max-output-tokens 4000 \
+  --llm-strategy-max-attempts 2
 ```
 
-### Environment variables / 环境变量
+## 10.2 Recommended validation ladder / 推荐验证阶梯
 
-The only manual part that should remain outside the pipeline is API/proxy export:
+### English
 
-```bash
-export OPENAI_API_KEY='...'
-export OPENAI_MODEL='gpt-5.4'
-export OPENAI_REASONING_EFFORT='none'
-export http_proxy=http://127.0.0.1:17890
-export https_proxy=http://127.0.0.1:17890
-export HTTP_PROXY=http://127.0.0.1:17890
-export HTTPS_PROXY=http://127.0.0.1:17890
-```
+Recommended validation order:
 
-### Key outputs / 关键输出
+1. unit-test `llm_strategy_layer.py`,
+2. check `normalized.json`,
+3. run short smoke,
+4. ensure no parser failure remains,
+5. run repeated short regressions,
+6. run a medium pilot,
+7. only then run a multi-hour job.
 
-Under `--out-root`, the pipeline writes:
+### 中文
 
-- `baseline_warmup/`
-- `auto_probe.guidance.json` (if no `--guidance-file` was given)
-- `cycle_1/probe/`
-- `cycle_1/stuck_report.json`
-- `cycle_1/llm_fallback_bundle.json`
-- `cycle_1/llm_fallback_prompt.txt`
-- `cycle_1/llm_answer.json/.txt/.raw.json` (if LLM was invoked)
-- `cycle_1/dynamic_hotspot.guidance.json`
-- `cycle_1/llm_seed.guidance.json` (if synthesized)
-- `cycle_1/candidate_portfolio/`
-- `cycle_1/followup/`
+推荐的验证顺序：
+
+1. 先做 `llm_strategy_layer.py` 单测，
+2. 检查 `normalized.json`，
+3. 跑短 smoke，
+4. 确认不再有 parser failure，
+5. 做重复短跑回归，
+6. 再跑中等 pilot，
+7. 最后才进入多小时长跑。
+
+---
+
+## 11. Key Artifacts / 关键产物
+
+### English
+
+The most important artifacts to inspect are:
+
+- `evidence_pack.json`
+- `task_context.json`
+- `plan.json`
+- `guidance_index.json`
+- `guidance_runtime_summary.json`
+- `round_*_summary.json`
 - `adaptive_mmio_loop_summary.json`
+- LLM strategy artifacts under `plan/llm_strategy/`
 
-### Candidate verdicts / 候选 verdict
+### 中文
 
-The loop now distinguishes candidate failures more explicitly. Typical verdicts include:
+建议重点检查的文件包括：
 
-- `preflight_ok`
-- `empty_guidance`
-- `untouched_trigger`
-- `nonfiring_guidance`
-- `no_effect`
-- `effective`
+- `evidence_pack.json`
+- `task_context.json`
+- `plan.json`
+- `guidance_index.json`
+- `guidance_runtime_summary.json`
+- `round_*_summary.json`
+- `adaptive_mmio_loop_summary.json`
+- `plan/llm_strategy/` 下的 LLM 调试产物
 
-This makes the loop more practical: failures are no longer only “bad coverage”; they become attributable pipeline states.
+---
 
-### Notes / 说明
+## 12. Common Failure Modes / 常见失败类型
 
-- This command is not trying to prove a single exact root cause in all cases.
-- Its job is to keep the pipeline moving while avoiding silent bias from one wrong hypothesis.
-- If a probe run is already unambiguous, you may still force LLM participation with `--force-llm`.
-- If you already have a hand-written or manually curated probe strategy, pass it via `--guidance-file`; otherwise the pipeline will synthesize a bounded probe automatically.
-- If you want to fall back to the previous single-branch follow-up style, pass `--disable-candidate-portfolio`.
+### English
+
+Earlier common failures included:
+
+- `invalid_guidance`
+- `unsupported_action`
+- missing parser fields such as `repeat`, `read_value`, `write_addr`
+- empty candidate sets
+- unfair comparison from inconsistent import frontiers
+
+Current practical failure modes are shifting toward:
+
+- no-effect candidates,
+- weak-effect candidates,
+- strategy quality divergence,
+- hotspot-family drift in longer runs,
+- PDF evidence incompleteness for some families (for example MCG cache coverage).
+
+### 中文
+
+早期常见失败包括：
+
+- `invalid_guidance`
+- `unsupported_action`
+- parser 字段缺失，如 `repeat`、`read_value`、`write_addr`
+- 空候选集
+- import frontier 不一致导致比较不公平
+
+当前更常见的实际问题正在转向：
+
+- `no_effect` 候选，
+- `weak_effect` 候选，
+- 策略质量分化，
+- 更长运行中的热点家族漂移，
+- 某些家族（如 MCG）PDF evidence 覆盖不足。
+
+---
+
+## 13. Recommended Next Steps / 下一步建议
+
+### Short term / 短期
+
+### English
+
+- Keep the current v9 code path stable.
+- Continue repeated short-run regression to ensure parser cleanliness remains stable.
+- Measure whether the same LLM winners remain effective across multiple short runs.
+
+### 中文
+
+- 保持当前 v9 代码路径稳定，
+- 继续做重复短跑回归，确认 parser 层面持续无错误，
+- 观察相同 LLM 优胜者是否能在多轮短跑中持续保持 effective。
+
+### Mid term / 中期
+
+### English
+
+- Run medium pilots with longer warmup and more windows.
+- Measure whether control baseline recovers toward the previously observed higher coverage range.
+- Evaluate whether mixed-family planning should remain unconstrained or be family-biased per stage.
+
+### 中文
+
+- 用更长 warmup 和更多窗口跑中等时长 pilot，
+- 观察 control baseline 是否回升到之前更高的 coverage 区间，
+- 评估混合家族规划是否应该继续保持开放，还是在每阶段做 family bias。
+
+### Long term / 长期
+
+### English
+
+- Move from parser-stability tuning to strategy-quality tuning.
+- Learn which candidate families consistently win under longer budgets.
+- Use those wins to refine template priors, group quotas, and promotion policy.
+- Only after that commit to multi-hour or overnight runs as the standard mode.
+
+### 中文
+
+- 从 parser 稳定性调优转向策略质量调优，
+- 观察哪些候选家族能在更长预算下持续获胜，
+- 再据此回调 template priors、group quota 与 promotion policy，
+- 最后再把多小时/过夜长跑变成标准模式。
+
+---
+
+## 14. Final Summary / 最终总结
+
+### English
+
+The current system has evolved from a basic staged hotspot-repair loop into a hybrid evidence-guided planning framework with bounded LLM expansion, runtime-safe normalization, and adaptive tournament-style evaluation.
+
+The most important milestone already achieved is not “perfect strategies,” but a **stable closed loop**:
+
+- hotspots can be observed,
+- evidence can be built,
+- bounded candidates can be produced,
+- candidates can be compiled and executed,
+- branches can be compared fairly,
+- and the pipeline no longer collapses on parser mismatches.
+
+This makes the next phase possible: strategy-quality improvement under longer horizons.
+
+### 中文
+
+当前系统已经从一个基础的 staged hotspot-repair loop，演化成一个带有受限 LLM 扩展、runtime-safe normalization 与自适应 tournament 评估的混合证据驱动规划框架。
+
+当前最重要的里程碑并不是“策略已经完美”，而是已经建立起一个**稳定闭环**：
+
+- 热点能被观察到，
+- 证据能被构建，
+- 受约束候选能被生成，
+- 候选能被编译和执行，
+- 分支能被公平比较，
+- 整条管线不再因为 parser mismatch 而崩掉。
+
+这才使得下一阶段成为可能：在更长时间尺度上继续提升策略质量。
