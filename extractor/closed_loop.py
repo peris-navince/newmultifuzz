@@ -9,6 +9,7 @@ import shlex
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -1274,6 +1275,108 @@ def _coverage_from_run_summary(run_summary: Optional[Dict[str, Any]]) -> int:
     return int((run_summary or {}).get('last_cov') or 0)
 
 
+def _run_last_in(run: Optional[Dict[str, Any]]) -> int:
+    return int(((run or {}).get("run_summary") or {}).get("last_in") or 0)
+
+
+def _run_status(run: Optional[Dict[str, Any]]) -> str:
+    return str(((run or {}).get("run_summary") or {}).get("status") or '')
+
+
+def _extract_segment_queue_dir(run: Optional[Dict[str, Any]], fallback_workdir: Optional[str] = None) -> Optional[str]:
+    rs = (run or {}).get('run_summary') or {}
+    for key in ['queue_dir', 'queue_path']:
+        value = rs.get(key)
+        if value:
+            return _abs(str(value))
+    workdir = (run or {}).get('workdir') or fallback_workdir
+    if workdir:
+        return _queue_dir(str(workdir))
+    return None
+
+
+def _segment_primary_hotspot_reason(observer_views: Optional[Dict[str, Any]]) -> Optional[str]:
+    latest_summary = ((observer_views or {}).get('latest_window_summary') or {}) if isinstance(observer_views, dict) else {}
+    if isinstance(latest_summary, dict):
+        reason = latest_summary.get('reason')
+        if reason is not None:
+            return str(reason)
+    return None
+
+
+def _segment_primary_hotspot_summary(observer_views: Optional[Dict[str, Any]]) -> Tuple[Optional[Dict[str, Any]], Optional[str], Optional[str]]:
+    primary = _primary_hotspot_from_observer_views(observer_views)
+    return primary, _primary_hotspot_key(primary), _segment_primary_hotspot_reason(observer_views)
+
+
+def _beam_entry_start_cov(entry: Dict[str, Any], default: int) -> int:
+    for key in ['final_cov', 'last_cov', 'coverage', 'baseline_cov']:
+        try:
+            value = entry.get(key)
+            if value is not None:
+                return int(value)
+        except Exception:
+            pass
+    return int(default or 0)
+
+
+def _beam_entry_start_last_in(entry: Dict[str, Any], default: int = 0) -> int:
+    for key in ['final_last_in', 'last_in']:
+        try:
+            value = entry.get(key)
+            if value is not None:
+                return int(value)
+        except Exception:
+            pass
+    return int(default or 0)
+
+
+def _beam_entry_start_last_hang(entry: Dict[str, Any], default: int = 0) -> int:
+    for key in ['final_hangs', 'last_hangs', 'hangs']:
+        try:
+            value = entry.get(key)
+            if value is not None:
+                return int(value)
+        except Exception:
+            pass
+    return int(default or 0)
+
+
+def _beam_entry_start_hotspot_key(entry: Dict[str, Any], default: Optional[str]) -> Optional[str]:
+    for key in ['final_primary_hotspot_key', 'primary_hotspot_key', 'next_hotspot_key']:
+        value = entry.get(key)
+        norm = _normalize_hex(value) if value is not None else None
+        if norm:
+            return norm
+    return _normalize_hex(default) if default else None
+
+
+def _budget_beam_rank_details(entry: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        'cumulative_cov_delta': int(entry.get('cumulative_cov_delta') or 0),
+        'final_cov': int(entry.get('final_cov') or 0),
+        'positive_segments': int(entry.get('positive_segments') or 0),
+        'cumulative_action_fires': int(entry.get('cumulative_action_fires') or 0),
+        'cumulative_sequence_progress': int(entry.get('cumulative_sequence_progress') or 0),
+        'cumulative_intervention_signals': int(entry.get('cumulative_intervention_signals') or 0),
+        'hotspot_changed': bool(entry.get('hotspot_changed')),
+        'name': str(entry.get('name') or ''),
+    }
+
+
+def _budget_beam_component_rank(entry: Dict[str, Any]) -> Tuple[Any, ...]:
+    details = _budget_beam_rank_details(entry)
+    return (
+        int(details.get('cumulative_cov_delta') or 0),
+        int(details.get('final_cov') or 0),
+        int(details.get('positive_segments') or 0),
+        int(details.get('cumulative_action_fires') or 0),
+        int(details.get('cumulative_sequence_progress') or 0),
+        int(details.get('cumulative_intervention_signals') or 0),
+        1 if details.get('hotspot_changed') else 0,
+    )
+
+
 def _parse_duration_seconds(text: str) -> int:
     s = str(text).strip().lower()
     m = re.fullmatch(r"(\d+)([smhd]?)", s)
@@ -2261,15 +2364,43 @@ def _configure_materialization_defaults(args):
 
 
 
+def _normalize_primary_hotspot_row(row: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    if not isinstance(row, dict):
+        return None
+    out = dict(row)
+    addr = _normalize_hex(out.get('addr') or out.get('address_hex') or out.get('mmio_addr'))
+    if addr:
+        out['addr'] = addr
+    for key in ['read_count', 'executions_seen', 'interesting_executions_seen', 'fallback_rank', 'fallback_family_priority']:
+        if key in out:
+            try:
+                out[key] = int(out.get(key) or 0)
+            except Exception:
+                pass
+    return out
+
+
 def _primary_hotspot_from_observer_views(views: Optional[Any]) -> Optional[Dict[str, Any]]:
     if isinstance(views, dict):
+        latest_summary = views.get('latest_window_summary') or {}
+        if isinstance(latest_summary, dict):
+            primary_hotspots = latest_summary.get('primary_hotspots') or []
+            if primary_hotspots and isinstance(primary_hotspots[0], dict):
+                return _normalize_primary_hotspot_row(primary_hotspots[0])
         rows = views.get('latest_window_discovered_streams') or views.get('discovered_streams') or []
+        if rows and isinstance(rows[0], dict):
+            return _normalize_primary_hotspot_row(rows[0])
+        if isinstance(latest_summary, dict):
+            raw_top_hotspots = latest_summary.get('raw_top_hotspots') or []
+            if raw_top_hotspots and isinstance(raw_top_hotspots[0], dict):
+                return _normalize_primary_hotspot_row(raw_top_hotspots[0])
+        return None
     elif isinstance(views, list):
         rows = views
     else:
         rows = []
     if rows and isinstance(rows[0], dict):
-        return dict(rows[0])
+        return _normalize_primary_hotspot_row(rows[0])
     return None
 
 
@@ -2473,11 +2604,15 @@ def _run_materialized_stage_for_new_hotspot(args, *, event_root: Path, current_i
     stage_args = argparse.Namespace(**vars(args))
     stage_args.out_root = str(event_root / 'materialization')
     stage_args.import_dir = current_import_dir
+    # Short-term breakthrough screening budget.
     stage_args.initial_run_for = str(getattr(args, 'probe_run_for', None) or '30s')
-    stage_args.candidate_run_for = str(getattr(args, 'portfolio_run_for', None) or getattr(args, 'followup_run_for', None) or '30s')
+    stage_args.candidate_run_for = str(getattr(args, 'candidate_run_for', None) or getattr(args, 'portfolio_run_for', None) or getattr(args, 'followup_run_for', None) or '30s')
     stage_args.rounds = 1
-    stage_args.beam_width = max(1, min(2, int(getattr(args, 'strategy_pool_max_size', 2) or 2)))
+    shortlist_size = _budget_shortlist_size(args)
+    stage_args.beam_width = max(1, shortlist_size)
     stage_args.max_weak_per_parent = max(1, int(getattr(args, 'max_weak_per_parent', 1) or 1))
+    stage_args.main_window_count = 0
+    stage_args.strategy_pool_max_size = max(int(getattr(stage_args, 'strategy_pool_max_size', 0) or 0), shortlist_size + 1)
     _configure_materialization_defaults(stage_args)
     staged_loop(stage_args)
     summary_path = Path(stage_args.out_root) / 'report' / 'staged_loop_summary.json'
@@ -2485,6 +2620,7 @@ def _run_materialized_stage_for_new_hotspot(args, *, event_root: Path, current_i
         'summary_path': str(summary_path),
         'summary': _maybe_json(str(summary_path)),
         'import_dir': current_import_dir,
+        'shortlist_size': shortlist_size,
     }
 
 
@@ -2682,11 +2818,713 @@ def _run_adaptive_mmio_loop_materialized(args, out_root: Path, fuzzer_bin: str) 
     return base_summary
 
 
+
+def _clone_args_with_overrides(args, **overrides):
+    data = argparse.Namespace(**vars(args))
+    for key, value in overrides.items():
+        setattr(data, key, value)
+    return data
+
+
+def _duration_to_seconds_or_none(value: Optional[str]) -> Optional[int]:
+    if value is None:
+        return None
+    return _parse_duration_seconds(str(value))
+
+
+def _budget_beam_width(args) -> int:
+    bw = getattr(args, 'beam_width', None)
+    if bw is None:
+        return 2
+    try:
+        return max(1, int(bw))
+    except Exception:
+        return 2
+
+
+def _budget_shortlist_size(args) -> int:
+    """
+    Short-term breakthrough screening should usually keep a slightly larger set
+    than the final long-horizon beam. We derive this without adding a new user
+    parameter: shortlist = max(strategy_pool_max_size, beam_width + 1, 3).
+    """
+    beam = max(1, _budget_beam_width(args))
+    try:
+        pool = int(getattr(args, 'strategy_pool_max_size', 0) or 0)
+    except Exception:
+        pool = 0
+    return max(beam + 1, pool, 3)
+
+
+def _winner_window_count(args) -> int:
+    winner_for = _duration_to_seconds_or_none(getattr(args, 'winner_run_for', None) or getattr(args, 'main_window_run_for', None) or '7200s')
+    winner_seg = _duration_to_seconds_or_none(getattr(args, 'winner_run_segment', None) or getattr(args, 'main_window_run_for', None) or '1800s')
+    winner_for = max(1, int(winner_for or 7200))
+    winner_seg = max(1, int(winner_seg or 1800))
+    return max(1, (winner_for + winner_seg - 1) // winner_seg)
+
+
+def _winner_window_run_for(args) -> str:
+    return str(getattr(args, 'winner_run_segment', None) or getattr(args, 'main_window_run_for', None) or '1800s')
+
+
+def _minimum_budget_cycle_seconds(args) -> int:
+    """
+    Rough lower bound for whether another budget-driven cycle is worth starting.
+    A cycle now consists of:
+      - a short-term screening pass over the candidate shortlist,
+      - long-horizon runs for the final beam frontiers,
+      - an occasional control refresh window.
+    We keep the bound conservative so the outer loop does not begin a cycle it
+    cannot reasonably finish.
+    """
+    candidate = _duration_to_seconds_or_none(getattr(args, 'candidate_run_for', None) or getattr(args, 'portfolio_run_for', None) or '120s') or 120
+    shortlist = max(1, _budget_shortlist_size(args))
+    winner = _duration_to_seconds_or_none(getattr(args, 'winner_run_for', None) or '7200s') or 7200
+    beam_width = max(1, _budget_beam_width(args))
+    refresh = _duration_to_seconds_or_none(_control_refresh_run_for(args)) or 900
+    return int((candidate * shortlist) + (beam_width * winner) + refresh)
+
+
+def _budget_control_refresh_every_cycles(args) -> int:
+    try:
+        return max(1, int(getattr(args, 'strategy_control_every_windows', None) or 2))
+    except Exception:
+        return 2
+
+
+def _control_refresh_run_for(args) -> str:
+    seg = _duration_to_seconds_or_none(getattr(args, 'winner_run_segment', None) or getattr(args, 'main_window_run_for', None) or '1800s') or 1800
+    return _format_duration_seconds(min(int(seg), 900))
+
+
+def _extract_budget_beam_from_materialized_summary(materialized_summary: Optional[Dict[str, Any]], args, *, beam_width: int, base_queue_dir: Optional[str], shortlist_size: Optional[int] = None) -> List[Dict[str, Any]]:
+    strategy_pool, _promotion_summary = _materialized_strategy_pool_from_summary(materialized_summary, args)
+    candidates = [dict(s) for s in strategy_pool if str(s.get('source') or '') != 'control' and s.get('guidance_file')]
+    candidates.sort(key=_strategy_snapshot_rank, reverse=True)
+    limit = max(1, int(shortlist_size or beam_width or 1))
+    beam: List[Dict[str, Any]] = []
+    for entry in candidates[:limit]:
+        item = dict(entry)
+        item['queue_dir'] = _abs(base_queue_dir) if base_queue_dir else None
+        item['selected_from'] = 'materialized_short_tournament'
+        beam.append(item)
+    return beam
+
+
+def _baseline_hotspot_key_from_materialized_summary(materialized_summary: Optional[Dict[str, Any]]) -> Optional[str]:
+    if not isinstance(materialized_summary, dict):
+        return None
+    initial_seed = materialized_summary.get('initial_seed') or {}
+    return _primary_hotspot_key(_primary_hotspot_from_observer_views(initial_seed.get('latest_window_discovered_streams')))
+
+
+def _budget_beam_entry_rank(entry: Dict[str, Any]) -> Tuple[Any, ...]:
+    component_rank = _budget_beam_component_rank(entry)
+    input_rank = int(entry.get('input_rank') or 0)
+    return component_rank + (-input_rank, str((entry.get('strategy_id') or entry.get('name') or '')))
+
+
+def _run_budget_control_refresh(args, *, cycle_root: Path, import_dir: Optional[str], fuzzer_bin: str, cycle_index: int) -> Optional[Dict[str, Any]]:
+    if not import_dir:
+        return None
+    every = _budget_control_refresh_every_cycles(args)
+    if cycle_index % every != 0:
+        return None
+    refresh_root = cycle_root / 'control_refresh'
+    _ensure_dir(str(refresh_root))
+    trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+    run = run_hail_fuzz(
+        manifest_path=args.fuzzer_manifest,
+        firmware_config=args.firmware_config,
+        ghidra_src=args.ghidra_src,
+        workdir=str(refresh_root / 'workdir'),
+        run_log=str(refresh_root / 'run.log'),
+        run_for=_control_refresh_run_for(args),
+        observer_dir=str(refresh_root / 'observer'),
+        guidance_file=None,
+        guidance_summary_out=None,
+        import_dir=import_dir,
+        fuzzer_bin=fuzzer_bin,
+        setenv=args.setenv,
+        dump_trace=bool(getattr(args, 'dump_trace', False)),
+        trace_out=str((refresh_root / trace_base).with_suffix('.json')),
+        trace_text_out=str((refresh_root / trace_base).with_suffix('.log')),
+        trace_meta_out=str((refresh_root / trace_base).with_suffix('.meta.json')),
+        trace_basename=trace_base,
+    )
+    save_json(str(refresh_root / 'run_fuzz_summary.json'), run)
+    observer_views = _ensure_observer_latest_files(str(refresh_root / 'observer'))
+    return {
+        'cycle_index': cycle_index,
+        'run_for': _control_refresh_run_for(args),
+        'run': run,
+        'observer': observer_views,
+        'primary_hotspot': _primary_hotspot_from_observer_views(observer_views),
+        'primary_hotspot_key': _primary_hotspot_key(_primary_hotspot_from_observer_views(observer_views)),
+        'queue_dir': _queue_dir(run.get('workdir')) if (run or {}).get('workdir') else None,
+    }
+
+
+def _run_budget_beam_long_horizon(args, *, cycle_root: Path, beam_entries: List[Dict[str, Any]], fuzzer_bin: str, baseline_cov: int, baseline_hotspot_key: Optional[str]) -> Dict[str, Any]:
+    total_segments = _winner_window_count(args)
+    segment_run_for = _winner_window_run_for(args)
+    trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+    beam_reports: List[Dict[str, Any]] = []
+
+    for rank, entry in enumerate(beam_entries, start=1):
+        if not entry.get('guidance_file'):
+            continue
+        candidate_root = cycle_root / 'beam_long_horizon' / f'beam_{rank:02d}_{_safe_id(entry.get("name") or "candidate")}'
+        _ensure_dir(str(candidate_root))
+        current_import_dir = entry.get('queue_dir')
+        start_cov = _beam_entry_start_cov(entry, baseline_cov)
+        start_last_in = _beam_entry_start_last_in(entry, 0)
+        start_last_hang = _beam_entry_start_last_hang(entry, 0)
+        start_hotspot_key = _beam_entry_start_hotspot_key(entry, baseline_hotspot_key)
+        prev_cov = int(start_cov)
+        prev_last_in = int(start_last_in)
+        prev_last_hang = int(start_last_hang)
+        prev_hotspot_key = start_hotspot_key
+        segments: List[Dict[str, Any]] = []
+        segment_summaries: List[Dict[str, Any]] = []
+        cumulative_cov_delta = 0
+        cumulative_action_fires = 0
+        cumulative_tail_fire_signals = 0
+        cumulative_sequence_progress = 0
+        cumulative_intervention_signals = 0
+        positive_segments = 0
+        latest_queue_dir = current_import_dir
+        final_cov = prev_cov
+        final_last_in = prev_last_in
+        final_hangs = prev_last_hang
+        final_primary_hotspot_key = prev_hotspot_key
+        hotspot_changed = False
+        selected_reason: Optional[str] = None
+
+        for seg_index in range(1, total_segments + 1):
+            seg_root = candidate_root / f'segment_{seg_index:03d}'
+            _ensure_dir(str(seg_root))
+            run = run_hail_fuzz(
+                manifest_path=args.fuzzer_manifest,
+                firmware_config=args.firmware_config,
+                ghidra_src=args.ghidra_src,
+                workdir=str(seg_root / 'workdir'),
+                run_log=str(seg_root / 'run.log'),
+                run_for=segment_run_for,
+                observer_dir=str(seg_root / 'observer'),
+                guidance_file=entry.get('guidance_file'),
+                guidance_summary_out=str(seg_root / 'guidance_runtime_summary.json'),
+                import_dir=current_import_dir,
+                fuzzer_bin=fuzzer_bin,
+                setenv=args.setenv,
+                dump_trace=bool(getattr(args, 'dump_trace', False)),
+                trace_out=str((seg_root / trace_base).with_suffix('.json')),
+                trace_text_out=str((seg_root / trace_base).with_suffix('.log')),
+                trace_meta_out=str((seg_root / trace_base).with_suffix('.meta.json')),
+                trace_basename=trace_base,
+            )
+            save_json(str(seg_root / 'run_fuzz_summary.json'), run)
+            grs = _maybe_json(str(seg_root / 'guidance_runtime_summary.json')) or {}
+            observer_views = _ensure_observer_latest_files(str(seg_root / 'observer'))
+            cov = _coverage_from_run_summary(run.get('run_summary'))
+            cov_delta = int(cov) - int(prev_cov)
+            last_in = _run_last_in(run)
+            in_delta = int(last_in) - int(prev_last_in)
+            last_hang = _run_last_hang(run)
+            hang_delta = int(last_hang) - int(prev_last_hang)
+            status = _run_status(run)
+            istats = _intervention_stats(grs, run)
+            primary_hotspot, observed_primary_hotspot_key, observer_reason = _segment_primary_hotspot_summary(observer_views)
+            effective_primary_hotspot_key = observed_primary_hotspot_key or prev_hotspot_key
+            carried_primary_hotspot = bool((not observed_primary_hotspot_key) and prev_hotspot_key)
+            if observed_primary_hotspot_key and prev_hotspot_key and observed_primary_hotspot_key != prev_hotspot_key:
+                hotspot_changed = True
+            effective_primary_hotspot = dict(primary_hotspot or {}) if isinstance(primary_hotspot, dict) else None
+            if effective_primary_hotspot is None and effective_primary_hotspot_key:
+                effective_primary_hotspot = {'addr': effective_primary_hotspot_key, 'source': 'carried_forward'}
+            elif effective_primary_hotspot is not None and effective_primary_hotspot_key and not effective_primary_hotspot.get('addr'):
+                effective_primary_hotspot['addr'] = effective_primary_hotspot_key
+            segment_summary = {
+                'segment_index': seg_index,
+                'run_for': segment_run_for,
+                'status': status,
+                'guidance_file': entry.get('guidance_file'),
+                'workdir': run.get('workdir'),
+                'queue_dir': _extract_segment_queue_dir(run, str(seg_root / 'workdir')),
+                'coverage_before': int(prev_cov),
+                'coverage_after': int(cov),
+                'cov_delta': int(cov_delta),
+                'last_in_before': int(prev_last_in),
+                'last_in_after': int(last_in),
+                'in_delta': int(in_delta),
+                'last_hang_before': int(prev_last_hang),
+                'last_hang_after': int(last_hang),
+                'hang_delta': int(hang_delta),
+                'imported_seed_count': int(run.get('imported_seed_count') or 0),
+                'observer_reason': observer_reason,
+                'primary_hotspot': effective_primary_hotspot,
+                'primary_hotspot_key': effective_primary_hotspot_key,
+                'observed_primary_hotspot_key': observed_primary_hotspot_key,
+                'effective_primary_hotspot_key': effective_primary_hotspot_key,
+                'carried_forward_primary_hotspot_key': bool(carried_primary_hotspot),
+                'primary_hotspot_read_count': int((effective_primary_hotspot or {}).get('read_count') or 0),
+                'primary_hotspot_executions_seen': int((effective_primary_hotspot or {}).get('executions_seen') or 0),
+                'prev_primary_hotspot_key': prev_hotspot_key,
+                'effective_intervention_stats': dict(istats),
+            }
+            segment_record = {
+                'segment_index': seg_index,
+                'run_for': segment_run_for,
+                'guidance_file': entry.get('guidance_file'),
+                'run': run,
+                'guidance_runtime_summary': grs,
+                'observer': observer_views,
+                'effective_intervention_stats': istats,
+                'coverage': cov,
+                'coverage_delta_vs_prev_segment': cov_delta,
+                'last_in': int(last_in),
+                'last_in_delta_vs_prev_segment': int(in_delta),
+                'last_hang': int(last_hang),
+                'last_hang_delta_vs_prev_segment': int(hang_delta),
+                'primary_hotspot': effective_primary_hotspot,
+                'primary_hotspot_key': effective_primary_hotspot_key,
+                'observed_primary_hotspot_key': observed_primary_hotspot_key,
+                'effective_primary_hotspot_key': effective_primary_hotspot_key,
+                'prev_primary_hotspot_key': prev_hotspot_key,
+                'summary': segment_summary,
+            }
+            segments.append(segment_record)
+            segment_summaries.append(segment_summary)
+            cumulative_cov_delta += int(cov_delta)
+            cumulative_action_fires += int(istats.get('effective_action_fires') or 0)
+            cumulative_tail_fire_signals += int(istats.get('tail_fire_signals') or 0)
+            cumulative_sequence_progress += int(istats.get('sequence_progress') or 0)
+            if _candidate_has_intervention_signal({
+                'summary_action_fires': int(istats.get('summary_action_fires') or 0),
+                'effective_action_fires': int(istats.get('effective_action_fires') or 0),
+                'tail_fire_signals': int(istats.get('tail_fire_signals') or 0),
+                'sequence_progress': int(istats.get('sequence_progress') or 0),
+                'active_stage_count': int(istats.get('active_stage_count') or 0),
+            }):
+                cumulative_intervention_signals += 1
+            if int(cov_delta) > 0:
+                positive_segments += 1
+            prev_cov = int(cov)
+            prev_last_in = int(last_in)
+            prev_last_hang = int(last_hang)
+            final_cov = int(cov)
+            final_last_in = int(last_in)
+            final_hangs = int(last_hang)
+            prev_hotspot_key = effective_primary_hotspot_key
+            final_primary_hotspot_key = effective_primary_hotspot_key
+            latest_queue_dir = _extract_segment_queue_dir(run, str(seg_root / 'workdir')) or latest_queue_dir
+            current_import_dir = latest_queue_dir
+
+        beam_record = dict(entry)
+        beam_record.update({
+            'input_rank': int(rank),
+            'baseline_cov': int(start_cov),
+            'segment_run_for': segment_run_for,
+            'winner_run_for': str(getattr(args, 'winner_run_for', None) or '7200s'),
+            'segments': segments,
+            'segment_summaries': segment_summaries,
+            'final_cov': final_cov,
+            'final_last_in': final_last_in,
+            'final_hangs': final_hangs,
+            'cumulative_cov_delta': cumulative_cov_delta,
+            'positive_segments': positive_segments,
+            'cumulative_action_fires': cumulative_action_fires,
+            'cumulative_tail_fire_signals': cumulative_tail_fire_signals,
+            'cumulative_sequence_progress': cumulative_sequence_progress,
+            'cumulative_intervention_signals': cumulative_intervention_signals,
+            'final_primary_hotspot_key': final_primary_hotspot_key,
+            'initial_primary_hotspot_key': start_hotspot_key,
+            'hotspot_changed': hotspot_changed,
+            'queue_dir': latest_queue_dir,
+            'score': None,
+        })
+        beam_record['score_components'] = _budget_beam_rank_details(beam_record)
+        beam_record['score'] = _budget_beam_entry_rank(beam_record)
+        beam_reports.append(beam_record)
+
+    beam_reports.sort(key=_budget_beam_entry_rank, reverse=True)
+    selected_beam = beam_reports[:max(1, _budget_beam_width(args))]
+    tie_break_applied = False
+    tie_break_reason = None
+    if len(beam_reports) >= 2:
+        tie_break_applied = _budget_beam_component_rank(beam_reports[0]) == _budget_beam_component_rank(beam_reports[1])
+        if tie_break_applied:
+            tie_break_reason = 'preserve_input_order'
+    summary = {
+        'schema': 'mf_budget_beam_long_horizon_v4',
+        'winner_run_for': str(getattr(args, 'winner_run_for', None) or '7200s'),
+        'winner_run_segment': segment_run_for,
+        'beam_width': _budget_beam_width(args),
+        'beam_input': [
+            {
+                'strategy_id': e.get('strategy_id'),
+                'name': e.get('name'),
+                'guidance_file': e.get('guidance_file'),
+                'queue_dir': e.get('queue_dir'),
+                'source': e.get('source'),
+                'final_cov': e.get('final_cov'),
+                'final_primary_hotspot_key': e.get('final_primary_hotspot_key'),
+            }
+            for e in beam_entries
+        ],
+        'beam_after_long_run': selected_beam,
+        'beam_reports': beam_reports,
+        'selected_beam': {
+            'name': selected_beam[0].get('name') if selected_beam else None,
+            'guidance_file': selected_beam[0].get('guidance_file') if selected_beam else None,
+            'queue_dir': selected_beam[0].get('queue_dir') if selected_beam else None,
+            'final_primary_hotspot_key': selected_beam[0].get('final_primary_hotspot_key') if selected_beam else baseline_hotspot_key,
+            'score': list(selected_beam[0].get('score') or []) if selected_beam else None,
+            'score_components': dict(selected_beam[0].get('score_components') or {}) if selected_beam else {},
+            'component_rank': list(_budget_beam_component_rank(selected_beam[0])) if selected_beam else None,
+            'tie_break_applied': bool(tie_break_applied),
+            'tie_break_reason': tie_break_reason,
+        },
+        'final_queue_dir': selected_beam[0].get('queue_dir') if selected_beam else None,
+        'final_guidance_file': selected_beam[0].get('guidance_file') if selected_beam else None,
+        'final_primary_hotspot_key': selected_beam[0].get('final_primary_hotspot_key') if selected_beam else baseline_hotspot_key,
+    }
+    save_json(str(cycle_root / 'materialized_long_horizon_summary.json'), summary)
+    return summary
+
+
+def _should_replan_budget_cycle(args, *, cycle_index: int, long_summary: Optional[Dict[str, Any]], previous_hotspot_key: Optional[str]) -> Tuple[bool, str]:
+    if cycle_index == 1:
+        return True, 'bootstrap_completed'
+    if not isinstance(long_summary, dict):
+        return True, 'missing_long_summary'
+    beam = list(long_summary.get('beam_after_long_run') or [])
+    if not beam:
+        return True, 'empty_beam_after_long_run'
+
+    top = beam[0]
+    max_cov_gain = max(int(x.get('cumulative_cov_delta') or 0) for x in beam)
+    max_positive_segments = max(int(x.get('positive_segments') or 0) for x in beam)
+    max_intervention_signals = max(int(x.get('cumulative_intervention_signals') or 0) for x in beam)
+    hotspot_keys = [x.get('final_primary_hotspot_key') for x in beam if x.get('final_primary_hotspot_key')]
+    hotspot_migrated = bool(previous_hotspot_key and any(hk != previous_hotspot_key for hk in hotspot_keys))
+    all_same_hotspot = bool(previous_hotspot_key) and hotspot_keys and all(hk == previous_hotspot_key for hk in hotspot_keys)
+    all_stagnant = all(int(x.get('cumulative_cov_delta') or 0) < 32 for x in beam)
+
+    # Re-query and re-plan on hotspot migration: the current knowledge envelope has changed.
+    if hotspot_migrated:
+        return True, 'hotspot_migrated'
+
+    # Keep advancing current beam if at least one frontier is still making strong progress.
+    if max_cov_gain >= 128:
+        return False, 'continue_strong_cov_gain'
+    if max_cov_gain >= 64 and max_positive_segments >= 2:
+        return False, 'continue_positive_segments'
+    if max_intervention_signals >= 2 and max_cov_gain >= 32:
+        return False, 'continue_sustained_intervention'
+
+    if all_same_hotspot and all_stagnant:
+        return True, 'same_hotspot_stagnation'
+    if all_stagnant:
+        return True, 'beam_stagnation'
+    return False, 'continue_current_beam'
+
+
+def _run_materialized_bootstrap_cycle(args, *, cycle_root: Path, import_dir: Optional[str], fuzzer_bin: str) -> Dict[str, Any]:
+    bootstrap_root = cycle_root / 'bootstrap'
+    warmup = _run_warmup_frontier(
+        manifest_path=args.fuzzer_manifest,
+        firmware_config=args.firmware_config,
+        ghidra_src=args.ghidra_src,
+        out_root=str(bootstrap_root),
+        warmup_run_for=str(getattr(args, 'warmup_run_for', None) or '600s'),
+        warmup_restarts=int(getattr(args, 'warmup_restarts', 1) or 1),
+        initial_import_dir=import_dir,
+        fuzzer_bin=fuzzer_bin,
+        setenv=args.setenv,
+        trace_basename=str(getattr(args, 'trace_basename', 'replay_trace')),
+        dump_trace=bool(getattr(args, 'dump_trace', False)),
+    )
+    frontier_import_dir = warmup.get('frontier_import_dir')
+    shortlist_size = _budget_shortlist_size(args)
+    stage_args = _clone_args_with_overrides(
+        args,
+        out_root=str(bootstrap_root / 'materialization'),
+        import_dir=frontier_import_dir,
+        initial_run_for=str(getattr(args, 'candidate_run_for', None) or getattr(args, 'portfolio_run_for', None) or '120s'),
+        candidate_run_for=str(getattr(args, 'candidate_run_for', None) or getattr(args, 'portfolio_run_for', None) or '120s'),
+        rounds=1,
+        beam_width=max(1, shortlist_size),
+        main_window_count=0,
+        strategy_pool_max_size=max(int(getattr(args, 'strategy_pool_max_size', 0) or 0), shortlist_size + 1),
+    )
+    _configure_materialization_defaults(stage_args)
+    staged_loop(stage_args)
+    summary_path = Path(stage_args.out_root) / 'report' / 'staged_loop_summary.json'
+    summary = _maybe_json(str(summary_path))
+    beam_candidates = _extract_budget_beam_from_materialized_summary(summary, stage_args, beam_width=_budget_beam_width(args), base_queue_dir=frontier_import_dir, shortlist_size=shortlist_size)
+    return {
+        'kind': 'bootstrap',
+        'warmup': warmup,
+        'summary_path': str(summary_path),
+        'summary': summary,
+        'beam_candidates': beam_candidates,
+        'shortlist_size': shortlist_size,
+        'frontier_import_dir': frontier_import_dir,
+        'baseline_cov': _baseline_cov_from_materialized_summary(summary),
+        'baseline_hotspot_key': _baseline_hotspot_key_from_materialized_summary(summary),
+    }
+
+
+def _run_materialized_replan_cycle(args, *, cycle_root: Path, import_dir: str) -> Dict[str, Any]:
+    stage = _run_materialized_stage_for_new_hotspot(args, event_root=cycle_root / 'replan', current_import_dir=import_dir)
+    summary = stage.get('summary') if isinstance(stage, dict) else None
+    shortlist_size = int((stage or {}).get('shortlist_size') or _budget_shortlist_size(args))
+    beam_candidates = _extract_budget_beam_from_materialized_summary(summary, args, beam_width=_budget_beam_width(args), base_queue_dir=import_dir, shortlist_size=shortlist_size)
+    return {
+        'kind': 'replan',
+        'stage': stage,
+        'summary_path': stage.get('summary_path') if isinstance(stage, dict) else None,
+        'summary': summary,
+        'beam_candidates': beam_candidates,
+        'shortlist_size': shortlist_size,
+        'frontier_import_dir': import_dir,
+        'baseline_cov': _baseline_cov_from_materialized_summary(summary),
+        'baseline_hotspot_key': _baseline_hotspot_key_from_materialized_summary(summary),
+    }
+
+def _strategy_snapshot_rank(entry: Dict[str, Any]) -> tuple:
+    return (
+        float(entry.get('credit') or 0.0),
+        int(entry.get('windows_selected') or 0),
+        int(entry.get('windows_run') or 0),
+        int(entry.get('cumulative_cov_delta') or 0),
+        int(entry.get('cumulative_intervention_signals') or 0),
+        int(entry.get('cumulative_action_fires') or 0),
+        entry.get('name') or '',
+    )
+
+
+def _select_budget_beam_from_long_summary(long_summary: Optional[Dict[str, Any]], beam_width: int) -> List[Dict[str, Any]]:
+    if not isinstance(long_summary, dict):
+        return []
+    pool = list(long_summary.get('final_strategy_pool_snapshot') or long_summary.get('strategy_pool') or [])
+    if not pool:
+        return []
+    beam_width = max(1, int(beam_width or 2))
+    ranked = sorted(pool, key=_strategy_snapshot_rank, reverse=True)
+    return ranked[:beam_width]
+
+
+def _run_materialized_bootstrap_cycle_legacy(args, *, cycle_root: Path, import_dir: Optional[str]) -> Dict[str, Any]:
+    stage_args = _clone_args_with_overrides(
+        args,
+        out_root=str(cycle_root / 'bootstrap'),
+        import_dir=import_dir,
+        initial_run_for=str(getattr(args, 'warmup_run_for', None) or '600s'),
+        candidate_run_for=str(getattr(args, 'candidate_run_for', None) or getattr(args, 'portfolio_run_for', None) or '60s'),
+        rounds=int(getattr(args, 'rounds', None) or 1),
+        beam_width=max(1, _budget_beam_width(args)),
+        main_window_count=_winner_window_count(args),
+        main_window_run_for=_winner_window_run_for(args),
+        strategy_pool_max_size=max(2, _budget_beam_width(args)),
+    )
+    _configure_materialization_defaults(stage_args)
+    staged_loop(stage_args)
+    summary_path = Path(stage_args.out_root) / 'report' / 'staged_loop_summary.json'
+    summary = _maybe_json(str(summary_path))
+    long_summary = _run_materialized_long_horizon_from_summary(stage_args, Path(stage_args.out_root), ensure_fuzzer_binary(stage_args.fuzzer_manifest), summary) if isinstance(summary, dict) else None
+    return {
+        'kind': 'bootstrap',
+        'stage_args': vars(stage_args),
+        'summary_path': str(summary_path),
+        'summary': summary,
+        'long_summary_path': str(Path(stage_args.out_root) / 'materialized_long_horizon_summary.json') if isinstance(summary, dict) else None,
+        'long_summary': long_summary,
+    }
+
+
+def _run_materialized_replan_cycle_legacy(args, *, cycle_root: Path, import_dir: str) -> Dict[str, Any]:
+    stage = _run_materialized_stage_for_new_hotspot(args, event_root=cycle_root / 'replan', current_import_dir=import_dir)
+    summary = stage.get('summary') if isinstance(stage, dict) else None
+    long_args = _clone_args_with_overrides(
+        args,
+        main_window_count=_winner_window_count(args),
+        main_window_run_for=_winner_window_run_for(args),
+        strategy_pool_max_size=max(2, _budget_beam_width(args)),
+    )
+    long_summary = _run_materialized_long_horizon_from_summary(long_args, cycle_root, ensure_fuzzer_binary(long_args.fuzzer_manifest), summary) if isinstance(summary, dict) else None
+    return {
+        'kind': 'replan',
+        'stage': stage,
+        'long_summary_path': str(cycle_root / 'materialized_long_horizon_summary.json') if isinstance(summary, dict) else None,
+        'long_summary': long_summary,
+    }
+
+
+def _run_budget_driven_materialized_outer_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[str, Any]:
+    _normalize_cli_paths(args)
+    _require_materialization_args(args)
+    _configure_materialization_defaults(args)
+    total_budget_secs = _duration_to_seconds_or_none(getattr(args, 'total_budget', None))
+    if total_budget_secs is None:
+        raise ValueError('--total-budget is required for budget-driven long-horizon mode')
+    if total_budget_secs <= 0:
+        raise ValueError('--total-budget must be positive')
+
+    loop_root = out_root / 'budget_loop'
+    _ensure_dir(str(loop_root))
+    started_at = time.monotonic()
+    beam_width = max(1, _budget_beam_width(args))
+
+    cycles: List[Dict[str, Any]] = []
+    current_import_dir = getattr(args, 'import_dir', None)
+    current_beam: List[Dict[str, Any]] = []
+    champion_queue_dir = current_import_dir
+    champion_guidance_file = getattr(args, 'guidance_file', None)
+    previous_hotspot_key: Optional[str] = None
+    need_replan = True
+    stop_reason = 'budget_exhausted'
+
+    cycle_index = 1
+    while True:
+        elapsed = int(time.monotonic() - started_at)
+        remaining = int(total_budget_secs - elapsed)
+        if remaining <= 0:
+            stop_reason = 'budget_exhausted'
+            break
+
+        cycle_root = loop_root / f'cycle_{cycle_index:03d}'
+        _ensure_dir(str(cycle_root))
+        info(f'budget-loop: starting cycle {cycle_index} with remaining budget {remaining}s')
+
+        # avoid starting a cycle that obviously cannot finish
+        rough_min_cycle = _minimum_budget_cycle_seconds(args)
+        if cycle_index > 1 and remaining < rough_min_cycle:
+            info(f'budget-loop: remaining budget {remaining}s is below minimum cycle budget {rough_min_cycle}s; stopping')
+            stop_reason = f'remaining_budget_below_min_cycle:{remaining}<{rough_min_cycle}'
+            break
+
+        if cycle_index == 1:
+            cycle_stage = _run_materialized_bootstrap_cycle(args, cycle_root=cycle_root, import_dir=current_import_dir, fuzzer_bin=fuzzer_bin)
+            stage_kind = 'bootstrap'
+        elif need_replan or not current_beam:
+            cycle_stage = _run_materialized_replan_cycle(args, cycle_root=cycle_root, import_dir=str(champion_queue_dir or current_import_dir))
+            stage_kind = 'replan'
+        else:
+            cycle_stage = {
+                'kind': 'continue_beam',
+                'summary': None,
+                'summary_path': None,
+                'beam_candidates': [dict(x) for x in current_beam],
+                'frontier_import_dir': champion_queue_dir,
+                'baseline_cov': max([int(x.get('final_cov') or 0) for x in current_beam] or [0]),
+                'baseline_hotspot_key': previous_hotspot_key,
+            }
+            stage_kind = 'continue_beam'
+
+        beam_candidates = list(cycle_stage.get('beam_candidates') or [])
+        if not beam_candidates:
+            stop_reason = f'empty_beam_candidates_after_{stage_kind}'
+            warn(f'budget-loop: no non-control beam candidates after {stage_kind}; stopping')
+            break
+
+        baseline_cov = int(cycle_stage.get('baseline_cov') or 0)
+        baseline_hotspot_key = cycle_stage.get('baseline_hotspot_key') or previous_hotspot_key
+
+        control_refresh = _run_budget_control_refresh(
+            args,
+            cycle_root=cycle_root,
+            import_dir=str(champion_queue_dir or current_import_dir or cycle_stage.get('frontier_import_dir') or ''),
+            fuzzer_bin=fuzzer_bin,
+            cycle_index=cycle_index,
+        )
+
+        long_summary = _run_budget_beam_long_horizon(
+            args,
+            cycle_root=cycle_root,
+            beam_entries=beam_candidates,
+            fuzzer_bin=fuzzer_bin,
+            baseline_cov=baseline_cov,
+            baseline_hotspot_key=baseline_hotspot_key,
+        )
+
+        current_beam = list(long_summary.get('beam_after_long_run') or [])[:beam_width]
+        champion_queue_dir = current_beam[0].get('queue_dir') if current_beam else champion_queue_dir
+        champion_guidance_file = current_beam[0].get('guidance_file') if current_beam else champion_guidance_file
+        previous_hotspot_key = current_beam[0].get('final_primary_hotspot_key') if current_beam else previous_hotspot_key
+        need_replan, replan_reason = _should_replan_budget_cycle(
+            args,
+            cycle_index=cycle_index,
+            long_summary=long_summary,
+            previous_hotspot_key=baseline_hotspot_key,
+        )
+
+        cycle_elapsed = int(time.monotonic() - started_at)
+        cycle_record = {
+            'cycle_index': cycle_index,
+            'kind': stage_kind,
+            'remaining_budget_before_cycle_secs': remaining,
+            'elapsed_budget_after_cycle_secs': cycle_elapsed,
+            'bootstrap_or_replan': cycle_stage,
+            'control_refresh': control_refresh,
+            'beam_width': beam_width,
+            'shortlist_size': int(cycle_stage.get('shortlist_size') or _budget_shortlist_size(args)),
+            'beam': current_beam,
+            'champion_queue_dir': champion_queue_dir,
+            'champion_guidance_file': champion_guidance_file,
+            'previous_hotspot_key': baseline_hotspot_key,
+            'next_hotspot_key': previous_hotspot_key,
+            'need_replan_next_cycle': need_replan,
+            'replan_reason': replan_reason,
+            'long_summary_path': str(cycle_root / 'materialized_long_horizon_summary.json'),
+            'long_summary': long_summary,
+        }
+        save_json(str(cycle_root / 'budget_cycle_summary.json'), cycle_record)
+        cycles.append(cycle_record)
+
+        if champion_queue_dir:
+            current_import_dir = champion_queue_dir
+        cycle_index += 1
+
+    summary = {
+        'schema': 'mf_budget_driven_outer_loop_v3',
+        'mode': 'materialized_budget_driven_outer_loop',
+        'total_budget_secs': int(total_budget_secs),
+        'elapsed_budget_secs': int(time.monotonic() - started_at),
+        'beam_width': beam_width,
+        'shortlist_size': _budget_shortlist_size(args),
+        'winner_run_for': str(getattr(args, 'winner_run_for', None) or '7200s'),
+        'winner_run_segment': str(getattr(args, 'winner_run_segment', None) or _winner_window_run_for(args)),
+        'warmup_run_for': str(getattr(args, 'warmup_run_for', None) or '600s'),
+        'warmup_restarts': int(getattr(args, 'warmup_restarts', 1) or 1),
+        'stop_reason': stop_reason,
+        'cycles': cycles,
+        'final_beam': current_beam,
+        'final_queue_dir': champion_queue_dir,
+        'final_guidance_file': champion_guidance_file,
+    }
+    save_json(str(out_root / 'adaptive_mmio_loop_summary.json'), summary)
+    return summary
+
+def _run_budget_driven_outer_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[str, Any]:
+    if _has_contract_bundle(args):
+        warn('budget-driven outer loop currently reuses the existing contract-bundle path without multi-cycle extension; falling back to single adaptive run')
+        if int(getattr(args, 'main_window_count', 0) or 0) > 0:
+            return _run_long_horizon_main_loop(args, out_root, fuzzer_bin)
+        return _run_adaptive_mmio_loop_single_cycle(args, out_root, fuzzer_bin)
+    return _run_budget_driven_materialized_outer_loop(args, out_root, fuzzer_bin)
+
 def _run_adaptive_mmio_loop(args):
     _normalize_cli_paths(args)
     out_root = Path(args.out_root).expanduser().resolve()
     _ensure_dir(str(out_root))
     fuzzer_bin = _abs(args.fuzzer_bin) if getattr(args, 'fuzzer_bin', None) else ensure_fuzzer_binary(args.fuzzer_manifest)
+    if getattr(args, 'total_budget', None):
+        summary = _run_budget_driven_outer_loop(args, out_root, fuzzer_bin)
+        info(f"adaptive-mmio-loop summary written: {out_root / 'adaptive_mmio_loop_summary.json'}")
+        return
     if _has_contract_bundle(args):
         if int(getattr(args, 'main_window_count', 0) or 0) > 0:
             summary = _run_long_horizon_main_loop(args, out_root, fuzzer_bin)
@@ -4723,6 +5561,9 @@ def main():
     s14.add_argument("--strategy-cooldown-min-windows", type=int, default=2)
     s14.add_argument("--strategy-cooldown-negative-delta", type=int, default=200)
     s14.add_argument("--portfolio-intervention-coverage-slack", type=int, default=64)
+    s14.add_argument("--total-budget", help="Total wall-clock budget for the outer long-horizon loop, e.g. 12h or 24h")
+    s14.add_argument("--winner-run-for", default="7200s", help="Per-cycle medium-horizon winner budget, e.g. 7200s for a 2h winner run")
+    s14.add_argument("--winner-run-segment", default="1800s", help="Segment size used to break each winner run into restartable windows")
 
     s13 = sub.add_parser("llm-fallback-pipeline")
     s13.add_argument("--fuzzer-manifest", required=True)
