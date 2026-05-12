@@ -1275,6 +1275,347 @@ def _coverage_from_run_summary(run_summary: Optional[Dict[str, Any]]) -> int:
     return int((run_summary or {}).get('last_cov') or 0)
 
 
+def _run_root_from_run_result(run: Optional[Dict[str, Any]], fallback_run_root: Optional[str] = None) -> Optional[str]:
+    """Best-effort recovery of the directory that owns run.log/workdir/observer.
+
+    Most adaptive-loop records store the fuzzer workdir but not an explicit
+    run-root.  The run-root is useful when reporting best-so-far artifacts.
+    """
+    if fallback_run_root:
+        return _abs(str(fallback_run_root))
+    if not run:
+        return None
+    run_log = run.get('run_log')
+    if run_log:
+        try:
+            return str(Path(str(run_log)).expanduser().resolve().parent)
+        except Exception:
+            pass
+    workdir = run.get('workdir')
+    if workdir:
+        try:
+            p = Path(str(workdir)).expanduser().resolve()
+            return str(p.parent if p.name == 'workdir' else p)
+        except Exception:
+            pass
+    observer_dir = run.get('observer_dir')
+    if observer_dir:
+        try:
+            p = Path(str(observer_dir)).expanduser().resolve()
+            return str(p.parent if p.name == 'observer' else p)
+        except Exception:
+            pass
+    return None
+
+
+def _best_artifact_path(run_root: Optional[str], filename: str) -> Optional[str]:
+    if not run_root:
+        return None
+    path = Path(run_root) / filename
+    return str(path) if path.exists() else str(path)
+
+
+def _best_record_from_run(*, phase: str, run: Optional[Dict[str, Any]], run_root: Optional[str] = None,
+                          guidance_file: Optional[str] = None, guidance_runtime_summary: Optional[Dict[str, Any]] = None,
+                          extra: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
+    if not run:
+        return None
+    cov = _coverage_from_run_summary((run or {}).get('run_summary'))
+    resolved_root = _run_root_from_run_result(run, run_root)
+    workdir = (run or {}).get('workdir')
+    queue_dir = _extract_segment_queue_dir(run, fallback_workdir=str(workdir) if workdir else None)
+    grs_path = _best_artifact_path(resolved_root, 'guidance_runtime_summary.json')
+    if guidance_runtime_summary is None and grs_path and os.path.exists(grs_path):
+        guidance_runtime_summary = _maybe_json(grs_path) or {}
+    record = {
+        'phase': str(phase),
+        'coverage': int(cov),
+        'last_cov': int(cov),
+        'last_in': _run_last_in(run),
+        'last_hang': _run_last_hang(run),
+        'last_crash': _run_last_crash(run),
+        'status': _run_status(run),
+        'run_root': _abs(resolved_root) if resolved_root else None,
+        'workdir': _abs(str(workdir)) if workdir else None,
+        'queue_dir': _abs(str(queue_dir)) if queue_dir else None,
+        'run_log': _abs(str((run or {}).get('run_log'))) if (run or {}).get('run_log') else None,
+        'run_summary_json': _best_artifact_path(resolved_root, 'run_fuzz_summary.json'),
+        'guidance_file': _abs(str(guidance_file or (run or {}).get('guidance_file'))) if (guidance_file or (run or {}).get('guidance_file')) else None,
+        'guidance_runtime_summary_json': grs_path,
+        'guidance_exec_counter': int((guidance_runtime_summary or {}).get('exec_counter') or 0),
+        'trace_enabled': bool((run or {}).get('trace_enabled')),
+        'trace_out': (run or {}).get('trace_out'),
+        'trace_meta_out': (run or {}).get('trace_meta_out'),
+        'updated_at_unix': time.time(),
+    }
+    if extra:
+        record.update(extra)
+    return record
+
+
+def _init_best_tracker(out_root: Path) -> Dict[str, Any]:
+    return {
+        'schema': 'mf_best_so_far_tracker_v1',
+        'out_root': str(out_root),
+        'best_cov': -1,
+        'best_record': None,
+        'updates': [],
+    }
+
+
+def _best_tracker_export(best_tracker: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    tracker = best_tracker or {}
+    rec = tracker.get('best_record') or {}
+    return {
+        'schema': tracker.get('schema') or 'mf_best_so_far_tracker_v1',
+        'best_cov': int(tracker.get('best_cov') if tracker.get('best_cov') is not None else -1),
+        'best_phase': rec.get('phase'),
+        'best_run_root': rec.get('run_root'),
+        'best_queue_dir': rec.get('queue_dir'),
+        'best_guidance_file': rec.get('guidance_file'),
+        'best_run_summary_json': rec.get('run_summary_json'),
+        'best_guidance_runtime_summary_json': rec.get('guidance_runtime_summary_json'),
+        'best_last_hang': rec.get('last_hang'),
+        'best_last_crash': rec.get('last_crash'),
+        'best_last_in': rec.get('last_in'),
+        'best_record': rec or None,
+        'updates': list(tracker.get('updates') or []),
+    }
+
+
+def _summary_best_fields(best_tracker: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    exported = _best_tracker_export(best_tracker)
+    return {
+        'best_so_far': exported,
+        'final_best_cov': exported.get('best_cov'),
+        'final_best_phase': exported.get('best_phase'),
+        'final_best_run_root': exported.get('best_run_root'),
+        'final_best_queue_dir': exported.get('best_queue_dir'),
+        'final_best_guidance_file': exported.get('best_guidance_file'),
+        'final_best_run_summary_json': exported.get('best_run_summary_json'),
+    }
+
+
+def _persist_best_tracker(out_root: Path, best_tracker: Dict[str, Any]) -> None:
+    try:
+        save_json(str(out_root / 'best_so_far' / 'best_so_far.json'), _best_tracker_export(best_tracker))
+    except Exception as e:
+        warn(f'failed to persist best-so-far tracker: {e}')
+
+
+def _update_best_so_far(best_tracker: Dict[str, Any], out_root: Path, record: Optional[Dict[str, Any]]) -> bool:
+    if not record:
+        return False
+    try:
+        cov = int(record.get('coverage') or record.get('last_cov') or 0)
+    except Exception:
+        return False
+    old = int(best_tracker.get('best_cov') if best_tracker.get('best_cov') is not None else -1)
+    if cov <= old:
+        return False
+    record = dict(record)
+    record['best_update_index'] = len(best_tracker.get('updates') or []) + 1
+    record['previous_best_cov'] = old
+    best_tracker['best_cov'] = cov
+    best_tracker['best_record'] = record
+    update_summary = {
+        'best_update_index': record['best_update_index'],
+        'coverage': cov,
+        'previous_best_cov': old,
+        'phase': record.get('phase'),
+        'run_root': record.get('run_root'),
+        'queue_dir': record.get('queue_dir'),
+        'guidance_file': record.get('guidance_file'),
+        'last_hang': record.get('last_hang'),
+        'last_crash': record.get('last_crash'),
+        'updated_at_unix': record.get('updated_at_unix'),
+    }
+    best_tracker.setdefault('updates', []).append(update_summary)
+    info(f"best-so-far updated: cov={cov} phase={record.get('phase')} run_root={record.get('run_root')}")
+    _persist_best_tracker(out_root, best_tracker)
+    return True
+
+
+def _update_best_from_run(best_tracker: Dict[str, Any], out_root: Path, *, phase: str, run: Optional[Dict[str, Any]],
+                          run_root: Optional[str] = None, guidance_file: Optional[str] = None,
+                          guidance_runtime_summary: Optional[Dict[str, Any]] = None,
+                          extra: Optional[Dict[str, Any]] = None) -> bool:
+    rec = _best_record_from_run(
+        phase=phase,
+        run=run,
+        run_root=run_root,
+        guidance_file=guidance_file,
+        guidance_runtime_summary=guidance_runtime_summary,
+        extra=extra,
+    )
+    return _update_best_so_far(best_tracker, out_root, rec)
+
+
+def _update_best_from_warmup_summary(best_tracker: Dict[str, Any], out_root: Path, baseline_summary: Dict[str, Any]) -> None:
+    idx = int((baseline_summary or {}).get('best_warmup_index') or 0)
+    run = (baseline_summary or {}).get('frontier_run')
+    run_root = out_root / 'baseline_warmup' / f'run_{idx}' if idx > 0 else None
+    _update_best_from_run(
+        best_tracker,
+        out_root,
+        phase=f'baseline_warmup/run_{idx}' if idx > 0 else 'baseline_warmup',
+        run=run,
+        run_root=str(run_root) if run_root else None,
+        guidance_file=None,
+        extra={'source': 'baseline_warmup', 'warmup_index': idx},
+    )
+
+
+def _update_best_from_event_report(best_tracker: Dict[str, Any], out_root: Path, event_report: Optional[Dict[str, Any]]) -> None:
+    if not event_report:
+        return
+    event_index = int(event_report.get('cycle_index') or event_report.get('event_index') or 0)
+    event_prefix = f'adaptive_events/event_{event_index:03d}' if event_index > 0 else 'adaptive_event'
+    base_extra = {
+        'source': 'adaptive_event',
+        'event_index': event_index,
+        'triggered_after_window': event_report.get('triggered_after_window'),
+        'trigger_reasons': event_report.get('trigger_reasons'),
+    }
+    _update_best_from_run(
+        best_tracker,
+        out_root,
+        phase=f'{event_prefix}/probe',
+        run=event_report.get('probe_run'),
+        guidance_file=event_report.get('input_guidance_file'),
+        extra={**base_extra, 'event_component': 'probe'},
+    )
+    for idx, cand in enumerate(event_report.get('candidate_portfolio') or [], start=1):
+        run = cand.get('run')
+        if not run:
+            continue
+        name = _safe_id(cand.get('name') or cand.get('source') or f'candidate_{idx}')
+        _update_best_from_run(
+            best_tracker,
+            out_root,
+            phase=f'{event_prefix}/candidate_portfolio/{idx:02d}_{name}',
+            run=run,
+            guidance_file=cand.get('guidance_file'),
+            guidance_runtime_summary=cand.get('guidance_runtime_summary'),
+            extra={
+                **base_extra,
+                'event_component': 'candidate_portfolio',
+                'candidate_index': idx,
+                'candidate_name': cand.get('name'),
+                'candidate_source': cand.get('source'),
+                'selection_score': cand.get('selection_score'),
+                'selection_policy': cand.get('selection_policy'),
+                'intervention_signal': cand.get('intervention_signal'),
+            },
+        )
+    _update_best_from_run(
+        best_tracker,
+        out_root,
+        phase=f'{event_prefix}/followup',
+        run=event_report.get('followup_run'),
+        guidance_file=((event_report.get('selected_candidate') or {}).get('guidance_file') or event_report.get('generated_guidance_file') or event_report.get('dynamic_guidance_file') or event_report.get('input_guidance_file')),
+        extra={**base_extra, 'event_component': 'followup'},
+    )
+
+
+def _run_best_replay_segments(args, out_root: Path, fuzzer_bin: str, best_tracker: Dict[str, Any], *,
+                              current_import_dir: Optional[str] = None, default_guidance_file: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    if not bool(getattr(args, 'enable_best_replay', False)):
+        return None
+    best_before = dict((best_tracker or {}).get('best_record') or {})
+    if not best_before:
+        warn('best replay requested, but no best-so-far record is available')
+        return {'enabled': True, 'skipped': True, 'reason': 'no_best_record'}
+    import_dir = best_before.get('queue_dir') or current_import_dir
+    guidance_file = best_before.get('guidance_file') or default_guidance_file
+    if not import_dir:
+        warn('best replay requested, but no best queue/import dir is available')
+        return {'enabled': True, 'skipped': True, 'reason': 'no_import_dir', 'best_before_replay': best_before}
+    try:
+        total_secs = _parse_duration_seconds(str(getattr(args, 'winner_run_for', '0s') or '0s'))
+        segment_secs = _parse_duration_seconds(str(getattr(args, 'winner_run_segment', '0s') or '0s'))
+    except Exception as e:
+        warn(f'best replay duration parse failed: {e}')
+        return {'enabled': True, 'skipped': True, 'reason': f'duration_parse_failed:{e}', 'best_before_replay': best_before}
+    if total_secs <= 0 or segment_secs <= 0:
+        return {'enabled': True, 'skipped': True, 'reason': 'non_positive_budget', 'best_before_replay': best_before}
+
+    replay_root = out_root / 'best_replay'
+    _ensure_dir(str(replay_root))
+    last_import_dir = _abs(str(import_dir))
+    segments: List[Dict[str, Any]] = []
+    elapsed = 0
+    segment_index = 1
+    trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
+    while elapsed < total_secs:
+        run_secs = min(segment_secs, total_secs - elapsed)
+        if run_secs <= 0:
+            break
+        seg_root = replay_root / f'segment_{segment_index:03d}'
+        _ensure_dir(str(seg_root))
+        run_for = _format_duration_seconds(run_secs)
+        info(f"best replay segment {segment_index}: run_for={run_for} import_dir={last_import_dir} guidance={guidance_file}")
+        run = run_hail_fuzz(
+            manifest_path=args.fuzzer_manifest,
+            firmware_config=args.firmware_config,
+            ghidra_src=args.ghidra_src,
+            workdir=str(seg_root / 'workdir'),
+            run_log=str(seg_root / 'run.log'),
+            run_for=run_for,
+            observer_dir=str(seg_root / 'observer'),
+            guidance_file=guidance_file,
+            guidance_summary_out=str(seg_root / 'guidance_runtime_summary.json') if guidance_file else None,
+            import_dir=last_import_dir,
+            fuzzer_bin=fuzzer_bin,
+            setenv=args.setenv,
+            dump_trace=False,
+            trace_basename=trace_base,
+        )
+        save_json(str(seg_root / 'run_fuzz_summary.json'), run)
+        grs = _maybe_json(str(seg_root / 'guidance_runtime_summary.json')) if guidance_file else None
+        _update_best_from_run(
+            best_tracker,
+            out_root,
+            phase=f'best_replay/segment_{segment_index:03d}',
+            run=run,
+            run_root=str(seg_root),
+            guidance_file=guidance_file,
+            guidance_runtime_summary=grs,
+            extra={
+                'source': 'best_replay',
+                'source_best_phase_before_replay': best_before.get('phase'),
+                'source_best_cov_before_replay': best_before.get('coverage'),
+                'segment_index': segment_index,
+                'run_for': run_for,
+            },
+        )
+        cov = _coverage_from_run_summary(run.get('run_summary'))
+        last_import_dir = _queue_dir(run.get('workdir'))
+        segments.append({
+            'segment_index': segment_index,
+            'run_for': run_for,
+            'coverage': cov,
+            'queue_dir': last_import_dir,
+            'run_root': str(seg_root),
+            'run_summary_json': str(seg_root / 'run_fuzz_summary.json'),
+            'guidance_runtime_summary_json': str(seg_root / 'guidance_runtime_summary.json') if guidance_file else None,
+        })
+        elapsed += run_secs
+        segment_index += 1
+
+    return {
+        'enabled': True,
+        'skipped': False,
+        'winner_run_for': str(getattr(args, 'winner_run_for', None)),
+        'winner_run_segment': str(getattr(args, 'winner_run_segment', None)),
+        'best_before_replay': best_before,
+        'segments': segments,
+        'final_queue_dir': last_import_dir,
+        'final_guidance_file': guidance_file,
+        'best_after_replay': _best_tracker_export(best_tracker),
+    }
+
+
 def _run_last_in(run: Optional[Dict[str, Any]]) -> int:
     return int(((run or {}).get("run_summary") or {}).get("last_in") or 0)
 
@@ -2165,6 +2506,9 @@ def _run_adaptive_mmio_loop_single_cycle(args, out_root: Path, fuzzer_bin: str) 
     initial_guidance_kind = ctx['initial_guidance_kind']
     baseline_frontier_cov = ctx['baseline_frontier_cov']
 
+    best_tracker = _init_best_tracker(out_root)
+    _update_best_from_warmup_summary(best_tracker, out_root, baseline_summary)
+
     cycle_reports: List[Dict[str, Any]] = []
     final_queue_dir = current_import_dir
     final_guidance_file = current_guidance_file
@@ -2182,6 +2526,7 @@ def _run_adaptive_mmio_loop_single_cycle(args, out_root: Path, fuzzer_bin: str) 
             previous_cov=prev_cov,
             fuzzer_bin=fuzzer_bin,
         )
+        _update_best_from_event_report(best_tracker, out_root, cycle_report)
         cycle_reports.append(cycle_report)
         final_queue_dir = current_import_dir
         final_guidance_file = current_guidance_file
@@ -2189,8 +2534,20 @@ def _run_adaptive_mmio_loop_single_cycle(args, out_root: Path, fuzzer_bin: str) 
         if (not cycle_report.get('llm_invoked')) and (not bool(getattr(args, 'force_llm', False))):
             break
 
+    best_replay = _run_best_replay_segments(
+        args,
+        out_root,
+        fuzzer_bin,
+        best_tracker,
+        current_import_dir=final_queue_dir,
+        default_guidance_file=final_guidance_file,
+    )
+    if best_replay and not best_replay.get('skipped'):
+        final_queue_dir = best_replay.get('final_queue_dir') or final_queue_dir
+        final_guidance_file = best_replay.get('final_guidance_file') or final_guidance_file
+
     return {
-        'schema': 'mf_adaptive_mmio_loop_v4',
+        'schema': 'mf_adaptive_mmio_loop_v5_best_so_far',
         'mode': 'single_cycle_adaptive',
         'contract_bundle': _abs(args.contract_bundle) if getattr(args, 'contract_bundle', None) else None,
         'initial_guidance_kind': initial_guidance_kind,
@@ -2199,6 +2556,8 @@ def _run_adaptive_mmio_loop_single_cycle(args, out_root: Path, fuzzer_bin: str) 
         'cycles': cycle_reports,
         'final_queue_dir': final_queue_dir,
         'final_guidance_file': final_guidance_file,
+        'best_replay': best_replay,
+        **_summary_best_fields(best_tracker),
     }
 
 
@@ -2225,6 +2584,9 @@ def _run_long_horizon_main_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[s
     main_window_run_for = str(getattr(args, 'main_window_run_for', None) or args.followup_run_for or '300s')
     trace_base = str(getattr(args, 'trace_basename', 'replay_trace'))
 
+    best_tracker = _init_best_tracker(out_root)
+    _update_best_from_warmup_summary(best_tracker, out_root, baseline_summary)
+
     for window_index in range(1, total_windows + 1):
         pre_schedule_snapshot = _strategy_pool_snapshot(strategy_pool)
         candidate_scores = _strategy_candidate_scores(strategy_pool, current_window=window_index)
@@ -2250,6 +2612,23 @@ def _run_long_horizon_main_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[s
         )
         save_json(str(window_root / 'run_fuzz_summary.json'), run)
         grs = _maybe_json(str(window_root / 'guidance_runtime_summary.json')) or {}
+        _update_best_from_run(
+            best_tracker,
+            out_root,
+            phase=f'main_windows/window_{window_index:03d}_{_safe_id(chosen.get("name") or chosen.get("source") or "strategy")}',
+            run=run,
+            run_root=str(window_root),
+            guidance_file=chosen.get('guidance_file'),
+            guidance_runtime_summary=grs,
+            extra={
+                'source': 'main_window',
+                'window_index': window_index,
+                'selected_strategy_id': chosen.get('strategy_id'),
+                'selected_strategy_name': chosen.get('name'),
+                'selected_strategy_source': chosen.get('source'),
+                'schedule_policy': schedule_policy,
+            },
+        )
         cov = _coverage_from_run_summary(run.get('run_summary'))
         cov_delta = cov - prev_cov
         current_hang = _run_last_hang(run)
@@ -2299,6 +2678,7 @@ def _run_long_horizon_main_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[s
             )
             event_report['triggered_after_window'] = window_index
             event_report['trigger_reasons'] = trigger_reasons
+            _update_best_from_event_report(best_tracker, out_root, event_report)
             adaptive_events.append(event_report)
             promoted = _register_promoted_strategy(strategy_pool, event_report.get('selected_candidate'), event_index, args)
             if promoted:
@@ -2306,8 +2686,20 @@ def _run_long_horizon_main_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[s
             last_guidance_file = promoted_guidance_file or last_guidance_file
             prev_cov = _coverage_from_run_summary(event_report.get('followup_run', {}).get('run_summary'))
 
+    best_replay = _run_best_replay_segments(
+        args,
+        out_root,
+        fuzzer_bin,
+        best_tracker,
+        current_import_dir=current_import_dir,
+        default_guidance_file=last_guidance_file,
+    )
+    if best_replay and not best_replay.get('skipped'):
+        current_import_dir = best_replay.get('final_queue_dir') or current_import_dir
+        last_guidance_file = best_replay.get('final_guidance_file') or last_guidance_file
+
     return {
-        'schema': 'mf_adaptive_mmio_loop_v4',
+        'schema': 'mf_adaptive_mmio_loop_v5_best_so_far',
         'mode': 'continuous_long_horizon',
         'contract_bundle': _abs(args.contract_bundle) if getattr(args, 'contract_bundle', None) else None,
         'initial_guidance_kind': initial_guidance_kind,
@@ -2322,6 +2714,8 @@ def _run_long_horizon_main_loop(args, out_root: Path, fuzzer_bin: str) -> Dict[s
         'strategy_pool': strategy_pool,
         'final_queue_dir': current_import_dir,
         'final_guidance_file': last_guidance_file,
+        'best_replay': best_replay,
+        **_summary_best_fields(best_tracker),
     }
 
 
@@ -5564,6 +5958,7 @@ def main():
     s14.add_argument("--total-budget", help="Total wall-clock budget for the outer long-horizon loop, e.g. 12h or 24h")
     s14.add_argument("--winner-run-for", default="7200s", help="Per-cycle medium-horizon winner budget, e.g. 7200s for a 2h winner run")
     s14.add_argument("--winner-run-segment", default="1800s", help="Segment size used to break each winner run into restartable windows")
+    s14.add_argument("--enable-best-replay", action="store_true", help="After the adaptive/main windows finish, replay the best-so-far queue/guidance using winner-run-for split by winner-run-segment")
 
     s13 = sub.add_parser("llm-fallback-pipeline")
     s13.add_argument("--fuzzer-manifest", required=True)

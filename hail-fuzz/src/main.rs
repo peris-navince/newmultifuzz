@@ -1325,6 +1325,14 @@ impl Fuzzer {
         }
 
         if matches!(exit, VmExit::Interrupted) {
+            crate::strategy_runtime::on_execution_outcome(
+                false,
+                0,
+                false,
+                false,
+                true,
+                self.state.exec_time.as_micros(),
+            );
             return None;
         }
 
@@ -1426,6 +1434,15 @@ impl Fuzzer {
 
         // Clear logged mutation events.
         self.state.mutation_kinds.clear();
+
+        crate::strategy_runtime::on_execution_outcome(
+            self.state.new_coverage,
+            self.state.new_bits.len() as u64,
+            self.state.was_hang(),
+            crash_kind.is_crash(),
+            false,
+            self.state.exec_time.as_micros(),
+        );
 
         if matches!(crash_kind, CrashKind::Halt) {
             return Ok(());

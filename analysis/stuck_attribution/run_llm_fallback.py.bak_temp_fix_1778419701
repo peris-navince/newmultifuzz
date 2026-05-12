@@ -152,18 +152,6 @@ def try_parse_json(text: str) -> Optional[Any]:
 
 
 def call_responses_api(payload: Dict[str, Any]) -> Dict[str, Any]:
-    # PELSE/MultiFuzz compat: remove explicit temperature for GPT-5 Responses API
-    # Newer GPT-5-family Responses API models reject an explicit
-    # temperature parameter. The API may still report a default
-    # temperature in the response, but sending it in the request can
-    # fail with: "Unsupported parameter: 'temperature'".
-    try:
-        _model = str(payload.get("model", ""))
-        if _model.startswith("gpt-5"):
-            payload.pop("temperature", None)
-    except Exception:
-        pass
-
     api_key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY is not set. Export it before running this script.")
