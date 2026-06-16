@@ -263,6 +263,7 @@ mod legacy {
 
 impl IoMemory for MultiStream {
     fn read(&mut self, addr: u64, buf: &mut [u8]) -> MemResult<()> {
+        strategy_runtime::observe_mmio_read_attempt(addr, buf.len());
         // Fixed-point trial capture must trigger on the targeted MMIO read even when this stream
         // has no backing bytes for the address. Otherwise the access exits as ReadWatch before the
         // trial controller sees it, and the sweep loop incorrectly concludes that the trial point

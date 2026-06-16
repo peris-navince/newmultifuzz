@@ -1,0 +1,1191 @@
+diff --git a/extractor/text/ATSAM4LC4C.pdf b/extractor/text/ATSAM4LC4C.pdf
+deleted file mode 100644
+index 60535cc..0000000
+Binary files a/extractor/text/ATSAM4LC4C.pdf and /dev/null differ
+diff --git a/extractor/text/SAMR21E.pdf b/extractor/text/SAMR21E.pdf
+deleted file mode 100644
+index a046d10..0000000
+Binary files a/extractor/text/SAMR21E.pdf and /dev/null differ
+diff --git a/extractor/text/stm32l4.pdf b/extractor/text/stm32l4.pdf
+index cc48b98..0e4ebdc 100644
+Binary files a/extractor/text/stm32l4.pdf and b/extractor/text/stm32l4.pdf differ
+diff --git a/scripts/build_newmulti_manifest.py b/scripts/build_newmulti_manifest.py
+deleted file mode 100644
+index 540670c..0000000
+--- a/scripts/build_newmulti_manifest.py
++++ /dev/null
+@@ -1,266 +0,0 @@
+-#!/usr/bin/env python3
+-# -*- coding: utf-8 -*-
+-"""
+-Build a per-benchmark manifest for the local newMulti A/B experiment.
+-
+-The script discovers benchmark cases under <repo>/benchmarks, attaches existing
+-Ghidra/KG artifacts under <repo>/analysis/out/baseline_all when present, and
+-adds a best-effort PDF/SVD mapping for the materialization stage used by
+-extractor/closed_loop.py.
+-
+-It never contacts external hosts and never executes a benchmark. It only writes
+-manifest files.
+-"""
+-from __future__ import annotations
+-
+-import argparse
+-import csv
+-import json
+-import os
+-import re
+-from pathlib import Path
+-from typing import Any, Dict, Iterable, List, Optional, Tuple
+-
+-
+-def repo_path(p: str | Path) -> Path:
+-    return Path(p).expanduser().resolve()
+-
+-
+-def safe_id(text: str) -> str:
+-    return re.sub(r"[^A-Za-z0-9_.-]+", "__", text.strip().strip("/"))
+-
+-
+-def read_text(path: Path) -> str:
+-    try:
+-        return path.read_text(encoding="utf-8", errors="ignore")
+-    except FileNotFoundError:
+-        return ""
+-
+-
+-def load_mapping_file(path: Optional[Path]) -> Dict[str, Any]:
+-    if not path:
+-        return {}
+-    path = path.expanduser().resolve()
+-    if not path.exists():
+-        raise FileNotFoundError(path)
+-    text = path.read_text(encoding="utf-8")
+-    if path.suffix.lower() in {".json", ".jsonc"}:
+-        return json.loads(text)
+-    try:
+-        import yaml  # type: ignore
+-        data = yaml.safe_load(text)
+-        return data or {}
+-    except Exception as exc:
+-        raise RuntimeError(
+-            f"Failed to parse mapping file {path}. Install PyYAML or provide JSON. Error: {exc}"
+-        ) from exc
+-
+-
+-def first_existing(root: Path, rels: Iterable[str]) -> Optional[Path]:
+-    for rel in rels:
+-        p = (root / rel).resolve()
+-        if p.exists():
+-            return p
+-    return None
+-
+-
+-def manual_paths(repo: Path) -> Dict[str, Optional[Path]]:
+-    return {
+-        "k64_pdf": first_existing(repo, ["extractor/text/K64.pdf"]),
+-        "k64_svd": first_existing(repo, ["extractor/svd/NXP/NXP-FRDM-K64F/MK64F12.xml"]),
+-        "stm32f10_pdf": first_existing(repo, ["extractor/text/stm32f10.pdf"]),
+-        "stm32f103_svd": first_existing(repo, ["extractor/svd/STM/STM32F103xx.svd"]),
+-        "stm32f405_pdf": first_existing(repo, ["extractor/text/stm32f405.pdf"]),
+-        "stm32f40x_svd": first_existing(repo, ["extractor/svd/STM/STM32F40x.svd"]),
+-        "stm32l151_pdf": first_existing(repo, ["extractor/text/stm32l151.pdf"]),
+-        "stm32l152_svd": first_existing(repo, ["extractor/svd/STM/STM32L152.svd"]),
+-        "stm32l4_pdf": first_existing(repo, ["extractor/text/stm32l4.pdf"]),
+-        "stm32l476_svd": first_existing(repo, ["extractor/svd/STM/STM32L476.svd"]),
+-        "sam3_pdf": first_existing(repo, ["extractor/text/SAM3X-SAM3A_Datasheet.pdf"]),
+-        "sam3_svd": first_existing(repo, ["extractor/svd/SAM/ATSAM3X8E.svd"]),
+-        "sam4l_pdf": first_existing(repo, ["extractor/text/ATSAM4LC4C.pdf"]),
+-        "sam4l_svd": first_existing(repo, ["extractor/svd/SAM/ATSAM4LC4C.svd"]),
+-        "samr21_pdf": first_existing(repo, ["extractor/text/SAMR21E.pdf"]),
+-        "samd20_svd": first_existing(repo, ["extractor/svd/SAM/ATSAMD20J18.svd"]),
+-    }
+-
+-
+-def apply_override(
+-    overrides: Dict[str, Any], *, rel_dir: str, case_id: str, repo: Path
+-) -> Optional[Dict[str, Any]]:
+-    if not overrides:
+-        return None
+-    cases = overrides.get("cases") if isinstance(overrides, dict) else None
+-    if isinstance(cases, dict):
+-        raw = cases.get(rel_dir) or cases.get(case_id)
+-        if isinstance(raw, dict):
+-            out = dict(raw)
+-            for key in ("pdf", "svd", "ghidra_summary_json", "ghidra_export_json"):
+-                if out.get(key):
+-                    out[key] = str((repo / str(out[key])).resolve()) if not os.path.isabs(str(out[key])) else str(Path(out[key]).resolve())
+-            return out
+-    return None
+-
+-
+-def pick_manual_mapping(repo: Path, rel_dir: str, elf_name: str, config_text: str, overrides: Dict[str, Any]) -> Dict[str, Any]:
+-    case_id = safe_id(rel_dir)
+-    override = apply_override(overrides, rel_dir=rel_dir, case_id=case_id, repo=repo)
+-    if override:
+-        return {
+-            "pdf": override.get("pdf"),
+-            "svd": override.get("svd"),
+-            "board": override.get("board") or override.get("mcu") or "override",
+-            "mcu": override.get("mcu") or override.get("board") or "override",
+-            "manual_mapping_source": "override",
+-            "manual_mapping_confidence": override.get("confidence", "override"),
+-            "manual_mapping_note": override.get("note", "Provided by user override mapping."),
+-        }
+-
+-    lower = f"{rel_dir} {elf_name} {config_text[:20000]}".lower()
+-    paths = manual_paths(repo)
+-
+-    def pack(pdf_key: str, svd_key: str, board: str, mcu: str, source: str, confidence: str, note: str) -> Dict[str, Any]:
+-        pdf = paths.get(pdf_key)
+-        svd = paths.get(svd_key)
+-        return {
+-            "pdf": str(pdf) if pdf else None,
+-            "svd": str(svd) if svd else None,
+-            "board": board,
+-            "mcu": mcu,
+-            "manual_mapping_source": source,
+-            "manual_mapping_confidence": confidence,
+-            "manual_mapping_note": note,
+-        }
+-
+-    if "stm32429" in lower or "stm32f4" in lower or "stm324" in lower:
+-        return pack("stm32f405_pdf", "stm32f40x_svd", "STM32F4", "STM32F4xx", "heuristic", "high", "Name/config indicates STM32F4-family firmware.")
+-    if "stm32l4" in lower:
+-        return pack("stm32l4_pdf", "stm32l476_svd", "STM32L4", "STM32L4xx", "heuristic", "high", "Name/config indicates STM32L4-family firmware.")
+-    if "stm32l1" in lower or "stm32l151" in lower:
+-        return pack("stm32l151_pdf", "stm32l152_svd", "STM32L1", "STM32L1xx", "heuristic", "high", "Name/config indicates STM32L1-family firmware.")
+-    if "stm32f10" in lower or "filesystem" in lower or "gnrc_networking" in lower or "xml_parser" in lower:
+-        return pack("stm32f10_pdf", "stm32f103_svd", "STM32F1", "STM32F103", "heuristic", "medium", "RIOT/WYCINWYC cases commonly use STM32-style layout; override if your local dataset metadata is more precise.")
+-    if "samr" in lower or "6lowpan" in lower or "atmel" in lower:
+-        return pack("samr21_pdf", "samd20_svd", "ATSAMR21/SAMD", "ATSAMD20-compatible", "heuristic", "low", "PDF is SAMR21; closest bundled SVD is ATSAMD20J18. Provide override for exact device.")
+-    if "sam3" in lower or "sam3x" in lower:
+-        return pack("sam3_pdf", "sam3_svd", "SAM3X", "ATSAM3X8E", "heuristic", "high", "Name/config indicates SAM3X-family firmware.")
+-    if "atsam4l" in lower or "sam4l" in lower:
+-        return pack("sam4l_pdf", "sam4l_svd", "ATSAM4L", "ATSAM4LC4C", "heuristic", "high", "Name/config indicates SAM4L-family firmware.")
+-    if "p2im/" in lower or "p2im\\" in lower or "k64" in lower or "zephyr" in lower or "utasker_modbus" in lower:
+-        return pack("k64_pdf", "k64_svd", "FRDM-K64F", "MK64F12", "heuristic", "medium", "Default mapping for P2IM/Kinetis-like benchmark cases; override if needed.")
+-    if "gps" in lower and "0x80000" in lower:
+-        return pack("sam3_pdf", "sam3_svd", "SAM3X", "ATSAM3X8E", "heuristic", "low", "Flash base resembles SAM-style layout; override if needed.")
+-    if "0x8000000" in lower or "0x08000000" in lower:
+-        return pack("stm32f10_pdf", "stm32f103_svd", "STM32F1", "STM32F103", "fallback", "low", "Generic STM32-style flash-base fallback. Override for exact device.")
+-    return pack("k64_pdf", "k64_svd", "FRDM-K64F", "MK64F12", "fallback", "low", "Generic fallback used only so all cases can enter the same local A/B pipeline. Override for exact device.")
+-
+-
+-def find_ghidra_artifacts(repo: Path, rel_dir: str, elf_stem: str) -> Dict[str, Any]:
+-    # Expected existing layout: analysis/out/baseline_all/<rel_dir>/<elf_stem>/summary.json
+-    outdir = (repo / "analysis" / "out" / "baseline_all" / rel_dir / elf_stem).resolve()
+-    summary = outdir / "summary.json"
+-    export = outdir / "ghidra_export.json"
+-    return {
+-        "ghidra_outdir": str(outdir),
+-        "ghidra_summary_json": str(summary) if summary.exists() else None,
+-        "ghidra_export_json": str(export) if export.exists() else None,
+-        "ghidra_artifacts_present": bool(summary.exists() and export.exists()),
+-    }
+-
+-
+-def discover_cases(repo: Path, overrides: Dict[str, Any]) -> List[Dict[str, Any]]:
+-    bench_root = repo / "benchmarks"
+-    if not bench_root.exists():
+-        raise FileNotFoundError(f"benchmarks directory not found: {bench_root}")
+-    rows: List[Dict[str, Any]] = []
+-    for cfg in sorted(bench_root.glob("*/*/config.yml")):
+-        case_dir = cfg.parent
+-        rel_dir = case_dir.relative_to(bench_root).as_posix()
+-        elfs = sorted(case_dir.glob("*.elf"))
+-        bins = sorted(case_dir.glob("*.bin"))
+-        if not elfs:
+-            continue
+-        elf = elfs[0]
+-        bin_file = bins[0] if bins else None
+-        config_text = read_text(cfg)
+-        case_id = safe_id(rel_dir)
+-        mapping = pick_manual_mapping(repo, rel_dir, elf.name, config_text, overrides)
+-        gh = find_ghidra_artifacts(repo, rel_dir, elf.stem)
+-        row: Dict[str, Any] = {
+-            "case_id": case_id,
+-            "dataset": rel_dir.split("/", 1)[0],
+-            "benchmark": rel_dir.split("/", 1)[1] if "/" in rel_dir else rel_dir,
+-            "relative_dir": rel_dir,
+-            "case_dir": str(case_dir.resolve()),
+-            "config": str(cfg.resolve()),
+-            "elf": str(elf.resolve()),
+-            "bin": str(bin_file.resolve()) if bin_file else None,
+-            "valid_basic_blocks": str((case_dir / "valid_basic_blocks.txt").resolve()) if (case_dir / "valid_basic_blocks.txt").exists() else None,
+-            "syms_yml": str((case_dir / "syms.yml").resolve()) if (case_dir / "syms.yml").exists() else None,
+-        }
+-        row.update(mapping)
+-        row.update(gh)
+-        row["guided_materialization_ready"] = bool(row.get("pdf") and row.get("svd"))
+-        rows.append(row)
+-    return rows
+-
+-
+-def write_jsonl(path: Path, rows: List[Dict[str, Any]]) -> None:
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    with path.open("w", encoding="utf-8") as f:
+-        for row in rows:
+-            f.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+-
+-
+-def write_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    fields = [
+-        "case_id", "dataset", "benchmark", "relative_dir", "config", "elf", "pdf", "svd",
+-        "board", "mcu", "manual_mapping_source", "manual_mapping_confidence",
+-        "guided_materialization_ready", "ghidra_artifacts_present", "ghidra_summary_json", "ghidra_export_json",
+-        "manual_mapping_note",
+-    ]
+-    with path.open("w", encoding="utf-8", newline="") as f:
+-        writer = csv.DictWriter(f, fieldnames=fields)
+-        writer.writeheader()
+-        for row in rows:
+-            writer.writerow({k: row.get(k) for k in fields})
+-
+-
+-def main() -> None:
+-    ap = argparse.ArgumentParser(description="Build newMulti local A/B experiment manifest.")
+-    ap.add_argument("--repo", default=".", help="MultiFuzz/newMulti repository root")
+-    ap.add_argument("--out", default="workdir/newmulti_ab/manifest.jsonl", help="Output JSONL manifest")
+-    ap.add_argument("--csv-out", default=None, help="Optional CSV summary path")
+-    ap.add_argument("--mapping", default=None, help="Optional JSON/YAML override mapping")
+-    ap.add_argument("--case-filter", default=None, help="Regex over relative_dir/case_id")
+-    args = ap.parse_args()
+-
+-    repo = repo_path(args.repo)
+-    overrides = load_mapping_file(Path(args.mapping)) if args.mapping else {}
+-    rows = discover_cases(repo, overrides)
+-    if args.case_filter:
+-        rx = re.compile(args.case_filter)
+-        rows = [r for r in rows if rx.search(r["relative_dir"]) or rx.search(r["case_id"])]
+-
+-    out = repo_path(args.out) if os.path.isabs(args.out) else (repo / args.out).resolve()
+-    write_jsonl(out, rows)
+-    csv_out = Path(args.csv_out) if args.csv_out else out.with_suffix(".csv")
+-    if not csv_out.is_absolute():
+-        csv_out = (repo / csv_out).resolve()
+-    write_csv(csv_out, rows)
+-
+-    summary = {
+-        "repo": str(repo),
+-        "manifest": str(out),
+-        "csv": str(csv_out),
+-        "total_cases": len(rows),
+-        "guided_materialization_ready": sum(1 for r in rows if r.get("guided_materialization_ready")),
+-        "ghidra_artifacts_present": sum(1 for r in rows if r.get("ghidra_artifacts_present")),
+-        "low_confidence_manual_mapping": sum(1 for r in rows if r.get("manual_mapping_confidence") == "low"),
+-    }
+-    print(json.dumps(summary, indent=2, ensure_ascii=False))
+-
+-
+-if __name__ == "__main__":
+-    main()
+diff --git a/scripts/example_manual_mapping.json b/scripts/example_manual_mapping.json
+deleted file mode 100644
+index bbf17db..0000000
+--- a/scripts/example_manual_mapping.json
++++ /dev/null
+@@ -1,20 +0,0 @@
+-{
+-  "cases": {
+-    "uEmu/utasker_USB": {
+-      "pdf": "extractor/text/stm32f405.pdf",
+-      "svd": "extractor/svd/STM/STM32F40x.svd",
+-      "board": "STM32429ZI",
+-      "mcu": "STM32F429ZI",
+-      "confidence": "high",
+-      "note": "Example override for uTasker USB STM32429ZI. Adjust paths if your local manual/SVD names differ."
+-    },
+-    "HALucinator/6LoWPAN_Receiver": {
+-      "pdf": "extractor/text/SAMR21E.pdf",
+-      "svd": "extractor/svd/SAM/ATSAMD20J18.svd",
+-      "board": "ATSAMR21-family",
+-      "mcu": "ATSAMR21-compatible",
+-      "confidence": "low",
+-      "note": "Bundled SVD is ATSAMD20J18; replace with exact SAMR21 SVD if available."
+-    }
+-  }
+-}
+diff --git a/scripts/run_fresh_3h_x3.sh b/scripts/run_fresh_3h_x3.sh
+deleted file mode 100644
+index e61056a..0000000
+--- a/scripts/run_fresh_3h_x3.sh
++++ /dev/null
+@@ -1,37 +0,0 @@
+-#!/usr/bin/env bash
+-set -euo pipefail
+-cd "$(dirname "$0")/../.."
+-JOBS="${JOBS:-4}"
+-LLM_MODE="${LLM_MODE:-off}"
+-LLM_MODEL="${LLM_MODEL:-${OPENAI_MODEL:-}}"
+-python3 scripts/newmulti_ab/build_newmulti_manifest.py \
+-  --repo . \
+-  --out workdir/newmulti_ab/manifest.jsonl \
+-  --csv-out workdir/newmulti_ab/manifest.csv
+-cmd=(
+-  python3 scripts/newmulti_ab/run_newmulti_ab.py
+-  --repo .
+-  --manifest workdir/newmulti_ab/manifest.jsonl
+-  --out-root workdir/newmulti_ab/fresh_3h_x3
+-  --mode both
+-  --jobs "$JOBS"
+-  --repeats 3
+-  --baseline-run-for 3h
+-  --guided-warmup-run-for 30m
+-  --warmup-restarts 1
+-  --probe-run-for 60s
+-  --followup-run-for 5m
+-  --portfolio-run-for 2m
+-  --candidate-run-for 2m
+-  --rounds 2
+-  --beam-width 2
+-  --max-llm-cycles 1
+-  --llm-mode "$LLM_MODE"
+-  --build
+-)
+-if [[ -n "$LLM_MODEL" ]]; then
+-  cmd+=(--llm-model "$LLM_MODEL")
+-fi
+-"${cmd[@]}"
+-python3 scripts/newmulti_ab/summarize_newmulti_ab.py \
+-  --out-root workdir/newmulti_ab/fresh_3h_x3
+diff --git a/scripts/run_newmulti_ab.py b/scripts/run_newmulti_ab.py
+deleted file mode 100644
+index 8ce19f4..0000000
+--- a/scripts/run_newmulti_ab.py
++++ /dev/null
+@@ -1,544 +0,0 @@
+-#!/usr/bin/env python3
+-# -*- coding: utf-8 -*-
+-"""
+-Run the local newMulti A/B benchmark experiment.
+-
+-Arms:
+-  baseline_random: local random-only execution with strategy/knowledge features disabled.
+-  guided_knowledge: warmup -> hotspot observation -> PDF/SVD/Ghidra materialization -> bounded strategy update.
+-
+-The script only executes local benchmark cases from the manifest produced by
+-build_newmulti_manifest.py. It does not connect to external systems. LLM usage is
+-opt-in via --llm-mode api or --llm-mode prompt-only/json-file.
+-"""
+-from __future__ import annotations
+-
+-import argparse
+-import concurrent.futures as cf
+-import csv
+-import datetime as _dt
+-import json
+-import os
+-import re
+-import shlex
+-import subprocess
+-import sys
+-import time
+-from pathlib import Path
+-from typing import Any, Dict, Iterable, List, Optional, Tuple
+-
+-
+-def now_iso() -> str:
+-    return _dt.datetime.now(_dt.timezone.utc).isoformat().replace("+00:00", "Z")
+-
+-
+-def repo_path(p: str | Path) -> Path:
+-    return Path(p).expanduser().resolve()
+-
+-
+-def safe_id(text: str) -> str:
+-    return re.sub(r"[^A-Za-z0-9_.-]+", "__", text.strip().strip("/"))
+-
+-
+-def load_jsonl(path: Path) -> List[Dict[str, Any]]:
+-    rows: List[Dict[str, Any]] = []
+-    with path.open("r", encoding="utf-8") as f:
+-        for line in f:
+-            line = line.strip()
+-            if not line:
+-                continue
+-            rows.append(json.loads(line))
+-    return rows
+-
+-
+-def save_json(path: Path, data: Any) -> None:
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    tmp = path.with_suffix(path.suffix + ".tmp")
+-    tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+-    tmp.replace(path)
+-
+-
+-def append_jsonl(path: Path, data: Dict[str, Any]) -> None:
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    with path.open("a", encoding="utf-8") as f:
+-        f.write(json.dumps(data, ensure_ascii=False, sort_keys=True) + "\n")
+-
+-
+-def parse_duration_seconds(value: str) -> int:
+-    s = str(value).strip().lower()
+-    m = re.fullmatch(r"(\d+)([smhd]?)", s)
+-    if not m:
+-        raise ValueError(f"Unsupported duration: {value}. Use examples like 30s, 10m, 3h.")
+-    n = int(m.group(1))
+-    unit = m.group(2) or "s"
+-    return n * {"s": 1, "m": 60, "h": 3600, "d": 86400}[unit]
+-
+-
+-def duration_min(a: str, b: str) -> str:
+-    return f"{min(parse_duration_seconds(a), parse_duration_seconds(b))}s"
+-
+-
+-def shell_join(cmd: Iterable[str]) -> str:
+-    return " ".join(shlex.quote(str(x)) for x in cmd)
+-
+-
+-def run_cmd(cmd: List[str], *, cwd: Path, log_path: Path, dry_run: bool = False, extra_env: Optional[Dict[str, str]] = None) -> Dict[str, Any]:
+-    log_path.parent.mkdir(parents=True, exist_ok=True)
+-    rec: Dict[str, Any] = {
+-        "cmd": cmd,
+-        "cmd_string": shell_join(cmd),
+-        "cwd": str(cwd),
+-        "log_path": str(log_path),
+-        "started_at": now_iso(),
+-        "dry_run": dry_run,
+-    }
+-    if dry_run:
+-        log_path.write_text("[dry-run] " + rec["cmd_string"] + "\n", encoding="utf-8")
+-        rec.update({"returncode": 0, "elapsed_sec": 0.0, "finished_at": now_iso()})
+-        return rec
+-
+-    env = os.environ.copy()
+-    if extra_env:
+-        env.update({str(k): str(v) for k, v in extra_env.items()})
+-    start = time.monotonic()
+-    with log_path.open("w", encoding="utf-8", errors="replace") as f:
+-        f.write(f"[newmulti-runner] started_at={rec['started_at']} cwd={cwd}\n")
+-        f.write(f"[newmulti-runner] cmd={rec['cmd_string']}\n")
+-        f.flush()
+-        proc = subprocess.run(cmd, cwd=str(cwd), env=env, stdout=f, stderr=subprocess.STDOUT, text=True, check=False)
+-    rec.update({
+-        "returncode": int(proc.returncode),
+-        "elapsed_sec": round(time.monotonic() - start, 3),
+-        "finished_at": now_iso(),
+-    })
+-    return rec
+-
+-
+-
+-def autodetect_fuzzer_manifest(repo: Path, requested: Path) -> Path:
+-    """Resolve the fuzzer Cargo.toml robustly for either the full repo or uploaded component layout."""
+-    if requested.exists():
+-        return requested.resolve()
+-    candidates = [
+-        repo / "hail-fuzz" / "Cargo.toml",
+-        repo / "hail" / "Cargo.toml",
+-        repo / "Cargo.toml",
+-    ]
+-    for cand in candidates:
+-        if cand.exists():
+-            return cand.resolve()
+-    raise FileNotFoundError(f"Cannot find fuzzer manifest. Requested {requested}; tried: {', '.join(str(c) for c in candidates)}")
+-
+-def cargo_binary_from_manifest(repo: Path, manifest_path: Path, *, force_build: bool = False) -> Path:
+-    manifest_path = autodetect_fuzzer_manifest(repo, manifest_path)
+-    if force_build:
+-        subprocess.run(["cargo", "build", "--manifest-path", str(manifest_path)], cwd=str(repo), check=True)
+-    meta = subprocess.check_output(
+-        ["cargo", "metadata", "--manifest-path", str(manifest_path), "--format-version", "1", "--no-deps"],
+-        cwd=str(repo), text=True,
+-    )
+-    data = json.loads(meta)
+-    target_dir = Path(data["target_directory"])
+-    pkg = None
+-    packages = data.get("packages", [])
+-    for p in packages:
+-        if Path(p.get("manifest_path", "")).resolve() == manifest_path.resolve():
+-            pkg = p
+-            break
+-    if pkg is None:
+-        for p in packages:
+-            for target in p.get("targets", []):
+-                if "bin" in target.get("kind", []) and target.get("name") == "hail-fuzz":
+-                    pkg = p
+-                    break
+-            if pkg is not None:
+-                break
+-    if pkg is None:
+-        for p in packages:
+-            if any("bin" in t.get("kind", []) for t in p.get("targets", [])):
+-                pkg = p
+-                break
+-    if not pkg:
+-        raise RuntimeError(f"Cannot resolve cargo binary package from {manifest_path}")
+-    bin_name = None
+-    for target in pkg.get("targets", []):
+-        if "bin" in target.get("kind", []) and target.get("name") == "hail-fuzz":
+-            bin_name = target.get("name")
+-            break
+-    if not bin_name:
+-        for target in pkg.get("targets", []):
+-            if "bin" in target.get("kind", []):
+-                bin_name = target.get("name")
+-                break
+-    bin_name = bin_name or pkg.get("name")
+-    if not bin_name:
+-        raise RuntimeError(f"Cannot resolve cargo binary name from {manifest_path}")
+-    bin_path = target_dir / "debug" / bin_name
+-    if sys.platform.startswith("win"):
+-        bin_path = bin_path.with_suffix(".exe")
+-    if force_build or not bin_path.exists():
+-        subprocess.run(["cargo", "build", "--manifest-path", str(manifest_path)], cwd=str(repo), check=True)
+-    return bin_path.resolve()
+-
+-
+-def baseline_setenv() -> List[str]:
+-    # Keep the executor local and deterministic, while disabling knowledge-bearing
+-    # stages so the arm is a true random-mutation control.
+-    return [
+-        "ENABLE_CMPLOG=0",
+-        "ENABLE_COLORIZATION=0",
+-        "ENABLE_AUTO_DICT=0",
+-        "ENABLE_TRIM=0",
+-        "ENABLE_AUTO_TRIM=0",
+-        "ENABLE_STRIDED_INT_MATCHES=0",
+-        "USE_ACCESS_CONTEXTS=0",
+-        "ICICLE_RESIZE_LOADS=0",
+-        "LENGTH_EXTENSION_ONLY=0",
+-        "ENABLE_HAVOC=1",
+-    ]
+-
+-
+-def guided_setenv() -> List[str]:
+-    # Guided arm keeps the ordinary mutation pipeline enabled; the bounded runtime
+-    # materialization enters through closed_loop.py arguments and env vars.
+-    return [
+-        "ENABLE_HAVOC=1",
+-        "ENABLE_CMPLOG=1",
+-        "ENABLE_COLORIZATION=1",
+-        "ENABLE_AUTO_DICT=1",
+-        "ENABLE_TRIM=1",
+-        "ENABLE_AUTO_TRIM=1",
+-        "ENABLE_STRIDED_INT_MATCHES=1",
+-        "USE_ACCESS_CONTEXTS=0",
+-        "ICICLE_RESIZE_LOADS=3",
+-    ]
+-
+-
+-def add_setenv_args(cmd: List[str], pairs: Iterable[str]) -> None:
+-    for pair in pairs:
+-        cmd.extend(["--setenv", pair])
+-
+-
+-def closed_loop_py(repo: Path) -> Path:
+-    p = repo / "extractor" / "closed_loop.py"
+-    if not p.exists():
+-        raise FileNotFoundError(f"missing closed_loop.py: {p}")
+-    return p.resolve()
+-
+-
+-def case_out_root(out_root: Path, case: Dict[str, Any], repeat_idx: int) -> Path:
+-    return out_root / safe_id(case["case_id"]) / f"rep_{repeat_idx:02d}"
+-
+-
+-def write_case_meta(root: Path, case: Dict[str, Any], repeat_idx: int, arm: str) -> None:
+-    save_json(root / "case_meta.json", {"case": case, "repeat_idx": repeat_idx, "arm": arm, "created_at": now_iso()})
+-
+-
+-def run_baseline_case(repo: Path, case: Dict[str, Any], repeat_idx: int, args: argparse.Namespace, fuzzer_bin: Path) -> Dict[str, Any]:
+-    arm_root = case_out_root(Path(args.out_root), case, repeat_idx) / "baseline_random"
+-    arm_root.mkdir(parents=True, exist_ok=True)
+-    write_case_meta(arm_root, case, repeat_idx, "baseline_random")
+-    cmd = [
+-        sys.executable, str(closed_loop_py(repo)), "run-fuzz",
+-        "--fuzzer-manifest", str(Path(args.fuzzer_manifest).resolve()),
+-        "--fuzzer-bin", str(fuzzer_bin),
+-        "--firmware-config", case["config"],
+-        "--ghidra-src", str(Path(args.ghidra_src).resolve()),
+-        "--workdir", str(arm_root / "workdir"),
+-        "--run-log", str(arm_root / "run.log"),
+-        "--run-for", args.baseline_run_for,
+-    ]
+-    if args.baseline_with_observer:
+-        cmd.extend(["--observer-dir", str(arm_root / "observer")])
+-    if args.dump_trace:
+-        cmd.append("--dump-trace")
+-    add_setenv_args(cmd, baseline_setenv())
+-    add_setenv_args(cmd, args.setenv or [])
+-    rec = run_cmd(cmd, cwd=repo, log_path=arm_root / "runner.log", dry_run=args.dry_run)
+-    rec.update({"case_id": case["case_id"], "relative_dir": case["relative_dir"], "repeat_idx": repeat_idx, "arm": "baseline_random", "summary_path": str(arm_root / "run_fuzz_summary.json")})
+-    save_json(arm_root / "runner_result.json", rec)
+-    return rec
+-
+-
+-def run_guided_case(repo: Path, case: Dict[str, Any], repeat_idx: int, args: argparse.Namespace, fuzzer_bin: Path) -> Dict[str, Any]:
+-    arm_root = case_out_root(Path(args.out_root), case, repeat_idx) / "guided_knowledge"
+-    arm_root.mkdir(parents=True, exist_ok=True)
+-    write_case_meta(arm_root, case, repeat_idx, "guided_knowledge")
+-
+-    if not case.get("pdf") or not case.get("svd"):
+-        rec = {
+-            "case_id": case["case_id"],
+-            "relative_dir": case["relative_dir"],
+-            "repeat_idx": repeat_idx,
+-            "arm": "guided_knowledge",
+-            "returncode": 2,
+-            "status": "skipped_missing_pdf_or_svd",
+-            "summary_path": None,
+-            "started_at": now_iso(),
+-            "finished_at": now_iso(),
+-        }
+-        save_json(arm_root / "runner_result.json", rec)
+-        return rec
+-
+-    cmd = [
+-        sys.executable, str(closed_loop_py(repo)), "adaptive-mmio-loop",
+-        "--fuzzer-manifest", str(Path(args.fuzzer_manifest).resolve()),
+-        "--fuzzer-bin", str(fuzzer_bin),
+-        "--firmware-config", case["config"],
+-        "--ghidra-src", str(Path(args.ghidra_src).resolve()),
+-        "--binary", case["elf"],
+-        "--pdf", case["pdf"],
+-        "--svd", case["svd"],
+-        "--board", str(case.get("board") or "unknown_board"),
+-        "--mcu", str(case.get("mcu") or "unknown_mcu"),
+-        "--benchmark-name", str(case.get("case_id") or case.get("benchmark") or "benchmark"),
+-        "--out-root", str(arm_root),
+-        "--materialization-mode", args.materialization_mode,
+-        "--warmup-run-for", args.guided_warmup_run_for,
+-        "--warmup-restarts", str(args.warmup_restarts),
+-        "--probe-run-for", args.probe_run_for,
+-        "--followup-run-for", args.followup_run_for,
+-        "--portfolio-run-for", args.portfolio_run_for,
+-        "--portfolio-max-candidates", str(args.portfolio_max_candidates),
+-        "--candidate-run-for", args.candidate_run_for,
+-        "--rounds", str(args.rounds),
+-        "--beam-width", str(args.beam_width),
+-        "--max-llm-cycles", str(args.max_llm_cycles),
+-        "--main-window-count", str(args.main_window_count),
+-        "--main-window-run-for", args.main_window_run_for,
+-        "--shared-cache-root", str(Path(args.shared_cache_root).resolve()),
+-        "--shared-query-cache-root", str(Path(args.shared_query_cache_root).resolve()),
+-        "--top-k", str(args.top_k),
+-        "--max-candidates", str(args.max_candidates),
+-        "--default-after-reads", str(args.default_after_reads),
+-        "--trace-basename", "replay_trace",
+-    ]
+-    if case.get("ghidra_summary_json"):
+-        cmd.extend(["--ghidra-summary-json", case["ghidra_summary_json"]])
+-    if case.get("ghidra_export_json"):
+-        cmd.extend(["--ghidra-export-json", case["ghidra_export_json"]])
+-    if case.get("ghidra_outdir"):
+-        cmd.extend(["--ghidra-outdir", str(arm_root / "ghidra")])
+-    if args.force_pdf:
+-        cmd.append("--force-pdf")
+-    if args.allow_aggressive:
+-        cmd.append("--allow-aggressive")
+-    if args.disable_candidate_portfolio:
+-        cmd.append("--disable-candidate-portfolio")
+-    if args.dump_trace:
+-        cmd.append("--dump-trace")
+-    if args.dump_followup_trace:
+-        cmd.append("--dump-followup-trace")
+-
+-    if args.llm_mode == "off":
+-        cmd.append("--skip-llm")
+-    elif args.llm_mode == "prompt-only":
+-        cmd.extend(["--enable-llm-strategy", "--llm-strategy-mode", "prompt-only"])
+-        if args.llm_model:
+-            cmd.extend(["--llm-strategy-model", args.llm_model, "--llm-model", args.llm_model])
+-    elif args.llm_mode == "api":
+-        cmd.extend(["--enable-llm-strategy", "--llm-strategy-mode", "api", "--force-llm"])
+-        if args.llm_model:
+-            cmd.extend(["--llm-strategy-model", args.llm_model, "--llm-model", args.llm_model])
+-    elif args.llm_mode == "json-file":
+-        if not args.llm_strategy_json:
+-            raise ValueError("--llm-mode json-file requires --llm-strategy-json")
+-        cmd.extend([
+-            "--enable-llm-strategy", "--llm-strategy-mode", "json-file",
+-            "--llm-strategy-json", str(Path(args.llm_strategy_json).resolve()),
+-        ])
+-    else:
+-        raise ValueError(f"unknown llm mode: {args.llm_mode}")
+-
+-    add_setenv_args(cmd, guided_setenv())
+-    add_setenv_args(cmd, args.setenv or [])
+-    rec = run_cmd(cmd, cwd=repo, log_path=arm_root / "runner.log", dry_run=args.dry_run)
+-    rec.update({"case_id": case["case_id"], "relative_dir": case["relative_dir"], "repeat_idx": repeat_idx, "arm": "guided_knowledge", "summary_path": str(arm_root / "adaptive_mmio_loop_summary.json")})
+-    save_json(arm_root / "runner_result.json", rec)
+-    return rec
+-
+-
+-def run_one_task(task: Tuple[str, Dict[str, Any], int, Dict[str, Any]]) -> Dict[str, Any]:
+-    arm, case, repeat_idx, arg_dict = task
+-    args = argparse.Namespace(**arg_dict)
+-    repo = Path(args.repo).resolve()
+-    fuzzer_bin = Path(args.fuzzer_bin_resolved).resolve()
+-    try:
+-        if arm == "baseline_random":
+-            return run_baseline_case(repo, case, repeat_idx, args, fuzzer_bin)
+-        if arm == "guided_knowledge":
+-            return run_guided_case(repo, case, repeat_idx, args, fuzzer_bin)
+-        raise ValueError(arm)
+-    except Exception as exc:
+-        root = case_out_root(Path(args.out_root), case, repeat_idx) / arm
+-        root.mkdir(parents=True, exist_ok=True)
+-        rec = {
+-            "case_id": case.get("case_id"),
+-            "relative_dir": case.get("relative_dir"),
+-            "repeat_idx": repeat_idx,
+-            "arm": arm,
+-            "returncode": 99,
+-            "status": "runner_exception",
+-            "error": f"{type(exc).__name__}: {exc}",
+-            "started_at": now_iso(),
+-            "finished_at": now_iso(),
+-        }
+-        save_json(root / "runner_result.json", rec)
+-        return rec
+-
+-
+-def write_status_table(path: Path, rows: List[Dict[str, Any]]) -> None:
+-    fields = ["case_id", "relative_dir", "repeat_idx", "arm", "returncode", "status", "elapsed_sec", "summary_path", "error"]
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    with path.open("w", encoding="utf-8", newline="") as f:
+-        w = csv.DictWriter(f, fieldnames=fields)
+-        w.writeheader()
+-        for row in rows:
+-            w.writerow({k: row.get(k) for k in fields})
+-
+-
+-def main() -> None:
+-    ap = argparse.ArgumentParser(description="Run newMulti local A/B benchmark experiment.")
+-    ap.add_argument("--repo", default=".", help="Repository root")
+-    ap.add_argument("--manifest", default="workdir/newmulti_ab/manifest.jsonl", help="Manifest from build_newmulti_manifest.py")
+-    ap.add_argument("--out-root", default="workdir/newmulti_ab/runs", help="Experiment output root")
+-    ap.add_argument("--fuzzer-manifest", default="Cargo.toml", help="Cargo.toml for hail-fuzz/newMulti")
+-    ap.add_argument("--fuzzer-bin", default=None, help="Optional already-built fuzzer binary")
+-    ap.add_argument("--ghidra-src", default="tools/ghidra", help="Ghidra install path passed through to closed_loop.py")
+-    ap.add_argument("--shared-cache-root", default="extractor/.shared_pdf_svd_cache")
+-    ap.add_argument("--shared-query-cache-root", default="extractor/.shared_query_cache")
+-    ap.add_argument("--mode", choices=["both", "baseline", "guided"], default="both")
+-    ap.add_argument("--jobs", type=int, default=1)
+-    ap.add_argument("--repeats", type=int, default=1)
+-    ap.add_argument("--case-filter", default=None, help="Regex over relative_dir/case_id")
+-    ap.add_argument("--dry-run", action="store_true")
+-    ap.add_argument("--build", action="store_true", help="Run cargo build before launching tasks")
+-
+-    # Comparable budgets. For fair A/B, set baseline-run-for equal to guided total budget manually.
+-    ap.add_argument("--baseline-run-for", default="3h")
+-    ap.add_argument("--guided-warmup-run-for", default="30m")
+-    ap.add_argument("--warmup-restarts", type=int, default=1)
+-    ap.add_argument("--probe-run-for", default="60s")
+-    ap.add_argument("--followup-run-for", default="5m")
+-    ap.add_argument("--portfolio-run-for", default="2m")
+-    ap.add_argument("--candidate-run-for", default="2m")
+-    ap.add_argument("--main-window-count", type=int, default=0)
+-    ap.add_argument("--main-window-run-for", default="10m")
+-    ap.add_argument("--rounds", type=int, default=2)
+-    ap.add_argument("--beam-width", type=int, default=2)
+-    ap.add_argument("--max-llm-cycles", type=int, default=1)
+-    ap.add_argument("--portfolio-max-candidates", type=int, default=3)
+-    ap.add_argument("--top-k", type=int, default=8)
+-    ap.add_argument("--max-candidates", type=int, default=4)
+-    ap.add_argument("--default-after-reads", type=int, default=192)
+-    ap.add_argument("--materialization-mode", choices=["staged-loop", "auto-loop"], default="staged-loop")
+-
+-    ap.add_argument("--llm-mode", choices=["off", "prompt-only", "api", "json-file"], default="off")
+-    ap.add_argument("--llm-model", default=os.environ.get("OPENAI_MODEL", ""))
+-    ap.add_argument("--llm-strategy-json", default=None)
+-
+-    ap.add_argument("--baseline-with-observer", action="store_true")
+-    ap.add_argument("--dump-trace", action="store_true")
+-    ap.add_argument("--dump-followup-trace", action="store_true")
+-    ap.add_argument("--force-pdf", action="store_true")
+-    ap.add_argument("--allow-aggressive", action="store_true")
+-    ap.add_argument("--disable-candidate-portfolio", action="store_true")
+-    ap.add_argument("--setenv", action="append", help="Extra KEY=VALUE override passed to closed_loop.py; can repeat")
+-    args = ap.parse_args()
+-
+-    repo = repo_path(args.repo)
+-    manifest = Path(args.manifest)
+-    if not manifest.is_absolute():
+-        manifest = (repo / manifest).resolve()
+-    out_root = Path(args.out_root)
+-    if not out_root.is_absolute():
+-        out_root = (repo / out_root).resolve()
+-    out_root.mkdir(parents=True, exist_ok=True)
+-    args.repo = str(repo)
+-    args.manifest = str(manifest)
+-    args.out_root = str(out_root)
+-    requested_manifest = (repo / args.fuzzer_manifest).resolve() if not os.path.isabs(args.fuzzer_manifest) else Path(args.fuzzer_manifest).resolve()
+-    args.fuzzer_manifest = str(autodetect_fuzzer_manifest(repo, requested_manifest))
+-    args.ghidra_src = str((repo / args.ghidra_src).resolve() if not os.path.isabs(args.ghidra_src) else Path(args.ghidra_src).resolve())
+-    args.shared_cache_root = str((repo / args.shared_cache_root).resolve() if not os.path.isabs(args.shared_cache_root) else Path(args.shared_cache_root).resolve())
+-    args.shared_query_cache_root = str((repo / args.shared_query_cache_root).resolve() if not os.path.isabs(args.shared_query_cache_root) else Path(args.shared_query_cache_root).resolve())
+-
+-    cases = load_jsonl(manifest)
+-    if args.case_filter:
+-        rx = re.compile(args.case_filter)
+-        cases = [c for c in cases if rx.search(c.get("relative_dir", "")) or rx.search(c.get("case_id", ""))]
+-    if not cases:
+-        raise RuntimeError("No cases selected")
+-
+-    if args.fuzzer_bin:
+-        fuzzer_bin = Path(args.fuzzer_bin).expanduser().resolve()
+-    else:
+-        fuzzer_bin = cargo_binary_from_manifest(repo, Path(args.fuzzer_manifest), force_build=args.build)
+-    args.fuzzer_bin_resolved = str(fuzzer_bin)
+-
+-    arms = []
+-    if args.mode in {"both", "baseline"}:
+-        arms.append("baseline_random")
+-    if args.mode in {"both", "guided"}:
+-        arms.append("guided_knowledge")
+-
+-    tasks: List[Tuple[str, Dict[str, Any], int, Dict[str, Any]]] = []
+-    arg_dict = vars(args).copy()
+-    for rep in range(1, max(1, args.repeats) + 1):
+-        for case in cases:
+-            for arm in arms:
+-                tasks.append((arm, case, rep, arg_dict))
+-
+-    plan = {
+-        "schema": "newmulti_ab_run_plan_v1",
+-        "created_at": now_iso(),
+-        "repo": str(repo),
+-        "manifest": str(manifest),
+-        "out_root": str(out_root),
+-        "fuzzer_bin": str(fuzzer_bin),
+-        "mode": args.mode,
+-        "jobs": args.jobs,
+-        "repeats": args.repeats,
+-        "case_count": len(cases),
+-        "task_count": len(tasks),
+-        "llm_mode": args.llm_mode,
+-        "baseline_random_setenv": baseline_setenv(),
+-        "guided_setenv": guided_setenv(),
+-        "tasks": [{"arm": t[0], "case_id": t[1].get("case_id"), "relative_dir": t[1].get("relative_dir"), "repeat_idx": t[2]} for t in tasks],
+-    }
+-    save_json(out_root / "run_plan.json", plan)
+-    print(json.dumps({k: plan[k] for k in ["out_root", "case_count", "task_count", "mode", "jobs", "llm_mode"]}, indent=2, ensure_ascii=False))
+-
+-    results: List[Dict[str, Any]] = []
+-    status_jsonl = out_root / "runner_status.jsonl"
+-    if status_jsonl.exists() and not args.dry_run:
+-        status_jsonl.unlink()
+-
+-    if args.jobs <= 1:
+-        for task in tasks:
+-            rec = run_one_task(task)
+-            results.append(rec)
+-            append_jsonl(status_jsonl, rec)
+-            print(f"[{rec.get('arm')}] {rec.get('relative_dir')} rep={rec.get('repeat_idx')} rc={rec.get('returncode')}", flush=True)
+-    else:
+-        with cf.ProcessPoolExecutor(max_workers=args.jobs) as ex:
+-            futs = [ex.submit(run_one_task, task) for task in tasks]
+-            for fut in cf.as_completed(futs):
+-                rec = fut.result()
+-                results.append(rec)
+-                append_jsonl(status_jsonl, rec)
+-                print(f"[{rec.get('arm')}] {rec.get('relative_dir')} rep={rec.get('repeat_idx')} rc={rec.get('returncode')}", flush=True)
+-
+-    save_json(out_root / "runner_results.json", {"finished_at": now_iso(), "results": results})
+-    write_status_table(out_root / "runner_status.csv", results)
+-    print(json.dumps({
+-        "out_root": str(out_root),
+-        "results": str(out_root / "runner_results.json"),
+-        "status_csv": str(out_root / "runner_status.csv"),
+-        "ok": sum(1 for r in results if r.get("returncode") == 0),
+-        "failed_or_skipped": sum(1 for r in results if r.get("returncode") != 0),
+-    }, indent=2, ensure_ascii=False))
+-
+-
+-if __name__ == "__main__":
+-    main()
+diff --git a/scripts/run_smoke_10m.sh b/scripts/run_smoke_10m.sh
+deleted file mode 100644
+index 656f0b3..0000000
+--- a/scripts/run_smoke_10m.sh
++++ /dev/null
+@@ -1,25 +0,0 @@
+-#!/usr/bin/env bash
+-set -euo pipefail
+-cd "$(dirname "$0")/../.."
+-python3 scripts/newmulti_ab/build_newmulti_manifest.py \
+-  --repo . \
+-  --out workdir/newmulti_ab/manifest.jsonl \
+-  --csv-out workdir/newmulti_ab/manifest.csv
+-python3 scripts/newmulti_ab/run_newmulti_ab.py \
+-  --repo . \
+-  --manifest workdir/newmulti_ab/manifest.jsonl \
+-  --out-root workdir/newmulti_ab/smoke \
+-  --mode both \
+-  --case-filter 'P2IM/CNC' \
+-  --jobs 1 \
+-  --repeats 1 \
+-  --baseline-run-for 10m \
+-  --guided-warmup-run-for 2m \
+-  --probe-run-for 30s \
+-  --followup-run-for 60s \
+-  --portfolio-run-for 30s \
+-  --candidate-run-for 30s \
+-  --llm-mode off \
+-  --build
+-python3 scripts/newmulti_ab/summarize_newmulti_ab.py \
+-  --out-root workdir/newmulti_ab/smoke
+diff --git a/scripts/summarize_newmulti_ab.py b/scripts/summarize_newmulti_ab.py
+deleted file mode 100644
+index c5c9e35..0000000
+--- a/scripts/summarize_newmulti_ab.py
++++ /dev/null
+@@ -1,252 +0,0 @@
+-#!/usr/bin/env python3
+-# -*- coding: utf-8 -*-
+-"""
+-Summarize local newMulti A/B experiment outputs.
+-
+-Reads runner_result.json plus closed_loop summaries under an experiment output
+-root and writes compact CSV/JSON files for analysis.
+-"""
+-from __future__ import annotations
+-
+-import argparse
+-import csv
+-import json
+-import os
+-import re
+-from pathlib import Path
+-from typing import Any, Dict, Iterable, List, Optional, Tuple
+-
+-
+-def load_json(path: Path) -> Optional[Any]:
+-    try:
+-        return json.loads(path.read_text(encoding="utf-8", errors="ignore"))
+-    except Exception:
+-        return None
+-
+-
+-def int_or_none(v: Any) -> Optional[int]:
+-    if v is None:
+-        return None
+-    try:
+-        return int(v)
+-    except Exception:
+-        return None
+-
+-
+-def flatten_run_summary(summary: Any) -> Dict[str, Any]:
+-    if not isinstance(summary, dict):
+-        return {}
+-    rs = summary.get("run_summary") if isinstance(summary.get("run_summary"), dict) else summary
+-    if not isinstance(rs, dict):
+-        return {}
+-    return {
+-        "last_cov": int_or_none(rs.get("last_cov")),
+-        "last_in": int_or_none(rs.get("last_in")),
+-        "last_hang": int_or_none(rs.get("last_hang")),
+-        "last_crash": int_or_none(rs.get("last_crash")),
+-        "run_status": rs.get("status"),
+-    }
+-
+-
+-def recursive_find_numbers(obj: Any, key_names: Iterable[str]) -> List[int]:
+-    keys = set(key_names)
+-    out: List[int] = []
+-    def rec(x: Any) -> None:
+-        if isinstance(x, dict):
+-            for k, v in x.items():
+-                if k in keys:
+-                    iv = int_or_none(v)
+-                    if iv is not None:
+-                        out.append(iv)
+-                rec(v)
+-        elif isinstance(x, list):
+-            for v in x:
+-                rec(v)
+-    rec(obj)
+-    return out
+-
+-
+-def recursive_find_paths(obj: Any, suffix_names: Iterable[str]) -> List[str]:
+-    suffixes = tuple(suffix_names)
+-    paths: List[str] = []
+-    def rec(x: Any) -> None:
+-        if isinstance(x, dict):
+-            for k, v in x.items():
+-                if isinstance(v, str) and (k.endswith(suffixes) or any(v.endswith(s) for s in suffixes)):
+-                    paths.append(v)
+-                rec(v)
+-        elif isinstance(x, list):
+-            for v in x:
+-                rec(v)
+-    rec(obj)
+-    return paths
+-
+-
+-def sum_guidance_signals(summary: Any) -> Dict[str, Any]:
+-    # Different closed_loop modes store action fire counts in slightly different
+-    # places. Keep this robust by recursively collecting common fields.
+-    fire_values = recursive_find_numbers(summary, [
+-        "fire_count", "fires", "action_fires", "cumulative_action_fires", "tail_fires"
+-    ])
+-    progress_values = recursive_find_numbers(summary, [
+-        "sequence_progress", "cumulative_sequence_progress", "active_stage_count"
+-    ])
+-    return {
+-        "guidance_signal_sum": sum(fire_values) if fire_values else 0,
+-        "guidance_progress_sum": sum(progress_values) if progress_values else 0,
+-        "guidance_signal_fields_seen": len(fire_values),
+-    }
+-
+-
+-def summarize_guided(summary: Any) -> Dict[str, Any]:
+-    if not isinstance(summary, dict):
+-        return {}
+-    covs = recursive_find_numbers(summary, [
+-        "last_cov", "frontier_last_cov", "final_cov", "child_cov", "coverage", "baseline_cov"
+-    ])
+-    inputs = recursive_find_numbers(summary, ["last_in", "final_last_in"])
+-    hangs = recursive_find_numbers(summary, ["last_hang", "last_hangs", "final_hangs", "hangs"])
+-    crashes = recursive_find_numbers(summary, ["last_crash", "last_crashes", "crashes"])
+-    out = {
+-        "last_cov": max(covs) if covs else None,
+-        "last_in": max(inputs) if inputs else None,
+-        "last_hang": max(hangs) if hangs else None,
+-        "last_crash": max(crashes) if crashes else None,
+-        "mode_summary": summary.get("mode") or summary.get("schema"),
+-        "materialization_mode": summary.get("materialization_mode"),
+-        "summary_path_nested": summary.get("summary_path"),
+-        "long_horizon_summary_path": summary.get("long_horizon_summary_path"),
+-    }
+-    out.update(sum_guidance_signals(summary))
+-    return out
+-
+-
+-def collect_rows(out_root: Path) -> List[Dict[str, Any]]:
+-    rows: List[Dict[str, Any]] = []
+-    for rr in sorted(out_root.rglob("runner_result.json")):
+-        runner = load_json(rr) or {}
+-        arm = runner.get("arm") or rr.parent.name
+-        meta = load_json(rr.parent / "case_meta.json") or {}
+-        case = meta.get("case") if isinstance(meta, dict) else {}
+-        if not isinstance(case, dict):
+-            case = {}
+-        summary_path_raw = runner.get("summary_path")
+-        summary_path = Path(summary_path_raw) if summary_path_raw else None
+-        if summary_path and not summary_path.is_absolute():
+-            summary_path = (rr.parent / summary_path).resolve()
+-        summary = load_json(summary_path) if summary_path and summary_path.exists() else None
+-        metrics = summarize_guided(summary) if arm == "guided_knowledge" else flatten_run_summary(summary)
+-        if arm == "baseline_random":
+-            metrics.update(sum_guidance_signals(summary))
+-        row = {
+-            "case_id": runner.get("case_id") or case.get("case_id"),
+-            "relative_dir": runner.get("relative_dir") or case.get("relative_dir"),
+-            "dataset": case.get("dataset"),
+-            "benchmark": case.get("benchmark"),
+-            "repeat_idx": runner.get("repeat_idx") or meta.get("repeat_idx"),
+-            "arm": arm,
+-            "returncode": runner.get("returncode"),
+-            "runner_status": runner.get("status"),
+-            "elapsed_sec": runner.get("elapsed_sec"),
+-            "summary_path": str(summary_path) if summary_path else None,
+-            "runner_result": str(rr),
+-            "manual_mapping_confidence": case.get("manual_mapping_confidence"),
+-            "board": case.get("board"),
+-            "mcu": case.get("mcu"),
+-        }
+-        row.update(metrics)
+-        rows.append(row)
+-    return rows
+-
+-
+-def write_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
+-    fields = [
+-        "case_id", "relative_dir", "dataset", "benchmark", "repeat_idx", "arm",
+-        "returncode", "runner_status", "elapsed_sec", "last_cov", "last_in", "last_hang", "last_crash",
+-        "guidance_signal_sum", "guidance_progress_sum", "guidance_signal_fields_seen",
+-        "manual_mapping_confidence", "board", "mcu", "mode_summary", "materialization_mode",
+-        "summary_path", "runner_result",
+-    ]
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    with path.open("w", encoding="utf-8", newline="") as f:
+-        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+-        w.writeheader()
+-        for row in rows:
+-            w.writerow(row)
+-
+-
+-def paired_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+-    by_key: Dict[Tuple[str, Any], Dict[str, Dict[str, Any]]] = {}
+-    for r in rows:
+-        key = (str(r.get("case_id")), r.get("repeat_idx"))
+-        by_key.setdefault(key, {})[str(r.get("arm"))] = r
+-    out: List[Dict[str, Any]] = []
+-    for (case_id, rep), arms in sorted(by_key.items()):
+-        b = arms.get("baseline_random") or {}
+-        g = arms.get("guided_knowledge") or {}
+-        bc = int_or_none(b.get("last_cov"))
+-        gc = int_or_none(g.get("last_cov"))
+-        bi = int_or_none(b.get("last_in"))
+-        gi = int_or_none(g.get("last_in"))
+-        out.append({
+-            "case_id": case_id,
+-            "relative_dir": b.get("relative_dir") or g.get("relative_dir"),
+-            "repeat_idx": rep,
+-            "baseline_cov": bc,
+-            "guided_cov": gc,
+-            "coverage_delta": (gc - bc) if gc is not None and bc is not None else None,
+-            "coverage_ratio": round(gc / bc, 4) if gc is not None and bc not in (None, 0) else None,
+-            "baseline_inputs": bi,
+-            "guided_inputs": gi,
+-            "guided_signal_sum": g.get("guidance_signal_sum"),
+-            "baseline_rc": b.get("returncode"),
+-            "guided_rc": g.get("returncode"),
+-            "mapping_confidence": g.get("manual_mapping_confidence") or b.get("manual_mapping_confidence"),
+-        })
+-    return out
+-
+-
+-def write_paired_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
+-    fields = [
+-        "case_id", "relative_dir", "repeat_idx", "baseline_cov", "guided_cov", "coverage_delta", "coverage_ratio",
+-        "baseline_inputs", "guided_inputs", "guided_signal_sum", "baseline_rc", "guided_rc", "mapping_confidence",
+-    ]
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    with path.open("w", encoding="utf-8", newline="") as f:
+-        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+-        w.writeheader()
+-        for row in rows:
+-            w.writerow(row)
+-
+-
+-def main() -> None:
+-    ap = argparse.ArgumentParser(description="Summarize newMulti local A/B experiment outputs.")
+-    ap.add_argument("--out-root", required=True, help="Experiment output root used by run_newmulti_ab.py")
+-    ap.add_argument("--csv-out", default=None)
+-    ap.add_argument("--paired-csv-out", default=None)
+-    ap.add_argument("--json-out", default=None)
+-    args = ap.parse_args()
+-
+-    out_root = Path(args.out_root).expanduser().resolve()
+-    rows = collect_rows(out_root)
+-    csv_out = Path(args.csv_out).expanduser().resolve() if args.csv_out else out_root / "ab_summary.csv"
+-    paired_out = Path(args.paired_csv_out).expanduser().resolve() if args.paired_csv_out else out_root / "ab_paired_summary.csv"
+-    json_out = Path(args.json_out).expanduser().resolve() if args.json_out else out_root / "ab_summary.json"
+-    pairs = paired_rows(rows)
+-    write_csv(csv_out, rows)
+-    write_paired_csv(paired_out, pairs)
+-    payload = {
+-        "out_root": str(out_root),
+-        "row_count": len(rows),
+-        "pair_count": len(pairs),
+-        "csv": str(csv_out),
+-        "paired_csv": str(paired_out),
+-        "rows": rows,
+-        "pairs": pairs,
+-    }
+-    json_out.write_text(json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+-    print(json.dumps({k: payload[k] for k in ["out_root", "row_count", "pair_count", "csv", "paired_csv"]}, indent=2, ensure_ascii=False))
+-
+-
+-if __name__ == "__main__":
+-    main()

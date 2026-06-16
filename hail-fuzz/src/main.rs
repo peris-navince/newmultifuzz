@@ -1,3 +1,4 @@
+mod adaptive_switch;
 mod config;
 mod coverage;
 mod debug_alloc;
@@ -826,6 +827,7 @@ fn fuzzing_loop(mut fuzzer: Fuzzer, run_for: Option<Duration>) -> anyhow::Result
     let _guard = span.enter();
 
     let mut stats = monitor::LocalStats::default();
+    let mut adaptive_switch = adaptive_switch::AdaptiveGuidanceSwitch::from_env(fuzzer.workdir.clone())?;
     while !fuzzer.vm.interrupt_flag.load(std::sync::atomic::Ordering::Relaxed)
         && run_for.map_or(true, |t| start_time.elapsed() < t)
     {
@@ -920,7 +922,12 @@ fn fuzzing_loop(mut fuzzer: Fuzzer, run_for: Option<Duration>) -> anyhow::Result
         if matches!(SyncStage::run(&mut fuzzer, &mut stats)?, StageExit::Interrupted) {
             break;
         }
+
+        adaptive_switch.maybe_update(&mut fuzzer)?;
     }
+
+    crate::stream_observer::flush_now();
+    adaptive_switch.finish(&mut fuzzer);
 
     if let Some(recorder) = fuzzer.exec_trace.as_ref() {
         recorder.flush();
@@ -1325,14 +1332,6 @@ impl Fuzzer {
         }
 
         if matches!(exit, VmExit::Interrupted) {
-            crate::strategy_runtime::on_execution_outcome(
-                false,
-                0,
-                false,
-                false,
-                true,
-                self.state.exec_time.as_micros(),
-            );
             return None;
         }
 
@@ -1434,15 +1433,6 @@ impl Fuzzer {
 
         // Clear logged mutation events.
         self.state.mutation_kinds.clear();
-
-        crate::strategy_runtime::on_execution_outcome(
-            self.state.new_coverage,
-            self.state.new_bits.len() as u64,
-            self.state.was_hang(),
-            crash_kind.is_crash(),
-            false,
-            self.state.exec_time.as_micros(),
-        );
 
         if matches!(crash_kind, CrashKind::Halt) {
             return Ok(());
